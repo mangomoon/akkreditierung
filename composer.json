@@ -1,0 +1,121 @@
+{
+    "name": "georgringer/ieb",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/*"
+        }
+    ],
+    "require": {
+        "b13/bolt": "^2.2",
+        "b13/container": "^1.4",
+        "b13/menus": "^0.3.0",
+        "georgringer/news": "^9.1",
+        "helhum/typo3-console": "^7.1",
+        "typo3/cms-adminpanel": "^11",
+        "typo3/cms-backend": "^11",
+        "typo3/cms-belog": "^11",
+        "typo3/cms-composer-installers": "4.0.x@dev",
+        "typo3/cms-context-help": "^11",
+        "typo3/cms-core": "^11",
+        "typo3/cms-extbase": "^11",
+        "typo3/cms-extensionmanager": "^11",
+        "typo3/cms-felogin": "^11",
+        "typo3/cms-filelist": "^11",
+        "typo3/cms-fluid": "^11",
+        "typo3/cms-fluid-styled-content": "^11",
+        "typo3/cms-form": "^11",
+        "typo3/cms-frontend": "^11",
+        "typo3/cms-info": "^11",
+        "typo3/cms-install": "^11",
+        "typo3/cms-lowlevel": "^11",
+        "typo3/cms-recordlist": "^11",
+        "typo3/cms-recycler": "^11",
+        "typo3/cms-redirects": "^11",
+        "typo3/cms-reports": "^11",
+        "typo3/cms-rte-ckeditor": "^11",
+        "typo3/cms-saltedpasswords": "^11",
+        "typo3/cms-scheduler": "^11",
+        "typo3/cms-seo": "^11",
+        "typo3/cms-setup": "^11",
+        "typo3/cms-tstemplate": "^11",
+        "typo3/cms-viewpage": "^11"
+    },
+    "require-dev": {
+        "captainhook/captainhook": "^5.4",
+        "friendsofphp/php-cs-fixer": "^3 || ^2",
+        "friendsoftypo3/extension-builder": "^11",
+        "phpunit/phpunit": "^8 || ^7 || ^9",
+        "saschaegerer/phpstan-typo3": "^0.13 || ^1",
+        "typo3/testing-framework": "^6.4",
+        "vimeo/psalm": "^4.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "secure-http": true,
+        "sort-packages": true,
+        "bin-dir": "./bin/",
+        "platform": {
+            "php": "8.1"
+        },
+        "allow-plugins": {
+            "typo3/cms-composer-installers": true,
+            "typo3/class-alias-loader": true
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "public"
+        },
+        "helhum/typo3-console": {
+            "install-binary": false,
+            "install-extension-dummy": false
+        },
+        "scripts-dev": {
+            "post-autoload-dump": [
+                "@folder-structure"
+            ]
+        }
+    },
+    "scripts": {
+        "folder-structure": [
+            "@php ./typo3cms install:fixfolderstructure"
+        ],
+        "setup-active-extensions": [
+            "@php ./typo3cms extension:setup"
+        ],
+        "check": [
+            "@cs",
+            "@phpstan"
+        ],
+        "tests": [
+            "./bin/phpunit -c ./phpunit.xml"
+        ],
+        "cs": [
+            "./bin/php-cs-fixer fix --dry-run"
+        ],
+        "csfix": [
+            "./bin/php-cs-fixer fix"
+        ],
+        "phpstan": [
+            "./bin/phpstan analyze  --memory-limit=-1"
+        ],
+        "psalm": [
+            "./bin/psalm"
+        ],
+        "psalmfix-easy": [
+            "./bin/psalm --alter --issues=MissingReturnType,InvalidReturnType,InvalidNullableReturnType,MissingParamType"
+        ],
+        "psalmfix": [
+            "./bin/psalm --alter --issues=all"
+        ],
+        "rector": [
+            "./bin/rector process --dry-run packages/"
+        ],
+        "rectorfix": [
+            "./bin/rector process packages/"
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+includes:
+    - vendor/saschaegerer/phpstan-typo3/extension.neon
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: true
+    ignoreErrors:
+    - '#Variable \$_EXTKEY might not be defined\.#'
+    - '#Constant TYPO3_MODE not found.#'
+    - '#Parameter \#[a-zA-Z0-9\\_\(\)] \$[a-zA-Z0-9\\_\(\)] of method [a-zA-Z0-9\\_]::[a-zA-Z0-9\\_\(\)] expects iterable<[a-zA-Z0-9\\_]>&TYPO3\CMS\Extbase\Persistence\ObjectStorage,TYPO3\CMS\Extbase\Persistence\ObjectStorage given#'
+    level: 5
+    paths:
+        - ./packages/
+    excludePaths:
+        - ./packages/formplus/Tests/Unit/Domain/Validators/TimeValidatorTest.php
+        - ./packages/youcard/Classes/Domain/Repository/YouCardRepository.php
+        - ./packages/solr_geosearch/Tests/Unit/Service/GeoInformationServiceTest.php
+    dynamicConstantNames:
+        - TYPO3_CONF_VARS

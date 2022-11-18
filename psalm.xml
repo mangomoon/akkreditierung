@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<psalm resolveFromConfigFile="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="https://getpsalm.org/schema/config"
+       xsi:schemaLocation="https://getpsalm.org/schema/config .Build/vendor/vimeo/psalm/config.xsd">
+    <projectFiles>
+        <directory name="packages"/>
+    </projectFiles>
+
+    <issueHandlers>
+        <InternalMethod errorLevel="suppress"/>
+
+    </issueHandlers>
+    <globals>
+        <var name="_EXTKEY" type="string" />
+        <var name="$_EXTKEY" type="string" />
+        <var name="$EM_CONF" type="array" />
+    </globals>
+</psalm>

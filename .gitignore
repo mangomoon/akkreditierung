@@ -1,0 +1,10 @@
+/public/typo3/
+/public/index.php
+/public/typo3conf/ext/
+/public/fileadmin
+public/_assets/
+/bin/
+/vendor/
+/.idea
+/backup
+/var

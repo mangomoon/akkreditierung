@@ -1,0 +1,17 @@
+base: 'https://ieb.ddev.site/'
+errorHandling: {  }
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: default
+    locale: de_AT.utf8
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-at
+    direction: ltr
+    flag: at
+rootPageId: 1
+routes: {  }
