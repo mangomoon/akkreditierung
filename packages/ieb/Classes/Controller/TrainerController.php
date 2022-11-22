@@ -46,4 +46,75 @@ class TrainerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('trainers', $trainers);
         return $this->htmlResponse();
     }
+
+    /**
+     * action show
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function showAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer): \Psr\Http\Message\ResponseInterface
+    {
+        $this->view->assign('trainer', $trainer);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action new
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function newAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action create
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $newTrainer
+     */
+    public function createAction(\GeorgRinger\Ieb\Domain\Model\Trainer $newTrainer)
+    {
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->trainerRepository->add($newTrainer);
+        $this->redirect('list');
+    }
+
+    /**
+     * action edit
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("trainer")
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function editAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer): \Psr\Http\Message\ResponseInterface
+    {
+        $this->view->assign('trainer', $trainer);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action update
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
+     */
+    public function updateAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer)
+    {
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->trainerRepository->update($trainer);
+        $this->redirect('list');
+    }
+
+    /**
+     * action delete
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
+     */
+    public function deleteAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer)
+    {
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->trainerRepository->remove($trainer);
+        $this->redirect('list');
+    }
 }

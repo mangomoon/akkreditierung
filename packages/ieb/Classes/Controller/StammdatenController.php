@@ -46,4 +46,63 @@ class StammdatenController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->view->assign('stammdatens', $stammdatens);
         return $this->htmlResponse();
     }
+
+    /**
+     * action show
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function showAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten): \Psr\Http\Message\ResponseInterface
+    {
+        $this->view->assign('stammdaten', $stammdaten);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action new
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function newAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action create
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $newStammdaten
+     */
+    public function createAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $newStammdaten)
+    {
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->stammdatenRepository->add($newStammdaten);
+        $this->redirect('list');
+    }
+
+    /**
+     * action edit
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("stammdaten")
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function editAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten): \Psr\Http\Message\ResponseInterface
+    {
+        $this->view->assign('stammdaten', $stammdaten);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action update
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
+     */
+    public function updateAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten)
+    {
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->stammdatenRepository->update($stammdaten);
+        $this->redirect('list');
+    }
 }

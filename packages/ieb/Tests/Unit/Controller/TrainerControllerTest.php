@@ -57,4 +57,86 @@ class TrainerControllerTest extends UnitTestCase
 
         $this->subject->listAction();
     }
+
+    /**
+     * @test
+     */
+    public function showActionAssignsTheGivenTrainerToView(): void
+    {
+        $trainer = new \GeorgRinger\Ieb\Domain\Model\Trainer();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('trainer', $trainer);
+
+        $this->subject->showAction($trainer);
+    }
+
+    /**
+     * @test
+     */
+    public function createActionAddsTheGivenTrainerToTrainerRepository(): void
+    {
+        $trainer = new \GeorgRinger\Ieb\Domain\Model\Trainer();
+
+        $trainerRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\TrainerRepository::class)
+            ->onlyMethods(['add'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $trainerRepository->expects(self::once())->method('add')->with($trainer);
+        $this->subject->_set('trainerRepository', $trainerRepository);
+
+        $this->subject->createAction($trainer);
+    }
+
+    /**
+     * @test
+     */
+    public function editActionAssignsTheGivenTrainerToView(): void
+    {
+        $trainer = new \GeorgRinger\Ieb\Domain\Model\Trainer();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('trainer', $trainer);
+
+        $this->subject->editAction($trainer);
+    }
+
+    /**
+     * @test
+     */
+    public function updateActionUpdatesTheGivenTrainerInTrainerRepository(): void
+    {
+        $trainer = new \GeorgRinger\Ieb\Domain\Model\Trainer();
+
+        $trainerRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\TrainerRepository::class)
+            ->onlyMethods(['update'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $trainerRepository->expects(self::once())->method('update')->with($trainer);
+        $this->subject->_set('trainerRepository', $trainerRepository);
+
+        $this->subject->updateAction($trainer);
+    }
+
+    /**
+     * @test
+     */
+    public function deleteActionRemovesTheGivenTrainerFromTrainerRepository(): void
+    {
+        $trainer = new \GeorgRinger\Ieb\Domain\Model\Trainer();
+
+        $trainerRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\TrainerRepository::class)
+            ->onlyMethods(['remove'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $trainerRepository->expects(self::once())->method('remove')->with($trainer);
+        $this->subject->_set('trainerRepository', $trainerRepository);
+
+        $this->subject->deleteAction($trainer);
+    }
 }

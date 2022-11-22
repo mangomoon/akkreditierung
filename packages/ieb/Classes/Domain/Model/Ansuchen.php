@@ -366,7 +366,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * berater
      *
-     * @var \GeorgRinger\Ieb\Domain\Model\Berater
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
 
@@ -393,6 +393,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->verantwortliche = $this->verantwortliche ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainer = $this->trainer ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->berater = $this->berater ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -1101,27 +1102,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the berater
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Berater
-     */
-    public function getBerater()
-    {
-        return $this->berater;
-    }
-
-    /**
-     * Sets the berater
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Berater $berater
-     * @return void
-     */
-    public function setBerater(\GeorgRinger\Ieb\Domain\Model\Berater $berater)
-    {
-        $this->berater = $berater;
-    }
-
-    /**
      * Returns the reviewB1CommentInternal
      *
      * @return string
@@ -1518,5 +1498,48 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewTotalFrist(\DateTime $reviewTotalFrist)
     {
         $this->reviewTotalFrist = $reviewTotalFrist;
+    }
+
+    /**
+     * Adds a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Berater $berater
+     * @return void
+     */
+    public function addBerater(\GeorgRinger\Ieb\Domain\Model\Berater $berater)
+    {
+        $this->berater->attach($berater);
+    }
+
+    /**
+     * Removes a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Berater $beraterToRemove The Berater to be removed
+     * @return void
+     */
+    public function removeBerater(\GeorgRinger\Ieb\Domain\Model\Berater $beraterToRemove)
+    {
+        $this->berater->detach($beraterToRemove);
+    }
+
+    /**
+     * Returns the berater
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
+     */
+    public function getBerater()
+    {
+        return $this->berater;
+    }
+
+    /**
+     * Sets the berater
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater> $berater
+     * @return void
+     */
+    public function setBerater(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $berater)
+    {
+        $this->berater = $berater;
     }
 }

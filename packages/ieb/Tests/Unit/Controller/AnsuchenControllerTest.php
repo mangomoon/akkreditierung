@@ -71,4 +71,72 @@ class AnsuchenControllerTest extends UnitTestCase
 
         $this->subject->showAction($ansuchen);
     }
+
+    /**
+     * @test
+     */
+    public function createActionAddsTheGivenAnsuchenToAnsuchenRepository(): void
+    {
+        $ansuchen = new \GeorgRinger\Ieb\Domain\Model\Ansuchen();
+
+        $ansuchenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository::class)
+            ->onlyMethods(['add'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $ansuchenRepository->expects(self::once())->method('add')->with($ansuchen);
+        $this->subject->_set('ansuchenRepository', $ansuchenRepository);
+
+        $this->subject->createAction($ansuchen);
+    }
+
+    /**
+     * @test
+     */
+    public function editActionAssignsTheGivenAnsuchenToView(): void
+    {
+        $ansuchen = new \GeorgRinger\Ieb\Domain\Model\Ansuchen();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('ansuchen', $ansuchen);
+
+        $this->subject->editAction($ansuchen);
+    }
+
+    /**
+     * @test
+     */
+    public function updateActionUpdatesTheGivenAnsuchenInAnsuchenRepository(): void
+    {
+        $ansuchen = new \GeorgRinger\Ieb\Domain\Model\Ansuchen();
+
+        $ansuchenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository::class)
+            ->onlyMethods(['update'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $ansuchenRepository->expects(self::once())->method('update')->with($ansuchen);
+        $this->subject->_set('ansuchenRepository', $ansuchenRepository);
+
+        $this->subject->updateAction($ansuchen);
+    }
+
+    /**
+     * @test
+     */
+    public function deleteActionRemovesTheGivenAnsuchenFromAnsuchenRepository(): void
+    {
+        $ansuchen = new \GeorgRinger\Ieb\Domain\Model\Ansuchen();
+
+        $ansuchenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository::class)
+            ->onlyMethods(['remove'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $ansuchenRepository->expects(self::once())->method('remove')->with($ansuchen);
+        $this->subject->_set('ansuchenRepository', $ansuchenRepository);
+
+        $this->subject->deleteAction($ansuchen);
+    }
 }

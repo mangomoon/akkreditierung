@@ -1164,8 +1164,9 @@ class AnsuchenTest extends UnitTestCase
      */
     public function getBeraterReturnsInitialValueForBerater(): void
     {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            null,
+            $newObjectStorage,
             $this->subject->getBerater()
         );
     }
@@ -1173,11 +1174,47 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setBeraterForBeraterSetsBerater(): void
+    public function setBeraterForObjectStorageContainingBeraterSetsBerater(): void
     {
-        $beraterFixture = new \GeorgRinger\Ieb\Domain\Model\Berater();
-        $this->subject->setBerater($beraterFixture);
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+        $objectStorageHoldingExactlyOneBerater = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneBerater->attach($berater);
+        $this->subject->setBerater($objectStorageHoldingExactlyOneBerater);
 
-        self::assertEquals($beraterFixture, $this->subject->_get('berater'));
+        self::assertEquals($objectStorageHoldingExactlyOneBerater, $this->subject->_get('berater'));
+    }
+
+    /**
+     * @test
+     */
+    public function addBeraterToObjectStorageHoldingBerater(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+        $beraterObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $beraterObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($berater));
+        $this->subject->_set('berater', $beraterObjectStorageMock);
+
+        $this->subject->addBerater($berater);
+    }
+
+    /**
+     * @test
+     */
+    public function removeBeraterFromObjectStorageHoldingBerater(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+        $beraterObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $beraterObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($berater));
+        $this->subject->_set('berater', $beraterObjectStorageMock);
+
+        $this->subject->removeBerater($berater);
     }
 }

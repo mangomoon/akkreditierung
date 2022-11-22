@@ -6,49 +6,17 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'versioningWS' => true,
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ],
         'searchFields' => 'nachname,vorname,lebenslauf,qualifikation_babi,lehr_befugnis,qualifikation_psa,qualifikation_psa_kommentar,review_comment_internal,review_comment_tr,lehr_befugnis_datei',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_trainer.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, verwendung_babi, verwendung_psa, lebenslauf, qualifikation_babi, lehr_befugnis, qualifikation_psa1, qualifikation_psa2, qualifikation_psa3, qualifikation_psa4, qualifikation_psa5, qualifikation_psa6, qualifikation_psa7, qualifikation_psa8, qualifikation_psa, qualifikation_psa_kommentar, anerkennung_pp3, review_comment_internal, review_comment_tr, review_status, review_frist, lebenslauf_datei, qualifikation_babi_datei, lehr_befugnis_datei, qualifikation_psa_datei, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, verwendung_babi, verwendung_psa, lebenslauf, qualifikation_babi, lehr_befugnis, qualifikation_psa1, qualifikation_psa2, qualifikation_psa3, qualifikation_psa4, qualifikation_psa5, qualifikation_psa6, qualifikation_psa7, qualifikation_psa8, qualifikation_psa, qualifikation_psa_kommentar, anerkennung_pp3, review_comment_internal, review_comment_tr, review_status, review_frist, lebenslauf_datei, qualifikation_babi_datei, lehr_befugnis_datei, qualifikation_psa_datei, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_ieb_domain_model_trainer',
-                'foreign_table_where' => 'AND {#tx_ieb_domain_model_trainer}.{#pid}=###CURRENT_PID### AND {#tx_ieb_domain_model_trainer}.{#sys_language_uid} IN (-1,0)',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -62,35 +30,6 @@ return [
                         'invertStateDisplay' => true
                     ]
                 ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
             ],
         ],
 

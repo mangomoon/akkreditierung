@@ -6,49 +6,17 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'versioningWS' => true,
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ],
         'searchFields' => 'name,strasse,plz,ort,website,email,telefon,leitbild,qms_zertifikat,qualitaet_sicherung,qualitaet_personal,pruefbescheid,review_comment_internal,review_comment_tr',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_stammdaten.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, review_comment_internal, review_comment_tr, review_status, review_frist, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, review_comment_internal, review_comment_tr, review_status, review_frist, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_ieb_domain_model_stammdaten',
-                'foreign_table_where' => 'AND {#tx_ieb_domain_model_stammdaten}.{#pid}=###CURRENT_PID### AND {#tx_ieb_domain_model_stammdaten}.{#sys_language_uid} IN (-1,0)',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -62,35 +30,6 @@ return [
                         'invertStateDisplay' => true
                     ]
                 ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
             ],
         ],
 

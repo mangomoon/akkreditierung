@@ -12,17 +12,17 @@
                 "actionGroup": {
                     "_default0_index": false,
                     "_default1_list": true,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
-                    "_default5_delete": false,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
                     "customActions": []
                 },
                 "name": "Trainer",
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
+                    "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
@@ -368,8 +368,8 @@
         {
             "config": {
                 "position": [
-                    422,
-                    23
+                    342,
+                    19
                 ]
             },
             "name": "New Model Object",
@@ -377,17 +377,17 @@
                 "actionGroup": {
                     "_default0_index": false,
                     "_default1_list": true,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
-                    "_default5_delete": false,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
                     "customActions": []
                 },
                 "name": "Berater",
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
+                    "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
@@ -528,8 +528,8 @@
         {
             "config": {
                 "position": [
-                    77,
-                    112
+                    46,
+                    83
                 ]
             },
             "name": "New Model Object",
@@ -538,16 +538,16 @@
                     "_default0_index": false,
                     "_default1_list": true,
                     "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
-                    "_default5_delete": false,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
                     "customActions": []
                 },
                 "name": "Standort",
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
+                    "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
@@ -710,9 +710,9 @@
                 "actionGroup": {
                     "_default0_index": false,
                     "_default1_list": true,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
                     "_default5_delete": false,
                     "customActions": []
                 },
@@ -720,7 +720,7 @@
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
+                    "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
@@ -1111,16 +1111,16 @@
                     "_default0_index": false,
                     "_default1_list": true,
                     "_default2_show": true,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
-                    "_default5_delete": false,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
                     "customActions": []
                 },
                 "name": "Ansuchen",
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
+                    "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
@@ -1714,9 +1714,9 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "berater",
-                            "relationType": "zeroToOne",
+                            "relationType": "manyToMany",
                             "relationWire": "[wired]",
-                            "renderType": "selectSingle",
+                            "renderType": "selectMultipleSideBySide",
                             "uid": "1666757799454"
                         }
                     ]
@@ -1734,10 +1734,10 @@
             "value": {
                 "actionGroup": {
                     "_default0_index": false,
-                    "_default1_list": false,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
                     "_default5_delete": false,
                     "customActions": []
                 },
@@ -1745,8 +1745,8 @@
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": false,
+                    "addStarttimeEndtimeFields": false,
+                    "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
@@ -1832,8 +1832,8 @@
             "category": "plugin",
             "custom_category": "",
             "dependsOn": "typo3 => 11.5.0-11.5.99\n",
-            "disableLocalization": false,
-            "disableVersioning": false,
+            "disableLocalization": true,
+            "disableVersioning": true,
             "generateDocumentationTemplate": false,
             "generateEditorConfig": false,
             "generateEmptyGitRepository": false,
@@ -1991,7 +1991,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2022-11-22 07:29",
+        "last_modified": "2022-11-22 07:49",
         "extension_builder_version": "v11.0.8",
         "be_user": " (1)"
     }

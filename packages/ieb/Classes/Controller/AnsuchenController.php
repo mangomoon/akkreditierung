@@ -58,4 +58,63 @@ class AnsuchenController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('ansuchen', $ansuchen);
         return $this->htmlResponse();
     }
+
+    /**
+     * action new
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function newAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action create
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Ansuchen $newAnsuchen
+     */
+    public function createAction(\GeorgRinger\Ieb\Domain\Model\Ansuchen $newAnsuchen)
+    {
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->ansuchenRepository->add($newAnsuchen);
+        $this->redirect('list');
+    }
+
+    /**
+     * action edit
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function editAction(\GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen): \Psr\Http\Message\ResponseInterface
+    {
+        $this->view->assign('ansuchen', $ansuchen);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * action update
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen
+     */
+    public function updateAction(\GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen)
+    {
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->ansuchenRepository->update($ansuchen);
+        $this->redirect('list');
+    }
+
+    /**
+     * action delete
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen
+     */
+    public function deleteAction(\GeorgRinger\Ieb\Domain\Model\Ansuchen $ansuchen)
+    {
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->ansuchenRepository->remove($ansuchen);
+        $this->redirect('list');
+    }
 }

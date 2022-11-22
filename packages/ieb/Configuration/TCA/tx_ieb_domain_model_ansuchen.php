@@ -6,49 +6,17 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'versioningWS' => true,
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ],
         'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_commen_tr,review_b2_comment_internal,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_tr,review_total_comment_internal,review_total_comment_tr',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, stammdaten, standorte, verantwortliche, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, stammdaten, standorte, verantwortliche, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_ieb_domain_model_ansuchen',
-                'foreign_table_where' => 'AND {#tx_ieb_domain_model_ansuchen}.{#pid}=###CURRENT_PID### AND {#tx_ieb_domain_model_ansuchen}.{#sys_language_uid} IN (-1,0)',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -62,35 +30,6 @@ return [
                         'invertStateDisplay' => true
                     ]
                 ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
             ],
         ],
 
@@ -954,13 +893,26 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.berater',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectSingle',
+                'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_ieb_domain_model_berater',
-                'default' => 0,
-                'minitems' => 0,
-                'maxitems' => 1,
+                'MM' => 'tx_ieb_ansuchen_berater_mm',
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
             ],
-
+            
         ],
     
     ],

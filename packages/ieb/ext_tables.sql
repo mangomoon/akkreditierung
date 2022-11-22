@@ -137,7 +137,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
 	trainer int(11) unsigned NOT NULL DEFAULT '0',
-	berater int(11) unsigned DEFAULT '0'
+	berater int(11) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (

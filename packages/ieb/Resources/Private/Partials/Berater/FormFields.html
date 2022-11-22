@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="nachname">
+	<f:translate key="tx_ieb_domain_model_berater.nachname" />
+</label><br />
+	<f:form.textfield property="nachname" id="nachname" /><br />
+<label for="vorname">
+	<f:translate key="tx_ieb_domain_model_berater.vorname" />
+</label><br />
+	<f:form.textfield property="vorname" id="vorname" /><br />
+<label for="lebenslauf">
+	<f:translate key="tx_ieb_domain_model_berater.lebenslauf" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="qualifikationsnachweise">
+	<f:translate key="tx_ieb_domain_model_berater.qualifikationsnachweise" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="reviewCommentInternal">
+	<f:translate key="tx_ieb_domain_model_berater.review_comment_internal" />
+</label><br />
+	<f:form.textarea property="reviewCommentInternal" id="reviewCommentInternal" cols="40" rows="15" /><br />
+<label for="reviewCommentTr">
+	<f:translate key="tx_ieb_domain_model_berater.review_comment_tr" />
+</label><br />
+	<f:form.textarea property="reviewCommentTr" id="reviewCommentTr" cols="40" rows="15" /><br />
+<label for="reviewStatus">
+	<f:translate key="tx_ieb_domain_model_berater.review_status" />
+</label><br />
+	<f:form.textfield property="reviewStatus" id="reviewStatus" /><br />
+<label for="reviewFrist">
+	<f:translate key="tx_ieb_domain_model_berater.review_frist" />
+</label><br />
+	<f:form.textfield property="reviewFrist" id="reviewFrist" value="{berater.reviewFrist->f:format.date()}" /><br />
+</html>

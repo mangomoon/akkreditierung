@@ -1,0 +1,46 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="name">
+	<f:translate key="tx_ieb_domain_model_standort.name" />
+</label><br />
+	<f:form.textfield property="name" id="name" /><br />
+<label for="adresse">
+	<f:translate key="tx_ieb_domain_model_standort.adresse" />
+</label><br />
+	<f:form.textfield property="adresse" id="adresse" /><br />
+<label for="plz">
+	<f:translate key="tx_ieb_domain_model_standort.plz" />
+</label><br />
+	<f:form.textfield property="plz" id="plz" /><br />
+<label for="ort">
+	<f:translate key="tx_ieb_domain_model_standort.ort" />
+</label><br />
+	<f:form.textfield property="ort" id="ort" /><br />
+<label for="pruefBescheid">
+	<f:translate key="tx_ieb_domain_model_standort.pruef_bescheid" />
+</label><br />
+	<f:form.checkbox property="pruefBescheid" id="pruefBescheid" value="1" /><br />
+<label for="koopSchule">
+	<f:translate key="tx_ieb_domain_model_standort.koop_schule" />
+</label><br />
+	<f:form.textarea property="koopSchule" id="koopSchule" cols="40" rows="15" /><br />
+<label for="koopSchuleDatei">
+	<f:translate key="tx_ieb_domain_model_standort.koop_schule_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="reviewCommentInternal">
+	<f:translate key="tx_ieb_domain_model_standort.review_comment_internal" />
+</label><br />
+	<f:form.textarea property="reviewCommentInternal" id="reviewCommentInternal" cols="40" rows="15" /><br />
+<label for="reviewCommentTr">
+	<f:translate key="tx_ieb_domain_model_standort.review_comment_tr" />
+</label><br />
+	<f:form.textarea property="reviewCommentTr" id="reviewCommentTr" cols="40" rows="15" /><br />
+<label for="reviewCommentStatus">
+	<f:translate key="tx_ieb_domain_model_standort.review_comment_status" />
+</label><br />
+	<f:form.textfield property="reviewCommentStatus" id="reviewCommentStatus" /><br />
+<label for="reviewFrist">
+	<f:translate key="tx_ieb_domain_model_standort.review_frist" />
+</label><br />
+	<f:form.textfield property="reviewFrist" id="reviewFrist" value="{standort.reviewFrist->f:format.date()}" /><br />
+</html>

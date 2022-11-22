@@ -1,0 +1,140 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-ieb">
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.name" /></td>
+		<td>{stammdaten.name}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.nachweis" /></td>
+		<td>
+				<a href="{stammdaten.nachweis.originalResource.publicUrl}">
+					{stammdaten.nachweis.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" /></td>
+		<td>{stammdaten.rechtsform}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.strasse" /></td>
+		<td>{stammdaten.strasse}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.plz" /></td>
+		<td>{stammdaten.plz}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.ort" /></td>
+		<td>{stammdaten.ort}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.seit" /></td>
+		<td>{stammdaten.seit -> f:format.date()}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.website" /></td>
+		<td>{stammdaten.website}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.email" /></td>
+		<td>{stammdaten.email}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.telefon" /></td>
+		<td>{stammdaten.telefon}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.leitbild" /></td>
+		<td>{stammdaten.leitbild}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.leitbild_datei" /></td>
+		<td>
+				<a href="{stammdaten.leitbildDatei.originalResource.publicUrl}">
+					{stammdaten.leitbildDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" /></td>
+		<td>
+				<a href="{stammdaten.qmsZertifikatDatei.originalResource.publicUrl}">
+					{stammdaten.qmsZertifikatDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat" /></td>
+		<td>{stammdaten.qmsZertifikat}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_typ" /></td>
+		<td>{stammdaten.qmsTyp}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.zertifikat_bis" /></td>
+		<td>{stammdaten.zertifikatBis -> f:format.date()}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" /></td>
+		<td>{stammdaten.qualitaetSicherung}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" /></td>
+		<td>
+				<a href="{stammdaten.qualitaetSicherungDatei.originalResource.publicUrl}">
+					{stammdaten.qualitaetSicherungDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal" /></td>
+		<td>{stammdaten.qualitaetPersonal}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" /></td>
+		<td>
+				<a href="{stammdaten.qualitaetPersonalDatei.originalResource.publicUrl}">
+					{stammdaten.qualitaetPersonalDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.tr_pp3" /></td>
+		<td>{stammdaten.trPp3}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid" /></td>
+		<td>{stammdaten.pruefbescheid}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" /></td>
+		<td>
+				<a href="{stammdaten.pruefbescheidDatei.originalResource.publicUrl}">
+					{stammdaten.pruefbescheidDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" /></td>
+		<td>{stammdaten.pruefbescheidBis -> f:format.date()}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.review_comment_internal" /></td>
+		<td>{stammdaten.reviewCommentInternal}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.review_comment_tr" /></td>
+		<td>{stammdaten.reviewCommentTr}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.review_status" /></td>
+		<td>{stammdaten.reviewStatus}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_stammdaten.review_frist" /></td>
+		<td>{stammdaten.reviewFrist -> f:format.date()}</td>
+	</tr>
+</table>
+</html>

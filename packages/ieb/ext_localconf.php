@@ -6,19 +6,21 @@ defined('TYPO3') || die();
         'Ieb',
         'Default',
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'list',
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'list',
-            \GeorgRinger\Ieb\Controller\StandortController::class => 'list',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'list',
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show'
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'list, show, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'list, show, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'list, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'list, show, new, create, edit, update',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, create, edit, update'
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => '',
-            \GeorgRinger\Ieb\Controller\BeraterController::class => '',
-            \GeorgRinger\Ieb\Controller\StandortController::class => '',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => '',
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => ''
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'create, update',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'create, update'
         ]
     );
 

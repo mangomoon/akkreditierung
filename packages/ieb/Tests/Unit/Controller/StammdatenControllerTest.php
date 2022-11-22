@@ -57,4 +57,68 @@ class StammdatenControllerTest extends UnitTestCase
 
         $this->subject->listAction();
     }
+
+    /**
+     * @test
+     */
+    public function showActionAssignsTheGivenStammdatenToView(): void
+    {
+        $stammdaten = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('stammdaten', $stammdaten);
+
+        $this->subject->showAction($stammdaten);
+    }
+
+    /**
+     * @test
+     */
+    public function createActionAddsTheGivenStammdatenToStammdatenRepository(): void
+    {
+        $stammdaten = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
+
+        $stammdatenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StammdatenRepository::class)
+            ->onlyMethods(['add'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $stammdatenRepository->expects(self::once())->method('add')->with($stammdaten);
+        $this->subject->_set('stammdatenRepository', $stammdatenRepository);
+
+        $this->subject->createAction($stammdaten);
+    }
+
+    /**
+     * @test
+     */
+    public function editActionAssignsTheGivenStammdatenToView(): void
+    {
+        $stammdaten = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('stammdaten', $stammdaten);
+
+        $this->subject->editAction($stammdaten);
+    }
+
+    /**
+     * @test
+     */
+    public function updateActionUpdatesTheGivenStammdatenInStammdatenRepository(): void
+    {
+        $stammdaten = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
+
+        $stammdatenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StammdatenRepository::class)
+            ->onlyMethods(['update'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $stammdatenRepository->expects(self::once())->method('update')->with($stammdaten);
+        $this->subject->_set('stammdatenRepository', $stammdatenRepository);
+
+        $this->subject->updateAction($stammdaten);
+    }
 }

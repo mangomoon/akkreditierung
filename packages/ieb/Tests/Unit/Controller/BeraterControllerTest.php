@@ -57,4 +57,86 @@ class BeraterControllerTest extends UnitTestCase
 
         $this->subject->listAction();
     }
+
+    /**
+     * @test
+     */
+    public function showActionAssignsTheGivenBeraterToView(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('berater', $berater);
+
+        $this->subject->showAction($berater);
+    }
+
+    /**
+     * @test
+     */
+    public function createActionAddsTheGivenBeraterToBeraterRepository(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+
+        $beraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\BeraterRepository::class)
+            ->onlyMethods(['add'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $beraterRepository->expects(self::once())->method('add')->with($berater);
+        $this->subject->_set('beraterRepository', $beraterRepository);
+
+        $this->subject->createAction($berater);
+    }
+
+    /**
+     * @test
+     */
+    public function editActionAssignsTheGivenBeraterToView(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+
+        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
+        $this->subject->_set('view', $view);
+        $view->expects(self::once())->method('assign')->with('berater', $berater);
+
+        $this->subject->editAction($berater);
+    }
+
+    /**
+     * @test
+     */
+    public function updateActionUpdatesTheGivenBeraterInBeraterRepository(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+
+        $beraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\BeraterRepository::class)
+            ->onlyMethods(['update'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $beraterRepository->expects(self::once())->method('update')->with($berater);
+        $this->subject->_set('beraterRepository', $beraterRepository);
+
+        $this->subject->updateAction($berater);
+    }
+
+    /**
+     * @test
+     */
+    public function deleteActionRemovesTheGivenBeraterFromBeraterRepository(): void
+    {
+        $berater = new \GeorgRinger\Ieb\Domain\Model\Berater();
+
+        $beraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\BeraterRepository::class)
+            ->onlyMethods(['remove'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $beraterRepository->expects(self::once())->method('remove')->with($berater);
+        $this->subject->_set('beraterRepository', $beraterRepository);
+
+        $this->subject->deleteAction($berater);
+    }
 }
