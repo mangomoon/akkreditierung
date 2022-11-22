@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_ansuchen.xlf" date="2022-11-22T19:29:10Z" product-name="ieb">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="version.description" resname="version.description">
+				<source>version</source>
+			</trans-unit>
+			<trans-unit id="version_based_on.description" resname="version_based_on.description">
+				<source>versionBasedOn</source>
+			</trans-unit>
+			<trans-unit id="version_active.description" resname="version_active.description">
+				<source>versionActive</source>
+			</trans-unit>
+			<trans-unit id="nummer.description" resname="nummer.description">
+				<source>nummer</source>
+			</trans-unit>
+			<trans-unit id="akkreditierung_datum.description" resname="akkreditierung_datum.description">
+				<source>akkreditierungDatum</source>
+			</trans-unit>
+			<trans-unit id="einreich_datum.description" resname="einreich_datum.description">
+				<source>einreichDatum</source>
+			</trans-unit>
+			<trans-unit id="zuteilung_datum.description" resname="zuteilung_datum.description">
+				<source>zuteilungDatum</source>
+			</trans-unit>
+			<trans-unit id="akkreditierung_entscheidung_datum.description" resname="akkreditierung_entscheidung_datum.description">
+				<source>akkreditierungEntscheidungDatum</source>
+			</trans-unit>
+			<trans-unit id="typ.description" resname="typ.description">
+				<source>typ</source>
+			</trans-unit>
+			<trans-unit id="bundesland.description" resname="bundesland.description">
+				<source>bundesland</source>
+			</trans-unit>
+			<trans-unit id="kompetenzbereiche.description" resname="kompetenzbereiche.description">
+				<source>kompetenzbereiche</source>
+			</trans-unit>
+			<trans-unit id="kompetenzbereiche_text.description" resname="kompetenzbereiche_text.description">
+				<source>kompetenzbereicheText</source>
+			</trans-unit>
+			<trans-unit id="uebersicht_text.description" resname="uebersicht_text.description">
+				<source>uebersichtText</source>
+			</trans-unit>
+			<trans-unit id="uebersicht_datei.description" resname="uebersicht_datei.description">
+				<source>uebersichtDatei</source>
+			</trans-unit>
+			<trans-unit id="zielgruppen_ansprache.description" resname="zielgruppen_ansprache.description">
+				<source>zielgruppenAnsprache</source>
+			</trans-unit>
+			<trans-unit id="zielgruppen_ansprache_datei.description" resname="zielgruppen_ansprache_datei.description">
+				<source>zielgruppenAnspracheDatei</source>
+			</trans-unit>
+			<trans-unit id="fernlehre.description" resname="fernlehre.description">
+				<source>fernlehre</source>
+			</trans-unit>
+			<trans-unit id="kinderbetreuung.description" resname="kinderbetreuung.description">
+				<source>kinderbetreuung</source>
+			</trans-unit>
+			<trans-unit id="lernziele.description" resname="lernziele.description">
+				<source>lernziele</source>
+			</trans-unit>
+			<trans-unit id="lernstandserhebung.description" resname="lernstandserhebung.description">
+				<source>lernstandserhebung</source>
+			</trans-unit>
+			<trans-unit id="diversity.description" resname="diversity.description">
+				<source>diversity</source>
+			</trans-unit>
+			<trans-unit id="didaktik_kommentar.description" resname="didaktik_kommentar.description">
+				<source>didaktikKommentar</source>
+			</trans-unit>
+			<trans-unit id="beratung_text.description" resname="beratung_text.description">
+				<source>beratungText</source>
+			</trans-unit>
+			<trans-unit id="beratung_datei.description" resname="beratung_datei.description">
+				<source>beratungDatei</source>
+			</trans-unit>
+			<trans-unit id="review_b1_comment_internal.description" resname="review_b1_comment_internal.description">
+				<source>reviewB1CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b1_commen_tr.description" resname="review_b1_commen_tr.description">
+				<source>reviewB1CommenTr</source>
+			</trans-unit>
+			<trans-unit id="review_b1_status.description" resname="review_b1_status.description">
+				<source>reviewB1Status</source>
+			</trans-unit>
+			<trans-unit id="review_b2_comment_internal.description" resname="review_b2_comment_internal.description">
+				<source>reviewB2CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b2_comment_tr.description" resname="review_b2_comment_tr.description">
+				<source>reviewB2CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_b2_status.description" resname="review_b2_status.description">
+				<source>reviewB2Status</source>
+			</trans-unit>
+			<trans-unit id="review_c1_comment_internal.description" resname="review_c1_comment_internal.description">
+				<source>reviewC1CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c1_comment_tr.description" resname="review_c1_comment_tr.description">
+				<source>reviewC1CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_c1_status.description" resname="review_c1_status.description">
+				<source>reviewC1Status</source>
+			</trans-unit>
+			<trans-unit id="review_c2_comment_internal.description" resname="review_c2_comment_internal.description">
+				<source>reviewC2CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c2_comment_tr.description" resname="review_c2_comment_tr.description">
+				<source>reviewC2CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_c2_status.description" resname="review_c2_status.description">
+				<source>reviewC2Status</source>
+			</trans-unit>
+			<trans-unit id="review_c3_comment_internal.description" resname="review_c3_comment_internal.description">
+				<source>reviewC3CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c3_comment_tr.description" resname="review_c3_comment_tr.description">
+				<source>reviewC3CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_c3_status.description" resname="review_c3_status.description">
+				<source>reviewC3Status</source>
+			</trans-unit>
+			<trans-unit id="review_total_comment_internal.description" resname="review_total_comment_internal.description">
+				<source>reviewTotalCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_total_comment_tr.description" resname="review_total_comment_tr.description">
+				<source>reviewTotalCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_total_status.description" resname="review_total_status.description">
+				<source>reviewTotalStatus</source>
+			</trans-unit>
+			<trans-unit id="review_total_frist.description" resname="review_total_frist.description">
+				<source>reviewTotalFrist</source>
+			</trans-unit>
+			<trans-unit id="stammdaten.description" resname="stammdaten.description">
+				<source>stammdaten</source>
+			</trans-unit>
+			<trans-unit id="standorte.description" resname="standorte.description">
+				<source>standorte</source>
+			</trans-unit>
+			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
+				<source>verantwortliche</source>
+			</trans-unit>
+			<trans-unit id="trainer.description" resname="trainer.description">
+				<source>trainer</source>
+			</trans-unit>
+			<trans-unit id="berater.description" resname="berater.description">
+				<source>berater</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

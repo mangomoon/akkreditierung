@@ -1,0 +1,88 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Trainer:
+          List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for Trainer</h1>
+
+    <f:flashMessages />
+
+    <table class="tx_ieb">
+        <tr>
+            <th><f:translate key="tx_ieb_domain_model_trainer.nachname" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.vorname" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.verwendung_babi" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.verwendung_psa" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.lebenslauf" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_babi" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.lehr_befugnis" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa1" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa2" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa3" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa4" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa5" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa6" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa7" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa8" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa_kommentar" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.anerkennung_pp3" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.review_comment_internal" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.review_comment_tr" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.review_status" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.review_frist" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.lebenslauf_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_babi_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.lehr_befugnis_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa_datei" /></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <f:for each="{trainers}" as="trainer">
+            <tr>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.nachname}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.vorname}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.verwendungBabi}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.verwendungPsa}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lebenslauf}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationBabi}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lehrBefugnis}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa1}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa2}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa3}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa4}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa5}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa6}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa7}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa8}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsaKommentar}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.anerkennungPp3}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewCommentInternal}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewCommentTr}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewStatus}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewFrist -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lebenslaufDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationBabiDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lehrBefugnisDatei}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsaDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{trainer : trainer}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{trainer : trainer}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Trainer</f:link.action>
+</f:section>
+</html>

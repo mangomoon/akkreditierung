@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_trainer.xlf" date="2022-11-22T19:29:10Z" product-name="ieb">
+		<header/>
+		<body>
+			<trans-unit id="nachname.description" resname="nachname.description">
+				<source>nachname</source>
+			</trans-unit>
+			<trans-unit id="vorname.description" resname="vorname.description">
+				<source>vorname</source>
+			</trans-unit>
+			<trans-unit id="verwendung_babi.description" resname="verwendung_babi.description">
+				<source>verwendungBabi</source>
+			</trans-unit>
+			<trans-unit id="verwendung_psa.description" resname="verwendung_psa.description">
+				<source>verwendungPsa</source>
+			</trans-unit>
+			<trans-unit id="lebenslauf.description" resname="lebenslauf.description">
+				<source>lebenslauf</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_babi.description" resname="qualifikation_babi.description">
+				<source>qualifikationBabi</source>
+			</trans-unit>
+			<trans-unit id="lehr_befugnis.description" resname="lehr_befugnis.description">
+				<source>lehrBefugnis</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa1.description" resname="qualifikation_psa1.description">
+				<source>qualifikationPsa1</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa2.description" resname="qualifikation_psa2.description">
+				<source>qualifikationPsa2</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa3.description" resname="qualifikation_psa3.description">
+				<source>qualifikationPsa3</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa4.description" resname="qualifikation_psa4.description">
+				<source>qualifikationPsa4</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa5.description" resname="qualifikation_psa5.description">
+				<source>qualifikationPsa5</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa6.description" resname="qualifikation_psa6.description">
+				<source>qualifikationPsa6</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa7.description" resname="qualifikation_psa7.description">
+				<source>qualifikationPsa7</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa8.description" resname="qualifikation_psa8.description">
+				<source>qualifikationPsa8</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa.description" resname="qualifikation_psa.description">
+				<source>qualifikationPsa</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa_kommentar.description" resname="qualifikation_psa_kommentar.description">
+				<source>qualifikationPsaKommentar</source>
+			</trans-unit>
+			<trans-unit id="anerkennung_pp3.description" resname="anerkennung_pp3.description">
+				<source>anerkennungPp3</source>
+			</trans-unit>
+			<trans-unit id="review_comment_internal.description" resname="review_comment_internal.description">
+				<source>reviewCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_comment_tr.description" resname="review_comment_tr.description">
+				<source>reviewCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_status.description" resname="review_status.description">
+				<source>reviewStatus</source>
+			</trans-unit>
+			<trans-unit id="review_frist.description" resname="review_frist.description">
+				<source>reviewFrist</source>
+			</trans-unit>
+			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
+				<source>lebenslaufDatei</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_babi_datei.description" resname="qualifikation_babi_datei.description">
+				<source>qualifikationBabiDatei</source>
+			</trans-unit>
+			<trans-unit id="lehr_befugnis_datei.description" resname="lehr_befugnis_datei.description">
+				<source>lehrBefugnisDatei</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa_datei.description" resname="qualifikation_psa_datei.description">
+				<source>qualifikationPsaDatei</source>
+			</trans-unit>
+			<trans-unit id="based_on.description" resname="based_on.description">
+				<source>basedOn</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

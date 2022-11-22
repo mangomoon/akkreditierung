@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_stammdaten.xlf" date="2022-11-22T19:29:10Z" product-name="ieb">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="nachweis.description" resname="nachweis.description">
+				<source>nachweis</source>
+			</trans-unit>
+			<trans-unit id="rechtsform.description" resname="rechtsform.description">
+				<source>rechtsform</source>
+			</trans-unit>
+			<trans-unit id="strasse.description" resname="strasse.description">
+				<source>strasse</source>
+			</trans-unit>
+			<trans-unit id="plz.description" resname="plz.description">
+				<source>plz</source>
+			</trans-unit>
+			<trans-unit id="ort.description" resname="ort.description">
+				<source>ort</source>
+			</trans-unit>
+			<trans-unit id="seit.description" resname="seit.description">
+				<source>seit</source>
+			</trans-unit>
+			<trans-unit id="website.description" resname="website.description">
+				<source>website</source>
+			</trans-unit>
+			<trans-unit id="email.description" resname="email.description">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="telefon.description" resname="telefon.description">
+				<source>telefon</source>
+			</trans-unit>
+			<trans-unit id="leitbild.description" resname="leitbild.description">
+				<source>leitbild</source>
+			</trans-unit>
+			<trans-unit id="leitbild_datei.description" resname="leitbild_datei.description">
+				<source>leitbildDatei</source>
+			</trans-unit>
+			<trans-unit id="qms_zertifikat_datei.description" resname="qms_zertifikat_datei.description">
+				<source>qmsZertifikatDatei</source>
+			</trans-unit>
+			<trans-unit id="qms_zertifikat.description" resname="qms_zertifikat.description">
+				<source>qmsZertifikat</source>
+			</trans-unit>
+			<trans-unit id="qms_typ.description" resname="qms_typ.description">
+				<source>qmsTyp</source>
+			</trans-unit>
+			<trans-unit id="zertifikat_bis.description" resname="zertifikat_bis.description">
+				<source>zertifikatBis</source>
+			</trans-unit>
+			<trans-unit id="qualitaet_sicherung.description" resname="qualitaet_sicherung.description">
+				<source>qualitaetSicherung</source>
+			</trans-unit>
+			<trans-unit id="qualitaet_sicherung_datei.description" resname="qualitaet_sicherung_datei.description">
+				<source>qualitaetSicherungDatei</source>
+			</trans-unit>
+			<trans-unit id="qualitaet_personal.description" resname="qualitaet_personal.description">
+				<source>qualitaetPersonal</source>
+			</trans-unit>
+			<trans-unit id="qualitaet_personal_datei.description" resname="qualitaet_personal_datei.description">
+				<source>qualitaetPersonalDatei</source>
+			</trans-unit>
+			<trans-unit id="tr_pp3.description" resname="tr_pp3.description">
+				<source>trPp3</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
+				<source>pruefbescheid</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
+				<source>pruefbescheidDatei</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_bis.description" resname="pruefbescheid_bis.description">
+				<source>pruefbescheidBis</source>
+			</trans-unit>
+			<trans-unit id="review_comment_internal.description" resname="review_comment_internal.description">
+				<source>reviewCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_comment_tr.description" resname="review_comment_tr.description">
+				<source>reviewCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_status.description" resname="review_status.description">
+				<source>reviewStatus</source>
+			</trans-unit>
+			<trans-unit id="review_frist.description" resname="review_frist.description">
+				<source>reviewFrist</source>
+			</trans-unit>
+			<trans-unit id="standorte.description" resname="standorte.description">
+				<source>standorte</source>
+			</trans-unit>
+			<trans-unit id="based_on.description" resname="based_on.description">
+				<source>basedOn</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

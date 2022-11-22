@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e816bd0a21c531f9a2d457622c3adef",
+    "content-hash": "f96ab7962377c0d22a868904d9c0c7e6",
     "packages": [
         {
             "name": "b13/bolt",
@@ -1003,6 +1003,58 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
+        },
+        {
+            "name": "georgringer/ieb",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ieb",
+                "reference": "6f2a8c62db40a5c7b8c82e9e3d451fcac1556059"
+            },
+            "require": {
+                "typo3/cms-core": "^11.5"
+            },
+            "replace": {
+                "typo3-ter/ieb": "self.version"
+            },
+            "require-dev": {
+                "typo3/testing-framework": "^6.9.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "web-dir": ".Build/public",
+                    "extension-key": "ieb"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\Ieb\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GeorgRinger\\Ieb\\Tests\\": "Tests"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "role": "Developer"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "georgringer/news",
@@ -8652,16 +8704,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.18",
+            "version": "9.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "12fddc491826940cf9b7e88ad9664cf51f0f6d0a"
+                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/12fddc491826940cf9b7e88ad9664cf51f0f6d0a",
-                "reference": "12fddc491826940cf9b7e88ad9664cf51f0f6d0a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c77b56b63e3d2031bd8997fcec43c1925ae46559",
+                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559",
                 "shasum": ""
             },
             "require": {
@@ -8717,7 +8769,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.18"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.19"
             },
             "funding": [
                 {
@@ -8725,7 +8777,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-27T13:35:33+00:00"
+            "time": "2022-11-18T07:47:47+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -10629,6 +10681,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "georgringer/ieb": 20,
         "typo3/cms-composer-installers": 20
     },
     "prefer-stable": false,
