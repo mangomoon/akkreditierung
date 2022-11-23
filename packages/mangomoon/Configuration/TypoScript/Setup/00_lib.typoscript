@@ -1,0 +1,55 @@
+lib.searchbox_html = TEXT
+lib.searchbox_html.value (
+<form method="get" id="form_kesearch_searchfield" name="form_kesearch_searchfield" action="/search/">
+  <input type="text" id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" placeholder="Suche" />
+  <input type="image" src="/fileadmin/tpl/bilder/g5.jpg" id="ke_search_searchfield_submit" alt="Finden" />
+</form>
+)
+lib.pageResources = FILES 
+lib.pageResources { 
+    references { 
+        table = pages 
+        uid.data = uid
+        fieldName = media
+    } 
+    renderObj = IMAGE 
+    renderObj {
+        file { 
+            import.data = file:current:uid 
+            treatIdAsReference = 1 
+            width = 150c 
+            height = 150c 
+        } 
+        #altText.data = file:current:alternative
+        #titleText.data = file:current:title
+    }
+    #maxItems = 3
+}
+
+#### Kategoriesammlung
+lib.mycategories = CONTENT
+lib.mycategories {
+	table = sys_category
+	select {
+		pidInList = 1
+		# where = parent = {$global.parentCategory}
+	}
+	renderObj = TEXT
+	renderObj{
+    field = title
+		dataWrap = <div class="catListItem" catlistdata="pageCat-{field:uid}">|</div>
+	}
+}
+
+
+
+#### Fancybox
+lib.contentElement {
+	settings {
+		media {
+			popup.linkParams.ATagParams.dataWrap = data-fancybox="fancybox-{field:uid}" data-caption="{file:current:description} <p class='fancycopyright'>{file:current:copyright}</p>" title="{file:current:copyright}"
+		}
+	}
+}
+
+

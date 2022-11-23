@@ -1,0 +1,39 @@
+
+<script>
+  $(document).ready(function(){
+    $('.item-1').click(function(){
+      alert('huif2');
+      $('#inhalt').html('Kakdabak!');
+    });
+  });
+</script>
+
+
+<div id="mangomoon-hilfe">
+  <div id="mh-button">
+    <img src="/typo3conf/ext/mangomoon/Resources/Public/Icons/Extension.svg" width="30" height="30" />
+  </div>
+  <div id="mh-nav">
+    <div class="mh-navigation">
+    <f:for each="{mh-navigation}" as="mainnavigationItem">
+        <div id="linkto-{mainnavigationItem.data.uid}" class="level-1 {f:if(condition: mainnavigationItem.active, then:'current')}">
+            <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">
+                {mainnavigationItem.title}
+            </a>
+            <f:if condition="{mainnavigationItem.children}">
+                <div class="level-2-all">
+                    <f:for each="{mainnavigationItem.children}" as="child">
+                        <div class="level-2 {f:if(condition: child.active, then:'current')}">
+                            <a href="{child.link}" target="{child.target}" title="{child.title}">
+                                {child.title}
+                            </a>
+                        </div>
+                    </f:for>
+                </div>
+            </f:if>
+        </div>
+    </f:for>
+    </div>
+</div>  
+</div>
+</div>

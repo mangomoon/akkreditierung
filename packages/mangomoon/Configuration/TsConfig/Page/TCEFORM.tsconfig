@@ -1,0 +1,44 @@
+#
+# TCEFORM BASIS
+#
+TCEFORM {
+    pages {
+      layout {
+            removeItems = 1,2,3
+        }
+      backend_layout{
+        label = Layout (nur diese Seite)
+      } 
+      backend_layout_next_level {
+        label = Layout (Unterseiten)
+      }
+    } 
+    tt_content {
+      colPos.label {
+        default = place
+        de = Position auf der Seite
+      }
+
+      header_position {
+        altLabels {
+          center = zentriert
+          right = rechtsbündig
+          left = linksbündig
+          }
+        label {
+          default = class
+          de = Stil
+        }
+      }
+      header_layout {
+        label = Hierarchie (Ebene)
+        removeItems = 4,5,100
+        altLabels {
+            0 = Standard (= h2)
+            1 = h1 (einmal pro Seite!)
+            2 = h2
+            3 = h3
+        }
+      }
+    }
+}

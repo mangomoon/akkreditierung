@@ -1,0 +1,28 @@
+#################
+#### TCEMAIN ####
+#################
+TCEMAIN {
+    permissions {
+        groupid = 1
+        user = show, editcontent, edit, new, delete
+        group = show, editcontent, edit, new, delete
+        everybody =
+    }
+    translateToHidden = 1
+}
+TCEMAIN {
+    table {
+        tt_content {
+           disablePrependAtCopy = 1
+           disableHideAtCopy = 1
+        }
+        pages {
+           disablePrependAtCopy = 1
+           disableHideAtCopy = 0
+        }
+    }
+}
+
+
+# wenn News verwendet wird: Bild immer auch für Listen in Voransicht verwenden
+TCAdefaults.sys_file_reference.showinpreview = 1

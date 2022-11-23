@@ -1,0 +1,29 @@
+#
+# BACKENDLAYOUT: ganzebreite
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            ganzebreite {
+                title = ganzer Bildschirm
+                config {
+                    backend_layout {
+                        colCount = 1
+                        rowCount = 1
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = Ganze Seite
+                                        colPos = 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              icon = EXT:mangomoon/Resources/Public/Images/BackendLayouts/Ganzerbildschirm.png
+            }
+        }
+  }
+}

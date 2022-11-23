@@ -1,0 +1,24 @@
+{
+    "name": "mangomoon/mangomoon",
+    "type": "typo3-cms-extension",
+    "description": "t11",
+    "homepage": "https://www.mangomoon.at",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "minimum-stability": "dev",
+    "require": {
+        "typo3/cms-core": "^11.5",
+        "typo3/cms-rte-ckeditor": "^11.5",
+        "typo3/cms-fluid-styled-content": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mangomoon\\Mangomoon\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "mangomoon"
+        }
+    }
+}

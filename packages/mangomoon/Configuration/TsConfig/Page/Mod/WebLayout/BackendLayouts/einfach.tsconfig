@@ -1,0 +1,29 @@
+#
+# BACKENDLAYOUT: einfach
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            einfach {
+                title = Einfach
+                config {
+                    backend_layout {
+                        colCount = 1
+                        rowCount = 1
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = Mitte
+                                        colPos = 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              icon = EXT:mangomoon/Resources/Public/Images/BackendLayouts/Einfach.png
+            }
+        }
+    }
+}

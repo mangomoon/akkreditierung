@@ -1,0 +1,114 @@
+<f:layout name="Startseite" />
+<f:section name="Main">
+
+  
+  <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'5\'}')}">  
+<div class="container-fluid" id ="ganzoben">
+
+  
+
+  
+    <div class="row">
+      <div class="col" id="ganzebreiteoben">
+        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '5'}" />
+      </div>
+    </div>
+
+</div>
+    
+  </f:if>
+  
+  
+<div class="container" id="inhalt">
+
+  <div class="row">
+    <div class="col" id="oben">
+      <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}" />
+    </div>
+  </div>
+  <!-- Mitte -->
+
+    
+    <!-- 1 + 2 + 3 -->
+    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'1\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'2\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'3\'}')}">
+      <div class="row dreispaltig">
+        <div class="col-md-4" id="links">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '1'}" />
+        </div>
+        <div class="col-md-4" id="mitte">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+        </div>
+        <div class="col-md-4" id="rechts">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
+        </div>
+      </div>
+    </f:if>
+
+    <!-- 1 + 2 -->
+    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'1\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'2\'}')} && !{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'3\'}')}">
+      <div class="row zweispaltig-1-2">
+        <div class="col-md-3" id="links">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '1'}" />
+        </div>
+        <div class="col-md-9" id="mitte">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+        </div>
+      </div>
+    </f:if>
+    
+    <!-- 1 + 3 -->
+    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'1\'}')} && !{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'2\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'3\'}')}">
+      <div class="row zweispaltig-1-3">
+        <div class="col-md-6" id="links">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '1'}" />
+        </div>
+        <div class="col-md-6" id="rechts">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
+        </div>
+      </div>
+    </f:if>
+    
+    <!-- 2 + 3 -->
+    <f:if condition="!{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'1\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'2\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'3\'}')}">
+      <div class="row zweispaltig-2-3">
+        <div class="col-md-9" id="mitte">
+        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+        </div>
+        <div class="col-md-3" id="rechts">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
+        </div>
+      </div>
+    </f:if>
+    
+    <!-- 2 -->
+    <f:if condition="!{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'1\'}')} && {f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'2\'}')} && !{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'3\'}')}">
+      <div class="row einspaltigspaltig">
+        <div class="col" id="mitte">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+        </div>
+      </div>
+    </f:if>
+
+     <div class="row einspaltigspaltig">
+        <div class="col" id="unten">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '4'}" />
+        </div>
+      </div>
+    
+</div>
+  
+  <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.dynamicContent', data: '{colPos: \'6\'}')}">  
+  
+<div class="container-fluid" id ="ganzunten">
+
+  <div class="row">
+    <div class="col" id="ganzebreiteunten">
+      <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '6'}" />
+    </div>
+  </div>
+  
+</div>
+
+  </f:if>
+
+</f:section>

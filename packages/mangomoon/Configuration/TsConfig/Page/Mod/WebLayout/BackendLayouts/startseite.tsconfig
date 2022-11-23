@@ -1,0 +1,73 @@
+#
+# BACKENDLAYOUT: Startseite
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            startseite {
+                title = Startseite
+                config {
+                    backend_layout {
+                        colCount = 3
+                        rowCount = 5
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = ganze Bildschirmbreite oben
+                                        colPos = 5
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                            2 {
+                                columns {
+                                    1 {
+                                        name = Oben
+                                        colPos = 0
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                            3 {
+                                columns {
+                                    1 {
+                                        name = Links
+                                        colPos = 1
+                                    }
+                                    2 {
+                                        name = Mitte
+                                        colPos = 2
+                                    }
+                                    3 {
+                                        name = rechts
+                                        colPos = 3
+                                    }
+                                }
+                            }
+                            4 {
+                                columns {
+                                    1 {
+                                        name = Unten
+                                        colPos = 4
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                            5 {
+                                columns {
+                                    1 {
+                                        name = ganze Bildschirmbreite unten
+                                        colPos = 6
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                icon = EXT:mangomoon/Resources/Public/Images/BackendLayouts/Startseite.png
+            }
+        }
+    }
+}

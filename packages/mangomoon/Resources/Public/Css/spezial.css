@@ -1,0 +1,645 @@
+
+/* ####################################################################################################################### */
+/* ################################# mangomoon ########################################################################### */
+/* ####################################################################################################################### */
+
+/*####################### Grundeinstellungen #####*/
+
+.frame {
+  margin-bottom: 48px;
+}
+.ce-intext.ce-right .ce-gallery, .ce-intext.ce-left .ce-gallery, .ce-above .ce-gallery {
+  margin-bottom: 5px;
+}
+img {
+  height: auto;
+  vertical-align: middle;
+  max-width: 100%;
+}
+figure {
+  max-width: 100%;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  vertical-align: middle;
+}
+
+#ganzebreiteoben.col, #ganzebreiteunten.col{
+  padding:0;
+}
+
+
+.einspaltigspaltig #mitte {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+/*####################### INHALTSELEMENTE #####*/
+
+.frame-space-before-extra-small { margin-top: 0.1rem; }
+.frame-space-before-small { margin-top: 0.6rem; }
+.frame-space-before-medium { margin-top: 1rem; }
+.frame-space-before-large { margin-top: 1.5rem; }
+.frame-space-before-extra-large { margin-top: 2.5rem; }
+
+.frame-space-after-extra-small { margin-bottom: 0.1rem; }
+.frame-space-after-small { margin-bottom: 0.6rem; }
+.frame-space-after-medium { margin-bottom: 1rem; }
+.frame-space-after-large { margin-bottom: 1.5rem; }
+.frame-space-after-extra-large { margin-bottom: 2.5rem; }
+
+
+
+
+
+
+/* Video volle Breite und responsive einbetten: Text with Media, und nur 1 Stück */
+
+
+/*figure.video {
+  width: 100%;
+  display: block;
+}
+.video-embed {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+.video-embed::before {
+  padding-top: 56.25%;
+  display: block;
+  content: "";
+}
+.video-embed-item {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.embed-responsive-21by9::before {
+ padding-top:42.8571428571%
+}
+.embed-responsive-16by9::before {
+ padding-top:56.25%
+}
+.embed-responsive-4by3::before {
+ padding-top:75%
+}
+.embed-responsive-1by1::before {
+ padding-top:100%
+}
+.embed-responsive-by::before {
+ padding-top:0%
+}*/
+
+
+
+
+.frame-layout-2 .video-embed {
+  position: relative;
+  padding-bottom: 55%;
+  padding-top: 15px;
+  /*height: 0;*/
+  overflow: hidden;
+}
+
+.frame-layout-2 .video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ce-gallery.bilderzahl-1 .ce-inner,.ce-gallery.bilderzahl-1 .ce-outer,.ce-gallery.bilderzahl-1 .ce-column {
+  float: none;
+}
+
+/* Galeriemodul: Images only, */
+.ce-gallery-only {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+/*.ce-gallery-only::after {
+  content: "";
+  flex: auto;
+}*/
+@media (min-width: 550px) {
+  
+  .bild-in-galerie {
+    margin-bottom: 20px;
+    height: auto;
+    overflow-y: hidden;
+  }
+  
+  
+  .bildernebeneinander-1 .bild-in-galerie {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+   .frame-layout-1 .bildernebeneinander-1 figcaption {
+    max-width: 100%;
+  }
+  .bildernebeneinander-2 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-2 figcaption {
+    max-width: 48.6%;
+  }
+  .bildernebeneinander-3 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-3 figcaption {
+    max-width: 31.6%;
+  }
+  .bildernebeneinander-4 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-4 figcaption {
+    max-width: 23.6%;
+  }
+  .bildernebeneinander-5 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-5 figcaption {
+    max-width: 18.6%;
+  }
+  .bildernebeneinander-6 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-6 figcaption {
+    max-width: 15.3%;
+  }
+  .bildernebeneinander-7 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-7 figcaption {
+    max-width: 12.8%;
+  }
+  .bildernebeneinander-8 .bild-in-galerie, .frame-layout-1 .bildernebeneinander-8 figcaption {
+    max-width: 11.1%;
+  }
+  .frame-layout-1 .bild-in-galerie figure {
+    height: 0;
+    padding-bottom: 50%;
+  }
+  .frame-layout-2 .bild-in-galerie figure {
+    height: 0;
+    padding-bottom: 100%;
+  }
+  /* quadratisch */
+  .frame-layout-3 .bild-in-galerie {
+    width: 100%;
+  }
+  .frame-layout-3 .bild-in-galerie figure a {
+    position:relative;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    overflow: hidden;
+}
+  .frame-layout-3 .bild-in-galerie figure a:before {
+    content: "";
+    display:block;
+    padding-top: 100%;
+    overflow: hidden;
+  }
+  .frame-layout-3 .bild-in-galerie figure img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bild-in-galerie figcaption, .bild-in-galerie .copyrightimage {
+    display: none;
+  }
+}
+.fancycopyright {
+  font-size: 0.7em;
+}
+.bild-in-galerie img{
+  width: 100%;
+  height: auto;
+}
+figure.image {
+    margin:0;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+/* Hintergrundbild: Layout = 4 (Hintergundbild)*/
+
+.container-hintergundbild {
+  position: relative;
+}
+.container-hintergundbild .hintergrundbild {
+  position: relative;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+}
+.container-hintergundbild .vordergrund {
+  position: absolute;
+  top:0;
+  left:0;
+  padding:40px;
+  width: 100%;
+
+}
+.container-hintergundbild .vordergrund .ce-headline-center {
+  color: #fff;
+}
+.container-hintergundbild .vordergrund .kasten {
+  padding: 5px;
+  background: rgba(255,255,255,0.5);
+}
+.container-hintergundbild .vordergrund header, .container-hintergundbild .vordergrund p {
+  background: rgba(255,255,255,0.5);
+  padding: 16px 6px;
+}
+
+
+/*Highlight: Hintergrundbild 16:9*/
+
+.container-highlight {
+  position: relative;
+  width: 100%; 
+  padding-bottom: 56%;
+}
+.container-highlight  figure{
+  position: absolute;
+  top:0;
+  left:0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.container-highlight .vordergrundlink{
+  position: absolute;
+  top:0;
+  left:0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.container-highlight a:hover .vordergrundlink{
+  background: rgba(255,255,255,0.1);
+}
+
+/*   Rahmen Logokasten   */
+.frame-logokasten {
+  border: solid 1px #ddd;
+}
+.frame-logokasten .ce-gallery {
+  background: #fff;
+}
+
+
+
+/*  Überschriften Layout  */
+.ce-headline-center {
+  text-align: center;
+}
+.ce-headline-right {
+  text-align: right;
+}
+.ce-headline-rot {
+  color: #d51212;
+}
+.ce-headline-rot a, .ce-headline-rotcenter a {
+  color: #d51212;
+}
+.ce-headline-rotcenter {
+  color: #d51212;
+  text-align: center;
+}
+ce-headline-kasten {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+ce-headline-kastencenter {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+
+
+.ce-center .ce-row {
+  /*justify-content: center;*/
+}
+
+
+
+.ce-intext.ce-left .ce-gallery {
+  margin-right: 20px;
+}
+p.text-center {
+  text-align: center;
+}
+
+
+
+/*  Bild im Text, rechts und links*/ 
+.ce-intext.ce-right .ce-gallery, .ce-intext.ce-left .ce-gallery {
+  max-width: 66%;
+  margin-top: 10px;
+}
+@media (max-width: 550px) {
+  .ce-intext.ce-right .ce-gallery, .ce-intext.ce-left .ce-gallery {
+    max-width: 100%;
+/*    margin-left: 0;
+    margin-right: 0;*/
+  }
+}
+.ce-intext.ce-right p.kasten, .ce-intext.ce-left p.kasten {
+    display: inline-block;
+}
+
+/*  Bild neben dem text, rechts und links*/
+.ce-intext.ce-right.ce-nowrap p.kasten, .ce-intext.ce-left.ce-nowrap  p.kasten {
+    display: block;
+}
+.ce-intext.ce-right.ce-nowrap .ce-gallery, .ce-intext.ce-left.ce-nowrap  .ce-gallery {
+  margin-top: 26px;
+  max-width: 50%;
+}
+@media (max-width: 550px) {
+  .ce-intext.ce-right.ce-nowrap .ce-gallery, .ce-intext.ce-left.ce-nowrap  .ce-gallery {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    float: none;
+  }
+}
+
+
+
+
+.copyrightimage {
+  position: relative;
+  /*transform: rotate(-90deg);*/
+  /*text-align: right;*/
+  top: -10px;
+  left:0;
+  font-size: 0.6em;
+  color:#fff;
+  padding-left: 8px;
+  margin-bottom: 0;
+  margin-top: -5px;
+  padding-bottom:0;
+  line-height: 2px;
+  /*background: rgba(255,255,255,0.2);*/
+}
+
+
+.frame-accordion {
+  background: #fff;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #cdcdcd;
+  border-left: 1px solid #cdcdcd;
+  border-right: 1px solid #cdcdcd;
+}
+.frame-accordion header {
+  background: #fafafa;
+  padding: 6px 8px;
+  border-top: 1px solid #cdcdcd;
+  cursor: pointer;
+  background-image: url('/typo3conf/ext/mangomoon/Resources/Public/Icons/pfeil-nach-unten.svg');
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+  background-size: 3%;
+}
+.frame-accordion header.offen {
+
+  background-image: url('/typo3conf/ext/mangomoon/Resources/Public/Icons/pfeil-nach-oben.svg');
+}
+.frame-accordion header h2{
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+.frame-accordion .ce-textpic {
+  padding: 4px;
+  display: none;
+}
+
+
+/*   Rahmen Logokasten   */
+.frame-logokasten {
+  border: solid 1px #666;
+}
+.frame-logokasten .ce-gallery {
+  background: #fff;
+  min-height: 130px;
+}
+.frame-logokasten .ce-bodytext {
+  text-align: center;
+  padding: 4px;
+}
+.frame-logokasten figure {
+  height: 130px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+span.unsichtbar {
+  display: none;
+}
+
+
+
+.knopf a {
+  background: #fff;
+  border-radius: 3px;
+  border: solid 1px #5d5c59;
+  padding: 8px 20px 12px 20px;
+  margin: 12px 12px 8px 0;
+  text-decoration: none;
+  display: block;
+  width: max-content;
+}
+#knopf a:hover {
+  background: red;
+}
+
+
+
+/* DATEILISTEN */
+
+.ce-uploads.mit-file-size div{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  border-bottom: #565656 dotted 1px;
+  align-items: flex-end;
+}
+.ce-uploads-filesize {
+  font-size: 0.8em;
+}
+
+.ce-uploads-description {
+  font-size: 0.8em;
+}
+.ce-uploads.layout-1 li{
+  border: 1px solid #red;
+}
+
+.ce-uploads.layout-1.mit-thumb li{
+  border: solid 1px #5d5c59;
+  padding: 3px;
+  display: flex;
+}
+.ce-uploads.layout-1.mit-thumb li:hover {
+  background: #fffbdd;
+}
+
+
+.ce-uploads.layout-1.mit-thumb div,.ce-uploads.layout-1.mit-thumb div a {
+    display: flex;
+    align-items: center;
+}
+.ce-uploads.layout-1.mit-thumb img {
+  max-width: 90px;
+}
+.ce-uploads.layout-1.mit-thumb span{
+  display: block;
+}
+
+/* Uploads layout 2 ############# */
+
+ul.ce-uploads.layout-2.mit-thumb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ce-uploads.layout-2.mit-thumb li {
+  width: 200px;
+  height: 300px;
+  border: solid 1px #ddd;
+
+}
+.ce-uploads.layout-2.mit-thumb li a {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ce-uploads.layout-2.mit-thumb li div{
+  display: block;
+}
+.ce-uploads.layout-2.mit-thumb li a img{
+  object-fit: cover;
+  padding:0;
+}
+
+/*Sitemap ausgewählter Seiten: Layout 1 = Menü*/
+.frame-type-menu_sitemap_pages.frame-layout-1 {
+  background: #565656;
+  padding: 20px;
+  
+}
+
+.frame-type-menu_sitemap_pages.frame-layout-1 a {
+  text-decoration: none;
+  color: #fff;
+  padding: 3px;
+}
+.frame-type-menu_sitemap_pages.frame-layout-1 a:hover {
+  background: #898989;
+}
+.frame-type-menu_sitemap_pages.frame-layout-1 li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-right: 30px;
+  padding-bottom: 12px;
+  display: table-cell;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.frame-type-menu_sitemap_pages.frame-layout-1 li ul {
+  margin-top: 12px;
+}
+.frame-type-menu_sitemap_pages.frame-layout-1 li ul li{
+  display: block;
+}
+
+
+
+/*container Varianten*/
+
+.container-4col.layout-1 .col-md-9, .container-4col.layout-1 .col-md-6, .container-4col.layout-1 .col-md-4, .container-4col.layout-1 .col-md-3 {
+  border-right: dotted 2px #cdcdcd;
+}
+.container-4col.layout-1 .col-md-9:last-of-type, .container-4col.layout-1 .col-md-6:last-of-type, .container-4col.layout-1 .col-md-4:last-of-type, .container-4col.layout-1 .col-md-3:last-of-type {
+  border-right: 0;
+}
+
+.schwimmer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.schwimmelement {
+  flex-basis: 20%;
+  border: solid 1px #eee;
+  margin-right: 12px;
+}
+
+
+
+
+/*######################## MANGOMOON HILFE ########*/
+#mangomoon-hilfe {
+  position: absolute;
+  left:100%;
+  margin-left: -36px;
+  top: 0;
+  width: 34px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+}
+#mangomoon-hilfe.hover {
+  margin-left: -300px;
+  width: 300px;
+  
+}
+#mh-button {
+  padding-left: 4px;
+  flex-basis: 33px;
+}
+#mh-nav {
+  padding-left: 12px;
+  display: none;
+  z-index: 9999;
+}
+#mangomoon-hilfe.hover #mh-nav {
+  display: flex;
+  align-items:center;
+  height: 100%;
+  justify-content:center;
+  box-shadow: -4px 0 5px #ddd;
+  z-index: 9998;
+  margin-left: 10px;
+}
+.mh-navigation {
+  display: block;
+}
+.mh-navigation a {
+  display: block;
+  text-decoration: none;
+  padding: 12px;
+}
+.mh-navigation a:hover {
+  background: yellow;
+}
+.mh-navigation .level-2-all {
+  margin-left: 12px;
+}

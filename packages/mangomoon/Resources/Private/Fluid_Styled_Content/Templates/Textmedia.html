@@ -1,0 +1,150 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+
+<f:section name="Header">
+
+	<f:if condition="{gallery.position.noWrap} != 1">
+    		<f:if condition="{data.layout}==4">
+          <div class='container-hintergundbild'>
+            <div class="hintergrundbild">
+              <f:for each="{gallery.rows}" as="row">
+                <f:for each="{row.columns}" as="column">
+                  <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+                </f:for>
+              </f:for>
+            </div>
+            <div class="vordergrund">
+        </f:if>
+      
+      <f:if condition="{data.layout}!=6"><f:render partial="Header/All" arguments="{_all}" /></f:if>
+      
+      <f:if condition="{data.layout}==4"><f:format.html>{data.bodytext}</f:format.html></div></f:if>
+    
+      <f:if condition="{data.layout}==6">
+          <div class='container-highlight'>
+<!--            <div class="hintergrundbild">-->
+              <f:for each="{gallery.rows}" as="row">
+                <f:for each="{row.columns}" as="column">
+                  <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+                </f:for>
+              </f:for>
+<!--            </div>-->
+            <div class="vordergrund">
+                <f:render partial="Header/All" arguments="{_all}" />
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+            <f:link.typolink parameter="{data.header_link}"><div class="vordergrundlink"></div></f:link.typolink>
+          </div>
+      </f:if>
+    
+	</f:if>
+
+</f:section>
+<f:section name="Main">
+
+<f:if condition="{data.layout}==2">
+      
+      <div class="textmedia_layout-2">
+
+        <f:for each="{gallery.rows}" as="row">
+            <f:for each="{row.columns}" as="column">
+              <f:if condition="{column.media}">
+
+                 <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+
+              </f:if>
+            </f:for>
+        </f:for>
+
+
+
+        <f:format.html>{data.bodytext}</f:format.html>
+      </div>
+</f:if>  
+  
+  
+<f:if condition="{data.layout}==3">
+      
+      <div class="textmedia_layout-3">
+
+        <f:for each="{gallery.rows}" as="row">
+            <f:for each="{row.columns}" as="column">
+              <f:if condition="{column.media}">
+
+                  <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+
+              </f:if>
+            </f:for>
+        </f:for>
+
+
+
+          <f:format.html>{data.bodytext}</f:format.html>
+      </div>
+</f:if>
+  
+<f:if condition="{data.layout}==0">
+	<div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
+		<f:if condition="{gallery.position.vertical} != 'below'">
+			<f:render partial="Media/Gallery" arguments="{_all}" />
+		</f:if>
+
+		<f:if condition="{data.bodytext}">
+			<f:then>
+				<div class="ce-bodytext">
+					<f:if condition="{gallery.position.noWrap}">
+						<f:render partial="Header/All" arguments="{_all}" />
+					</f:if>
+					<f:format.html>{data.bodytext}</f:format.html>
+				</div>
+			</f:then>
+			<f:else>
+				<f:if condition="{gallery.position.noWrap}">
+					<f:if condition="{data.header}">
+						<div class="ce-bodytext">
+							<f:render partial="Header/All" arguments="{_all}" />
+						</div>
+					</f:if>
+				</f:if>
+			</f:else>
+		</f:if>
+
+		<f:if condition="{gallery.position.vertical} == 'below'">
+			<f:render partial="Media/Gallery" arguments="{_all}" />
+		</f:if>
+	</div>
+</f:if>
+  
+  <f:if condition="{data.layout}==4">  </div></f:if>
+  
+  
+  
+  <f:if condition="{data.layout}==5">
+    <!-- SLIDER ################### 0.1 -->
+    <div class="ce-bodytext">
+      <f:format.html>{data.bodytext}</f:format.html>
+    </div>
+    
+    <div class="carousel" data-ride="carousel">
+    <f:for each="{gallery.rows}" as="row">
+            <f:for each="{row.columns}" as="column">
+              <f:if condition="{column.media}">
+                <div class="carousel-item">
+                  <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+                </div>
+              </f:if>
+            </f:for>
+     </f:for>
+    </div>
+    
+  </f:if>
+  
+  
+  
+
+  
+  
+  
+</f:section>
+</html>

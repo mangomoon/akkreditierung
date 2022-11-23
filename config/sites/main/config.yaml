@@ -1,5 +1,9 @@
-base: 'https://ieb.ddev.site/'
-errorHandling: {  }
+base: 'http://ieb.ddev.site/'
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=3'
 languages:
   -
     title: Deutsch
@@ -14,4 +18,4 @@ languages:
     direction: ltr
     flag: at
 rootPageId: 1
-routes: {  }
+websiteTitle: ''

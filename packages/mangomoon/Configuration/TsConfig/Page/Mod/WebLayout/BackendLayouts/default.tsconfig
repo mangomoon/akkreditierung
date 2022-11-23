@@ -1,0 +1,55 @@
+#
+# BACKENDLAYOUT: default
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            default {
+                title = Standard
+                config {
+                    backend_layout {
+                        colCount = 3
+                        rowCount = 3
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = Oben
+                                        colPos = 0
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                            2 {
+                                columns {
+                                    1 {
+                                        name = Links
+                                        colPos = 1
+                                    }
+                                    2 {
+                                        name = Mitte
+                                        colPos = 2
+                                    }
+                                    3 {
+                                        name = rechts
+                                        colPos = 3
+                                    }
+                                }
+                            }
+                            3 {
+                                columns {
+                                    1 {
+                                        name = Unten
+                                        colPos = 4
+                                        colspan = 3
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                icon = EXT:mangomoon/Resources/Public/Images/BackendLayouts/Default.png
+            }
+        }
+    }
+}

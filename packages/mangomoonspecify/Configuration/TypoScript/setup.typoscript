@@ -1,0 +1,23 @@
+
+// für var schreibe in TYPOSCRIPT @import 'Specify/ts/var/*.typoscript'
+
+
+
+config.no_cache = 1
+config.debug = 1
+
+
+
+#page.10.dataProcessing.40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+#page.10.dataProcessing.40 {
+#                special = directory
+#                special.value = 9
+#                levels = 2
+#                includeSpacer = 1
+#                as = mh-navigation
+#            }
+
+
+#page.includeCSS {
+#    name = {$specifyortpfad}/Css/name.css
+#}

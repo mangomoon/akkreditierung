@@ -1,0 +1,305 @@
+/* raleway-regular - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/raleway-v28-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-regular.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* raleway-500 - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/raleway-v28-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-500.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-500.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* raleway-800 - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/raleway-v28-latin-800.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../raleway-v28-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-800.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-800.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* raleway-italic - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/raleway-v28-latin-italic.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-italic.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-italic.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* raleway-500italic - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 500;
+    src: url('../fonts/raleway-v28-latin-500italic.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-500italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-500italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-500italic.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-500italic.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* raleway-800italic - latin */
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 800;
+    src: url('../fonts/raleway-v28-latin-800italic.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('../fonts/raleway-v28-latin-800italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-800italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-800italic.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-800italic.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-800italic.svg#Raleway') format('svg');
+    /* Legacy iOS */
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #231f20;
+}
+
+a {
+    color: #c3161c;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #caccce;
+}
+
+strong {
+    font-weight: 600;
+}
+
+p {
+    line-height: 150%;
+    padding: 0.5em 0;
+}
+
+ul,
+ol {
+    margin: 0.5em 1em;
+}
+
+ul li {
+    list-style-image: url('/Specify/img/pfeil.svg');
+    margin-left: 1em;
+}
+
+li {
+    padding-bottom: 2px;
+    line-height: 140%;
+}
+
+figcaption p {
+    font-size: 0.85em;
+    padding: 0.3em 0 1em 0;
+}
+
+figcaption p.kasten {
+    background: #eee;
+    margin-top: 0;
+    padding: 12px 12px 12px 12px;
+}
+
+ol {
+    padding-left: 1em;
+}
+
+ol li {
+    padding-left: 16px;
+}
+
+
+/*SPEZIAL*/
+
+.vorspann {
+    /*font-size: 1.2em;*/
+}
+
+.kleine-schrift {
+    font-size: 0.85em;
+}
+
+p.kasten {
+    border: solid 1px #ddd;
+    background: #eee;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-bottom: 0.85em;
+}
+
+h2 {
+    margin-top: 1em;
+}
+
+h3 {
+    margin-top: 0.6em;
+}
+
+h4 {
+    margin-bottom: 0;
+    margin-top: 0.4em;
+}
+
+table {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify
+}
+
+.hervorgehoben {
+    /*color: #f39821;*/
+    background: #e9eaeb;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+
+/* Tabelle */
+
+table.contenttable {
+    width: 100%;
+}
+
+.contenttable td {
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+    padding: 10px 2px;
+}
+
+.contenttable th {
+    text-align: left;
+    padding: 10px 2px;
+    background: #fff;
+}
+
+.ce-bodytext img {
+    float: left;
+    margin-right: 20px;
+    overflow: auto;
+}
+
+.ce-bodytext img::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Knöpfe */
+
+a.Knopf-1 {
+    padding: 8px 20px;
+    background: #fff;
+    border: solid 1px #666;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a.Knopf-1:hover {
+    background: #f39821;
+}
+
+a.Knopf-2 {
+    padding: 3px 20px;
+    background: #f39821;
+    border: solid 1px #666;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a.Knopf-2:hover {
+    background: yellow;
+}
+
+a.Knopf-3 {
+    padding: 3px 20px;
+    background: #9cd565;
+    border: solid 1px #666;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a.Knopf-3:hover {
+    background: #c0e59b;
+}
+
+span.rot {
+    color: #c3161c;
+}
+
+span.schwarzlink a {
+    color: #000;
+}
+
+span.schwarzlink a:hover {
+    color: #ccc;
+}
