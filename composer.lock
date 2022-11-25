@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
-    "content-hash": "f96ab7962377c0d22a868904d9c0c7e6",
-=======
-    "content-hash": "fa548784013272fa63e12edc4ed315a1",
->>>>>>> Stashed changes
+    "content-hash": "292504e9450e0aa99871bf12dec72b37",
     "packages": [
         {
             "name": "b13/bolt",
@@ -1014,7 +1010,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ieb",
-                "reference": "6f2a8c62db40a5c7b8c82e9e3d451fcac1556059"
+                "reference": "ed78102387a909e7cdfb421113ac1727cf1b1cf1"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -1057,6 +1053,7 @@
                 }
             ],
             "transport-options": {
+                "symlink": true,
                 "relative": true
             }
         },
@@ -7685,16 +7682,16 @@
         },
         {
             "name": "captainhook/captainhook",
-            "version": "5.11.1",
+            "version": "5.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/captainhookphp/captainhook.git",
-                "reference": "44ba2b815a64ea71a3dc4afc9007d953ab992238"
+                "reference": "f27f1eb32aff4d3ddad383718b807493413269c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/captainhookphp/captainhook/zipball/44ba2b815a64ea71a3dc4afc9007d953ab992238",
-                "reference": "44ba2b815a64ea71a3dc4afc9007d953ab992238",
+                "url": "https://api.github.com/repos/captainhookphp/captainhook/zipball/f27f1eb32aff4d3ddad383718b807493413269c2",
+                "reference": "f27f1eb32aff4d3ddad383718b807493413269c2",
                 "shasum": ""
             },
             "require": {
@@ -7756,7 +7753,7 @@
             ],
             "support": {
                 "issues": "https://github.com/captainhookphp/captainhook/issues",
-                "source": "https://github.com/captainhookphp/captainhook/tree/5.11.1"
+                "source": "https://github.com/captainhookphp/captainhook/tree/5.11.2"
             },
             "funding": [
                 {
@@ -7764,7 +7761,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-11T16:45:34+00:00"
+            "time": "2022-11-25T10:15:49+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -10759,14 +10756,10 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-<<<<<<< Updated upstream
         "georgringer/ieb": 20,
-        "typo3/cms-composer-installers": 20
-=======
         "mangomoon/mangomoonspecify": 20,
         "typo3/cms-composer-installers": 20,
         "mangomoon/mangomoon": 20
->>>>>>> Stashed changes
     },
     "prefer-stable": false,
     "prefer-lowest": false,
