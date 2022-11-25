@@ -20,6 +20,50 @@ plugin.tx_ieb_default {
         #callDefaultActionIfActionCantBeResolved = 1
     }
 }
+plugin.tx_ieb_stamm {
+    view {
+        templateRootPaths.0 = EXT:ieb/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_ieb_stamm.view.templateRootPath}
+        partialRootPaths.0 = EXT:ieb/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_ieb_stamm.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ieb/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_ieb_stamm.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_ieb_stamm.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+plugin.tx_ieb_ansuchen {
+    view {
+        templateRootPaths.0 = EXT:ieb/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_ieb_ansuchen.view.templateRootPath}
+        partialRootPaths.0 = EXT:ieb/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_ieb_ansuchen.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ieb/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_ieb_ansuchen.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_ieb_ansuchen.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
 
 # these classes are only used in auto-generated templates
 plugin.tx_ieb._CSS_DEFAULT_STYLE (

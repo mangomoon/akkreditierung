@@ -105,4 +105,26 @@ class StammdatenController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->stammdatenRepository->update($stammdaten);
         $this->redirect('list');
     }
+
+    /**
+     * action delete
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
+     */
+    public function deleteAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten)
+    {
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->stammdatenRepository->remove($stammdaten);
+        $this->redirect('list');
+    }
+
+    /**
+     * action index
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function indexAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
 }

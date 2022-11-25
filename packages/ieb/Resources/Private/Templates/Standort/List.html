@@ -27,10 +27,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_ieb_domain_model_standort.pruef_bescheid" /></th>
             <th><f:translate key="tx_ieb_domain_model_standort.koop_schule" /></th>
             <th><f:translate key="tx_ieb_domain_model_standort.koop_schule_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_standort.review_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_standort.review_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_standort.review_comment_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_standort.review_frist" /></th>
             <th></th>
             <th></th>
         </tr>
@@ -43,10 +39,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="show" arguments="{standort : standort}">{standort.pruefBescheid}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{standort : standort}">{standort.koopSchule}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{standort : standort}">{standort.koopSchuleDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{standort : standort}">{standort.reviewCommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{standort : standort}">{standort.reviewCommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{standort : standort}">{standort.reviewCommentStatus}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{standort : standort}">{standort.reviewFrist -> f:format.date()}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{standort : standort}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{standort : standort}">Delete</f:link.action></td>
             </tr>

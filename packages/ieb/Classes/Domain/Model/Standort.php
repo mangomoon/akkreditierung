@@ -37,9 +37,9 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * plz
      *
-     * @var string
+     * @var int
      */
-    protected $plz = '';
+    protected $plz = 0;
 
     /**
      * ort
@@ -60,7 +60,7 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected $koopSchule = null;
+    protected $koopSchule = '';
 
     /**
      * koopSchuleDatei
@@ -69,34 +69,6 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $koopSchuleDatei = null;
-
-    /**
-     * reviewCommentInternal
-     *
-     * @var string
-     */
-    protected $reviewCommentInternal = '';
-
-    /**
-     * reviewCommentTr
-     *
-     * @var string
-     */
-    protected $reviewCommentTr = '';
-
-    /**
-     * reviewCommentStatus
-     *
-     * @var int
-     */
-    protected $reviewCommentStatus = 0;
-
-    /**
-     * reviewFrist
-     *
-     * @var \DateTime
-     */
-    protected $reviewFrist = null;
 
     /**
      * Returns the name
@@ -143,7 +115,7 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the plz
      *
-     * @return string
+     * @return int
      */
     public function getPlz()
     {
@@ -153,10 +125,10 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the plz
      *
-     * @param string $plz
+     * @param int $plz
      * @return void
      */
-    public function setPlz(string $plz)
+    public function setPlz(int $plz)
     {
         $this->plz = $plz;
     }
@@ -214,93 +186,9 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the reviewCommentInternal
-     *
-     * @return string
-     */
-    public function getReviewCommentInternal()
-    {
-        return $this->reviewCommentInternal;
-    }
-
-    /**
-     * Sets the reviewCommentInternal
-     *
-     * @param string $reviewCommentInternal
-     * @return void
-     */
-    public function setReviewCommentInternal(string $reviewCommentInternal)
-    {
-        $this->reviewCommentInternal = $reviewCommentInternal;
-    }
-
-    /**
-     * Returns the reviewCommentTr
-     *
-     * @return string
-     */
-    public function getReviewCommentTr()
-    {
-        return $this->reviewCommentTr;
-    }
-
-    /**
-     * Sets the reviewCommentTr
-     *
-     * @param string $reviewCommentTr
-     * @return void
-     */
-    public function setReviewCommentTr(string $reviewCommentTr)
-    {
-        $this->reviewCommentTr = $reviewCommentTr;
-    }
-
-    /**
-     * Returns the reviewCommentStatus
-     *
-     * @return int
-     */
-    public function getReviewCommentStatus()
-    {
-        return $this->reviewCommentStatus;
-    }
-
-    /**
-     * Sets the reviewCommentStatus
-     *
-     * @param int $reviewCommentStatus
-     * @return void
-     */
-    public function setReviewCommentStatus(int $reviewCommentStatus)
-    {
-        $this->reviewCommentStatus = $reviewCommentStatus;
-    }
-
-    /**
-     * Returns the reviewFrist
-     *
-     * @return \DateTime
-     */
-    public function getReviewFrist()
-    {
-        return $this->reviewFrist;
-    }
-
-    /**
-     * Sets the reviewFrist
-     *
-     * @param \DateTime $reviewFrist
-     * @return void
-     */
-    public function setReviewFrist(\DateTime $reviewFrist)
-    {
-        $this->reviewFrist = $reviewFrist;
-    }
-
-    /**
      * Returns the koopSchule
      *
-     * @return string koopSchule
+     * @return string
      */
     public function getKoopSchule()
     {
@@ -310,10 +198,10 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the koopSchule
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchule
+     * @param string $koopSchule
      * @return void
      */
-    public function setKoopSchule(\TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchule)
+    public function setKoopSchule(string $koopSchule)
     {
         $this->koopSchule = $koopSchule;
     }

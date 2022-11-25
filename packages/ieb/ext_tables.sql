@@ -1,4 +1,4 @@
-CREATE TABLE tx_ieb_domain_model_trainer (
+CREATE TABLE tx_ieb_domain_model_statictrainer (
 	nachname varchar(255) NOT NULL DEFAULT '',
 	vorname varchar(255) NOT NULL DEFAULT '',
 	verwendung_babi smallint(1) unsigned NOT NULL DEFAULT '0',
@@ -28,7 +28,7 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	based_on int(11) unsigned DEFAULT '0'
 );
 
-CREATE TABLE tx_ieb_domain_model_berater (
+CREATE TABLE tx_ieb_domain_model_staticberater (
 	nachname varchar(255) NOT NULL DEFAULT '',
 	vorname varchar(255) NOT NULL DEFAULT '',
 	lebenslauf int(11) unsigned NOT NULL DEFAULT '0',
@@ -41,10 +41,10 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	based_on int(11) unsigned DEFAULT '0'
 );
 
-CREATE TABLE tx_ieb_domain_model_standort (
+CREATE TABLE tx_ieb_domain_model_staticstandort (
 	name varchar(255) NOT NULL DEFAULT '',
 	adresse varchar(255) NOT NULL DEFAULT '',
-	plz varchar(255) NOT NULL DEFAULT '',
+	plz int(11) NOT NULL DEFAULT '0',
 	ort varchar(255) NOT NULL DEFAULT '',
 	pruef_bescheid smallint(1) unsigned NOT NULL DEFAULT '0',
 	koop_schule text NOT NULL DEFAULT '',
@@ -52,15 +52,16 @@ CREATE TABLE tx_ieb_domain_model_standort (
 	review_comment_internal text NOT NULL DEFAULT '',
 	review_comment_tr text NOT NULL DEFAULT '',
 	review_comment_status int(11) DEFAULT '0' NOT NULL,
-	review_frist date DEFAULT NULL
+	review_frist date DEFAULT NULL,
+	based_on int(11) unsigned DEFAULT '0'
 );
 
-CREATE TABLE tx_ieb_domain_model_stammdaten (
+CREATE TABLE tx_ieb_domain_model_staticstammdaten (
 	name varchar(255) NOT NULL DEFAULT '',
 	nachweis int(11) unsigned NOT NULL DEFAULT '0',
 	rechtsform int(11) DEFAULT '0' NOT NULL,
 	strasse varchar(255) NOT NULL DEFAULT '',
-	plz varchar(255) NOT NULL DEFAULT '',
+	plz int(11) NOT NULL DEFAULT '0',
 	ort varchar(255) NOT NULL DEFAULT '',
 	seit int(11) NOT NULL DEFAULT '0',
 	website varchar(255) NOT NULL DEFAULT '',
@@ -137,14 +138,88 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
 	trainer int(11) unsigned NOT NULL DEFAULT '0',
-	berater int(11) unsigned NOT NULL DEFAULT '0'
+	berater int(11) unsigned NOT NULL DEFAULT '0',
+	kopie_von int(11) unsigned DEFAULT '0'
+);
+
+CREATE TABLE tx_ieb_domain_model_standort (
+	name varchar(255) NOT NULL DEFAULT '',
+	adresse varchar(255) NOT NULL DEFAULT '',
+	plz int(11) NOT NULL DEFAULT '0',
+	ort varchar(255) NOT NULL DEFAULT '',
+	pruef_bescheid smallint(1) unsigned NOT NULL DEFAULT '0',
+	koop_schule text NOT NULL DEFAULT '',
+	koop_schule_datei int(11) unsigned NOT NULL DEFAULT '0'
+);
+
+CREATE TABLE tx_ieb_domain_model_berater (
+	nachname varchar(255) NOT NULL DEFAULT '',
+	vorname varchar(255) NOT NULL DEFAULT '',
+	lebenslauf int(11) unsigned NOT NULL DEFAULT '0',
+	qualifikationsnachweise int(11) unsigned NOT NULL DEFAULT '0',
+	standorte int(11) unsigned NOT NULL DEFAULT '0'
+);
+
+CREATE TABLE tx_ieb_domain_model_trainer (
+	nachname varchar(255) NOT NULL DEFAULT '',
+	vorname varchar(255) NOT NULL DEFAULT '',
+	verwendung_babi smallint(1) unsigned NOT NULL DEFAULT '0',
+	verwendung_psa smallint(1) unsigned NOT NULL DEFAULT '0',
+	lebenslauf text,
+	qualifikation_babi text NOT NULL DEFAULT '',
+	lehr_befugnis text NOT NULL DEFAULT '',
+	qualifikation_psa1 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa2 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa3 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa4 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa5 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa6 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa7 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa8 smallint(1) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa text NOT NULL DEFAULT '',
+	qualifikation_psa_kommentar text NOT NULL DEFAULT '',
+	anerkennung_pp3 smallint(1) unsigned NOT NULL DEFAULT '0'
+);
+
+CREATE TABLE tx_ieb_domain_model_stammdaten (
+	name varchar(255) NOT NULL DEFAULT '',
+	nachweis int(11) unsigned NOT NULL DEFAULT '0',
+	rechtsform int(11) DEFAULT '0' NOT NULL,
+	strasse varchar(255) NOT NULL DEFAULT '',
+	plz int(11) NOT NULL DEFAULT '0',
+	ort varchar(255) NOT NULL DEFAULT '',
+	seit int(11) NOT NULL DEFAULT '0',
+	website varchar(255) NOT NULL DEFAULT '',
+	email varchar(255) NOT NULL DEFAULT '',
+	telefon varchar(255) NOT NULL DEFAULT '',
+	leitbild varchar(255) NOT NULL DEFAULT '',
+	leitbild_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qms_zertifikat_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qms_zertifikat text NOT NULL DEFAULT '',
+	qms_typ int(11) DEFAULT '0' NOT NULL,
+	zertifikat_bis int(11) NOT NULL DEFAULT '0',
+	qualitaet_sicherung text,
+	qualitaet_sicherung_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qualitaet_personal text,
+	qualitaet_personal_datei int(11) unsigned NOT NULL DEFAULT '0',
+	tr_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid text,
+	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
+	standorte int(11) unsigned DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	ansuchen int(11) unsigned DEFAULT '0' NOT NULL,
-	vorname varchar(255) NOT NULL DEFAULT '',
 	nachname varchar(255) NOT NULL DEFAULT '',
-	telefon varchar(255) NOT NULL DEFAULT '',
+	vorname varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
+	telefon varchar(255) NOT NULL DEFAULT '',
 	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0'
+);
+
+CREATE TABLE fe_users (
+	name varchar(255) NOT NULL DEFAULT '',
+	email varchar(255) NOT NULL DEFAULT '',
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
 );

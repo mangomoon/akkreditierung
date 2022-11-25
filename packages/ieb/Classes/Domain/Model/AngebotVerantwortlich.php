@@ -21,13 +21,6 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
 {
 
     /**
-     * vorname
-     *
-     * @var string
-     */
-    protected $vorname = '';
-
-    /**
      * nachname
      *
      * @var string
@@ -35,11 +28,11 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $nachname = '';
 
     /**
-     * telefon
+     * vorname
      *
      * @var string
      */
-    protected $telefon = '';
+    protected $vorname = '';
 
     /**
      * email
@@ -49,32 +42,18 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $email = '';
 
     /**
+     * telefon
+     *
+     * @var string
+     */
+    protected $telefon = '';
+
+    /**
      * verantwortlich
      *
      * @var bool
      */
     protected $verantwortlich = false;
-
-    /**
-     * Returns the vorname
-     *
-     * @return string
-     */
-    public function getVorname()
-    {
-        return $this->vorname;
-    }
-
-    /**
-     * Sets the vorname
-     *
-     * @param string $vorname
-     * @return void
-     */
-    public function setVorname(string $vorname)
-    {
-        $this->vorname = $vorname;
-    }
 
     /**
      * Returns the nachname
@@ -98,24 +77,24 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     }
 
     /**
-     * Returns the telefon
+     * Returns the vorname
      *
      * @return string
      */
-    public function getTelefon()
+    public function getVorname()
     {
-        return $this->telefon;
+        return $this->vorname;
     }
 
     /**
-     * Sets the telefon
+     * Sets the vorname
      *
-     * @param string $telefon
+     * @param string $vorname
      * @return void
      */
-    public function setTelefon(string $telefon)
+    public function setVorname(string $vorname)
     {
-        $this->telefon = $telefon;
+        $this->vorname = $vorname;
     }
 
     /**
@@ -137,6 +116,27 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function setEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * Returns the telefon
+     *
+     * @return string
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
+    }
+
+    /**
+     * Sets the telefon
+     *
+     * @param string $telefon
+     * @return void
+     */
+    public function setTelefon(string $telefon)
+    {
+        $this->telefon = $telefon;
     }
 
     /**

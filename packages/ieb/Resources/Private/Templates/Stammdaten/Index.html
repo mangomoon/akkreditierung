@@ -1,0 +1,84 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Stammdaten:
+          Index.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for Stammdaten</h1>
+
+    <f:flashMessages />
+
+    <table class="tx_ieb">
+        <tr>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.name" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.nachweis" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.strasse" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.plz" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.ort" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.seit" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.website" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.email" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.telefon" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.leitbild" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.leitbild_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qms_typ" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.zertifikat_bis" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.tr_pp3" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" /></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <f:for each="{stammdatens}" as="stammdaten">
+            <tr>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.nachweis.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.rechtsform}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.strasse}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.plz}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.ort}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.seit -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.website}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.email}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.telefon}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.leitbild}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.leitbildDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qmsZertifikatDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qmsZertifikat}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qmsTyp}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.zertifikatBis -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qualitaetSicherung}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qualitaetSicherungDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qualitaetPersonal}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.qualitaetPersonalDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.trPp3}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheid}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheidDatei.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheidBis -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{stammdaten : stammdaten}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{stammdaten : stammdaten}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Stammdaten</f:link.action>
+</f:section>
+</html>

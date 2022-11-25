@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_staticstandort.xlf" date="2022-11-25T10:13:36Z" product-name="ieb">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="adresse.description" resname="adresse.description">
+				<source>adresse</source>
+			</trans-unit>
+			<trans-unit id="plz.description" resname="plz.description">
+				<source>plz</source>
+			</trans-unit>
+			<trans-unit id="ort.description" resname="ort.description">
+				<source>ort</source>
+			</trans-unit>
+			<trans-unit id="pruef_bescheid.description" resname="pruef_bescheid.description">
+				<source>pruefBescheid</source>
+			</trans-unit>
+			<trans-unit id="koop_schule.description" resname="koop_schule.description">
+				<source>koopSchule</source>
+			</trans-unit>
+			<trans-unit id="koop_schule_datei.description" resname="koop_schule_datei.description">
+				<source>koopSchuleDatei</source>
+			</trans-unit>
+			<trans-unit id="review_comment_internal.description" resname="review_comment_internal.description">
+				<source>reviewCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_comment_tr.description" resname="review_comment_tr.description">
+				<source>reviewCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_comment_status.description" resname="review_comment_status.description">
+				<source>reviewCommentStatus</source>
+			</trans-unit>
+			<trans-unit id="review_frist.description" resname="review_frist.description">
+				<source>reviewFrist</source>
+			</trans-unit>
+			<trans-unit id="based_on.description" resname="based_on.description">
+				<source>basedOn</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

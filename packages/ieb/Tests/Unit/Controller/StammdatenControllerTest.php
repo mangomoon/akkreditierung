@@ -121,4 +121,22 @@ class StammdatenControllerTest extends UnitTestCase
 
         $this->subject->updateAction($stammdaten);
     }
+
+    /**
+     * @test
+     */
+    public function deleteActionRemovesTheGivenStammdatenFromStammdatenRepository(): void
+    {
+        $stammdaten = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
+
+        $stammdatenRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StammdatenRepository::class)
+            ->onlyMethods(['remove'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $stammdatenRepository->expects(self::once())->method('remove')->with($stammdaten);
+        $this->subject->_set('stammdatenRepository', $stammdatenRepository);
+
+        $this->subject->deleteAction($stammdaten);
+    }
 }

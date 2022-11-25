@@ -6,3 +6,15 @@ defined('TYPO3') || die();
     'Default',
     'IEB'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Ieb',
+    'Stamm',
+    'IEB Stammdaten'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Ieb',
+    'Ansuchen',
+    'IEB Ansuchen'
+);

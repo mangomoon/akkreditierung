@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_trainer.xlf" date="2022-11-22T19:49:37Z" product-name="ieb">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_trainer.xlf" date="2022-11-25T10:13:36Z" product-name="ieb">
 		<header/>
 		<body>
 			<trans-unit id="nachname.description" resname="nachname.description">
@@ -56,33 +56,6 @@
 			</trans-unit>
 			<trans-unit id="anerkennung_pp3.description" resname="anerkennung_pp3.description">
 				<source>anerkennungPp3</source>
-			</trans-unit>
-			<trans-unit id="review_comment_internal.description" resname="review_comment_internal.description">
-				<source>reviewCommentInternal</source>
-			</trans-unit>
-			<trans-unit id="review_comment_tr.description" resname="review_comment_tr.description">
-				<source>reviewCommentTr</source>
-			</trans-unit>
-			<trans-unit id="review_status.description" resname="review_status.description">
-				<source>reviewStatus</source>
-			</trans-unit>
-			<trans-unit id="review_frist.description" resname="review_frist.description">
-				<source>reviewFrist</source>
-			</trans-unit>
-			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
-				<source>lebenslaufDatei</source>
-			</trans-unit>
-			<trans-unit id="qualifikation_babi_datei.description" resname="qualifikation_babi_datei.description">
-				<source>qualifikationBabiDatei</source>
-			</trans-unit>
-			<trans-unit id="lehr_befugnis_datei.description" resname="lehr_befugnis_datei.description">
-				<source>lehrBefugnisDatei</source>
-			</trans-unit>
-			<trans-unit id="qualifikation_psa_datei.description" resname="qualifikation_psa_datei.description">
-				<source>qualifikationPsaDatei</source>
-			</trans-unit>
-			<trans-unit id="based_on.description" resname="based_on.description">
-				<source>basedOn</source>
 			</trans-unit>
 		</body>
 	</file>

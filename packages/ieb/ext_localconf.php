@@ -6,21 +6,45 @@ defined('TYPO3') || die();
         'Ieb',
         'Default',
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\StandortController::class => 'list, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'list, show, new, create, edit, update',
+            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, create, edit, update'
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, show, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, show, new, create, edit, update, delete',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\StandortController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'create, update',
+            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'create, update'
+            \GeorgRinger\Ieb\Controller\StandortController::class => '',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'create, update, delete',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'create, update, delete'
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'Stamm',
+        [
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, edit'
+        ],
+        // non-cacheable actions
+        [
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, edit'
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'Ansuchen',
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete'
+        ],
+        // non-cacheable actions
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete'
         ]
     );
 
@@ -36,6 +60,24 @@ defined('TYPO3') || die();
                         tt_content_defValues {
                             CType = list
                             list_type = ieb_default
+                        }
+                    }
+                    stamm {
+                        iconIdentifier = ieb-plugin-stamm
+                        title = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_stamm.name
+                        description = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_stamm.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = ieb_stamm
+                        }
+                    }
+                    ansuchen {
+                        iconIdentifier = ieb-plugin-ansuchen
+                        title = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_ansuchen.name
+                        description = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_ansuchen.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = ieb_ansuchen
                         }
                     }
                 }

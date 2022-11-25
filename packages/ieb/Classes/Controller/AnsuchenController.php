@@ -17,7 +17,7 @@ namespace GeorgRinger\Ieb\Controller;
 /**
  * AnsuchenController
  */
-class AnsuchenController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class AnsuchenController extends BaseController
 {
 
     /**

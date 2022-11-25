@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GeorgRinger\Ieb\Domain\Repository;
+namespace GeorgRinger\Ieb\Controller;
 
 
 /**
@@ -15,8 +15,9 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  */
 
 /**
- * The repository for AngebotVerantwortliches
+ * AngebotVerantwortlichController
  */
-class AngebotVerantwortlichRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+
 }

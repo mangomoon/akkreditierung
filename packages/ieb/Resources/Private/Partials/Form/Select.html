@@ -1,0 +1,19 @@
+<div class="{class}">
+    <label for="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" class="col-form-label">
+        {label}<f:if condition="{additional.required}"><span class="mandatory">*</span></f:if>
+    </label>
+
+    <div class="">
+        <f:form.select
+            options="{options}"
+            property="{property}"
+            class="form-control"
+            prependOptionLabel=""
+            prependOptionValue=""
+            id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+            additionalAttributes="{additional}"
+            data="{data}"
+        />
+    </div>
+
+</div>

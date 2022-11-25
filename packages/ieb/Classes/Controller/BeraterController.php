@@ -36,6 +36,16 @@ class BeraterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
+     * action index
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function indexAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+    /**
      * action list
      *
      * @return \Psr\Http\Message\ResponseInterface

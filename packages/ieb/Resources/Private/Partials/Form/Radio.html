@@ -1,0 +1,26 @@
+<div class="{class}">
+    <label class="col-form-label" title="">
+        {label}<f:if condition="{additional.required}"><span class="mandatory">*</span></f:if>
+    </label>
+
+    <div class="">
+        <f:for each="{options}" as="option" iteration="iterator">
+            <label>
+                <f:form.radio
+                    value="{option}"
+                    property="{property}"
+                    class="radio"
+                    id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}_{iterator.index}' )}"
+                    additionalAttributes="{additional}"
+                    data="{data}"
+                />
+                {option}
+            </label>
+        </f:for>
+
+        <f:if condition="{additional.custom_errors_container}">
+            <div id="{additional.custom_errors_container}"></div>
+        </f:if>
+    </div>
+</div>
+

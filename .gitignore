@@ -3,6 +3,8 @@
 /public/typo3conf/ext/
 /public/fileadmin
 public/_assets/
+public/typo3temp/
+public/uploads/
 public/typo3conf/ENABLE_INSTALL_TOOL
 /bin/
 /vendor/

@@ -124,91 +124,6 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
-    public function getReviewCommentInternalReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentInternal()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentInternalForStringSetsReviewCommentInternal(): void
-    {
-        $this->subject->setReviewCommentInternal('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentInternal'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewCommentTrReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentTr()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentTrForStringSetsReviewCommentTr(): void
-    {
-        $this->subject->setReviewCommentTr('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentTr'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewStatusReturnsInitialValueForInt(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getReviewStatus()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewStatusForIntSetsReviewStatus(): void
-    {
-        $this->subject->setReviewStatus(12);
-
-        self::assertEquals(12, $this->subject->_get('reviewStatus'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewFristReturnsInitialValueForDateTime(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getReviewFrist()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewFristForDateTimeSetsReviewFrist(): void
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setReviewFrist($dateTimeFixture);
-
-        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFrist'));
-    }
-
-    /**
-     * @test
-     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -263,27 +178,5 @@ class BeraterTest extends UnitTestCase
         $this->subject->_set('standorte', $standorteObjectStorageMock);
 
         $this->subject->removeStandorte($standorte);
-    }
-
-    /**
-     * @test
-     */
-    public function getBasedOnReturnsInitialValueForBerater(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getBasedOn()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBasedOnForBeraterSetsBasedOn(): void
-    {
-        $basedOnFixture = new \GeorgRinger\Ieb\Domain\Model\Berater();
-        $this->subject->setBasedOn($basedOnFixture);
-
-        self::assertEquals($basedOnFixture, $this->subject->_get('basedOn'));
     }
 }

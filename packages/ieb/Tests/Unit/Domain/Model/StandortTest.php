@@ -80,10 +80,10 @@ class StandortTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPlzReturnsInitialValueForString(): void
+    public function getPlzReturnsInitialValueForInt(): void
     {
         self::assertSame(
-            '',
+            0,
             $this->subject->getPlz()
         );
     }
@@ -91,11 +91,11 @@ class StandortTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPlzForStringSetsPlz(): void
+    public function setPlzForIntSetsPlz(): void
     {
-        $this->subject->setPlz('Conceived at T3CON10');
+        $this->subject->setPlz(12);
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('plz'));
+        self::assertEquals(12, $this->subject->_get('plz'));
     }
 
     /**
@@ -178,90 +178,5 @@ class StandortTest extends UnitTestCase
         $this->subject->setKoopSchuleDatei($fileReferenceFixture);
 
         self::assertEquals($fileReferenceFixture, $this->subject->_get('koopSchuleDatei'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewCommentInternalReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentInternal()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentInternalForStringSetsReviewCommentInternal(): void
-    {
-        $this->subject->setReviewCommentInternal('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentInternal'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewCommentTrReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentTr()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentTrForStringSetsReviewCommentTr(): void
-    {
-        $this->subject->setReviewCommentTr('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentTr'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewCommentStatusReturnsInitialValueForInt(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getReviewCommentStatus()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentStatusForIntSetsReviewCommentStatus(): void
-    {
-        $this->subject->setReviewCommentStatus(12);
-
-        self::assertEquals(12, $this->subject->_get('reviewCommentStatus'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewFristReturnsInitialValueForDateTime(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getReviewFrist()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewFristForDateTimeSetsReviewFrist(): void
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setReviewFrist($dateTimeFixture);
-
-        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFrist'));
     }
 }

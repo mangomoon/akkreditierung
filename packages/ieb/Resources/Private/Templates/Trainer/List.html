@@ -38,14 +38,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa" /></th>
             <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa_kommentar" /></th>
             <th><f:translate key="tx_ieb_domain_model_trainer.anerkennung_pp3" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.review_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.review_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.review_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.review_frist" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.lebenslauf_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_babi_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.lehr_befugnis_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_trainer.qualifikation_psa_datei" /></th>
             <th></th>
             <th></th>
         </tr>
@@ -69,14 +61,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsa}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsaKommentar}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.anerkennungPp3}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewCommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewCommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewStatus}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.reviewFrist -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lebenslaufDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationBabiDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.lehrBefugnisDatei}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{trainer : trainer}">{trainer.qualifikationPsaDatei.originalResource.name}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{trainer : trainer}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{trainer : trainer}">Delete</f:link.action></td>
             </tr>
