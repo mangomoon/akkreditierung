@@ -14,9 +14,6 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
 
-/**
- * The repository for Trainers
- */
-class TrainerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class TrainerRepository extends BaseRepository
 {
 }

@@ -1,4 +1,4 @@
-base: 'http://ieb.ddev.site/'
+base: 'https://ieb.ddev.site/'
 errorHandling:
   -
     errorCode: 404

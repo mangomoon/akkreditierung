@@ -1,7 +1,7 @@
 <?php
 defined('TYPO3') || die();
 
-(static function() {
+(static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
         'Default',
@@ -11,7 +11,6 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
             \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, show, new, create, edit, update, delete'
         ],
         // non-cacheable actions
         [
@@ -20,7 +19,6 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\StandortController::class => '',
             \GeorgRinger\Ieb\Controller\BeraterController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\TrainerController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'create, update, delete'
         ]
     );
 
@@ -28,11 +26,11 @@ defined('TYPO3') || die();
         'Ieb',
         'Stamm',
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, edit'
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new,update, create,edit',
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, edit'
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new,update,create,edit',
         ]
     );
 
@@ -40,11 +38,11 @@ defined('TYPO3') || die();
         'Ieb',
         'Ansuchen',
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete'
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete',
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete'
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete',
         ]
     );
 

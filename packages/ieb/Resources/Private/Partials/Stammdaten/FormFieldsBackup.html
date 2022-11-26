@@ -1,0 +1,98 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="name">
+	<f:translate key="tx_ieb_domain_model_stammdaten.name" />
+</label><br />
+	<f:form.textfield property="name" id="name" /><br />
+<label for="nachweis">
+	<f:translate key="tx_ieb_domain_model_stammdaten.nachweis" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="rechtsform">
+	<f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" />
+</label><br />
+	<f:form.textfield property="rechtsform" id="rechtsform" /><br />
+<label for="strasse">
+	<f:translate key="tx_ieb_domain_model_stammdaten.strasse" />
+</label><br />
+	<f:form.textfield property="strasse" id="strasse" /><br />
+<label for="plz">
+	<f:translate key="tx_ieb_domain_model_stammdaten.plz" />
+</label><br />
+	<f:form.textfield property="plz" id="plz" /><br />
+<label for="ort">
+	<f:translate key="tx_ieb_domain_model_stammdaten.ort" />
+</label><br />
+	<f:form.textfield property="ort" id="ort" /><br />
+<label for="seit">
+	<f:translate key="tx_ieb_domain_model_stammdaten.seit" />
+</label><br />
+	<f:form.textfield property="seit" id="seit" value="{stammdaten.seit->f:format.date()}" /><br />
+<label for="website">
+	<f:translate key="tx_ieb_domain_model_stammdaten.website" />
+</label><br />
+	<f:form.textfield property="website" id="website" /><br />
+<label for="email">
+	<f:translate key="tx_ieb_domain_model_stammdaten.email" />
+</label><br />
+	<f:form.textfield property="email" id="email" /><br />
+<label for="telefon">
+	<f:translate key="tx_ieb_domain_model_stammdaten.telefon" />
+</label><br />
+	<f:form.textfield property="telefon" id="telefon" /><br />
+<label for="leitbild">
+	<f:translate key="tx_ieb_domain_model_stammdaten.leitbild" />
+</label><br />
+	<f:form.textarea property="leitbild" id="leitbild" cols="40" rows="15" /><br />
+<label for="leitbildDatei">
+	<f:translate key="tx_ieb_domain_model_stammdaten.leitbild_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="qmsZertifikatDatei">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="qmsZertifikat">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat" />
+</label><br />
+	<f:form.textarea property="qmsZertifikat" id="qmsZertifikat" cols="40" rows="15" /><br />
+<label for="qmsTyp">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qms_typ" />
+</label><br />
+	<f:form.textfield property="qmsTyp" id="qmsTyp" /><br />
+<label for="zertifikatBis">
+	<f:translate key="tx_ieb_domain_model_stammdaten.zertifikat_bis" />
+</label><br />
+	<f:form.textfield property="zertifikatBis" id="zertifikatBis" value="{stammdaten.zertifikatBis->f:format.date()}" /><br />
+<label for="qualitaetSicherung">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" />
+</label><br />
+	<f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung" cols="40" rows="15" /><br />
+<label for="qualitaetSicherungDatei">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="qualitaetPersonal">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal" />
+</label><br />
+	<f:form.textarea property="qualitaetPersonal" id="qualitaetPersonal" cols="40" rows="15" /><br />
+<label for="qualitaetPersonalDatei">
+	<f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="trPp3">
+	<f:translate key="tx_ieb_domain_model_stammdaten.tr_pp3" />
+</label><br />
+	<f:form.checkbox property="trPp3" id="trPp3" value="1" /><br />
+<label for="pruefbescheid">
+	<f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid" />
+</label><br />
+	<f:form.textarea property="pruefbescheid" id="pruefbescheid" cols="40" rows="15" /><br />
+<label for="pruefbescheidDatei">
+	<f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />
+<label for="pruefbescheidBis">
+	<f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" />
+</label><br />
+	<f:form.textfield property="pruefbescheidBis" id="pruefbescheidBis" value="{stammdaten.pruefbescheidBis->f:format.date()}" /><br />
+</html>

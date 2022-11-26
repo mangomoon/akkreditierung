@@ -13,10 +13,6 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
-/**
- * The repository for Ansuchens
- */
-class AnsuchenRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class AnsuchenRepository extends BaseRepository
 {
 }
