@@ -47,7 +47,6 @@ class TrainerController extends BaseController
 
     public function createAction(Trainer $newTrainer)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->trainerRepository->add($newTrainer);
         $this->redirect('index');
     }

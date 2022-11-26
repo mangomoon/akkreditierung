@@ -1,44 +1,38 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
-
-This template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Berater:
-          Index.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>Listing for Berater</h1>
+    <h1>Alle Berater:innen</h1>
 
-    <f:flashMessages />
+    <f:flashMessages/>
 
-    <table class="tx_ieb">
-        <tr>
-            <th><f:translate key="tx_ieb_domain_model_berater.nachname" /></th>
-            <th><f:translate key="tx_ieb_domain_model_berater.vorname" /></th>
-            <th><f:translate key="tx_ieb_domain_model_berater.lebenslauf" /></th>
-            <th><f:translate key="tx_ieb_domain_model_berater.qualifikationsnachweise" /></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <f:for each="{beraters}" as="berater">
+    <f:if condition="{beraters}">
+        <table class="tx_ieb" border="1">
             <tr>
-                <td><f:link.action action="show" arguments="{berater : berater}">{berater.nachname}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{berater : berater}">{berater.vorname}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{berater : berater}">{berater.lebenslauf.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{berater : berater}">{berater.qualifikationsnachweise.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{berater : berater}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{berater : berater}">Delete</f:link.action></td>
+                <th>
+                    <f:translate key="tx_ieb_domain_model_trainer.nachname"/>
+                </th>
+                <th>
+                    <f:translate key="tx_ieb_domain_model_trainer.vorname"/>
+                </th>
+                <th>Anzeigen</th>
+                <th>Bearbeiten</th>
             </tr>
-        </f:for>
-    </table>
+            <f:for each="{beraters}" as="berater">
+                <tr>
+                    <td>
+                        {berater.nachname}
+                    </td>
+                    <td>
+                        {berater.vorname}
+                    </td>
+                    <td> <f:link.action action="show" arguments="{berater : berater}">Anzeigen</f:link.action></td>
+                    <td> <f:link.action action="edit" arguments="{berater : berater}">Bearbeiten</f:link.action></td>
+                </tr>
+            </f:for>
+        </table>
+    </f:if>
 
-    <f:link.action action="new">New Berater</f:link.action>
+    <f:link.action action="new">Neue Berater:in anlegen</f:link.action>
 </f:section>
 </html>
