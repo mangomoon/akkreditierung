@@ -18,6 +18,9 @@ trait CurrentUserTrait
         if ($userId === 0) {
             throw new \UnexpectedValueException('No user logged in');
         }
+        if ($userId === PHP_INT_MAX) {
+            throw new \UnexpectedValueException('No user logged in or maybe a simulated user?');
+        }
         return BackendUtility::getRecord('fe_users', $userId);
     }
 

@@ -10,7 +10,6 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
             \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, show, new, create, edit, update, delete',
         ],
         // non-cacheable actions
         [
@@ -18,7 +17,6 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => '',
             \GeorgRinger\Ieb\Controller\BeraterController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'create, update, delete',
         ]
     );
 
@@ -26,11 +24,22 @@ defined('TYPO3') || die();
         'Ieb',
         'Stamm',
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new,update, create,edit',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new,update,create,edit',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'Trainer',
+        [
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show',
         ]
     );
 
@@ -46,41 +55,4 @@ defined('TYPO3') || die();
         ]
     );
 
-    // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        'mod {
-            wizards.newContentElement.wizardItems.plugins {
-                elements {
-                    default {
-                        iconIdentifier = ieb-plugin-default
-                        title = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_default.name
-                        description = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_default.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = ieb_default
-                        }
-                    }
-                    stamm {
-                        iconIdentifier = ieb-plugin-stamm
-                        title = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_stamm.name
-                        description = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_stamm.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = ieb_stamm
-                        }
-                    }
-                    ansuchen {
-                        iconIdentifier = ieb-plugin-ansuchen
-                        title = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_ansuchen.name
-                        description = LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_ansuchen.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = ieb_ansuchen
-                        }
-                    }
-                }
-                show = *
-            }
-       }'
-    );
 })();

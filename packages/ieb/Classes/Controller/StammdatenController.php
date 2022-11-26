@@ -37,16 +37,13 @@ class StammdatenController extends BaseController
 
     public function createAction(Stammdaten $newStammdaten)
     {
-
         $this->stammdatenRepository->add($newStammdaten);
         $this->redirect('index');
     }
 
     public function editAction(Stammdaten $stammdaten): ResponseInterface
     {
-        if (!$this->isObjectAllowedForCurrentUser($stammdaten)) {
-            $this->redirect('index');
-        }
+        $this->check($stammdaten);
         $this->view->assign('stammdaten', $stammdaten);
         return $this->htmlResponse();
     }
@@ -65,14 +62,6 @@ class StammdatenController extends BaseController
             'item' => $this->stammdatenRepository->getLatest(),
         ]);
         return $this->htmlResponse();
-    }
-
-    protected function check(Stammdaten $item)
-    {
-        if (!$this->isObjectAllowedForCurrentUser($item)) {
-            $this->addFlashMessage('Fehler bei PID check', '', AbstractMessage::ERROR);
-            $this->redirect('index');
-        }
     }
 
 }
