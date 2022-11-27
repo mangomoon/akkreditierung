@@ -1,20 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-This template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Ansuchen:
-          List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="content">
-    <h1>Listing for Ansuchen</h1>
+    <h1>Alle Ansuchen</h1>
 
     <f:flashMessages />
 
@@ -22,103 +10,19 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <tr>
             <th><f:translate key="tx_ieb_domain_model_ansuchen.name" /></th>
             <th><f:translate key="tx_ieb_domain_model_ansuchen.version" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.version_based_on" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.version_active" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.nummer" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_datum" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.einreich_datum" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.zuteilung_datum" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_entscheidung_datum" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.typ" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.bundesland" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche_text" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_text" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.fernlehre" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.kinderbetreuung" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.lernziele" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.lernstandserhebung" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.diversity" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.didaktik_kommentar" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.beratung_text" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.beratung_datei" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_commen_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_total_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.review_total_frist" /></th>
             <th></th>
             <th></th>
         </tr>
-        <f:for each="{ansuchens}" as="ansuchen">
+        <f:for each="{ansuchen}" as="item">
             <tr>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.version}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.versionBasedOn}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.versionActive}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.nummer}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.akkreditierungDatum -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.einreichDatum -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.zuteilungDatum}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.akkreditierungEntscheidungDatum -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.typ}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.bundesland}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.kompetenzbereiche}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.kompetenzbereicheText}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.uebersichtText}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.uebersichtDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.zielgruppenAnsprache}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.zielgruppenAnspracheDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.fernlehre}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.kinderbetreuung}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.lernziele.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.lernstandserhebung.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.diversity.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.didaktikKommentar}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.beratungText}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.beratungDatei.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB1CommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB1CommenTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB1Status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB2CommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB2CommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewB2Status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC1CommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC1CommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC1Status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC2CommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC2CommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC2Status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC3CommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC3CommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewC3Status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewTotalCommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewTotalCommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewTotalStatus}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : ansuchen}">{ansuchen.reviewTotalFrist -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{ansuchen : ansuchen}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{ansuchen : ansuchen}">Delete</f:link.action></td>
+                <td>{item.name}</td>
+                <td>{item.version}</td>
+                <td><f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action></td>
+                <td><f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action></td>
             </tr>
         </f:for>
     </table>
 
-    <f:link.action action="new">New Ansuchen</f:link.action>
+    <f:link.action action="new">Neues Ansuchen</f:link.action>
 </f:section>
 </html>

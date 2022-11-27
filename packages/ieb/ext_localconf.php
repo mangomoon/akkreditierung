@@ -7,13 +7,11 @@ defined('TYPO3') || die();
         'Default',
         [
             \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'list, show, new, create, edit, update, delete',
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
         ],
         // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => '',
         ]
     );
@@ -56,11 +54,11 @@ defined('TYPO3') || die();
         'Ieb',
         'Ansuchen',
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete',
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, delete',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete',
         ]
     );
 
