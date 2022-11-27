@@ -335,6 +335,20 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewTotalFrist = null;
 
     /**
+     * lockedBy
+     *
+     * @var int
+     */
+    protected $lockedBy = 0;
+
+    /**
+     * status
+     *
+     * @var int
+     */
+    protected $status = 0;
+
+    /**
      * stammdaten
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -376,13 +390,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Ansuchen
      */
     protected $kopieVon = null;
-
-    /**
-     * lockedBy
-     *
-     * @var int
-     */
-    protected $lockedBy = 0;
 
     /**
      * __construct
@@ -1597,5 +1604,26 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Returns the status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Sets the status
+     *
+     * @param int $status
+     * @return void
+     */
+    public function setStatus(int $status)
+    {
+        $this->status = $status;
     }
 }

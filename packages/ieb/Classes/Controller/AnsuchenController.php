@@ -47,6 +47,7 @@ class AnsuchenController extends BaseController
 
     public function createAction(Ansuchen $newAnsuchen)
     {
+        $newAnsuchen->setStatus(10);
         $this->ansuchenRepository->add($newAnsuchen);
         $this->redirect('list');
     }
@@ -58,6 +59,25 @@ class AnsuchenController extends BaseController
     {
         $this->check($ansuchen);
         $this->view->assign('ansuchen', $ansuchen);
+        return $this->htmlResponse();
+    }
+
+    public function einreichenAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $this->addFlashMessage('Wurde eingereicht');
+        $ansuchen->setStatus(20);
+        $this->ansuchenRepository->update($ansuchen);
+        $this->redirect('list');
+        return $this->htmlResponse();
+    }
+
+    public function cloneAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $this->ansuchenRepository->clone($ansuchen);
+        $this->addFlashMessage('Wurde kopiert');
+        $this->redirect('list');
         return $this->htmlResponse();
     }
 

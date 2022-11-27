@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     280,
-                    260
+                    259.5
                 ]
             },
             "name": "New Model Object",
@@ -381,7 +381,7 @@
             "config": {
                 "position": [
                     301,
-                    472
+                    471.5
                 ]
             },
             "name": "New Model Object",
@@ -553,7 +553,7 @@
             "config": {
                 "position": [
                     289,
-                    30
+                    29.5
                 ]
             },
             "name": "New Model Object",
@@ -738,7 +738,7 @@
             "config": {
                 "position": [
                     919,
-                    29
+                    28.5
                 ]
             },
             "name": "New Model Object",
@@ -1150,7 +1150,7 @@
             "config": {
                 "position": [
                     599,
-                    281
+                    280.5
                 ]
             },
             "name": "New Model Object",
@@ -1719,6 +1719,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "160844861976"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "status",
+                            "propertyType": "Select",
+                            "uid": "234745351184"
                         }
                     ]
                 },
@@ -1798,7 +1810,7 @@
             "config": {
                 "position": [
                     28,
-                    54
+                    53.5
                 ]
             },
             "name": "New Model Object",
@@ -1923,7 +1935,7 @@
             "config": {
                 "position": [
                     39,
-                    478
+                    477.5
                 ]
             },
             "name": "New Model Object",
@@ -2024,7 +2036,7 @@
             "config": {
                 "position": [
                     14,
-                    276
+                    275.5
                 ]
             },
             "name": "New Model Object",
@@ -2281,7 +2293,7 @@
             "config": {
                 "position": [
                     646,
-                    34
+                    33.5
                 ]
             },
             "name": "New Model Object",
@@ -2634,7 +2646,7 @@
             "config": {
                 "position": [
                     828,
-                    507
+                    506.5
                 ]
             },
             "name": "New Model Object",
@@ -2735,7 +2747,7 @@
             "config": {
                 "position": [
                     885,
-                    285
+                    284.5
                 ]
             },
             "name": "New Model Object",
@@ -3041,7 +3053,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2022-11-27 08:42",
+        "last_modified": "2022-11-27 06:49",
         "extension_builder_version": "v11.0.8",
         "be_user": " (1)"
     }

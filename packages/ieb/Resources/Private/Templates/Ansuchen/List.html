@@ -10,15 +10,21 @@
         <tr>
             <th><f:translate key="tx_ieb_domain_model_ansuchen.name" /></th>
             <th><f:translate key="tx_ieb_domain_model_ansuchen.version" /></th>
-            <th></th>
+            <th><f:translate key="tx_ieb_domain_model_ansuchen.status" /></th>
             <th></th>
         </tr>
         <f:for each="{ansuchen}" as="item">
             <tr>
                 <td>{item.name}</td>
                 <td>{item.version}</td>
-                <td><f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action></td>
-                <td><f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action></td>
+                <td><f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> <code>[{item.status}]</code></td>
+                <td>
+                    &middot; <f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action>
+                    &middot; <f:link.action action="clone" arguments="{ansuchen : item}">Klonen</f:link.action>
+                    <f:if condition="{item.status} == 10">
+                        &middot; <f:link.action action="einreichen" arguments="{ansuchen : item}">Einreichen</f:link.action>
+                    </f:if>
+                </td>
             </tr>
         </f:for>
     </table>

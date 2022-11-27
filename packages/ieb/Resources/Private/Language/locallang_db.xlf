@@ -399,6 +399,9 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.locked_by" resname="tx_ieb_domain_model_ansuchen.locked_by">
 				<source>Locked By</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.status" resname="tx_ieb_domain_model_ansuchen.status">
+				<source>Status</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten" resname="tx_ieb_domain_model_ansuchen.stammdaten">
 				<source>Stammdaten</source>
 			</trans-unit>

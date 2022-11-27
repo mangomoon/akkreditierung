@@ -195,18 +195,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $pruefbescheidBis = null;
 
     /**
-     * standorte
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Standort
-     */
-    protected $standorte = null;
-
-    /**
      * lockedBy
      *
      * @var int
      */
     protected $lockedBy = 0;
+
+    /**
+     * standorte
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Standort
+     */
+    protected $standorte = null;
 
     /**
      * Returns the name

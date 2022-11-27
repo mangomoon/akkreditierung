@@ -54,11 +54,23 @@ defined('TYPO3') || die();
         'Ieb',
         'Ansuchen',
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone',
         ],
         // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'User',
+        [
+            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
+        ],
+        // non-cacheable actions
+        [
+            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
         ]
     );
 

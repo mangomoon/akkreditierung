@@ -206,18 +206,18 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationPsaDatei = null;
 
     /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Trainer
-     */
-    protected $basedOn = null;
-
-    /**
      * lockedBy
      *
      * @var int
      */
     protected $lockedBy = 0;
+
+    /**
+     * basedOn
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Trainer
+     */
+    protected $basedOn = null;
 
     /**
      * Returns the nachname

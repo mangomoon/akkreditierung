@@ -138,6 +138,9 @@
 			<trans-unit id="locked_by.description" resname="locked_by.description">
 				<source>lockedBy</source>
 			</trans-unit>
+			<trans-unit id="status.description" resname="status.description">
+				<source>status</source>
+			</trans-unit>
 			<trans-unit id="stammdaten.description" resname="stammdaten.description">
 				<source>stammdaten</source>
 			</trans-unit>

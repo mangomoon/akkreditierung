@@ -17,7 +17,7 @@ namespace GeorgRinger\Ieb\Controller;
 /**
  * UserController
  */
-class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class UserController extends BaseController
 {
 
     /**
@@ -42,7 +42,7 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function listAction(): \Psr\Http\Message\ResponseInterface
     {
-        $users = $this->userRepository->findAll();
+        $users = $this->userRepository->getAll();
         $this->view->assign('users', $users);
         return $this->htmlResponse();
     }

@@ -26,10 +26,20 @@ trait CurrentUserTrait
 
     public function getCurrentUserPid(): int
     {
+        return (int)$this->getCurrentUserField('pid');
+    }
+
+    public function getCurrentUserId(): int
+    {
+        return (int)$this->getCurrentUserField('uid');
+    }
+
+    private function getCurrentUserField(string $field)
+    {
         $user = $this->getCurrentUser();
         if (!$user) {
             throw new \UnexpectedValueException('No user logged in');
         }
-        return $user['pid'];
+        return $user[$field] ?? null;
     }
 }

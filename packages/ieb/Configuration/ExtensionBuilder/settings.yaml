@@ -47,14 +47,16 @@ overwriteSettings:
 
   Configuration:
     #TCA merge not possible - use overrides directory
+    TCA:
+      Overrides: keep
     #TypoScript: keep
 
   Resources:
     Private:
-      #Language: merge
+      Language: merge
       Layouts: keep
       Partials: keep
-      #Templates: keep
+      Templates: keep
       Backend:
         #Layouts: keep
         #Partials: keep
@@ -69,7 +71,7 @@ overwriteSettings:
 declareStrictTypes: true
 
 ## use static date attribute in xliff files
-#staticDateInXliffFiles: '2022-11-18T10:17:20Z'
+staticDateInXliffFiles: '2022-11-27T08:42:58Z'
 
 ## skip docComment (license header)
 #skipDocComment: false

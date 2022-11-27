@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Repository;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -52,5 +53,10 @@ class BaseRepository extends Repository
 
         return $query;
     }
-
+    public function setLockedAndPersist(AbstractEntity $item)
+    {
+        $item->setLockedBy($this->getCurrentUserId());
+        $this->update($item);
+        $this->persistenceManager->persistAll();
+    }
 }

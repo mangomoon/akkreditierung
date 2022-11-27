@@ -79,6 +79,13 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewFrist = null;
 
     /**
+     * lockedBy
+     *
+     * @var \DateTime
+     */
+    protected $lockedBy = null;
+
+    /**
      * standorte
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
@@ -91,13 +98,6 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Berater
      */
     protected $basedOn = null;
-
-    /**
-     * lockedBy
-     *
-     * @var \DateTime
-     */
-    protected $lockedBy = null;
 
     /**
      * Returns the nachname
