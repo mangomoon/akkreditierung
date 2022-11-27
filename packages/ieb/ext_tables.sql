@@ -25,6 +25,7 @@ CREATE TABLE tx_ieb_domain_model_statictrainer (
 	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lehr_befugnis_datei varchar(255) NOT NULL DEFAULT '',
 	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0',
+	locked_by int(11) NOT NULL DEFAULT '0',
 	based_on int(11) unsigned DEFAULT '0'
 );
 
@@ -37,6 +38,7 @@ CREATE TABLE tx_ieb_domain_model_staticberater (
 	review_comment_tr text NOT NULL DEFAULT '',
 	review_status int(11) DEFAULT '0' NOT NULL,
 	review_frist date DEFAULT NULL,
+	locked_by date DEFAULT NULL,
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	based_on int(11) unsigned DEFAULT '0'
 );
@@ -85,6 +87,7 @@ CREATE TABLE tx_ieb_domain_model_staticstammdaten (
 	review_comment_tr text NOT NULL DEFAULT '',
 	review_status int(11) DEFAULT '0' NOT NULL,
 	review_frist date DEFAULT NULL,
+	locked_by int(11) NOT NULL DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	based_on int(11) unsigned DEFAULT '0'
 );
@@ -134,6 +137,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_total_comment_tr text NOT NULL DEFAULT '',
 	review_total_status int(11) DEFAULT '0' NOT NULL,
 	review_total_frist date DEFAULT NULL,
+	locked_by int(11) NOT NULL DEFAULT '0',
 	stammdaten int(11) unsigned DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -206,6 +210,7 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	pruefbescheid text,
 	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
 	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
+	locked_by int(11) NOT NULL DEFAULT '0',
 	standorte int(11) unsigned DEFAULT '0'
 );
 
@@ -221,5 +226,6 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );

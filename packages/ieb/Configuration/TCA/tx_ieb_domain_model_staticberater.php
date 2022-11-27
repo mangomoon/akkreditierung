@@ -14,7 +14,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_staticberater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, review_comment_internal, review_comment_tr, review_status, review_frist, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, review_comment_internal, review_comment_tr, review_status, review_frist, locked_by, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -194,6 +194,18 @@ return [
         'review_frist' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticberater.review_frist',
+            'config' => [
+                'dbType' => 'date',
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 7,
+                'eval' => 'date',
+                'default' => null,
+            ],
+        ],
+        'locked_by' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticberater.locked_by',
             'config' => [
                 'dbType' => 'date',
                 'type' => 'input',

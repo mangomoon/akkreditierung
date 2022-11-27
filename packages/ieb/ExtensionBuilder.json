@@ -345,6 +345,18 @@
                             "propertyName": "qualifikationPsaDatei",
                             "propertyType": "File",
                             "uid": "1630893961628"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "968894731280"
                         }
                     ]
                 },
@@ -494,6 +506,18 @@
                             "propertyName": "reviewFrist",
                             "propertyType": "NativeDate",
                             "uid": "197695934354"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "NativeDate",
+                            "uid": "214569244491"
                         }
                     ]
                 },
@@ -1079,6 +1103,18 @@
                             "propertyName": "reviewFrist",
                             "propertyType": "NativeDate",
                             "uid": "1566018966361"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "125237624795"
                         }
                     ]
                 },
@@ -1113,8 +1149,8 @@
         {
             "config": {
                 "position": [
-                    565,
-                    361
+                    599,
+                    281
                 ]
             },
             "name": "New Model Object",
@@ -1671,6 +1707,18 @@
                             "propertyName": "reviewTotalFrist",
                             "propertyType": "NativeDate",
                             "uid": "887437486453"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "160844861976"
                         }
                     ]
                 },
@@ -2550,6 +2598,18 @@
                             "propertyName": "pruefbescheidBis",
                             "propertyType": "Date",
                             "uid": "436048293001"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "651968016407"
                         }
                     ]
                 },
@@ -2682,10 +2742,10 @@
             "value": {
                 "actionGroup": {
                     "_default0_index": false,
-                    "_default1_list": false,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
                     "_default5_delete": false,
                     "customActions": []
                 },
@@ -2694,7 +2754,7 @@
                     "addDeletedField": true,
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": false,
+                    "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "fe_users",
@@ -2981,7 +3041,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2022-11-25 10:13",
+        "last_modified": "2022-11-27 08:42",
         "extension_builder_version": "v11.0.8",
         "be_user": " (1)"
     }

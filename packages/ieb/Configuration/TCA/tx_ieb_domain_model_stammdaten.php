@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_stammdaten.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, standorte, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, locked_by, standorte, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -590,6 +590,16 @@ return [
                 'eval' => 'date',
                 'default' => time()
             ],
+        ],
+        'locked_by' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.locked_by',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
+            ]
         ],
         'standorte' => [
             'exclude' => true,

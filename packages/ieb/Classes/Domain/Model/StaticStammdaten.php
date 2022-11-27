@@ -237,6 +237,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * lockedBy
+     *
+     * @var int
+     */
+    protected $lockedBy = 0;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -919,5 +926,26 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
     {
         $this->standorte = $standorte;
+    }
+
+    /**
+     * Returns the lockedBy
+     *
+     * @return int
+     */
+    public function getLockedBy()
+    {
+        return $this->lockedBy;
+    }
+
+    /**
+     * Sets the lockedBy
+     *
+     * @param int $lockedBy
+     * @return void
+     */
+    public function setLockedBy(int $lockedBy)
+    {
+        $this->lockedBy = $lockedBy;
     }
 }

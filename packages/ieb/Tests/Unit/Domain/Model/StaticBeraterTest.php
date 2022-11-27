@@ -209,6 +209,28 @@ class StaticBeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getLockedByReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getLockedBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLockedByForDateTimeSetsLockedBy(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setLockedBy($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('lockedBy'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStaticStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang.xlf" date="2022-11-25T10:13:36Z" product-name="ieb">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang.xlf" date="2022-11-27T08:42:58Z" product-name="ieb">
 		<header/>
 		<body>
 			<trans-unit id="tx_ieb_domain_model_statictrainer" resname="tx_ieb_domain_model_statictrainer">
@@ -84,6 +84,9 @@
 			<trans-unit id="tx_ieb_domain_model_statictrainer.qualifikation_psa_datei" resname="tx_ieb_domain_model_statictrainer.qualifikation_psa_datei">
 				<source>Qualifikation Psa Datei</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_statictrainer.locked_by" resname="tx_ieb_domain_model_statictrainer.locked_by">
+				<source>Locked By</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_statictrainer.based_on" resname="tx_ieb_domain_model_statictrainer.based_on">
 				<source>Based On</source>
 			</trans-unit>
@@ -113,6 +116,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticberater.review_frist" resname="tx_ieb_domain_model_staticberater.review_frist">
 				<source>Review Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticberater.locked_by" resname="tx_ieb_domain_model_staticberater.locked_by">
+				<source>Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticberater.standorte" resname="tx_ieb_domain_model_staticberater.standorte">
 				<source>Standorte</source>
@@ -245,6 +251,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.review_frist" resname="tx_ieb_domain_model_staticstammdaten.review_frist">
 				<source>Review Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticstammdaten.locked_by" resname="tx_ieb_domain_model_staticstammdaten.locked_by">
+				<source>Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.standorte" resname="tx_ieb_domain_model_staticstammdaten.standorte">
 				<source>Standorte</source>
@@ -386,6 +395,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_total_frist" resname="tx_ieb_domain_model_ansuchen.review_total_frist">
 				<source>Review Total Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.locked_by" resname="tx_ieb_domain_model_ansuchen.locked_by">
+				<source>Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten" resname="tx_ieb_domain_model_ansuchen.stammdaten">
 				<source>Stammdaten</source>
@@ -578,6 +590,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" resname="tx_ieb_domain_model_stammdaten.pruefbescheid_bis">
 				<source>Pruefbescheid Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.locked_by" resname="tx_ieb_domain_model_stammdaten.locked_by">
+				<source>Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.standorte" resname="tx_ieb_domain_model_stammdaten.standorte">
 				<source>Standorte</source>

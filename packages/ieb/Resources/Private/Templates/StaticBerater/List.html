@@ -28,6 +28,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_ieb_domain_model_staticberater.review_comment_tr" /></th>
             <th><f:translate key="tx_ieb_domain_model_staticberater.review_status" /></th>
             <th><f:translate key="tx_ieb_domain_model_staticberater.review_frist" /></th>
+            <th><f:translate key="tx_ieb_domain_model_staticberater.locked_by" /></th>
             <th></th>
             <th></th>
         </tr>
@@ -41,6 +42,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="show" arguments="{staticBerater : staticBerater}">{staticBerater.reviewCommentTr}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{staticBerater : staticBerater}">{staticBerater.reviewStatus}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{staticBerater : staticBerater}">{staticBerater.reviewFrist -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{staticBerater : staticBerater}">{staticBerater.lockedBy -> f:format.date()}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{staticBerater : staticBerater}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{staticBerater : staticBerater}">Delete</f:link.action></td>
             </tr>

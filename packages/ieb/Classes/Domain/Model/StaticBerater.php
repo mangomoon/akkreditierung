@@ -93,6 +93,13 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * lockedBy
+     *
+     * @var \DateTime
+     */
+    protected $lockedBy = null;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -345,5 +352,26 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
     {
         $this->standorte = $standorte;
+    }
+
+    /**
+     * Returns the lockedBy
+     *
+     * @return \DateTime
+     */
+    public function getLockedBy()
+    {
+        return $this->lockedBy;
+    }
+
+    /**
+     * Sets the lockedBy
+     *
+     * @param \DateTime $lockedBy
+     * @return void
+     */
+    public function setLockedBy(\DateTime $lockedBy)
+    {
+        $this->lockedBy = $lockedBy;
     }
 }

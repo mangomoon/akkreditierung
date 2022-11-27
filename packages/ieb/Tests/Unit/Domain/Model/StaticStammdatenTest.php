@@ -633,6 +633,27 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getLockedByReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getLockedBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLockedByForIntSetsLockedBy(): void
+    {
+        $this->subject->setLockedBy(12);
+
+        self::assertEquals(12, $this->subject->_get('lockedBy'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStaticStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

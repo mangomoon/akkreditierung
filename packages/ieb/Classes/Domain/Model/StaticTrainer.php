@@ -213,6 +213,13 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * lockedBy
+     *
+     * @var int
+     */
+    protected $lockedBy = 0;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -887,5 +894,26 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualifikationPsaDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei)
     {
         $this->qualifikationPsaDatei = $qualifikationPsaDatei;
+    }
+
+    /**
+     * Returns the lockedBy
+     *
+     * @return int
+     */
+    public function getLockedBy()
+    {
+        return $this->lockedBy;
+    }
+
+    /**
+     * Sets the lockedBy
+     *
+     * @param int $lockedBy
+     * @return void
+     */
+    public function setLockedBy(int $lockedBy)
+    {
+        $this->lockedBy = $lockedBy;
     }
 }
