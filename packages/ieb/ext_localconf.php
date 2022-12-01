@@ -64,6 +64,19 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
+        'AnsuchenBegutachtung',
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update',
+        ],
+        // non-cacheable actions
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update',
+        ]
+    );
+
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
         'User',
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',

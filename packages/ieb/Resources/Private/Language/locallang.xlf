@@ -630,65 +630,64 @@
 			<trans-unit id="tx_ieb_domain_model_user.tr_admin" resname="tx_ieb_domain_model_user.tr_admin">
 				<source>Tr Admin</source>
 			</trans-unit>
-
-			<trans-unit id="ansuchen.status.10">
+			<trans-unit id="ansuchen.status.10" resname="ansuchen.status.10">
 				<source>Neu in Arbeit</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.20">
+			<trans-unit id="ansuchen.status.20" resname="ansuchen.status.20">
 				<source>eingereicht Ersteinreichung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.30">
+			<trans-unit id="ansuchen.status.30" resname="ansuchen.status.30">
 				<source>in Arbeit</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.40">
+			<trans-unit id="ansuchen.status.40" resname="ansuchen.status.40">
 				<source>eingereicht zur Begutachtung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.42">
+			<trans-unit id="ansuchen.status.42" resname="ansuchen.status.42">
 				<source>eingereicht zur Begutachtung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.50">
+			<trans-unit id="ansuchen.status.50" resname="ansuchen.status.50">
 				<source>Erstbegutachtung durch AG</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.60">
+			<trans-unit id="ansuchen.status.60" resname="ansuchen.status.60">
 				<source>Festlegung eines Akkreditierungsstatus</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.80">
+			<trans-unit id="ansuchen.status.80" resname="ansuchen.status.80">
 				<source>Nachbesserungsauftrag</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.82">
+			<trans-unit id="ansuchen.status.82" resname="ansuchen.status.82">
 				<source>eingereicht nach Nachbesserungsauf- trag</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.84">
+			<trans-unit id="ansuchen.status.84" resname="ansuchen.status.84">
 				<source>Begutachtung nach eingereicht nach Nachbesserungauftrag</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.100">
+			<trans-unit id="ansuchen.status.100" resname="ansuchen.status.100">
 				<source>akkreditiert</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.110">
+			<trans-unit id="ansuchen.status.110" resname="ansuchen.status.110">
 				<source>akkreditiert, muss nachakkreditiert werden</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.120">
+			<trans-unit id="ansuchen.status.120" resname="ansuchen.status.120">
 				<source>Akkreditierung aus- gesetzt</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.130">
+			<trans-unit id="ansuchen.status.130" resname="ansuchen.status.130">
 				<source>akkreditiert, in Arbeit zur Nachakkreditie- rung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.140">
+			<trans-unit id="ansuchen.status.140" resname="ansuchen.status.140">
 				<source>akkreditiert mit Auf- lagen</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.142">
+			<trans-unit id="ansuchen.status.142" resname="ansuchen.status.142">
 				<source>akkreditiert mit Auflagen, muss noch akkreditiert werden</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.150">
+			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.150">
 				<source>eingereicht zur Nach- akkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.160">
+			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.160">
 				<source>Begutachtung nach Einreichung zur Nach- akkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.800">
+			<trans-unit id="ansuchen.status.800" resname="ansuchen.status.800">
 				<source>nicht akkreditiert</source>
 			</trans-unit>
-			<trans-unit id="ansuchen.status.810">
+			<trans-unit id="ansuchen.status.810" resname="ansuchen.status.810">
 				<source>Akkreditierung entzogen</source>
 			</trans-unit>
 		</body>

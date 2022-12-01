@@ -24,6 +24,18 @@ class AnsuchenRepository extends BaseRepository
         parent::__construct($objectManager);
     }
 
+    public function getAllForBegutachtung()
+    {
+        $query = $this->getEmptyQuery();
+        $constraints = [
+            $query->logicalNot(
+                $query->in('status', [0, 10, 30, 800, 810])
+            ),
+        ];
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
 
     public function clone(Ansuchen $ansuchen): void
     {

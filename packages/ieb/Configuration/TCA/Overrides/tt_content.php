@@ -36,3 +36,9 @@ defined('TYPO3') || die();
     'User',
     'IEB User'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Ieb',
+    'AnsuchenBegutachtung',
+    'IEB Ansuchen Begutachtung'
+);

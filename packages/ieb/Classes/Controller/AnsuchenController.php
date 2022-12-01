@@ -6,7 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
-use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
+use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -20,11 +20,17 @@ use Psr\Http\Message\ResponseInterface;
 class AnsuchenController extends BaseController
 {
 
-    protected AnsuchenRepository $ansuchenRepository;
+    protected Repository\AnsuchenRepository $ansuchenRepository;
+    protected Repository\StammdatenRepository $stammdatenRepository;
 
-    public function injectAnsuchenRepository(AnsuchenRepository $ansuchenRepository)
+    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
     {
         $this->ansuchenRepository = $ansuchenRepository;
+    }
+
+    public function injectStammdatanRepository(Repository\StammdatenRepository $stammdatenRepository)
+    {
+        $this->stammdatenRepository = $stammdatenRepository;
     }
 
     public function listAction(): ResponseInterface
@@ -47,7 +53,11 @@ class AnsuchenController extends BaseController
 
     public function createAction(Ansuchen $newAnsuchen)
     {
+        $stammDaten = $this->stammdatenRepository->getLatest();
+        $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(10);
+        $newAnsuchen->setStammdaten($staticStammDaten);
+
         $this->ansuchenRepository->add($newAnsuchen);
         $this->redirect('list');
     }

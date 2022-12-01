@@ -15,7 +15,7 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 
 /**
- * Stammdaten
+ * StaticStammdaten
  */
 class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
@@ -54,7 +54,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected $plz = '';
+    protected $plz = 0;
 
     /**
      * ort
@@ -351,6 +351,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the plz
+     *
+     * @return int
+     */
+    public function getPlz()
+    {
+        return $this->plz;
+    }
+
+    /**
+     * Sets the plz
+     *
+     * @param int $plz
+     * @return void
+     */
+    public function setPlz(int $plz)
+    {
+        $this->plz = $plz;
+    }
+
+    /**
      * Returns the ort
      *
      * @return string
@@ -498,6 +519,48 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the qmsZertifikatDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQmsZertifikatDatei()
+    {
+        return $this->qmsZertifikatDatei;
+    }
+
+    /**
+     * Sets the qmsZertifikatDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
+     * @return void
+     */
+    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
+    {
+        $this->qmsZertifikatDatei = $qmsZertifikatDatei;
+    }
+
+    /**
+     * Returns the qmsZertifikat
+     *
+     * @return string
+     */
+    public function getQmsZertifikat()
+    {
+        return $this->qmsZertifikat;
+    }
+
+    /**
+     * Sets the qmsZertifikat
+     *
+     * @param string $qmsZertifikat
+     * @return void
+     */
+    public function setQmsZertifikat(string $qmsZertifikat)
+    {
+        $this->qmsZertifikat = $qmsZertifikat;
+    }
+
+    /**
      * Returns the qmsTyp
      *
      * @return int
@@ -561,6 +624,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the qualitaetSicherungDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualitaetSicherungDatei()
+    {
+        return $this->qualitaetSicherungDatei;
+    }
+
+    /**
+     * Sets the qualitaetSicherungDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
+     * @return void
+     */
+    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
+    {
+        $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
+    }
+
+    /**
      * Returns the qualitaetPersonal
      *
      * @return string
@@ -579,6 +663,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualitaetPersonal(string $qualitaetPersonal)
     {
         $this->qualitaetPersonal = $qualitaetPersonal;
+    }
+
+    /**
+     * Returns the qualitaetPersonalDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualitaetPersonalDatei()
+    {
+        return $this->qualitaetPersonalDatei;
+    }
+
+    /**
+     * Sets the qualitaetPersonalDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
+     * @return void
+     */
+    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
+    {
+        $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
     }
 
     /**
@@ -760,175 +865,6 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the basedOn
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Stammdaten
-     */
-    public function getBasedOn()
-    {
-        return $this->basedOn;
-    }
-
-    /**
-     * Sets the basedOn
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn
-     * @return void
-     */
-    public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn)
-    {
-        $this->basedOn = $basedOn;
-    }
-
-    /**
-     * Returns the qmsZertifikatDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference qmsZertifikatDatei
-     */
-    public function getQmsZertifikatDatei()
-    {
-        return $this->qmsZertifikatDatei;
-    }
-
-    /**
-     * Sets the qmsZertifikatDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
-     * @return void
-     */
-    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
-    {
-        $this->qmsZertifikatDatei = $qmsZertifikatDatei;
-    }
-
-    /**
-     * Returns the qmsZertifikat
-     *
-     * @return string
-     */
-    public function getQmsZertifikat()
-    {
-        return $this->qmsZertifikat;
-    }
-
-    /**
-     * Sets the qmsZertifikat
-     *
-     * @param string $qmsZertifikat
-     * @return void
-     */
-    public function setQmsZertifikat(string $qmsZertifikat)
-    {
-        $this->qmsZertifikat = $qmsZertifikat;
-    }
-
-    /**
-     * Returns the qualitaetSicherungDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualitaetSicherungDatei()
-    {
-        return $this->qualitaetSicherungDatei;
-    }
-
-    /**
-     * Sets the qualitaetSicherungDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
-     * @return void
-     */
-    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
-    {
-        $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
-    }
-
-    /**
-     * Returns the qualitaetPersonalDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualitaetPersonalDatei()
-    {
-        return $this->qualitaetPersonalDatei;
-    }
-
-    /**
-     * Sets the qualitaetPersonalDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
-     * @return void
-     */
-    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
-    {
-        $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
-    }
-
-    /**
-     * Returns the plz
-     *
-     * @return int plz
-     */
-    public function getPlz()
-    {
-        return $this->plz;
-    }
-
-    /**
-     * Sets the plz
-     *
-     * @param string $plz
-     * @return void
-     */
-    public function setPlz(string $plz)
-    {
-        $this->plz = $plz;
-    }
-
-    /**
-     * Adds a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte
-     * @return void
-     */
-    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte)
-    {
-        $this->standorte->attach($standorte);
-    }
-
-    /**
-     * Removes a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove The StaticStandort to be removed
-     * @return void
-     */
-    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove)
-    {
-        $this->standorte->detach($standorteToRemove);
-    }
-
-    /**
-     * Returns the standorte
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> standorte
-     */
-    public function getStandorte()
-    {
-        return $this->standorte;
-    }
-
-    /**
-     * Sets the standorte
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> $standorte
-     * @return void
-     */
-    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
-    {
-        $this->standorte = $standorte;
-    }
-
-    /**
      * Returns the lockedBy
      *
      * @return int
@@ -947,5 +883,69 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Adds a StaticStandort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte
+     * @return void
+     */
+    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte)
+    {
+        $this->standorte->attach($standorte);
+    }
+
+    /**
+     * Removes a StaticStandort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove The StaticStandort to be removed
+     * @return void
+     */
+    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove)
+    {
+        $this->standorte->detach($standorteToRemove);
+    }
+
+    /**
+     * Returns the standorte
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
+     */
+    public function getStandorte()
+    {
+        return $this->standorte;
+    }
+
+    /**
+     * Sets the standorte
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> $standorte
+     * @return void
+     */
+    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
+    {
+        $this->standorte = $standorte;
+    }
+
+    /**
+     * Returns the basedOn
+     *
+     * @return \GeorgRinger\Ieb\Domain\Model\Stammdaten
+     */
+    public function getBasedOn()
+    {
+        return $this->basedOn;
+    }
+
+    /**
+     * Sets the basedOn
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn
+     * @return void
+     */
+    public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn)
+    {
+        $this->basedOn = $basedOn;
     }
 }

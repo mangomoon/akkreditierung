@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     280,
-                    259.5
+                    259
                 ]
             },
             "name": "New Model Object",
@@ -381,7 +381,7 @@
             "config": {
                 "position": [
                     301,
-                    471.5
+                    471
                 ]
             },
             "name": "New Model Object",
@@ -553,7 +553,7 @@
             "config": {
                 "position": [
                     289,
-                    29.5
+                    29
                 ]
             },
             "name": "New Model Object",
@@ -738,7 +738,7 @@
             "config": {
                 "position": [
                     919,
-                    28.5
+                    28
                 ]
             },
             "name": "New Model Object",
@@ -1150,7 +1150,7 @@
             "config": {
                 "position": [
                     599,
-                    280.5
+                    280
                 ]
             },
             "name": "New Model Object",
@@ -1810,7 +1810,7 @@
             "config": {
                 "position": [
                     28,
-                    53.5
+                    53
                 ]
             },
             "name": "New Model Object",
@@ -1935,7 +1935,7 @@
             "config": {
                 "position": [
                     39,
-                    477.5
+                    477
                 ]
             },
             "name": "New Model Object",
@@ -2036,7 +2036,7 @@
             "config": {
                 "position": [
                     14,
-                    275.5
+                    275
                 ]
             },
             "name": "New Model Object",
@@ -2293,7 +2293,7 @@
             "config": {
                 "position": [
                     646,
-                    33.5
+                    33
                 ]
             },
             "name": "New Model Object",
@@ -2646,7 +2646,7 @@
             "config": {
                 "position": [
                     828,
-                    506.5
+                    506
                 ]
             },
             "name": "New Model Object",
@@ -2747,7 +2747,7 @@
             "config": {
                 "position": [
                     885,
-                    284.5
+                    284
                 ]
             },
             "name": "New Model Object",
@@ -3053,7 +3053,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2022-11-27 06:49",
+        "last_modified": "2022-12-01 07:13",
         "extension_builder_version": "v11.0.8",
         "be_user": " (1)"
     }
