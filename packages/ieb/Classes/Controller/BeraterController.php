@@ -6,9 +6,12 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\Berater;
+use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
+use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
 use GeorgRinger\Ieb\Domain\Repository\BeraterRepository;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -45,6 +48,16 @@ class BeraterController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newBerater');
+    }
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('berater');
+    }
+
+
     public function createAction(Berater $newBerater)
     {
         $this->beraterRepository->add($newBerater);
@@ -70,5 +83,31 @@ class BeraterController extends BaseController
         $this->check($berater);
         $this->beraterRepository->remove($berater);
         $this->redirect('index');
+    }
+
+    protected function setTypeConverterConfigurationForImageUpload($argumentName)
+    {
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+            ->registerImplementation(
+                \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
+                FileReference::class
+            );
+
+        $uploadConfiguration = [
+            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/content/',
+        ];
+        /** @var PropertyMappingConfiguration $newExampleConfiguration */
+        $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+        $newExampleConfiguration->forProperty('lebenslauf')
+            ->setTypeConverterOptions(
+                UploadedFileReferenceConverter::class,
+                $uploadConfiguration
+            );
+//        $newExampleConfiguration->forProperty('imageCollection.0')
+//            ->setTypeConverterOptions(
+//                UploadedFileReferenceConverter::class,
+//                $uploadConfiguration
+//            );
     }
 }
