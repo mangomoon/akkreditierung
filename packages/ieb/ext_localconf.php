@@ -52,6 +52,17 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
+        'Standort',
+        [
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
         'Ansuchen',
         [
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone',

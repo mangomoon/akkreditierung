@@ -1,44 +1,22 @@
 <?php
 defined('TYPO3') || die();
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'Default',
-    'IEB'
-);
+$plugins = [
+    'Default' => 'IEB',
+    'Stamm' => 'IEB Stammdaten',
+    'Trainer' => 'IEB Trainer',
+    'Berater' => 'IEB Berater',
+    'Ansuchen' => 'IEB Ansuchen',
+    'AnsuchenBegutachtung' => 'IEB Ansuchen Begutachtung',
+    'User' => 'IEB User',
+    'Standort' => 'IEB Standort',
+];
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'Stamm',
-    'IEB Stammdaten'
-);
+foreach ($plugins as $key => $title) {
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'Trainer',
-    'IEB Trainer'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'Berater',
-    'IEB Berater'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'Ansuchen',
-    'IEB Ansuchen'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'User',
-    'IEB User'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Ieb',
-    'AnsuchenBegutachtung',
-    'IEB Ansuchen Begutachtung'
-);
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+        'Ieb',
+        $key,
+        $title
+    );
+}
