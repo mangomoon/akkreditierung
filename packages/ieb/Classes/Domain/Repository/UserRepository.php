@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -19,4 +22,14 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  */
 class UserRepository extends BaseRepository
 {
+
+    public function getAll(): QueryResultInterface
+    {
+        $query = $this->getQuery();
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+        $query->getQuerySettings()->setEnableFieldsToBeIgnored(['hidden', 'disabled']);
+        $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
+
+        return $query->execute();
+    }
 }

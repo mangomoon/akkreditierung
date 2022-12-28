@@ -76,7 +76,7 @@ class UserController extends BaseController
      */
     public function createAction(\GeorgRinger\Ieb\Domain\Model\User $newUser)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('Registierungsprozess noch nicht implementiert!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->userRepository->add($newUser);
         $this->redirect('list');
     }
