@@ -22,6 +22,11 @@ class BaseController extends ActionController
 
     use CurrentUserTrait;
 
+    protected function initializeView($view)
+    {
+        $view->assign('currentUser', self::getCurrentUser());
+    }
+
     protected function check(AbstractEntity $item)
     {
         if (!$this->isObjectAllowedForCurrentUser($item)) {
@@ -35,7 +40,7 @@ class BaseController extends ActionController
         if ($object->getPid() === 0) {
             return false;
         }
-        $currentUser = $this->getCurrentUser();
+        $currentUser = self::getCurrentUser();
         if (!$currentUser) {
             return false;
         }

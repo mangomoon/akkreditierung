@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 trait CurrentUserTrait
 {
 
-    public function getCurrentUser(): array
+    public static function getCurrentUser(): array
     {
         /** @var  $userAspect */
         $userAspect = GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user');
@@ -24,19 +24,19 @@ trait CurrentUserTrait
         return BackendUtility::getRecord('fe_users', $userId);
     }
 
-    public function getCurrentUserPid(): int
+    public static function getCurrentUserPid(): int
     {
-        return (int)$this->getCurrentUserField('pid');
+        return (int)self::getCurrentUserField('pid');
     }
 
-    public function getCurrentUserId(): int
+    public static function getCurrentUserId(): int
     {
-        return (int)$this->getCurrentUserField('uid');
+        return (int)self::getCurrentUserField('uid');
     }
 
-    private function getCurrentUserField(string $field)
+    private static function getCurrentUserField(string $field)
     {
-        $user = $this->getCurrentUser();
+        $user = self::getCurrentUser();
         if (!$user) {
             throw new \UnexpectedValueException('No user logged in');
         }

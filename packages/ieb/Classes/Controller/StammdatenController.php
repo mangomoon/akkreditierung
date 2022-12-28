@@ -44,6 +44,8 @@ class StammdatenController extends BaseController
     public function editAction(Stammdaten $stammdaten): ResponseInterface
     {
         $this->check($stammdaten);
+        $this->stammdatenRepository->setLockedAndPersist($stammdaten);
+
         $this->view->assign('stammdaten', $stammdaten);
         return $this->htmlResponse();
     }
@@ -63,5 +65,7 @@ class StammdatenController extends BaseController
         ]);
         return $this->htmlResponse();
     }
+
+
 
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
@@ -55,7 +56,7 @@ class AnsuchenController extends BaseController
     {
         $stammDaten = $this->stammdatenRepository->getLatest();
         $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
-        $newAnsuchen->setStatus(10);
+        $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
         $newAnsuchen->setStammdaten($staticStammDaten);
 
         $this->ansuchenRepository->add($newAnsuchen);
@@ -68,6 +69,7 @@ class AnsuchenController extends BaseController
     public function editAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
+        $this->ansuchenRepository->setLockedAndPersist($ansuchen);
         $this->view->assign('ansuchen', $ansuchen);
         return $this->htmlResponse();
     }
@@ -76,7 +78,7 @@ class AnsuchenController extends BaseController
     {
         $this->check($ansuchen);
         $this->addFlashMessage('Wurde eingereicht');
-        $ansuchen->setStatus(20);
+        $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
         $this->ansuchenRepository->update($ansuchen);
         $this->redirect('list');
         return $this->htmlResponse();
@@ -92,17 +94,25 @@ class AnsuchenController extends BaseController
     }
 
 
-    public function updateAction(Ansuchen $ansuchen)
+    public function updateAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->redirect('list');
     }
 
-    public function deleteAction(Ansuchen $ansuchen)
+    public function deleteAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->remove($ansuchen);
         $this->redirect('list');
     }
+
+    public function unlockAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $this->ansuchenRepository->setUnlockedAndPersist($ansuchen);
+        $this->redirect('list');
+    }
+
 }

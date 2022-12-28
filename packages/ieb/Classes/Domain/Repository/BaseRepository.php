@@ -25,7 +25,7 @@ class BaseRepository extends Repository
 
     public function add($object)
     {
-        $object->setPid($this->getCurrentUserPid());
+        $object->setPid(self::getCurrentUserPid());
         parent::add($object);
     }
 
@@ -49,7 +49,7 @@ class BaseRepository extends Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(true);
-        $currentUser = $this->getCurrentUser();
+        $currentUser = self::getCurrentUser();
         $query->getQuerySettings()->setStoragePageIds([$currentUser['pid'] ?? -1]);
 
         return $query;
@@ -64,7 +64,14 @@ class BaseRepository extends Repository
 
     public function setLockedAndPersist(AbstractEntity $item)
     {
-        $item->setLockedBy($this->getCurrentUserId());
+        $item->setLockedBy(self::getCurrentUserId());
+        $this->update($item);
+        $this->persistenceManager->persistAll();
+    }
+
+    public function setUnlockedAndPersist(AbstractEntity $item)
+    {
+        $item->setLockedBy(0);
         $this->update($item);
         $this->persistenceManager->persistAll();
     }

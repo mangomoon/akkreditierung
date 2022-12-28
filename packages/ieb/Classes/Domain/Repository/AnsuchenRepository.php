@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -41,7 +42,7 @@ class AnsuchenRepository extends BaseRepository
     {
         // todo clear all review fields?
         $overrideValues = [
-            'status' => 10,
+            'status' => AnsuchenStatus::NEU_IN_ARBEIT->value,
             'name' => $ansuchen->getName() . ' [KOPIE]',
             'kopie_von' => $ansuchen->getUid(),
         ];
