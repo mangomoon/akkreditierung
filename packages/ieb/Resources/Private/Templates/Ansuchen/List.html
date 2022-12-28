@@ -31,7 +31,6 @@
                     <code>[{item.status}]</code></td>
                 <td>
                     <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
-                    <f:debug>{lockInformation}</f:debug>
                     &middot;
                     <f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action>
                     <f:if condition="{lockInformation.editableByCurrentUser}">

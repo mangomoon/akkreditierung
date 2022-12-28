@@ -10,6 +10,7 @@ $plugins = [
     'AnsuchenBegutachtung' => 'IEB Ansuchen Begutachtung',
     'User' => 'IEB User',
     'Standort' => 'IEB Standort',
+    'Widget' => 'IEB Widget',
 ];
 
 foreach ($plugins as $key => $title) {
