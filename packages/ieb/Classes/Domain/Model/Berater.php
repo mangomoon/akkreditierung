@@ -19,6 +19,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 
     /**
      * nachname
@@ -56,6 +58,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
      */
     protected $standorte = null;
+
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
     /**
      * __construct
@@ -138,7 +147,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf
      * @return void
      */
-    public function setLebenslauf(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf)
+    public function setLebenslauf($lebenslauf)
     {
         $this->lebenslauf = $lebenslauf;
     }
@@ -159,7 +168,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise
      * @return void
      */
-    public function setQualifikationsnachweise(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise)
+    public function setQualifikationsnachweise($qualifikationsnachweise)
     {
         $this->qualifikationsnachweise = $qualifikationsnachweise;
     }
@@ -207,6 +216,24 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->standorte = $standorte;
     }
 
-    public \DateTime $tstamp;
-    public \DateTime $crdate;
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
 }

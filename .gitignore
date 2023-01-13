@@ -11,3 +11,4 @@ public/typo3conf/ENABLE_INSTALL_TOOL
 /.idea
 /backup
 /var
+packages/ieb/Resources/Private/Language/locallang_csh_*

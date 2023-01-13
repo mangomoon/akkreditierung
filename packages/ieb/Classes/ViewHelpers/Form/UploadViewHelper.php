@@ -4,6 +4,7 @@ namespace GeorgRinger\Ieb\ViewHelpers\Form;
 
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 
@@ -71,6 +72,6 @@ class UploadViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelpe
         if ($resource instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference) {
             return $resource;
         }
-        return $this->propertyMapper->convert($resource, 'TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference');
+        return $this->propertyMapper->convert($resource, FileReference::class);
     }
 }

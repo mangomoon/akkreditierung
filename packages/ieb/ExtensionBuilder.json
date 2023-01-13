@@ -357,6 +357,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "968894731280"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "666184612338"
                         }
                     ]
                 },
@@ -518,6 +530,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "NativeDate",
                             "uid": "214569244491"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "1462480555750"
                         }
                     ]
                 },
@@ -2012,6 +2036,18 @@
                             "propertyName": "qualifikationsnachweise",
                             "propertyType": "File",
                             "uid": "1031044924981"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "117266985960"
                         }
                     ]
                 },
@@ -2281,6 +2317,18 @@
                             "propertyName": "anerkennungPp3",
                             "propertyType": "Boolean",
                             "uid": "1230264457838"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "317524960614"
                         }
                     ]
                 },
@@ -3053,8 +3101,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2022-12-01 07:13",
-        "extension_builder_version": "v11.0.8",
+        "last_modified": "2023-01-13 11:46",
+        "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }
 }

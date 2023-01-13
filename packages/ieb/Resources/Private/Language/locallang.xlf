@@ -87,6 +87,9 @@
 			<trans-unit id="tx_ieb_domain_model_statictrainer.locked_by" resname="tx_ieb_domain_model_statictrainer.locked_by">
 				<source>Locked By</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_statictrainer.title" resname="tx_ieb_domain_model_statictrainer.title">
+				<source>Title</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_statictrainer.based_on" resname="tx_ieb_domain_model_statictrainer.based_on">
 				<source>Based On</source>
 			</trans-unit>
@@ -119,6 +122,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticberater.locked_by" resname="tx_ieb_domain_model_staticberater.locked_by">
 				<source>Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticberater.title" resname="tx_ieb_domain_model_staticberater.title">
+				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticberater.standorte" resname="tx_ieb_domain_model_staticberater.standorte">
 				<source>Standorte</source>
@@ -459,6 +465,9 @@
 			<trans-unit id="tx_ieb_domain_model_berater.qualifikationsnachweise" resname="tx_ieb_domain_model_berater.qualifikationsnachweise">
 				<source>Qualifikationsnachweise</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.title" resname="tx_ieb_domain_model_berater.title">
+				<source>Title</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.standorte" resname="tx_ieb_domain_model_berater.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -518,6 +527,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.anerkennung_pp3" resname="tx_ieb_domain_model_trainer.anerkennung_pp3">
 				<source>Anerkennung Pp3</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.title" resname="tx_ieb_domain_model_trainer.title">
+				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>

@@ -220,6 +220,13 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -915,5 +922,26 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
     }
 }

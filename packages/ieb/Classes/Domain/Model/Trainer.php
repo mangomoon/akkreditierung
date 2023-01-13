@@ -19,6 +19,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 
     /**
      * nachname
@@ -145,6 +147,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var bool
      */
     protected $anerkennungPp3 = false;
+
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
     /**
      * Returns the nachname
@@ -634,6 +643,24 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->anerkennungPp3;
     }
 
-    public \DateTime $tstamp;
-    public \DateTime $crdate;
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
 }

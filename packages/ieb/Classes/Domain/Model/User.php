@@ -19,8 +19,13 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    protected $username = '';
 
-    protected string $username = '';
+    /**
+     * @var bool
+     */
+    protected $disable = false;
+
     /**
      * name
      *
@@ -41,9 +46,6 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var bool
      */
     protected $trAdmin = false;
-
-    /** @var bool */
-    protected $disable = false;
 
     /**
      * Returns the name
@@ -121,7 +123,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return bool
      */
-    public function isDisable(): bool
+    public function isDisable()
     {
         return $this->disable;
     }
@@ -129,7 +131,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param bool $disable
      */
-    public function setDisable(bool $disable): void
+    public function setDisable(bool $disable)
     {
         $this->disable = $disable;
     }
@@ -137,10 +139,8 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getUsername()
     {
         return $this->username;
     }
-
-
 }

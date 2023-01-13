@@ -576,6 +576,27 @@ class StaticTrainerTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTitleReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getTitle()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTitleForStringSetsTitle(): void
+    {
+        $this->subject->setTitle('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
+    }
+
+    /**
+     * @test
+     */
     public function getBasedOnReturnsInitialValueForTrainer(): void
     {
         self::assertEquals(

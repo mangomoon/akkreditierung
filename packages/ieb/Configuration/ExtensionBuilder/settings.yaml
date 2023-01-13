@@ -49,7 +49,7 @@ overwriteSettings:
     #TCA merge not possible - use overrides directory
     TCA:
       Overrides: keep
-    #TypoScript: keep
+    Extbase: keep
 
   Resources:
     Private:
