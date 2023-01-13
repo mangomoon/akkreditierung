@@ -206,4 +206,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->standorte = $standorte;
     }
+
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 }

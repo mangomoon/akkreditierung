@@ -4,6 +4,21 @@
 <f:section name="content">
     <h1>Alle Trainer:innen</h1>
 
+    <f:form action="index" object="{trainerSearch}" name="trainerSearch">
+        <div>
+            <label for="nachname">Nachname</label>
+            <f:form.textfield property="nachname" id="nachname" />
+        </div>
+        <div>
+            <label for="vorname">Vorname</label>
+            <f:form.textfield property="vorname" id="vorname" />
+        </div>
+        <f:form.submit value="Filter" class="btn btn-primary" />
+        <f:if condition="{trainerSearch.used}">
+            <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
+        </f:if>
+    </f:form>
+
     <f:flashMessages/>
 
     <f:if condition="{trainers}">
@@ -15,6 +30,7 @@
                     <th>
                         <f:translate key="tx_ieb_domain_model_trainer.vorname"/>
                     </th>
+                    <th>Erstellungsdatum</th>
                     <th>Anzeigen</th>
                     <th>Bearbeiten</th>
                 </tr>
@@ -26,6 +42,7 @@
                         <td>
                             {trainer.vorname}
                         </td>
+                        <td>{trainer.crdate -> f:format.date(format:'d.m.Y')}</td>
                         <td> <f:link.action action="show" arguments="{trainer : trainer}">Anzeigen</f:link.action></td>
                         <td> <f:link.action action="edit" arguments="{trainer : trainer}">Bearbeiten</f:link.action></td>
                     </tr>

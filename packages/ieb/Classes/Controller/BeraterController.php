@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\Berater;
+use GeorgRinger\Ieb\Domain\Model\Dto\BeraterSearch;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
@@ -31,9 +32,12 @@ class BeraterController extends BaseController
         $this->beraterRepository = $BeraterRepository;
     }
 
-    public function indexAction(): ResponseInterface
+    public function indexAction(BeraterSearch $beraterSearch = null): ResponseInterface
     {
-        $this->view->assign('beraters', $this->beraterRepository->getAll());
+        $this->view->assignMultiple([
+            'beraters' => $this->beraterRepository->findBySearch($beraterSearch),
+            'beraterSearch' => $beraterSearch,
+        ]);
         return $this->htmlResponse();
     }
 
@@ -52,6 +56,7 @@ class BeraterController extends BaseController
     {
         $this->setTypeConverterConfigurationForImageUpload('newBerater');
     }
+
     public function initializeUpdateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('berater');

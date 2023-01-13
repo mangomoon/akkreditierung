@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -27,10 +28,12 @@ class TrainerController extends BaseController
         $this->trainerRepository = $trainerRepository;
     }
 
-    public function indexAction(): ResponseInterface
+    public function indexAction(TrainerSearch $trainerSearch = null): ResponseInterface
     {
-        $trainers = $this->trainerRepository->getAll();
-        $this->view->assign('trainers', $trainers);
+        $this->view->assignMultiple([
+            'trainers' => $this->trainerRepository->findBySearch($trainerSearch),
+            'trainerSearch' => $trainerSearch
+        ]);
         return $this->htmlResponse();
     }
 

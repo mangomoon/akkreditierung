@@ -633,4 +633,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->anerkennungPp3;
     }
+
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 }
