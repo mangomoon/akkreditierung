@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Repository;
 
-use GeorgRinger\Ieb\Domain\Model;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
