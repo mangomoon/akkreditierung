@@ -23,16 +23,9 @@ class AnsuchenController extends BaseController
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\StammdatenRepository $stammdatenRepository;
-
-    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
-    {
-        $this->ansuchenRepository = $ansuchenRepository;
-    }
-
-    public function injectStammdatanRepository(Repository\StammdatenRepository $stammdatenRepository)
-    {
-        $this->stammdatenRepository = $stammdatenRepository;
-    }
+    protected Repository\BeraterRepository $beraterRepository;
+    protected Repository\TrainerRepository $trainerRepository;
+    protected Repository\StandortRepository $standortRepository;
 
     public function listAction(): ResponseInterface
     {
@@ -49,6 +42,7 @@ class AnsuchenController extends BaseController
 
     public function newAction(): ResponseInterface
     {
+        $this->addRelationDataToView();
         return $this->htmlResponse();
     }
 
@@ -71,6 +65,7 @@ class AnsuchenController extends BaseController
         $this->check($ansuchen);
         $this->ansuchenRepository->setLockedAndPersist($ansuchen);
         $this->view->assign('ansuchen', $ansuchen);
+        $this->addRelationDataToView();
         return $this->htmlResponse();
     }
 
@@ -113,6 +108,44 @@ class AnsuchenController extends BaseController
         $this->check($ansuchen);
         $this->ansuchenRepository->setUnlockedAndPersist($ansuchen);
         $this->redirect('list');
+    }
+
+    protected function addRelationDataToView(): void
+    {
+        $this->view->assignMultiple([
+            'relations' => [
+                'standorte' => $this->standortRepository->getAll(),
+                'berater' => $this->beraterRepository->getAll(),
+                'trainer' => $this->trainerRepository->getAll(),
+                'stammdaten' => $this->stammdatenRepository->getLatest(),
+            ],
+        ]);
+    }
+
+
+    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
+    {
+        $this->ansuchenRepository = $ansuchenRepository;
+    }
+
+    public function injectStammdatanRepository(Repository\StammdatenRepository $stammdatenRepository): void
+    {
+        $this->stammdatenRepository = $stammdatenRepository;
+    }
+
+    public function injectBeraterRepository(Repository\BeraterRepository $repository): void
+    {
+        $this->beraterRepository = $repository;
+    }
+
+    public function injectTrainerRepository(Repository\TrainerRepository $repository): void
+    {
+        $this->trainerRepository = $repository;
+    }
+
+    public function injectStandortRepository(Repository\StandortRepository $repository): void
+    {
+        $this->standortRepository = $repository;
     }
 
 }

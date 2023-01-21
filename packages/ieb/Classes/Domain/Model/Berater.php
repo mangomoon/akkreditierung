@@ -236,4 +236,9 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
+
+    public function getVollerName()
+    {
+        return $this->vorname . ' ' . $this->nachname;
+    }
 }
