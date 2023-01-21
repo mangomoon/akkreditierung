@@ -213,18 +213,18 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lockedBy = 0;
 
     /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Trainer
-     */
-    protected $basedOn = null;
-
-    /**
      * title
      *
      * @var string
      */
     protected $title = '';
+
+    /**
+     * basedOn
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Trainer
+     */
+    protected $basedOn = null;
 
     /**
      * Returns the nachname
@@ -944,7 +944,6 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
-
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;

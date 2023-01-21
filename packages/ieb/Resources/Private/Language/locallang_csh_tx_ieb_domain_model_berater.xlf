@@ -15,6 +15,9 @@
 			<trans-unit id="qualifikationsnachweise.description" resname="qualifikationsnachweise.description">
 				<source>qualifikationsnachweise</source>
 			</trans-unit>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
+			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>

@@ -141,12 +141,16 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_total_frist date DEFAULT NULL,
 	locked_by int(11) NOT NULL DEFAULT '0',
 	status int(11) DEFAULT '0' NOT NULL,
+	stammdaten_static int(11) unsigned DEFAULT '0',
+	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
+	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
+	trainer_static int(11) unsigned NOT NULL DEFAULT '0',
+	berater_static int(11) unsigned NOT NULL DEFAULT '0',
+	kopie_von int(11) unsigned DEFAULT '0',
 	stammdaten int(11) unsigned DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
-	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
 	trainer int(11) unsigned NOT NULL DEFAULT '0',
-	berater int(11) unsigned NOT NULL DEFAULT '0',
-	kopie_von int(11) unsigned DEFAULT '0'
+	berater int(11) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_standort (

@@ -1,15 +1,32 @@
-
 config.tx_extbase {
-  persistence {
-    classes {
+    persistence {
+        classes {
 
-      GeorgRinger\Ieb\Domain\Model\User {
-        mapping {
-          tableName = fe_users
-          recordType = Tx_Ieb_User
+            GeorgRinger\Ieb\Domain\Model\User {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_Ieb_User
+                }
+            }
+
         }
-      }
-
     }
-  }
+}
+
+
+plugin.tx_ieb.settings {
+    static {
+        bundesland {
+            1 = Wien
+            2 = Niederösterreich
+            3 = Oberösterreich
+            4 = Salzburg
+            5 = Steiermark
+            6 = Tirol
+            7 = Vorarlberg
+            8 = Burgenland
+            9 = Kärnten
+        }
+    }
+
 }

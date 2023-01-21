@@ -30,6 +30,9 @@
 			<trans-unit id="locked_by.description" resname="locked_by.description">
 				<source>lockedBy</source>
 			</trans-unit>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
+			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>

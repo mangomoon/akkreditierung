@@ -44,7 +44,7 @@ class StaticBeraterControllerTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $staticBeraterRepository = $this->getMockBuilder(\::class)
+        $staticBeraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StaticBeraterRepository::class)
             ->onlyMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -79,7 +79,7 @@ class StaticBeraterControllerTest extends UnitTestCase
     {
         $staticBerater = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
 
-        $staticBeraterRepository = $this->getMockBuilder(\::class)
+        $staticBeraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StaticBeraterRepository::class)
             ->onlyMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -111,7 +111,7 @@ class StaticBeraterControllerTest extends UnitTestCase
     {
         $staticBerater = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
 
-        $staticBeraterRepository = $this->getMockBuilder(\::class)
+        $staticBeraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StaticBeraterRepository::class)
             ->onlyMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -129,7 +129,7 @@ class StaticBeraterControllerTest extends UnitTestCase
     {
         $staticBerater = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
 
-        $staticBeraterRepository = $this->getMockBuilder(\::class)
+        $staticBeraterRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StaticBeraterRepository::class)
             ->onlyMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

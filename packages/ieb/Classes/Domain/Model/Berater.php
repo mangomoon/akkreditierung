@@ -53,18 +53,18 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationsnachweise = null;
 
     /**
-     * standorte
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
-     */
-    protected $standorte = null;
-
-    /**
      * title
      *
      * @var string
      */
     protected $title = '';
+
+    /**
+     * standorte
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     */
+    protected $standorte = null;
 
     /**
      * __construct
@@ -236,7 +236,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
-
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;

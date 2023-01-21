@@ -14,7 +14,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, stammdaten, standorte, verantwortliche, trainer, berater, kopie_von, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, stammdaten_static, standorte_static, verantwortliche, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -841,9 +841,9 @@ return [
                 'eval' => ''
             ],
         ],
-        'stammdaten' => [
+        'stammdaten_static' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.stammdaten',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.stammdaten_static',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -854,14 +854,14 @@ return [
             ],
             
         ],
-        'standorte' => [
+        'standorte_static' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.standorte',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.standorte_static',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_ieb_domain_model_staticstandort',
-                'MM' => 'tx_ieb_ansuchen_standort_mm',
+                'MM' => 'tx_ieb_ansuchen_staticstandort_mm',
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
@@ -898,14 +898,14 @@ return [
             ],
 
         ],
-        'trainer' => [
+        'trainer_static' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.trainer',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.trainer_static',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_ieb_domain_model_statictrainer',
-                'MM' => 'tx_ieb_ansuchen_trainer_mm',
+                'MM' => 'tx_ieb_ansuchen_statictrainer_mm',
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
@@ -924,14 +924,14 @@ return [
             ],
             
         ],
-        'berater' => [
+        'berater_static' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.berater',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.berater_static',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_ieb_domain_model_staticberater',
-                'MM' => 'tx_ieb_ansuchen_berater_mm',
+                'MM' => 'tx_ieb_ansuchen_staticberater_mm',
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
@@ -961,6 +961,110 @@ return [
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 1,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            
+        ],
+        'stammdaten' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.stammdaten',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_ieb_domain_model_stammdaten',
+                'default' => 0,
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 1,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            
+        ],
+        'standorte' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.standorte',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_ieb_domain_model_standort',
+                'MM' => 'tx_ieb_ansuchen_standort_mm',
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            
+        ],
+        'trainer' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.trainer',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_ieb_domain_model_trainer',
+                'MM' => 'tx_ieb_ansuchen_trainer_mm',
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            
+        ],
+        'berater' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.berater',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_ieb_domain_model_berater',
+                'MM' => 'tx_ieb_ansuchen_berater_mm',
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
                 'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [

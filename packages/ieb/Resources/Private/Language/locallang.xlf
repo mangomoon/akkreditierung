@@ -408,23 +408,35 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.status" resname="tx_ieb_domain_model_ansuchen.status">
 				<source>Status</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
+				<source>Stammdaten Static</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.standorte_static" resname="tx_ieb_domain_model_ansuchen.standorte_static">
+				<source>Standorte Static</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.verantwortliche" resname="tx_ieb_domain_model_ansuchen.verantwortliche">
+				<source>Verantwortliche</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.trainer_static" resname="tx_ieb_domain_model_ansuchen.trainer_static">
+				<source>Trainer Static</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.berater_static" resname="tx_ieb_domain_model_ansuchen.berater_static">
+				<source>Berater Static</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kopie_von" resname="tx_ieb_domain_model_ansuchen.kopie_von">
+				<source>Kopie Von</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten" resname="tx_ieb_domain_model_ansuchen.stammdaten">
 				<source>Stammdaten</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.standorte" resname="tx_ieb_domain_model_ansuchen.standorte">
 				<source>Standorte</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.verantwortliche" resname="tx_ieb_domain_model_ansuchen.verantwortliche">
-				<source>Verantwortliche</source>
-			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.trainer" resname="tx_ieb_domain_model_ansuchen.trainer">
 				<source>Trainer</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.berater" resname="tx_ieb_domain_model_ansuchen.berater">
 				<source>Berater</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kopie_von" resname="tx_ieb_domain_model_ansuchen.kopie_von">
-				<source>Kopie Von</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_standort" resname="tx_ieb_domain_model_standort">
 				<source>Standort</source>

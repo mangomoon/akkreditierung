@@ -11,5 +11,6 @@
 <f:render partial="Form/Select" arguments="{property:'standorte', label:'Standorte', options:relations.standorte, multiple:1, optionLabelField:'name'}" />
 <f:render partial="Form/Select" arguments="{property:'trainer', label:'Trainer:innen', options:relations.trainer, multiple:1, optionLabelField:'vollerName'}" />
 <f:render partial="Form/Select" arguments="{property:'berater', label:'Berater:innen', options:relations.berater, multiple:1, optionLabelField:'vollerName'}" />
+<f:render partial="Form/Select" arguments="{property:'bundesland', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
 
 </html>

@@ -141,23 +141,35 @@
 			<trans-unit id="status.description" resname="status.description">
 				<source>status</source>
 			</trans-unit>
+			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
+				<source>stammdatenStatic</source>
+			</trans-unit>
+			<trans-unit id="standorte_static.description" resname="standorte_static.description">
+				<source>standorteStatic</source>
+			</trans-unit>
+			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
+				<source>verantwortliche</source>
+			</trans-unit>
+			<trans-unit id="trainer_static.description" resname="trainer_static.description">
+				<source>trainerStatic</source>
+			</trans-unit>
+			<trans-unit id="berater_static.description" resname="berater_static.description">
+				<source>beraterStatic</source>
+			</trans-unit>
+			<trans-unit id="kopie_von.description" resname="kopie_von.description">
+				<source>kopieVon</source>
+			</trans-unit>
 			<trans-unit id="stammdaten.description" resname="stammdaten.description">
 				<source>stammdaten</source>
 			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>
-			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
-				<source>verantwortliche</source>
-			</trans-unit>
 			<trans-unit id="trainer.description" resname="trainer.description">
 				<source>trainer</source>
 			</trans-unit>
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
-			</trans-unit>
-			<trans-unit id="kopie_von.description" resname="kopie_von.description">
-				<source>kopieVon</source>
 			</trans-unit>
 		</body>
 	</file>

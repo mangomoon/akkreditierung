@@ -4,17 +4,37 @@
     </label>
 
     <div class="">
-        <f:form.select
-            options="{options}"
-            property="{property}"
-            class="form-control"
-            id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
-            additionalAttributes="{additional}"
-            multiple="{multiple}"
-            data="{data}"
-            optionLabelField="{optionLabelField}"
+        <f:if condition="{prependOption}">
+            <f:then>
+                <f:form.select
+                        options="{options}"
+                        property="{property}"
+                        class="form-control"
+                        id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+                        additionalAttributes="{additional}"
+                        multiple="{multiple}"
+                        data="{data}"
+                        optionLabelField="{optionLabelField}"
+                        prependOptionValue="{prependOptionValue}"
+                        prependOptionLabel="{prependOptionLabel}"
+                        sortByOptionLabel="{sortByOptionLabel}"
+                />
+            </f:then>
+            <f:else>
+                <f:form.select
+                        options="{options}"
+                        property="{property}"
+                        class="form-control"
+                        id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+                        additionalAttributes="{additional}"
+                        multiple="{multiple}"
+                        data="{data}"
+                        optionLabelField="{optionLabelField}"
+                        sortByOptionLabel="{sortByOptionLabel}"
+                />
+            </f:else>
+        </f:if>
 
-        />
     </div>
 
 </div>

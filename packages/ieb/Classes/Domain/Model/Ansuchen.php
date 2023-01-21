@@ -349,18 +349,18 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $status = 0;
 
     /**
-     * stammdaten
+     * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
      */
-    protected $stammdaten = null;
+    protected $stammdatenStatic = null;
 
     /**
-     * standorte
+     * standorteStatic
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
      */
-    protected $standorte = null;
+    protected $standorteStatic = null;
 
     /**
      * verantwortliche
@@ -371,18 +371,18 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $verantwortliche = null;
 
     /**
-     * trainer
+     * trainerStatic
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer>
      */
-    protected $trainer = null;
+    protected $trainerStatic = null;
 
     /**
-     * berater
+     * beraterStatic
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater>
      */
-    protected $berater = null;
+    protected $beraterStatic = null;
 
     /**
      * kopieVon
@@ -390,6 +390,34 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Ansuchen
      */
     protected $kopieVon = null;
+
+    /**
+     * stammdaten
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Stammdaten
+     */
+    protected $stammdaten = null;
+
+    /**
+     * standorte
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     */
+    protected $standorte = null;
+
+    /**
+     * trainer
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Trainer>
+     */
+    protected $trainer = null;
+
+    /**
+     * berater
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
+     */
+    protected $berater = null;
 
     /**
      * __construct
@@ -411,8 +439,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function initializeObject()
     {
-        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->standorteStatic = $this->standorteStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->verantwortliche = $this->verantwortliche ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->trainerStatic = $this->trainerStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->beraterStatic = $this->beraterStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainer = $this->trainer ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->berater = $this->berater ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
@@ -1415,156 +1446,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the stammdaten
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\StaticStammdaten stammdaten
-     */
-    public function getStammdaten()
-    {
-        return $this->stammdaten;
-    }
-
-    /**
-     * Sets the stammdaten
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdaten
-     * @return void
-     */
-    public function setStammdaten(\GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdaten)
-    {
-        $this->stammdaten = $stammdaten;
-    }
-
-    /**
-     * Adds a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte
-     * @return void
-     */
-    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte)
-    {
-        $this->standorte->attach($standorte);
-    }
-
-    /**
-     * Removes a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove The StaticStandort to be removed
-     * @return void
-     */
-    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteToRemove)
-    {
-        $this->standorte->detach($standorteToRemove);
-    }
-
-    /**
-     * Returns the standorte
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> standorte
-     */
-    public function getStandorte()
-    {
-        return $this->standorte;
-    }
-
-    /**
-     * Sets the standorte
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> $standorte
-     * @return void
-     */
-    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
-    {
-        $this->standorte = $standorte;
-    }
-
-    /**
-     * Adds a Trainer
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainer
-     * @return void
-     */
-    public function addTrainer(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainer)
-    {
-        $this->trainer->attach($trainer);
-    }
-
-    /**
-     * Removes a Trainer
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerToRemove The StaticTrainer to be removed
-     * @return void
-     */
-    public function removeTrainer(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerToRemove)
-    {
-        $this->trainer->detach($trainerToRemove);
-    }
-
-    /**
-     * Returns the trainer
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> trainer
-     */
-    public function getTrainer()
-    {
-        return $this->trainer;
-    }
-
-    /**
-     * Sets the trainer
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> $trainer
-     * @return void
-     */
-    public function setTrainer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $trainer)
-    {
-        $this->trainer = $trainer;
-    }
-
-    /**
-     * Adds a Berater
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $berater
-     * @return void
-     */
-    public function addBerater(\GeorgRinger\Ieb\Domain\Model\StaticBerater $berater)
-    {
-        $this->berater->attach($berater);
-    }
-
-    /**
-     * Removes a Berater
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterToRemove The StaticBerater to be removed
-     * @return void
-     */
-    public function removeBerater(\GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterToRemove)
-    {
-        $this->berater->detach($beraterToRemove);
-    }
-
-    /**
-     * Returns the berater
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> berater
-     */
-    public function getBerater()
-    {
-        return $this->berater;
-    }
-
-    /**
-     * Sets the berater
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> $berater
-     * @return void
-     */
-    public function setBerater(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $berater)
-    {
-        $this->berater = $berater;
-    }
-
-    /**
      * Returns the kopieVon
      *
      * @return \GeorgRinger\Ieb\Domain\Model\Ansuchen
@@ -1625,5 +1506,305 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatus(int $status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * Returns the stammdatenStatic
+     *
+     * @return \GeorgRinger\Ieb\Domain\Model\StaticStammdaten stammdatenStatic
+     */
+    public function getStammdatenStatic()
+    {
+        return $this->stammdatenStatic;
+    }
+
+    /**
+     * Sets the stammdatenStatic
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdatenStatic
+     * @return void
+     */
+    public function setStammdatenStatic(\GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdatenStatic)
+    {
+        $this->stammdatenStatic = $stammdatenStatic;
+    }
+
+    /**
+     * Adds a Standort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStatic
+     * @return void
+     */
+    public function addStandorteStatic(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStatic)
+    {
+        $this->standorteStatic->attach($standorteStatic);
+    }
+
+    /**
+     * Removes a Standort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStaticToRemove The StaticStandort to be removed
+     * @return void
+     */
+    public function removeStandorteStatic(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStaticToRemove)
+    {
+        $this->standorteStatic->detach($standorteStaticToRemove);
+    }
+
+    /**
+     * Returns the standorteStatic
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> standorteStatic
+     */
+    public function getStandorteStatic()
+    {
+        return $this->standorteStatic;
+    }
+
+    /**
+     * Sets the standorteStatic
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> $standorteStatic
+     * @return void
+     */
+    public function setStandorteStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorteStatic)
+    {
+        $this->standorteStatic = $standorteStatic;
+    }
+
+    /**
+     * Adds a Trainer
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStatic
+     * @return void
+     */
+    public function addTrainerStatic(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStatic)
+    {
+        $this->trainerStatic->attach($trainerStatic);
+    }
+
+    /**
+     * Removes a Trainer
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStaticToRemove The StaticTrainer to be removed
+     * @return void
+     */
+    public function removeTrainerStatic(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStaticToRemove)
+    {
+        $this->trainerStatic->detach($trainerStaticToRemove);
+    }
+
+    /**
+     * Returns the trainerStatic
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> trainerStatic
+     */
+    public function getTrainerStatic()
+    {
+        return $this->trainerStatic;
+    }
+
+    /**
+     * Sets the trainerStatic
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> $trainerStatic
+     * @return void
+     */
+    public function setTrainerStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $trainerStatic)
+    {
+        $this->trainerStatic = $trainerStatic;
+    }
+
+    /**
+     * Adds a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStatic
+     * @return void
+     */
+    public function addBeraterStatic(\GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStatic)
+    {
+        $this->beraterStatic->attach($beraterStatic);
+    }
+
+    /**
+     * Removes a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStaticToRemove The StaticBerater to be removed
+     * @return void
+     */
+    public function removeBeraterStatic(\GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStaticToRemove)
+    {
+        $this->beraterStatic->detach($beraterStaticToRemove);
+    }
+
+    /**
+     * Returns the beraterStatic
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> beraterStatic
+     */
+    public function getBeraterStatic()
+    {
+        return $this->beraterStatic;
+    }
+
+    /**
+     * Sets the beraterStatic
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> $beraterStatic
+     * @return void
+     */
+    public function setBeraterStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $beraterStatic)
+    {
+        $this->beraterStatic = $beraterStatic;
+    }
+
+    /**
+     * Returns the stammdaten
+     *
+     * @return \GeorgRinger\Ieb\Domain\Model\Stammdaten
+     */
+    public function getStammdaten()
+    {
+        return $this->stammdaten;
+    }
+
+    /**
+     * Sets the stammdaten
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
+     * @return void
+     */
+    public function setStammdaten(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten)
+    {
+        $this->stammdaten = $stammdaten;
+    }
+
+    /**
+     * Adds a Standort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorte
+     * @return void
+     */
+    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorte)
+    {
+        $this->standorte->attach($standorte);
+    }
+
+    /**
+     * Removes a Standort
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove The Standort to be removed
+     * @return void
+     */
+    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove)
+    {
+        $this->standorte->detach($standorteToRemove);
+    }
+
+    /**
+     * Returns the standorte
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     */
+    public function getStandorte()
+    {
+        return $this->standorte;
+    }
+
+    /**
+     * Sets the standorte
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort> $standorte
+     * @return void
+     */
+    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
+    {
+        $this->standorte = $standorte;
+    }
+
+    /**
+     * Adds a Trainer
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
+     * @return void
+     */
+    public function addTrainer(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer)
+    {
+        $this->trainer->attach($trainer);
+    }
+
+    /**
+     * Removes a Trainer
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainerToRemove The Trainer to be removed
+     * @return void
+     */
+    public function removeTrainer(\GeorgRinger\Ieb\Domain\Model\Trainer $trainerToRemove)
+    {
+        $this->trainer->detach($trainerToRemove);
+    }
+
+    /**
+     * Returns the trainer
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Trainer>
+     */
+    public function getTrainer()
+    {
+        return $this->trainer;
+    }
+
+    /**
+     * Sets the trainer
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Trainer> $trainer
+     * @return void
+     */
+    public function setTrainer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $trainer)
+    {
+        $this->trainer = $trainer;
+    }
+
+    /**
+     * Adds a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Berater $berater
+     * @return void
+     */
+    public function addBerater(\GeorgRinger\Ieb\Domain\Model\Berater $berater)
+    {
+        $this->berater->attach($berater);
+    }
+
+    /**
+     * Removes a Berater
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\Berater $beraterToRemove The Berater to be removed
+     * @return void
+     */
+    public function removeBerater(\GeorgRinger\Ieb\Domain\Model\Berater $beraterToRemove)
+    {
+        $this->berater->detach($beraterToRemove);
+    }
+
+    /**
+     * Returns the berater
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
+     */
+    public function getBerater()
+    {
+        return $this->berater;
+    }
+
+    /**
+     * Sets the berater
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater> $berater
+     * @return void
+     */
+    public function setBerater(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $berater)
+    {
+        $this->berater = $berater;
     }
 }
