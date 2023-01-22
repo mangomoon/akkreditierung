@@ -9,12 +9,14 @@
         }
     }],
     "require": {
+        "ext-pdo": "*",
         "b13/bolt": "^2.2",
         "b13/container": "^1.4",
         "b13/menus": "^0.3.0",
         "georgringer/ieb": "@dev",
         "helhum/typo3-console": "^7.1",
         "mangomoon/mangomoonspecify": "@dev",
+        "mangomoon/mangomoon": "dev-main",
         "typo3/cms-adminpanel": "^11",
         "typo3/cms-backend": "^11",
         "typo3/cms-belog": "^11",
@@ -45,15 +47,12 @@
         "typo3/cms-viewpage": "^11"
     },
     "require-dev": {
-        "captainhook/captainhook": "^5.4",
         "friendsofphp/php-cs-fixer": "^3 || ^2",
         "friendsoftypo3/extension-builder": "^11",
         "phpunit/phpunit": "^8 || ^7 || ^9",
         "saschaegerer/phpstan-typo3": "^0.13 || ^1",
         "typo3/testing-framework": "^6.4",
-        "vimeo/psalm": "^4.0",
-        "mangomoon/mangomoon": "dev-main",
-        "mangomoon/mangomoonspecify": "dev-main"
+        "vimeo/psalm": "^4.0"
     },
     "config": {
         "optimize-autoloader": true,

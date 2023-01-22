@@ -1,6 +1,6 @@
 <div class="{class}">
     <label for="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" class="col-form-label ">
-        {label}<f:if condition="{additional.required}"><span class="mandatory">*</span></f:if>
+        {label}<f:if condition="{required}">&nbsp;<span class="mandatory">*</span></f:if>
     </label>
 
     <div class="field">
@@ -8,6 +8,7 @@
             <f:then>
                 <f:form.textfield
                     property="{property}"
+                    required="{settings}"
                     value="{isDate -> f:format.date(format:'d.m.Y')}"
                     class="form-control"
                     id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
@@ -19,6 +20,7 @@
             <f:else>
                 <f:form.textfield
                     property="{property}"
+                    required="{settings}"
                     class="form-control"
                     id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
                     additionalAttributes="{additional}"

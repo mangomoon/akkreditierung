@@ -11,10 +11,10 @@ $plugins = [
     'User' => 'IEB User',
     'Standort' => 'IEB Standort',
     'Widget' => 'IEB Widget',
+    'Registration' => 'IEB Registration',
 ];
 
 foreach ($plugins as $key => $title) {
-
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         'Ieb',
         $key,

@@ -109,6 +109,18 @@ defined('TYPO3') || die();
         ]
     );
 
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'Registration',
+        [
+            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn',
+        ],
+        // non-cacheable actions
+        [
+            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn',
+        ]
+    );
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter::class);
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\ObjectStorageConverter::class);
 })();
