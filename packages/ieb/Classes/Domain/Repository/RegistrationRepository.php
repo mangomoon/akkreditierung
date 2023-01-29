@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationForm;
+use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationInvitation;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
@@ -50,6 +51,16 @@ class RegistrationRepository
         $queryBuilder->insert('fe_users')->values($userData)->execute();
 
         return $pageId;
+    }
+
+    public function updateUserFromInvitation(RegistrationInvitation $form): void
+    {
+        $userData = [
+            'usergroup' => $this->extensionConfiguration->getUsergroupAktiv(),
+            'password' => $this->generatePasswordHash($form->password),
+        ];
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
+        $connection->update('fe_users', $userData, ['uid' => $form->userId]);
     }
 
     public function getPageRowById(int $pageId)

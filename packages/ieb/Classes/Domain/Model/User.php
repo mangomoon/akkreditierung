@@ -19,53 +19,53 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    protected $username = '';
-
     /**
      * @var bool
      */
     protected $disable = false;
 
-    /**
-     * name
-     *
-     * @var string
-     */
-    protected $name = '';
+    protected string $username = '';
+    protected string $firstName = '';
+    protected string $lastName = '';
+    protected string $email = '';
+    protected string $password = '';
+    protected string $usergroup = '';
 
     /**
-     * email
-     *
-     * @var string
-     */
-    protected $email = '';
-
-    /**
-     * trAdmin
-     *
      * @var bool
      */
     protected $trAdmin = false;
 
     /**
-     * Returns the name
-     *
      * @return string
      */
-    public function getName()
+    public function getFirstName(): string
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
-     * Sets the name
-     *
-     * @param string $name
-     * @return void
+     * @param string $firstName
      */
-    public function setName(string $name)
+    public function setFirstName(string $firstName): void
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
     }
 
     /**
@@ -139,8 +139,54 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsergroup(): string
+    {
+        return $this->usergroup;
+    }
+
+    /**
+     * @param string $usergroup
+     */
+    public function setUsergroup(string $usergroup): void
+    {
+        $this->usergroup = $usergroup;
+    }
+
+    public function getFullname()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
 }

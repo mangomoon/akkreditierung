@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
+use GeorgRinger\Ieb\Domain\Repository\UserRepository;
 use GeorgRinger\Ieb\Service\HashService;
 use GeorgRinger\Ieb\Service\MailService;
 use Psr\Http\Message\ResponseInterface;
@@ -27,6 +28,7 @@ class RegistrationController extends ActionController
 {
 
     protected RegistrationRepository $registrationRepository;
+    protected UserRepository $userRepository;
 
     public function initializeAction()
     {
@@ -83,10 +85,38 @@ class RegistrationController extends ActionController
         return $this->htmlResponse();
     }
 
+    public function acceptInvitationAction(int $userId, string $userHash): ResponseInterface
+    {
+        if (!HashService::validate((string)$userId, $userHash)) {
+            $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
+            return $this->htmlResponse();
+        }
+
+        $registrationInvitation = new Dto\RegistrationInvitation();
+        $registrationInvitation->userId = $userId;
+        $registrationInvitation->userHash = $userHash;
+        $this->view->assignMultiple([
+            'potentialUser' => $this->userRepository->findByIdentifier($userId),
+            'registrationInvitation' => $registrationInvitation,
+        ]);
+        return $this->htmlResponse();
+    }
+
     /**
-     * @param Dto\RegistrationForm $registrationForm
-     * @param int $newPageId
+     * @Extbase\Validate("GeorgRinger\Ieb\Domain\Validator\RegistrationInvitationValidator", param="registrationInvitation")
      */
+    public function acceptInvitationSuccessAction(Dto\RegistrationInvitation $registrationInvitation): ResponseInterface
+    {
+        if (!HashService::validate((string)$registrationInvitation->userId, $registrationInvitation->userHash)) {
+            $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
+            return $this->htmlResponse();
+        }
+
+        $this->registrationRepository->updateUserFromInvitation($registrationInvitation);
+        $this->addFlashMessage('Die Registrierung war erfolgreich', '', AbstractMessage::OK);
+        return $this->htmlResponse();
+    }
+
     protected function sendMailToUser(Dto\RegistrationForm $registrationForm, int $newPageId): void
     {
         $assignedMailValues = [
@@ -111,6 +141,11 @@ class RegistrationController extends ActionController
             $registrationForm->email,
             $registrationForm->getFullName()
         );
+    }
+
+    public function injectUserRepository(UserRepository $userRepository): void
+    {
+        $this->userRepository = $userRepository;
     }
 
 }

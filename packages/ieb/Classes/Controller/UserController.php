@@ -4,6 +4,15 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Controller;
 
+use GeorgRinger\Ieb\Domain\Model\User;
+use GeorgRinger\Ieb\Domain\Repository\StammdatenRepository;
+use GeorgRinger\Ieb\Domain\Repository\UserRepository;
+use GeorgRinger\Ieb\ExtensionConfiguration;
+use GeorgRinger\Ieb\Service\HashService;
+use GeorgRinger\Ieb\Service\MailService;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -13,96 +22,114 @@ namespace GeorgRinger\Ieb\Controller;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
-/**
- * UserController
- */
 class UserController extends BaseController
 {
 
-    /**
-     * userRepository
-     *
-     * @var \GeorgRinger\Ieb\Domain\Repository\UserRepository
-     */
-    protected $userRepository = null;
+    protected StammdatenRepository $stammdatenRepository;
+    protected UserRepository $userRepository;
+    protected ExtensionConfiguration $extensionConfiguration;
 
-    /**
-     * @param \GeorgRinger\Ieb\Domain\Repository\UserRepository $userRepository
-     */
-    public function injectUserRepository(\GeorgRinger\Ieb\Domain\Repository\UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
-    /**
-     * action list
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function listAction(): \Psr\Http\Message\ResponseInterface
+    public function listAction(): ResponseInterface
     {
         $users = $this->userRepository->getAll();
         $this->view->assign('users', $users);
         return $this->htmlResponse();
     }
 
-    /**
-     * action show
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $user
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function showAction(\GeorgRinger\Ieb\Domain\Model\User $user): \Psr\Http\Message\ResponseInterface
+    public function showAction(User $user): ResponseInterface
     {
         $this->view->assign('user', $user);
         return $this->htmlResponse();
     }
 
-    /**
-     * action new
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function newAction(): \Psr\Http\Message\ResponseInterface
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
 
-    /**
-     * action create
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $newUser
-     */
-    public function createAction(\GeorgRinger\Ieb\Domain\Model\User $newUser)
+    public function createAction(User $newUser): void
     {
-        $this->addFlashMessage('Registierungsprozess noch nicht implementiert!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $newUser->setUsername($newUser->getEmail());
+        $newUser->setUsergroup((string)$this->extensionConfiguration->getUsergroupEingeladenInaktiv());
+        $this->addFlashMessage('User wurde eingeladen und Email zur Einladung verschickt', '', AbstractMessage::INFO);
         $this->userRepository->add($newUser);
+        $this->userRepository->forcePersist();
+        $this->sendMailToUserAfterInvitation($newUser);
         $this->redirect('list');
     }
 
     /**
      * action edit
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $user
+     * @param User $user
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("user")
-     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function editAction(\GeorgRinger\Ieb\Domain\Model\User $user): \Psr\Http\Message\ResponseInterface
+    public function editAction(User $user): ResponseInterface
     {
+        $this->validateUserCrud($user);
         $this->view->assign('user', $user);
         return $this->htmlResponse();
     }
 
-    /**
-     * action update
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $user
-     */
-    public function updateAction(\GeorgRinger\Ieb\Domain\Model\User $user)
+    public function updateAction(User $user): void
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->validateUserCrud($user);
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->userRepository->update($user);
         $this->redirect('list');
+    }
+
+    protected function validateUserCrud(User $user): void
+    {
+        if ($this->isObjectAllowedForCurrentUser($user) === false || !self::currentUserIsTrAdmin()) {
+            $this->addFlashMessage('Sie haben keine Berechtigung, diesen Benutzer zu bearbeiten!', '', AbstractMessage::ERROR);
+            $this->redirect('list');
+        }
+    }
+
+    protected function sendMailToUserAfterInvitation(User $user): void
+    {
+        $assignedMailValues = [
+            'user' => $user,
+            'stammdaten' => $this->stammdatenRepository->getLatest(),
+            'url' => $this->uriBuilder
+                ->reset()
+                ->setCreateAbsoluteUri(true)
+                ->setTargetPageUid($this->extensionConfiguration->getPageRegistration())
+                ->uriFor(
+                    'acceptInvitation',
+                    [
+                        'userId' => $user->getUid(),
+                        'userHash' => HashService::generate((string)$user->getUid()),
+                    ],
+                    'Registration',
+                    'Ieb',
+                    'Registration'
+                ),
+
+            'page' => $this->configurationManager->getContentObject()->data,
+        ];
+        $mailService = GeneralUtility::makeInstance(MailService::class);
+        $mailService->send(
+            $assignedMailValues,
+            'User/AcceptInvitation',
+            $user->getEmail(),
+            $user->getFullName()
+        );
+    }
+
+    public function initializeAction()
+    {
+        $this->extensionConfiguration = new ExtensionConfiguration();
+    }
+
+    public function injectUserRepository(UserRepository $userRepository): void
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    public function injectStammdatenRepository(StammdatenRepository $stammdatenRepository): void
+    {
+        $this->stammdatenRepository = $stammdatenRepository;
     }
 }

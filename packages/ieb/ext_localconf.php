@@ -9,10 +9,9 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
-            \GeorgRinger\Ieb\Controller\StandortController::class => '',
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'list,show',
         ]
     );
 
@@ -22,7 +21,6 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
         ]
@@ -67,7 +65,6 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock',
         ]
@@ -79,7 +76,6 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update',
         ]
@@ -91,7 +87,6 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
         ]
@@ -103,7 +98,6 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
         ],
-        // non-cacheable actions
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
         ]
@@ -113,11 +107,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Registration',
         [
-            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn',
+            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn,acceptInvitation, acceptInvitationSuccess',
         ],
-        // non-cacheable actions
         [
-            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn',
+            \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn,acceptInvitation, acceptInvitationSuccess',
         ]
     );
 

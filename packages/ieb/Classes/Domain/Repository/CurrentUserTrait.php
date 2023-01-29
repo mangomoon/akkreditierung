@@ -34,6 +34,11 @@ trait CurrentUserTrait
         return (int)self::getCurrentUserField('uid');
     }
 
+    public static function currentUserIsTrAdmin(): bool
+    {
+        return self::getCurrentUserField('tr_admin') === 1;
+    }
+
     private static function getCurrentUserField(string $field)
     {
         $user = self::getCurrentUser();

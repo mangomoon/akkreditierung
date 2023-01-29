@@ -75,6 +75,11 @@ class BaseRepository extends Repository
         $this->persistenceManager->persistAll();
     }
 
+    public function forcePersist(): void
+    {
+        $this->persistenceManager->persistAll();
+    }
+
     public function duplicateToStaticVersion(AbstractEntity $entity): AbstractEntity
     {
         switch (get_class($entity)) {
