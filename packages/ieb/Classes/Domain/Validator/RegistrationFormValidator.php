@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Validator;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationForm;
-use GeorgRinger\Ieb\ExtensionConfiguration;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -34,18 +33,9 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
 
     protected function validateIfTrExists(string $name): void
     {
-        $name = trim($name);
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
-        $count = (int)$queryBuilder
-            ->count('*')
-            ->from('pages')
-            ->where(
-                $queryBuilder->expr()->eq('title', $queryBuilder->createNamedParameter($name)),
-                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter(ExtensionConfiguration::getParentUserPid(), \PDO::PARAM_INT))
-            )
-            ->execute()->fetchOne();
+        $registrationRepository = GeneralUtility::makeInstance(RegistrationRepository::class);
 
-        if ($count > 0) {
+        if ($registrationRepository->checkIfExists($name) > 0) {
             $this->addErrorForProperty('trName', 'Ein Bildungsträger mit diesem Namen existiert bereits', 1620000002);
         }
     }

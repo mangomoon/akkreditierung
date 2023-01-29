@@ -24,4 +24,8 @@ class RegistrationForm extends AbstractDomainObject
 
     public bool $dsgvo = false;
 
+    public function getFullName(): string
+    {
+        return $this->vorname . ' ' . $this->nachname;
+    }
 }

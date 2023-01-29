@@ -81,12 +81,17 @@ return [
         ],
     ],
     'MAIL' => [
+        'defaultMailFromAddress' => 'noreply@ieb.at',
+        'defaultMailFromName' => 'IEB',
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailhog sendmail test@example.org --smtp-addr 127.0.0.1:1025',
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
         'transport_smtp_server' => '',
         'transport_smtp_username' => '',
+        'templateRootPaths' => [
+            770 => 'EXT:ieb/Resources/Private/Templates/Mail/',
+        ],
     ],
     'SYS' => [
         'caching' => [
