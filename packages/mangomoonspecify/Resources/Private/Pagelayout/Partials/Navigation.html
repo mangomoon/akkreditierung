@@ -1,38 +1,37 @@
-
 <nav id="main-nav">
- <input id="main-menu-state" type="checkbox" />
-  <label class="main-menu-btn" for="main-menu-state">
+    <input id="main-menu-state" type="checkbox" />
+    <label class="main-menu-btn" for="main-menu-state">
     <span class="main-menu-btn-icon"></span> Menü Sichtbarkeit wechseln
   </label>
-<ul id="main-menu" class="sm sm-simple"> 
-    <f:for each="{mainnavigation}" as="mainnavigationItem">
-        <li id="linkto-{mainnavigationItem.data.uid}" class="level-1 {f:if(condition: mainnavigationItem.active, then:'current')}">
-            <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">
+    <ul id="main-menu" class="sm sm-simple">
+        <f:for each="{mainnavigation}" as="mainnavigationItem">
+            <li id="linkto-{mainnavigationItem.data.uid}" class="level-1 {f:if(condition: mainnavigationItem.active, then:'current')}">
+                <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">
                 {mainnavigationItem.title}
             </a>
-            <f:if condition="{mainnavigationItem.children}">
-                <ul>
-                    <f:for each="{mainnavigationItem.children}" as="child">
-                        <li class="level-2 {f:if(condition: child.active, then:'current')}">
-                            <a href="{child.link}" target="{child.target}" title="{child.title}">
+                <f:if condition="{mainnavigationItem.children}">
+                    <ul>
+                        <f:for each="{mainnavigationItem.children}" as="child">
+                            <li class="level-2 {f:if(condition: child.active, then:'current')}">
+                                <a href="{child.link}" target="{child.target}" title="{child.title}">
                                 {child.title}
                             </a>
-                          <f:if condition="{child.children}">
-                              <ul>
-                                  <f:for each="{child.children}" as="child">
-                                      <li class="level-3 {f:if(condition: child.active, then:'current')}">
-                                          <a href="{child.link}" target="{child.target}" title="{child.title}">
+                                <f:if condition="{child.children}">
+                                    <ul>
+                                        <f:for each="{child.children}" as="child">
+                                            <li class="level-3 {f:if(condition: child.active, then:'current')}">
+                                                <a href="{child.link}" target="{child.target}" title="{child.title}">
                                               {child.title}
                                           </a>
-                                      </li>
-                                  </f:for>
-                              </ul>
-                          </f:if>
-                        </li>
-                    </f:for>
-                </ul>
-            </f:if>
-        </li>
-    </f:for>
-</ul>
+                                            </li>
+                                        </f:for>
+                                    </ul>
+                                </f:if>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
 </nav>

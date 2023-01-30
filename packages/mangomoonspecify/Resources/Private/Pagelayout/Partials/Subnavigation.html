@@ -1,0 +1,13 @@
+<f:for each="{mainnavigation}" as="mainnavigationItem">
+
+    <f:if condition="{mainnavigationItem.active} == 1">
+        <div class="row subnavigation">
+            <f:for each="{mainnavigationItem.children}" as="child">
+                <a href="{child.link}" target="{child.target}" title="{child.title}" class="subnaviitem linkto-{child.data.uid} {f:if(condition: child.active, then:'current')}">
+                    {child.title}
+                </a>
+            </f:for>
+        </div>
+    </f:if>
+
+</f:for>

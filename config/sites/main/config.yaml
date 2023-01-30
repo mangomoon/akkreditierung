@@ -10,12 +10,13 @@ languages:
     enabled: true
     languageId: 0
     base: /
-    typo3Language: default
+    typo3Language: de
     locale: de_AT.utf8
     iso-639-1: de
     navigationTitle: Deutsch
     hreflang: de-at
     direction: ltr
     flag: at
+    websiteTitle: ''
 rootPageId: 1
 websiteTitle: ''

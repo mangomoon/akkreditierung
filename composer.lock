@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
-    "content-hash": "f96ab7962377c0d22a868904d9c0c7e6",
-=======
-    "content-hash": "fa548784013272fa63e12edc4ed315a1",
->>>>>>> Stashed changes
+    "content-hash": "292504e9450e0aa99871bf12dec72b37",
     "packages": [
         {
             "name": "b13/bolt",
@@ -1014,7 +1010,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ieb",
-                "reference": "6f2a8c62db40a5c7b8c82e9e3d451fcac1556059"
+                "reference": "8fe1b1c900e0c0588e57d6f9390257d018eb70b1"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -1057,6 +1053,7 @@
                 }
             ],
             "transport-options": {
+                "symlink": true,
                 "relative": true
             }
         },
@@ -1706,7 +1703,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoonspecify",
-                "reference": "f846705a13b88d5547376903782dc1d5b884106c"
+                "reference": "652a3542d1f7aefbd1dcbc4d602cd0a37f96f1d8"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -8365,7 +8362,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoon",
-                "reference": "43846426e736b693376cef32882506579c32a282"
+                "reference": "6c85c3b52304ef33687f573416f94eebd9e2fe1c"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -10759,14 +10756,10 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-<<<<<<< Updated upstream
         "georgringer/ieb": 20,
-        "typo3/cms-composer-installers": 20
-=======
         "mangomoon/mangomoonspecify": 20,
         "typo3/cms-composer-installers": 20,
         "mangomoon/mangomoon": 20
->>>>>>> Stashed changes
     },
     "prefer-stable": false,
     "prefer-lowest": false,
