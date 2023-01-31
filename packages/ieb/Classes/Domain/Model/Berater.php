@@ -19,6 +19,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 
     /**
      * nachname
@@ -51,32 +53,11 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationsnachweise = null;
 
     /**
-     * reviewCommentInternal
+     * title
      *
      * @var string
      */
-    protected $reviewCommentInternal = '';
-
-    /**
-     * reviewCommentTr
-     *
-     * @var string
-     */
-    protected $reviewCommentTr = '';
-
-    /**
-     * reviewStatus
-     *
-     * @var int
-     */
-    protected $reviewStatus = 0;
-
-    /**
-     * reviewFrist
-     *
-     * @var \DateTime
-     */
-    protected $reviewFrist = null;
+    protected $title = '';
 
     /**
      * standorte
@@ -86,11 +67,27 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $standorte = null;
 
     /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Berater
+     * __construct
      */
-    protected $basedOn = null;
+    public function __construct()
+    {
+
+        // Do not remove the next line: It would break the functionality
+        $this->initializeObject();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties when model is reconstructed from DB (where __construct is not called)
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    public function initializeObject()
+    {
+        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
     /**
      * Returns the nachname
@@ -150,7 +147,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf
      * @return void
      */
-    public function setLebenslauf(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf)
+    public function setLebenslauf($lebenslauf)
     {
         $this->lebenslauf = $lebenslauf;
     }
@@ -171,32 +168,9 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise
      * @return void
      */
-    public function setQualifikationsnachweise(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise)
+    public function setQualifikationsnachweise($qualifikationsnachweise)
     {
         $this->qualifikationsnachweise = $qualifikationsnachweise;
-    }
-
-    /**
-     * __construct
-     */
-    public function __construct()
-    {
-
-        // Do not remove the next line: It would break the functionality
-        $this->initializeObject();
-    }
-
-    /**
-     * Initializes all ObjectStorage properties when model is reconstructed from DB (where __construct is not called)
-     * Do not modify this method!
-     * It will be rewritten on each save in the extension builder
-     * You may modify the constructor of this class instead
-     *
-     * @return void
-     */
-    public function initializeObject()
-    {
-        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -243,107 +217,27 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the basedOn
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Berater
-     */
-    public function getBasedOn()
-    {
-        return $this->basedOn;
-    }
-
-    /**
-     * Sets the basedOn
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Berater $basedOn
-     * @return void
-     */
-    public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Berater $basedOn)
-    {
-        $this->basedOn = $basedOn;
-    }
-
-    /**
-     * Returns the reviewCommentInternal
+     * Returns the title
      *
      * @return string
      */
-    public function getReviewCommentInternal()
+    public function getTitle()
     {
-        return $this->reviewCommentInternal;
+        return $this->title;
     }
 
     /**
-     * Sets the reviewCommentInternal
+     * Sets the title
      *
-     * @param string $reviewCommentInternal
+     * @param string $title
      * @return void
      */
-    public function setReviewCommentInternal(string $reviewCommentInternal)
+    public function setTitle(string $title)
     {
-        $this->reviewCommentInternal = $reviewCommentInternal;
+        $this->title = $title;
     }
-
-    /**
-     * Returns the reviewCommentTr
-     *
-     * @return string
-     */
-    public function getReviewCommentTr()
+    public function getVollerName()
     {
-        return $this->reviewCommentTr;
-    }
-
-    /**
-     * Sets the reviewCommentTr
-     *
-     * @param string $reviewCommentTr
-     * @return void
-     */
-    public function setReviewCommentTr(string $reviewCommentTr)
-    {
-        $this->reviewCommentTr = $reviewCommentTr;
-    }
-
-    /**
-     * Returns the reviewStatus
-     *
-     * @return int
-     */
-    public function getReviewStatus()
-    {
-        return $this->reviewStatus;
-    }
-
-    /**
-     * Sets the reviewStatus
-     *
-     * @param int $reviewStatus
-     * @return void
-     */
-    public function setReviewStatus(int $reviewStatus)
-    {
-        $this->reviewStatus = $reviewStatus;
-    }
-
-    /**
-     * Returns the reviewFrist
-     *
-     * @return \DateTime
-     */
-    public function getReviewFrist()
-    {
-        return $this->reviewFrist;
-    }
-
-    /**
-     * Sets the reviewFrist
-     *
-     * @param \DateTime $reviewFrist
-     * @return void
-     */
-    public function setReviewFrist(\DateTime $reviewFrist)
-    {
-        $this->reviewFrist = $reviewFrist;
+        return $this->vorname . ' ' . $this->nachname;
     }
 }

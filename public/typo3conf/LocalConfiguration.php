@@ -100,6 +100,11 @@ return [
         ],
     ],
     'MAIL' => [
+        'defaultMailFromAddress' => 'noreply@ieb.at',
+        'defaultMailFromName' => 'IEB',
+        'templateRootPaths' => [
+            770 => 'EXT:ieb/Resources/Private/Templates/Mail/',
+        ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailhog sendmail test@example.org --smtp-addr 127.0.0.1:1025',
         'transport_smtp_encrypt' => '',

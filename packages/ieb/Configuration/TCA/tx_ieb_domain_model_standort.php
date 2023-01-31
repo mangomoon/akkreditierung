@@ -9,12 +9,14 @@ return [
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,adresse,plz,ort,koop_schule,review_comment_internal,review_comment_tr',
+        'searchFields' => 'name,adresse,ort,koop_schule',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_standort.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, adresse, plz, ort, pruef_bescheid, koop_schule, koop_schule_datei, review_comment_internal, review_comment_tr, review_comment_status, review_frist, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, adresse, plz, ort, pruef_bescheid, koop_schule, koop_schule_datei, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -30,6 +32,35 @@ return [
                         'invertStateDisplay' => true
                     ]
                 ],
+            ],
+        ],
+        'starttime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ],
+        ],
+        'endtime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime,int',
+                'default' => 0,
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
             ],
         ],
 
@@ -58,10 +89,10 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.plz',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'default' => ''
-            ],
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
+            ]
         ],
         'ort' => [
             'exclude' => true,
@@ -108,37 +139,39 @@ return [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
-                    'foreign_types' => [
-                        '0' => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
+                    'overrideChildTca' => [
+                        'types' => [
+                            '0' => [
+                                'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                                'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                                'showitem' => '
+                                --palette--;;imageoverlayPalette,
+                                --palette--;;filePalette',
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                                'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                                'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                                'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                            ]
                         ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ]
                     ],
                     'foreign_match_fields' => [
                         'fieldname' => 'koop_schule_datei',
@@ -149,54 +182,6 @@ return [
                 ]
             ),
             
-        ],
-        'review_comment_internal' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.review_comment_internal',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim',
-                'default' => ''
-            ]
-        ],
-        'review_comment_tr' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.review_comment_tr',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim',
-                'default' => ''
-            ]
-        ],
-        'review_comment_status' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.review_comment_status',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['-- Label --', 0],
-                ],
-                'size' => 1,
-                'maxitems' => 1,
-                'eval' => ''
-            ],
-        ],
-        'review_frist' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.review_frist',
-            'config' => [
-                'dbType' => 'date',
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 7,
-                'eval' => 'date',
-                'default' => null,
-            ],
         ],
     
     ],

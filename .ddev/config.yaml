@@ -15,9 +15,9 @@ nfs_mount_enabled: false
 mutagen_enabled: false
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
 nodejs_version: "16"
-
+web_environment:
+  - TYPO3_CONTEXT=Development/Ddev
 # Key features of ddev's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides

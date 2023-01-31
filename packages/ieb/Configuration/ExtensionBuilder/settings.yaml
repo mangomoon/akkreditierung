@@ -40,28 +40,30 @@
 
 overwriteSettings:
   Classes:
-    Controller: merge
+    Controller: keep
     Domain:
       Model: merge
-      Repository: merge
+      Repository: keep
 
   Configuration:
     #TCA merge not possible - use overrides directory
-    #TypoScript: keep
+    TCA:
+      Overrides: keep
+    Extbase: keep
 
   Resources:
     Private:
-      #Language: merge
-      #Layouts: keep
-      #Partials: keep
-      #Templates: keep
+      Language: merge
+      Layouts: keep
+      Partials: keep
+      Templates: keep
       Backend:
         #Layouts: keep
         #Partials: keep
         #Templates: keep
 
   user_extension.svg: keep
-#  ext_localconf.php: merge
+  ext_localconf.php: keep
 #  ext_tables.php: merge
 #  ext_tables.sql: merge
 
@@ -69,7 +71,7 @@ overwriteSettings:
 declareStrictTypes: true
 
 ## use static date attribute in xliff files
-#staticDateInXliffFiles: '2022-11-18T10:17:20Z'
+staticDateInXliffFiles: '2022-11-27T08:42:58Z'
 
 ## skip docComment (license header)
 #skipDocComment: false

@@ -14,9 +14,7 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
 
-/**
- * The repository for Stammdatens
- */
-class StammdatenRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class StammdatenRepository extends BaseRepository
 {
+
 }

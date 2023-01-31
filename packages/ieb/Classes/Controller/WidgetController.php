@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GeorgRinger\Ieb\Domain\Repository;
+namespace GeorgRinger\Ieb\Controller;
 
+
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -13,10 +15,12 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
-/**
- * The repository for AngebotVerantwortliches
- */
-class AngebotVerantwortlichRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class WidgetController extends BaseController
 {
+
+    public function indexAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
 }

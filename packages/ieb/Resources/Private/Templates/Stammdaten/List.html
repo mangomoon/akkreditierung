@@ -44,10 +44,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid" /></th>
             <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" /></th>
             <th><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" /></th>
-            <th><f:translate key="tx_ieb_domain_model_stammdaten.review_comment_internal" /></th>
-            <th><f:translate key="tx_ieb_domain_model_stammdaten.review_comment_tr" /></th>
-            <th><f:translate key="tx_ieb_domain_model_stammdaten.review_status" /></th>
-            <th><f:translate key="tx_ieb_domain_model_stammdaten.review_frist" /></th>
+            <th><f:translate key="tx_ieb_domain_model_stammdaten.locked_by" /></th>
             <th></th>
             <th></th>
         </tr>
@@ -77,10 +74,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheid}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheidDatei.originalResource.name}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.pruefbescheidBis -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.reviewCommentInternal}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.reviewCommentTr}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.reviewStatus}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.reviewFrist -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{stammdaten : stammdaten}">{stammdaten.lockedBy}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{stammdaten : stammdaten}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{stammdaten : stammdaten}">Delete</f:link.action></td>
             </tr>

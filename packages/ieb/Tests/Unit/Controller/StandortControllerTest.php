@@ -61,25 +61,7 @@ class StandortControllerTest extends UnitTestCase
     /**
      * @test
      */
-    public function createActionAddsTheGivenStandortToStandortRepository(): void
-    {
-        $standort = new \GeorgRinger\Ieb\Domain\Model\Standort();
-
-        $standortRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StandortRepository::class)
-            ->onlyMethods(['add'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standortRepository->expects(self::once())->method('add')->with($standort);
-        $this->subject->_set('standortRepository', $standortRepository);
-
-        $this->subject->createAction($standort);
-    }
-
-    /**
-     * @test
-     */
-    public function editActionAssignsTheGivenStandortToView(): void
+    public function showActionAssignsTheGivenStandortToView(): void
     {
         $standort = new \GeorgRinger\Ieb\Domain\Model\Standort();
 
@@ -87,42 +69,6 @@ class StandortControllerTest extends UnitTestCase
         $this->subject->_set('view', $view);
         $view->expects(self::once())->method('assign')->with('standort', $standort);
 
-        $this->subject->editAction($standort);
-    }
-
-    /**
-     * @test
-     */
-    public function updateActionUpdatesTheGivenStandortInStandortRepository(): void
-    {
-        $standort = new \GeorgRinger\Ieb\Domain\Model\Standort();
-
-        $standortRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StandortRepository::class)
-            ->onlyMethods(['update'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standortRepository->expects(self::once())->method('update')->with($standort);
-        $this->subject->_set('standortRepository', $standortRepository);
-
-        $this->subject->updateAction($standort);
-    }
-
-    /**
-     * @test
-     */
-    public function deleteActionRemovesTheGivenStandortFromStandortRepository(): void
-    {
-        $standort = new \GeorgRinger\Ieb\Domain\Model\Standort();
-
-        $standortRepository = $this->getMockBuilder(\GeorgRinger\Ieb\Domain\Repository\StandortRepository::class)
-            ->onlyMethods(['remove'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standortRepository->expects(self::once())->method('remove')->with($standort);
-        $this->subject->_set('standortRepository', $standortRepository);
-
-        $this->subject->deleteAction($standort);
+        $this->subject->showAction($standort);
     }
 }

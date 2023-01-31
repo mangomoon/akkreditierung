@@ -19,198 +19,141 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    public \DateTime $tstamp;
+    public \DateTime $crdate;
 
     /**
      * nachname
      *
      * @var string
      */
-    protected $nachname = null;
+    protected $nachname = '';
 
     /**
      * vorname
      *
      * @var string
      */
-    protected $vorname = null;
+    protected $vorname = '';
 
     /**
      * verwendungBabi
      *
      * @var bool
      */
-    protected $verwendungBabi = null;
+    protected $verwendungBabi = false;
 
     /**
      * verwendungPsa
      *
      * @var bool
      */
-    protected $verwendungPsa = null;
+    protected $verwendungPsa = false;
 
     /**
      * lebenslauf
      *
      * @var string
      */
-    protected $lebenslauf = null;
+    protected $lebenslauf = '';
 
     /**
      * qualifikationBabi
      *
      * @var string
      */
-    protected $qualifikationBabi = null;
+    protected $qualifikationBabi = '';
 
     /**
      * lehrBefugnis
      *
      * @var string
      */
-    protected $lehrBefugnis = null;
+    protected $lehrBefugnis = '';
 
     /**
      * qualifikationPsa1
      *
      * @var bool
      */
-    protected $qualifikationPsa1 = null;
+    protected $qualifikationPsa1 = false;
 
     /**
      * qualifikationPsa2
      *
      * @var bool
      */
-    protected $qualifikationPsa2 = null;
+    protected $qualifikationPsa2 = false;
 
     /**
      * qualifikationPsa3
      *
      * @var bool
      */
-    protected $qualifikationPsa3 = null;
+    protected $qualifikationPsa3 = false;
 
     /**
      * qualifikationPsa4
      *
      * @var bool
      */
-    protected $qualifikationPsa4 = null;
+    protected $qualifikationPsa4 = false;
 
     /**
      * qualifikationPsa5
      *
      * @var bool
      */
-    protected $qualifikationPsa5 = null;
+    protected $qualifikationPsa5 = false;
 
     /**
      * qualifikationPsa6
      *
      * @var bool
      */
-    protected $qualifikationPsa6 = null;
+    protected $qualifikationPsa6 = false;
 
     /**
      * qualifikationPsa7
      *
      * @var bool
      */
-    protected $qualifikationPsa7 = null;
+    protected $qualifikationPsa7 = false;
 
     /**
      * qualifikationPsa8
      *
      * @var bool
      */
-    protected $qualifikationPsa8 = null;
+    protected $qualifikationPsa8 = false;
 
     /**
      * qualifikationPsa
      *
      * @var string
      */
-    protected $qualifikationPsa = null;
+    protected $qualifikationPsa = '';
 
     /**
      * qualifikationPsaKommentar
      *
      * @var string
      */
-    protected $qualifikationPsaKommentar = null;
+    protected $qualifikationPsaKommentar = '';
 
     /**
      * anerkennungPp3
      *
      * @var bool
      */
-    protected $anerkennungPp3 = null;
+    protected $anerkennungPp3 = false;
 
     /**
-     * reviewCommentInternal
+     * title
      *
      * @var string
      */
-    protected $reviewCommentInternal = '';
-
-    /**
-     * reviewCommentTr
-     *
-     * @var string
-     */
-    protected $reviewCommentTr = '';
-
-    /**
-     * reviewStatus
-     *
-     * @var int
-     */
-    protected $reviewStatus = 0;
-
-    /**
-     * reviewFrist
-     *
-     * @var \DateTime
-     */
-    protected $reviewFrist = null;
-
-    /**
-     * lebenslaufDatei
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $lebenslaufDatei = null;
-
-    /**
-     * qualifikationBabiDatei
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $qualifikationBabiDatei = null;
-
-    /**
-     * lehrBefugnisDatei
-     *
-     * @var string
-     */
-    protected $lehrBefugnisDatei = '';
-
-    /**
-     * qualifikationPsaDatei
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $qualifikationPsaDatei = null;
-
-    /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Trainer
-     */
-    protected $basedOn = null;
+    protected $title = '';
 
     /**
      * Returns the nachname
@@ -314,6 +257,69 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isVerwendungPsa()
     {
         return $this->verwendungPsa;
+    }
+
+    /**
+     * Returns the lebenslauf
+     *
+     * @return string
+     */
+    public function getLebenslauf()
+    {
+        return $this->lebenslauf;
+    }
+
+    /**
+     * Sets the lebenslauf
+     *
+     * @param string $lebenslauf
+     * @return void
+     */
+    public function setLebenslauf(string $lebenslauf)
+    {
+        $this->lebenslauf = $lebenslauf;
+    }
+
+    /**
+     * Returns the qualifikationBabi
+     *
+     * @return string
+     */
+    public function getQualifikationBabi()
+    {
+        return $this->qualifikationBabi;
+    }
+
+    /**
+     * Sets the qualifikationBabi
+     *
+     * @param string $qualifikationBabi
+     * @return void
+     */
+    public function setQualifikationBabi(string $qualifikationBabi)
+    {
+        $this->qualifikationBabi = $qualifikationBabi;
+    }
+
+    /**
+     * Returns the lehrBefugnis
+     *
+     * @return string
+     */
+    public function getLehrBefugnis()
+    {
+        return $this->lehrBefugnis;
+    }
+
+    /**
+     * Sets the lehrBefugnis
+     *
+     * @param string $lehrBefugnis
+     * @return void
+     */
+    public function setLehrBefugnis(string $lehrBefugnis)
+    {
+        $this->lehrBefugnis = $lehrBefugnis;
     }
 
     /**
@@ -565,6 +571,27 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the qualifikationPsa
+     *
+     * @return string
+     */
+    public function getQualifikationPsa()
+    {
+        return $this->qualifikationPsa;
+    }
+
+    /**
+     * Sets the qualifikationPsa
+     *
+     * @param string $qualifikationPsa
+     * @return void
+     */
+    public function setQualifikationPsa(string $qualifikationPsa)
+    {
+        $this->qualifikationPsa = $qualifikationPsa;
+    }
+
+    /**
      * Returns the qualifikationPsaKommentar
      *
      * @return string
@@ -617,275 +644,27 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the basedOn
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Trainer
-     */
-    public function getBasedOn()
-    {
-        return $this->basedOn;
-    }
-
-    /**
-     * Sets the basedOn
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $basedOn
-     * @return void
-     */
-    public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Trainer $basedOn)
-    {
-        $this->basedOn = $basedOn;
-    }
-
-    /**
-     * Returns the reviewCommentInternal
+     * Returns the title
      *
      * @return string
      */
-    public function getReviewCommentInternal()
+    public function getTitle()
     {
-        return $this->reviewCommentInternal;
+        return $this->title;
     }
 
     /**
-     * Sets the reviewCommentInternal
+     * Sets the title
      *
-     * @param string $reviewCommentInternal
+     * @param string $title
      * @return void
      */
-    public function setReviewCommentInternal(string $reviewCommentInternal)
+    public function setTitle(string $title)
     {
-        $this->reviewCommentInternal = $reviewCommentInternal;
+        $this->title = $title;
     }
-
-    /**
-     * Returns the reviewCommentTr
-     *
-     * @return string
-     */
-    public function getReviewCommentTr()
+    public function getVollerName()
     {
-        return $this->reviewCommentTr;
-    }
-
-    /**
-     * Sets the reviewCommentTr
-     *
-     * @param string $reviewCommentTr
-     * @return void
-     */
-    public function setReviewCommentTr(string $reviewCommentTr)
-    {
-        $this->reviewCommentTr = $reviewCommentTr;
-    }
-
-    /**
-     * Returns the reviewStatus
-     *
-     * @return int
-     */
-    public function getReviewStatus()
-    {
-        return $this->reviewStatus;
-    }
-
-    /**
-     * Sets the reviewStatus
-     *
-     * @param int $reviewStatus
-     * @return void
-     */
-    public function setReviewStatus(int $reviewStatus)
-    {
-        $this->reviewStatus = $reviewStatus;
-    }
-
-    /**
-     * Returns the reviewFrist
-     *
-     * @return \DateTime
-     */
-    public function getReviewFrist()
-    {
-        return $this->reviewFrist;
-    }
-
-    /**
-     * Sets the reviewFrist
-     *
-     * @param \DateTime $reviewFrist
-     * @return void
-     */
-    public function setReviewFrist(\DateTime $reviewFrist)
-    {
-        $this->reviewFrist = $reviewFrist;
-    }
-
-    /**
-     * Returns the lebenslauf
-     *
-     * @return string lebenslauf
-     */
-    public function getLebenslauf()
-    {
-        return $this->lebenslauf;
-    }
-
-    /**
-     * Sets the lebenslauf
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf
-     * @return void
-     */
-    public function setLebenslauf(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf)
-    {
-        $this->lebenslauf = $lebenslauf;
-    }
-
-    /**
-     * Returns the qualifikationBabi
-     *
-     * @return string qualifikationBabi
-     */
-    public function getQualifikationBabi()
-    {
-        return $this->qualifikationBabi;
-    }
-
-    /**
-     * Sets the qualifikationBabi
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabi
-     * @return void
-     */
-    public function setQualifikationBabi(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabi)
-    {
-        $this->qualifikationBabi = $qualifikationBabi;
-    }
-
-    /**
-     * Returns the lehrBefugnis
-     *
-     * @return string lehrBefugnis
-     */
-    public function getLehrBefugnis()
-    {
-        return $this->lehrBefugnis;
-    }
-
-    /**
-     * Sets the lehrBefugnis
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnis
-     * @return void
-     */
-    public function setLehrBefugnis(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnis)
-    {
-        $this->lehrBefugnis = $lehrBefugnis;
-    }
-
-    /**
-     * Returns the qualifikationPsa
-     *
-     * @return string qualifikationPsa
-     */
-    public function getQualifikationPsa()
-    {
-        return $this->qualifikationPsa;
-    }
-
-    /**
-     * Sets the qualifikationPsa
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsa
-     * @return void
-     */
-    public function setQualifikationPsa(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsa)
-    {
-        $this->qualifikationPsa = $qualifikationPsa;
-    }
-
-    /**
-     * Returns the lebenslaufDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getLebenslaufDatei()
-    {
-        return $this->lebenslaufDatei;
-    }
-
-    /**
-     * Sets the lebenslaufDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei
-     * @return void
-     */
-    public function setLebenslaufDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei)
-    {
-        $this->lebenslaufDatei = $lebenslaufDatei;
-    }
-
-    /**
-     * Returns the qualifikationBabiDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualifikationBabiDatei()
-    {
-        return $this->qualifikationBabiDatei;
-    }
-
-    /**
-     * Sets the qualifikationBabiDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei
-     * @return void
-     */
-    public function setQualifikationBabiDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei)
-    {
-        $this->qualifikationBabiDatei = $qualifikationBabiDatei;
-    }
-
-    /**
-     * Returns the lehrBefugnisDatei
-     *
-     * @return string
-     */
-    public function getLehrBefugnisDatei()
-    {
-        return $this->lehrBefugnisDatei;
-    }
-
-    /**
-     * Sets the lehrBefugnisDatei
-     *
-     * @param string $lehrBefugnisDatei
-     * @return void
-     */
-    public function setLehrBefugnisDatei(string $lehrBefugnisDatei)
-    {
-        $this->lehrBefugnisDatei = $lehrBefugnisDatei;
-    }
-
-    /**
-     * Returns the qualifikationPsaDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualifikationPsaDatei()
-    {
-        return $this->qualifikationPsaDatei;
-    }
-
-    /**
-     * Sets the qualifikationPsaDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei
-     * @return void
-     */
-    public function setQualifikationPsaDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei)
-    {
-        $this->qualifikationPsaDatei = $qualifikationPsaDatei;
+        return $this->vorname . ' ' . $this->nachname;
     }
 }

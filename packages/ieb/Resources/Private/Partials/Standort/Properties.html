@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-ieb">
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.name" /></td>
+		<td>{standort.name}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.adresse" /></td>
+		<td>{standort.adresse}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.plz" /></td>
+		<td>{standort.plz}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.ort" /></td>
+		<td>{standort.ort}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.pruef_bescheid" /></td>
+		<td>{standort.pruefBescheid}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.koop_schule" /></td>
+		<td>{standort.koopSchule}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_standort.koop_schule_datei" /></td>
+		<td>
+				<a href="{standort.koopSchuleDatei.originalResource.publicUrl}">
+					{standort.koopSchuleDatei.originalResource.name}
+				</a>
+			</td>
+	</tr>
+</table>
+</html>

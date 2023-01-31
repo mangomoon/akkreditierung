@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_standort.xlf" date="2022-11-22T19:49:37Z" product-name="ieb">
+	<file source-language="en" datatype="plaintext" original="EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_standort.xlf" date="2022-11-27T08:42:58Z" product-name="ieb">
 		<header/>
 		<body>
 			<trans-unit id="name.description" resname="name.description">
@@ -23,18 +23,6 @@
 			</trans-unit>
 			<trans-unit id="koop_schule_datei.description" resname="koop_schule_datei.description">
 				<source>koopSchuleDatei</source>
-			</trans-unit>
-			<trans-unit id="review_comment_internal.description" resname="review_comment_internal.description">
-				<source>reviewCommentInternal</source>
-			</trans-unit>
-			<trans-unit id="review_comment_tr.description" resname="review_comment_tr.description">
-				<source>reviewCommentTr</source>
-			</trans-unit>
-			<trans-unit id="review_comment_status.description" resname="review_comment_status.description">
-				<source>reviewCommentStatus</source>
-			</trans-unit>
-			<trans-unit id="review_frist.description" resname="review_frist.description">
-				<source>reviewFrist</source>
 			</trans-unit>
 		</body>
 	</file>

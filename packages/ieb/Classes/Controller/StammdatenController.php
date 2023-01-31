@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\Domain\Repository\StammdatenRepository;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -13,96 +19,53 @@ namespace GeorgRinger\Ieb\Controller;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
-/**
- * StammdatenController
- */
-class StammdatenController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class StammdatenController extends BaseController
 {
 
-    /**
-     * stammdatenRepository
-     *
-     * @var \GeorgRinger\Ieb\Domain\Repository\StammdatenRepository
-     */
-    protected $stammdatenRepository = null;
 
-    /**
-     * @param \GeorgRinger\Ieb\Domain\Repository\StammdatenRepository $stammdatenRepository
-     */
-    public function injectStammdatenRepository(\GeorgRinger\Ieb\Domain\Repository\StammdatenRepository $stammdatenRepository)
+    protected StammdatenRepository $stammdatenRepository;
+
+    public function injectStammdatenRepository(StammdatenRepository $stammdatenRepository)
     {
         $this->stammdatenRepository = $stammdatenRepository;
     }
 
-    /**
-     * action list
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function listAction(): \Psr\Http\Message\ResponseInterface
-    {
-        $stammdatens = $this->stammdatenRepository->findAll();
-        $this->view->assign('stammdatens', $stammdatens);
-        return $this->htmlResponse();
-    }
-
-    /**
-     * action show
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function showAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten): \Psr\Http\Message\ResponseInterface
-    {
-        $this->view->assign('stammdaten', $stammdaten);
-        return $this->htmlResponse();
-    }
-
-    /**
-     * action new
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function newAction(): \Psr\Http\Message\ResponseInterface
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
 
-    /**
-     * action create
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $newStammdaten
-     */
-    public function createAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $newStammdaten)
+    public function createAction(Stammdaten $newStammdaten)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->stammdatenRepository->add($newStammdaten);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 
-    /**
-     * action edit
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("stammdaten")
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function editAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten): \Psr\Http\Message\ResponseInterface
+    public function editAction(Stammdaten $stammdaten): ResponseInterface
     {
+        $this->check($stammdaten);
+        $this->stammdatenRepository->setLockedAndPersist($stammdaten);
+
         $this->view->assign('stammdaten', $stammdaten);
         return $this->htmlResponse();
     }
 
-    /**
-     * action update
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten
-     */
-    public function updateAction(\GeorgRinger\Ieb\Domain\Model\Stammdaten $stammdaten)
+    public function updateAction(Stammdaten $stammdaten): ResponseInterface
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->check($stammdaten);
         $this->stammdatenRepository->update($stammdaten);
-        $this->redirect('list');
+        $this->addFlashMessage('Wurde erfolgreich gespeichert');
+        $this->redirect('index');
     }
+
+    public function indexAction(): ResponseInterface
+    {
+        $this->view->assignMultiple([
+            'item' => $this->stammdatenRepository->getLatest(),
+        ]);
+        return $this->htmlResponse();
+    }
+
+
+
 }

@@ -52,9 +52,9 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * plz
      *
-     * @var string
+     * @var int
      */
-    protected $plz = '';
+    protected $plz = 0;
 
     /**
      * ort
@@ -195,69 +195,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $pruefbescheidBis = null;
 
     /**
-     * reviewCommentInternal
-     *
-     * @var string
-     */
-    protected $reviewCommentInternal = '';
-
-    /**
-     * reviewCommentTr
-     *
-     * @var string
-     */
-    protected $reviewCommentTr = '';
-
-    /**
-     * reviewStatus
+     * lockedBy
      *
      * @var int
      */
-    protected $reviewStatus = 0;
-
-    /**
-     * reviewFrist
-     *
-     * @var \DateTime
-     */
-    protected $reviewFrist = null;
+    protected $lockedBy = 0;
 
     /**
      * standorte
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     * @var \GeorgRinger\Ieb\Domain\Model\Standort
      */
     protected $standorte = null;
-
-    /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Stammdaten
-     */
-    protected $basedOn = null;
-
-    /**
-     * __construct
-     */
-    public function __construct()
-    {
-
-        // Do not remove the next line: It would break the functionality
-        $this->initializeObject();
-    }
-
-    /**
-     * Initializes all ObjectStorage properties when model is reconstructed from DB (where __construct is not called)
-     * Do not modify this method!
-     * It will be rewritten on each save in the extension builder
-     * You may modify the constructor of this class instead
-     *
-     * @return void
-     */
-    public function initializeObject()
-    {
-        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
 
     /**
      * Returns the name
@@ -346,7 +295,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the plz
      *
-     * @return string
+     * @return int
      */
     public function getPlz()
     {
@@ -356,10 +305,10 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the plz
      *
-     * @param string $plz
+     * @param int $plz
      * @return void
      */
-    public function setPlz(string $plz)
+    public function setPlz(int $plz)
     {
         $this->plz = $plz;
     }
@@ -512,6 +461,48 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the qmsZertifikatDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQmsZertifikatDatei()
+    {
+        return $this->qmsZertifikatDatei;
+    }
+
+    /**
+     * Sets the qmsZertifikatDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
+     * @return void
+     */
+    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
+    {
+        $this->qmsZertifikatDatei = $qmsZertifikatDatei;
+    }
+
+    /**
+     * Returns the qmsZertifikat
+     *
+     * @return string
+     */
+    public function getQmsZertifikat()
+    {
+        return $this->qmsZertifikat;
+    }
+
+    /**
+     * Sets the qmsZertifikat
+     *
+     * @param string $qmsZertifikat
+     * @return void
+     */
+    public function setQmsZertifikat(string $qmsZertifikat)
+    {
+        $this->qmsZertifikat = $qmsZertifikat;
+    }
+
+    /**
      * Returns the qmsTyp
      *
      * @return int
@@ -575,6 +566,27 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the qualitaetSicherungDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualitaetSicherungDatei()
+    {
+        return $this->qualitaetSicherungDatei;
+    }
+
+    /**
+     * Sets the qualitaetSicherungDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
+     * @return void
+     */
+    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
+    {
+        $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
+    }
+
+    /**
      * Returns the qualitaetPersonal
      *
      * @return string
@@ -593,6 +605,27 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualitaetPersonal(string $qualitaetPersonal)
     {
         $this->qualitaetPersonal = $qualitaetPersonal;
+    }
+
+    /**
+     * Returns the qualitaetPersonalDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualitaetPersonalDatei()
+    {
+        return $this->qualitaetPersonalDatei;
+    }
+
+    /**
+     * Sets the qualitaetPersonalDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
+     * @return void
+     */
+    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
+    {
+        $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
     }
 
     /**
@@ -690,31 +723,9 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorte
-     * @return void
-     */
-    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorte)
-    {
-        $this->standorte->attach($standorte);
-    }
-
-    /**
-     * Removes a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove The Standort to be removed
-     * @return void
-     */
-    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove)
-    {
-        $this->standorte->detach($standorteToRemove);
-    }
-
-    /**
      * Returns the standorte
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     * @return \GeorgRinger\Ieb\Domain\Model\Standort
      */
     public function getStandorte()
     {
@@ -724,200 +735,32 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the standorte
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort> $standorte
+     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorte
      * @return void
      */
-    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
+    public function setStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorte)
     {
         $this->standorte = $standorte;
     }
 
     /**
-     * Returns the reviewCommentInternal
-     *
-     * @return string
-     */
-    public function getReviewCommentInternal()
-    {
-        return $this->reviewCommentInternal;
-    }
-
-    /**
-     * Sets the reviewCommentInternal
-     *
-     * @param string $reviewCommentInternal
-     * @return void
-     */
-    public function setReviewCommentInternal(string $reviewCommentInternal)
-    {
-        $this->reviewCommentInternal = $reviewCommentInternal;
-    }
-
-    /**
-     * Returns the reviewCommentTr
-     *
-     * @return string
-     */
-    public function getReviewCommentTr()
-    {
-        return $this->reviewCommentTr;
-    }
-
-    /**
-     * Sets the reviewCommentTr
-     *
-     * @param string $reviewCommentTr
-     * @return void
-     */
-    public function setReviewCommentTr(string $reviewCommentTr)
-    {
-        $this->reviewCommentTr = $reviewCommentTr;
-    }
-
-    /**
-     * Returns the reviewStatus
+     * Returns the lockedBy
      *
      * @return int
      */
-    public function getReviewStatus()
+    public function getLockedBy()
     {
-        return $this->reviewStatus;
+        return $this->lockedBy;
     }
 
     /**
-     * Sets the reviewStatus
+     * Sets the lockedBy
      *
-     * @param int $reviewStatus
+     * @param int $lockedBy
      * @return void
      */
-    public function setReviewStatus(int $reviewStatus)
+    public function setLockedBy(int $lockedBy)
     {
-        $this->reviewStatus = $reviewStatus;
-    }
-
-    /**
-     * Returns the reviewFrist
-     *
-     * @return \DateTime
-     */
-    public function getReviewFrist()
-    {
-        return $this->reviewFrist;
-    }
-
-    /**
-     * Sets the reviewFrist
-     *
-     * @param \DateTime $reviewFrist
-     * @return void
-     */
-    public function setReviewFrist(\DateTime $reviewFrist)
-    {
-        $this->reviewFrist = $reviewFrist;
-    }
-
-    /**
-     * Returns the basedOn
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Stammdaten
-     */
-    public function getBasedOn()
-    {
-        return $this->basedOn;
-    }
-
-    /**
-     * Sets the basedOn
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn
-     * @return void
-     */
-    public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn)
-    {
-        $this->basedOn = $basedOn;
-    }
-
-    /**
-     * Returns the qmsZertifikatDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference qmsZertifikatDatei
-     */
-    public function getQmsZertifikatDatei()
-    {
-        return $this->qmsZertifikatDatei;
-    }
-
-    /**
-     * Sets the qmsZertifikatDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
-     * @return void
-     */
-    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
-    {
-        $this->qmsZertifikatDatei = $qmsZertifikatDatei;
-    }
-
-    /**
-     * Returns the qmsZertifikat
-     *
-     * @return string
-     */
-    public function getQmsZertifikat()
-    {
-        return $this->qmsZertifikat;
-    }
-
-    /**
-     * Sets the qmsZertifikat
-     *
-     * @param string $qmsZertifikat
-     * @return void
-     */
-    public function setQmsZertifikat(string $qmsZertifikat)
-    {
-        $this->qmsZertifikat = $qmsZertifikat;
-    }
-
-    /**
-     * Returns the qualitaetSicherungDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualitaetSicherungDatei()
-    {
-        return $this->qualitaetSicherungDatei;
-    }
-
-    /**
-     * Sets the qualitaetSicherungDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
-     * @return void
-     */
-    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
-    {
-        $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
-    }
-
-    /**
-     * Returns the qualitaetPersonalDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getQualitaetPersonalDatei()
-    {
-        return $this->qualitaetPersonalDatei;
-    }
-
-    /**
-     * Sets the qualitaetPersonalDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
-     * @return void
-     */
-    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
-    {
-        $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
+        $this->lockedBy = $lockedBy;
     }
 }

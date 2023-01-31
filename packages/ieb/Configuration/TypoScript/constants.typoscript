@@ -12,3 +12,31 @@ plugin.tx_ieb_default {
         storagePid =
     }
 }
+plugin.tx_ieb_stamm {
+    view {
+        # cat=plugin.tx_ieb_stamm/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ieb/Resources/Private/Templates/
+        # cat=plugin.tx_ieb_stamm/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ieb/Resources/Private/Partials/
+        # cat=plugin.tx_ieb_stamm/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ieb/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_ieb_stamm//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}
+plugin.tx_ieb_ansuchen {
+    view {
+        # cat=plugin.tx_ieb_ansuchen/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ieb/Resources/Private/Templates/
+        # cat=plugin.tx_ieb_ansuchen/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ieb/Resources/Private/Partials/
+        # cat=plugin.tx_ieb_ansuchen/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ieb/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_ieb_ansuchen//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

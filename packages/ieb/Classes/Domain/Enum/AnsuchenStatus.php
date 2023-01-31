@@ -1,0 +1,41 @@
+<?php
+declare(strict_types=1);
+
+namespace GeorgRinger\Ieb\Domain\Enum;
+
+/**
+ * This file is part of the "ieb" Extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * (c) 2022 Georg Ringer <mail@ringer.it>
+ */
+enum AnsuchenStatus: int
+{
+    case NEU_IN_ARBEIT = 10;
+    case EINGEREICHT_ERSTEINREICHUNG = 20;
+    case IN_ARBEIT = 30;
+    case EINGEREICHT_ZUR_BEGUTACHTUNG = 40;
+    case EINGEREICHT_ZUR_BEGUTACHTUNG_2 = 42;
+    case ERSTBEGUTACHTUNG_DURCH_AG = 50;
+    case FESTLEGUNG_EINES_AKKREDITIERUNGSSTATUS = 60;
+    case NACHBESSERUNGSAUFTRAG = 80;
+    case EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG = 82;
+    case BEGUTACHTUNG_NACH_EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG = 84;
+    case AKKREDITIERT = 100;
+    case AKKREDITIERT_MUSS_NACHAKKREDITIERT_WERDEN = 110;
+    case AKKREDITIERUNG_AUSGESETZT = 120;
+    case AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG = 130;
+    case AKKREDITIERT_MIT_AUFLAGEN = 140;
+    case AKKREDITIERT_MIT_AUFLAGEN_MUSS_NOCH_AKKREDITIERT_WERDEN = 142;
+    case EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG = 150;
+    case BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG = 160;
+    case NICHT_AKKREDITERT = 800;
+    case AKKREDITIERUNG_ENTZOGEN = 810;
+
+    public static function visibleForAg(): array
+    {
+        return [self::NEU_IN_ARBEIT->value, self::EINGEREICHT_ERSTEINREICHUNG->value];
+    }
+}

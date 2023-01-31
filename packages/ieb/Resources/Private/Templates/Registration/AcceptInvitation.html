@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+
+<f:section name="content">
+    <f:flashMessages />
+
+    <f:render partial="FormErrors" />
+
+    <div style="padding:10px;margin:10px">
+        <strong>Daten</strong><br>
+        <ul>
+            <li>Name: {potentialUser.fullName}</li>
+            <li>Email: {potentialUser.email}</li>
+        </ul>
+    </div>
+
+    <h2>Registrierung</h2>
+
+    <f:form action="acceptInvitationSuccess" name="registrationInvitation" object="{registrationInvitation}">
+        <f:form.hidden property="userId" />
+        <f:form.hidden property="userHash" />
+        <fieldset>
+            <legend>Zugangsdaten</legend>
+            <f:render partial="Form/Input" arguments="{property: 'password', type:'password', label: 'Passwort', required:1}" />
+            <f:render partial="Form/Input" arguments="{property: 'passwordRepeat', type:'password', label: 'Passwort wiederholen', required:1}" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Privacy</legend>
+            <f:render partial="Form/Checkbox" arguments="{property: 'dsgvo', label: 'Dsgvo', additional:{required:1}}" />
+        </fieldset>
+
+        <f:form.submit value="Absenden" />
+    </f:form>
+</f:section>
+</html>

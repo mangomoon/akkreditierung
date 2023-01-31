@@ -123,10 +123,10 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPlzReturnsInitialValueForString(): void
+    public function getPlzReturnsInitialValueForInt(): void
     {
         self::assertSame(
-            '',
+            0,
             $this->subject->getPlz()
         );
     }
@@ -134,11 +134,11 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPlzForStringSetsPlz(): void
+    public function setPlzForIntSetsPlz(): void
     {
-        $this->subject->setPlz('Conceived at T3CON10');
+        $this->subject->setPlz(12);
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('plz'));
+        self::assertEquals(12, $this->subject->_get('plz'));
     }
 
     /**
@@ -548,86 +548,22 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getReviewCommentInternalReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentInternal()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentInternalForStringSetsReviewCommentInternal(): void
-    {
-        $this->subject->setReviewCommentInternal('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentInternal'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewCommentTrReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getReviewCommentTr()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewCommentTrForStringSetsReviewCommentTr(): void
-    {
-        $this->subject->setReviewCommentTr('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentTr'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewStatusReturnsInitialValueForInt(): void
+    public function getLockedByReturnsInitialValueForInt(): void
     {
         self::assertSame(
             0,
-            $this->subject->getReviewStatus()
+            $this->subject->getLockedBy()
         );
     }
 
     /**
      * @test
      */
-    public function setReviewStatusForIntSetsReviewStatus(): void
+    public function setLockedByForIntSetsLockedBy(): void
     {
-        $this->subject->setReviewStatus(12);
+        $this->subject->setLockedBy(12);
 
-        self::assertEquals(12, $this->subject->_get('reviewStatus'));
-    }
-
-    /**
-     * @test
-     */
-    public function getReviewFristReturnsInitialValueForDateTime(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getReviewFrist()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewFristForDateTimeSetsReviewFrist(): void
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setReviewFrist($dateTimeFixture);
-
-        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFrist'));
+        self::assertEquals(12, $this->subject->_get('lockedBy'));
     }
 
     /**
@@ -635,9 +571,8 @@ class StammdatenTest extends UnitTestCase
      */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
+            null,
             $this->subject->getStandorte()
         );
     }
@@ -645,69 +580,11 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStandorteForObjectStorageContainingStandortSetsStandorte(): void
+    public function setStandorteForStandortSetsStandorte(): void
     {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $objectStorageHoldingExactlyOneStandorte = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneStandorte->attach($standorte);
-        $this->subject->setStandorte($objectStorageHoldingExactlyOneStandorte);
+        $standorteFixture = new \GeorgRinger\Ieb\Domain\Model\Standort();
+        $this->subject->setStandorte($standorteFixture);
 
-        self::assertEquals($objectStorageHoldingExactlyOneStandorte, $this->subject->_get('standorte'));
-    }
-
-    /**
-     * @test
-     */
-    public function addStandorteToObjectStorageHoldingStandorte(): void
-    {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $standorteObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($standorte));
-        $this->subject->_set('standorte', $standorteObjectStorageMock);
-
-        $this->subject->addStandorte($standorte);
-    }
-
-    /**
-     * @test
-     */
-    public function removeStandorteFromObjectStorageHoldingStandorte(): void
-    {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $standorteObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($standorte));
-        $this->subject->_set('standorte', $standorteObjectStorageMock);
-
-        $this->subject->removeStandorte($standorte);
-    }
-
-    /**
-     * @test
-     */
-    public function getBasedOnReturnsInitialValueForStammdaten(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getBasedOn()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBasedOnForStammdatenSetsBasedOn(): void
-    {
-        $basedOnFixture = new \GeorgRinger\Ieb\Domain\Model\Stammdaten();
-        $this->subject->setBasedOn($basedOnFixture);
-
-        self::assertEquals($basedOnFixture, $this->subject->_get('basedOn'));
+        self::assertEquals($standorteFixture, $this->subject->_get('standorte'));
     }
 }

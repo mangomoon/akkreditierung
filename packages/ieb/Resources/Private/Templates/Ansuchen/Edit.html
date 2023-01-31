@@ -21,7 +21,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <f:render partial="FormErrors" />
 
     <f:form action="update" name="ansuchen" object="{ansuchen}" >
-    <f:render partial="Ansuchen/FormFields" arguments="{ansuchen:ansuchen}" />
+    <f:render partial="Ansuchen/FormFields" arguments="{_all}" />
     <f:form.submit value="Save" />
     </f:form>
 </f:section>

@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-ieb">
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.nachname" /></td>
+		<td>{staticBerater.nachname}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.vorname" /></td>
+		<td>{staticBerater.vorname}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.lebenslauf" /></td>
+		<td>
+				<a href="{staticBerater.lebenslauf.originalResource.publicUrl}">
+					{staticBerater.lebenslauf.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.qualifikationsnachweise" /></td>
+		<td>
+				<a href="{staticBerater.qualifikationsnachweise.originalResource.publicUrl}">
+					{staticBerater.qualifikationsnachweise.originalResource.name}
+				</a>
+			</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.review_comment_internal" /></td>
+		<td>{staticBerater.reviewCommentInternal}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.review_comment_tr" /></td>
+		<td>{staticBerater.reviewCommentTr}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.review_status" /></td>
+		<td>{staticBerater.reviewStatus}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_ieb_domain_model_staticberater.review_frist" /></td>
+		<td>{staticBerater.reviewFrist -> f:format.date()}</td>
+	</tr>
+</table>
+</html>

@@ -1,0 +1,20 @@
+<div class="{class}">
+    <label
+            for="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+            class="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+    >
+        <f:form.checkbox
+                value="1"
+                property="{property}"
+                class=""
+                id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+                additionalAttributes="{additional}"
+                data="{data}"
+        />
+
+        <p class="col">
+            {label -> f:format.raw()}
+            <f:if condition="{additional.required}"><span class="mandatory">*</span></f:if>
+        </p>
+    </label>
+</div>

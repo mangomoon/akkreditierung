@@ -38,27 +38,6 @@ class AngebotVerantwortlichTest extends UnitTestCase
     /**
      * @test
      */
-    public function getVornameReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getVorname()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setVornameForStringSetsVorname(): void
-    {
-        $this->subject->setVorname('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('vorname'));
-    }
-
-    /**
-     * @test
-     */
     public function getNachnameReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -80,22 +59,22 @@ class AngebotVerantwortlichTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTelefonReturnsInitialValueForString(): void
+    public function getVornameReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getTelefon()
+            $this->subject->getVorname()
         );
     }
 
     /**
      * @test
      */
-    public function setTelefonForStringSetsTelefon(): void
+    public function setVornameForStringSetsVorname(): void
     {
-        $this->subject->setTelefon('Conceived at T3CON10');
+        $this->subject->setVorname('Conceived at T3CON10');
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('telefon'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('vorname'));
     }
 
     /**
@@ -117,6 +96,27 @@ class AngebotVerantwortlichTest extends UnitTestCase
         $this->subject->setEmail('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('email'));
+    }
+
+    /**
+     * @test
+     */
+    public function getTelefonReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getTelefon()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTelefonForStringSetsTelefon(): void
+    {
+        $this->subject->setTelefon('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('telefon'));
     }
 
     /**

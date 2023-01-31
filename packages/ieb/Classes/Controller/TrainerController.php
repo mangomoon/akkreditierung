@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
+use GeorgRinger\Ieb\Domain\Model\Trainer;
+use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -13,108 +18,60 @@ namespace GeorgRinger\Ieb\Controller;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
-/**
- * TrainerController
- */
-class TrainerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class TrainerController extends BaseController
 {
 
-    /**
-     * trainerRepository
-     *
-     * @var \GeorgRinger\Ieb\Domain\Repository\TrainerRepository
-     */
-    protected $trainerRepository = null;
+    protected TrainerRepository $trainerRepository;
 
-    /**
-     * @param \GeorgRinger\Ieb\Domain\Repository\TrainerRepository $trainerRepository
-     */
-    public function injectTrainerRepository(\GeorgRinger\Ieb\Domain\Repository\TrainerRepository $trainerRepository)
+    public function injectTrainerRepository(TrainerRepository $trainerRepository)
     {
         $this->trainerRepository = $trainerRepository;
     }
 
-    /**
-     * action list
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function listAction(): \Psr\Http\Message\ResponseInterface
+    public function indexAction(TrainerSearch $trainerSearch = null): ResponseInterface
     {
-        $trainers = $this->trainerRepository->findAll();
-        $this->view->assign('trainers', $trainers);
+        $this->view->assignMultiple([
+            'trainers' => $this->trainerRepository->findBySearch($trainerSearch),
+            'trainerSearch' => $trainerSearch
+        ]);
         return $this->htmlResponse();
     }
 
-    /**
-     * action show
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function showAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer): \Psr\Http\Message\ResponseInterface
+    public function showAction(Trainer $trainer): ResponseInterface
     {
         $this->view->assign('trainer', $trainer);
         return $this->htmlResponse();
     }
 
-    /**
-     * action new
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function newAction(): \Psr\Http\Message\ResponseInterface
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
 
-    /**
-     * action create
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $newTrainer
-     */
-    public function createAction(\GeorgRinger\Ieb\Domain\Model\Trainer $newTrainer)
+    public function createAction(Trainer $newTrainer)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->trainerRepository->add($newTrainer);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 
-    /**
-     * action edit
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("trainer")
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function editAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer): \Psr\Http\Message\ResponseInterface
+    public function editAction(Trainer $trainer): ResponseInterface
     {
+        $this->check($trainer);
         $this->view->assign('trainer', $trainer);
         return $this->htmlResponse();
     }
 
-    /**
-     * action update
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
-     */
-    public function updateAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer)
+    public function updateAction(Trainer $trainer)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->check($trainer);
         $this->trainerRepository->update($trainer);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 
-    /**
-     * action delete
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Trainer $trainer
-     */
-    public function deleteAction(\GeorgRinger\Ieb\Domain\Model\Trainer $trainer)
+    public function deleteAction(Trainer $trainer)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->check($trainer);
         $this->trainerRepository->remove($trainer);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 }
