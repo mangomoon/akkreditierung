@@ -14,6 +14,7 @@
         "b13/container": "^1.4",
         "b13/menus": "^0.3.0",
         "georgringer/ieb": "@dev",
+        "georgringer/news": "^10",
         "helhum/typo3-console": "^7.1",
         "mangomoon/mangomoonspecify": "@dev",
         "mangomoon/mangomoon": "dev-main",

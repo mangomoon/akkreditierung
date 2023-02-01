@@ -238,3 +238,11 @@ CREATE TABLE fe_users (
 	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
+
+CREATE TABLE tx_ieb_domain_model_kriterien (
+	chiffre varchar(255) NOT NULL DEFAULT '',
+	name varchar(255) NOT NULL DEFAULT '',
+	hinweis text,
+	pruefkriterien text,
+	hilfetext text
+);

@@ -660,6 +660,24 @@
 			<trans-unit id="tx_ieb.tx_extbase_type" resname="tx_ieb.tx_extbase_type">
 				<source>Record Type</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien" resname="tx_ieb_domain_model_kriterien">
+				<source>Kriterien</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.chiffre" resname="tx_ieb_domain_model_kriterien.chiffre">
+				<source>Chiffre</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.name" resname="tx_ieb_domain_model_kriterien.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.hinweis" resname="tx_ieb_domain_model_kriterien.hinweis">
+				<source>Hinweis</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.pruefkriterien" resname="tx_ieb_domain_model_kriterien.pruefkriterien">
+				<source>Pruefkriterien</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.hilfetext" resname="tx_ieb_domain_model_kriterien.hilfetext">
+				<source>Hilfetext</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_default.name" resname="tx_ieb_default.name">
 				<source>IEB</source>
 			</trans-unit>

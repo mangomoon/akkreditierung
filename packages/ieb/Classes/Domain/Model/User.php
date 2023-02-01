@@ -19,17 +19,21 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * @var bool
      */
     protected $disable = false;
+    protected $username = '';
+    protected $firstName = '';
+    protected $lastName = '';
+    protected $password = '';
+    protected $usergroup = '';
 
-    protected string $username = '';
-    protected string $firstName = '';
-    protected string $lastName = '';
-    protected string $email = '';
-    protected string $password = '';
-    protected string $usergroup = '';
+    /**
+     * @var string
+     */
+    protected $email = '';
 
     /**
      * @var bool
@@ -37,9 +41,16 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $trAdmin = false;
 
     /**
+     * name
+     *
+     * @var string
+     */
+    protected $name = '';
+
+    /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
@@ -47,7 +58,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $firstName
      */
-    public function setFirstName(string $firstName): void
+    public function setFirstName(string $firstName)
     {
         $this->firstName = $firstName;
     }
@@ -55,7 +66,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -63,7 +74,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $lastName
      */
-    public function setLastName(string $lastName): void
+    public function setLastName(string $lastName)
     {
         $this->lastName = $lastName;
     }
@@ -139,7 +150,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getUsername()
     {
         return $this->username;
     }
@@ -147,7 +158,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $username
      */
-    public function setUsername(string $username): void
+    public function setUsername(string $username)
     {
         $this->username = $username;
     }
@@ -155,7 +166,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }
@@ -163,7 +174,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $password
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
@@ -171,7 +182,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getUsergroup(): string
+    public function getUsergroup()
     {
         return $this->usergroup;
     }
@@ -179,14 +190,12 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $usergroup
      */
-    public function setUsergroup(string $usergroup): void
+    public function setUsergroup(string $usergroup)
     {
         $this->usergroup = $usergroup;
     }
-
     public function getFullname()
     {
         return $this->firstName . ' ' . $this->lastName;
     }
-
 }

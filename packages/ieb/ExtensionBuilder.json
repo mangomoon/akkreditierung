@@ -3,8 +3,8 @@
         {
             "config": {
                 "position": [
-                    280,
-                    259
+                    291,
+                    262
                 ]
             },
             "name": "New Model Object",
@@ -392,8 +392,8 @@
         {
             "config": {
                 "position": [
-                    301,
-                    471
+                    294,
+                    478
                 ]
             },
             "name": "New Model Object",
@@ -1173,8 +1173,8 @@
         {
             "config": {
                 "position": [
-                    603,
-                    241
+                    646,
+                    276
                 ]
             },
             "name": "New Model Object",
@@ -2002,8 +2002,8 @@
         {
             "config": {
                 "position": [
-                    39,
-                    477
+                    35,
+                    480
                 ]
             },
             "name": "New Model Object",
@@ -2115,8 +2115,8 @@
         {
             "config": {
                 "position": [
-                    14,
-                    275
+                    30,
+                    270
                 ]
             },
             "name": "New Model Object",
@@ -2737,8 +2737,8 @@
         {
             "config": {
                 "position": [
-                    828,
-                    506
+                    920,
+                    472
                 ]
             },
             "name": "New Model Object",
@@ -2838,8 +2838,8 @@
         {
             "config": {
                 "position": [
-                    885,
-                    284
+                    918,
+                    272
                 ]
             },
             "name": "New Model Object",
@@ -2904,6 +2904,107 @@
                             "propertyName": "trAdmin",
                             "propertyType": "Boolean",
                             "uid": "539133319045"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    1186,
+                    29
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": true,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
+                    "customActions": []
+                },
+                "name": "Kriterien",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "989990172894"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "chiffre",
+                            "propertyType": "String",
+                            "uid": "55520010345"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "65596187415"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "hinweis",
+                            "propertyType": "RichText",
+                            "uid": "1208227894800"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "pruefkriterien",
+                            "propertyType": "RichText",
+                            "uid": "1281295986367"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "hilfetext",
+                            "propertyType": "RichText",
+                            "uid": "840114272897"
                         }
                     ]
                 },
@@ -3193,8 +3294,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-01-21 08:11",
-        "extension_builder_version": "v11.0.9",
+        "last_modified": "2023-02-01 08:55",
+        "extension_builder_version": "v11.0.8",
         "be_user": " (1)"
     }
 }

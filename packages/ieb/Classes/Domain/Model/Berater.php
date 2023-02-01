@@ -19,8 +19,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    public \DateTime $tstamp;
-    public \DateTime $crdate;
+    public $tstamp = null;
+    public $crdate = null;
 
     /**
      * nachname

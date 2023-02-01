@@ -1,6 +1,28 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<label for="name">
-	<f:translate key="tx_ieb_domain_model_stammdaten.name" />
-</label><br />
-	<f:form.textfield property="name" id="name" /><br />
+
+<div class="kriterium" id="a-1">
+    <h2>A.1 Basisdaten</h2>
+
+    <div class="kriteriumteil" id="a-1-1">
+        <h3>Name der Organisation</h3>
+        <div class="hinweis">
+            <p>Geben Sie den rechtsgültigen Firmenname laut Vereinsregisterauszug/Firmenbuch Ihrer Einrichtung verpflichtend an;</p>
+            <p>zusätzlich können Sie einen „Markennamen“ (optional) bzw. die Organisationseinheit angeben (bei Einreichung als Organisationseinheit).</p>
+        </div>
+        <div class="formfields">
+            <formfield>
+                <label for="name">Rechtsgültige Bezeichnung*</label>
+                <f:form.textfield property="name" id="name" />
+            </formfield>
+            <formfield>
+                <label for="markenname">Markenname</label>
+                <f:form.textfield property="markenname" id="markenname" />
+            </formfield>
+        </div>
+    </div>
+
+
+</div>
+
+
 </html>

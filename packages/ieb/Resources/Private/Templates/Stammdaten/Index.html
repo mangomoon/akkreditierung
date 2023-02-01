@@ -3,27 +3,30 @@
 
 
 <f:section name="content">
-    <h1>Stammdaten des Trägers</h1>
+
 
     <f:flashMessages />
 
     <f:if condition="{item}">
         <f:then>
-        <h4>Aktuelle Stammdaten</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>{item.name}</td>
+                </tr>
+            </table>
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <td>{item.name}</td>
-            </tr>
-        </table>
-
-        <f:link.action action="edit" arguments="{stammdaten : item}">Bearbeiten</f:link.action>
+            <f:link.action action="edit" arguments="{stammdaten : item}">Bearbeiten</f:link.action>
         </f:then>
         <f:else>
-            <div class="alert alert-warning">Es sind noch keine Stammdaten angelegt</div>
-            <f:link.action action="new">Anlegen</f:link.action>
+            <f:render partial="FormErrors" />
+
+            <f:form action="create" name="newStammdaten" object="{newStammdaten}">
+                <f:render partial="Stammdaten/FormFields" />
+                <f:form.submit value="Create new" />
+            </f:form>
         </f:else>
     </f:if>
 </f:section>
+
 </html>

@@ -654,6 +654,24 @@
 			<trans-unit id="tx_ieb_domain_model_user.tr_admin" resname="tx_ieb_domain_model_user.tr_admin">
 				<source>Tr Admin</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien" resname="tx_ieb_domain_model_kriterien">
+				<source>Kriterien</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.chiffre" resname="tx_ieb_domain_model_kriterien.chiffre">
+				<source>Chiffre</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.name" resname="tx_ieb_domain_model_kriterien.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.hinweis" resname="tx_ieb_domain_model_kriterien.hinweis">
+				<source>Hinweis</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.pruefkriterien" resname="tx_ieb_domain_model_kriterien.pruefkriterien">
+				<source>Pruefkriterien</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.hilfetext" resname="tx_ieb_domain_model_kriterien.hilfetext">
+				<source>Hilfetext</source>
+			</trans-unit>
 			<trans-unit id="ansuchen.status.10" resname="ansuchen.status.10">
 				<source>Neu in Arbeit</source>
 			</trans-unit>

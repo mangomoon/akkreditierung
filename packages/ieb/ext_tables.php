@@ -31,4 +31,7 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ieb_domain_model_angebotverantwortlich', 'EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_angebotverantwortlich.xlf');
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ieb_domain_model_angebotverantwortlich');
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ieb_domain_model_kriterien', 'EXT:ieb/Resources/Private/Language/locallang_csh_tx_ieb_domain_model_kriterien.xlf');
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ieb_domain_model_kriterien');
 })();

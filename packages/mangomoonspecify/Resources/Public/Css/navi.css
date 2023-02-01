@@ -508,6 +508,10 @@ a.subnaviitem {
     border-right: solid 4px #ffffff;
 }
 
+a.subnaviitem.linkto-17 {
+    background: #585686;
+}
+
 a.subnaviitem.linkto-14 {
     background: #c3161c;
 }
@@ -544,6 +548,10 @@ a.subnaviitem.current {
     justify-content: center;
     padding: 5px;
     font-size: 28px;
+}
+
+.seitentitel.linkto-17 {
+    color: #585686;
 }
 
 .seitentitel.linkto-14 {
