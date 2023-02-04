@@ -66,7 +66,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * seit
      *
-     * @var \DateTime
+     * @var string
      */
     protected $seit = null;
 
@@ -209,6 +209,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $standorte = null;
 
     /**
+     * markenname
+     *
+     * @var string
+     */
+    protected $markenname = '';
+
+    /**
      * Returns the name
      *
      * @return string
@@ -332,27 +339,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setOrt(string $ort)
     {
         $this->ort = $ort;
-    }
-
-    /**
-     * Returns the seit
-     *
-     * @return \DateTime
-     */
-    public function getSeit()
-    {
-        return $this->seit;
-    }
-
-    /**
-     * Sets the seit
-     *
-     * @param \DateTime $seit
-     * @return void
-     */
-    public function setSeit(\DateTime $seit)
-    {
-        $this->seit = $seit;
     }
 
     /**
@@ -762,5 +748,47 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Returns the seit
+     *
+     * @return string seit
+     */
+    public function getSeit()
+    {
+        return $this->seit;
+    }
+
+    /**
+     * Sets the seit
+     *
+     * @param \DateTime $seit
+     * @return void
+     */
+    public function setSeit(\DateTime $seit)
+    {
+        $this->seit = $seit;
+    }
+
+    /**
+     * Returns the markenname
+     *
+     * @return string
+     */
+    public function getMarkenname()
+    {
+        return $this->markenname;
+    }
+
+    /**
+     * Sets the markenname
+     *
+     * @param string $markenname
+     * @return void
+     */
+    public function setMarkenname(string $markenname)
+    {
+        $this->markenname = $markenname;
     }
 }

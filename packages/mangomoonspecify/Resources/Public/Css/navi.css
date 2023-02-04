@@ -496,6 +496,7 @@ a.footernavi:hover {
 .subnavigation {
     justify-content: space-between;
     margin-top: 4px;
+    gap: 6px;
 }
 
 a.subnaviitem {
@@ -505,7 +506,6 @@ a.subnaviitem {
     text-align: center;
     color: #fff;
     flex-grow: 1;
-    border-right: solid 4px #ffffff;
 }
 
 a.subnaviitem.linkto-17 {
@@ -533,7 +533,7 @@ a.subnaviitem.linkto-10 {
 }
 
 a.subnaviitem:hover {
-    background: #e9eaeb;
+    background: #eae6db;
     color: #c3161c;
 }
 
@@ -542,8 +542,7 @@ a.subnaviitem.current {
 }
 
 .seitentitel {
-    border-right: solid 4px #fff;
-    margin-top: 36px;
+    margin-top: 12px;
     color: #fff;
     justify-content: center;
     padding: 5px;

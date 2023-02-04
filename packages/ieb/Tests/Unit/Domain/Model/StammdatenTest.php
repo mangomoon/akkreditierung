@@ -59,6 +59,27 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getMarkennameReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getMarkenname()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setMarkennameForStringSetsMarkenname(): void
+    {
+        $this->subject->setMarkenname('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('markenname'));
+    }
+
+    /**
+     * @test
+     */
     public function getNachweisReturnsInitialValueForFileReference(): void
     {
         self::assertEquals(
@@ -165,10 +186,10 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSeitReturnsInitialValueForDateTime(): void
+    public function getSeitReturnsInitialValueForString(): void
     {
-        self::assertEquals(
-            null,
+        self::assertSame(
+            '',
             $this->subject->getSeit()
         );
     }
@@ -176,12 +197,11 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSeitForDateTimeSetsSeit(): void
+    public function setSeitForStringSetsSeit(): void
     {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setSeit($dateTimeFixture);
+        $this->subject->setSeit('Conceived at T3CON10');
 
-        self::assertEquals($dateTimeFixture, $this->subject->_get('seit'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('seit'));
     }
 
     /**
@@ -357,6 +377,27 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getQualitaetSicherungReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getQualitaetSicherung()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setQualitaetSicherungForStringSetsQualitaetSicherung(): void
+    {
+        $this->subject->setQualitaetSicherung('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('qualitaetSicherung'));
+    }
+
+    /**
+     * @test
+     */
     public function getZertifikatBisReturnsInitialValueForDateTime(): void
     {
         self::assertEquals(
@@ -374,27 +415,6 @@ class StammdatenTest extends UnitTestCase
         $this->subject->setZertifikatBis($dateTimeFixture);
 
         self::assertEquals($dateTimeFixture, $this->subject->_get('zertifikatBis'));
-    }
-
-    /**
-     * @test
-     */
-    public function getQualitaetSicherungReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getQualitaetSicherung()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setQualitaetSicherungForStringSetsQualitaetSicherung(): void
-    {
-        $this->subject->setQualitaetSicherung('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('qualitaetSicherung'));
     }
 
     /**
@@ -483,27 +503,6 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPruefbescheidReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getPruefbescheid()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPruefbescheidForStringSetsPruefbescheid(): void
-    {
-        $this->subject->setPruefbescheid('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('pruefbescheid'));
-    }
-
-    /**
-     * @test
-     */
     public function getPruefbescheidDateiReturnsInitialValueForFileReference(): void
     {
         self::assertEquals(
@@ -521,6 +520,27 @@ class StammdatenTest extends UnitTestCase
         $this->subject->setPruefbescheidDatei($fileReferenceFixture);
 
         self::assertEquals($fileReferenceFixture, $this->subject->_get('pruefbescheidDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getPruefbescheidReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getPruefbescheid()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPruefbescheidForStringSetsPruefbescheid(): void
+    {
+        $this->subject->setPruefbescheid('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('pruefbescheid'));
     }
 
     /**

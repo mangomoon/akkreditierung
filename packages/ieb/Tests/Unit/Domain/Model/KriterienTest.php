@@ -139,4 +139,25 @@ class KriterienTest extends UnitTestCase
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('hilfetext'));
     }
+
+    /**
+     * @test
+     */
+    public function getPpdReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getPpd()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPpdForStringSetsPpd(): void
+    {
+        $this->subject->setPpd('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('ppd'));
+    }
 }

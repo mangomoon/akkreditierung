@@ -812,6 +812,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "markenname",
+                            "propertyType": "String",
+                            "uid": "351978310187"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "nachweis",
                             "propertyType": "File",
                             "uid": "1510786957535"
@@ -873,7 +885,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "seit",
-                            "propertyType": "Date",
+                            "propertyType": "String",
                             "uid": "786860545139"
                         },
                         {
@@ -2435,6 +2447,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "markenname",
+                            "propertyType": "String",
+                            "uid": "457461281891"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "nachweis",
                             "propertyType": "File",
                             "uid": "344385726752"
@@ -2496,7 +2520,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "seit",
-                            "propertyType": "Date",
+                            "propertyType": "String",
                             "uid": "502719349973"
                         },
                         {
@@ -2603,9 +2627,9 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "zertifikatBis",
-                            "propertyType": "Date",
-                            "uid": "484888787311"
+                            "propertyName": "qualitaetSicherung",
+                            "propertyType": "RichText",
+                            "uid": "936505589079"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2615,9 +2639,9 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "qualitaetSicherung",
-                            "propertyType": "RichText",
-                            "uid": "936505589079"
+                            "propertyName": "zertifikatBis",
+                            "propertyType": "Date",
+                            "uid": "484888787311"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2675,9 +2699,9 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "pruefbescheid",
-                            "propertyType": "RichText",
-                            "uid": "548114500900"
+                            "propertyName": "pruefbescheidDatei",
+                            "propertyType": "File",
+                            "uid": "1297792623896"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2687,9 +2711,9 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "pruefbescheidDatei",
-                            "propertyType": "File",
-                            "uid": "1297792623896"
+                            "propertyName": "pruefbescheid",
+                            "propertyType": "RichText",
+                            "uid": "548114500900"
                         },
                         {
                             "allowedFileTypes": "",
@@ -3005,6 +3029,18 @@
                             "propertyName": "hilfetext",
                             "propertyType": "RichText",
                             "uid": "840114272897"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ppd",
+                            "propertyType": "RichText",
+                            "uid": "1603754446092"
                         }
                     ]
                 },
@@ -3294,8 +3330,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-02-01 08:55",
-        "extension_builder_version": "v11.0.8",
+        "last_modified": "2023-02-04 05:29",
+        "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }
 }

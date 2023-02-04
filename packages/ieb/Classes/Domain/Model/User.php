@@ -31,6 +31,13 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $usergroup = '';
 
     /**
+     * name
+     *
+     * @var string
+     */
+    protected $name = '';
+
+    /**
      * @var string
      */
     protected $email = '';
@@ -39,13 +46,6 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var bool
      */
     protected $trAdmin = false;
-
-    /**
-     * name
-     *
-     * @var string
-     */
-    protected $name = '';
 
     /**
      * @return string

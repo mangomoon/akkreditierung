@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cd28eadff694413202d123b40de380f",
+    "content-hash": "79075754259acfecc61c4f41e9a6c5fb",
     "packages": [
         {
             "name": "b13/bolt",
@@ -10566,8 +10566,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "georgringer/ieb": 20,
-        "mangomoon/mangomoonspecify": 20,
         "mangomoon/mangomoon": 20,
+        "mangomoon/mangomoonspecify": 20,
         "typo3/cms-composer-installers": 20
     },
     "prefer-stable": false,

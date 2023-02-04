@@ -47,7 +47,6 @@ class UploadViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelpe
             $output .= $this->renderChildren();
             $this->templateVariableContainer->remove('resource');
         }
-
         $output .= parent::render();
         return $output;
     }

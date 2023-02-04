@@ -57,6 +57,13 @@ class Kriterien extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $hilfetext = '';
 
     /**
+     * ppd
+     *
+     * @var string
+     */
+    protected $ppd = '';
+
+    /**
      * Returns the chiffre
      *
      * @return string
@@ -159,5 +166,26 @@ class Kriterien extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setHilfetext(string $hilfetext)
     {
         $this->hilfetext = $hilfetext;
+    }
+
+    /**
+     * Returns the ppd
+     *
+     * @return string
+     */
+    public function getPpd()
+    {
+        return $this->ppd;
+    }
+
+    /**
+     * Sets the ppd
+     *
+     * @param string $ppd
+     * @return void
+     */
+    public function setPpd(string $ppd)
+    {
+        $this->ppd = $ppd;
     }
 }

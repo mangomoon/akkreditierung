@@ -14,6 +14,10 @@ body {
     height: 100%;
 }
 
+#top {
+    box-shadow: 0 2px 6px #aaa;
+}
+
 #topnavi {
     justify-content: flex-end;
     margin-top: 0px;
@@ -22,11 +26,11 @@ body {
 }
 
 #kopfcontainer {
-    background: #e9eaeb;
-    /*background-size:cover;*/
+    /*background: #e9eaeb;
+    background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('../img/bg.jpg');
+    background-image: url('../img/bg.jpg');*/
 }
 
 #kopf {
@@ -40,20 +44,22 @@ body {
     justify-content: center;
 }
 
+#logo .col-6 {
+    padding-top: 0;
+}
+
 #logo svg {
     width: 200px;
     height: auto;
     margin-top: 18px;
 }
 
-.sitename {
-    padding-top: 36px;
-    padding-left: 200px;
+#logo .col-6.sitename {
+    padding-top: 39px;
     color: #c3161c;
     font-size: 2em;
+    text-align: right;
 }
-
-nav {}
 
 .navigationrow {
     justify-content: flex-end;
@@ -95,4 +101,9 @@ nav {}
     bottom: 0;
     height: 30px;
     background: #ddd;
+}
+
+input[type="text"],
+input[type="password"] {
+    margin: 6px 0;
 }

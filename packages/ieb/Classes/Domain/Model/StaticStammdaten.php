@@ -66,7 +66,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * seit
      *
-     * @var \DateTime
+     * @var string
      */
     protected $seit = null;
 
@@ -244,6 +244,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * markenname
+     *
+     * @var string
+     */
+    protected $markenname = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -390,27 +397,6 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setOrt(string $ort)
     {
         $this->ort = $ort;
-    }
-
-    /**
-     * Returns the seit
-     *
-     * @return \DateTime
-     */
-    public function getSeit()
-    {
-        return $this->seit;
-    }
-
-    /**
-     * Sets the seit
-     *
-     * @param \DateTime $seit
-     * @return void
-     */
-    public function setSeit(\DateTime $seit)
-    {
-        $this->seit = $seit;
     }
 
     /**
@@ -947,5 +933,47 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn)
     {
         $this->basedOn = $basedOn;
+    }
+
+    /**
+     * Returns the seit
+     *
+     * @return string seit
+     */
+    public function getSeit()
+    {
+        return $this->seit;
+    }
+
+    /**
+     * Sets the seit
+     *
+     * @param \DateTime $seit
+     * @return void
+     */
+    public function setSeit(\DateTime $seit)
+    {
+        $this->seit = $seit;
+    }
+
+    /**
+     * Returns the markenname
+     *
+     * @return string
+     */
+    public function getMarkenname()
+    {
+        return $this->markenname;
+    }
+
+    /**
+     * Sets the markenname
+     *
+     * @param string $markenname
+     * @return void
+     */
+    public function setMarkenname(string $markenname)
+    {
+        $this->markenname = $markenname;
     }
 }

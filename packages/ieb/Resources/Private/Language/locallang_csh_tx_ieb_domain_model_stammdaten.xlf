@@ -6,6 +6,9 @@
 			<trans-unit id="name.description" resname="name.description">
 				<source>name</source>
 			</trans-unit>
+			<trans-unit id="markenname.description" resname="markenname.description">
+				<source>markenname</source>
+			</trans-unit>
 			<trans-unit id="nachweis.description" resname="nachweis.description">
 				<source>nachweis</source>
 			</trans-unit>
@@ -48,11 +51,11 @@
 			<trans-unit id="qms_typ.description" resname="qms_typ.description">
 				<source>qmsTyp</source>
 			</trans-unit>
-			<trans-unit id="zertifikat_bis.description" resname="zertifikat_bis.description">
-				<source>zertifikatBis</source>
-			</trans-unit>
 			<trans-unit id="qualitaet_sicherung.description" resname="qualitaet_sicherung.description">
 				<source>qualitaetSicherung</source>
+			</trans-unit>
+			<trans-unit id="zertifikat_bis.description" resname="zertifikat_bis.description">
+				<source>zertifikatBis</source>
 			</trans-unit>
 			<trans-unit id="qualitaet_sicherung_datei.description" resname="qualitaet_sicherung_datei.description">
 				<source>qualitaetSicherungDatei</source>
@@ -66,11 +69,11 @@
 			<trans-unit id="tr_pp3.description" resname="tr_pp3.description">
 				<source>trPp3</source>
 			</trans-unit>
-			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
-				<source>pruefbescheid</source>
-			</trans-unit>
 			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
 				<source>pruefbescheidDatei</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
+				<source>pruefbescheid</source>
 			</trans-unit>
 			<trans-unit id="pruefbescheid_bis.description" resname="pruefbescheid_bis.description">
 				<source>pruefbescheidBis</source>

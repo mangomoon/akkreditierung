@@ -1,27 +1,191 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="kriterium" id="a-1">
     <h2>A.1 Basisdaten</h2>
 
     <div class="kriteriumteil" id="a-1-1">
-        <h3>Name der Organisation</h3>
-        <div class="hinweis">
-            <p>Geben Sie den rechtsgültigen Firmenname laut Vereinsregisterauszug/Firmenbuch Ihrer Einrichtung verpflichtend an;</p>
-            <p>zusätzlich können Sie einen „Markennamen“ (optional) bzw. die Organisationseinheit angeben (bei Einreichung als Organisationseinheit).</p>
+        <h3>A.1.1 Name der Organisation</h3>
+        <f:image src="EXT:ieb/Resources/Public/Img/info.svg" class="info" />
+        <div class="erlaeuterung">
+            <p>Geben Sie den rechtsgültigen Firmenname laut Vereinsregisterauszug/Firmenbuch Ihrer Einrichtung an; zusätzlich können Sie einen „Markennamen“ (optional) bzw. die Organisationseinheit angeben (bei Einreichung als Organisationseinheit).</p>
         </div>
-        <div class="formfields">
-            <formfield>
-                <label for="name">Rechtsgültige Bezeichnung*</label>
+        <div class="formfields row">
+            <div class="col-6">
+                <label for="name" class="req">Rechtsgültige Bezeichnung</label>
                 <f:form.textfield property="name" id="name" />
-            </formfield>
-            <formfield>
-                <label for="markenname">Markenname</label>
+            </div>
+            <div class="col-6">
+                <label for="markenname">Markenname/Organisationseinheit</label>
                 <f:form.textfield property="markenname" id="markenname" />
-            </formfield>
+            </div>
         </div>
     </div>
 
+    <div class="kriteriumteil" id="a-1-2">
+        <h3>A.1.2 Rechts-/Organisationsform</h3>
+        <div class="erlaeuterung">
+            <p>Geben Sie die Rechtsform ihrer Organisation an und laden Sie einen aktuellen Vereinsregisterauszug oder Firmenbuchauszug hoch.</p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <label for="rechtsform" class="req">Rechts-/Organisationsform</label>
+                <f:form.select name="rechtsform" property="rechtsform">
+                    <f:form.select.option value=""></f:form.select.option>
+                    <f:form.select.option value="Verein">Verein</f:form.select.option>
+                    <f:form.select.option value="Ges.m.b.H.">Ges.m.b.H.</f:form.select.option>
+                </f:form.select>
+            </div>
+            <div class="col-6">
+                <label class="req">Nachweis</label>
+                <ieb:form.upload property="nachweise" id="nachweise">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+        </div>
+    </div>
 
+    <div class="kriteriumteil" id="a-1-3">
+        <h3>A.1.3 Adresse und Kontakt</h3>
+        <div class="erlaeuterung">
+            <p>Geben Sie die Adresse ihres Firmen/Vereinssitzes gemäß ZVR/FB an.</p>
+            <p class="hinweis">Hinweis: Die Kursstandorte sind an anderer Stelle einzutragen, hier ist rein der Firmen-/Vereinssitz anzugeben.</p>
+        </div>
+        <div class="formfields">
+            <div class="col-6">
+                <label for="strasse" class="req">Strasse etc.</label>
+                <f:form.textarea property="strasse" id="strasse"></f:form.textarea>
+                <div class="row">
+                    <div class="col-2" style="margin-right:18px;">
+                        <label for="plz" class="req">PLZ</label>
+                        <f:form.textfield property="plz" id="plz" />
+                    </div>
+                    <div class="col-9">
+                        <label for="ort" class="req">Ort</label>
+                        <f:form.textfield property="ort" id="ort" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="email" class="req">E-Mail</label>
+                <f:form.textfield property="email" id="email" />
+                <label for="telefon" class="req">Telefon</label>
+                <f:form.textfield property="telefon" id="telefon" />
+                <label for="website" class="req">Website</label>
+                <f:form.textfield property="website" id="website" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="kriterium" id="a-2-1">
+    <h2>A.2.1 Leitbild</h2>
+    <div class="erlaeuterung">
+        <p>Laden Sie das Leitbild Ihrer Einrichtung hoch. Es soll einen klaren Erwachsenenbildungsbezug aufweisen.</p>
+        <p class="hinweis">Hinweis: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
+    </div>
+    <div class="formfields row">
+        <div class="col-6">
+            <label for="leitbild">Leitbild</label>
+            <f:form.textarea property="leitbild" id="leitbild"></f:form.textarea>
+        </div>
+        <div class="col-6">
+            <label class="req">Leitbild (pdf)</label>
+            <ieb:form.upload property="leitbilddatei" id="leitbilddatei">
+                <f:if condition="{resource}">
+                    <f:image image="{resource}" alt="" width="50" />
+                </f:if>
+            </ieb:form.upload>
+        </div>
+    </div>
+</div>
+
+
+<div class="kriterium" id="a-2-2">
+    <h2>A.2.2 Qualität des Anbieters</h2>
+    <div>
+
+
+        <p>Unsere Einrichtung verfügt über ein öCert:
+            <f:form.hidden name="qmsTyp" value="{qmsTyp}" />
+            <knopf class="inline janein ja <f:if condition='{qmsTyp}==1'> checked</f:if>">ja</knopf>
+            <knopf class="inline janein nein <f:if condition='{qmsTyp}==2'> checked</f:if>">nein</knopf>
+        </p>
+    </div>
+    <div class="oecert ja">
+        <div class="erlaeuterung">
+            <p>Laden Sie das aktuell gültige Zertifikat Ihrer Einrichtung hoch.</p>
+            <p class="hinweis">Hinweis: Nach erfolgter Verlängerung von Ihrem öCert laden Sie das aktuelle Zertifikat hoch.</p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <label for="qmsZertifikat">Anmerkung zum Upload</label>
+                <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
+            </div>
+            <div class="col-6">
+                <label class="req">öCert (pdf)</label>
+                <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+        </div>
+    </div>
+    <div class="oecert nein">
+        <div class="erlaeuterung">
+            <p>Beschreiben Sie die Qualitätssicherung und -entwicklung Ihrer Einrichtung, geben Sie jeweils Beispiele an.</p>
+            <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet und wo Qualität in Ihrer Einrichtung sichtbar wird. Welche Abläufe sichern die Qualität Ihrer Einrichtung?</p>
+            <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet wird. Denken Sie
+                dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
+            <p><span class="halbstark">Ansprüche an die Infrastruktur:</span> Beschreiben Sie die Ansprüche Ihrer Einrichtung bzgl. Räumlichkeiten, Größe, Lage, Erreichbarkeit, (technische) Ausstattung, Barrierefreiheit, Zielgruppe, ...</p>
+            <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <label for="qualitaetSicherung">Anmerkung zum Upload</label>
+                <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
+            </div>
+            <div class="col-6">
+                <label class="req">Qualitätssicherung (pdf)</label>
+                <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="kriterium" id="a-2-3">
+    <h2>A.2.3 Qualitätssichernde Maßnahmen Personal</h2>
+    <div class="erlaeuterung">
+        <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Mitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen Sie dabei die inhaltliche und
+            die psychosoziale Ebene.</p>
+        <p><span class="halbstark">Rahmenbedingungen:</span> Vertragsverhältnis Mitarbeiter/innen: Geben Sie an, welche Vertragsverhältnisse vorliegen und wie die Rahmenbedingungen z.B. für die Vor- und Nachbereitungszeiten, Supervision bei den Trainer/innen
+            und Berater/innen geregelt sind.</p>
+        <p><span class="halbstark">Aus/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzen. </p>
+        <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten.</p>
+    </div>
+    <div class="formfields row">
+        <div class="col-6">
+            <label for="qualitaetSicherung">Anmerkung zum Upload</label>
+            <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
+        </div>
+        <div class="col-6">
+            <label class="req">Qulitätssicherung Personal (pdf)</label>
+            <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
+                <f:if condition="{resource}">
+                    <f:image image="{resource}" alt="" width="50" />
+                </f:if>
+            </ieb:form.upload>
+        </div>
+    </div>
 </div>
 
 

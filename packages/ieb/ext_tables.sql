@@ -62,12 +62,13 @@ CREATE TABLE tx_ieb_domain_model_staticstandort (
 
 CREATE TABLE tx_ieb_domain_model_staticstammdaten (
 	name varchar(255) NOT NULL DEFAULT '',
+	markenname varchar(255) NOT NULL DEFAULT '',
 	nachweis int(11) unsigned NOT NULL DEFAULT '0',
 	rechtsform int(11) DEFAULT '0' NOT NULL,
 	strasse varchar(255) NOT NULL DEFAULT '',
 	plz int(11) NOT NULL DEFAULT '0',
 	ort varchar(255) NOT NULL DEFAULT '',
-	seit int(11) NOT NULL DEFAULT '0',
+	seit varchar(255) NOT NULL DEFAULT '',
 	website varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
@@ -196,12 +197,13 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
 	name varchar(255) NOT NULL DEFAULT '',
+	markenname varchar(255) NOT NULL DEFAULT '',
 	nachweis int(11) unsigned NOT NULL DEFAULT '0',
 	rechtsform int(11) DEFAULT '0' NOT NULL,
 	strasse varchar(255) NOT NULL DEFAULT '',
 	plz int(11) NOT NULL DEFAULT '0',
 	ort varchar(255) NOT NULL DEFAULT '',
-	seit int(11) NOT NULL DEFAULT '0',
+	seit varchar(255) NOT NULL DEFAULT '',
 	website varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
@@ -210,14 +212,14 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	qms_zertifikat_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qms_zertifikat text NOT NULL DEFAULT '',
 	qms_typ int(11) DEFAULT '0' NOT NULL,
-	zertifikat_bis int(11) NOT NULL DEFAULT '0',
 	qualitaet_sicherung text,
+	zertifikat_bis int(11) NOT NULL DEFAULT '0',
 	qualitaet_sicherung_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualitaet_personal text,
 	qualitaet_personal_datei int(11) unsigned NOT NULL DEFAULT '0',
 	tr_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	pruefbescheid text,
 	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid text,
 	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	standorte int(11) unsigned DEFAULT '0'
@@ -244,5 +246,6 @@ CREATE TABLE tx_ieb_domain_model_kriterien (
 	name varchar(255) NOT NULL DEFAULT '',
 	hinweis text,
 	pruefkriterien text,
-	hilfetext text
+	hilfetext text,
+	ppd text
 );

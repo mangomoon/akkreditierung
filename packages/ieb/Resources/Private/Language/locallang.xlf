@@ -177,6 +177,9 @@
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.name" resname="tx_ieb_domain_model_staticstammdaten.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticstammdaten.markenname" resname="tx_ieb_domain_model_staticstammdaten.markenname">
+				<source>Markenname</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.nachweis" resname="tx_ieb_domain_model_staticstammdaten.nachweis">
 				<source>Nachweis</source>
 			</trans-unit>
@@ -549,6 +552,9 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.name" resname="tx_ieb_domain_model_stammdaten.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.markenname" resname="tx_ieb_domain_model_stammdaten.markenname">
+				<source>Markenname</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.nachweis" resname="tx_ieb_domain_model_stammdaten.nachweis">
 				<source>Nachweis</source>
 			</trans-unit>
@@ -591,11 +597,11 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qms_typ" resname="tx_ieb_domain_model_stammdaten.qms_typ">
 				<source>Qms Typ</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_stammdaten.zertifikat_bis" resname="tx_ieb_domain_model_stammdaten.zertifikat_bis">
-				<source>Zertifikat Bis</source>
-			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" resname="tx_ieb_domain_model_stammdaten.qualitaet_sicherung">
 				<source>Qualitaet Sicherung</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.zertifikat_bis" resname="tx_ieb_domain_model_stammdaten.zertifikat_bis">
+				<source>Zertifikat Bis</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" resname="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei">
 				<source>Qualitaet Sicherung Datei</source>
@@ -609,11 +615,11 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.tr_pp3" resname="tx_ieb_domain_model_stammdaten.tr_pp3">
 				<source>Tr Pp3</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid" resname="tx_ieb_domain_model_stammdaten.pruefbescheid">
-				<source>Pruefbescheid</source>
-			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" resname="tx_ieb_domain_model_stammdaten.pruefbescheid_datei">
 				<source>Pruefbescheid Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid" resname="tx_ieb_domain_model_stammdaten.pruefbescheid">
+				<source>Pruefbescheid</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" resname="tx_ieb_domain_model_stammdaten.pruefbescheid_bis">
 				<source>Pruefbescheid Bis</source>
@@ -671,6 +677,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien.hilfetext" resname="tx_ieb_domain_model_kriterien.hilfetext">
 				<source>Hilfetext</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_kriterien.ppd" resname="tx_ieb_domain_model_kriterien.ppd">
+				<source>Ppd</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.10" resname="ansuchen.status.10">
 				<source>Neu in Arbeit</source>

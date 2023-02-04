@@ -59,6 +59,27 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getMarkennameReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getMarkenname()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setMarkennameForStringSetsMarkenname(): void
+    {
+        $this->subject->setMarkenname('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('markenname'));
+    }
+
+    /**
+     * @test
+     */
     public function getNachweisReturnsInitialValueForFileReference(): void
     {
         self::assertEquals(
@@ -165,10 +186,10 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSeitReturnsInitialValueForDateTime(): void
+    public function getSeitReturnsInitialValueForString(): void
     {
-        self::assertEquals(
-            null,
+        self::assertSame(
+            '',
             $this->subject->getSeit()
         );
     }
@@ -176,12 +197,11 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSeitForDateTimeSetsSeit(): void
+    public function setSeitForStringSetsSeit(): void
     {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setSeit($dateTimeFixture);
+        $this->subject->setSeit('Conceived at T3CON10');
 
-        self::assertEquals($dateTimeFixture, $this->subject->_get('seit'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('seit'));
     }
 
     /**
