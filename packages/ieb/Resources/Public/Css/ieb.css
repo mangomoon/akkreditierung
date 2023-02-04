@@ -1,0 +1,211 @@
+:root {
+    --f0: #ede9de;
+    --f1: #c0c7b7;
+    --f2: #94a89c;
+    --f3: #6b8884;
+    --f4: #48686f;
+    --f5: #2f4858;
+}
+
+body {
+    background-color: #f1ede4;
+}
+
+.kriterium {
+    border: solid 1px var(--f3);
+    padding: 0 20px;
+    background: var(--f0);
+    margin-bottom: 36px;
+}
+
+.kriterium h2 {
+    color: var(--f5);
+}
+
+.kriterium h3 {
+    color: var(--f4);
+}
+
+.info {
+    position: absolute;
+    top: -13px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+}
+
+.info:hover {
+    filter: none;
+    opacity: 0.8;
+}
+
+.kriteriumteil {
+    position: relative;
+    padding-bottom: 2px;
+    margin-bottom: 37px;
+    border-bottom: dotted 2px var(--f3);
+}
+
+.kriteriumteil:last-of-type {
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.erlaeuterung {
+    padding-bottom: 0.5em;
+}
+
+.erlaeuterung p {
+    padding-bottom: 0;
+}
+
+p.hinweis {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--f4);
+}
+
+.formfields {
+    margin: 24px 0 20px 0;
+    display: flex;
+}
+
+.formfields .row {
+    margin: 0;
+}
+
+.formfields .col-2,
+.formfields .col-3,
+.formfields .col-4,
+.formfields .col-5,
+.formfields .col-6,
+.formfields .col-7,
+.formfields .col-8,
+.formfields .col-9,
+.formfields .col-10,
+.formfields .col-11 {
+    padding: 0;
+}
+
+formfield {
+    flex-basis: 50%;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    display: block;
+}
+
+label.req::after {
+    content: '*';
+    font-family: Arial;
+    font-size: 1.4em;
+    line-height: 1px;
+    padding-left: 1px;
+}
+
+input[type="text"] {
+    width: 80%;
+    margin-bottom: 20px;
+    border: solid 1px var(--f1);
+}
+
+textarea {
+    background: #fff;
+    border: 1px solid var(--f1);
+    border-radius: 3px;
+    margin: 6px 0;
+    padding: 6px;
+    width: 80%;
+    resize: none;
+    margin-bottom: 20px;
+    height: 107px;
+}
+
+select {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9em;
+    background: #fff;
+    border: 1px solid var(--f1);
+    border-radius: 3px;
+    margin: 6px 0 20px 0;
+    padding: 6px;
+    width: 60%;
+}
+
+input[type="file"] {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+input::file-selector-button,
+input[type="file"]::file-selector-button {
+    background-color: var(--f3);
+    border: 1px solid var(--f4);
+    color: #fff;
+    border-radius: 3px;
+    padding: 6px;
+    margin: 6px 0;
+    width: 150px;
+    font-family: 'Raleway', sans-serif;
+    margin-right: 24px;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+}
+
+input::file-selector-button:hover,
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--f4);
+    filter: none;
+}
+
+input[type="submit"].knopf-s {
+    padding: 12px 48px;
+    background-color: var(--f3);
+    border: none;
+    color: #fff;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+    font-size: 0.9em;
+}
+
+input[type="submit"].knopf-s:hover {
+    background-color: var(--f2);
+    filter: none;
+}
+
+knopf.inline {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 0 20px;
+    background-color: var(--f1);
+    border: 1px solid var(--f2);
+    border-radius: 3px;
+    margin-left: 18px;
+    box-shadow: 2px 2px 2px var(--f2);
+    min-width: 88px;
+    margin-bottom: 8px;
+    display: inline-block;
+    text-align: center;
+    line-height: 21px;
+}
+
+knopf.inline:hover {
+    box-shadow: none;
+    background-color: var(--f2);
+    color: #fff;
+}
+
+knopf.inline.checked {
+    filter: none;
+    background-color: var(--f2);
+    border-color: var(--f3);
+    color: #fff;
+    box-shadow: 1px 1px 2px var(--f3) inset;
+}
+
+.oecert.ja,
+.oecert.nein {
+    display: none;
+}
