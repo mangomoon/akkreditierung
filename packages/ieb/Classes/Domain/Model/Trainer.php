@@ -19,7 +19,10 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    /** @var \DateTime */
     public $tstamp = null;
+
+    /** @var \DateTime */
     public $crdate = null;
 
     /**
