@@ -5,7 +5,9 @@
 
     <div class="kriteriumteil" id="a-1-1">
         <h3>A.1.1 Name der Organisation</h3>
-        <f:image src="EXT:ieb/Resources/Public/Img/info.svg" class="info" />
+
+        <div class="info"></div>
+        <div class="infobox" id="a-1-1-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
         <div class="erlaeuterung">
             <p>Geben Sie den rechtsgültigen Firmenname laut Vereinsregisterauszug/Firmenbuch Ihrer Einrichtung an; zusätzlich können Sie einen „Markennamen“ (optional) bzw. die Organisationseinheit angeben (bei Einreichung als Organisationseinheit).</p>
         </div>
@@ -107,56 +109,57 @@
 
 <div class="kriterium" id="a-2-2">
     <h2>A.2.2 Qualität des Anbieters</h2>
-    <div>
+    <div class="janeinwechsel">
 
 
         <p>Unsere Einrichtung verfügt über ein öCert:
-            <f:form.hidden name="qmsTyp" value="{qmsTyp}" />
+            <f:form.hidden name="qmsTyp" id="qmsTyp" value="{qmsTyp}" />
             <knopf class="inline janein ja <f:if condition='{qmsTyp}==1'> checked</f:if>">ja</knopf>
             <knopf class="inline janein nein <f:if condition='{qmsTyp}==2'> checked</f:if>">nein</knopf>
         </p>
-    </div>
-    <div class="oecert ja">
-        <div class="erlaeuterung">
-            <p>Laden Sie das aktuell gültige Zertifikat Ihrer Einrichtung hoch.</p>
-            <p class="hinweis">Hinweis: Nach erfolgter Verlängerung von Ihrem öCert laden Sie das aktuelle Zertifikat hoch.</p>
-        </div>
-        <div class="formfields row">
-            <div class="col-6">
-                <label for="qmsZertifikat">Anmerkung zum Upload</label>
-                <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
+
+        <div class="oecert oecert-1 <f:if condition='{qmsTyp}==1'> checked</f:if>">
+            <div class="erlaeuterung">
+                <p>Laden Sie das aktuell gültige Zertifikat Ihrer Einrichtung hoch.</p>
+                <p class="hinweis">Hinweis: Nach erfolgter Verlängerung von Ihrem öCert laden Sie das aktuelle Zertifikat hoch.</p>
             </div>
-            <div class="col-6">
-                <label class="req">öCert (pdf)</label>
-                <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
+            <div class="formfields row">
+                <div class="col-6">
+                    <label for="qmsZertifikat">Anmerkung zum Upload</label>
+                    <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
+                </div>
+                <div class="col-6">
+                    <label class="req">öCert (pdf)</label>
+                    <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei">
+                        <f:if condition="{resource}">
+                            <f:image image="{resource}" alt="" width="50" />
+                        </f:if>
+                    </ieb:form.upload>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="oecert nein">
-        <div class="erlaeuterung">
-            <p>Beschreiben Sie die Qualitätssicherung und -entwicklung Ihrer Einrichtung, geben Sie jeweils Beispiele an.</p>
-            <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet und wo Qualität in Ihrer Einrichtung sichtbar wird. Welche Abläufe sichern die Qualität Ihrer Einrichtung?</p>
-            <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet wird. Denken Sie
-                dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
-            <p><span class="halbstark">Ansprüche an die Infrastruktur:</span> Beschreiben Sie die Ansprüche Ihrer Einrichtung bzgl. Räumlichkeiten, Größe, Lage, Erreichbarkeit, (technische) Ausstattung, Barrierefreiheit, Zielgruppe, ...</p>
-            <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
-        </div>
-        <div class="formfields row">
-            <div class="col-6">
-                <label for="qualitaetSicherung">Anmerkung zum Upload</label>
-                <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
+        <div class="oecert oecert-2 <f:if condition='{qmsTyp}==2'> checked</f:if>">
+            <div class="erlaeuterung">
+                <p>Beschreiben Sie die Qualitätssicherung und -entwicklung Ihrer Einrichtung, geben Sie jeweils Beispiele an.</p>
+                <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet und wo Qualität in Ihrer Einrichtung sichtbar wird. Welche Abläufe sichern die Qualität Ihrer Einrichtung?</p>
+                <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet wird. Denken
+                    Sie dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
+                <p><span class="halbstark">Ansprüche an die Infrastruktur:</span> Beschreiben Sie die Ansprüche Ihrer Einrichtung bzgl. Räumlichkeiten, Größe, Lage, Erreichbarkeit, (technische) Ausstattung, Barrierefreiheit, Zielgruppe, ...</p>
+                <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
             </div>
-            <div class="col-6">
-                <label class="req">Qualitätssicherung (pdf)</label>
-                <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
+            <div class="formfields row">
+                <div class="col-6">
+                    <label for="qualitaetSicherung">Anmerkung zum Upload</label>
+                    <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
+                </div>
+                <div class="col-6">
+                    <label class="req">Qualitätssicherung (pdf)</label>
+                    <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
+                        <f:if condition="{resource}">
+                            <f:image image="{resource}" alt="" width="50" />
+                        </f:if>
+                    </ieb:form.upload>
+                </div>
             </div>
         </div>
     </div>

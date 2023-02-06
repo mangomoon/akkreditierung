@@ -7,24 +7,24 @@ $(document).ready(function() {
         } else {
             var wert = 2;
         }
-
-
-        // alert(wert);
-
         if (!$(this).hasClass("checked")) {
-
+            $(this).parent().parent().find('.checked').removeClass("checked");
             $(this).addClass("checked");
-
-            $(this).parent().$('.janein.ckecked').removeClass("checked");
-
-
-            // 1. set IDBCursorWithValue
-            // 2. andere knopf checked
-            // 3. dieser unchecked
-            // 4. div zeigen
+            var oecertclass = '.oecert-' + wert;
+            $(this).parent().parent().find(oecertclass).addClass('checked');
+            $('#qmsTyp').attr('value', wert);
         }
-
     });
 
 
+
+    $('.info').click(function() {
+        if (!$(this).hasClass("checked")) {
+            $(this).addClass("checked");
+            $(this).next('.infobox').show();
+        } else {
+            $(this).removeClass("checked");
+            $(this).next('.infobox').hide();
+        }
+    });
 });
