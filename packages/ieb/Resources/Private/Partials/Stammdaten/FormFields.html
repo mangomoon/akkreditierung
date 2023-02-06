@@ -32,14 +32,14 @@
             <div class="col-6">
                 <label for="rechtsform" class="req">Rechts-/Organisationsform</label>
                 <f:form.select name="rechtsform" property="rechtsform">
-                    <f:form.select.option value=""></f:form.select.option>
+                    <f:form.select.option value="0"></f:form.select.option>
                     <f:form.select.option value="Verein">Verein</f:form.select.option>
                     <f:form.select.option value="Ges.m.b.H.">Ges.m.b.H.</f:form.select.option>
                 </f:form.select>
             </div>
             <div class="col-6">
                 <label class="req">Nachweis</label>
-                <ieb:form.upload property="nachweise" id="nachweise">
+                <ieb:form.upload property="nachweis" id="nachweis">
                     <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
                     </f:if>
@@ -97,7 +97,7 @@
         </div>
         <div class="col-6">
             <label class="req">Leitbild (pdf)</label>
-            <ieb:form.upload property="leitbilddatei" id="leitbilddatei">
+            <ieb:form.upload property="leitbildDatei" id="leitbildDatei">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>

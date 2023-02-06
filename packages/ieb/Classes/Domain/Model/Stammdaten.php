@@ -68,7 +68,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected $seit = null;
+    protected $seit = '';
 
     /**
      * website

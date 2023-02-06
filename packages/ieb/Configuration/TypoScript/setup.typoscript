@@ -98,3 +98,10 @@ plugin.tx_ieb._CSS_DEFAULT_STYLE (
         color: green;
     }
 )
+
+page.includeJS {
+    ieb = EXT:ieb/Resources/Public/Js/ieb.js
+}
+page.includeCSS {
+    ieb = EXT:ieb/Resources/Public/Css/ieb.css
+}
