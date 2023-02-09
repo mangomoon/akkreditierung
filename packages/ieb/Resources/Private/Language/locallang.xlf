@@ -175,10 +175,10 @@
 				<source>Static Stammdaten</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.name" resname="tx_ieb_domain_model_staticstammdaten.name">
-				<source>Name</source>
+				<source>Rechtsgültige Bezeichnung</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.markenname" resname="tx_ieb_domain_model_staticstammdaten.markenname">
-				<source>Markenname</source>
+				<source>Markenname/Organisationseinheit</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.nachweis" resname="tx_ieb_domain_model_staticstammdaten.nachweis">
 				<source>Nachweis</source>
@@ -187,10 +187,10 @@
 				<source>Rechtsform</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.strasse" resname="tx_ieb_domain_model_staticstammdaten.strasse">
-				<source>Strasse</source>
+				<source>Strasse etc.</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.plz" resname="tx_ieb_domain_model_staticstammdaten.plz">
-				<source>Plz</source>
+				<source>PLZ</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.ort" resname="tx_ieb_domain_model_staticstammdaten.ort">
 				<source>Ort</source>
@@ -202,7 +202,7 @@
 				<source>Website</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.email" resname="tx_ieb_domain_model_staticstammdaten.email">
-				<source>Email</source>
+				<source>E-Mail</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.telefon" resname="tx_ieb_domain_model_staticstammdaten.telefon">
 				<source>Telefon</source>
@@ -550,10 +550,10 @@
 				<source>Stammdaten</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.name" resname="tx_ieb_domain_model_stammdaten.name">
-				<source>Name</source>
+				<source>Rechtsgültige Bezeichnung</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.markenname" resname="tx_ieb_domain_model_stammdaten.markenname">
-				<source>Markenname</source>
+				<source>Markenname/Organisationseinheit</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.nachweis" resname="tx_ieb_domain_model_stammdaten.nachweis">
 				<source>Nachweis</source>
@@ -562,10 +562,10 @@
 				<source>Rechtsform</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.strasse" resname="tx_ieb_domain_model_stammdaten.strasse">
-				<source>Strasse</source>
+				<source>Strasse etc.</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.plz" resname="tx_ieb_domain_model_stammdaten.plz">
-				<source>Plz</source>
+				<source>PLZ</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.ort" resname="tx_ieb_domain_model_stammdaten.ort">
 				<source>Ort</source>
@@ -577,40 +577,40 @@
 				<source>Website</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.email" resname="tx_ieb_domain_model_stammdaten.email">
-				<source>Email</source>
+				<source>E-Mail</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.telefon" resname="tx_ieb_domain_model_stammdaten.telefon">
 				<source>Telefon</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.leitbild" resname="tx_ieb_domain_model_stammdaten.leitbild">
-				<source>Leitbild</source>
+				<source>Anmerkung zum Upload</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.leitbild_datei" resname="tx_ieb_domain_model_stammdaten.leitbild_datei">
-				<source>Leitbild Datei</source>
+				<source>Leitbild (PDF)</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" resname="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei">
-				<source>Qms Zertifikat Datei</source>
+				<source>öCert (PDF)</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qms_zertifikat" resname="tx_ieb_domain_model_stammdaten.qms_zertifikat">
-				<source>Qms Zertifikat</source>
+				<source>Anmerkung zum Upload</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qms_typ" resname="tx_ieb_domain_model_stammdaten.qms_typ">
 				<source>Qms Typ</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" resname="tx_ieb_domain_model_stammdaten.qualitaet_sicherung">
-				<source>Qualitaet Sicherung</source>
+				<source>Anmerkung zum Upload</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.zertifikat_bis" resname="tx_ieb_domain_model_stammdaten.zertifikat_bis">
-				<source>Zertifikat Bis</source>
+				<source>öCert Gütligkeit bis</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" resname="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei">
-				<source>Qualitaet Sicherung Datei</source>
+				<source>Qulitätssicherung (pdf)</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_personal" resname="tx_ieb_domain_model_stammdaten.qualitaet_personal">
-				<source>Qualitaet Personal</source>
+				<source>Anmerkung zum Upload</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" resname="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei">
-				<source>Qualitaet Personal Datei</source>
+				<source>Qulitätssicherung Personal (PDF)</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.tr_pp3" resname="tx_ieb_domain_model_stammdaten.tr_pp3">
 				<source>Tr Pp3</source>
@@ -619,10 +619,10 @@
 				<source>Pruefbescheid Datei</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid" resname="tx_ieb_domain_model_stammdaten.pruefbescheid">
-				<source>Pruefbescheid</source>
+				<source>Anmerkung zum Upload</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" resname="tx_ieb_domain_model_stammdaten.pruefbescheid_bis">
-				<source>Pruefbescheid Bis</source>
+				<source>Pruefbescheid gültig bis</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.locked_by" resname="tx_ieb_domain_model_stammdaten.locked_by">
 				<source>Locked By</source>

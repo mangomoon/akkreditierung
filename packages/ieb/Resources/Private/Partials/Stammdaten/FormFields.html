@@ -13,11 +13,11 @@
         </div>
         <div class="formfields row">
             <div class="col-6">
-                <label for="name" class="req">Rechtsgültige Bezeichnung</label>
+                <label for="name" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.name" /></label>
                 <f:form.textfield property="name" id="name" />
             </div>
             <div class="col-6">
-                <label for="markenname">Markenname/Organisationseinheit</label>
+                <label for="markenname"><f:translate key="tx_ieb_domain_model_stammdaten.markenname" /></label>
                 <f:form.textfield property="markenname" id="markenname" />
             </div>
         </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="formfields row">
             <div class="col-6">
-                <label for="rechtsform" class="req">Rechts-/Organisationsform</label>
+                <label for="rechtsform" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" /></label>
                 <f:form.select name="rechtsform" property="rechtsform">
                     <f:form.select.option value="0"></f:form.select.option>
                     <f:form.select.option value="Verein">Verein</f:form.select.option>
@@ -38,7 +38,7 @@
                 </f:form.select>
             </div>
             <div class="col-6">
-                <label class="req">Nachweis</label>
+                <label class="req"><f:translate key="tx_ieb_domain_model_stammdaten.nachweis" /></label>
                 <ieb:form.upload property="nachweis" id="nachweis">
                     <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
@@ -56,26 +56,26 @@
         </div>
         <div class="formfields">
             <div class="col-6">
-                <label for="strasse" class="req">Strasse etc.</label>
+                <label for="strasse" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.strasse" /></label>
                 <f:form.textarea property="strasse" id="strasse"></f:form.textarea>
                 <div class="row">
                     <div class="col-2" style="margin-right:18px;">
-                        <label for="plz" class="req">PLZ</label>
+                        <label for="plz" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.plz" /></label>
                         <f:form.textfield property="plz" id="plz" />
                     </div>
                     <div class="col-9">
-                        <label for="ort" class="req">Ort</label>
+                        <label for="ort" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.ort" /></label>
                         <f:form.textfield property="ort" id="ort" />
                     </div>
 
                 </div>
             </div>
             <div class="col-6">
-                <label for="email" class="req">E-Mail</label>
+                <label for="email" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.email" /></label>
                 <f:form.textfield property="email" id="email" />
-                <label for="telefon" class="req">Telefon</label>
+                <label for="telefon" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.telefon" /></label>
                 <f:form.textfield property="telefon" id="telefon" />
-                <label for="website" class="req">Website</label>
+                <label for="website" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.website" /></label>
                 <f:form.textfield property="website" id="website" />
             </div>
         </div>
@@ -92,11 +92,11 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label for="leitbild">Leitbild</label>
+            <label for="leitbild"><f:translate key="tx_ieb_domain_model_stammdaten.leitbild" /></label>
             <f:form.textarea property="leitbild" id="leitbild"></f:form.textarea>
         </div>
         <div class="col-6">
-            <label class="req">Leitbild (pdf)</label>
+            <label class="req"><f:translate key="tx_ieb_domain_model_stammdaten.leitbild_datei" /></label>
             <ieb:form.upload property="leitbildDatei" id="leitbildDatei">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
@@ -125,11 +125,11 @@
             </div>
             <div class="formfields row">
                 <div class="col-6">
-                    <label for="qmsZertifikat">Anmerkung zum Upload</label>
+                    <label for="qmsZertifikat"><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat" /></label>
                     <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
                 </div>
                 <div class="col-6">
-                    <label class="req">öCert (pdf)</label>
+                    <label class="req"><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" /></label>
                     <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
@@ -149,11 +149,11 @@
             </div>
             <div class="formfields row">
                 <div class="col-6">
-                    <label for="qualitaetSicherung">Anmerkung zum Upload</label>
+                    <label for="qualitaetSicherung"><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" /></label>
                     <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
                 </div>
                 <div class="col-6">
-                    <label class="req">Qualitätssicherung (pdf)</label>
+                    <label class="req"><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" /></label>
                     <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
@@ -177,12 +177,12 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label for="qualitaetSicherung">Anmerkung zum Upload</label>
-            <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
+            <label for="qualitaetPersonal"><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal" /></label>
+            <f:form.textarea property="qualitaetPersonal" id="qualitaetPersonal"></f:form.textarea>
         </div>
         <div class="col-6">
-            <label class="req">Qulitätssicherung Personal (pdf)</label>
-            <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
+            <label class="req"><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" /></label>
+            <ieb:form.upload property="qualitaetPersonalDatei" id="qualitaetPersonalDatei">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>
