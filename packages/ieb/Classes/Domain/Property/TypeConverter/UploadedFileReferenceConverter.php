@@ -4,6 +4,7 @@ namespace GeorgRinger\Ieb\Domain\Property\TypeConverter;
 
 
 use GeorgRinger\Ieb\Domain\Model\FileReference;
+use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException;
 use TYPO3\CMS\Core\Resource\File as FalFile;
 use TYPO3\CMS\Core\Resource\FileReference as FalFileReference;
@@ -167,14 +168,14 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
             }
         }
 
-        $uploadFolderId = $configuration->getConfigurationValue('Helhum\\UploadExample\\Property\\TypeConverter\\UploadedFileReferenceConverter', self::CONFIGURATION_UPLOAD_FOLDER) ?: $this->defaultUploadFolder;
-        if (class_exists('TYPO3\\CMS\\Core\\Resource\\DuplicationBehavior')) {
+        $uploadFolderId = $configuration->getConfigurationValue(UploadedFileReferenceConverter::class, self::CONFIGURATION_UPLOAD_FOLDER) ?: $this->defaultUploadFolder;
+        if (class_exists(DuplicationBehavior::class)) {
             $defaultConflictMode = \TYPO3\CMS\Core\Resource\DuplicationBehavior::RENAME;
         } else {
             // @deprecated since 7.6 will be removed once 6.2 support is removed
             $defaultConflictMode = 'changeName';
         }
-        $conflictMode = $configuration->getConfigurationValue('Helhum\\UploadExample\\Property\\TypeConverter\\UploadedFileReferenceConverter', self::CONFIGURATION_UPLOAD_CONFLICT_MODE) ?: $defaultConflictMode;
+        $conflictMode = $configuration->getConfigurationValue(UploadedFileReferenceConverter::class, self::CONFIGURATION_UPLOAD_CONFLICT_MODE) ?: $defaultConflictMode;
 
         $uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($uploadFolderId);
         $uploadedFile = $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
