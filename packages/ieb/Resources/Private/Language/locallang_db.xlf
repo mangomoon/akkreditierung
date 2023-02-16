@@ -126,6 +126,12 @@
 			<trans-unit id="tx_ieb_domain_model_staticberater.title" resname="tx_ieb_domain_model_staticberater.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticberater.lebenslauf_kommentar" resname="tx_ieb_domain_model_staticberater.lebenslauf_kommentar">
+				<source>Lebenslauf Kommentar</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticberater.qualifikationsnachweise_kommentar" resname="tx_ieb_domain_model_staticberater.qualifikationsnachweise_kommentar">
+				<source>Qualifikationsnachweise Kommentar</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticberater.standorte" resname="tx_ieb_domain_model_staticberater.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -483,6 +489,12 @@
 			<trans-unit id="tx_ieb_domain_model_berater.title" resname="tx_ieb_domain_model_berater.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.lebenslauf_kommentar" resname="tx_ieb_domain_model_berater.lebenslauf_kommentar">
+				<source>Lebenslauf Kommentar</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar" resname="tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar">
+				<source>Qualifikationsnachweise Kommentar</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.standorte" resname="tx_ieb_domain_model_berater.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -545,6 +557,18 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.title" resname="tx_ieb_domain_model_trainer.title">
 				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.lebenslauf_datei" resname="tx_ieb_domain_model_trainer.lebenslauf_datei">
+				<source>Lebenslauf Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.qualifikation_babi_datei" resname="tx_ieb_domain_model_trainer.qualifikation_babi_datei">
+				<source>Qualifikation Babi Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.lehr_befugnis_datei" resname="tx_ieb_domain_model_trainer.lehr_befugnis_datei">
+				<source>Lehr Befugnis Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.qualifikation_psa_datei" resname="tx_ieb_domain_model_trainer.qualifikation_psa_datei">
+				<source>Qualifikation Psa Datei</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>

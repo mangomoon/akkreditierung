@@ -60,6 +60,18 @@
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>
+			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
+				<source>lebenslaufDatei</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_babi_datei.description" resname="qualifikation_babi_datei.description">
+				<source>qualifikationBabiDatei</source>
+			</trans-unit>
+			<trans-unit id="lehr_befugnis_datei.description" resname="lehr_befugnis_datei.description">
+				<source>lehrBefugnisDatei</source>
+			</trans-unit>
+			<trans-unit id="qualifikation_psa_datei.description" resname="qualifikation_psa_datei.description">
+				<source>qualifikationPsaDatei</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

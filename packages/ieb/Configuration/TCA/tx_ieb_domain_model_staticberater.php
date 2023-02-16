@@ -10,11 +10,11 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'nachname,vorname,review_comment_internal,review_comment_tr,title',
+        'searchFields' => 'nachname,vorname,review_comment_internal,review_comment_tr,title,lebenslauf_kommentar,qualifikationsnachweise_kommentar',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_staticberater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, review_comment_internal, review_comment_tr, review_status, review_frist, locked_by, title, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, review_comment_internal, review_comment_tr, review_status, review_frist, locked_by, title, lebenslauf_kommentar, qualifikationsnachweise_kommentar, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -222,6 +222,26 @@ return [
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticberater.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'lebenslauf_kommentar' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticberater.lebenslauf_kommentar',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'qualifikationsnachweise_kommentar' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticberater.qualifikationsnachweise_kommentar',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

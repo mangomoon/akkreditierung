@@ -28,6 +28,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $name = '';
 
     /**
+     * markenname
+     *
+     * @var string
+     */
+    protected $markenname = '';
+
+    /**
      * nachweis
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -129,18 +136,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qmsTyp = 0;
 
     /**
-     * zertifikatBis
-     *
-     * @var \DateTime
-     */
-    protected $zertifikatBis = null;
-
-    /**
      * qualitaetSicherung
      *
      * @var string
      */
     protected $qualitaetSicherung = '';
+
+    /**
+     * zertifikatBis
+     *
+     * @var \DateTime
+     */
+    protected $zertifikatBis = null;
 
     /**
      * qualitaetSicherungDatei
@@ -173,19 +180,19 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $trPp3 = false;
 
     /**
-     * pruefbescheid
-     *
-     * @var string
-     */
-    protected $pruefbescheid = '';
-
-    /**
      * pruefbescheidDatei
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $pruefbescheidDatei = null;
+
+    /**
+     * pruefbescheid
+     *
+     * @var string
+     */
+    protected $pruefbescheid = '';
 
     /**
      * pruefbescheidBis
@@ -207,13 +214,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Standort
      */
     protected $standorte = null;
-
-    /**
-     * markenname
-     *
-     * @var string
-     */
-    protected $markenname = '';
 
     /**
      * Returns the name

@@ -41,6 +41,8 @@ CREATE TABLE tx_ieb_domain_model_staticberater (
 	review_frist date DEFAULT NULL,
 	locked_by date DEFAULT NULL,
 	title varchar(255) NOT NULL DEFAULT '',
+	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
+	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	based_on int(11) unsigned DEFAULT '0'
 );
@@ -170,6 +172,8 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	lebenslauf int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikationsnachweise int(11) unsigned NOT NULL DEFAULT '0',
 	title varchar(255) NOT NULL DEFAULT '',
+	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
+	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
 	standorte int(11) unsigned NOT NULL DEFAULT '0'
 );
 
@@ -192,7 +196,11 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	qualifikation_psa text NOT NULL DEFAULT '',
 	qualifikation_psa_kommentar text NOT NULL DEFAULT '',
 	anerkennung_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	title varchar(255) NOT NULL DEFAULT ''
+	title varchar(255) NOT NULL DEFAULT '',
+	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
+	lehr_befugnis_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -237,8 +245,7 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

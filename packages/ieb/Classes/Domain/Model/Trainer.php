@@ -19,10 +19,15 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    /** @var \DateTime */
+
+    /**
+     * @var \DateTime
+     */
     public $tstamp = null;
 
-    /** @var \DateTime */
+    /**
+     * @var \DateTime
+     */
     public $crdate = null;
 
     /**
@@ -157,6 +162,38 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $title = '';
+
+    /**
+     * lebenslaufDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $lebenslaufDatei = null;
+
+    /**
+     * qualifikationBabiDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $qualifikationBabiDatei = null;
+
+    /**
+     * lehrBefugnisDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $lehrBefugnisDatei = null;
+
+    /**
+     * qualifikationPsaDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $qualifikationPsaDatei = null;
 
     /**
      * Returns the nachname
@@ -669,5 +706,89 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;
+    }
+
+    /**
+     * Returns the lebenslaufDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getLebenslaufDatei()
+    {
+        return $this->lebenslaufDatei;
+    }
+
+    /**
+     * Sets the lebenslaufDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei
+     * @return void
+     */
+    public function setLebenslaufDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei)
+    {
+        $this->lebenslaufDatei = $lebenslaufDatei;
+    }
+
+    /**
+     * Returns the qualifikationBabiDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualifikationBabiDatei()
+    {
+        return $this->qualifikationBabiDatei;
+    }
+
+    /**
+     * Sets the qualifikationBabiDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei
+     * @return void
+     */
+    public function setQualifikationBabiDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei)
+    {
+        $this->qualifikationBabiDatei = $qualifikationBabiDatei;
+    }
+
+    /**
+     * Returns the lehrBefugnisDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getLehrBefugnisDatei()
+    {
+        return $this->lehrBefugnisDatei;
+    }
+
+    /**
+     * Sets the lehrBefugnisDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnisDatei
+     * @return void
+     */
+    public function setLehrBefugnisDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnisDatei)
+    {
+        $this->lehrBefugnisDatei = $lehrBefugnisDatei;
+    }
+
+    /**
+     * Returns the qualifikationPsaDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getQualifikationPsaDatei()
+    {
+        return $this->qualifikationPsaDatei;
+    }
+
+    /**
+     * Sets the qualifikationPsaDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei
+     * @return void
+     */
+    public function setQualifikationPsaDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei)
+    {
+        $this->qualifikationPsaDatei = $qualifikationPsaDatei;
     }
 }

@@ -1,23 +1,28 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default"/>
+<f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Alle Berater:innen</h1>
+
 
     <f:form action="index" object="{beraterSearch}" name="beraterSearch">
-        <div>
-            <label for="nachname">Nachname</label>
-            <f:form.textfield property="nachname" id="nachname" />
+        <div class="row">
+            <div class="col-5">
+                <label for="vorname">Vorname</label>
+                <f:form.textfield property="vorname" id="vorname" class="breite100" />
+            </div>
+            <div class="col-5">
+                <label for="nachname">Nachname</label>
+                <f:form.textfield property="nachname" id="nachname" class="breite100" />
+            </div>
+            <div class="col-2">
+                <f:form.submit value="Suche" class="knopf-s2 suche" />
+                <f:if condition="{beraterSearch.used}">
+                    <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
+                </f:if>
+            </div>
         </div>
-        <div>
-            <label for="vorname">Vorname</label>
-            <f:form.textfield property="vorname" id="vorname" />
-        </div>
-        <f:form.submit value="Filter" class="btn btn-primary" />
-        <f:if condition="{beraterSearch.used}">
-            <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
-        </f:if>
     </f:form>
+
 
     <f:flashMessages/>
 
@@ -25,10 +30,10 @@
         <table class="tx_ieb" border="1">
             <tr>
                 <th>
-                    <f:translate key="tx_ieb_domain_model_trainer.nachname"/>
+                    <f:translate key="tx_ieb_domain_model_trainer.nachname" />
                 </th>
                 <th>
-                    <f:translate key="tx_ieb_domain_model_trainer.vorname"/>
+                    <f:translate key="tx_ieb_domain_model_trainer.vorname" />
                 </th>
                 <th>Erstellungsdatum</th>
                 <th>Anzeigen</th>
@@ -43,8 +48,12 @@
                         {berater.vorname}
                     </td>
                     <td>{berater.crdate -> f:format.date(format:'d.m.Y')}</td>
-                    <td> <f:link.action action="show" arguments="{berater : berater}">Anzeigen</f:link.action></td>
-                    <td> <f:link.action action="edit" arguments="{berater : berater}">Bearbeiten</f:link.action></td>
+                    <td>
+                        <f:link.action action="show" arguments="{berater : berater}">Anzeigen</f:link.action>
+                    </td>
+                    <td>
+                        <f:link.action action="edit" arguments="{berater : berater}">Bearbeiten</f:link.action>
+                    </td>
                 </tr>
             </f:for>
         </table>
@@ -52,4 +61,5 @@
 
     <f:link.action action="new">Neue Berater:in anlegen</f:link.action>
 </f:section>
+
 </html>

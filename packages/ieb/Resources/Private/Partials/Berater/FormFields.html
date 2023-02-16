@@ -1,33 +1,71 @@
-<html
-		xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-		xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
-	  data-namespace-typo3-fluid="true">
-<label for="title">
-	<f:translate key="tx_ieb_domain_model_berater.title" />
-</label><br />
-	<f:form.textfield property="title" id="title" /><br />
-<label for="nachname">
-	<f:translate key="tx_ieb_domain_model_berater.nachname" />
-</label><br />
-	<f:form.textfield property="nachname" id="nachname" /><br />
-<label for="vorname">
-	<f:translate key="tx_ieb_domain_model_berater.vorname" />
-</label><br />
-	<f:form.textfield property="vorname" id="vorname" /><br />
-<label for="lebenslauf">
-	<f:translate key="tx_ieb_domain_model_berater.lebenslauf" />
-</label><br />
-<ieb:form.upload property="lebenslauf" id="lebenslauf">
-	<f:if condition="{resource}">xxx
-		<f:image image="{resource}" alt="" width="50"/>
-	</f:if>
-</ieb:form.upload><br />
-<label for="qualifikationsnachweise">
-	<f:translate key="tx_ieb_domain_model_berater.qualifikationsnachweise" />
-</label><br />
-<ieb:form.upload property="qualifikationsnachweise" id="qualifikationsnachweise">
-	<f:if condition="{resource}">
-		<f:image image="{resource}" alt="" width="50"/>
-	</f:if>
-</ieb:form.upload><br />
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+
+<div class="formfields row">
+    <div class="col-6">
+        <label for="name" class="req">Vorname</label>
+        <f:form.textfield property="vorname" id="vorname" required="1" class="breite100" />
+    </div>
+    <div class="col-6">
+        <label for="markenname" class="req">Nachname</label>
+        <f:form.textfield property="nachname" id="nachname" required="1" class="breite100" />
+    </div>
+</div>
+
+<div class="kriterium" id="c-3-1">
+    <div class="kriteriumteil" id="a-1-1">
+        <h3>C.3.1 Lebenslauf</h3>
+        <div class="info"></div>
+        <div class="infobox" id="c-2-1-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
+        <div class="erlaeuterung">
+            <p>Geben Sie den den Nach- und Vornamen der Beraterin/des Beraters an und laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als ½ Jahr) hoch, in dem die Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+        </div>
+
+        <div class="formfields row">
+            <div class="col-6" id="c-2-a">
+                <label class="req">Lebenslauf</label>
+                <ieb:form.upload property="lebenslauf" id="lebenslauf">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6" id="c-2-b">
+                <label for="lebenslaufKommentar">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="lebenslaufKommentar" id="lebenslaufKommentar"></f:form.textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="kriteriumteil" id="a-1-1">
+        <h3>C.3.2 Qualifikation und Erfahrung</h3>
+        <div class="erlaeuterung">
+            <p>
+                Weiters sind relevante Qualifikationsnachweis/e im Bereich Beratung hochzuladen. Ausbildungsumfang und -inhalte müssen ersichtlich sein, ergänzen Sie gegebenenfalls das Curriculum. Relevante Beratungserfahrung ist im Ausmaß von mind. ½ Jahr (Umfang, Zielgruppe,
+                Dienstgeber, Zeitraum, Kurs/Projekttitel) zu erbringen.
+            </p>
+            <p class="hinweis">
+                Hinweis zu Erfahrung: Praxissequenzen innerhalb einer Ausbildung zählen beim gesamten Personal nicht als Erfahrungsnachweis. Alle Berater/innen, die keine ausreichende Erfahrung nachweisen können, bekommen eine Intervisionsauflage. Bis Ende der 3. PP
+                (jetzt Ende 2023) anerkannte Berater/innen bleiben anerkannt. Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.
+            </p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6" id="c-2-a">
+                <label class="req">Nachweise</label>
+                <ieb:form.upload property="qualifikationsnachweise" id="qualifikationsnachweise">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6" id="c-2-b">
+                <label for="qualifikationsnachweiseKommentar">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="qualifikationsnachweiseKommentar" id="qualifikationsnachweiseKommentar"></f:form.textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </html>

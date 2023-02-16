@@ -3,6 +3,7 @@
 <div class="kriterium" id="a-1">
     <h2>A.1 Basisdaten</h2>
 
+
     <div class="kriteriumteil" id="a-1-1">
         <h3>A.1.1 Name der Organisation</h3>
 
@@ -14,7 +15,7 @@
         <div class="formfields row">
             <div class="col-6">
                 <label for="name" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.name" /></label>
-                <f:form.textfield property="name" id="name" />
+                <f:form.textfield property="name" id="name" required="1" />
             </div>
             <div class="col-6">
                 <label for="markenname"><f:translate key="tx_ieb_domain_model_stammdaten.markenname" /></label>
@@ -31,7 +32,7 @@
         <div class="formfields row">
             <div class="col-6">
                 <label for="rechtsform" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" /></label>
-                <f:form.select name="rechtsform" property="rechtsform">
+                <f:form.select name="rechtsform" property="rechtsform" required="1">
                     <f:form.select.option value="0"></f:form.select.option>
                     <f:form.select.option value="Verein">Verein</f:form.select.option>
                     <f:form.select.option value="Ges.m.b.H.">Ges.m.b.H.</f:form.select.option>
@@ -57,26 +58,26 @@
         <div class="formfields">
             <div class="col-6">
                 <label for="strasse" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.strasse" /></label>
-                <f:form.textarea property="strasse" id="strasse"></f:form.textarea>
+                <f:form.textarea property="strasse" id="strasse" required="1"></f:form.textarea>
                 <div class="row">
                     <div class="col-2" style="margin-right:18px;">
                         <label for="plz" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.plz" /></label>
-                        <f:form.textfield property="plz" id="plz" />
+                        <f:form.textfield property="plz" id="plz" required="1" />
                     </div>
                     <div class="col-9">
                         <label for="ort" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.ort" /></label>
-                        <f:form.textfield property="ort" id="ort" />
+                        <f:form.textfield property="ort" id="ort" required="1" />
                     </div>
 
                 </div>
             </div>
             <div class="col-6">
                 <label for="email" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.email" /></label>
-                <f:form.textfield property="email" id="email" />
+                <f:form.textfield property="email" id="email" required="1" />
                 <label for="telefon" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.telefon" /></label>
-                <f:form.textfield property="telefon" id="telefon" />
+                <f:form.textfield property="telefon" id="telefon" required="1" />
                 <label for="website" class="req"><f:translate key="tx_ieb_domain_model_stammdaten.website" /></label>
-                <f:form.textfield property="website" id="website" />
+                <f:form.textfield property="website" id="website" required="1" />
             </div>
         </div>
     </div>
@@ -86,6 +87,8 @@
 
 <div class="kriterium" id="a-2-1">
     <h2>A.2.1 Leitbild</h2>
+    <div class="info"></div>
+    <div class="infobox" id="a-2-1-hilfe">Hilfe zum Leitbild</div>
     <div class="erlaeuterung">
         <p>Laden Sie das Leitbild Ihrer Einrichtung hoch. Es soll einen klaren Erwachsenenbildungsbezug aufweisen.</p>
         <p class="hinweis">Hinweis: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
@@ -114,8 +117,8 @@
 
         <p>Unsere Einrichtung verfügt über ein öCert:
             <f:form.hidden name="qmsTyp" id="qmsTyp" value="{qmsTyp}" />
-            <knopf class="inline janein ja <f:if condition='{qmsTyp}==1'> checked</f:if>">ja</knopf>
-            <knopf class="inline janein nein <f:if condition='{qmsTyp}==2'> checked</f:if>">nein</knopf>
+            <knopf class="inline janein ja {f:if(condition:qmsTyp,then:'checked')}">ja</knopf>
+            <knopf class="inline janein nein {f:if(condition:qmsTyp,then:'checked')}">nein</knopf>
         </p>
 
         <div class="oecert oecert-1 <f:if condition='{qmsTyp}==1'> checked</f:if>">

@@ -12,11 +12,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'nachname,vorname,title',
+        'searchFields' => 'nachname,vorname,title,lebenslauf_kommentar,qualifikationsnachweise_kommentar',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, title, standorte, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, title, lebenslauf_kommentar, qualifikationsnachweise_kommentar, standorte, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -193,6 +193,26 @@ return [
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'lebenslauf_kommentar' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf_kommentar',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'qualifikationsnachweise_kommentar' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

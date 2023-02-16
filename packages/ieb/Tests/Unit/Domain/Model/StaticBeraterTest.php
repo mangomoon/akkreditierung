@@ -252,6 +252,48 @@ class StaticBeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getLebenslaufKommentarReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getLebenslaufKommentar()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLebenslaufKommentarForStringSetsLebenslaufKommentar(): void
+    {
+        $this->subject->setLebenslaufKommentar('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('lebenslaufKommentar'));
+    }
+
+    /**
+     * @test
+     */
+    public function getQualifikationsnachweiseKommentarReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getQualifikationsnachweiseKommentar()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setQualifikationsnachweiseKommentarForStringSetsQualifikationsnachweiseKommentar(): void
+    {
+        $this->subject->setQualifikationsnachweiseKommentar('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('qualifikationsnachweiseKommentar'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStaticStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

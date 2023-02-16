@@ -18,6 +18,12 @@
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>
+			<trans-unit id="lebenslauf_kommentar.description" resname="lebenslauf_kommentar.description">
+				<source>lebenslaufKommentar</source>
+			</trans-unit>
+			<trans-unit id="qualifikationsnachweise_kommentar.description" resname="qualifikationsnachweise_kommentar.description">
+				<source>qualifikationsnachweiseKommentar</source>
+			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>

@@ -28,6 +28,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $name = '';
 
     /**
+     * markenname
+     *
+     * @var string
+     */
+    protected $markenname = '';
+
+    /**
      * nachweis
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -242,13 +249,6 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Stammdaten
      */
     protected $basedOn = null;
-
-    /**
-     * markenname
-     *
-     * @var string
-     */
-    protected $markenname = '';
 
     /**
      * __construct

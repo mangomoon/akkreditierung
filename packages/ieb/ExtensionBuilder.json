@@ -542,6 +542,30 @@
                             "propertyName": "title",
                             "propertyType": "String",
                             "uid": "1462480555750"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lebenslaufKommentar",
+                            "propertyType": "String",
+                            "uid": "1649428372810"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "qualifikationsnachweiseKommentar",
+                            "propertyType": "String",
+                            "uid": "603489297874"
                         }
                     ]
                 },
@@ -2104,6 +2128,30 @@
                             "propertyName": "title",
                             "propertyType": "String",
                             "uid": "117266985960"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lebenslaufKommentar",
+                            "propertyType": "String",
+                            "uid": "422718190163"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "qualifikationsnachweiseKommentar",
+                            "propertyType": "String",
+                            "uid": "1572940667154"
                         }
                     ]
                 },
@@ -2385,6 +2433,54 @@
                             "propertyName": "title",
                             "propertyType": "String",
                             "uid": "317524960614"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lebenslaufDatei",
+                            "propertyType": "File",
+                            "uid": "1460974472053"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "qualifikationBabiDatei",
+                            "propertyType": "File",
+                            "uid": "1018437764899"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lehrBefugnisDatei",
+                            "propertyType": "File",
+                            "uid": "1649458361908"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "qualifikationPsaDatei",
+                            "propertyType": "File",
+                            "uid": "398854868146"
                         }
                     ]
                 },
@@ -3330,7 +3426,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-02-04 05:29",
+        "last_modified": "2023-02-15 03:15",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

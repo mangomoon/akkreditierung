@@ -19,9 +19,15 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    /** @var \DateTime */
+
+    /**
+     * @var \DateTime
+     */
     public $crdate = null;
-    /** @var \DateTime */
+
+    /**
+     * @var \DateTime
+     */
     public $tstamp = null;
 
     /**
@@ -67,6 +73,20 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
      */
     protected $standorte = null;
+
+    /**
+     * lebenslaufKommentar
+     *
+     * @var string
+     */
+    protected $lebenslaufKommentar = '';
+
+    /**
+     * qualifikationsnachweiseKommentar
+     *
+     * @var string
+     */
+    protected $qualifikationsnachweiseKommentar = '';
 
     /**
      * __construct
@@ -241,5 +261,47 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;
+    }
+
+    /**
+     * Returns the lebenslaufKommentar
+     *
+     * @return string
+     */
+    public function getLebenslaufKommentar()
+    {
+        return $this->lebenslaufKommentar;
+    }
+
+    /**
+     * Sets the lebenslaufKommentar
+     *
+     * @param string $lebenslaufKommentar
+     * @return void
+     */
+    public function setLebenslaufKommentar(string $lebenslaufKommentar)
+    {
+        $this->lebenslaufKommentar = $lebenslaufKommentar;
+    }
+
+    /**
+     * Returns the qualifikationsnachweiseKommentar
+     *
+     * @return string
+     */
+    public function getQualifikationsnachweiseKommentar()
+    {
+        return $this->qualifikationsnachweiseKommentar;
+    }
+
+    /**
+     * Sets the qualifikationsnachweiseKommentar
+     *
+     * @param string $qualifikationsnachweiseKommentar
+     * @return void
+     */
+    public function setQualifikationsnachweiseKommentar(string $qualifikationsnachweiseKommentar)
+    {
+        $this->qualifikationsnachweiseKommentar = $qualifikationsnachweiseKommentar;
     }
 }

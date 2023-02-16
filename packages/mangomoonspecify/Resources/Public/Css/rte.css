@@ -124,12 +124,18 @@ p {
 
 ul,
 ol {
-    margin: 0.5em 1em;
+    margin: 0.5em 8px;
+    padding-left: 8px;
 }
 
 ul li {
-    list-style-image: url('/Specify/img/pfeil.svg');
-    margin-left: 1em;
+    margin: 0;
+    padding: 2px 0 2px 20px;
+    list-style: none;
+    background-image: url('../img/pfeil.svg');
+    background-repeat: no-repeat;
+    background-position: left 0.3em;
+    background-size: 1em 1em;
 }
 
 li {

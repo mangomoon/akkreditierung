@@ -107,6 +107,20 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * lebenslaufKommentar
+     *
+     * @var string
+     */
+    protected $lebenslaufKommentar = '';
+
+    /**
+     * qualifikationsnachweiseKommentar
+     *
+     * @var string
+     */
+    protected $qualifikationsnachweiseKommentar = '';
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -405,5 +419,47 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;
+    }
+
+    /**
+     * Returns the lebenslaufKommentar
+     *
+     * @return string
+     */
+    public function getLebenslaufKommentar()
+    {
+        return $this->lebenslaufKommentar;
+    }
+
+    /**
+     * Sets the lebenslaufKommentar
+     *
+     * @param string $lebenslaufKommentar
+     * @return void
+     */
+    public function setLebenslaufKommentar(string $lebenslaufKommentar)
+    {
+        $this->lebenslaufKommentar = $lebenslaufKommentar;
+    }
+
+    /**
+     * Returns the qualifikationsnachweiseKommentar
+     *
+     * @return string
+     */
+    public function getQualifikationsnachweiseKommentar()
+    {
+        return $this->qualifikationsnachweiseKommentar;
+    }
+
+    /**
+     * Sets the qualifikationsnachweiseKommentar
+     *
+     * @param string $qualifikationsnachweiseKommentar
+     * @return void
+     */
+    public function setQualifikationsnachweiseKommentar(string $qualifikationsnachweiseKommentar)
+    {
+        $this->qualifikationsnachweiseKommentar = $qualifikationsnachweiseKommentar;
     }
 }

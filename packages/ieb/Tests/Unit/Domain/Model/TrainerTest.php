@@ -400,4 +400,92 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
     }
+
+    /**
+     * @test
+     */
+    public function getLebenslaufDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getLebenslaufDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLebenslaufDateiForFileReferenceSetsLebenslaufDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setLebenslaufDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('lebenslaufDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getQualifikationBabiDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getQualifikationBabiDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setQualifikationBabiDateiForFileReferenceSetsQualifikationBabiDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setQualifikationBabiDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('qualifikationBabiDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getLehrBefugnisDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getLehrBefugnisDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLehrBefugnisDateiForFileReferenceSetsLehrBefugnisDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setLehrBefugnisDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('lehrBefugnisDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getQualifikationPsaDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getQualifikationPsaDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setQualifikationPsaDateiForFileReferenceSetsQualifikationPsaDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setQualifikationPsaDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('qualifikationPsaDatei'));
+    }
 }
