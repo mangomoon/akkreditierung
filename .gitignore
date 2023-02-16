@@ -12,3 +12,4 @@ public/typo3conf/ENABLE_INSTALL_TOOL
 /backup
 /var
 packages/ieb/Resources/Private/Language/locallang_csh_*
+/config/sites/main/config.yaml
