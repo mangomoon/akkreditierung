@@ -21,3 +21,12 @@ config.debug = 1
 #page.includeCSS {
 #    name = {$specifyortpfad}/Css/name.css
 #}
+
+
+
+#page.includeCSS {
+#    name = EXT:ieb/Resources/Public/Css/ieb.css
+#}
+#page.includeJS {
+#    name = EXT:ieb/Resources/Public/Js/ieb.js
+#}
