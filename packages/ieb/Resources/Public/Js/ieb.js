@@ -1,3 +1,24 @@
+// Validierung
+function validieren() {
+    $('.req').each(function() {
+
+        if ($(this).val() == '') {
+            $(this).addClass('req-leer');
+        }
+
+    });
+    $('.reqselect').each(function() {
+
+        if ($("option:selected").val() == '') {
+            $(this).addClass('req-leer');
+        }
+
+    });
+};
+
+
+// Feldermanagement Form Trainer Edit
+
 function trainerfelder() {
 
     var babi = 0;
@@ -54,10 +75,14 @@ function trainerfelder() {
     }
 }
 
+
+
 $(document).ready(function() {
 
     trainerfelder();
+    validieren();
 
+    // ######################################## Form Stammdaten öCert
 
     $('.janein').click(function() {
 
@@ -75,7 +100,7 @@ $(document).ready(function() {
         }
     });
 
-
+    // ######################################## Infobox öffnen
 
     $('.info').click(function() {
         if (!$(this).hasClass("checked")) {
@@ -87,8 +112,20 @@ $(document).ready(function() {
         }
     });
 
+    // ######################################## FORM Trainer BaBi/PSA
+
     $('.checker').click(function() {
         trainerfelder();
     });
+
+    // ########################################
+
+    $(".req").focus(function() {
+        $(this).removeClass("req-leer");
+    });
+    $(".reqselect").focus(function() {
+        $(this).removeClass("req-leer");
+    });
+
 
 });

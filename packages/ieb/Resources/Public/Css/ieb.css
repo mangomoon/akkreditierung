@@ -279,7 +279,10 @@ knopf.inline.checked {
     display: block;
 }
 
-input:required {}
+input.req-leer,
+select.req-leer {
+    background-color: #fceaa1;
+}
 
 h3 input[type="checkbox"] {}
 
