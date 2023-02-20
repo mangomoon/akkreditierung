@@ -18,6 +18,14 @@ body {
     background-color: #f1ede4;
 }
 
+.abstandoben {
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 2px;
+}
+
 .kriterium {
     position: relative;
     border: solid 1px var(--f3);
@@ -27,7 +35,7 @@ body {
 }
 
 .kriterium h2 {
-    color: var(--f5);
+    color: var(--f4);
 }
 
 .kriterium h3 {
@@ -280,7 +288,8 @@ knopf.inline.checked {
 }
 
 input.req-leer,
-select.req-leer {
+select.req-leer,
+textarea.req-leer {
     background-color: #fceaa1;
 }
 
@@ -294,4 +303,78 @@ h3 input[type="checkbox"] {}
 #c-2-b-1,
 #c-2-b-2 {
     display: none;
+}
+
+
+/* ANSUCHEN NEW/EDIT */
+
+span.ansuchennr {
+    font-size: 1.5em;
+}
+
+
+/* DL */
+
+.ansuchenliste {}
+
+.tx-ieb table.ansuchenliste td {
+    padding: 6px 8px 0 0;
+    vertical-align: top;
+}
+
+.tx-ieb table.ansuchenliste .linie td {
+    border-bottom: dotted 2px var(--f1);
+    padding-top: 6px;
+}
+
+table.ansuchenliste td.chiffre {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+table.ansuchenliste td.labeltext {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    width: 40%;
+    text-align: right;
+}
+
+table.ansuchenliste td.check {
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.check.fehlt {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight 600;
+    color: #c3161c;
+}
+
+.formlink {
+    border-radius: 4px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: #fff;
+    box-shadow: 2px 2px 2px #888;
+    text-decoration: none;
+}
+
+.formlink:hover {
+    box-shadow: none;
+    color: #fff;
+}
+
+.formlink.stammdaten {
+    background-color: #8eb3d5;
+}
+
+.formlink.stammdaten:hover {
+    background-color: #6d94b7;
+}
+
+.formzeile {
+    margin: 24px 0 24px 0;
+    text-align: right;
 }

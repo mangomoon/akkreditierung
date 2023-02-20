@@ -37,6 +37,8 @@
                     <f:form.select.option value="Verein">Verein</f:form.select.option>
                     <f:form.select.option value="Ges.m.b.H.">Ges.m.b.H.</f:form.select.option>
                 </f:form.select>
+                <label for="seit" class="req abstandoben">tätig seit</label>
+                <f:form.textfield property="seit" id="seit" class="req" />
             </div>
             <div class="col-6">
                 <label class="req">Anmerkung zum Upload</label>
@@ -133,7 +135,7 @@
                 </div>
                 <div class="col-6">
                     <label class="req">öCert (pdf)</label>
-                    <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei">
+                    <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei" class="req">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
                         </f:if>
@@ -141,7 +143,7 @@
                 </div>
             </div>
         </div>
-        <div class="oecert oecert-2 <f:if condition='{qmsTyp}==2'> checked</f:if>">
+        <div class="oecert oecert-2 {f:if(condition:qmsTyp==2,then:'checked')}">
             <div class="erlaeuterung">
                 <p>Beschreiben Sie die Qualitätssicherung und -entwicklung Ihrer Einrichtung, geben Sie jeweils Beispiele an.</p>
                 <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet und wo Qualität in Ihrer Einrichtung sichtbar wird. Welche Abläufe sichern die Qualität Ihrer Einrichtung?</p>
@@ -157,7 +159,7 @@
                 </div>
                 <div class="col-6">
                     <label class="req">Qualitätssicherung (pdf)</label>
-                    <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei">
+                    <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei" class="req">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
                         </f:if>
@@ -185,7 +187,7 @@
         </div>
         <div class="col-6">
             <label class="req">Qaulitätssicherung Personal (pdf)</label>
-            <ieb:form.upload property="qualitaetPersonalDatei" id="qualitaetPersonalDatei">
+            <ieb:form.upload property="qualitaetPersonalDatei" id="qualitaetPersonalDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>

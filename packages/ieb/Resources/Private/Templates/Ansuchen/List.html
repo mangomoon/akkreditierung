@@ -1,24 +1,21 @@
-<html
-        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
-        data-namespace-typo3-fluid="true">
-<f:layout name="Default"/>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Alle Ansuchen</h1>
+
 
     <f:flashMessages/>
 
     <table class="tx_ieb">
         <tr>
             <th>
-                <f:translate key="tx_ieb_domain_model_ansuchen.name"/>
+                <f:translate key="tx_ieb_domain_model_ansuchen.name" />
             </th>
             <th>
-                <f:translate key="tx_ieb_domain_model_ansuchen.version"/>
+                <f:translate key="tx_ieb_domain_model_ansuchen.version" />
             </th>
             <th>
-                <f:translate key="tx_ieb_domain_model_ansuchen.status"/>
+                <f:translate key="tx_ieb_domain_model_ansuchen.status" />
             </th>
             <th></th>
         </tr>
@@ -27,7 +24,7 @@
                 <td>{item.name}</td>
                 <td>{item.version}</td>
                 <td>
-                    <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt"/>
+                    <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                     <code>[{item.status}]</code></td>
                 <td>
                     <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
@@ -57,6 +54,6 @@
         </f:for>
     </table>
 
-    <f:link.action action="new">Neues Ansuchen</f:link.action>
+    <f:link.action action="new">Neues Ansuchen anlegen</f:link.action>
 </f:section>
 </html>

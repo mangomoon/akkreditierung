@@ -5,11 +5,11 @@
 <div class="formfields row">
     <div class="col-6">
         <label for="name" class="req">Vorname</label>
-        <f:form.textfield property="vorname" id="vorname" required="0" class="breite100" />
+        <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 req" />
     </div>
     <div class="col-6">
         <label for="markenname" class="req">Nachname</label>
-        <f:form.textfield property="nachname" id="nachname" required="0" class="breite100" />
+        <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 req" />
     </div>
 </div>
 
@@ -25,7 +25,7 @@
         <div class="formfields row">
             <div class="col-6" id="c-2-a">
                 <label class="req">Lebenslauf</label>
-                <ieb:form.upload property="lebenslauf" id="lebenslauf">
+                <ieb:form.upload property="lebenslauf" id="lebenslauf" class="req">
                     <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
                     </f:if>
@@ -53,7 +53,7 @@
         <div class="formfields row">
             <div class="col-6" id="c-2-a">
                 <label class="req">Nachweise</label>
-                <ieb:form.upload property="qualifikationsnachweise" id="qualifikationsnachweise">
+                <ieb:form.upload property="qualifikationsnachweise" id="qualifikationsnachweise" class="req">
                     <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
                     </f:if>

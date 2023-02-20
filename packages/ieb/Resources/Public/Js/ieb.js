@@ -2,7 +2,8 @@
 function validieren() {
     $('.req').each(function() {
 
-        if ($(this).val() == '') {
+        //if ($(this).val() == '') {
+        if (!$(this).val() || !$(this).text()) {
             $(this).addClass('req-leer');
         }
 
@@ -16,6 +17,11 @@ function validieren() {
     });
 };
 
+function validierenansuchen() {
+    $('.fehlt').each(function() {
+        $(this).html("Daten fehlen!");
+    });
+}
 
 // Feldermanagement Form Trainer Edit
 

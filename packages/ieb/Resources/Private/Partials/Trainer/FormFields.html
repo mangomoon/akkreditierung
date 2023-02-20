@@ -4,11 +4,11 @@
 <div class="formfields row">
     <div class="col-6">
         <label for="name" class="req">Vorname</label>
-        <f:form.textfield property="vorname" id="vorname" required="0" class="breite100" />
+        <f:form.textfield property="vorname" id="vorname" class="breite100 req" />
     </div>
     <div class="col-6">
         <label for="markenname" class="req">Nachname</label>
-        <f:form.textfield property="nachname" id="nachname" required="0" class="breite100" />
+        <f:form.textfield property="nachname" id="nachname" class="breite100 req" />
     </div>
 </div>
 Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Programmbereichen</strong> eingesetzt werden:
@@ -45,7 +45,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <div class="formfields row">
         <div class="col-6" id="c-2-a">
             <label class="req">Lebenslauf</label>
-            <ieb:form.upload property="lebenslaufDatei" id="lebenslaufDatei">
+            <ieb:form.upload property="lebenslaufDatei" id="lebenslaufDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>
@@ -68,7 +68,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <div class="formfields row">
         <div class="col-6">
             <label class="req">Nachweis (PDF)</label>
-            <ieb:form.upload property="qaulifikationBabiDatei" id="qaulifikationBabiDatei">
+            <ieb:form.upload property="qaulifikationBabiDatei" id="qaulifikationBabiDatei" class="req">
                 <f:if condition="{resource}">
                     <div id="qualifikationBabiDateiListe">
                         <f:image image="{resource}" alt="" width="50" />
@@ -78,7 +78,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         </div>
         <div class="col-6">
             <label for="lebenslauf">Anmerkung zum Uplaod</label>
-            <f:form.textarea property="qaulifikationBabi" id="qaulifikationBabi" required="0"></f:form.textarea>
+            <f:form.textarea property="qaulifikationBabi" id="qaulifikationBabi"></f:form.textarea>
         </div>
     </div>
 </div>
@@ -89,7 +89,10 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <div class="info"></div>
     <div class="infobox" id="c-2-a-2-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
     <div class="erlaeuterung">
-        <p>Haken sie bei jeder Trainerin bzw. bei jedem Trainer die für sie bzw. ihn vorgesehenen Kompetenzfelder an.</p>
+        <p>Haken sie bei jeder Trainerin bzw. bei jedem Trainer die für sie bzw. ihn vorgesehenen Kompetenzfelder an.<br> Geben Sie beim Kompetenzfeld an, ob eine Prüf- bzw. Trainings-Berechtigung lt. Bildungsdirektion für die Trainerin/den Trainer vorliegt
+            (anhaken bei jedem Trainer/in pro Schwerpunkt) und wenn ja, laden Sie diese hier hoch. </p>
+        <p class="hinweis">Hinweis: Bis Ende der 3. PP (jetzt Ende 2023) anerkannte Trainer/innen bleiben anerkannt. Für bereits IEB anerkannte Trainer/innen und Berater/innen sind keine neuen Unterlagen erforderlich. </p>
+
     </div>
     <div class="formfields row">
         <div class="col-6">
@@ -115,7 +118,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         <div class="col-6">
             <label class="req">Nachweis(e) für Prüfbescheid(e)</label>
 
-            <ieb:form.upload property="lehrBefugnisDatei" id="lehrBefugnisDatei">
+            <ieb:form.upload property="lehrBefugnisDatei" id="lehrBefugnisDatei" class="req">
 
                 <f:if condition="{resource}">
                     <div id="lehrbefugnisDateiListe">
@@ -123,9 +126,8 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                     </div>
                 </f:if>
             </ieb:form.upload>
-            <p>&nbsp;</p>
-            <label for="lehrBefugnis">Anmerkung zum Uplaod</label>
-            <f:form.textarea property="lehrBefugnis" id="lehrBefugnis" required="0"></f:form.textarea>
+            <label for="lehrBefugnis" class="abstandoben">Anmerkung zum Uplaod</label>
+            <f:form.textarea property="lehrBefugnis" id="lehrBefugnis"></f:form.textarea>
 
         </div>
     </div>
@@ -163,7 +165,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <div class="formfields row">
         <div class="col-6">
             <label class="req">Nachweis(e)</label>
-            <ieb:form.upload property="qualifikationPsaDatei" id="qualifikationPsaDatei">
+            <ieb:form.upload property="qualifikationPsaDatei" id="qualifikationPsaDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>

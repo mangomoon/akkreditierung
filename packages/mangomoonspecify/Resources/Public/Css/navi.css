@@ -543,11 +543,13 @@ a.subnaviitem.current {
 }
 
 .seitentitel {
-    margin-top: 12px;
+    margin-top: 20px;
     color: #fff;
     justify-content: center;
     padding: 5px;
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .seitentitel.linkto-17 {
@@ -560,7 +562,7 @@ a.subnaviitem.current {
 
 .seitentitel.linkto-13 {
     color: #ed9e21;
-    border-bottom: solid 2px #ed9e21;
+    /* border-bottom: solid 3px #ed9e21; */
 }
 
 .seitentitel.linkto-12 {
