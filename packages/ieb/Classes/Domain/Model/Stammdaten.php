@@ -763,10 +763,10 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the seit
      *
-     * @param \DateTime $seit
+     * @param string $seit
      * @return void
      */
-    public function setSeit(\DateTime $seit)
+    public function setSeit(string $seit)
     {
         $this->seit = $seit;
     }

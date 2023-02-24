@@ -14,8 +14,43 @@ rot: c3161c
     --f5: #2f4858;
 }
 
+
+/* PRINT */
+
+@media print {
+    @page {
+        margin: 15mm;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+    .kriterium {
+        break-inside: avoid;
+    }
+    #top,
+    #kopfcontainer,
+    .subnavigation {
+        display: none;
+    }
+    .oecert.oecert-1,
+    .oecert.oecert-2,
+    #c-2-1,
+    #c-2-a-2,
+    #c-2-b {
+        display: block;
+    }
+}
+
+
+/* print ende */
+
 body {
     background-color: #f1ede4;
+}
+
+.fett {
+    font-weight: 600;
 }
 
 .abstandoben {
@@ -38,7 +73,8 @@ label {
     color: var(--f4);
 }
 
-.kriterium h3 {
+.kriterium h3,
+.kriterium h4 {
     color: var(--f4);
 }
 
@@ -298,10 +334,9 @@ h3 input[type="checkbox"] {}
 
 /* TRAINER NEW/EDIT */
 
+#c-2-b,
 #c-2-1,
-#c-2-a-2,
-#c-2-b-1,
-#c-2-b-2 {
+#c-2-a-2 {
     display: none;
 }
 
@@ -374,7 +409,82 @@ table.ansuchenliste td.check {
     background-color: #6d94b7;
 }
 
+.formlink.ansuchen {
+    background-color: #c3161c;
+}
+
+.formlink.ansuchen:hover {
+    background-color: #970e12;
+}
+
+.formlink.berater {
+    background-color: #ed9e21;
+}
+
+.formlink.berater:hover {
+    background-color: #da8702;
+}
+
+.formlink.trainer {
+    background-color: #edc509;
+}
+
+.formlink.trainer:hover {
+    background-color: #ddb903;
+}
+
+.formlink.standorte {
+    background-color: #5ac567;
+}
+
+.formlink.standorte:hover {
+    background-color: #429c4d;
+}
+
+.formlink.angebotssteuernde {
+    background-color: #b7c449;
+}
+
+.formlink.angebotssteuernde:hover {
+    background-color: #97a136;
+}
+
 .formzeile {
     margin: 24px 0 24px 0;
-    text-align: right;
+}
+
+.anmerkung {
+    display: none;
+}
+
+p.erklaerung {
+    font-size: 0.9em;
+    /* font-weight: 600; */
+    background-color: #fff;
+    padding: 8px;
+    color: var(--f3);
+}
+
+table.angebotssteuerung {
+    margin-bottom: 24px;
+}
+
+.angebotssteuerung th {
+    padding: 8px 3px;
+    color: #fff;
+}
+
+.angebotssteuerung td {
+    padding: 8px 3px;
+    border-top: solid 1px var(--f3);
+}
+
+.angebotssteuerung .spalte-1 {
+    background-color: var(--f3);
+    text-align: center;
+}
+
+.angebotssteuerung .spalte-2 {
+    background-color: var(--f4);
+    text-align: center;
 }

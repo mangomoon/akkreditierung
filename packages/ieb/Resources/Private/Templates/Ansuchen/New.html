@@ -10,7 +10,10 @@ your changes will be overwritten the next time you save the extension in the ext
     <f:render partial="FormErrors" />
 
     <f:form action="create" name="newAnsuchen" object="{newAnsuchen}">
-        <f:render partial="Ansuchen/FormFields" />
+        <f:render partial="Ansuchen/FormFields" arguments="{berater:relations.berater, trainer:relations.trainer, standorte:relations.standorte}" />
+
+
+
         <f:form.submit value="Speichern" class="knopf-s" />
     </f:form>
 

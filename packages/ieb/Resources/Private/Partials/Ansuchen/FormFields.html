@@ -158,9 +158,19 @@
         <div class="formfields row">
             <div class="col-10">
                 <label for="typ" class="req">Bildungsbereich:</label>
-                <f:form.hidden name="typ" id="typ" value="{typ}" />
-                <knopf class="inline janein ja {f:if(condition:typ==1,then:'checked')}">Basisbildung</knopf>
-                <knopf class="inline janein nein {f:if(condition:typ==2,then:'checked')}">Pflichtschulabschluss</knopf>
+                <f:switch expression="typ">
+                    <f:case value="0">
+                        <f:form.hidden name="typ" id="typ" value="{typ}" />
+                        <knopf class="inline janein ja {f:if(condition:typ==1,then:'checked')}">Basisbildung</knopf>
+                        <knopf class="inline janein nein {f:if(condition:typ==2,then:'checked')}">Pflichtschulabschluss</knopf>
+                    </f:case>
+                    <f:case value="1">
+                        Basisbildung
+                    </f:case>
+                    <f:case value="2">
+                        Pflichtschulabschluss
+                    </f:case>
+                </f:switch>
             </div>
         </div>
     </div>
@@ -240,9 +250,9 @@
             </div>
             <div class="col-6">
                 <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
-                <p class="hinweis">Hinweis: Ihre Standorte können Sie <a href="/uebersicht-tr/standorte/">HIER</a> verwalten.</p>
 
-
+                <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert bzw. eines von Ö-Cert anerkannten QMS
+                    implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;<input type="checkbox"></p>
             </div>
         </div>
         <div class="formfields row">
@@ -252,11 +262,107 @@
             </div>
             <div class="col-6" id="b-1-d-2">
                 <label for="uebersichtText">Standorte</label>
-
+                <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte verwalten</a></div>
             </div>
         </div>
     </div>
 
+    <div class="kriteriumteil">
+        <h3>B.1.e Abnahme von Prüfungen (### wird nur bei PSA angezeigt)</h3>
+        <p>Ist Ihre Einrichtung berechtigt, selbst Prüfungen durchzuführen und liegt eine Prüferbereichtigung vor?
+            <knopf class="inline janein ja {f:if(condition:qmsTyp,then:'checked')}">ja</knopf>
+            <knopf class="inline janein nein {f:if(condition:qmsTyp,then:'checked')}">nein</knopf>
+        </p>
+        <div class="formfields row">
+            <div class="col-6" id="">
+                <label class="req">Prüfbescheid des Ministeriums (pdf)</label>
+                <ieb:form.upload property="uebersichtDatei" id="uebersichtDatei" class="req">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6" id="">
+                <label for="uebersichtText">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="uebersichtText" id="uebersichtText"></f:form.textarea>
+            </div>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <p>Geben Sie an, welche Kompetenzfelder durch den/die Prüfbescheid/e abgedeckt sind (Prüfberechtigung):</p>
+                <p>
+                    <f:form.checkbox property="" id="" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
+                <p>
+                    <f:form.checkbox property="" id="" value="1" /> Englisch – Globalität und Transkulturalität</p>
+                <p>
+                    <f:form.checkbox property="" id="" value="1" /> Mathematik</p>
+                <p>
+                    <f:form.checkbox property="" id="" value="1" /> Berufsorientierung</p>
+                <p>
+                    <f:form.checkbox property="" id="" value="1" /> mindestens zwei der nachstehenden Wahlmodule:<br />
+                    <ul>
+                        <li>
+                            Kreativität und Gestaltung
+                        </li>
+                        <li>
+                            Gesundheit und Soziales
+                        </li>
+                        <li>
+                            weitere Sprache
+                        </li>
+                        <li>
+                            Natur und Technik
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="formfields row">
+            <h4>Kooperierende Einrichtung</h4>
+            <div class="erlaeuterung">
+                <p>(wenn Prüfbescheid) Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert.</p>
+                <p>(ohne Pb) Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
+                <p class="hinweis">
+                    max. 1/2 Seite
+                </p>
+            </div>
+            <div class="col-6" id="">
+                <label class="">Kontaktdaten der Schule(n) (pdf)</label>
+                <label class="">Uploads (pdf)</label>
+                <ieb:form.upload property="uebersichtDatei" id="uebersichtDatei" class="">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6" id="">
+                <label for="uebersichtText">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="uebersichtText" id="uebersichtText"></f:form.textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="kriteriumteil">
+        <h3>B.1.f Ansprache und Zielgruppe</h3>
+        <p>Beschreiben Sie, welche Maßnahmen gesetzt werden, um die angestrebte/n Zielgruppe/n zu erreichen. Stellen Sie dar, wie Sie Ihre Angebote bewerben, welche besonderen Bedarfe die Zielgruppe hat und wie wird darauf eingegangen wird (organisatorisch,
+            zeitlich, örtlich). Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br /> Laden Sie exemplarisch einen Folder, Kurs-Einladungen oder Plakate, … hoch.
+        </p>
+        <p class="hinweis">max. 2 Seiten (ohne Folder)</p>
+        <div class="formfields row">
+            <div class="col-6" id="">
+                <label class="req">Uplaods (pdf)</label>
+                <ieb:form.upload property="zielgruppenAnspracheDatei" id="zielgruppenAnspracheDatei" class="req">
+                    <f:if condition="{resource}">
+                        <f:image image="{resource}" alt="" width="50" />
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6" id="">
+                <label for="zielgruppenAnsprache">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="zielgruppenAnsprache" id="zielgruppenAnsprache"></f:form.textarea>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -366,19 +472,84 @@
     </div>
 </div>
 
+<div class="kriterium">
+    <h2>C.1 Angebotssteuerung</h2>
+    <div class="erlaeuterung">
+        <p>Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
+        <p class="hinweis">
+            Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
+        </p>
+    </div>
+    <table class="angebotssteuerung">
+        <tr>
+            <th class="spalte-1">
+                I
+            </th>
+            <th class="spalte-2">
+                II
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        <tr>
+            <td class="spalte-1">
+                <input type="checkbox" />
+            </td>
+            <td class="spalte-2">
+                <input type="checkbox" />
+            </td>
+            <td>
+                &nbsp;Margarete Schütte-Lihotzki (m.s@grosserverein.at)
+            </td>
+        </tr>
+        <tr>
+            <td class="spalte-1">
+                <input type="checkbox" />
+            </td>
+            <td class="spalte-2">
+                <input type="checkbox" />
+            </td>
+            <td>
+                &nbsp;Alfred Adler (a.a@grosserverein.at)
+            </td>
+        </tr>
+    </table>
+    <div class="formzeile"><a href="/uebersicht-tr/angebotssteuernde/" class="formlink angebotssteuernde">Angebotssteuernde bearbeiten</a></div>
+</div>
 
-<label for="name">
-	<f:translate key="tx_ieb_domain_model_ansuchen.name" />
-</label><br />
-<f:form.textfield property="name" id="name" /><br />
-<label for="status">
-	<f:translate key="tx_ieb_domain_model_ansuchen.status" />
-</label><br />
-<f:form.textfield property="status" id="status" /><br />
+<div class="kriterium">
+    <h2>C.2 Trainer:innen</h2>
+    <f:for each="{berater}" as="berater">
+        <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
+    </f:for>
+    <div class="formzeile"><a href="/uebersicht-tr/trainer/" class="formlink trainer">Trainer:innen bearbeiten</a></div>
+</div>
 
-<f:render partial="Form/Select" arguments="{property:'standorte', label:'Standorte', options:relations.standorte, multiple:1, optionLabelField:'name'}" />
-<f:render partial="Form/Select" arguments="{property:'trainer', label:'Trainer:innen', options:relations.trainer, multiple:1, optionLabelField:'vollerName'}" />
-<f:render partial="Form/Select" arguments="{property:'berater', label:'Berater:innen', options:relations.berater, multiple:1, optionLabelField:'vollerName'}" />
-<f:render partial="Form/Select" arguments="{property:'bundesland', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
+<div class="kriterium">
+    <h2>C.3 Berater:innen</h2>
+    <f:for each="{berater}" as="berater">
+        <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
+    </f:for>
+    <div class="formzeile"><a href="/uebersicht-tr/berater/" class="formlink berater">Berater:innen bearbeiten</a></div>
+</div>
+<div class="kriterium">
+    <h2>D Erklärungen</h2>
+    <p><input type="checkbox" /> Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C.1. und C.2. angegebenen MitarbeiterInnen<br /> a) über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen<br /> b) und
+        zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br /> Die Einverständniserklärungen sind von der Institution für allfällige Kontrollen aufzubewahren.
+    </p>
+    <p><input type="checkbox" /> Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen TrainerInnen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
+        für allfällige Kontrollen aufzubewahren. Ich bestätige, dass bei den unter C.1. angeführten Personen sämtliche PrüferInnen und Lehrende enthalten sind, die durch den unter B.6. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen
+        PrüferInnen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.
+    </p>
+    <p>
+        <input type="checkbox" /> Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
+    </p>
+    <p>
+        <input type="checkbox" /> Wir sind mit den AGB der Initiative Erwachsenenbildung einverstanden.
+    </p>
+</div>
+
+
 
 </html>

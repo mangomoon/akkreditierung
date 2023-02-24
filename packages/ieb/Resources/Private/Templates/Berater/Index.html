@@ -3,26 +3,26 @@
 
 <f:section name="content">
 
-
-    <f:form action="index" object="{beraterSearch}" name="beraterSearch">
-        <div class="row">
-            <div class="col-5">
-                <label for="vorname">Vorname</label>
-                <f:form.textfield property="vorname" id="vorname" class="breite100" />
+    <div class="kriterium">
+        <f:form action="index" object="{beraterSearch}" name="beraterSearch">
+            <div class="row">
+                <div class="col-5">
+                    <label for="vorname">Vorname</label>
+                    <f:form.textfield property="vorname" id="vorname" class="breite100" />
+                </div>
+                <div class="col-5">
+                    <label for="nachname">Nachname</label>
+                    <f:form.textfield property="nachname" id="nachname" class="breite100" />
+                </div>
+                <div class="col-2">
+                    <f:form.submit value="Suche" class="knopf-s2 suche" />
+                    <f:if condition="{beraterSearch.used}">
+                        <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
+                    </f:if>
+                </div>
             </div>
-            <div class="col-5">
-                <label for="nachname">Nachname</label>
-                <f:form.textfield property="nachname" id="nachname" class="breite100" />
-            </div>
-            <div class="col-2">
-                <f:form.submit value="Suche" class="knopf-s2 suche" />
-                <f:if condition="{beraterSearch.used}">
-                    <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
-                </f:if>
-            </div>
-        </div>
-    </f:form>
-
+        </f:form>
+    </div>
 
     <f:flashMessages/>
 
@@ -59,7 +59,10 @@
         </table>
     </f:if>
 
-    <f:link.action action="new">Neue Berater:in anlegen</f:link.action>
+    <div class="formzeile">
+        <f:link.action action="new" class="formlink berater">Neue:n Berater:in anlegen</f:link.action>
+    </div>
+
 </f:section>
 
 </html>

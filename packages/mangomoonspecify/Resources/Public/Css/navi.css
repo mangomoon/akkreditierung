@@ -526,11 +526,15 @@ a.subnaviitem.linkto-12 {
 }
 
 a.subnaviitem.linkto-11 {
-    background: #a3c660;
+    background: #5ac567;
 }
 
 a.subnaviitem.linkto-10 {
     background: #8eb3d5;
+}
+
+a.subnaviitem.linkto-18 {
+    background: #b7c449;
 }
 
 a.subnaviitem:hover {
@@ -552,6 +556,10 @@ a.subnaviitem.current {
     text-transform: uppercase;
 }
 
+.seitentitel.linkto-18 {
+    color: #b7c449;
+}
+
 .seitentitel.linkto-17 {
     color: #585686;
 }
@@ -570,7 +578,7 @@ a.subnaviitem.current {
 }
 
 .seitentitel.linkto-11 {
-    color: #a3c660;
+    color: #5ac567;
 }
 
 .seitentitel.linkto-10 {

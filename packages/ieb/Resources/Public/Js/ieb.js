@@ -1,10 +1,13 @@
 // Validierung
 function validieren() {
-    $('.req').each(function() {
 
-        //if ($(this).val() == '') {
-        if (!$(this).val() || !$(this).text()) {
-            $(this).addClass('req-leer');
+    // SKIZZE: if( document.getElementById("videoUploadFile").files.length == 0 )
+
+    $('.req').each(function() {
+        console.log($(this).text());
+        $(this).addClass('req-leer');
+        if (!$(this).val() == '' || !$(this).text()) {
+            $(this).removeClass('req-leer');
         }
 
     });
@@ -14,6 +17,11 @@ function validieren() {
             $(this).addClass('req-leer');
         }
 
+    });
+    $('.reqfile').each(function() {
+        if ($(this).get[0].files.length == 0) {
+            $(this).addClass('req-leer');
+        }
     });
 };
 
@@ -35,11 +43,7 @@ function trainerfelder() {
         babi = 0;
     }
     if ($('#verwendungPsa').is(':checked')) {
-        if ($('#lehrBefugnisDateiListe').html() == '') {
-            psa = 1;
-        } else {
-            psa = 2;
-        }
+        psa = 1;
     } else {
         psa = 0;
     }
@@ -51,42 +55,36 @@ function trainerfelder() {
         $('#c-2-a-2').show();
     }
     if (babi == 0) {
-        $('#c-2-1').hide();
         $('#c-2-a-2').hide();
     }
-    if (psa > 0) {
+    if (psa == 1) {
+        $('#c-2-b').show();
         $('#c-2-1').show();
         $('#hinweisextra-c-2-1').show();
-        $('#c-2-b-1').show();
-        $('#c-2-b-2').show();
-    }
-    if (psa == 2 && babi == 0) {
-        $('#c-2-1').hide();
-        $('#hinweisextra-c-2-1').hide();
     }
     if (psa == 0) {
-        $('#c-2-1').hide();
-        $('#hinweisextra-c-2-1').hide();
-        $('#c-2-b-1').hide();
-        $('#c-2-b-2').hide();
-    }
-    if (psa == 0 && babi == 1) {
-        $('#c-2-1').show();
-        $('#hinweisextra-c-2-1').hide();
-        $('#c-2-b-1').hide();
-        $('#c-2-b-2').hide();
-    }
-    if (babi == 1) {
+        $('#c-2-b').hide();
         $('#hinweisextra-c-2-1').hide();
     }
 }
 
+// Anmerkung öffnen 
+function anmerkungoeffnen() {
+    $('.anmerkung').each(function() {
 
+        if ($(this).val()) {
+            var txt = "Anmerkung zum Upload";
+            $(this).prev(".anmerkunglabel").html(txt);
+            $(this).show();
+        }
+    });
+}
 
 $(document).ready(function() {
 
     trainerfelder();
-    validieren();
+    // validieren();
+    anmerkungoeffnen();
 
     // ######################################## Form Stammdaten öCert
 
@@ -131,6 +129,14 @@ $(document).ready(function() {
     });
     $(".reqselect").focus(function() {
         $(this).removeClass("req-leer");
+    });
+
+    // ######################################## Anmerkung aufklappen
+
+    $('.anmerkunglabel').click(function() {
+        var txt = "Anmerkung zum Upload";
+        $(this).html(txt);
+        $(this).next(".anmerkung").show();
     });
 
 

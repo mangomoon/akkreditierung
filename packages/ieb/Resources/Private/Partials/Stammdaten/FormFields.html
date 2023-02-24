@@ -41,7 +41,7 @@
                 <f:form.textfield property="seit" id="seit" class="req" />
             </div>
             <div class="col-6">
-                <label class="req">Anmerkung zum Upload</label>
+                <label class="req">Vereinsregisterauszug/Firmenbuchauszug</label>
                 <ieb:form.upload property="nachweis" id="nachweis" class="req">
                     <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
@@ -97,16 +97,16 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label for="leitbild">Anmerkung zum Upload</label>
-            <f:form.textarea property="leitbild" id="leitbild"></f:form.textarea>
-        </div>
-        <div class="col-6">
             <label class="req">Leitbild (pdf)</label>
             <ieb:form.upload property="leitbildDatei" id="leitbildDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>
             </ieb:form.upload>
+        </div>
+        <div class="col-6">
+            <label for="leitbild">Anmerkung zum Upload</label>
+            <f:form.textarea property="leitbild" id="leitbild"></f:form.textarea>
         </div>
     </div>
 </div>
@@ -130,16 +130,16 @@
             </div>
             <div class="formfields row">
                 <div class="col-6">
-                    <label for="qmsZertifikat">Anmerkung zum Upload</label>
-                    <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
-                </div>
-                <div class="col-6">
                     <label class="req">öCert (pdf)</label>
                     <ieb:form.upload property="qmsZertifikatDatei" id="qmsZertifikatDatei" class="req">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
                         </f:if>
                     </ieb:form.upload>
+                </div>
+                <div class="col-6">
+                    <label for="qmsZertifikat">Anmerkung zum Upload</label>
+                    <f:form.textarea property="qmsZertifikat" id="qmsZertifikat"></f:form.textarea>
                 </div>
             </div>
         </div>
@@ -154,16 +154,16 @@
             </div>
             <div class="formfields row">
                 <div class="col-6">
-                    <label for="qualitaetSicherung">Anmkerung zum Upload</label>
-                    <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
-                </div>
-                <div class="col-6">
                     <label class="req">Qualitätssicherung (pdf)</label>
                     <ieb:form.upload property="qualitaetSicherungDatei" id="qualitaetSicherungDatei" class="req">
                         <f:if condition="{resource}">
                             <f:image image="{resource}" alt="" width="50" />
                         </f:if>
                     </ieb:form.upload>
+                </div>
+                <div class="col-6">
+                    <label for="qualitaetSicherung">Anmkerung zum Upload</label>
+                    <f:form.textarea property="qualitaetSicherung" id="qualitaetSicherung"></f:form.textarea>
                 </div>
             </div>
         </div>
@@ -182,16 +182,16 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label for="qualitaetPersonal">Anmerkung zum Upload</label>
-            <f:form.textarea property="qualitaetPersonal" id="qualitaetPersonal"></f:form.textarea>
-        </div>
-        <div class="col-6">
             <label class="req">Qaulitätssicherung Personal (pdf)</label>
             <ieb:form.upload property="qualitaetPersonalDatei" id="qualitaetPersonalDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />
                 </f:if>
             </ieb:form.upload>
+        </div>
+        <div class="col-6">
+            <label for="qualitaetPersonal">Anmerkung zum Upload</label>
+            <f:form.textarea property="qualitaetPersonal" id="qualitaetPersonal"></f:form.textarea>
         </div>
     </div>
 </div>

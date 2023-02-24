@@ -43,7 +43,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     </p>
 
     <div class="formfields row">
-        <div class="col-6" id="c-2-a">
+        <div class="col-6">
             <label class="req">Lebenslauf</label>
             <ieb:form.upload property="lebenslaufDatei" id="lebenslaufDatei" class="req">
                 <f:if condition="{resource}">
@@ -51,7 +51,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                 </f:if>
             </ieb:form.upload>
         </div>
-        <div class="col-6" id="c-2-b">
+        <div class="col-6">
             <label for="lebenslauf">Anmerkung zum Uplaod</label>
             <f:form.textarea property="lebenslauf" id="lebenslauf"></f:form.textarea>
         </div>
@@ -84,98 +84,106 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 </div>
 
 
-<div class="kriterium" id="c-2-b-1">
-    <h3>C.2.b.1 Kompetenzbereiche bei Pflichtschulsabschluss</h3>
-    <div class="info"></div>
-    <div class="infobox" id="c-2-a-2-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
-    <div class="erlaeuterung">
-        <p>Haken sie bei jeder Trainerin bzw. bei jedem Trainer die für sie bzw. ihn vorgesehenen Kompetenzfelder an.<br> Geben Sie beim Kompetenzfeld an, ob eine Prüf- bzw. Trainings-Berechtigung lt. Bildungsdirektion für die Trainerin/den Trainer vorliegt
-            (anhaken bei jedem Trainer/in pro Schwerpunkt) und wenn ja, laden Sie diese hier hoch. </p>
-        <p class="hinweis">Hinweis: Bis Ende der 3. PP (jetzt Ende 2023) anerkannte Trainer/innen bleiben anerkannt. Für bereits IEB anerkannte Trainer/innen und Berater/innen sind keine neuen Unterlagen erforderlich. </p>
+<div class="kriterium" id="c-2-b">
+    <div class="kriteriumteil">
+        <h3>C.2.b.1 Kompetenzbereiche bei Pflichtschulsabschluss</h3>
+        <div class="info"></div>
+        <div class="infobox" id="c-2-a-2-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
+        <div class="erlaeuterung">
+            <p>Haken sie bei jeder Trainerin bzw. bei jedem Trainer die für sie bzw. ihn vorgesehenen Kompetenzfelder an.</p>
+            <p class="hinweis">Hinweis: Bis Ende der 3. PP (jetzt Ende 2023) anerkannte Trainer/innen bleiben anerkannt. Für bereits IEB anerkannte Trainer/innen und Berater/innen sind keine neuen Unterlagen erforderlich. </p>
 
-    </div>
-    <div class="formfields row">
-        <div class="col-6">
-            <p>
-                <f:form.checkbox property="qualifikationPsa1" id="qualifikationPsa1" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa2" id="qualifikationPsa2" value="1" /> Englisch – Globalität und Transkulturalität</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Mathematik</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa4" id="qualifikationPsa4" value="1" /> Berufsorientierung</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa5" id="qualifikationPsa5" value="1" /> Kreativität und Gestaltung</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa6" id="qualifikationPsa6" value="1" /> Gesundheit und Soziales</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa7" id="qualifikationPsa7" value="1" /> Natur und Technik</p>
-            <p>
-                <f:form.checkbox property="qualifikationPsa8" id="qualifikationPsa8" value="1" /> Weitere Sprachen: Welche?
-                <f:form.textfield property="qualifikationPsaKommentar" id="qualifikationPsaKommentar" />
-            </p>
         </div>
-        <div class="col-6">
-            <label class="req">Nachweis(e) für Prüfbescheid(e)</label>
+        <div class="formfields row">
+            <div class="col-6">
+                <p>
+                    <f:form.checkbox property="qualifikationPsa1" id="qualifikationPsa1" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa2" id="qualifikationPsa2" value="1" /> Englisch – Globalität und Transkulturalität</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Mathematik</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa4" id="qualifikationPsa4" value="1" /> Berufsorientierung</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa5" id="qualifikationPsa5" value="1" /> Kreativität und Gestaltung</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa6" id="qualifikationPsa6" value="1" /> Gesundheit und Soziales</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa7" id="qualifikationPsa7" value="1" /> Natur und Technik</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa8" id="qualifikationPsa8" value="1" /> Weitere Sprachen: Welche?
+                    <f:form.textfield property="qualifikationPsaKommentar" id="qualifikationPsaKommentar" />
+                </p>
+            </div>
 
-            <ieb:form.upload property="lehrBefugnisDatei" id="lehrBefugnisDatei" class="req">
+        </div>
+    </div>
+    <div class="kriteriumteil">
+        <h3>C.2.b.2 Qualifikationsnachweise für den Pflichtschulbereich</h3>
+        <div class="info"></div>
+        <div class="infobox" id="c-2-a-2-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
 
-                <f:if condition="{resource}">
-                    <div id="lehrbefugnisDateiListe">
+        <div class="erlaeuterung">
+            <p>Laden Sie, falls vorliegend, eine Prüf- bzw. Trainings-Berechtigung lt. Bildungsdirektion für die Trainerin/den Trainer hoch. </p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <label class="req">Nachweis(e) für Prüfbescheid(e)</label>
+                <ieb:form.upload property="lehrBefugnisDatei" id="lehrBefugnisDatei" class="req">
+                    <f:if condition="{resource}">
+                        <div id="lehrbefugnisDateiListe">
+                            <f:image image="{resource}" alt="" width="50" />
+                        </div>
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6">
+                <label for="lehrBefugnis">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="lehrBefugnis" id="lehrBefugnis"></f:form.textarea>
+            </div>
+        </div>
+
+        <div class="erlaeuterung">
+            <p>Weiters sind folgende formale Qualifikationsnachweis/e für den Pflichtschulbereich hochzuladen.</p>
+            <ul>
+                <li>
+                    abgeschlossenes Lehramtsstudium oder
+                </li>
+                <li>
+                    von der Landesschulbehörde ausgestellte Lehrbefugnis (nicht älter als drei Jahre) oder
+                </li>
+                <li>
+                    abgeschlossenes facheinschläg. Studium an einer anerkannten postsekundären Bildungseinrichtung und zumindest 12-monatige Berufserfahrung im (sozial)pädagogischen Bereich mit Jugendlichen oder Erwachsenen oder
+                    <p class="hinweis">
+                        Hinweis: Bei facheinschlägigem Studium ist eine Begründung durch Träger anzugeben, warum ein Fach als facheinschlägig betrachtet wird. Als Nachweis für die Berufserfahrung ist sind Angaben zu Umfang, Zielgruppe, Dienstgeber, Zeitraum, Kurs/Projekttitel
+                        zu machen.
+                    </p>
+                </li>
+                <li>
+                    eine positiv abgeschlossene erwachsenenpädagogische Ausbildung mit Schwerpunkt Didaktik/Training, die mindestens dem Referenzsystem wba-Zertifikat/Diplom“ (wba.or.at ) entspricht.
+                    <p class="hinweis">
+                        Hinweis: Im Ausland erworbene Qualifikationen, die formal nostrifiziert wurden, gelten als gleichwertig.
+                    </p>
+                </li>
+            </ul>
+            <p class="hinweis">Hinweis: Gegebenenfalls ist die Erfahrung ... durch einen Lebenslauf unter C.2.1. (siehe oben) nachzuweisen.</p>
+        </div>
+        <div class="formfields row">
+            <div class="col-6">
+                <label class="req">Nachweis(e)</label>
+                <ieb:form.upload property="qualifikationPsaDatei" id="qualifikationPsaDatei" class="req">
+                    <f:if condition="{resource}">
                         <f:image image="{resource}" alt="" width="50" />
-                    </div>
-                </f:if>
-            </ieb:form.upload>
-            <label for="lehrBefugnis" class="abstandoben">Anmerkung zum Uplaod</label>
-            <f:form.textarea property="lehrBefugnis" id="lehrBefugnis"></f:form.textarea>
-
+                    </f:if>
+                </ieb:form.upload>
+            </div>
+            <div class="col-6">
+                <label for="lebenslauf">Anmerkung zum Uplaod</label>
+                <f:form.textarea property="qaulifikationPsa" id="qaulifikationPsa" required="0"></f:form.textarea>
+            </div>
         </div>
     </div>
-</div>
 
-
-<div class="kriterium" id="c-2-b-2">
-    <h3>C.2.b.2 Qualifikationsnachweise für den Pflichtschulbereich</h3>
-    <div class="info"></div>
-    <div class="infobox" id="c-2-a-2-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
-    <div class="erlaeuterung">
-        <p>Weiters sind folgende formale Qualifikationsnachweis/e für den Pflichtschulbereich hochzuladen.</p>
-        <ul>
-            <li>
-                abgeschlossenes Lehramtsstudium oder
-            </li>
-            <li>
-                von der Landesschulbehörde ausgestellte Lehrbefugnis (nicht älter als drei Jahre) oder
-            </li>
-            <li>
-                abgeschlossenes facheinschläg. Studium an einer anerkannten postsekundären Bildungseinrichtung und zumindest 12-monatige Berufserfahrung im (sozial)pädagogischen Bereich mit Jugendlichen oder Erwachsenen oder
-                <p class="hinweis">
-                    Hinweis: Bei facheinschlägigem Studium ist eine Begründung durch Träger anzugeben, warum ein Fach als facheinschlägig betrachtet wird. Als Nachweis für die Berufserfahrung ist sind Angaben zu Umfang, Zielgruppe, Dienstgeber, Zeitraum, Kurs/Projekttitel
-                    zu machen.
-                </p>
-            </li>
-            <li>
-                eine positiv abgeschlossene erwachsenenpädagogische Ausbildung mit Schwerpunkt Didaktik/Training, die mindestens dem Referenzsystem wba-Zertifikat/Diplom“ (wba.or.at ) entspricht.
-                <p class="hinweis">
-                    Hinweis: Im Ausland erworbene Qualifikationen, die formal nostrifiziert wurden, gelten als gleichwertig.
-                </p>
-            </li>
-        </ul>
-    </div>
-    <div class="formfields row">
-        <div class="col-6">
-            <label class="req">Nachweis(e)</label>
-            <ieb:form.upload property="qualifikationPsaDatei" id="qualifikationPsaDatei" class="req">
-                <f:if condition="{resource}">
-                    <f:image image="{resource}" alt="" width="50" />
-                </f:if>
-            </ieb:form.upload>
-        </div>
-        <div class="col-6">
-            <label for="lebenslauf">Anmerkung zum Uplaod</label>
-            <f:form.textarea property="qaulifikationPsa" id="qaulifikationPsa" required="0"></f:form.textarea>
-        </div>
-    </div>
 </div>
 
 
