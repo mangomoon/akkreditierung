@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="formfields row {req}" id="{id}">
+    <div class="col-6">
+        <label class="req">Leitbild (pdf)</label>
+        <ieb:form.upload property="{property}" id="{property}" class="{req}">
+        </ieb:form.upload>
+    </div>
+    <div class="col-6">
+        <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>
+        <f:form.textarea property="{anmerkung}" id="{anmerkung}" class="anmerkung"></f:form.textarea>
+    </div>
+</div>
+
+</html>

@@ -245,7 +245,8 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

@@ -1920,12 +1920,12 @@
             "name": "New Model Object",
             "value": {
                 "actionGroup": {
-                    "_default0_index": false,
+                    "_default0_index": true,
                     "_default1_list": true,
                     "_default2_show": true,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
-                    "_default5_delete": false,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
                     "customActions": []
                 },
                 "name": "Standort",
@@ -3426,7 +3426,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-02-15 03:15",
+        "last_modified": "2023-02-24 05:08",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

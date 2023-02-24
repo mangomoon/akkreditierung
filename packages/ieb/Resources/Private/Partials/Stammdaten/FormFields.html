@@ -4,6 +4,7 @@
     <h2>A.1 Basisdaten</h2>
 
 
+
     <div class="kriteriumteil" id="a-1-1">
         <h3>A.1.1 Name der Organisation</h3>
 
@@ -33,9 +34,9 @@
             <div class="col-6">
                 <label for="rechtsform" class="req">Rechtsform</label>
                 <f:form.select name="rechtsform" property="rechtsform" required="0" class="reqselect">
-                    <f:form.select.option value=""></f:form.select.option>
-                    <f:form.select.option value="Verein">Verein</f:form.select.option>
-                    <f:form.select.option value="Ges.m.b.H.">Ges.m.b.H.</f:form.select.option>
+                    <f:form.select.option value="0ddevt"></f:form.select.option>
+                    <f:form.select.option value="1">Verein</f:form.select.option>
+                    <f:form.select.option value="2">Ges.m.b.H.</f:form.select.option>
                 </f:form.select>
                 <label for="seit" class="req abstandoben">tätig seit</label>
                 <f:form.textfield property="seit" id="seit" class="req" />
@@ -95,20 +96,8 @@
         <p>Laden Sie das Leitbild Ihrer Einrichtung hoch. Es soll einen klaren Erwachsenenbildungsbezug aufweisen.</p>
         <p class="hinweis">Hinweis: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
     </div>
-    <div class="formfields row">
-        <div class="col-6">
-            <label class="req">Leitbild (pdf)</label>
-            <ieb:form.upload property="leitbildDatei" id="leitbildDatei" class="req">
-                <f:if condition="{resource}">
-                    <f:image image="{resource}" alt="" width="50" />
-                </f:if>
-            </ieb:form.upload>
-        </div>
-        <div class="col-6">
-            <label for="leitbild">Anmerkung zum Upload</label>
-            <f:form.textarea property="leitbild" id="leitbild"></f:form.textarea>
-        </div>
-    </div>
+
+    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'req', anmerkung:'leitbild'}" />
 </div>
 
 
@@ -182,7 +171,7 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label class="req">Qaulitätssicherung Personal (pdf)</label>
+            <label class="req">Qualitätssicherung Personal (pdf)</label>
             <ieb:form.upload property="qualitaetPersonalDatei" id="qualitaetPersonalDatei" class="req">
                 <f:if condition="{resource}">
                     <f:image image="{resource}" alt="" width="50" />

@@ -14,7 +14,7 @@
 </div>
 
 <div class="kriterium" id="c-3-1">
-    <div class="kriteriumteil" id="a-1-1">
+    <div class="kriteriumteil" id="c-3-1-a">
         <h3>C.3.1 Lebenslauf</h3>
         <div class="info"></div>
         <div class="infobox" id="c-2-1-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
@@ -22,20 +22,8 @@
             <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als ½ Jahr) hoch, in dem die Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
         </div>
 
-        <div class="formfields row">
-            <div class="col-6" id="c-2-a">
-                <label class="req">Lebenslauf</label>
-                <ieb:form.upload property="lebenslauf" id="lebenslauf" class="reqfile">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6">
-                <label for="lebenslaufKommentar" class="anmerkunglabel">Ich will eine Anmerkung machen</label>
-                <f:form.textarea property="lebenslaufKommentar" id="lebenslaufKommentar" class="anmerkung"></f:form.textarea>
-            </div>
-        </div>
+        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', anmerkung:'lebenslaufKommentar'}" />
+
     </div>
 
     <div class="kriteriumteil">
@@ -50,20 +38,10 @@
                 (jetzt Ende 2023) anerkannte Berater/innen bleiben anerkannt. Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.
             </p>
         </div>
-        <div class="formfields row">
-            <div class="col-6">
-                <label class="req">Nachweise</label>
-                <ieb:form.upload property="qualifikationsnachweise" id="qualifikationsnachweise" class="reqfile">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6">
-                <label for="qualifikationsnachweiseKommentar" class="anmerkunglabel">Ich will eine Anmerkung machen</label>
-                <f:form.textarea property="qualifikationsnachweiseKommentar" id="qualifikationsnachweiseKommentar" class="anmerkung"></f:form.textarea>
-            </div>
-        </div>
+
+        <f:render partial="Form/Upload" arguments="{property:'qualifikationsnachweise', id:'qualifikationsnachweise', req:'req', anmerkung:'qualifikationsnachweiseKommentar'}" />
+
+
     </div>
 
 </div>

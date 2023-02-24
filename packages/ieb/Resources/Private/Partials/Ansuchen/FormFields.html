@@ -269,9 +269,9 @@
 
     <div class="kriteriumteil">
         <h3>B.1.e Abnahme von Prüfungen (### wird nur bei PSA angezeigt)</h3>
-        <p>Ist Ihre Einrichtung berechtigt, selbst Prüfungen durchzuführen und liegt eine Prüferbereichtigung vor?
-            <knopf class="inline janein ja {f:if(condition:qmsTyp,then:'checked')}">ja</knopf>
-            <knopf class="inline janein nein {f:if(condition:qmsTyp,then:'checked')}">nein</knopf>
+        <p>Ist Ihre Einrichtung berechtigt, selbst Prüfungen durchzuführen und liegt eine Prüferberechtigung vor?
+            <knopf class="inline janein ja">ja</knopf>
+            <knopf class="inline janein nein">nein</knopf>
         </p>
         <div class="formfields row">
             <div class="col-6" id="">
@@ -360,6 +360,18 @@
             <div class="col-6" id="">
                 <label for="zielgruppenAnsprache">Anmerkung zum Uplaod</label>
                 <f:form.textarea property="zielgruppenAnsprache" id="zielgruppenAnsprache"></f:form.textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="kriteriumteil">
+        <h3>B.1.g Features</h3>
+        <div class="formfields row">
+            <div class="col-6" id="b-1-g-1">
+                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Unsere Einrichtung biete Kurse als Fernlehre (Video Seminare) an.
+            </div>
+            <div class="col-6" id="b-1-g-2">
+                <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Unsere Einrichtung stellt nach Absprache Kinderbetreuung zur Verfügung.
             </div>
         </div>
     </div>

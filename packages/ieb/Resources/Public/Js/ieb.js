@@ -74,7 +74,9 @@ function anmerkungoeffnen() {
 
         if ($(this).val()) {
             var txt = "Anmerkung zum Upload";
+            $(this).prev(".anmerkunglabel").removeClass("labelknopf");
             $(this).prev(".anmerkunglabel").html(txt);
+
             $(this).show();
         }
     });
@@ -136,7 +138,9 @@ $(document).ready(function() {
     $('.anmerkunglabel').click(function() {
         var txt = "Anmerkung zum Upload";
         $(this).html(txt);
+        $(this).removeClass("labelknopf");
         $(this).next(".anmerkung").show();
+
     });
 
 

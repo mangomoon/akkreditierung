@@ -77,8 +77,6 @@ plugin.tx_ieb._CSS_DEFAULT_STYLE (
         border: 1px #FF0000 solid;
     }
 
-
-
     .typo3-messages .message-error {
         color: red;
     }
@@ -87,11 +85,3 @@ plugin.tx_ieb._CSS_DEFAULT_STYLE (
         color: green;
     }
 )
-
-
-page.includeCSS {
-    name = EXT:ieb/Resources/Public/Css/ieb.css
-}
-page.includeJS {
-    name = EXT:ieb/Resources/Public/Js/ieb.js
-}

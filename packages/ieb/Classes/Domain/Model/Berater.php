@@ -68,13 +68,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $title = '';
 
     /**
-     * standorte
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
-     */
-    protected $standorte = null;
-
-    /**
      * lebenslaufKommentar
      *
      * @var string
@@ -87,6 +80,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $qualifikationsnachweiseKommentar = '';
+
+    /**
+     * standorte
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
+     */
+    protected $standorte = null;
 
     /**
      * __construct

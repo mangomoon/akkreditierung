@@ -9,7 +9,7 @@ plugin.tx_ieb_default {
     }
     persistence {
         # cat=plugin.tx_ieb_default//a; type=string; label=Default storage PID
-        storagePid =15
+        storagePid =
     }
 }
 plugin.tx_ieb_stamm {
@@ -23,7 +23,7 @@ plugin.tx_ieb_stamm {
     }
     persistence {
         # cat=plugin.tx_ieb_stamm//a; type=string; label=Default storage PID
-        storagePid =15
+        storagePid =
     }
 }
 plugin.tx_ieb_ansuchen {
@@ -37,6 +37,6 @@ plugin.tx_ieb_ansuchen {
     }
     persistence {
         # cat=plugin.tx_ieb_ansuchen//a; type=string; label=Default storage PID
-        storagePid =15
+        storagePid =
     }
 }

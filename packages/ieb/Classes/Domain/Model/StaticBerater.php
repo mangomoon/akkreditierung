@@ -93,20 +93,6 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $title = '';
 
     /**
-     * standorte
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
-     */
-    protected $standorte = null;
-
-    /**
-     * basedOn
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Berater
-     */
-    protected $basedOn = null;
-
-    /**
      * lebenslaufKommentar
      *
      * @var string
@@ -119,6 +105,20 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $qualifikationsnachweiseKommentar = '';
+
+    /**
+     * standorte
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
+     */
+    protected $standorte = null;
+
+    /**
+     * basedOn
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Berater
+     */
+    protected $basedOn = null;
 
     /**
      * Returns the nachname

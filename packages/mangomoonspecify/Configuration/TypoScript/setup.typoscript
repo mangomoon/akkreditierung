@@ -6,7 +6,14 @@
 config.no_cache = 1
 config.debug = 1
 
+plugin.tx_ieb._CSS_DEFAULT_STYLE >
 
+page.includeCSS {
+    name = EXT:ieb/Resources/Public/Css/ieb.css
+}
+page.includeJS {
+    name = EXT:ieb/Resources/Public/Js/ieb.js
+}
 
 #page.10.dataProcessing.40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
 #page.10.dataProcessing.40 {

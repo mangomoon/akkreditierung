@@ -315,6 +315,15 @@ knopf.inline.checked {
     box-shadow: 1px 1px 2px var(--f3) inset;
 }
 
+label.labelknopf {
+    padding: 4px 16px;
+    background-color: var(--f0);
+    border: 1px solid var(--f2);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px var(--f1);
+    width: 270px;
+}
+
 .oecert {
     display: none;
 }
@@ -345,6 +354,11 @@ h3 input[type="checkbox"] {}
 
 span.ansuchennr {
     font-size: 1.5em;
+}
+
+#b-1-g-1 input,
+#b-1-g-2 input {
+    display: inline;
 }
 
 
