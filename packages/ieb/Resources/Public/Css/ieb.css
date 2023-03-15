@@ -61,6 +61,10 @@ label {
     margin-bottom: 2px;
 }
 
+label.inline {
+    display: inline;
+}
+
 .kriterium {
     position: relative;
     border: solid 1px var(--f3);
@@ -69,7 +73,7 @@ label {
     margin-bottom: 36px;
 }
 
-.kriterium h2 {
+h2 {
     color: var(--f4);
 }
 
@@ -95,6 +99,10 @@ label {
     top: -13px;
 }
 
+.kriteriumteil:first-child .info {
+    top: 16px;
+}
+
 .info:hover {
     filter: none;
     opacity: 0.8;
@@ -117,6 +125,7 @@ label {
     box-shadow: 2px 2px 8px var(--f3);
     color: #fff;
     font-size: 0.9em;
+    line-height: 150%;
     z-index: 9999;
 }
 
@@ -129,6 +138,10 @@ label {
     padding-bottom: 2px;
     margin-bottom: 37px;
     border-bottom: dotted 2px var(--f3);
+}
+
+.kriteriumteil:first-child {
+    padding-top: 12px;
 }
 
 .kriteriumteil:last-of-type {
@@ -145,7 +158,8 @@ label {
     padding-bottom: 0;
 }
 
-p.hinweis {
+p.hinweis,
+ul.hinweis {
     font-size: 0.9em;
     font-weight: 500;
     color: var(--f4);
@@ -157,6 +171,10 @@ p.hinweisextra {
     color: var(--f4);
 }
 
+span.worthinweis {
+    text-transform: uppercase;
+}
+
 .formfields {
     margin: 24px 0 20px 0;
     display: flex;
@@ -166,6 +184,7 @@ p.hinweisextra {
     margin: 0;
 }
 
+.formfields .col,
 .formfields .col-2,
 .formfields .col-3,
 .formfields .col-4,
@@ -195,6 +214,11 @@ label.req::after {
     font-size: 1.4em;
     line-height: 1px;
     padding-left: 1px;
+}
+
+input,
+textarea {
+    accent-color: var(--f3);
 }
 
 input[type="text"] {
@@ -279,6 +303,21 @@ input[type="submit"].knopf-s2 {
     font-size: 0.8em;
 }
 
+.knopf-s2 {
+    padding: 9px 40px;
+    background-color: var(--f3);
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+    font-size: 0.8em;
+}
+
+.knopf-s2:hover {
+    background-color: var(--f2);
+    filter: none;
+}
+
 input[type="submit"].knopf-s2:hover {
     background-color: var(--f2);
     filter: none;
@@ -304,7 +343,7 @@ knopf.inline {
 knopf.inline:hover {
     box-shadow: none;
     background-color: var(--f2);
-    color: #fff;
+    color: #ffffff;
 }
 
 knopf.inline.checked {
@@ -408,6 +447,8 @@ table.ansuchenliste td.check {
     color: #fff;
     box-shadow: 2px 2px 2px #888;
     text-decoration: none;
+    margin: 12px 0;
+    display: inline-block;
 }
 
 .formlink:hover {
@@ -416,15 +457,15 @@ table.ansuchenliste td.check {
 }
 
 .formlink.stammdaten {
-    background-color: #8eb3d5;
+    background-color: var(--stammdaten);
 }
 
 .formlink.stammdaten:hover {
-    background-color: #6d94b7;
+    background-color: #da8702;
 }
 
 .formlink.ansuchen {
-    background-color: #c3161c;
+    background-color: var(--ansuchen);
 }
 
 .formlink.ansuchen:hover {
@@ -432,31 +473,31 @@ table.ansuchenliste td.check {
 }
 
 .formlink.berater {
-    background-color: #ed9e21;
+    background-color: var(--beratung);
 }
 
 .formlink.berater:hover {
-    background-color: #da8702;
+    background-color: #6d94b7;
 }
 
 .formlink.trainer {
-    background-color: #edc509;
+    background-color: var(--training);
 }
 
 .formlink.trainer:hover {
-    background-color: #ddb903;
+    background-color: #61913e;
 }
 
 .formlink.standorte {
-    background-color: #5ac567;
+    background-color: var(--standorte);
 }
 
 .formlink.standorte:hover {
-    background-color: #429c4d;
+    background-color: #ddb903;
 }
 
 .formlink.angebotssteuernde {
-    background-color: #b7c449;
+    background-color: var(--angebotsverantwortliche);
 }
 
 .formlink.angebotssteuernde:hover {
@@ -493,12 +534,148 @@ table.angebotssteuerung {
     border-top: solid 1px var(--f3);
 }
 
+.angebotssteuerung tr.angebotssteuernd td {
+    background: var(--f1);
+}
+
 .angebotssteuerung .spalte-1 {
-    background-color: var(--f3);
+    /* background-color: var(--f3); */
     text-align: center;
+    width: 51px;
 }
 
 .angebotssteuerung .spalte-2 {
-    background-color: var(--f4);
+    background-color: var(--f2);
     text-align: center;
+    width: 51px;
+}
+
+.angebotssteuerung .spalte-2 input {
+    display: none;
+}
+
+
+/* TABELLE  */
+
+table.tx_ieb {
+    margin: 40px 0;
+    /* border-top: 2px solid #DADBCF; */
+}
+
+table.tx_ieb th {
+    font-weight: 400;
+    font-size: 0.75em;
+    text-align: left;
+    padding: 0 3px 6px 2px;
+}
+
+.tx_ieb tr:nth-child(even) {
+    background: #DADBCF;
+}
+
+table.tx_ieb td {
+    padding: 10px 3px 10px 2px;
+}
+
+.td-knopf {
+    width: 44px;
+    text-align: center;
+}
+
+.knopf-quadratisch {
+    display: inline-block;
+    background-color: var(--f3);
+    background-size: 72%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+    width: 26px;
+    height: 26px;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+    font-size: 0.8em;
+    vertical-align: bottom;
+}
+
+.knopf-quadratisch:hover {
+    background-color: var(--f2);
+    filter: none;
+    text-decoration: none;
+}
+
+.td-knopf .knopf-quadratisch.edit {
+    background-image: url('../Img/Edit_hell.svg');
+}
+
+.td-knopf .knopf-quadratisch.hide {
+    background-image: url('../Img/hide_hell.svg');
+}
+
+.td-knopf .knopf-quadratisch.show {
+    background-image: url('../Img/show_hell.svg');
+}
+
+table.tx_ieb td.nachname {
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+table.tx_ieb tr:hover {
+    background: #f9f7f0;
+}
+
+
+/* SUCHE 
+ */
+
+span.label {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+span.suchwort {
+    font-weight: 600;
+}
+
+#suche .col-3 {
+    padding-top: 22px;
+}
+
+.knopf-s2.suchezurueck {
+    background-color: var(--f2);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.knopf-s2.suchezurueck:hover {
+    color: var(--f4);
+}
+
+
+/* JS Anzeigemanagement
+ */
+
+.babi,
+.psa,
+.japruef,
+.neinpruef {
+    display: none;
+}
+
+.ischecked {
+    display: block;
+}
+
+
+/* ANSUCHEN: BERATERWAHL */
+
+#beraterwahl {
+    display: none;
+    width: 800px;
+    height: auto;
+    background-color: var(--f2);
+    padding: 16px;
+    position: fixed;
+    top: 3em;
+    right: 4em;
+    z-index: 99999;
 }

@@ -5,9 +5,9 @@
 <f:section name="content">
 
     <f:flashMessages />
-
     <f:if condition="{item}">
         <f:then>
+
             <f:render partial="FormErrors" />
 
             <f:form action="edit" name="Stammdaten" object="{Stammdaten}" class="formStammdaten editStammdaten">

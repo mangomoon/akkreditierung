@@ -3,8 +3,9 @@
 
 <f:section name="content">
 
+
     <div class="kriterium">
-        <f:form action="index" object="{beraterSearch}" name="beraterSearch">
+        <f:form action="index" id="suche" object="{beraterSearch}" name="beraterSearch">
             <div class="row">
                 <div class="col-5">
                     <label for="vorname">Vorname</label>
@@ -16,43 +17,73 @@
                 </div>
                 <div class="col-2">
                     <f:form.submit value="Suche" class="knopf-s2 suche" />
-                    <f:if condition="{beraterSearch.used}">
-                        <f:link.page class="btn btn-secondary">Suche zurücksetzen</f:link.page>
-                    </f:if>
                 </div>
             </div>
+            <f:if condition="{beraterSearch.used}">
+                <div class="row">
+                    <div class="col">
+                        <p><span class="label">Gesucht wurde nach:</span> <span class="suchwort">»{beraterSearch.vorname} {beraterSearch.nachname}«</span></p>
+                        <p>
+                            <f:link.page class="knopf-s2 suchezurueck">Suche zurücksetzen</f:link.page>
+                        </p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </f:if>
         </f:form>
     </div>
 
     <f:flashMessages/>
 
     <f:if condition="{beraters}">
-        <table class="tx_ieb" border="1">
+        <table class="tx_ieb berater">
             <tr>
-                <th>
-                    <f:translate key="tx_ieb_domain_model_trainer.nachname" />
-                </th>
-                <th>
-                    <f:translate key="tx_ieb_domain_model_trainer.vorname" />
-                </th>
-                <th>Erstellungsdatum</th>
-                <th>Anzeigen</th>
-                <th>Bearbeiten</th>
+                <th class="nachname">
+                    &nbsp;
+                    </td>
+                    <th class="vorname">
+                        &nbsp;
+                    </th>
+                    <th>letzte Änderung</th>
+                    <th>vollständig</th>
+                    <th class="td-knopf">
+
+                    </th>
+                    <th class="td-knopf">
+
+                    </th>
             </tr>
             <f:for each="{beraters}" as="berater">
                 <tr>
-                    <td>
+                    <td class="nachname">
                         {berater.nachname}
                     </td>
-                    <td>
+                    <td class="vorname">
                         {berater.vorname}
                     </td>
-                    <td>{berater.crdate -> f:format.date(format:'d.m.Y')}</td>
-                    <td>
-                        <f:link.action action="show" arguments="{berater : berater}">Anzeigen</f:link.action>
+                    <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                    <td class="">
+                        <f:if condition="{berater.ok}">
+                            <f:then>
+                                ja
+                            </f:then>
+                            <f:else>
+                                nein
+                            </f:else>
+                        </f:if>
+
                     </td>
-                    <td>
-                        <f:link.action action="edit" arguments="{berater : berater}">Bearbeiten</f:link.action>
+                    <td class="td-knopf">
+                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
+                        </f:link.action>
+                    </td>
+                    <td class="td-knopf">
+                        <f:link.action action="hide" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
+                        </f:link.action>
+                    </td>
+                    <td class="td-knopf">
+                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
+                        </f:link.action>
                     </td>
                 </tr>
             </f:for>
@@ -60,7 +91,7 @@
     </f:if>
 
     <div class="formzeile">
-        <f:link.action action="new" class="formlink berater">Neue:n Berater:in anlegen</f:link.action>
+        <f:link.action action="new" class="formlink berater">Neue/n Berater/in anlegen</f:link.action>
     </div>
 
 </f:section>

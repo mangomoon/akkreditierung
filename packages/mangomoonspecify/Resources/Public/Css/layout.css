@@ -61,6 +61,16 @@ body {
     text-align: right;
 }
 
+#verhueller {
+    display: none;
+    background: rgba(241, 237, 228, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vW;
+    height: 100vH;
+}
+
 .navigationrow {
     justify-content: flex-end;
     ;

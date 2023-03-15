@@ -141,6 +141,21 @@
 			<trans-unit id="status.description" resname="status.description">
 				<source>status</source>
 			</trans-unit>
+			<trans-unit id="ok.description" resname="ok.description">
+				<source>ok</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
+				<source>pruefbescheidDatei</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
+				<source>pruefbescheid</source>
+			</trans-unit>
+			<trans-unit id="kooperation_datei.description" resname="kooperation_datei.description">
+				<source>kooperationDatei</source>
+			</trans-unit>
+			<trans-unit id="kooperation.description" resname="kooperation.description">
+				<source>kooperation</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>
@@ -170,6 +185,9 @@
 			</trans-unit>
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
+			</trans-unit>
+			<trans-unit id="koopertion.description" resname="koopertion.description">
+				<source>koopertion</source>
 			</trans-unit>
 		</body>
 	</file>

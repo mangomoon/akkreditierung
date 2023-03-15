@@ -1005,6 +1005,110 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
+
+    /**
+     * @test
+     */
+    public function getPruefbescheidDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getPruefbescheidDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPruefbescheidDateiForFileReferenceSetsPruefbescheidDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setPruefbescheidDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('pruefbescheidDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getPruefbescheidReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getPruefbescheid()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPruefbescheidForStringSetsPruefbescheid(): void
+    {
+        $this->subject->setPruefbescheid('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('pruefbescheid'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKooperationDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getKooperationDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setKooperationDateiForFileReferenceSetsKooperationDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setKooperationDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('kooperationDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKooperationReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getKooperation()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setKooperationForStringSetsKooperation(): void
+    {
+        $this->subject->setKooperation('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kooperation'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

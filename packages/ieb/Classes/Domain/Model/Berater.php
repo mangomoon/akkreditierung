@@ -82,6 +82,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationsnachweiseKommentar = '';
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * standorte
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
@@ -303,5 +310,36 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualifikationsnachweiseKommentar(string $qualifikationsnachweiseKommentar)
     {
         $this->qualifikationsnachweiseKommentar = $qualifikationsnachweiseKommentar;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
     }
 }

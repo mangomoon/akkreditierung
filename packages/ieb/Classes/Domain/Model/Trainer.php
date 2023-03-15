@@ -196,6 +196,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationPsaDatei = null;
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -790,5 +797,36 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualifikationPsaDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei)
     {
         $this->qualifikationPsaDatei = $qualifikationPsaDatei;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
     }
 }

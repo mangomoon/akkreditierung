@@ -1,7 +1,9 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 
-
+<p class="hinweis">
+    Hinweis: Bis Ende der 3. PP (Ende 2023) anerkannte Berater/innen bleiben anerkannt. <br>Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.
+</p>
 <div class="formfields row">
     <div class="col-6">
         <label for="name" class="req">Vorname</label>
@@ -13,34 +15,48 @@
     </div>
 </div>
 
-<div class="kriterium" id="c-3-1">
-    <div class="kriteriumteil" id="c-3-1-a">
-        <h3>C.3.1 Lebenslauf</h3>
+<div class="kriterium" id="c-3">
+
+    <div class="kriteriumteil" id="c-3-1">
+        <h3>C.3.1 Qualifikationsnachweise Beratung</h3>
         <div class="info"></div>
-        <div class="infobox" id="c-2-1-hilfe">Und das ist die Hilfebox mit dem Hilfetext aus dem PPD. Muss man schließen können!</div>
+        <div class="infobox" id="c-2-1-hilfe">Alle Berater/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist wie bisher von 18 Monaten.</div>
         <div class="erlaeuterung">
-            <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als ½ Jahr) hoch, in dem die Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+            <p>
+                Laden Sie die Nachweise über den Abschluss einer fachspezifischen Ausbildung zur Beratung hoch.
+            </p>
+            <p class="hinweis">
+                <span class="worhinweis">Hinweis:</span> Anerkannt werden:
+            </p>
+            <ul class="hinweis">
+                <li>
+                    Ausbildungen zur Bildungs- und Berufsberatung am bifeb
+                </li>
+                <li>
+                    wba-Zertifikat mit Schwerpunkt Beratung, das wba-Diplom
+                </li>
+                <li>
+                    eine postsekundäre Ausbildung zur Sozialarbeit (mit FH-, Akademie- oder Universitätsabschluss)
+                </li>
+            </ul>
+            <p class="hinweis">
+                Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen siehe Kapitel 3.3.3. im Programmplanungsdokument.
+            </p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', anmerkung:'lebenslaufKommentar'}" />
+        <f:render partial="Form/Upload" arguments="{property:'qualifikationsnachweise', id:'qualifikationsnachweise', req:'req', label='nachweise', anmerkung:'qualifikationsnachweiseKommentar'}" />
 
     </div>
 
-    <div class="kriteriumteil">
-        <h3>C.3.2 Qualifikation und Erfahrung</h3>
+    <div class="kriteriumteil" id="c-3-2">
+        <h3>C.3.2 Erfahrungsnachweis</h3>
+        <div class="info"></div>
+        <div class="infobox" id="c-2-1-hilfe">Alle Berater/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
         <div class="erlaeuterung">
-            <p>
-                Weiters sind relevante Qualifikationsnachweis/e im Bereich Beratung hochzuladen. Ausbildungsumfang und -inhalte müssen ersichtlich sein, ergänzen Sie gegebenenfalls das Curriculum. Relevante Beratungserfahrung ist im Ausmaß von mind. ½ Jahr (Umfang, Zielgruppe,
-                Dienstgeber, Zeitraum, Kurs/Projekttitel) zu erbringen.
-            </p>
-            <p class="hinweis">
-                Hinweis zu Erfahrung: Praxissequenzen innerhalb einer Ausbildung zählen beim gesamten Personal nicht als Erfahrungsnachweis. Alle Berater/innen, die keine ausreichende Erfahrung nachweisen können, bekommen eine Intervisionsauflage. Bis Ende der 3. PP
-                (jetzt Ende 2023) anerkannte Berater/innen bleiben anerkannt. Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.
-            </p>
+            <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'qualifikationsnachweise', id:'qualifikationsnachweise', req:'req', anmerkung:'qualifikationsnachweiseKommentar'}" />
-
+        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', label='nachweis', anmerkung:'lebenslaufKommentar'}" />
 
     </div>
 

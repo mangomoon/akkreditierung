@@ -136,4 +136,22 @@ class AngebotVerantwortlichTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('verantwortlich'));
     }
+
+    /**
+     * @test
+     */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
 }

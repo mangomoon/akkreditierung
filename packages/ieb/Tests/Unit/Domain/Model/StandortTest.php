@@ -179,4 +179,22 @@ class StandortTest extends UnitTestCase
 
         self::assertEquals($fileReferenceFixture, $this->subject->_get('koopSchuleDatei'));
     }
+
+    /**
+     * @test
+     */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
 }

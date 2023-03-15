@@ -589,6 +589,24 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         self::assertEquals(

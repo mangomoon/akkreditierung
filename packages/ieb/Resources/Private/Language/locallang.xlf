@@ -417,6 +417,21 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.status" resname="tx_ieb_domain_model_ansuchen.status">
 				<source>Status</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.ok" resname="tx_ieb_domain_model_ansuchen.ok">
+				<source>Ok</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.pruefbescheid_datei" resname="tx_ieb_domain_model_ansuchen.pruefbescheid_datei">
+				<source>Pruefbescheid Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.pruefbescheid" resname="tx_ieb_domain_model_ansuchen.pruefbescheid">
+				<source>Pruefbescheid</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kooperation_datei" resname="tx_ieb_domain_model_ansuchen.kooperation_datei">
+				<source>Kooperation Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kooperation" resname="tx_ieb_domain_model_ansuchen.kooperation">
+				<source>Kooperation</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
 			</trans-unit>
@@ -471,6 +486,9 @@
 			<trans-unit id="tx_ieb_domain_model_standort.koop_schule_datei" resname="tx_ieb_domain_model_standort.koop_schule_datei">
 				<source>Koop Schule Datei</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_standort.ok" resname="tx_ieb_domain_model_standort.ok">
+				<source>Ok</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater" resname="tx_ieb_domain_model_berater">
 				<source>Berater</source>
 			</trans-unit>
@@ -494,6 +512,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar" resname="tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar">
 				<source>Qualifikationsnachweise Kommentar</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.ok" resname="tx_ieb_domain_model_berater.ok">
+				<source>Ok</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.standorte" resname="tx_ieb_domain_model_berater.standorte">
 				<source>Standorte</source>
@@ -569,6 +590,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.qualifikation_psa_datei" resname="tx_ieb_domain_model_trainer.qualifikation_psa_datei">
 				<source>Qualifikation Psa Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.ok" resname="tx_ieb_domain_model_trainer.ok">
+				<source>Ok</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>
@@ -651,6 +675,9 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.locked_by" resname="tx_ieb_domain_model_stammdaten.locked_by">
 				<source>Locked By</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.ok" resname="tx_ieb_domain_model_stammdaten.ok">
+				<source>Ok</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.standorte" resname="tx_ieb_domain_model_stammdaten.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -671,6 +698,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.verantwortlich" resname="tx_ieb_domain_model_angebotverantwortlich.verantwortlich">
 				<source>Verantwortlich</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.ok" resname="tx_ieb_domain_model_angebotverantwortlich.ok">
+				<source>Ok</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_user" resname="tx_ieb_domain_model_user">
 				<source>User</source>
@@ -704,6 +734,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien.ppd" resname="tx_ieb_domain_model_kriterien.ppd">
 				<source>Ppd</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.koopertion" resname="tx_ieb_domain_model_ansuchen.koopertion">
+				<source>Koopertion</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.10" resname="ansuchen.status.10">
 				<source>Neu in Arbeit</source>

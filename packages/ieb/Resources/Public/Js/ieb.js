@@ -68,6 +68,21 @@ function trainerfelder() {
     }
 }
 
+// Feldermanagement Ansuchen
+
+function ansuchenfelder() {
+    if ($('#ansuchenbereich').hasClass('babichecked')) {
+        $('.babi').each(function() {
+            $(this).addClass('ischecked');
+        });
+    };
+    if ($('#ansuchenbereich').hasClass('psachecked')) {
+        $('.psa').each(function() {
+            $(this).addClass('ischecked');
+        });
+    }
+};
+
 // Anmerkung öffnen 
 function anmerkungoeffnen() {
     $('.anmerkung').each(function() {
@@ -82,6 +97,8 @@ function anmerkungoeffnen() {
     });
 }
 
+// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
+
 $(document).ready(function() {
 
     trainerfelder();
@@ -90,7 +107,8 @@ $(document).ready(function() {
 
     // ######################################## Form Stammdaten öCert
 
-    $('.janein').click(function() {
+
+    $('.stammdatenjanein').click(function() {
 
         if ($(this).hasClass("ja")) {
             var wert = 1;
@@ -103,6 +121,77 @@ $(document).ready(function() {
             var oecertclass = '.oecert-' + wert;
             $(this).parent().parent().find(oecertclass).addClass('checked');
             $('#qmsTyp').attr('value', wert);
+        }
+
+    });
+
+    // ######################################## Form Ansuchen Prüfbescheid
+
+    $('.pruefjanein').click(function() {
+        if ($(this).hasClass('ja')) {
+            $('.nein').removeClass('checked');
+            $(this).addClass("checked");
+            $('.neinpruef').each(function() {
+                $(this).removeClass('ischecked');
+            });
+            $('.japruef').each(function() {
+                $(this).addClass('ischecked');
+            });
+        };
+        if ($(this).hasClass('nein')) {
+            $('.ja').removeClass('checked');
+            $(this).addClass("checked");
+            $('.neinpruef').each(function() {
+                $(this).addClass('ischecked');
+            });
+            $('.japruef').each(function() {
+                $(this).removeClass('ischecked');
+            });
+        }
+    });
+
+    // ######################################## Form Ansuchen Tabelle Angebotssteuerung
+    $('.angebotssteuerungsperson').change(function() {
+        if (this.checked) {
+            $(this).parent().parent().addClass('angebotssteuernd');
+            $(this).parent().parent().find('.spalte-2 input').show();
+        } else {
+            $(this).parent().parent().removeClass('angebotssteuernd');
+            $(this).parent().parent().find('.spalte-2 input').hide();
+            $(this).parent().parent().find('.spalte-2 input').prop('checked', false);
+        }
+    });
+
+    // ######################################## Form Ansuchen Beraterhinzufügen
+    $('.beraterwahl').click(function() {
+        $('#verhueller').show();
+        $('#beraterwahl').show();
+    });
+
+    // ######################################## Form Ansuchen Babi/PSA
+
+    $('.ansuchenjanein').click(function() {
+        if ($(this).hasClass('istbabi')) {
+            $('.istpsa').removeClass('checked');
+            $(this).addClass("checked");
+            $('.psa').each(function() {
+                $(this).removeClass('ischecked');
+            });
+            $('.babi').each(function() {
+                $(this).addClass('ischecked');
+            });
+            $('#typ').attr('value', 1);
+        };
+        if ($(this).hasClass('istpsa')) {
+            $('.istbabi').removeClass('checked');
+            $(this).addClass("checked");
+            $('.psa').each(function() {
+                $(this).addClass('ischecked');
+            });
+            $('.babi').each(function() {
+                $(this).removeClass('ischecked');
+            });
+            $('#typ').attr('value', 2);
         }
     });
 

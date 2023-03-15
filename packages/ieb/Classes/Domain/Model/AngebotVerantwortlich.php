@@ -56,6 +56,13 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $verantwortlich = false;
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -168,5 +175,36 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function isVerantwortlich()
     {
         return $this->verantwortlich;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
     }
 }

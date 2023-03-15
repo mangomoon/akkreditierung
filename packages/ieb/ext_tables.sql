@@ -144,6 +144,11 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_total_frist date DEFAULT NULL,
 	locked_by int(11) NOT NULL DEFAULT '0',
 	status int(11) DEFAULT '0' NOT NULL,
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid text,
+	kooperation_datei int(11) unsigned NOT NULL DEFAULT '0',
+	kooperation text,
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -163,7 +168,8 @@ CREATE TABLE tx_ieb_domain_model_standort (
 	ort varchar(255) NOT NULL DEFAULT '',
 	pruef_bescheid smallint(1) unsigned NOT NULL DEFAULT '0',
 	koop_schule text NOT NULL DEFAULT '',
-	koop_schule_datei int(11) unsigned NOT NULL DEFAULT '0'
+	koop_schule_datei int(11) unsigned NOT NULL DEFAULT '0',
+	ok smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_berater (
@@ -174,6 +180,7 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	title varchar(255) NOT NULL DEFAULT '',
 	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
 	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0'
 );
 
@@ -200,7 +207,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lehr_befugnis_datei int(11) unsigned NOT NULL DEFAULT '0',
-	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0'
+	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0',
+	ok smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -230,6 +238,7 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	pruefbescheid text,
 	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	standorte int(11) unsigned DEFAULT '0'
 );
 
@@ -239,14 +248,14 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	vorname varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
-	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0'
+	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0',
+	ok smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

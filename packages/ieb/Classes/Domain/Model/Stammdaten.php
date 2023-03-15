@@ -209,6 +209,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lockedBy = 0;
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * standorte
      *
      * @var \GeorgRinger\Ieb\Domain\Model\Standort
@@ -790,5 +797,36 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setMarkenname(string $markenname)
     {
         $this->markenname = $markenname;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
     }
 }

@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_angebotverantwortlich.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, email, telefon, verantwortlich, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, email, telefon, verantwortlich, ok, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -107,6 +107,21 @@ return [
         'verantwortlich' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.verantwortlich',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'ok' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.ok',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

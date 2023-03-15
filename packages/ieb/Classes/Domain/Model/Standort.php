@@ -71,6 +71,13 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $koopSchuleDatei = null;
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * Returns the name
      *
      * @return string
@@ -225,5 +232,36 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setKoopSchuleDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchuleDatei)
     {
         $this->koopSchuleDatei = $koopSchuleDatei;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
     }
 }

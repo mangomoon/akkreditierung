@@ -1,4 +1,11 @@
-/* sm-core-css.css */
+:root {
+    --ansuchen: #c3161c;
+    --stammdaten: #ed9e21;
+    --standorte: #edc509;
+    --angebotsverantwortliche: #b7c449;
+    --training: #81b55a;
+    --beratung: #8eb3d5;
+}
 
 .sm {
     box-sizing: border-box;
@@ -514,27 +521,27 @@ a.subnaviitem.linkto-17 {
 }
 
 a.subnaviitem.linkto-14 {
-    background: #c3161c;
+    background: var(--ansuchen);
 }
 
 a.subnaviitem.linkto-13 {
-    background: #ed9e21;
+    background: var(--beratung);
 }
 
 a.subnaviitem.linkto-12 {
-    background: #edc509;
+    background: var(--training);
 }
 
 a.subnaviitem.linkto-11 {
-    background: #5ac567;
+    background: var(--standorte);
 }
 
 a.subnaviitem.linkto-10 {
-    background: #8eb3d5;
+    background: var(--stammdaten);
 }
 
 a.subnaviitem.linkto-18 {
-    background: #b7c449;
+    background: var(--angebotsverantwortliche);
 }
 
 a.subnaviitem:hover {
@@ -557,7 +564,7 @@ a.subnaviitem.current {
 }
 
 .seitentitel.linkto-18 {
-    color: #b7c449;
+    color: var(--angebotsverantwortliche);
 }
 
 .seitentitel.linkto-17 {
@@ -565,22 +572,21 @@ a.subnaviitem.current {
 }
 
 .seitentitel.linkto-14 {
-    color: #c3161c;
+    color: var(--ansuchen);
 }
 
 .seitentitel.linkto-13 {
-    color: #ed9e21;
-    /* border-bottom: solid 3px #ed9e21; */
+    color: var(--beratung);
 }
 
 .seitentitel.linkto-12 {
-    color: #edc509;
+    color: var(--training);
 }
 
 .seitentitel.linkto-11 {
-    color: #5ac567;
+    color: var(--standorte);
 }
 
 .seitentitel.linkto-10 {
-    color: #8eb3d5;
+    color: var(--stammdaten);
 }

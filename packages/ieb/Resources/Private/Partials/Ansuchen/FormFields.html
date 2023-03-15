@@ -16,24 +16,26 @@
         </f:if>
     </div>
     <div class="col-9">
-        <label for="name" class="req">Bezeichnung</label>
+        <label for="name" class="req">Name des Bildungsangebots</label>
         <f:form.textfield property="name" id="name" class="breite100 req" />
 
     </div>
 </div>
 
+<!-- ############### STAMMDATEN ########### -->
+
 <div class="kriterium">
-    <h2>A.1 Stammdaten</h2>
+    <h2>A.1 Angaben zur Organisation</h2>
     <table class="ansuchenliste stammdaten">
         <tr>
             <td class="chiffre">
                 A.1.1
             </td>
             <td class="labeltext">
-                Bezeichnung/Markenname bzw. Organisationseinheit:
+                Rechtsgültiger Vereins-/Firmenname<br>Markenname bzw. Organisationseinheit:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.name}',then:'fehlt')}">
-                {relations.stammdaten.name}Daten fehlen
+                {relations.stammdaten.name}<br>{relations.stammdaten.markenname}
             </td>
         </tr>
         <tr class="linie">
@@ -124,7 +126,7 @@
                 A.2.2
             </td>
             <td class="labeltext">
-                Qualität des Anbieters (öCert):
+                Qualität des Anbieters/Ö-Cert:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.XXXX}',then:'fehlt')}">
                 <!-- IF für alle drei!!! -->
@@ -148,27 +150,29 @@
         </tr>
     </table>
 
-    <div class="formzeile"><a href="/uebersicht-tr/stammdaten/" class="formlink stammdaten">Stammdaten bearbeiten</a></div>
+    <div class="formzeile"><a href="/uebersicht-tr/stammdaten/" class="formlink stammdaten">Basisdaten bearbeiten</a></div>
 </div>
+
+<!-- ############### B1 ########### -->
 
 <div class="kriterium">
     <h2>B.1 Eckdaten zum Angebot</h2>
     <div class="kriteriumteil">
-        <h3>B.1.a Bildungsbereich</h3>
+        <h3>B.1.a Programmbereich</h3>
         <div class="formfields row">
             <div class="col-10">
-                <label for="typ" class="req">Bildungsbereich:</label>
-                <f:switch expression="typ">
+                <label for="typ" class="inline req">Bildungsbereich:</label>
+                <f:switch expression="{typ}">
                     <f:case value="0">
                         <f:form.hidden name="typ" id="typ" value="{typ}" />
-                        <knopf class="inline janein ja {f:if(condition:typ==1,then:'checked')}">Basisbildung</knopf>
-                        <knopf class="inline janein nein {f:if(condition:typ==2,then:'checked')}">Pflichtschulabschluss</knopf>
+                        <knopf class="inline ansuchenjanein istbabi">Basisbildung</knopf>
+                        <knopf class="inline ansuchenjanein istpsa">Pflichtschulabschluss</knopf>
                     </f:case>
                     <f:case value="1">
-                        Basisbildung
+                        <span id="ansuchenbereich" class="{f:if(condition:typ==1,then:'babichecked')}">Basisbildung</span>
                     </f:case>
                     <f:case value="2">
-                        Pflichtschulabschluss
+                        <span id="ansuchenbereich" class="{f:if(condition:typ==2,then:'psachecked')}">Pflichtschulabschluss</span>
                     </f:case>
                 </f:switch>
             </div>
@@ -181,41 +185,43 @@
         <div class="erlaeuterung babi">
             <p class="hinweis babi">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
-        <div class="formfields row">
+        <div class="formfields row babi">
             <div class="col-10">
                 <p>
-                    <f:form.checkbox property="qualifikationPsa1" id="qualifikationPsa1" value="1" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</p>
+                    <input type="checkbox" checked="checked" disabled="disabled" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa2" id="qualifikationPsa2" value="1" /> Kompetenzen in der deutschen Sprache (Sprechen, Lesen, Schreiben)</p>
+                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Kompetenzen in der deutschen Sprache </p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa4" id="qualifikationPsa4" value="1" /> Mathematische Kompetenzen</p>
+                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Mathematische Kompetenzen</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache (Sprechen, Lesen, Schreiben): Welche?</p>
-                <f:form.textfield property="qualifikationPsaKommentar" id="qualifikationPsaKommentar" />
+                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Digitale Kompetenzen</p>
+                <p>
+                    <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</p>
+                <f:form.textfield property="kompetenzbereicheText" id="kompetenzbereicheText" />
                 </p>
             </div>
         </div>
         <div class="erlaeuterung psa">
-            <p class="hinweis psa">Hinweis: Es sind vier Kompetenzfelder und zwei Wahlmodule anzugeben.</p>
-            <div class="formfields row">
+            <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
+            <div class="formfields row psa">
                 <div class="col-10">
                     <p>
-                        <f:form.checkbox property="qualifikationPsa1" id="qualifikationPsa1" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa2" id="qualifikationPsa2" value="1" /> Englisch – Globalität und Transkulturalität</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Englisch – Globalität und Transkulturalität</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Mathematik</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Mathematik</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa4" id="qualifikationPsa4" value="1" /> Berufsorientierung</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Berufsorientierung</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa5" id="qualifikationPsa5" value="1" /> Kreativität und Gestaltung</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Kreativität und Gestaltung</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa6" id="qualifikationPsa6" value="1" /> Gesundheit und Soziales</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Gesundheit und Soziales</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa7" id="qualifikationPsa7" value="1" /> Natur und Technik</p>
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Natur und Technik</p>
                     <p>
-                        <f:form.checkbox property="qualifikationPsa8" id="qualifikationPsa8" value="1" /> Weitere Sprachen: Welche?
-                        <f:form.textfield property="qualifikationPsaKommentar" id="qualifikationPsaKommentar" />
+                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Weitere Sprachen: Welche?
+                        <f:form.textfield property="kompetenzbereicheText" id="kompetenzbereicheText" />
                     </p>
                 </div>
             </div>
@@ -223,21 +229,10 @@
     </div>
 
     <div class="kriteriumteil">
-        <h3>B.1.c Tabellarische Überischt und Kosten(satz)</h3>
-        <div class="formfields row">
-            <div class="col-6" id="b-1-c-1">
-                <label class="req">Tabellarische Übersicht (pdf)</label>
-                <ieb:form.upload property="uebersichtDatei" id="uebersichtDatei" class="req">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6" id="b-1-c-2">
-                <label for="uebersichtText">Anmerkung zum Uplaod</label>
-                <f:form.textarea property="uebersichtText" id="uebersichtText"></f:form.textarea>
-            </div>
-        </div>
+        <h3>B.1.c Tabellarische Übersicht und Kosten(satz)</h3>
+        <div class="info"></div>
+        <div class="infobox" id="ab-2-c-hilfe">Details ...</div>
+        <f:render partial="Form/Upload" arguments="{property:'uebersichtDatei', id:'uebersichtDatei', req:'req', label='Tabellarische Übersicht', anmerkung:'uebersichtText'}" />
     </div>
 
     <div class="kriteriumteil">
@@ -251,8 +246,8 @@
             <div class="col-6">
                 <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert bzw. eines von Ö-Cert anerkannten QMS
-                    implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;<input type="checkbox"></p>
+                <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS
+                    vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;<input type="checkbox"></p>
             </div>
         </div>
         <div class="formfields row">
@@ -267,122 +262,84 @@
         </div>
     </div>
 
-    <div class="kriteriumteil">
-        <h3>B.1.e Abnahme von Prüfungen (### wird nur bei PSA angezeigt)</h3>
-        <p>Ist Ihre Einrichtung berechtigt, selbst Prüfungen durchzuführen und liegt eine Prüferberechtigung vor?
-            <knopf class="inline janein ja">ja</knopf>
-            <knopf class="inline janein nein">nein</knopf>
+    <div class="kriteriumteil psa">
+        <h3>B.1.e Abnahme von Prüfungen</h3>
+        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
+            <knopf class="inline pruefjanein ja">ja</knopf>
+            <knopf class="inline pruefjanein nein">nein</knopf>
         </p>
-        <div class="formfields row">
-            <div class="col-6" id="">
-                <label class="req">Prüfbescheid des Ministeriums (pdf)</label>
-                <ieb:form.upload property="uebersichtDatei" id="uebersichtDatei" class="req">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6" id="">
-                <label for="uebersichtText">Anmerkung zum Uplaod</label>
-                <f:form.textarea property="uebersichtText" id="uebersichtText"></f:form.textarea>
-            </div>
+
+        <div class="japruef">
+            <f:render partial="Form/Upload" arguments="{property:'pruefbescheidDatei', id:'pruefbescheidDatei', req:'req', label='Prüfbescheid (pdf)', anmerkung:'pruefbescheid'}" />
         </div>
+
         <div class="formfields row">
-            <div class="col-6">
-                <p>Geben Sie an, welche Kompetenzfelder durch den/die Prüfbescheid/e abgedeckt sind (Prüfberechtigung):</p>
-                <p>
-                    <f:form.checkbox property="" id="" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
-                <p>
-                    <f:form.checkbox property="" id="" value="1" /> Englisch – Globalität und Transkulturalität</p>
-                <p>
-                    <f:form.checkbox property="" id="" value="1" /> Mathematik</p>
-                <p>
-                    <f:form.checkbox property="" id="" value="1" /> Berufsorientierung</p>
-                <p>
-                    <f:form.checkbox property="" id="" value="1" /> mindestens zwei der nachstehenden Wahlmodule:<br />
-                    <ul>
-                        <li>
-                            Kreativität und Gestaltung
-                        </li>
-                        <li>
-                            Gesundheit und Soziales
-                        </li>
-                        <li>
-                            weitere Sprache
-                        </li>
-                        <li>
-                            Natur und Technik
-                        </li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-        <div class="formfields row">
-            <h4>Kooperierende Einrichtung</h4>
-            <div class="erlaeuterung">
-                <p>(wenn Prüfbescheid) Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert.</p>
-                <p>(ohne Pb) Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
-                <p class="hinweis">
-                    max. 1/2 Seite
-                </p>
-            </div>
-            <div class="col-6" id="">
-                <label class="">Kontaktdaten der Schule(n) (pdf)</label>
-                <label class="">Uploads (pdf)</label>
-                <ieb:form.upload property="uebersichtDatei" id="uebersichtDatei" class="">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6" id="">
-                <label for="uebersichtText">Anmerkung zum Uplaod</label>
-                <f:form.textarea property="uebersichtText" id="uebersichtText"></f:form.textarea>
+            <div class="col">
+                <h4>Kooperierende Einrichtung</h4>
+                <div class="erlaeuterung">&nbsp;<br>
+                    <p class="japruef">Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert.</p>
+                    <p class="neinpruef">Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
+                    <p>&nbsp;</p>
+                </div>
+
+                <f:render partial="Form/Upload" arguments="{property:'kooperationDatei', id:'kooperationdDatei', req:'req', label='Kooperationsbestätigung (pdf)', anmerkung:'kooperation'}" />
             </div>
         </div>
     </div>
 
-    <div class="kriteriumteil">
-        <h3>B.1.f Ansprache und Zielgruppe</h3>
-        <p>Beschreiben Sie, welche Maßnahmen gesetzt werden, um die angestrebte/n Zielgruppe/n zu erreichen. Stellen Sie dar, wie Sie Ihre Angebote bewerben, welche besonderen Bedarfe die Zielgruppe hat und wie wird darauf eingegangen wird (organisatorisch,
-            zeitlich, örtlich). Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br /> Laden Sie exemplarisch einen Folder, Kurs-Einladungen oder Plakate, … hoch.
-        </p>
-        <p class="hinweis">max. 2 Seiten (ohne Folder)</p>
-        <div class="formfields row">
-            <div class="col-6" id="">
-                <label class="req">Uplaods (pdf)</label>
-                <ieb:form.upload property="zielgruppenAnspracheDatei" id="zielgruppenAnspracheDatei" class="req">
-                    <f:if condition="{resource}">
-                        <f:image image="{resource}" alt="" width="50" />
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6" id="">
-                <label for="zielgruppenAnsprache">Anmerkung zum Uplaod</label>
-                <f:form.textarea property="zielgruppenAnsprache" id="zielgruppenAnsprache"></f:form.textarea>
-            </div>
-        </div>
-    </div>
 
-    <div class="kriteriumteil">
-        <h3>B.1.g Features</h3>
-        <div class="formfields row">
-            <div class="col-6" id="b-1-g-1">
-                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Unsere Einrichtung biete Kurse als Fernlehre (Video Seminare) an.
-            </div>
-            <div class="col-6" id="b-1-g-2">
-                <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Unsere Einrichtung stellt nach Absprache Kinderbetreuung zur Verfügung.
-            </div>
-        </div>
-    </div>
 </div>
 
-
+<!-- ############### B.2  ########### -->
 
 <div class="kriterium">
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
+
     <div class="kriteriumteil">
-        <h3>B.2.a Didaktisch-methodisches Vorgehen</h3>
+        <h3>B.2.a Ansprache und Erreichung der Zielgruppe</h3>
+        <div class="info"></div>
+        <div class="infobox" id="b-2-a-hilfe">Zielgruppenadäquate Ansprache (Mehrsprachigkeit, Erreichbarkeit, etc.).</div>
+        <p>Welche besonderen Bedarfe hat ihre (angestrebte) Zielgruppe und wie wird darauf eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen. Geben Sie auch an, wie Sie in der
+            Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Stellen Sie dar, wie Sie Ihre Angebote bewerben, und laden Sie exemplarisch einen Folder, Kurs-Einladung, Plakat o.ä. hoch.
+        </p>
+        <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
+
+        <f:render partial="Form/Upload" arguments="{property:'zielgruppenAnspracheDatei', id:'zielgruppenAnspracheDatei', req:'req', label='Upload Zielgruppe (pdf)', anmerkung:'zielgruppenAnsprache'}" />
+    </div>
+
+    <div class="kriteriumteil">
+        <h3>B.2.b Fernlehre</h3>
+        <div class="info"></div>
+        <div class="infobox" id="b-2-c-hilfe">
+            <p>Fernunterricht:</p>
+            <ul>
+                <li>
+                    Konzeption und Sicherstellung der technischen Voraussetzungen
+                </li>
+                <li>
+                    Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats
+                </li>
+                <li>
+                    Kommunikations- und Begleitprozesse während Online-Lernphasen
+                </li>
+                <li>
+                    Prozentsatz des Online-Angebots (maximal 30%)
+                </li>
+            </ul>
+        </div>
+        <div class="formfields row">
+            <div class="col">
+                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Das Bildungsangebot wird zum Teil als Fernunterricht durchgeführt.
+            </div>
+        </div>
+    </div>
+
+    <div class="kriteriumteil">
+        <h3>B.2.c Didaktisch-methodisches Vorgehen</h3>
+        <div class="info"></div>
+        <div class="infobox" id="b-2-c-hilfe">
+            <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+        </div>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten möchten bezüglich</p>
         <ul>
             <li>
@@ -395,7 +352,7 @@
                 Medien, Materialien, Unterrichtssettings
             </li>
             <li>
-                gegebenenfalls Distance Learning
+                gegebenenfalls Fernunterricht
             </li>
         </ul>
         <p>und illustrieren Sie dies ergänzend anhand eines konkreten Unterrichtsbeispiels.</p>
@@ -403,7 +360,7 @@
 
         <div class="formfields row">
             <div class="col-6">
-                <label class="req">Upload Lernziele (PDF)</label>
+                <label class="req">Upload Aufbau und Inhalte (PDF)</label>
                 <ieb:form.upload property="lernziele" id="lernziele" class="req">
                     <f:if condition="{resource}">
                         <div id="lernzieleListe">
@@ -416,9 +373,13 @@
     </div>
 
     <div class="kriteriumteil">
+        <div class="info"></div>
+        <div class="infobox" id="b-2-c-x-hilfe">
+            <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
+        </div>
         <div class="erlaeuterung">
-            <p>Lernstanderhebung<br> Basisbildung: Beschreiben Sie, wie Sie den Kompetenzstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. PSA: Stellen Sie
-                dar, wie Sie die Teilnehmer/innen auf die Prüfung vorbereiten.</p>
+            <p class="babi"><b>Lernstanderhebung:</b> Beschreiben Sie, wie Sie den Kompetenzstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
+            <p class="psa"><b>Lernstanderhebung:</b> Stellen Sie dar, wie Sie die Teilnehmer/innen auf die Prüfung vorbereiten.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
         </div>
         <div class="formfields row">
@@ -440,6 +401,7 @@
             <p>Stellen Sie dar, wie Gender- und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
         </div>
+
         <div class="formfields row">
             <div class="col-6">
                 <label class="req">Upload Diversity (PDF)</label>
@@ -452,42 +414,42 @@
                 </ieb:form.upload>
             </div>
             <div class="col-6">
-                <label for="didaktikKommentar">Anmerkung zu allen drei Uplaods</label>
+                <label for="didaktikKommentar">Anmerkung zu allen drei Uploads</label>
                 <f:form.textarea property="didaktikKommentar" id="didaktikKommentar"></f:form.textarea>
             </div>
         </div>
     </div>
 
     <div class="kriteriumteil">
-        <h3>B.2.b Beratung, Coaching und Begleitung</h3>
+        <h3>B.2.d Beratung, Coaching und Begleitung</h3>
+        <div class="info"></div>
+        <div class="infobox" id="b-2-d-hilfe">
+            <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
+        </div>
         <div class="erlaeuterung">
-            <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch dar (siehe PPD 4.2.2. oder 5.5.5. a-d) mit Angaben zum Prozess der Inanspruchnahme (nach Vereinbarung, zu fixen „Sprechzeiten“ etc.). Im Falle externer Bildungs- und/oder
-                Sozialberatung ist ein Kooperationsnachweis hochzuladen. Das Team der Berater/innen ist unter C darzustellen.</p>
+            <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle externer
+                Sozialpädagogischer und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
         </div>
-        <div class="formfields row">
-            <div class="col-6">
-                <label class="req">Upload (PDF)</label>
-                <ieb:form.upload property="beratungDatei" id="beratungDatei" class="req">
-                    <f:if condition="{resource}">
-                        <div id="diversityListe">
-                            <f:image image="{resource}" alt="" width="50" />
-                        </div>
-                    </f:if>
-                </ieb:form.upload>
-            </div>
-            <div class="col-6">
-                <label for="beratungText">Anmerkung zum Uplaod</label>
-                <f:form.textarea property="beratungText" id="beratungText"></f:form.textarea>
-            </div>
+
+        <f:render partial="Form/Upload" arguments="{property:'beratungDatei', id:'beratungDatei', req:'req', label='Upload Beratungsangebot (pdf)', anmerkung:'beratungText'}" />
+    </div>
+
+    <div class="kriteriumteil">
+        <h4>Kinderbetreuung</h4>
+        <div class="col">
+            <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Die Einrichtung bietet auf Nachfrage Kinderbetreuung an.
         </div>
+        <p>&nbsp;</p>
     </div>
 </div>
+
+<!-- ############### Angebotssteuerung ########### -->
 
 <div class="kriterium">
     <h2>C.1 Angebotssteuerung</h2>
     <div class="erlaeuterung">
-        <p>Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
+        <p>Fügen Sie dem Ansuchen die angebotssteuernde(n) Person(en) hinzu und wählen Sie eine oder zwei Kontaktperson(en) aus.</p>
         <p class="hinweis">
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
         </p>
@@ -506,7 +468,7 @@
         </tr>
         <tr>
             <td class="spalte-1">
-                <input type="checkbox" />
+                <input class="angebotssteuerungsperson" type="checkbox" />
             </td>
             <td class="spalte-2">
                 <input type="checkbox" />
@@ -517,7 +479,7 @@
         </tr>
         <tr>
             <td class="spalte-1">
-                <input type="checkbox" />
+                <input class="angebotssteuerungsperson" type="checkbox" />
             </td>
             <td class="spalte-2">
                 <input type="checkbox" />
@@ -526,34 +488,68 @@
                 &nbsp;Alfred Adler (a.a@grosserverein.at)
             </td>
         </tr>
+        <tr>
+            <td class="spalte-1">
+                <input class="angebotssteuerungsperson" type="checkbox" />
+            </td>
+            <td class="spalte-2">
+                <input type="checkbox" />
+            </td>
+            <td>
+                &nbsp;XYZ (a.a@grosserverein.at)
+            </td>
+        </tr>
     </table>
-    <div class="formzeile"><a href="/uebersicht-tr/angebotssteuernde/" class="formlink angebotssteuernde">Angebotssteuernde bearbeiten</a></div>
+    <div class="formzeile"><a href="/uebersicht-tr/angebotssteuerung/" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</a></div>
 </div>
 
+<!-- ############### BERATUNG ########### -->
+
 <div class="kriterium">
-    <h2>C.2 Trainer:innen</h2>
+    <h2>C.2 Training</h2>
+
+    <div class="formzeile"><a href="/uebersicht-tr/training/" class="formlink trainer">Trainung: Daten bearbeiten</a></div>
+</div>
+
+<!-- ############### BERATUNG ########### -->
+<div class="kriterium">
+    <h2>C.3 Beratung</h2>
+    <div class="formzeile">
+        <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
+    </div>
+
+    <div id="beraterwahl">
+        <div class="row">
+            <div class="col-10">
+                <f:for each="{berater}" as="berater">
+                    <p><input type="checkbox" /> {berater.vollerName}</p>
+                </f:for>
+            </div>
+            <div class="col-2">
+                Schließen<br> Jetzt hinzufügen
+            </div>
+        </div>
+    </div>
+
+
     <f:for each="{berater}" as="berater">
         <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
     </f:for>
-    <div class="formzeile"><a href="/uebersicht-tr/trainer/" class="formlink trainer">Trainer:innen bearbeiten</a></div>
+    <div class="formzeile"><a href="/uebersicht-tr/beratung/" class="formlink berater">Beratung: Daten bearbeiten</a></div>
 </div>
 
-<div class="kriterium">
-    <h2>C.3 Berater:innen</h2>
-    <f:for each="{berater}" as="berater">
-        <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
-    </f:for>
-    <div class="formzeile"><a href="/uebersicht-tr/berater/" class="formlink berater">Berater:innen bearbeiten</a></div>
-</div>
+<!-- ############### ERKLÄRUNGEN ########### -->
+
 <div class="kriterium">
     <h2>D Erklärungen</h2>
-    <p><input type="checkbox" /> Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C.1. und C.2. angegebenen MitarbeiterInnen<br /> a) über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen<br /> b) und
-        zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br /> Die Einverständniserklärungen sind von der Institution für allfällige Kontrollen aufzubewahren.
+    <p><input type="checkbox" /> Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen<br /> a) über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen<br /> b) und zur Verwendung
+        personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br /> Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
     </p>
-    <p><input type="checkbox" /> Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen TrainerInnen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
-        für allfällige Kontrollen aufzubewahren. Ich bestätige, dass bei den unter C.1. angeführten Personen sämtliche PrüferInnen und Lehrende enthalten sind, die durch den unter B.6. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen
-        PrüferInnen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.
+    <p><input type="checkbox" /> Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
+        für allfällige Kontrollen aufzubewahren.
     </p>
+    <p class="psa"><input type="checkbox" /> Ich bestätige, dass bei den unter C.1. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.6. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
+        und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
     <p>
         <input type="checkbox" /> Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
     </p>
@@ -562,6 +558,10 @@
     </p>
 </div>
 
+<!-- ############### JS ########### -->
 
+<script>
+    ansuchenfelder();
+</script>
 
 </html>

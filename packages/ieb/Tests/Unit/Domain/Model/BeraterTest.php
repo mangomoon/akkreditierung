@@ -187,6 +187,24 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

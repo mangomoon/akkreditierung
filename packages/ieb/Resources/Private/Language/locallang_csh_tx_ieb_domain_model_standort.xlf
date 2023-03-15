@@ -24,6 +24,9 @@
 			<trans-unit id="koop_schule_datei.description" resname="koop_schule_datei.description">
 				<source>koopSchuleDatei</source>
 			</trans-unit>
+			<trans-unit id="ok.description" resname="ok.description">
+				<source>ok</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

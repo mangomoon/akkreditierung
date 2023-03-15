@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    262
+                    261
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    478
+                    477
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    29
+                    28
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    28
+                    27
                 ]
             },
             "name": "New Model Object",
@@ -1210,7 +1210,7 @@
             "config": {
                 "position": [
                     646,
-                    276
+                    275
                 ]
             },
             "name": "New Model Object",
@@ -1791,6 +1791,66 @@
                             "propertyName": "status",
                             "propertyType": "Select",
                             "uid": "234745351184"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "1194005182206"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "pruefbescheidDatei",
+                            "propertyType": "File",
+                            "uid": "961156939424"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "pruefbescheid",
+                            "propertyType": "RichText",
+                            "uid": "1202879629992"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kooperationDatei",
+                            "propertyType": "File",
+                            "uid": "1017920508233"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kooperation",
+                            "propertyType": "RichText",
+                            "uid": "469433277509"
                         }
                     ]
                 },
@@ -1914,7 +1974,7 @@
             "config": {
                 "position": [
                     28,
-                    53
+                    52
                 ]
             },
             "name": "New Model Object",
@@ -2027,6 +2087,18 @@
                             "propertyName": "koopSchuleDatei",
                             "propertyType": "File",
                             "uid": "797543500687"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "1027420164646"
                         }
                     ]
                 },
@@ -2039,7 +2111,7 @@
             "config": {
                 "position": [
                     35,
-                    480
+                    479
                 ]
             },
             "name": "New Model Object",
@@ -2152,6 +2224,18 @@
                             "propertyName": "qualifikationsnachweiseKommentar",
                             "propertyType": "String",
                             "uid": "1572940667154"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "1299869665414"
                         }
                     ]
                 },
@@ -2176,7 +2260,7 @@
             "config": {
                 "position": [
                     30,
-                    270
+                    269
                 ]
             },
             "name": "New Model Object",
@@ -2481,6 +2565,18 @@
                             "propertyName": "qualifikationPsaDatei",
                             "propertyType": "File",
                             "uid": "398854868146"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "1158239557301"
                         }
                     ]
                 },
@@ -2493,7 +2589,7 @@
             "config": {
                 "position": [
                     646,
-                    33
+                    32
                 ]
             },
             "name": "New Model Object",
@@ -2834,6 +2930,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "651968016407"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "1612046494073"
                         }
                     ]
                 },
@@ -2858,7 +2966,7 @@
             "config": {
                 "position": [
                     920,
-                    472
+                    471
                 ]
             },
             "name": "New Model Object",
@@ -2947,6 +3055,18 @@
                             "propertyName": "verantwortlich",
                             "propertyType": "Boolean",
                             "uid": "428298969048"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ok",
+                            "propertyType": "Boolean",
+                            "uid": "160695556890"
                         }
                     ]
                 },
@@ -2959,7 +3079,7 @@
             "config": {
                 "position": [
                     918,
-                    272
+                    271
                 ]
             },
             "name": "New Model Object",
@@ -3036,7 +3156,7 @@
             "config": {
                 "position": [
                     1186,
-                    29
+                    28
                 ]
             },
             "name": "New Model Object",
@@ -3426,7 +3546,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-02-24 05:08",
+        "last_modified": "2023-03-15 08:54",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

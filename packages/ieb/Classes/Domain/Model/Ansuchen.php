@@ -349,6 +349,43 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $status = 0;
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
+     * pruefbescheidDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $pruefbescheidDatei = null;
+
+    /**
+     * pruefbescheid
+     *
+     * @var string
+     */
+    protected $pruefbescheid = '';
+
+    /**
+     * kooperationDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $kooperationDatei = null;
+
+    /**
+     * kooperation
+     *
+     * @var string
+     */
+    protected $kooperation = '';
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -1806,5 +1843,120 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBerater(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $berater)
     {
         $this->berater = $berater;
+    }
+
+    /**
+     * Returns the ok
+     *
+     * @return bool
+     */
+    public function getOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Sets the ok
+     *
+     * @param bool $ok
+     * @return void
+     */
+    public function setOk(bool $ok)
+    {
+        $this->ok = $ok;
+    }
+
+    /**
+     * Returns the boolean state of ok
+     *
+     * @return bool
+     */
+    public function isOk()
+    {
+        return $this->ok;
+    }
+
+    /**
+     * Returns the pruefbescheidDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getPruefbescheidDatei()
+    {
+        return $this->pruefbescheidDatei;
+    }
+
+    /**
+     * Sets the pruefbescheidDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei
+     * @return void
+     */
+    public function setPruefbescheidDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei)
+    {
+        $this->pruefbescheidDatei = $pruefbescheidDatei;
+    }
+
+    /**
+     * Returns the pruefbescheid
+     *
+     * @return string
+     */
+    public function getPruefbescheid()
+    {
+        return $this->pruefbescheid;
+    }
+
+    /**
+     * Sets the pruefbescheid
+     *
+     * @param string $pruefbescheid
+     * @return void
+     */
+    public function setPruefbescheid(string $pruefbescheid)
+    {
+        $this->pruefbescheid = $pruefbescheid;
+    }
+
+    /**
+     * Returns the kooperationDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getKooperationDatei()
+    {
+        return $this->kooperationDatei;
+    }
+
+    /**
+     * Sets the kooperationDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $kooperationDatei
+     * @return void
+     */
+    public function setKooperationDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $kooperationDatei)
+    {
+        $this->kooperationDatei = $kooperationDatei;
+    }
+
+    /**
+     * Returns the kooperation
+     *
+     * @return string
+     */
+    public function getKooperation()
+    {
+        return $this->kooperation;
+    }
+
+    /**
+     * Sets the kooperation
+     *
+     * @param string $kooperation
+     * @return void
+     */
+    public function setKooperation(string $kooperation)
+    {
+        $this->kooperation = $kooperation;
     }
 }

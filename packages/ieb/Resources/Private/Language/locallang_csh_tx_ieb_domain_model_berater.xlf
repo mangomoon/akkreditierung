@@ -24,6 +24,9 @@
 			<trans-unit id="qualifikationsnachweise_kommentar.description" resname="qualifikationsnachweise_kommentar.description">
 				<source>qualifikationsnachweiseKommentar</source>
 			</trans-unit>
+			<trans-unit id="ok.description" resname="ok.description">
+				<source>ok</source>
+			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>
