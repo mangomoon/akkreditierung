@@ -6,12 +6,24 @@ rot: c3161c
 */
 
 :root {
+    /* HAUPTFARBEN */
     --f0: #ede9de;
     --f1: #c0c7b7;
     --f2: #94a89c;
     --f3: #6b8884;
     --f4: #48686f;
     --f5: #2f4858;
+    /* extrahell */
+    --f0a: #e5e6d8;
+    --f0b: #DADBCF;
+    /* WARNEN (gelb) */
+    --fg0: #f7edbd;
+    --fg1: #f5e7a5;
+}
+
+.tx-ieb table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 
@@ -377,8 +389,6 @@ textarea.req-leer {
     background-color: #fceaa1;
 }
 
-h3 input[type="checkbox"] {}
-
 
 /* TRAINER NEW/EDIT */
 
@@ -402,8 +412,6 @@ span.ansuchennr {
 
 
 /* DL */
-
-.ansuchenliste {}
 
 .tx-ieb table.ansuchenliste td {
     padding: 6px 8px 0 0;
@@ -570,7 +578,19 @@ table.tx_ieb th {
 }
 
 .tx_ieb tr:nth-child(even) {
-    background: #DADBCF;
+    background: var(--f0a);
+}
+
+.tx_ieb tr:nth-child(odd) {
+    background: var(--f0b);
+}
+
+.tx_ieb tr.unok:nth-child(even) {
+    background: var(--fg0);
+}
+
+.tx_ieb tr.unok:nth-child(odd) {
+    background: var(--fg1);
 }
 
 table.tx_ieb td {
@@ -619,7 +639,8 @@ table.tx_ieb td.nachname {
     font-weight: 600;
 }
 
-table.tx_ieb tr:hover {
+table.tx_ieb tr:hover,
+table.tx_ieb tr.unok:hover {
     background: #f9f7f0;
 }
 

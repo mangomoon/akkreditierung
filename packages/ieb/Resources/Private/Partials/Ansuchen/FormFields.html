@@ -158,7 +158,7 @@
 <div class="kriterium">
     <h2>B.1 Eckdaten zum Angebot</h2>
     <div class="kriteriumteil">
-        <h3>B.1.a Programmbereich</h3>
+        <h3>B.1.1 Programmbereich</h3>
         <div class="formfields row">
             <div class="col-10">
                 <label for="typ" class="inline req">Bildungsbereich:</label>
@@ -180,7 +180,7 @@
     </div>
 
     <div class="kriteriumteil">
-        <h3>B.1.b Kompetenzfelder</h3>
+        <h3>B.1.2 Kompetenzfelder</h3>
 
         <div class="erlaeuterung babi">
             <p class="hinweis babi">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
@@ -196,7 +196,7 @@
                 <p>
                     <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Digitale Kompetenzen</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</p>
+                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</p>
                 <f:form.textfield property="kompetenzbereicheText" id="kompetenzbereicheText" />
                 </p>
             </div>
@@ -229,14 +229,17 @@
     </div>
 
     <div class="kriteriumteil">
-        <h3>B.1.c Tabellarische Übersicht und Kosten(satz)</h3>
+        <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
         <div class="info"></div>
         <div class="infobox" id="ab-2-c-hilfe">Details ...</div>
         <f:render partial="Form/Upload" arguments="{property:'uebersichtDatei', id:'uebersichtDatei', req:'req', label='Tabellarische Übersicht', anmerkung:'uebersichtText'}" />
     </div>
 
+</div>
+<div class="kriterium">
+
     <div class="kriteriumteil">
-        <h3>B.1.d Kursstandorte</h3>
+        <h3>B.1.4 Kursstandorte</h3>
         <div class="formfields row">
             <div class="col-6">
                 <p>Geben Sie das Bundesland der Durchführung an. </p>
@@ -262,8 +265,10 @@
         </div>
     </div>
 
-    <div class="kriteriumteil psa">
-        <h3>B.1.e Abnahme von Prüfungen</h3>
+</div>
+<div class="kriterium psa">
+    <div class="kriteriumteil">
+        <h3>B.1.5 Abnahme von Prüfungen</h3>
         <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
             <knopf class="inline pruefjanein ja">ja</knopf>
             <knopf class="inline pruefjanein nein">nein</knopf>
@@ -286,8 +291,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <!-- ############### B.2  ########### -->
@@ -296,7 +299,7 @@
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
 
     <div class="kriteriumteil">
-        <h3>B.2.a Ansprache und Erreichung der Zielgruppe</h3>
+        <h3>B.2.1 Ansprache und Erreichung der Zielgruppe</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-a-hilfe">Zielgruppenadäquate Ansprache (Mehrsprachigkeit, Erreichbarkeit, etc.).</div>
         <p>Welche besonderen Bedarfe hat ihre (angestrebte) Zielgruppe und wie wird darauf eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen. Geben Sie auch an, wie Sie in der
@@ -306,11 +309,13 @@
 
         <f:render partial="Form/Upload" arguments="{property:'zielgruppenAnspracheDatei', id:'zielgruppenAnspracheDatei', req:'req', label='Upload Zielgruppe (pdf)', anmerkung:'zielgruppenAnsprache'}" />
     </div>
-
+</div>
+<div class="kriterium">
     <div class="kriteriumteil">
-        <h3>B.2.b Fernlehre</h3>
+        <h3>B.2.2 Didaktisch-methodisches Vorgehen</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-c-hilfe">
+            <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
             <p>Fernunterricht:</p>
             <ul>
                 <li>
@@ -326,19 +331,6 @@
                     Prozentsatz des Online-Angebots (maximal 30%)
                 </li>
             </ul>
-        </div>
-        <div class="formfields row">
-            <div class="col">
-                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Das Bildungsangebot wird zum Teil als Fernunterricht durchgeführt.
-            </div>
-        </div>
-    </div>
-
-    <div class="kriteriumteil">
-        <h3>B.2.c Didaktisch-methodisches Vorgehen</h3>
-        <div class="info"></div>
-        <div class="infobox" id="b-2-c-hilfe">
-            <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
         </div>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten möchten bezüglich</p>
         <ul>
@@ -356,7 +348,14 @@
             </li>
         </ul>
         <p>und illustrieren Sie dies ergänzend anhand eines konkreten Unterrichtsbeispiels.</p>
+
         <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
+
+        <div class="formfields row">
+            <div class="col">
+                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Das Bildungsangebot wird zum Teil als Fernunterricht durchgeführt.
+            </div>
+        </div>
 
         <div class="formfields row">
             <div class="col-6">
@@ -419,9 +418,10 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class="kriterium">
     <div class="kriteriumteil">
-        <h3>B.2.d Beratung, Coaching und Begleitung</h3>
+        <h3>B.2.3 Beratung, Coaching und Begleitung</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-d-hilfe">
             <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>

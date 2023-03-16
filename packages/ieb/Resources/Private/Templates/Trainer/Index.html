@@ -2,35 +2,36 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
-    <div class="kriterium">
-        <f:form action="index" object="{trainerSearch}" name="trainerSearch">
-            <div class="row">
-                <div class="col-5">
-                    <label for="vorname">Vorname</label>
-                    <f:form.textfield property="vorname" id="vorname" class="breite100" />
-                </div>
-                <div class="col-5">
-                    <label for="nachname">Nachname</label>
-                    <f:form.textfield property="nachname" id="nachname" class="breite100" />
-                </div>
-                <div class="col-2">
-                    <f:form.submit value="Suche" class="knopf-s2 suche" />
-                </div>
-            </div>
-            <f:if condition="{trainerSearch.used}">
+    <f:if condition="{trainers -> f:count()} > 10">
+        <div class="kriterium">
+            <f:form action="index" object="{trainerSearch}" name="trainerSearch">
                 <div class="row">
-                    <div class="col">
-                        <p><span class="label">Gesucht wurde nach:</span> <span class="suchwort">»{trainerSearch.vorname} {trainerSearch.nachname}«</span></p>
-                        <p>
-                            <f:link.page class="knopf-s2 suchezurueck">Suche zurücksetzen</f:link.page>
-                        </p>
-                        <p>&nbsp;</p>
+                    <div class="col-5">
+                        <label for="vorname">Vorname</label>
+                        <f:form.textfield property="vorname" id="vorname" class="breite100" />
+                    </div>
+                    <div class="col-5">
+                        <label for="nachname">Nachname</label>
+                        <f:form.textfield property="nachname" id="nachname" class="breite100" />
+                    </div>
+                    <div class="col-2">
+                        <f:form.submit value="Suche" class="knopf-s2 suche" />
                     </div>
                 </div>
-            </f:if>
-        </f:form>
-    </div>
+                <f:if condition="{trainerSearch.used}">
+                    <div class="row">
+                        <div class="col">
+                            <p><span class="label">Gesucht wurde nach:</span> <span class="suchwort">»{trainerSearch.vorname} {trainerSearch.nachname}«</span></p>
+                            <p>
+                                <f:link.page class="knopf-s2 suchezurueck">Suche zurücksetzen</f:link.page>
+                            </p>
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </f:if>
+            </f:form>
+        </div>
+    </f:if>
 
 
 
@@ -56,7 +57,7 @@
                     </th>
             </tr>
             <f:for each="{trainers}" as="trainer">
-                <tr>
+                <tr class="{f:if(condition:trainer.ok,then:'istok',else:'unok')}">
                     <td class="nachname">
                         {trainer.nachname}
                     </td>
