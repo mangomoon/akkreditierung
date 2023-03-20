@@ -65,6 +65,23 @@ body {
     font-weight: 600;
 }
 
+.klein {
+    font-size: 0.8em;
+    color: var(--f4);
+}
+
+.abstand-klein {
+    height: 8px;
+}
+
+.abstand-mittel {
+    height: 16px
+}
+
+.abstand-groß {
+    height: 20px;
+}
+
 .abstandoben {
     margin-top: 20px;
 }
@@ -373,6 +390,11 @@ label.labelknopf {
     border-radius: 3px;
     box-shadow: 2px 2px 2px var(--f1);
     width: 270px;
+    cursor: pointer;
+}
+
+label.labelknopf:hover {
+    box-shadow: none;
 }
 
 .oecert {
@@ -684,6 +706,25 @@ span.suchwort {
 
 .ischecked {
     display: block;
+}
+
+
+/* ANSUCHEN: Standorte  */
+
+table.tx_ieb.standortliste td {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.standorte {
+    margin-top: 12px;
+}
+
+.standorte td {
+    vertical-align: top;
+    border-top: solid 1px var(--f4);
+    border-bottom: solid 1px var(--f4);
+    padding: 4px;
 }
 
 

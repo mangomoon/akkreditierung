@@ -61,6 +61,17 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
+        'Angebotssteuerung',
+        [
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, edit, create, update, delete, unlock',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, edit, create, update, delete, unlock',
+        ]
+    );
+    
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
         'Ansuchen',
         [
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock',

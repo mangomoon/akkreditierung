@@ -9,7 +9,7 @@ foreach ([10, 20, 30, 40, 42, 50, 60, 80, 82, 84, 100, 110, 120, 130, 140, 142, 
 }
 $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['status']['config']['items'] = $items;
 
-foreach (['ansuchen', 'berater', 'trainer'] as $tableSuffix) {
+foreach (['ansuchen', 'berater', 'trainer', 'standort', 'angebotverantwortlich'] as $tableSuffix) {
     $GLOBALS['TCA']['tx_ieb_domain_model_' . $tableSuffix]['columns']['tstamp'] = [
         'label' => 'tstamp',
         'config' => [

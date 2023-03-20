@@ -489,6 +489,9 @@
 			<trans-unit id="tx_ieb_domain_model_standort.ok" resname="tx_ieb_domain_model_standort.ok">
 				<source>Ok</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_standort.locked_by" resname="tx_ieb_domain_model_standort.locked_by">
+				<source>Locked By</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater" resname="tx_ieb_domain_model_berater">
 				<source>Berater</source>
 			</trans-unit>

@@ -21,6 +21,11 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
 {
 
     /**
+     * @var \DateTime
+     */
+    public $tstamp = null;
+
+    /**
      * nachname
      *
      * @var string

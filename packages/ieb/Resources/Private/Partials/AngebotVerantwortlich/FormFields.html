@@ -1,27 +1,30 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<label for="vorname">
-	<f:translate key="tx_ieb_domain_model_angebotverantwortlich.vorname" />
-</label><br />
-<f:form.textfield property="vorname" id="vorname" /><br />
-<label for="nachname">
-	<f:translate key="tx_ieb_domain_model_angebotverantwortlich.nachname" />
-</label><br />
-<f:form.textfield property="nachname" id="nachname" /><br />
-<label for="telefon">
-	<f:translate key="tx_ieb_domain_model_angebotverantwortlich.telefon" />
-</label><br />
-<f:form.textfield property="telefon" id="telefon" /><br />
-<label for="email">
-	<f:translate key="tx_ieb_domain_model_angebotverantwortlich.email" />
-</label><br />
-<f:form.textfield property="email" id="email" /><br />
-<label for="verantwortlich">
-	<f:translate key="tx_ieb_domain_model_angebotverantwortlich.verantwortlich" />
-</label><br />
-<f:form.checkbox property="verantwortlich" id="verantwortlich" value="1" /><br />
+<div class="kriterium">
+    <div class="abstand-mittel"></div>
+    <div class="erläuterung">
+        <p>Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
+    </div>
+    <div class="formfields row">
+        <div class="col-6">
+            <label for="name" class="req">Vorname</label>
+            <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 req" />
+        </div>
+        <div class="col-6">
+            <label for="markenname" class="req">Nachname</label>
+            <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 req" />
+        </div>
+    </div>
+    <div class="formfields row">
+        <div class="col-6">
+            <label for="name" class="req">E-Mail</label>
+            <f:form.textfield property="email" id="email" required="0" class="breite100 req" />
+        </div>
+        <div class="col-6">
+            <label for="markenname" class="req">Telefon</label>
+            <f:form.textfield property="telefon" id="televon" required="0" class="breite100 req" />
+        </div>
+    </div>
+</div>
+
 
 </html>
-
-<div class="erlaeuterung">
-    <p>Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
-</div>

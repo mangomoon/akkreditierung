@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_standort.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, adresse, plz, ort, pruef_bescheid, koop_schule, koop_schule_datei, ok, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, adresse, plz, ort, pruef_bescheid, koop_schule, koop_schule_datei, ok, locked_by, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -196,6 +196,16 @@ return [
                     ]
                 ],
                 'default' => 0,
+            ]
+        ],
+        'locked_by' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.locked_by',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
             ]
         ],
     

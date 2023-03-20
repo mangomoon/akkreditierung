@@ -2099,6 +2099,18 @@
                             "propertyName": "ok",
                             "propertyType": "Boolean",
                             "uid": "1027420164646"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "530417247948"
                         }
                     ]
                 },
@@ -2972,11 +2984,11 @@
             "name": "New Model Object",
             "value": {
                 "actionGroup": {
-                    "_default0_index": false,
-                    "_default1_list": false,
-                    "_default2_show": false,
-                    "_default3_new_create": false,
-                    "_default4_edit_update": false,
+                    "_default0_index": true,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
                     "_default5_delete": false,
                     "customActions": []
                 },
@@ -2985,7 +2997,7 @@
                     "addDeletedField": true,
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": false,
+                    "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
@@ -3546,7 +3558,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-03-15 08:54",
+        "last_modified": "2023-03-17 11:26",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

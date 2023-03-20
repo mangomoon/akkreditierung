@@ -27,6 +27,9 @@
 			<trans-unit id="ok.description" resname="ok.description">
 				<source>ok</source>
 			</trans-unit>
+			<trans-unit id="locked_by.description" resname="locked_by.description">
+				<source>lockedBy</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

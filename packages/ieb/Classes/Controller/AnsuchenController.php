@@ -22,6 +22,7 @@ class AnsuchenController extends BaseController
 {
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
+    protected Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
     protected Repository\StammdatenRepository $stammdatenRepository;
     protected Repository\BeraterRepository $beraterRepository;
     protected Repository\TrainerRepository $trainerRepository;
@@ -117,6 +118,7 @@ class AnsuchenController extends BaseController
                 'standorte' => $this->standortRepository->getAll(),
                 'berater' => $this->beraterRepository->getAll(),
                 'trainer' => $this->trainerRepository->getAll(),
+                //'angebotVerantwortliche' => $this->angebotVerantwortlichRepository->getAll(),
                 'stammdaten' => $this->stammdatenRepository->getLatest(),
             ],
         ]);
@@ -147,5 +149,8 @@ class AnsuchenController extends BaseController
     {
         $this->standortRepository = $repository;
     }
-
+    public function injectAngebotVerantwortlichRepository(Repository\AngebotVerantwortlichRepository $repository): void
+    {
+        $this->angebotVerantwortlichRepository = $repository;
+    }
 }

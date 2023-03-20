@@ -256,10 +256,23 @@
         <div class="formfields row">
             <div class="col-6" id="b-1-d-1">
                 <label class="req">Bundesland</label>
-
+                <f:render partial="Form/Select" arguments="{property:'bundesland', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
             </div>
             <div class="col-6" id="b-1-d-2">
                 <label for="uebersichtText">Standorte</label>
+                <table class="standorte">
+                    <f:for each="{standorte}" as="standort">
+                        <tr>
+                            <td class="spalte-1">
+                                <f:form.checkbox property="standorte" id="standorte" value="1" />
+                            </td>
+                            <td>{standort.name}</td>
+                            <td class="klein">
+                                {standort.adresse}<br>{standort.plz} {standort.ort}
+                            </td>
+                        </tr>
+                    </f:for>
+                </table>
                 <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte verwalten</a></div>
             </div>
         </div>
@@ -466,6 +479,20 @@
                 &nbsp;
             </th>
         </tr>
+
+        <f:for each="{angebotVerantwortliche}" as="angebotverantwortlich">
+            <tr>
+                <td class="spalte-1">
+                    <input class="angebotssteuerungsperson" type="checkbox" />
+                </td>
+                <td class="spalte-2">
+                    <input type="checkbox" />
+                </td>
+                <td>
+                    {angebotverantwortlich.nachname}
+                </td>
+            </tr>
+        </f:for>
         <tr>
             <td class="spalte-1">
                 <input class="angebotssteuerungsperson" type="checkbox" />

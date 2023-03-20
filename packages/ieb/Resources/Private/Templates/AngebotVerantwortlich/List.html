@@ -1,46 +1,70 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-This template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        AngebotVerantwortlich:
-          List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Listing for AngebotVerantwortlich</h1>
 
-    <f:flashMessages />
 
-    <table class="tx_ieb">
-        <tr>
-            <th><f:translate key="tx_ieb_domain_model_angebotverantwortlich.vorname" /></th>
-            <th><f:translate key="tx_ieb_domain_model_angebotverantwortlich.nachname" /></th>
-            <th><f:translate key="tx_ieb_domain_model_angebotverantwortlich.telefon" /></th>
-            <th><f:translate key="tx_ieb_domain_model_angebotverantwortlich.email" /></th>
-            <th><f:translate key="tx_ieb_domain_model_angebotverantwortlich.verantwortlich" /></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
-            <tr>
-                <td><f:link.action action="show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">{angebotVerantwortlich.vorname}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">{angebotVerantwortlich.nachname}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">{angebotVerantwortlich.telefon}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">{angebotVerantwortlich.email}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">{angebotVerantwortlich.verantwortlich}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{angebotVerantwortlich : angebotVerantwortlich}">Delete</f:link.action></td>
+
+
+    <f:if condition="{angebotVerantwortliches}">
+        <table class="tx_ieb angebotVerantwortlich">
+            <tr style="background: none;">
+                <th class="nachname">
+                    &nbsp;
+                    </td>
+                    <th class="vorname">
+                        &nbsp;
+                    </th>
+                    <th>letzte Änderung</th>
+                    <th>vollständig</th>
+                    <th class="td-knopf">
+
+                    </th>
+                    <th class="td-knopf">
+
+                    </th>
             </tr>
-        </f:for>
-    </table>
+            <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+                <tr>
+                    <td class="nachname">
+                        {angebotVerantwortlich.nachname}
+                    </td>
+                    <td class="vorname">
+                        {angebotVerantwortlich.vorname}
+                    </td>
+                    <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                    <td class="">
+                        <f:if condition="{angebotVerantwortlich.ok}">
+                            <f:then>
+                                ja
+                            </f:then>
+                            <f:else>
+                                nein
+                            </f:else>
+                        </f:if>
 
-    <f:link.action action="new">New AngebotVerantwortlich</f:link.action>
+                    </td>
+                    <td class="td-knopf">
+                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                        </f:link.action>
+                    </td>
+                    <td class="td-knopf">
+                        <f:link.action action="hide" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                        </f:link.action>
+                    </td>
+                    <td class="td-knopf">
+                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                        </f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </table>
+    </f:if>
+
+    <div class="formzeile">
+        <f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action>
+    </div>
 </f:section>
+
 </html>

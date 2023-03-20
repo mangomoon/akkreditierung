@@ -7,6 +7,7 @@ $plugins = [
     'Trainer' => 'IEB Trainer',
     'Berater' => 'IEB Berater',
     'Ansuchen' => 'IEB Ansuchen',
+    'Angebotssteuerung' => 'IEB Angebotssteuerung',
     'AnsuchenBegutachtung' => 'IEB Ansuchen Begutachtung',
     'User' => 'IEB User',
     'Standort' => 'IEB Standort',

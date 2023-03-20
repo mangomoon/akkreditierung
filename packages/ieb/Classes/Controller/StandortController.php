@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Model\Standort;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\Domain\Repository\StandortRepository;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -17,7 +23,8 @@ namespace GeorgRinger\Ieb\Controller;
 /**
  * StandortController
  */
-class StandortController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+//class StandortController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class StandortController extends BaseController
 {
 
     /**
@@ -56,6 +63,43 @@ class StandortController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function showAction(\GeorgRinger\Ieb\Domain\Model\Standort $standort): \Psr\Http\Message\ResponseInterface
     {
         $this->view->assign('standort', $standort);
+        return $this->htmlResponse();
+    }
+
+
+    public function newAction(): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
+
+    public function createAction(Standort $newStandort)
+    {
+        $this->standortRepository->add($newStandort);
+        $this->redirect('index');
+    }
+
+    public function editAction(Standort $standort): ResponseInterface
+    {
+        $this->check($standort);
+        $this->standortRepository->setLockedAndPersist($standort);
+
+        $this->view->assign('standort', $standort);
+        return $this->htmlResponse();
+    }
+
+    public function updateAction(Standort $standort): ResponseInterface
+    {
+        $this->check($standort);
+        $this->standortRepository->update($standort);
+        //$this->addFlashMessage('Wurde erfolgreich gespeichert');
+        $this->redirect('index');
+    }
+
+    public function indexAction(): ResponseInterface
+    {
+        $standorts = $this->standortRepository->getAll();
+        $this->view->assign('standorts', $standorts);
         return $this->htmlResponse();
     }
 }

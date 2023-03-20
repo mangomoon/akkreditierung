@@ -169,7 +169,8 @@ CREATE TABLE tx_ieb_domain_model_standort (
 	pruef_bescheid smallint(1) unsigned NOT NULL DEFAULT '0',
 	koop_schule text NOT NULL DEFAULT '',
 	koop_schule_datei int(11) unsigned NOT NULL DEFAULT '0',
-	ok smallint(1) unsigned NOT NULL DEFAULT '0'
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	locked_by int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_berater (

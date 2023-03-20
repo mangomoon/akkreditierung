@@ -125,6 +125,14 @@ $(document).ready(function() {
 
     });
 
+    // ######################################## Form Standort Koop
+    $('#pruefBescheid').change(function() {
+        if (this.checked) {
+            $("#koopschuledatei").hide();
+        } else {
+            $("#koopschuledatei").show();
+        }
+    });
     // ######################################## Form Ansuchen Prüfbescheid
 
     $('.pruefjanein').click(function() {
