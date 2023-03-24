@@ -154,4 +154,47 @@ class AngebotVerantwortlichTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('ok'));
     }
+
+    /**
+     * @test
+     */
+    public function getLebenslaufDateiReturnsInitialValueForFileReference(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getLebenslaufDatei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLebenslaufDateiForFileReferenceSetsLebenslaufDatei(): void
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setLebenslaufDatei($fileReferenceFixture);
+
+        self::assertEquals($fileReferenceFixture, $this->subject->_get('lebenslaufDatei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getLebenslaufReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getLebenslauf()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLebenslaufForStringSetsLebenslauf(): void
+    {
+        $this->subject->setLebenslauf('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('lebenslauf'));
+    }
 }

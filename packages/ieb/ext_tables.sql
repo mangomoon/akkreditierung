@@ -250,13 +250,16 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
 	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0',
-	ok smallint(1) unsigned NOT NULL DEFAULT '0'
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
+	lebenslauf varchar(255) NOT NULL DEFAULT ''
 );
 
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

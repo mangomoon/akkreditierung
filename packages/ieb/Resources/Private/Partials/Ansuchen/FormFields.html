@@ -25,14 +25,14 @@
 <!-- ############### STAMMDATEN ########### -->
 
 <div class="kriterium">
-    <h2>A.1 Angaben zur Organisation</h2>
+    <h3>A.1 Angaben zur Organisation</h3>
     <table class="ansuchenliste stammdaten">
         <tr>
             <td class="chiffre">
-                A.1.1
+                &nbsp;
             </td>
             <td class="labeltext">
-                Rechtsgültiger Vereins-/Firmenname<br>Markenname bzw. Organisationseinheit:
+                Rechtsgültiger Vereins- bzw. Firmenname<br>Markenname bzw. Organisationseinheit:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.name}',then:'fehlt')}">
                 {relations.stammdaten.name}<br>{relations.stammdaten.markenname}
@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td class="chiffre">
-                A.1.2
+
             </td>
             <td class="labeltext">
                 Rechts-/Organisationsform (tätig seit):<br />Nachweis:
@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td class="chiffre">
-                A.1.3
+
             </td>
             <td class="labeltext">
                 Adresse und Kontakt:
@@ -102,10 +102,10 @@
                 {relations.stammdaten.website}
             </td>
         </tr>
-        <tr class="linie">
-            <td colspan="3"></td>
-            <!-- ------------------------------ -->
-        </tr>
+    </table>
+
+    <h3>A.2 Qualität des Anbieters</h3>
+    <table class="ansuchenliste stammdaten">
         <tr>
             <td class="chiffre">
                 A.2.1
@@ -150,7 +150,7 @@
         </tr>
     </table>
 
-    <div class="formzeile"><a href="/uebersicht-tr/stammdaten/" class="formlink stammdaten">Basisdaten bearbeiten</a></div>
+    <div class="formzeile"><a href="/uebersicht-tr/stammdaten/" class="formlink stammdaten">Organsiation: Daten bearbeiten</a></div>
 </div>
 
 <!-- ############### B1 ########### -->
@@ -180,7 +180,7 @@
     </div>
 
     <div class="kriteriumteil">
-        <h3>B.1.2 Kompetenzfelder</h3>
+        <h3>B.1.2 Kompetenzbereiche</h3>
 
         <div class="erlaeuterung babi">
             <p class="hinweis babi">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
@@ -273,7 +273,7 @@
                         </tr>
                     </f:for>
                 </table>
-                <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte verwalten</a></div>
+                <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte: Daten bearbeiten</a></div>
             </div>
         </div>
     </div>
@@ -282,6 +282,8 @@
 <div class="kriterium psa">
     <div class="kriteriumteil">
         <h3>B.1.5 Abnahme von Prüfungen</h3>
+        <div class="info"></div>
+        <div class="infobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
         <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
             <knopf class="inline pruefjanein ja">ja</knopf>
             <knopf class="inline pruefjanein nein">nein</knopf>
@@ -300,7 +302,7 @@
                     <p>&nbsp;</p>
                 </div>
 
-                <f:render partial="Form/Upload" arguments="{property:'kooperationDatei', id:'kooperationdDatei', req:'req', label='Kooperationsbestätigung (pdf)', anmerkung:'kooperation'}" />
+                <f:render partial="Form/Upload" arguments="{property:'kooperationDatei', id:'kooperationdDatei', req:'req', label='Upload', anmerkung:'kooperation'}" />
             </div>
         </div>
     </div>
@@ -315,8 +317,8 @@
         <h3>B.2.1 Ansprache und Erreichung der Zielgruppe</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-a-hilfe">Zielgruppenadäquate Ansprache (Mehrsprachigkeit, Erreichbarkeit, etc.).</div>
-        <p>Welche besonderen Bedarfe hat ihre (angestrebte) Zielgruppe und wie wird darauf eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen. Geben Sie auch an, wie Sie in der
-            Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Stellen Sie dar, wie Sie Ihre Angebote bewerben, und laden Sie exemplarisch einen Folder, Kurs-Einladung, Plakat o.ä. hoch.
+        <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird darauf eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen Sie dar, wie Sie Ihre
+            Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie exemplarisch einen Folder, Kurs-Einladung, Plakat o.ä. hoch.
         </p>
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
 
@@ -329,21 +331,8 @@
         <div class="info"></div>
         <div class="infobox" id="b-2-c-hilfe">
             <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-            <p>Fernunterricht:</p>
-            <ul>
-                <li>
-                    Konzeption und Sicherstellung der technischen Voraussetzungen
-                </li>
-                <li>
-                    Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats
-                </li>
-                <li>
-                    Kommunikations- und Begleitprozesse während Online-Lernphasen
-                </li>
-                <li>
-                    Prozentsatz des Online-Angebots (maximal 30%)
-                </li>
-            </ul>
+            <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots
+                (maximal 30%)</p>
         </div>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten möchten bezüglich</p>
         <ul>
@@ -366,7 +355,7 @@
 
         <div class="formfields row">
             <div class="col">
-                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Das Bildungsangebot wird zum Teil als Fernunterricht durchgeführt.
+                <f:form.checkbox property="fernlehre" value="1" class="inline" /> Das Bildungsangebot enthält Fernunterricht (maximal 30 %).
             </div>
         </div>
 
@@ -390,8 +379,8 @@
             <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
         </div>
         <div class="erlaeuterung">
-            <p class="babi"><b>Lernstanderhebung:</b> Beschreiben Sie, wie Sie den Kompetenzstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
-            <p class="psa"><b>Lernstanderhebung:</b> Stellen Sie dar, wie Sie die Teilnehmer/innen auf die Prüfung vorbereiten.</p>
+            <p class="babi">Lernstanderhebung: Beschreiben Sie, wie Sie den Kompetenzstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
+            <p class="psa">Lernstanderhebung: Stellen Sie dar, wie Sie die Teilnehmer/innen auf die Prüfung vorbereiten.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
         </div>
         <div class="formfields row">
@@ -441,7 +430,7 @@
         </div>
         <div class="erlaeuterung">
             <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle externer
-                Sozialpädagogischer und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
+                sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
         </div>
 
@@ -451,7 +440,7 @@
     <div class="kriteriumteil">
         <h4>Kinderbetreuung</h4>
         <div class="col">
-            <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Die Einrichtung bietet auf Nachfrage Kinderbetreuung an.
+            <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
         </div>
         <p>&nbsp;</p>
     </div>
@@ -462,7 +451,8 @@
 <div class="kriterium">
     <h2>C.1 Angebotssteuerung</h2>
     <div class="erlaeuterung">
-        <p>Fügen Sie dem Ansuchen die angebotssteuernde(n) Person(en) hinzu und wählen Sie eine oder zwei Kontaktperson(en) aus.</p>
+        <p>Fügen Sie dem Ansuchen die angebotssteuernde(n) Person(en) hinzu und wählen Sie eine oder zwei Kontaktperson(en) aus.<br> Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale
+            Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
         <p class="hinweis">
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
         </p>
@@ -534,13 +524,20 @@
 
 <div class="kriterium">
     <h2>C.2 Training</h2>
-
-    <div class="formzeile"><a href="/uebersicht-tr/training/" class="formlink trainer">Trainung: Daten bearbeiten</a></div>
+    <div class="erlaeuterung">
+        <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
+        <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
+    </div>
+    <div class="formzeile"><a href="/uebersicht-tr/training/" class="formlink trainer">Training: Daten bearbeiten</a></div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
 <div class="kriterium">
     <h2>C.3 Beratung</h2>
+    <div class="erlaeuterung">
+        <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
+        <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
+    </div>
     <div class="formzeile">
         <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
     </div>
@@ -575,13 +572,13 @@
     <p><input type="checkbox" /> Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
         für allfällige Kontrollen aufzubewahren.
     </p>
-    <p class="psa"><input type="checkbox" /> Ich bestätige, dass bei den unter C.1. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.6. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
+    <p class="psa"><input type="checkbox" /> Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
         und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
     <p>
         <input type="checkbox" /> Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
     </p>
     <p>
-        <input type="checkbox" /> Wir sind mit den AGB der Initiative Erwachsenenbildung einverstanden.
+        <input type="checkbox" /> Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.
     </p>
 </div>
 

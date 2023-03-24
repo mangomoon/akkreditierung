@@ -63,10 +63,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Angebotssteuerung',
         [
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, edit, create, update, delete, unlock',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'list, show, new, edit, create, update, delete, unlock',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock',
         ]
     );
     

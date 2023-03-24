@@ -3079,6 +3079,30 @@
                             "propertyName": "ok",
                             "propertyType": "Boolean",
                             "uid": "160695556890"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lebenslaufDatei",
+                            "propertyType": "File",
+                            "uid": "1036734828162"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lebenslauf",
+                            "propertyType": "String",
+                            "uid": "254530505517"
                         }
                     ]
                 },
@@ -3558,7 +3582,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-03-17 11:26",
+        "last_modified": "2023-03-24 11:12",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

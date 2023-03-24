@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 
+use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -43,6 +49,8 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function indexAction(): \Psr\Http\Message\ResponseInterface
     {
+        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
+        $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
         return $this->htmlResponse();
     }
 
@@ -53,7 +61,7 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function listAction(): \Psr\Http\Message\ResponseInterface
     {
-        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->findAll();
+        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
         $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
         return $this->htmlResponse();
     }
@@ -87,7 +95,6 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function createAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $newAngebotVerantwortlich)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->angebotVerantwortlichRepository->add($newAngebotVerantwortlich);
         $this->redirect('list');
     }

@@ -1,19 +1,21 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 
-<p class="hinweis">
-    Hinweis: Bis Ende der 3. PP (Ende 2023) anerkannte Berater/innen bleiben anerkannt. <br>Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.
-</p>
-<div class="formfields row">
-    <div class="col-6">
-        <label for="name" class="req">Vorname</label>
-        <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 fett req" />
-    </div>
-    <div class="col-6">
-        <label for="markenname" class="req">Nachname</label>
-        <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 fett req" />
+<div class="kriterium">
+    <div class="formfields row">
+        <div class="col-6">
+            <label for="name" class="req">Vorname</label>
+            <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 fett req" />
+        </div>
+        <div class="col-6">
+            <label for="markenname" class="req">Nachname</label>
+            <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 fett req" />
+        </div>
     </div>
 </div>
+<p class="hinweis">
+    Hinweis: Bis Ende der 3. PP (Ende 2023) anerkannte Berater/innen bleiben anerkannt. <br>Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.<br>&nbsp;<br>&nbsp;
+</p>
 
 <div class="kriterium" id="c-3">
 
@@ -40,7 +42,7 @@
                 </li>
             </ul>
             <p class="hinweis">
-                Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen siehe Kapitel 3.3.3. im Programmplanungsdokument.
+                Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen sind im Programmplanungsdokument Kapitel 3.3.3. nachzulesen.
             </p>
         </div>
 
@@ -56,7 +58,7 @@
             <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', label='nachweis', anmerkung:'lebenslaufKommentar'}" />
+        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', label='Lebenslauf', anmerkung:'lebenslaufKommentar'}" />
 
     </div>
 

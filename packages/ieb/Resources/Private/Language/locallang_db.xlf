@@ -705,6 +705,12 @@
 			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.ok" resname="tx_ieb_domain_model_angebotverantwortlich.ok">
 				<source>Ok</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei" resname="tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei">
+				<source>Lebenslauf Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.lebenslauf" resname="tx_ieb_domain_model_angebotverantwortlich.lebenslauf">
+				<source>Lebenslauf</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_user" resname="tx_ieb_domain_model_user">
 				<source>User</source>
 			</trans-unit>

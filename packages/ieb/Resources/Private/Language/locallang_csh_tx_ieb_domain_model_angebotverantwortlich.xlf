@@ -21,6 +21,12 @@
 			<trans-unit id="ok.description" resname="ok.description">
 				<source>ok</source>
 			</trans-unit>
+			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
+				<source>lebenslaufDatei</source>
+			</trans-unit>
+			<trans-unit id="lebenslauf.description" resname="lebenslauf.description">
+				<source>lebenslauf</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

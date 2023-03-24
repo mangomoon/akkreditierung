@@ -68,6 +68,21 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $ok = false;
 
     /**
+     * lebenslaufDatei
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     */
+    protected $lebenslaufDatei = null;
+
+    /**
+     * lebenslauf
+     *
+     * @var string
+     */
+    protected $lebenslauf = '';
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -211,5 +226,47 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function isOk()
     {
         return $this->ok;
+    }
+
+    /**
+     * Returns the lebenslaufDatei
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getLebenslaufDatei()
+    {
+        return $this->lebenslaufDatei;
+    }
+
+    /**
+     * Sets the lebenslaufDatei
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei
+     * @return void
+     */
+    public function setLebenslaufDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei)
+    {
+        $this->lebenslaufDatei = $lebenslaufDatei;
+    }
+
+    /**
+     * Returns the lebenslauf
+     *
+     * @return string
+     */
+    public function getLebenslauf()
+    {
+        return $this->lebenslauf;
+    }
+
+    /**
+     * Sets the lebenslauf
+     *
+     * @param string $lebenslauf
+     * @return void
+     */
+    public function setLebenslauf(string $lebenslauf)
+    {
+        $this->lebenslauf = $lebenslauf;
     }
 }
