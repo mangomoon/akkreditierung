@@ -118,7 +118,7 @@ class AnsuchenController extends BaseController
                 'standorte' => $this->standortRepository->getAll(),
                 'berater' => $this->beraterRepository->getAll(),
                 'trainer' => $this->trainerRepository->getAll(),
-                //'angebotVerantwortliche' => $this->angebotVerantwortlichRepository->getAll(),
+                //'angebotVerantwortliche' => $this->AngebotVerantwortlichRepository->getAll(),
                 'stammdaten' => $this->stammdatenRepository->getLatest(),
             ],
         ]);

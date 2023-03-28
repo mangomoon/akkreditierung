@@ -17,21 +17,8 @@
                     <td class="klein">
                         {standort.adresse}<br> {standort.plz} {standort.ort}
                     </td>
-                    <td>
-                        <f:if condition="{standort.pruefBescheid} || {standort.koopSchuleDatei}">
-                            ja!
-                        </f:if>
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{standort : standort}">
-                        </f:link.action>
-                    </td>
                     <td class="td-knopf">
                         <f:link.action action="hide" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{standort : standort}">
-                        </f:link.action>
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{standort : standort}">
                         </f:link.action>
                     </td>
                 </tr>
