@@ -30,6 +30,9 @@
 			<trans-unit id="locked_by.description" resname="locked_by.description">
 				<source>lockedBy</source>
 			</trans-unit>
+			<trans-unit id="archiviert.description" resname="archiviert.description">
+				<source>archiviert</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

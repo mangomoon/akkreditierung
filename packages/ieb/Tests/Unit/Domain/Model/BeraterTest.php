@@ -205,6 +205,24 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getArchiviertReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getArchiviert());
+    }
+
+    /**
+     * @test
+     */
+    public function setArchiviertForBoolSetsArchiviert(): void
+    {
+        $this->subject->setArchiviert(true);
+
+        self::assertEquals(true, $this->subject->_get('archiviert'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

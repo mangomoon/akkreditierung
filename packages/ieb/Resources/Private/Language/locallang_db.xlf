@@ -432,6 +432,9 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.kooperation" resname="tx_ieb_domain_model_ansuchen.kooperation">
 				<source>Kooperation</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.standort_erklaerung" resname="tx_ieb_domain_model_ansuchen.standort_erklaerung">
+				<source>Standort Erklaerung</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
 			</trans-unit>
@@ -492,6 +495,9 @@
 			<trans-unit id="tx_ieb_domain_model_standort.locked_by" resname="tx_ieb_domain_model_standort.locked_by">
 				<source>Locked By</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_standort.archiviert" resname="tx_ieb_domain_model_standort.archiviert">
+				<source>Archiviert</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater" resname="tx_ieb_domain_model_berater">
 				<source>Berater</source>
 			</trans-unit>
@@ -518,6 +524,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.ok" resname="tx_ieb_domain_model_berater.ok">
 				<source>Ok</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.archiviert" resname="tx_ieb_domain_model_berater.archiviert">
+				<source>Archiviert</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_berater.standorte" resname="tx_ieb_domain_model_berater.standorte">
 				<source>Standorte</source>
@@ -596,6 +605,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.ok" resname="tx_ieb_domain_model_trainer.ok">
 				<source>Ok</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.archiviert" resname="tx_ieb_domain_model_trainer.archiviert">
+				<source>Archiviert</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>
@@ -710,6 +722,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.lebenslauf" resname="tx_ieb_domain_model_angebotverantwortlich.lebenslauf">
 				<source>Lebenslauf</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.archiviert" resname="tx_ieb_domain_model_angebotverantwortlich.archiviert">
+				<source>Archiviert</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_user" resname="tx_ieb_domain_model_user">
 				<source>User</source>

@@ -30,10 +30,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Trainer',
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ]
     );
 
@@ -41,10 +41,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Berater',
         [
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ]
     );
 
@@ -52,10 +52,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Standort',
         [
-            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show',
+            \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show,archive,revive',
         ]
     );
 
@@ -63,10 +63,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Angebotssteuerung',
         [
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock,archive,revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock',
+            \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock,archive,revive',
         ]
     );
     

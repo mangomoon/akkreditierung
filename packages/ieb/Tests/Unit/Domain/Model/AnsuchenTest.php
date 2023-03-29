@@ -1109,6 +1109,24 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getStandortErklaerungReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getStandortErklaerung());
+    }
+
+    /**
+     * @test
+     */
+    public function setStandortErklaerungForBoolSetsStandortErklaerung(): void
+    {
+        $this->subject->setStandortErklaerung(true);
+
+        self::assertEquals(true, $this->subject->_get('standortErklaerung'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

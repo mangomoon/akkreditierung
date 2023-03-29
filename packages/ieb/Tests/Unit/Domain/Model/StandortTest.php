@@ -218,4 +218,22 @@ class StandortTest extends UnitTestCase
 
         self::assertEquals(12, $this->subject->_get('lockedBy'));
     }
+
+    /**
+     * @test
+     */
+    public function getArchiviertReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getArchiviert());
+    }
+
+    /**
+     * @test
+     */
+    public function setArchiviertForBoolSetsArchiviert(): void
+    {
+        $this->subject->setArchiviert(true);
+
+        self::assertEquals(true, $this->subject->_get('archiviert'));
+    }
 }

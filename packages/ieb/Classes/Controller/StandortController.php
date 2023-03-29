@@ -102,4 +102,21 @@ class StandortController extends BaseController
         $this->view->assign('standorts', $standorts);
         return $this->htmlResponse();
     }
+
+    public function archiveAction(Standort $standort): ResponseInterface
+    {
+        $this->check($standort);
+        $standort->setArchiviert(TRUE);
+        $this->standortRepository->update($standort);
+        
+        $this->redirect('index');
+    }
+    public function reviveAction(Standort $standort): ResponseInterface
+    {
+        $this->check($standort);
+        $standort->setArchiviert(FALSE);
+        $this->standortRepository->update($standort);
+        
+        $this->redirect('index');
+    }
 }

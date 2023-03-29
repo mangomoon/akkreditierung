@@ -156,6 +156,9 @@
 			<trans-unit id="kooperation.description" resname="kooperation.description">
 				<source>kooperation</source>
 			</trans-unit>
+			<trans-unit id="standort_erklaerung.description" resname="standort_erklaerung.description">
+				<source>standortErklaerung</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>

@@ -1,8 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 
-
-
 <div class="formfields row">
     <div class="col-3">
         <label for="name">Ansuchennummer:</label><br>
@@ -250,29 +248,19 @@
                 <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
                 <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS
-                    vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;<input type="checkbox"></p>
+                    vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                    <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="req" />
+                </p>
             </div>
         </div>
         <div class="formfields row">
             <div class="col-6" id="b-1-d-1">
-                <label class="req">Bundesland</label>
-                <f:render partial="Form/Select" arguments="{property:'bundesland', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
+                <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
             </div>
             <div class="col-6" id="b-1-d-2">
-                <label for="uebersichtText">Standorte</label>
-                <table class="standorte">
-                    <f:for each="{standorte}" as="standort">
-                        <tr>
-                            <td class="spalte-1">
-                                <f:form.checkbox property="standorte" id="standorte" value="1" />
-                            </td>
-                            <td>{standort.name}</td>
-                            <td class="klein">
-                                {standort.adresse}<br>{standort.plz} {standort.ort}
-                            </td>
-                        </tr>
-                    </f:for>
-                </table>
+
+                <f:render partial="Form/Select" arguments="{property:'relations.standorte',  label:'Standorte', options:standorte, multiple:1, optionLabelField:'name'}" />
+
                 <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte: Daten bearbeiten</a></div>
             </div>
         </div>

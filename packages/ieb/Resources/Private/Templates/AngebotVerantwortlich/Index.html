@@ -4,6 +4,8 @@ keep Otherwise your changes will be overwritten the next time you save the exten
 
 <f:section name="content">
     <f:if condition="{angebotVerantwortliches}">
+
+
         <table class="tx_ieb angebotVerantwortlich">
             <tr style="background: none;">
                 <th class="nachname">
@@ -22,38 +24,79 @@ keep Otherwise your changes will be overwritten the next time you save the exten
                     </th>
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
-                <tr>
-                    <td class="nachname">
-                        {angebotVerantwortlich.nachname}
-                    </td>
-                    <td class="vorname">
-                        {angebotVerantwortlich.vorname}
-                    </td>
-                    <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                    <td class="">
-                        <f:if condition="{angebotVerantwortlich.ok}">
-                            <f:then>
-                                ja
-                            </f:then>
-                            <f:else>
-                                nein
-                            </f:else>
-                        </f:if>
+                <f:if condition="!{angebotVerantwortlich.archiviert}">
+                    <tr>
+                        <td class="nachname">
+                            {angebotVerantwortlich.nachname}
+                        </td>
+                        <td class="vorname">
+                            {angebotVerantwortlich.vorname}
+                        </td>
+                        <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                        <td class="">
+                            <f:if condition="{angebotVerantwortlich.ok}">
+                                <f:then>
+                                    ja
+                                </f:then>
+                                <f:else>
+                                    nein
+                                </f:else>
+                            </f:if>
 
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                        </f:link.action>
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="hide" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                        </f:link.action>
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                        </f:link.action>
-                    </td>
-                </tr>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                            </f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                            </f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                            </f:link.action>
+                        </td>
+                    </tr>
+                </f:if>
+            </f:for>
+        </table>
+
+        <h4>Nicht aktiv</h4>
+        <table class="tx_ieb angebotVerantwortlich">
+            <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+                <f:if condition="{angebotVerantwortlich.archiviert}">
+                    <tr>
+                        <td class="nachname">
+                            {angebotVerantwortlich.nachname}
+                        </td>
+                        <td class="vorname">
+                            {angebotVerantwortlich.vorname}
+                        </td>
+                        <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                        <td class="">
+                            <f:if condition="{angebotVerantwortlich.ok}">
+                                <f:then>
+                                    ja
+                                </f:then>
+                                <f:else>
+                                    nein
+                                </f:else>
+                            </f:if>
+
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                            </f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                            </f:link.action>
+                        </td>
+                        <td class="td-knopf">
+
+                        </td>
+                    </tr>
+                </f:if>
             </f:for>
         </table>
     </f:if>

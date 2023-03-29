@@ -149,6 +149,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	pruefbescheid text,
 	kooperation_datei int(11) unsigned NOT NULL DEFAULT '0',
 	kooperation text,
+	standort_erklaerung smallint(1) unsigned NOT NULL DEFAULT '0',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -170,7 +171,8 @@ CREATE TABLE tx_ieb_domain_model_standort (
 	koop_schule text NOT NULL DEFAULT '',
 	koop_schule_datei int(11) unsigned NOT NULL DEFAULT '0',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
-	locked_by int(11) NOT NULL DEFAULT '0'
+	locked_by int(11) NOT NULL DEFAULT '0',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_berater (
@@ -182,6 +184,7 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
 	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0'
 );
 
@@ -209,7 +212,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lehr_befugnis_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0',
-	ok smallint(1) unsigned NOT NULL DEFAULT '0'
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -252,7 +256,8 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
-	lebenslauf varchar(255) NOT NULL DEFAULT ''
+	lebenslauf varchar(255) NOT NULL DEFAULT '',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE fe_users (

@@ -10,18 +10,39 @@
     <f:if condition="{standorts}">
         <table class="tx_ieb standortliste">
             <f:for each="{standorts}" as="standort">
-                <tr>
-                    <td class="fett">
-                        {standort.name}
-                    </td>
-                    <td class="klein">
-                        {standort.adresse}<br> {standort.plz} {standort.ort}
-                    </td>
-                    <td class="td-knopf">
-                        <f:link.action action="hide" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{standort : standort}">
-                        </f:link.action>
-                    </td>
-                </tr>
+                <f:if condition="!{standort.archiviert}">
+                    <tr>
+                        <td class="fett">
+                            {standort.name}
+                        </td>
+                        <td class="klein">
+                            {standort.adresse}<br> {standort.plz} {standort.ort}
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{standort : standort}">
+                            </f:link.action>
+                        </td>
+                    </tr>
+                </f:if>
+            </f:for>
+        </table>
+        <div class="abstand-mittel"></div>
+        <table class="tx_ieb standortliste">
+            <f:for each="{standorts}" as="standort">
+                <f:if condition="{standort.archiviert}">
+                    <tr>
+                        <td class="fett">
+                            {standort.name}
+                        </td>
+                        <td class="klein">
+                            {standort.adresse}<br> {standort.plz} {standort.ort}
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch hide" arguments="{standort : standort}">
+                            </f:link.action>
+                        </td>
+                    </tr>
+                </f:if>
             </f:for>
         </table>
     </f:if>

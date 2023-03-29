@@ -386,6 +386,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $kooperation = '';
 
     /**
+     * standortErklaerung
+     *
+     * @var bool
+     */
+    protected $standortErklaerung = false;
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -1958,5 +1965,36 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setKooperation(string $kooperation)
     {
         $this->kooperation = $kooperation;
+    }
+
+    /**
+     * Returns the standortErklaerung
+     *
+     * @return bool
+     */
+    public function getStandortErklaerung()
+    {
+        return $this->standortErklaerung;
+    }
+
+    /**
+     * Sets the standortErklaerung
+     *
+     * @param bool $standortErklaerung
+     * @return void
+     */
+    public function setStandortErklaerung(bool $standortErklaerung)
+    {
+        $this->standortErklaerung = $standortErklaerung;
+    }
+
+    /**
+     * Returns the boolean state of standortErklaerung
+     *
+     * @return bool
+     */
+    public function isStandortErklaerung()
+    {
+        return $this->standortErklaerung;
     }
 }

@@ -76,4 +76,50 @@ plugin.tx_ieb._CSS_DEFAULT_STYLE (
         background-color: #FF9F9F;
         border: 1px #FF0000 solid;
     }
+
+    .tx-ieb table {
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+
+    .tx-ieb table th {
+        font-weight: bold;
+    }
+
+    .tx-ieb table td {
+        vertical-align: top;
+    }
+
+    .typo3-messages .message-error {
+        color: red;
+    }
+
+    .typo3-messages .message-ok {
+        color: green;
+    }
 )
+plugin.tx_ieb.settings.static.bundesland {
+    1 = Burgenland
+    2 = Kärnten
+    3 = Niederösterreich
+    4 = Oberösterreich
+    5 = Steiermark
+    6 = Tirol
+    7 = Vorarlberg
+    8 = Wien
+} 
+plugin.tx_ieb.settings.static.rechtsform {
+    10 = Aktiengesellschaft (AG)
+    20 = Einzelunternehmen (EPU, EU)
+    30 = Eingetragenes Unternehmen (e.U.)
+    40 = Genossenschaft
+    50 = Gesellschaft nach bürgerlichem Recht (GesbR)
+    60 = Gesellschaft mit beschränkter Haftung (GmbH)
+    70 = Gemeinnützige Gesellschaft mit beschränkter Haftung (gGmbH)
+    80 = Kommanditgesellschaft (KG)
+    90 = Körperschaft öffentlichen Rechts (KÖR)
+    100 = Offene Gesellschaft (OG)
+    110 = Schule
+    120 = Verein
+    130 = Sonstige
+} 

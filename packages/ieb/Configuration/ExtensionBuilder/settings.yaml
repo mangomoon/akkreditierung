@@ -50,6 +50,7 @@ overwriteSettings:
     TCA:
       Overrides: keep
     Extbase: keep
+    TypoScript: keep
 
   Resources:
     Private:

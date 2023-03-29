@@ -74,4 +74,20 @@ class TrainerController extends BaseController
         $this->trainerRepository->remove($trainer);
         $this->redirect('index');
     }
+    public function archiveAction(Trainer $trainer)
+    {
+        $this->check($trainer);
+        $trainer->setArchiviert(TRUE);
+        $this->trainer->update($trainer);
+        
+        $this->redirect('index');
+    }
+    public function reviveAction(Trainer $trainer)
+    {
+        $this->check($trainer);
+        $trainer->setArchiviert(FALSE);
+        $this->trainerRepository->update($trainer);
+        
+        $this->redirect('index');
+    }
 }

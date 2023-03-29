@@ -27,6 +27,9 @@
 			<trans-unit id="lebenslauf.description" resname="lebenslauf.description">
 				<source>lebenslauf</source>
 			</trans-unit>
+			<trans-unit id="archiviert.description" resname="archiviert.description">
+				<source>archiviert</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -119,8 +119,37 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function updateAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+    
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
         $this->redirect('list');
+    }
+
+
+    /**
+     * action archive
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     */
+    public function archiveAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
+    {
+        $this->check($angebotVerantwortlich);
+        $angebotVerantwortlich->setArchiviert(TRUE);
+        $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
+        
+        $this->redirect('index');
+    }
+
+    /**
+     * action revive
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     */
+    public function reviveAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
+    {
+        $this->check($angebotVerantwortlich);
+        $angebotVerantwortlich->setArchiviert(FALSE);
+        $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
+        
+        $this->redirect('index');
     }
 }

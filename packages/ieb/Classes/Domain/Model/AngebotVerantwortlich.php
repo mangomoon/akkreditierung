@@ -83,6 +83,13 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $lebenslauf = '';
 
     /**
+     * archiviert
+     *
+     * @var bool
+     */
+    protected $archiviert = false;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -268,5 +275,36 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function setLebenslauf(string $lebenslauf)
     {
         $this->lebenslauf = $lebenslauf;
+    }
+
+    /**
+     * Returns the archiviert
+     *
+     * @return bool
+     */
+    public function getArchiviert()
+    {
+        return $this->archiviert;
+    }
+
+    /**
+     * Sets the archiviert
+     *
+     * @param bool $archiviert
+     * @return void
+     */
+    public function setArchiviert(bool $archiviert)
+    {
+        $this->archiviert = $archiviert;
+    }
+
+    /**
+     * Returns the boolean state of archiviert
+     *
+     * @return bool
+     */
+    public function isArchiviert()
+    {
+        return $this->archiviert;
     }
 }

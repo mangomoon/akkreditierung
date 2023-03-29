@@ -1851,6 +1851,18 @@
                             "propertyName": "kooperation",
                             "propertyType": "RichText",
                             "uid": "469433277509"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "standortErklaerung",
+                            "propertyType": "Boolean",
+                            "uid": "8090829821"
                         }
                     ]
                 },
@@ -1986,7 +1998,10 @@
                     "_default3_new_create": true,
                     "_default4_edit_update": true,
                     "_default5_delete": true,
-                    "customActions": []
+                    "customActions": [
+                        "archive",
+                        "revive"
+                    ]
                 },
                 "name": "Standort",
                 "objectsettings": {
@@ -2111,6 +2126,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "530417247948"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "1520450764880"
                         }
                     ]
                 },
@@ -2248,6 +2275,18 @@
                             "propertyName": "ok",
                             "propertyType": "Boolean",
                             "uid": "1299869665414"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "1402916460111"
                         }
                     ]
                 },
@@ -2589,6 +2628,18 @@
                             "propertyName": "ok",
                             "propertyType": "Boolean",
                             "uid": "1158239557301"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "1240612402086"
                         }
                     ]
                 },
@@ -3103,6 +3154,18 @@
                             "propertyName": "lebenslauf",
                             "propertyType": "String",
                             "uid": "254530505517"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "1105491501433"
                         }
                     ]
                 },
@@ -3582,7 +3645,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-03-24 11:12",
+        "last_modified": "2023-03-29 02:40",
         "extension_builder_version": "v11.0.9",
         "be_user": " (1)"
     }

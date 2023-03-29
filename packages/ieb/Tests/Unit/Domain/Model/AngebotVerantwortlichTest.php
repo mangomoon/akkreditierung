@@ -197,4 +197,22 @@ class AngebotVerantwortlichTest extends UnitTestCase
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('lebenslauf'));
     }
+
+    /**
+     * @test
+     */
+    public function getArchiviertReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getArchiviert());
+    }
+
+    /**
+     * @test
+     */
+    public function setArchiviertForBoolSetsArchiviert(): void
+    {
+        $this->subject->setArchiviert(true);
+
+        self::assertEquals(true, $this->subject->_get('archiviert'));
+    }
 }

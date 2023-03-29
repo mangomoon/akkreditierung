@@ -86,5 +86,21 @@ class BeraterController extends BaseController
         $this->beraterRepository->remove($berater);
         $this->redirect('index');
     }
+    public function archiveAction(Berater $berater)
+    {
+        $this->check($berater);
+        $berater->setArchiviert(TRUE);
+        $this->beraterRepository->update($berater);
+        
+        $this->redirect('index');
+    }
+    public function reviveAction(Berater $berater)
+    {
+        $this->check($berater);
+        $berater->setArchiviert(FALSE);
+        $this->beraterRepository->update($berater);
+        
+        $this->redirect('index');
+    }   
 
 }
