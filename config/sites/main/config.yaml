@@ -1,7 +1,7 @@
 base: 'https://901414.jweiland-hosting.de/'
 baseVariants:
   -
-    base: 'http://ieb.ddev.site/'
+    base: 'https://ieb.ddev.site/'
     condition: 'applicationContext == "Development/Ddev"'
 errorHandling:
   -
@@ -23,4 +23,5 @@ languages:
     flag: at
     websiteTitle: ''
 rootPageId: 1
+sitePackage: ''
 websiteTitle: ''

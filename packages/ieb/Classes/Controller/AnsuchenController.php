@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\StaticStammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
 
@@ -50,9 +51,10 @@ class AnsuchenController extends BaseController
     public function createAction(Ansuchen $newAnsuchen)
     {
         $stammDaten = $this->stammdatenRepository->getLatest();
+        /** @var StaticStammdaten $staticStammDaten */
         $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
-        $newAnsuchen->setStammdaten($staticStammDaten);
+        $newAnsuchen->setStammdatenStatic($staticStammDaten);
 
         $this->ansuchenRepository->add($newAnsuchen);
         $this->redirect('list');

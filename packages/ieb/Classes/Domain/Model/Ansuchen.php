@@ -740,7 +740,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return $this->kompetenzbereiche;
+        return (int)$this->kompetenzbereiche;
     }
 
     /**
@@ -749,9 +749,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $kompetenzbereiche
      * @return void
      */
-    public function setKompetenzbereiche(int $kompetenzbereiche)
+    public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = $kompetenzbereiche;
+        $this->kompetenzbereiche = (int)$kompetenzbereiche;
     }
 
     /**
@@ -812,7 +812,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uebersichtDatei
      * @return void
      */
-    public function setUebersichtDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uebersichtDatei)
+    public function setUebersichtDatei($uebersichtDatei)
     {
         $this->uebersichtDatei = $uebersichtDatei;
     }
@@ -854,7 +854,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $zielgruppenAnspracheDatei
      * @return void
      */
-    public function setZielgruppenAnspracheDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $zielgruppenAnspracheDatei)
+    public function setZielgruppenAnspracheDatei($zielgruppenAnspracheDatei)
     {
         $this->zielgruppenAnspracheDatei = $zielgruppenAnspracheDatei;
     }
@@ -937,7 +937,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lernziele
      * @return void
      */
-    public function setLernziele(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lernziele)
+    public function setLernziele($lernziele)
     {
         $this->lernziele = $lernziele;
     }
@@ -958,7 +958,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lernstandserhebung
      * @return void
      */
-    public function setLernstandserhebung(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lernstandserhebung)
+    public function setLernstandserhebung($lernstandserhebung)
     {
         $this->lernstandserhebung = $lernstandserhebung;
     }
@@ -979,7 +979,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $diversity
      * @return void
      */
-    public function setDiversity(\TYPO3\CMS\Extbase\Domain\Model\FileReference $diversity)
+    public function setDiversity($diversity)
     {
         $this->diversity = $diversity;
     }
@@ -1042,7 +1042,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $beratungDatei
      * @return void
      */
-    public function setBeratungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $beratungDatei)
+    public function setBeratungDatei($beratungDatei)
     {
         $this->beratungDatei = $beratungDatei;
     }
@@ -1899,7 +1899,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei
      * @return void
      */
-    public function setPruefbescheidDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei)
+    public function setPruefbescheidDatei($pruefbescheidDatei)
     {
         $this->pruefbescheidDatei = $pruefbescheidDatei;
     }
@@ -1941,7 +1941,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $kooperationDatei
      * @return void
      */
-    public function setKooperationDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $kooperationDatei)
+    public function setKooperationDatei($kooperationDatei)
     {
         $this->kooperationDatei = $kooperationDatei;
     }

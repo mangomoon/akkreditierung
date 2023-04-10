@@ -3,7 +3,7 @@ return [
     'BE' => [
         'debug' => true,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$bkNCNXR2NU4vSEZJSDdsRQ$AIg57I9xUcDj0VjUonVB0SWMh6fCgpsa339HxkldS+c',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$SmdLTWxldWdWckJmM3dZaQ$+OtYkvjhAep+MyUTnd2GxLDjYuLohu84AHjg6HsABy4',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -58,6 +58,7 @@ return [
             'dateTimeNotRequired' => '0',
             'hidePageTreeForAdministrationModule' => '0',
             'manualSorting' => '0',
+            'mediaPreview' => 'false',
             'prependAtCopy' => '1',
             'resourceFolderImporter' => '/news_import',
             'rteForTeaser' => '0',
@@ -159,6 +160,7 @@ return [
         'sitename' => 'IEB',
         'systemMaintainers' => [
             1,
+            4,
         ],
     ],
 ];
