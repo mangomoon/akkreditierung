@@ -20,7 +20,7 @@ sync:
     database:
       - type: mysql
         database: u901414_akdb
-        user: interax_1
+        user: u901414_akdb
         password: X7vk8a5Keee$e6Cgg
         hostname: db.mariadb103
         port: 3306
@@ -52,8 +52,10 @@ deploy:
         filter:
           exclude:
             - var/
-            - public/
-            - public/
+            - public/fileadmin
+            - public/uploads
+            - public/.htaccess
+            - public/typo3temp
             - /db/
             - /backup/
 

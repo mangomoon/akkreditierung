@@ -12,8 +12,13 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'charset' => 'utf8',
+                'charset' => 'utf8mb4',
+                'dbname' => 'u901414_akdb',
                 'driver' => 'mysqli',
+                'host' => 'db.mariadb103',
+                'password' => 'X7vk8a5Keee$e6Cgg',
+                'port' => '3306',
+                'user' => 'u901414_akdb',
             ],
         ],
     ],
