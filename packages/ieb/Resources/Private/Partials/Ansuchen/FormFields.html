@@ -48,7 +48,7 @@
                 Rechts-/Organisationsform (tätig seit):<br />Nachweis:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.rechtsform}',then:'fehlt')}">
-                {relations.stammdaten.rechtsform}
+                <ieb:arrayValue array="{settings.static.rechtsform}" key="{relations.stammdaten.rechtsform}" fallback="fehlt" />
             </td>
         </tr>
         <tr class="linie">
@@ -62,8 +62,7 @@
             <td class="labeltext">
                 Adresse und Kontakt:
             </td>
-            <td class="check {f:if(condition:'!{relations.stammdaten.strasse}',then:'fehlt')}">
-                <!-- IF für alle drei!!! -->
+            <td class="check {f:if(condition:'!{relations.stammdaten.addressFilled}',then:'fehlt')}">
                 {relations.stammdaten.strasse}<br />{relations.stammdaten.plz} {relations.stammdaten.ort}
             </td>
         </tr>
