@@ -27,3 +27,18 @@ foreach (['ansuchen', 'berater', 'trainer', 'standort', 'angebotverantwortlich']
         ],
     ];
 }
+
+$GLOBALS['TCA']['tx_ieb_domain_model_stammdaten']['columns']['rechtsform']['config']['items'] = [
+    ['', 0],
+    ['Aktiengesellschaft (AG)', 10],
+    ['Einzelunternehmen (EPU, EU)', 20],
+    ['Eingetragenes Unternehmen (e.U.)', 30],
+    ['Genossenschaft', 40],
+    ['Gesellschaft mit beschränkter Haftung (GmbH)', 60],
+    ['Kommanditgesellschaft (KG)', 80],
+    ['Körperschaft öffentlichen Rechts (KÖR)', 90],
+    ['Offene Gesellschaft (OG)', 100],
+    ['Schule', 110],
+    ['Verein', 120],
+    ['Sonstige', 130],
+];
