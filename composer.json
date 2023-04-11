@@ -18,6 +18,7 @@
         "helhum/typo3-console": "^7.1",
         "mangomoon/mangomoon": "dev-main",
         "mangomoon/mangomoonspecify": "@dev",
+        "symfony/var-dumper": "^5.4",
         "typo3/cms-adminpanel": "^11",
         "typo3/cms-backend": "^11",
         "typo3/cms-belog": "^11",

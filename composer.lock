@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79075754259acfecc61c4f41e9a6c5fb",
+    "content-hash": "8266e83ea64c08d8927458bc387ceb71",
     "packages": [
         {
             "name": "b13/bolt",

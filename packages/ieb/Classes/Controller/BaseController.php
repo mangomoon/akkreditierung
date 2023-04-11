@@ -58,6 +58,8 @@ class BaseController extends ActionController
         $mapping = [
             'berater' => ['lebenslauf', 'qualifikationsnachweise'],
             'newBerater' => ['lebenslauf', 'qualifikationsnachweise'],
+            'stammdaten' => ['nachweis', 'leitbildDatei', 'qmsZertifikatDatei', 'qualitaetPersonalDatei', 'qualitaetSicherungDatei', 'pruefbescheidDatei'],
+            'newStammdaten' => ['nachweis', 'leitbildDatei', 'qmsZertifikatDatei', 'qualitaetPersonalDatei', 'qualitaetSicherungDatei', 'pruefbescheidDatei'],
         ];
         if (!isset($mapping[$argumentName])) {
             throw new \RuntimeException(sprintf('Argument "%s" not found in image conversion configuration', $argumentName), 1673611646);

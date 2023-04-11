@@ -74,4 +74,15 @@ class StammdatenController extends BaseController
     }
 
 
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newStammdaten');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('stammdaten');
+    }
+
+
 }
