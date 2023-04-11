@@ -148,7 +148,7 @@
         </tr>
     </table>
 
-    <div class="formzeile"><a href="/uebersicht-tr/stammdaten/" class="formlink stammdaten">Organsiation: Daten bearbeiten</a></div>
+    <div class="formzeile"><f:link.page pageUid="10" class="formlink stammdaten">Organsiation: Daten bearbeiten</f:link.page></div>
 </div>
 
 <!-- ############### B1 ########### -->
@@ -261,7 +261,7 @@
 
                 <f:render partial="Form/Select" arguments="{property:'standorte',  label:'Standorte', options:standorte, multiple:1, optionLabelField:'name'}" />
 
-                <div class="formzeile"><a href="/uebersicht-tr/standorte/" class="formlink standorte">Standorte: Daten bearbeiten</a></div>
+                <div class="formzeile"><f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page></div>
             </div>
         </div>
     </div>
@@ -511,7 +511,7 @@
             </td>
         </tr>
     </table>
-    <div class="formzeile"><a href="/uebersicht-tr/angebotssteuerung/" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</a></div>
+    <div class="formzeile"><f:link.page pageUid="18" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</f:link.page></div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -527,7 +527,7 @@
         <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
-    <div class="formzeile"><a href="/uebersicht-tr/training/" class="formlink trainer">Training: Daten bearbeiten</a></div>
+    <div class="formzeile"><f:link.page pageUid="12" class="formlink trainer">Training: Daten bearbeiten</f:link.page></div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -562,7 +562,7 @@
     <f:for each="{berater}" as="berater">
         <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
     </f:for>
-    <div class="formzeile"><a href="/uebersicht-tr/beratung/" class="formlink berater">Beratung: Daten bearbeiten</a></div>
+    <div class="formzeile"><f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page></div>
 </div>
 
 <!-- ############### ERKLÄRUNGEN ########### -->
