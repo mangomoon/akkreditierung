@@ -60,12 +60,18 @@ class StammdatenController extends BaseController
 
     public function indexAction(): ResponseInterface
     {
+        $stammdaten = $this->stammdatenRepository->getLatest();
+        if (!$stammdaten) {
+            $stammdaten = new Stammdaten();
+            $this->view->assign('exists', false);
+        } else {
+            $this->view->assign('exists', true);
+        }
         $this->view->assignMultiple([
-            'item' => $this->stammdatenRepository->getLatest(),
+            'stammdaten' => $stammdaten,
         ]);
         return $this->htmlResponse();
     }
-
 
 
 }

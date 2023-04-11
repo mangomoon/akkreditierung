@@ -259,7 +259,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $nachweis
      * @return void
      */
-    public function setNachweis(\TYPO3\CMS\Extbase\Domain\Model\FileReference $nachweis)
+    public function setNachweis($nachweis)
     {
         $this->nachweis = $nachweis;
     }
@@ -313,7 +313,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getPlz()
     {
-        return $this->plz;
+        return (int)$this->plz;
     }
 
     /**
@@ -322,9 +322,9 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $plz
      * @return void
      */
-    public function setPlz(int $plz)
+    public function setPlz($plz)
     {
-        $this->plz = $plz;
+        $this->plz = (int)$plz;
     }
 
     /**
@@ -448,7 +448,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $leitbildDatei
      * @return void
      */
-    public function setLeitbildDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $leitbildDatei)
+    public function setLeitbildDatei($leitbildDatei)
     {
         $this->leitbildDatei = $leitbildDatei;
     }
@@ -469,7 +469,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
      * @return void
      */
-    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
+    public function setQmsZertifikatDatei($qmsZertifikatDatei)
     {
         $this->qmsZertifikatDatei = $qmsZertifikatDatei;
     }
@@ -574,7 +574,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
      * @return void
      */
-    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
+    public function setQualitaetSicherungDatei($qualitaetSicherungDatei)
     {
         $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
     }
@@ -616,7 +616,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
      * @return void
      */
-    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
+    public function setQualitaetPersonalDatei($qualitaetPersonalDatei)
     {
         $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
     }
@@ -689,7 +689,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei
      * @return void
      */
-    public function setPruefbescheidDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei)
+    public function setPruefbescheidDatei($pruefbescheidDatei)
     {
         $this->pruefbescheidDatei = $pruefbescheidDatei;
     }

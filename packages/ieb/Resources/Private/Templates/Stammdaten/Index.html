@@ -1,32 +1,21 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-
 <f:section name="content">
-
     <f:flashMessages />
-    <f:if condition="{item}">
+    <f:render partial="FormErrors" />
+    <f:if condition="{exists}">
         <f:then>
-
-            <f:render partial="FormErrors" />
-
-            <f:form action="edit" name="Stammdaten" object="{Stammdaten}" class="formStammdaten editStammdaten">
-
-                <f:render partial="Stammdaten/FormFields" />
+            <f:form action="update" name="stammdaten" object="{stammdaten}" class="formStammdaten editStammdaten">
+                <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
                 <f:form.submit value="Speichern" class="knopf-s" />
             </f:form>
-
-
         </f:then>
         <f:else>
-            <f:render partial="FormErrors" />
-
-            <f:form action="create" name="newStammdaten" object="{newStammdaten}" class="formStammdaten newStammdaten">
-
-                <f:render partial="Stammdaten/FormFields" />
+            <f:form action="create" name="newStammdaten" object="{stammdaten}" class="formStammdaten newStammdaten">
+                <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
                 <f:form.submit value="Speichern" class="knopf-s" />
             </f:form>
-
         </f:else>
     </f:if>
 </f:section>
