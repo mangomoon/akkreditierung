@@ -491,6 +491,8 @@
 
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
+        <f:form.select property="trainer" options="{relations.trainer}" optionLabelField="fullName" multiple="1" />
+
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
     <div class="formzeile"><f:link.page pageUid="12" class="formlink trainer">Training: Daten bearbeiten</f:link.page></div>
@@ -511,18 +513,18 @@
     <div class="formzeile">
         <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
     </div>
-    <div id="beraterwahl">
-        <div class="row">
-            <div class="col-10">
-                <f:for each="{relations.berater}" as="berater">
-                    <p><input type="checkbox" /> {berater.vollerName}</p>
-                </f:for>
-            </div>
-            <div class="col-2">
-                Schließen<br> Jetzt hinzufügen
-            </div>
-        </div>
-    </div>
+<!--    <div id="beraterwahl">-->
+<!--        <div class="row">-->
+<!--            <div class="col-10">-->
+<!--                <f:for each="{relations.berater}" as="berater">-->
+<!--                    <p><input type="checkbox" /> {berater.vollerName}</p>-->
+<!--                </f:for>-->
+<!--            </div>-->
+<!--            <div class="col-2">-->
+<!--                Schließen<br> Jetzt hinzufügen-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
     <f:for each="{berater}" as="berater">
