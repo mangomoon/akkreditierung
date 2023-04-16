@@ -7,7 +7,9 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
@@ -53,7 +55,7 @@ class BaseController extends ActionController
     }
 
 
-    protected function setTypeConverterConfigurationForImageUpload($argumentName, $uploadFolder = '1:/content')
+    protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
         $mapping = [
             'berater' => ['lebenslauf', 'qualifikationsnachweise'],
@@ -65,11 +67,19 @@ class BaseController extends ActionController
             throw new \RuntimeException(sprintf('Argument "%s" not found in image conversion configuration', $argumentName), 1673611646);
         }
 
-        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+        GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
             ->registerImplementation(
                 \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
                 FileReference::class
             );
+
+        $uploadFolder = '1:/content/' . self::currentSysFolderPageName() . '/';
+        // if folder does not exist
+        $path = Environment::getPublicPath() . '/fileadmin/' . str_replace('1:/', '', $uploadFolder);
+        if (!is_dir($path)) {
+            // create folder
+            GeneralUtility::mkdir_deep($path);
+        }
 
         $uploadConfiguration = [
             UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],

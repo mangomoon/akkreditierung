@@ -39,6 +39,13 @@ trait CurrentUserTrait
         return self::getCurrentUserField('tr_admin') === 1;
     }
 
+    public static function currentSysFolderPageName(): string
+    {
+        $pid = self::getCurrentUserPid();
+        $page = BackendUtility::getRecord('pages', $pid);
+        return $page['title'];
+    }
+
     private static function getCurrentUserField(string $field)
     {
         $user = self::getCurrentUser();
