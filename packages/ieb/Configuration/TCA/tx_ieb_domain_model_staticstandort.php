@@ -36,6 +36,7 @@ return [
         'name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.name',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.name.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -46,6 +47,7 @@ return [
         'adresse' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.adresse',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.adresse.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -56,6 +58,7 @@ return [
         'plz' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.plz',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.plz.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -66,6 +69,7 @@ return [
         'ort' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.ort',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.ort.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -76,6 +80,7 @@ return [
         'pruef_bescheid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.pruef_bescheid',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.pruef_bescheid.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -91,6 +96,7 @@ return [
         'koop_schule' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.koop_schule',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.koop_schule.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -102,6 +108,7 @@ return [
         'koop_schule_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.koop_schule_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.koop_schule_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'koop_schule_datei',
                 [
@@ -155,6 +162,7 @@ return [
         'review_comment_internal' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_internal',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_internal.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -166,6 +174,7 @@ return [
         'review_comment_tr' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_tr',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_tr.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -177,6 +186,7 @@ return [
         'review_comment_status' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_status',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_comment_status.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -191,6 +201,7 @@ return [
         'review_frist' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_frist',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.review_frist.description',
             'config' => [
                 'dbType' => 'date',
                 'type' => 'input',
@@ -203,6 +214,7 @@ return [
         'based_on' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.based_on',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstandort.based_on.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

@@ -67,6 +67,7 @@ return [
         'name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.name',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.name.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -77,6 +78,7 @@ return [
         'adresse' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.adresse',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.adresse.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -87,6 +89,7 @@ return [
         'plz' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.plz',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.plz.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -97,6 +100,7 @@ return [
         'ort' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.ort',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.ort.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -107,6 +111,7 @@ return [
         'pruef_bescheid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.pruef_bescheid',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.pruef_bescheid.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -122,6 +127,7 @@ return [
         'koop_schule' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -133,6 +139,7 @@ return [
         'koop_schule_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'koop_schule_datei',
                 [
@@ -186,6 +193,7 @@ return [
         'ok' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.ok',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.ok.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -201,6 +209,7 @@ return [
         'locked_by' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.locked_by',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.locked_by.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -211,6 +220,7 @@ return [
         'archiviert' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.archiviert',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.archiviert.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

@@ -67,6 +67,7 @@ return [
         'nachname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.nachname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.nachname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -77,6 +78,7 @@ return [
         'vorname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.vorname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.vorname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -87,6 +89,7 @@ return [
         'lebenslauf' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'lebenslauf',
                 [
@@ -140,6 +143,7 @@ return [
         'qualifikationsnachweise' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qualifikationsnachweise',
                 [
@@ -193,6 +197,7 @@ return [
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.title',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -203,6 +208,7 @@ return [
         'lebenslauf_kommentar' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf_kommentar',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf_kommentar.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -213,6 +219,7 @@ return [
         'qualifikationsnachweise_kommentar' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -223,6 +230,7 @@ return [
         'ok' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.ok',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.ok.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -238,6 +246,7 @@ return [
         'archiviert' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.archiviert',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.archiviert.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -253,6 +262,7 @@ return [
         'standorte' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.standorte',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.standorte.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',

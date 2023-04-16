@@ -67,6 +67,7 @@ return [
         'nachname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.nachname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.nachname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -77,6 +78,7 @@ return [
         'vorname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.vorname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.vorname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -87,6 +89,7 @@ return [
         'email' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.email',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.email.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -97,6 +100,7 @@ return [
         'telefon' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.telefon',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.telefon.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -107,6 +111,7 @@ return [
         'verantwortlich' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.verantwortlich',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.verantwortlich.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -122,6 +127,7 @@ return [
         'ok' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.ok',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.ok.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -137,6 +143,7 @@ return [
         'lebenslauf_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'lebenslauf_datei',
                 [
@@ -190,6 +197,7 @@ return [
         'lebenslauf' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -200,6 +208,7 @@ return [
         'archiviert' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.archiviert',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.archiviert.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

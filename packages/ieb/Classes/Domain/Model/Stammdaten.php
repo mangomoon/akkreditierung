@@ -313,7 +313,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getPlz()
     {
-        return (int)$this->plz;
+        return (int) $this->plz;
     }
 
     /**
@@ -324,7 +324,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setPlz($plz)
     {
-        $this->plz = (int)$plz;
+        $this->plz = (int) $plz;
     }
 
     /**
@@ -829,7 +829,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->ok;
     }
-
     public function getAddressFilled()
     {
         return $this->getStrasse() && $this->getPlz() && $this->getOrt();

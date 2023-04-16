@@ -36,6 +36,7 @@ return [
         'name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.name',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.name.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -46,6 +47,7 @@ return [
         'markenname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.markenname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.markenname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -56,6 +58,7 @@ return [
         'nachweis' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.nachweis',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.nachweis.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'nachweis',
                 [
@@ -109,6 +112,7 @@ return [
         'rechtsform' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.rechtsform',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.rechtsform.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -123,6 +127,7 @@ return [
         'strasse' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.strasse',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.strasse.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -133,6 +138,7 @@ return [
         'plz' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.plz',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.plz.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -143,6 +149,7 @@ return [
         'ort' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.ort',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.ort.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -153,6 +160,7 @@ return [
         'seit' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.seit',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.seit.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -163,6 +171,7 @@ return [
         'website' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.website',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.website.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -173,6 +182,7 @@ return [
         'email' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.email',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.email.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -183,6 +193,7 @@ return [
         'telefon' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.telefon',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.telefon.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -193,6 +204,7 @@ return [
         'leitbild' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.leitbild',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.leitbild.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -211,6 +223,7 @@ return [
         'leitbild_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.leitbild_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.leitbild_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'leitbild_datei',
                 [
@@ -264,6 +277,7 @@ return [
         'qms_zertifikat_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_zertifikat_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_zertifikat_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qms_zertifikat_datei',
                 [
@@ -317,6 +331,7 @@ return [
         'qms_zertifikat' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_zertifikat',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_zertifikat.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -328,6 +343,7 @@ return [
         'qms_typ' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_typ',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qms_typ.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -342,6 +358,7 @@ return [
         'zertifikat_bis' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.zertifikat_bis',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.zertifikat_bis.description',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -353,6 +370,7 @@ return [
         'qualitaet_sicherung' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_sicherung',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_sicherung.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -371,6 +389,7 @@ return [
         'qualitaet_sicherung_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_sicherung_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_sicherung_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qualitaet_sicherung_datei',
                 [
@@ -424,6 +443,7 @@ return [
         'qualitaet_personal' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_personal',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_personal.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -442,6 +462,7 @@ return [
         'qualitaet_personal_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_personal_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.qualitaet_personal_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qualitaet_personal_datei',
                 [
@@ -495,6 +516,7 @@ return [
         'tr_pp3' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.tr_pp3',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.tr_pp3.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -510,6 +532,7 @@ return [
         'pruefbescheid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -528,6 +551,7 @@ return [
         'pruefbescheid_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'pruefbescheid_datei',
                 [
@@ -581,6 +605,7 @@ return [
         'pruefbescheid_bis' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid_bis',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.pruefbescheid_bis.description',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -592,6 +617,7 @@ return [
         'review_comment_internal' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_comment_internal',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_comment_internal.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -603,6 +629,7 @@ return [
         'review_comment_tr' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_comment_tr',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_comment_tr.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -614,6 +641,7 @@ return [
         'review_status' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_status',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_status.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -628,6 +656,7 @@ return [
         'review_frist' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_frist',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.review_frist.description',
             'config' => [
                 'dbType' => 'date',
                 'type' => 'input',
@@ -640,6 +669,7 @@ return [
         'locked_by' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.locked_by',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.locked_by.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -650,6 +680,7 @@ return [
         'standorte' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.standorte',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.standorte.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -676,6 +707,7 @@ return [
         'based_on' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.based_on',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.based_on.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

@@ -36,6 +36,7 @@ return [
         'nachname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.nachname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.nachname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -46,6 +47,7 @@ return [
         'vorname' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.vorname',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.vorname.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -56,6 +58,7 @@ return [
         'verwendung_babi' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.verwendung_babi',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.verwendung_babi.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -71,6 +74,7 @@ return [
         'verwendung_psa' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.verwendung_psa',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.verwendung_psa.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -86,6 +90,7 @@ return [
         'lebenslauf' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lebenslauf',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lebenslauf.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -104,6 +109,7 @@ return [
         'qualifikation_babi' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_babi',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_babi.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -115,6 +121,7 @@ return [
         'lehr_befugnis' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lehr_befugnis',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lehr_befugnis.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -126,6 +133,7 @@ return [
         'qualifikation_psa1' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa1',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa1.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -141,6 +149,7 @@ return [
         'qualifikation_psa2' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa2',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa2.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -156,6 +165,7 @@ return [
         'qualifikation_psa3' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa3',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa3.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -171,6 +181,7 @@ return [
         'qualifikation_psa4' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa4',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa4.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -186,6 +197,7 @@ return [
         'qualifikation_psa5' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa5',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa5.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -201,6 +213,7 @@ return [
         'qualifikation_psa6' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa6',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa6.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -216,6 +229,7 @@ return [
         'qualifikation_psa7' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa7',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa7.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -231,6 +245,7 @@ return [
         'qualifikation_psa8' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa8',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa8.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -246,6 +261,7 @@ return [
         'qualifikation_psa' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -257,6 +273,7 @@ return [
         'qualifikation_psa_kommentar' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa_kommentar',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa_kommentar.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -268,6 +285,7 @@ return [
         'anerkennung_pp3' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.anerkennung_pp3',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.anerkennung_pp3.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -283,6 +301,7 @@ return [
         'review_comment_internal' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_comment_internal',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_comment_internal.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -294,6 +313,7 @@ return [
         'review_comment_tr' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_comment_tr',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_comment_tr.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -305,6 +325,7 @@ return [
         'review_status' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_status',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_status.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -319,6 +340,7 @@ return [
         'review_frist' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_frist',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.review_frist.description',
             'config' => [
                 'dbType' => 'date',
                 'type' => 'input',
@@ -331,6 +353,7 @@ return [
         'lebenslauf_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lebenslauf_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lebenslauf_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'lebenslauf_datei',
                 [
@@ -384,6 +407,7 @@ return [
         'qualifikation_babi_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_babi_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_babi_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qualifikation_babi_datei',
                 [
@@ -437,6 +461,7 @@ return [
         'lehr_befugnis_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lehr_befugnis_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.lehr_befugnis_datei.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -447,6 +472,7 @@ return [
         'qualifikation_psa_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa_datei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.qualifikation_psa_datei.description',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'qualifikation_psa_datei',
                 [
@@ -500,6 +526,7 @@ return [
         'locked_by' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.locked_by',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.locked_by.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -510,6 +537,7 @@ return [
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.title',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -520,6 +548,7 @@ return [
         'based_on' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.based_on',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_statictrainer.based_on.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

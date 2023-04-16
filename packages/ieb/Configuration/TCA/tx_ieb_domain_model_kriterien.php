@@ -67,6 +67,7 @@ return [
         'chiffre' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.chiffre',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.chiffre.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -77,6 +78,7 @@ return [
         'name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.name',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.name.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -87,6 +89,7 @@ return [
         'hinweis' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.hinweis',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.hinweis.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -105,6 +108,7 @@ return [
         'pruefkriterien' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.pruefkriterien',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.pruefkriterien.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -123,6 +127,7 @@ return [
         'hilfetext' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.hilfetext',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.hilfetext.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -141,6 +146,7 @@ return [
         'ppd' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.ppd',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_kriterien.ppd.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,

@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    261
+                    260.5
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    477
+                    476.5
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    28
+                    27.5
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    27
+                    26.5
                 ]
             },
             "name": "New Model Object",
@@ -1210,7 +1210,7 @@
             "config": {
                 "position": [
                     646,
-                    275
+                    274.5
                 ]
             },
             "name": "New Model Object",
@@ -1863,6 +1863,186 @@
                             "propertyName": "standortErklaerung",
                             "propertyType": "Boolean",
                             "uid": "8090829821"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz1",
+                            "propertyType": "Boolean",
+                            "uid": "1031701823404"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz2",
+                            "propertyType": "Boolean",
+                            "uid": "1474188701275"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz3",
+                            "propertyType": "Boolean",
+                            "uid": "1386544786477"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz4",
+                            "propertyType": "Boolean",
+                            "uid": "1417173570247"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz5",
+                            "propertyType": "Boolean",
+                            "uid": "486624805573"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz6",
+                            "propertyType": "Boolean",
+                            "uid": "132869629270"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz7",
+                            "propertyType": "Boolean",
+                            "uid": "1523293689501"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz8",
+                            "propertyType": "Boolean",
+                            "uid": "761729554418"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz9",
+                            "propertyType": "Boolean",
+                            "uid": "1489132650906"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz10",
+                            "propertyType": "Boolean",
+                            "uid": "282866191355"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz11",
+                            "propertyType": "Boolean",
+                            "uid": "1148597275568"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz12",
+                            "propertyType": "Boolean",
+                            "uid": "53437192504"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenz13",
+                            "propertyType": "Boolean",
+                            "uid": "942843159933"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenzText1",
+                            "propertyType": "String",
+                            "uid": "758496396831"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "kompetenzText2",
+                            "propertyType": "String",
+                            "uid": "379071272079"
                         }
                     ]
                 },
@@ -1986,7 +2166,7 @@
             "config": {
                 "position": [
                     28,
-                    52
+                    51.5
                 ]
             },
             "name": "New Model Object",
@@ -2150,7 +2330,7 @@
             "config": {
                 "position": [
                     35,
-                    479
+                    478.5
                 ]
             },
             "name": "New Model Object",
@@ -2311,7 +2491,7 @@
             "config": {
                 "position": [
                     30,
-                    269
+                    268.5
                 ]
             },
             "name": "New Model Object",
@@ -2652,7 +2832,7 @@
             "config": {
                 "position": [
                     646,
-                    32
+                    31.5
                 ]
             },
             "name": "New Model Object",
@@ -3029,7 +3209,7 @@
             "config": {
                 "position": [
                     920,
-                    471
+                    470.5
                 ]
             },
             "name": "New Model Object",
@@ -3178,7 +3358,7 @@
             "config": {
                 "position": [
                     918,
-                    271
+                    270.5
                 ]
             },
             "name": "New Model Object",
@@ -3255,7 +3435,7 @@
             "config": {
                 "position": [
                     1186,
-                    28
+                    27.5
                 ]
             },
             "name": "New Model Object",
@@ -3645,8 +3825,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-03-29 02:40",
-        "extension_builder_version": "v11.0.9",
-        "be_user": " (1)"
+        "last_modified": "2023-04-13 01:36",
+        "extension_builder_version": "v11.0.10",
+        "be_user": " (4)"
     }
 }

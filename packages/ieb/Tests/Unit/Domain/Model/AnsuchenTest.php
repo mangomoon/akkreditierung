@@ -1127,6 +1127,282 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getKompetenz1ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz1());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz1ForBoolSetsKompetenz1(): void
+    {
+        $this->subject->setKompetenz1(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz1'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz2ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz2());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz2ForBoolSetsKompetenz2(): void
+    {
+        $this->subject->setKompetenz2(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz2'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz3ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz3());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz3ForBoolSetsKompetenz3(): void
+    {
+        $this->subject->setKompetenz3(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz3'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz4ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz4());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz4ForBoolSetsKompetenz4(): void
+    {
+        $this->subject->setKompetenz4(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz4'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz5ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz5());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz5ForBoolSetsKompetenz5(): void
+    {
+        $this->subject->setKompetenz5(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz5'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz6ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz6());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz6ForBoolSetsKompetenz6(): void
+    {
+        $this->subject->setKompetenz6(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz6'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz7ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz7());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz7ForBoolSetsKompetenz7(): void
+    {
+        $this->subject->setKompetenz7(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz7'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz8ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz8());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz8ForBoolSetsKompetenz8(): void
+    {
+        $this->subject->setKompetenz8(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz8'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz9ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz9());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz9ForBoolSetsKompetenz9(): void
+    {
+        $this->subject->setKompetenz9(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz9'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz10ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz10());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz10ForBoolSetsKompetenz10(): void
+    {
+        $this->subject->setKompetenz10(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz10'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz11ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz11());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz11ForBoolSetsKompetenz11(): void
+    {
+        $this->subject->setKompetenz11(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz11'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz12ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz12());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz12ForBoolSetsKompetenz12(): void
+    {
+        $this->subject->setKompetenz12(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz12'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenz13ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getKompetenz13());
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenz13ForBoolSetsKompetenz13(): void
+    {
+        $this->subject->setKompetenz13(true);
+
+        self::assertEquals(true, $this->subject->_get('kompetenz13'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenzText1ReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getKompetenzText1()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenzText1ForStringSetsKompetenzText1(): void
+    {
+        $this->subject->setKompetenzText1('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzText1'));
+    }
+
+    /**
+     * @test
+     */
+    public function getKompetenzText2ReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getKompetenzText2()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setKompetenzText2ForStringSetsKompetenzText2(): void
+    {
+        $this->subject->setKompetenzText2('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzText2'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

@@ -464,6 +464,111 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
+     * kompetenz1
+     *
+     * @var bool
+     */
+    protected $kompetenz1 = false;
+
+    /**
+     * kompetenz2
+     *
+     * @var bool
+     */
+    protected $kompetenz2 = false;
+
+    /**
+     * kompetenz3
+     *
+     * @var bool
+     */
+    protected $kompetenz3 = false;
+
+    /**
+     * kompetenz4
+     *
+     * @var bool
+     */
+    protected $kompetenz4 = false;
+
+    /**
+     * kompetenz5
+     *
+     * @var bool
+     */
+    protected $kompetenz5 = false;
+
+    /**
+     * kompetenz6
+     *
+     * @var bool
+     */
+    protected $kompetenz6 = false;
+
+    /**
+     * kompetenz7
+     *
+     * @var bool
+     */
+    protected $kompetenz7 = false;
+
+    /**
+     * kompetenz8
+     *
+     * @var bool
+     */
+    protected $kompetenz8 = false;
+
+    /**
+     * kompetenz9
+     *
+     * @var bool
+     */
+    protected $kompetenz9 = false;
+
+    /**
+     * kompetenz10
+     *
+     * @var bool
+     */
+    protected $kompetenz10 = false;
+
+    /**
+     * kompetenz11
+     *
+     * @var bool
+     */
+    protected $kompetenz11 = false;
+
+    /**
+     * kompetenz12
+     *
+     * @var bool
+     */
+    protected $kompetenz12 = false;
+
+    /**
+     * kompetenz13
+     *
+     * @var bool
+     */
+    protected $kompetenz13 = false;
+
+    /**
+     * kompetenzText1
+     *
+     * @var string
+     */
+    protected $kompetenzText1 = '';
+
+    /**
+     * kompetenzText2
+     *
+     * @var string
+     */
+    protected $kompetenzText2 = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -740,7 +845,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return (int)$this->kompetenzbereiche;
+        return (int) $this->kompetenzbereiche;
     }
 
     /**
@@ -751,7 +856,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = (int)$kompetenzbereiche;
+        $this->kompetenzbereiche = (int) $kompetenzbereiche;
     }
 
     /**
@@ -1996,5 +2101,450 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isStandortErklaerung()
     {
         return $this->standortErklaerung;
+    }
+
+    /**
+     * Returns the kompetenz1
+     *
+     * @return bool
+     */
+    public function getKompetenz1()
+    {
+        return $this->kompetenz1;
+    }
+
+    /**
+     * Sets the kompetenz1
+     *
+     * @param bool $kompetenz1
+     * @return void
+     */
+    public function setKompetenz1(bool $kompetenz1)
+    {
+        $this->kompetenz1 = $kompetenz1;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz1
+     *
+     * @return bool
+     */
+    public function isKompetenz1()
+    {
+        return $this->kompetenz1;
+    }
+
+    /**
+     * Returns the kompetenz2
+     *
+     * @return bool
+     */
+    public function getKompetenz2()
+    {
+        return $this->kompetenz2;
+    }
+
+    /**
+     * Sets the kompetenz2
+     *
+     * @param bool $kompetenz2
+     * @return void
+     */
+    public function setKompetenz2(bool $kompetenz2)
+    {
+        $this->kompetenz2 = $kompetenz2;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz2
+     *
+     * @return bool
+     */
+    public function isKompetenz2()
+    {
+        return $this->kompetenz2;
+    }
+
+    /**
+     * Returns the kompetenz3
+     *
+     * @return bool
+     */
+    public function getKompetenz3()
+    {
+        return $this->kompetenz3;
+    }
+
+    /**
+     * Sets the kompetenz3
+     *
+     * @param bool $kompetenz3
+     * @return void
+     */
+    public function setKompetenz3(bool $kompetenz3)
+    {
+        $this->kompetenz3 = $kompetenz3;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz3
+     *
+     * @return bool
+     */
+    public function isKompetenz3()
+    {
+        return $this->kompetenz3;
+    }
+
+    /**
+     * Returns the kompetenz4
+     *
+     * @return bool
+     */
+    public function getKompetenz4()
+    {
+        return $this->kompetenz4;
+    }
+
+    /**
+     * Sets the kompetenz4
+     *
+     * @param bool $kompetenz4
+     * @return void
+     */
+    public function setKompetenz4(bool $kompetenz4)
+    {
+        $this->kompetenz4 = $kompetenz4;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz4
+     *
+     * @return bool
+     */
+    public function isKompetenz4()
+    {
+        return $this->kompetenz4;
+    }
+
+    /**
+     * Returns the kompetenz5
+     *
+     * @return bool
+     */
+    public function getKompetenz5()
+    {
+        return $this->kompetenz5;
+    }
+
+    /**
+     * Sets the kompetenz5
+     *
+     * @param bool $kompetenz5
+     * @return void
+     */
+    public function setKompetenz5(bool $kompetenz5)
+    {
+        $this->kompetenz5 = $kompetenz5;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz5
+     *
+     * @return bool
+     */
+    public function isKompetenz5()
+    {
+        return $this->kompetenz5;
+    }
+
+    /**
+     * Returns the kompetenz6
+     *
+     * @return bool
+     */
+    public function getKompetenz6()
+    {
+        return $this->kompetenz6;
+    }
+
+    /**
+     * Sets the kompetenz6
+     *
+     * @param bool $kompetenz6
+     * @return void
+     */
+    public function setKompetenz6(bool $kompetenz6)
+    {
+        $this->kompetenz6 = $kompetenz6;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz6
+     *
+     * @return bool
+     */
+    public function isKompetenz6()
+    {
+        return $this->kompetenz6;
+    }
+
+    /**
+     * Returns the kompetenz7
+     *
+     * @return bool
+     */
+    public function getKompetenz7()
+    {
+        return $this->kompetenz7;
+    }
+
+    /**
+     * Sets the kompetenz7
+     *
+     * @param bool $kompetenz7
+     * @return void
+     */
+    public function setKompetenz7(bool $kompetenz7)
+    {
+        $this->kompetenz7 = $kompetenz7;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz7
+     *
+     * @return bool
+     */
+    public function isKompetenz7()
+    {
+        return $this->kompetenz7;
+    }
+
+    /**
+     * Returns the kompetenz8
+     *
+     * @return bool
+     */
+    public function getKompetenz8()
+    {
+        return $this->kompetenz8;
+    }
+
+    /**
+     * Sets the kompetenz8
+     *
+     * @param bool $kompetenz8
+     * @return void
+     */
+    public function setKompetenz8(bool $kompetenz8)
+    {
+        $this->kompetenz8 = $kompetenz8;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz8
+     *
+     * @return bool
+     */
+    public function isKompetenz8()
+    {
+        return $this->kompetenz8;
+    }
+
+    /**
+     * Returns the kompetenz9
+     *
+     * @return bool
+     */
+    public function getKompetenz9()
+    {
+        return $this->kompetenz9;
+    }
+
+    /**
+     * Sets the kompetenz9
+     *
+     * @param bool $kompetenz9
+     * @return void
+     */
+    public function setKompetenz9(bool $kompetenz9)
+    {
+        $this->kompetenz9 = $kompetenz9;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz9
+     *
+     * @return bool
+     */
+    public function isKompetenz9()
+    {
+        return $this->kompetenz9;
+    }
+
+    /**
+     * Returns the kompetenz10
+     *
+     * @return bool
+     */
+    public function getKompetenz10()
+    {
+        return $this->kompetenz10;
+    }
+
+    /**
+     * Sets the kompetenz10
+     *
+     * @param bool $kompetenz10
+     * @return void
+     */
+    public function setKompetenz10(bool $kompetenz10)
+    {
+        $this->kompetenz10 = $kompetenz10;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz10
+     *
+     * @return bool
+     */
+    public function isKompetenz10()
+    {
+        return $this->kompetenz10;
+    }
+
+    /**
+     * Returns the kompetenz11
+     *
+     * @return bool
+     */
+    public function getKompetenz11()
+    {
+        return $this->kompetenz11;
+    }
+
+    /**
+     * Sets the kompetenz11
+     *
+     * @param bool $kompetenz11
+     * @return void
+     */
+    public function setKompetenz11(bool $kompetenz11)
+    {
+        $this->kompetenz11 = $kompetenz11;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz11
+     *
+     * @return bool
+     */
+    public function isKompetenz11()
+    {
+        return $this->kompetenz11;
+    }
+
+    /**
+     * Returns the kompetenz12
+     *
+     * @return bool
+     */
+    public function getKompetenz12()
+    {
+        return $this->kompetenz12;
+    }
+
+    /**
+     * Sets the kompetenz12
+     *
+     * @param bool $kompetenz12
+     * @return void
+     */
+    public function setKompetenz12(bool $kompetenz12)
+    {
+        $this->kompetenz12 = $kompetenz12;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz12
+     *
+     * @return bool
+     */
+    public function isKompetenz12()
+    {
+        return $this->kompetenz12;
+    }
+
+    /**
+     * Returns the kompetenz13
+     *
+     * @return bool
+     */
+    public function getKompetenz13()
+    {
+        return $this->kompetenz13;
+    }
+
+    /**
+     * Sets the kompetenz13
+     *
+     * @param bool $kompetenz13
+     * @return void
+     */
+    public function setKompetenz13(bool $kompetenz13)
+    {
+        $this->kompetenz13 = $kompetenz13;
+    }
+
+    /**
+     * Returns the boolean state of kompetenz13
+     *
+     * @return bool
+     */
+    public function isKompetenz13()
+    {
+        return $this->kompetenz13;
+    }
+
+    /**
+     * Returns the kompetenzText1
+     *
+     * @return string
+     */
+    public function getKompetenzText1()
+    {
+        return $this->kompetenzText1;
+    }
+
+    /**
+     * Sets the kompetenzText1
+     *
+     * @param string $kompetenzText1
+     * @return void
+     */
+    public function setKompetenzText1(string $kompetenzText1)
+    {
+        $this->kompetenzText1 = $kompetenzText1;
+    }
+
+    /**
+     * Returns the kompetenzText2
+     *
+     * @return string
+     */
+    public function getKompetenzText2()
+    {
+        return $this->kompetenzText2;
+    }
+
+    /**
+     * Sets the kompetenzText2
+     *
+     * @param string $kompetenzText2
+     * @return void
+     */
+    public function setKompetenzText2(string $kompetenzText2)
+    {
+        $this->kompetenzText2 = $kompetenzText2;
     }
 }

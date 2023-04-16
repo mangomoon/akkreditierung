@@ -159,6 +159,51 @@
 			<trans-unit id="standort_erklaerung.description" resname="standort_erklaerung.description">
 				<source>standortErklaerung</source>
 			</trans-unit>
+			<trans-unit id="kompetenz1.description" resname="kompetenz1.description">
+				<source>kompetenz1</source>
+			</trans-unit>
+			<trans-unit id="kompetenz2.description" resname="kompetenz2.description">
+				<source>kompetenz2</source>
+			</trans-unit>
+			<trans-unit id="kompetenz3.description" resname="kompetenz3.description">
+				<source>kompetenz3</source>
+			</trans-unit>
+			<trans-unit id="kompetenz4.description" resname="kompetenz4.description">
+				<source>kompetenz4</source>
+			</trans-unit>
+			<trans-unit id="kompetenz5.description" resname="kompetenz5.description">
+				<source>kompetenz5</source>
+			</trans-unit>
+			<trans-unit id="kompetenz6.description" resname="kompetenz6.description">
+				<source>kompetenz6</source>
+			</trans-unit>
+			<trans-unit id="kompetenz7.description" resname="kompetenz7.description">
+				<source>kompetenz7</source>
+			</trans-unit>
+			<trans-unit id="kompetenz8.description" resname="kompetenz8.description">
+				<source>kompetenz8</source>
+			</trans-unit>
+			<trans-unit id="kompetenz9.description" resname="kompetenz9.description">
+				<source>kompetenz9</source>
+			</trans-unit>
+			<trans-unit id="kompetenz10.description" resname="kompetenz10.description">
+				<source>kompetenz10</source>
+			</trans-unit>
+			<trans-unit id="kompetenz11.description" resname="kompetenz11.description">
+				<source>kompetenz11</source>
+			</trans-unit>
+			<trans-unit id="kompetenz12.description" resname="kompetenz12.description">
+				<source>kompetenz12</source>
+			</trans-unit>
+			<trans-unit id="kompetenz13.description" resname="kompetenz13.description">
+				<source>kompetenz13</source>
+			</trans-unit>
+			<trans-unit id="kompetenz_text1.description" resname="kompetenz_text1.description">
+				<source>kompetenzText1</source>
+			</trans-unit>
+			<trans-unit id="kompetenz_text2.description" resname="kompetenz_text2.description">
+				<source>kompetenzText2</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>
