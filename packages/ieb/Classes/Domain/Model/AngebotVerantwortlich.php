@@ -251,7 +251,7 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei
      * @return void
      */
-    public function setLebenslaufDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei)
+    public function setLebenslaufDatei($lebenslaufDatei)
     {
         $this->lebenslaufDatei = $lebenslaufDatei;
     }

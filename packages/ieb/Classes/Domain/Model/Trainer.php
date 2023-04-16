@@ -738,7 +738,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei
      * @return void
      */
-    public function setLebenslaufDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslaufDatei)
+    public function setLebenslaufDatei($lebenslaufDatei)
     {
         $this->lebenslaufDatei = $lebenslaufDatei;
     }
@@ -759,7 +759,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei
      * @return void
      */
-    public function setQualifikationBabiDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationBabiDatei)
+    public function setQualifikationBabiDatei($qualifikationBabiDatei)
     {
         $this->qualifikationBabiDatei = $qualifikationBabiDatei;
     }
@@ -780,7 +780,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnisDatei
      * @return void
      */
-    public function setLehrBefugnisDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lehrBefugnisDatei)
+    public function setLehrBefugnisDatei($lehrBefugnisDatei)
     {
         $this->lehrBefugnisDatei = $lehrBefugnisDatei;
     }
@@ -801,7 +801,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei
      * @return void
      */
-    public function setQualifikationPsaDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationPsaDatei)
+    public function setQualifikationPsaDatei($qualifikationPsaDatei)
     {
         $this->qualifikationPsaDatei = $qualifikationPsaDatei;
     }

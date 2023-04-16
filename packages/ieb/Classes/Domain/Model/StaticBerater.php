@@ -178,7 +178,7 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf
      * @return void
      */
-    public function setLebenslauf(\TYPO3\CMS\Extbase\Domain\Model\FileReference $lebenslauf)
+    public function setLebenslauf($lebenslauf)
     {
         $this->lebenslauf = $lebenslauf;
     }
@@ -199,7 +199,7 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise
      * @return void
      */
-    public function setQualifikationsnachweise(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualifikationsnachweise)
+    public function setQualifikationsnachweise($qualifikationsnachweise)
     {
         $this->qualifikationsnachweise = $qualifikationsnachweise;
     }

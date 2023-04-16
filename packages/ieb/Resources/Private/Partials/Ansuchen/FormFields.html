@@ -185,16 +185,16 @@
         <div class="formfields row babi">
             <div class="col-10">
                 <p>
-                    <input type="checkbox" checked="checked" disabled="disabled" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</p>
+                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
                 <p>
-                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Kompetenzen in der deutschen Sprache </p>
+                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Kompetenzen in der deutschen Sprache</label></p>
                 <p>
-                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Mathematische Kompetenzen</p>
+                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Mathematische Kompetenzen</label></p>
                 <p>
-                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Digitale Kompetenzen</p>
+                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Digitale Kompetenzen</label></p>
                 <p>
-                    <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</p>
-                <f:form.textfield property="kompetenzbereicheText" id="kompetenzbereicheText" />
+                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
+                <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
         </div>
@@ -203,22 +203,22 @@
             <div class="formfields row psa">
                 <div class="col-10">
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
+                        <label for="kompetenz6"><f:form.checkbox property="kompetenz6" id="kompetenz6" value="1" /> Deutsch – Kommunikation und Gesellschaft</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Englisch – Globalität und Transkulturalität</p>
+                        <label for="kompetenz7"><f:form.checkbox property="kompetenz7" id="kompetenz7" value="1" /> Englisch – Globalität und Transkulturalität</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Mathematik</p>
+                        <label for="kompetenz8"><f:form.checkbox property="kompetenz8" id="kompetenz8" value="1" /> Mathematik</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Berufsorientierung</p>
+                        <label for="kompetenz9"><f:form.checkbox property="kompetenz9" id="kompetenz9" value="1" /> Berufsorientierung</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Kreativität und Gestaltung</p>
+                        <label for="kompetenz10"><f:form.checkbox property="kompetenz10" id="kompetenz10" value="1" /> Kreativität und Gestaltung</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Gesundheit und Soziales</p>
+                        <label for="kompetenz11"><f:form.checkbox property="kompetenz11" id="kompetenz11" value="1" /> Gesundheit und Soziales</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Natur und Technik</p>
+                        <label for="kompetenz12"><f:form.checkbox property="kompetenz12" id="kompetenz12" value="1" /> Natur und Technik</label></p>
                     <p>
-                        <f:form.checkbox property="kompetenzbereiche" id="kompetenzbereiche" value="1" /> Weitere Sprachen: Welche?
-                        <f:form.textfield property="kompetenzbereicheText" id="kompetenzbereicheText" />
+                        <label for="kompetenz13"><f:form.checkbox property="kompetenz13" id="kompetenz13" value="1" /> Weitere Sprachen: Welche?</label>
+                        <f:form.textfield property="kompetenzText2" id="kompetenzText2" />
                     </p>
                 </div>
             </div>
@@ -462,8 +462,7 @@
                 &nbsp;
             </th>
         </tr>
-
-        <f:for each="{angebotVerantwortliche}" as="angebotverantwortlich">
+        <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich">
             <tr>
                 <td class="spalte-1">
                     <input class="angebotssteuerungsperson" type="checkbox" />
@@ -472,43 +471,11 @@
                     <input type="checkbox" />
                 </td>
                 <td>
-                    {angebotverantwortlich.nachname}
+                    {angebotverantwortlich.vorname} {angebotverantwortlich.nachname} <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
                 </td>
             </tr>
         </f:for>
-        <tr>
-            <td class="spalte-1">
-                <input class="angebotssteuerungsperson" type="checkbox" />
-            </td>
-            <td class="spalte-2">
-                <input type="checkbox" />
-            </td>
-            <td>
-                &nbsp;Margarete Schütte-Lihotzki (m.s@grosserverein.at)
-            </td>
-        </tr>
-        <tr>
-            <td class="spalte-1">
-                <input class="angebotssteuerungsperson" type="checkbox" />
-            </td>
-            <td class="spalte-2">
-                <input type="checkbox" />
-            </td>
-            <td>
-                &nbsp;Alfred Adler (a.a@grosserverein.at)
-            </td>
-        </tr>
-        <tr>
-            <td class="spalte-1">
-                <input class="angebotssteuerungsperson" type="checkbox" />
-            </td>
-            <td class="spalte-2">
-                <input type="checkbox" />
-            </td>
-            <td>
-                &nbsp;XYZ (a.a@grosserverein.at)
-            </td>
-        </tr>
+
     </table>
     <div class="formzeile"><f:link.page pageUid="18" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</f:link.page></div>
 </div>
@@ -538,16 +505,16 @@
     </div>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
+        <f:form.select property="berater" options="{relations.berater}" optionLabelField="fullName" multiple="1" />
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
     </div>
     <div class="formzeile">
         <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
     </div>
-
     <div id="beraterwahl">
         <div class="row">
             <div class="col-10">
-                <f:for each="{berater}" as="berater">
+                <f:for each="{relations.berater}" as="berater">
                     <p><input type="checkbox" /> {berater.vollerName}</p>
                 </f:for>
             </div>

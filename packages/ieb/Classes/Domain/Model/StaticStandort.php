@@ -299,7 +299,7 @@ class StaticStandort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchule
      * @return void
      */
-    public function setKoopSchule(\TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchule)
+    public function setKoopSchule($koopSchule)
     {
         $this->koopSchule = $koopSchule;
     }
@@ -320,7 +320,7 @@ class StaticStandort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchuleDatei
      * @return void
      */
-    public function setKoopSchuleDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchuleDatei)
+    public function setKoopSchuleDatei($koopSchuleDatei)
     {
         $this->koopSchuleDatei = $koopSchuleDatei;
     }

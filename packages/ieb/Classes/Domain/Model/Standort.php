@@ -243,7 +243,7 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchuleDatei
      * @return void
      */
-    public function setKoopSchuleDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $koopSchuleDatei)
+    public function setKoopSchuleDatei($koopSchuleDatei)
     {
         $this->koopSchuleDatei = $koopSchuleDatei;
     }
