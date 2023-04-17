@@ -35,8 +35,8 @@ return [
             'backendLogo' => '',
             'loginBackgroundImage' => '',
             'loginFootnote' => '',
-            'loginHighlightColor' => '',
-            'loginLogo' => '',
+            'loginHighlightColor' => '#c3161c',
+            'loginLogo' => 'EXT:ieb/Resources/Public/Backend/logo.svg',
             'loginLogoAlt' => '',
         ],
         'extension_builder' => [
