@@ -31,14 +31,15 @@
         <div class="formfields row">
             <div class="col-6">
 
-                <f:render partial="Form/Select" arguments="{property:'rechtsform', additionalAttributes:'required', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
+                <f:render partial="Form/Select" arguments="{property:'rechtsform', additionalAttributes:'required', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}"
+                />
 
                 <label for="seit" class="req abstandoben">tätig seit</label>
                 <f:form.textfield property="seit" id="seit" class="req" />
             </div>
             <div class="col-6">
                 <label for="nachweis" class="req">Vereinsregisterauszug/Firmenbuchauszug</label>
-                <ieb:form.upload property="nachweis" id="nachweis" class="req" />
+                <ieb:form.upload property="nachweis" id="nachweis" class="reqfile" />
             </div>
         </div>
     </div>
@@ -47,7 +48,7 @@
         <div class="formfields">
             <div class="col-6">
                 <label for="strasse" class="req">Anschrift</label>
-                <f:form.textarea property="strasse" id="strasse" class="req"></f:form.textarea>
+                <f:form.textarea property="strasse" id="strasse" class="reqtext"></f:form.textarea>
                 <div class="row">
                     <div class="col-2" style="margin-right:18px;">
                         <label for="plz" class="req">PLZ</label>
@@ -83,22 +84,26 @@
         <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
     </div>
 
-    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'req', label='Leitbild (pdf)', anmerkung:'leitbild'}" />
+
+    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'req', label='Leitbild (pdf)', anmerkung:'leitbild', metadaten='{stammdaten.leitbildDatei.originalResource}', file:'{stammdaten.leitbildDatei}'}" />
+
+
+
 </div>
 
 
 <div class="kriterium" id="a-2-2">
-    <h2>A.2.2 Qualitätssicherung der Einrichtung</h2>
+    <h2>A.2.2 Qualitätssicherung der Einrichtung {qmsTyp}</h2>
     <div class="janeinwechsel">
 
 
         <p>Die Organisation verfügt über Ö-Cert:
-            <f:form.hidden name="qmsTyp" id="qmsTyp" value="{qmsTyp}" />
-            <knopf class="inline stammdatenjanein ja {f:if(condition:qmsTyp,then:'checked')}">ja</knopf>
-            <knopf class="inline stammdatenjanein nein {f:if(condition:qmsTyp,then:'checked')}">nein</knopf>
+            <f:form.hidden property="qmsTyp" id="qmsTyp" value="{qmsTyp}" />
+            <knopf class="inline stammdatenjanein ja {f:if(condition:'{stammdaten.qmsTyp}==1', then:'checked')}">ja</knopf>
+            <knopf class="inline stammdatenjanein nein {f:if(condition:'{stammdaten.qmsTyp}==2', then:'checked')}">nein</knopf>
         </p>
 
-        <div class="oecert oecert-1 <f:if condition='{qmsTyp}==1'> checked</f:if>">
+        <div class="oecert oecert-1 {f:if(condition:'{stammdaten.qmsTyp}==1', then:'checked')}">
 
 
             <f:render partial="Form/Upload" arguments="{property:'qmsZertifikatDatei', id:'qmsZertifikatDatei', req:'req', label='Ö-Cert (PDF)', anmerkung:'qmsZertifikat'}" />
@@ -106,7 +111,7 @@
                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
             </div>
         </div>
-        <div class="oecert oecert-2 {f:if(condition:qmsTyp==2,then:'checked')}">
+        <div class="oecert oecert-2 {f:if(condition:'{stammdaten.qmsTyp}==2', then:'checked')}">
             <div class="erlaeuterung">
                 <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird und welche Abläufe die Qualität Ihrer Einrichtung sichern.
                 </p>

@@ -111,6 +111,10 @@ h2 {
     color: var(--f4);
 }
 
+td {
+    line-height: 150%;
+}
+
 .info {
     position: absolute;
     top: 16px;
@@ -200,8 +204,41 @@ p.hinweisextra {
     color: var(--f4);
 }
 
-span.worthinweis {
-    /* text-transform: uppercase; */
+
+/* ###### FILELIST ######### */
+
+.filelist {
+    font-size: 0.85em;
+    background: #f3efe8;
+    max-width: 48%;
+}
+
+.filelist a:link {
+    color: var(--f4);
+}
+
+.filelist .links {
+    margin: 0 0 0 20px;
+    padding: 0 10px 0 0;
+}
+
+.filelist .rechts {
+    margin: 0;
+    padding: 4px 10px 4px 0;
+}
+
+.filelist .rechts p {
+    padding: 0;
+    margin: 0;
+}
+
+.filelist .rechts p.filelink {
+    padding-bottom: 20px;
+}
+
+.thumbnail {
+    width: 70px;
+    height: auto;
 }
 
 .formfields {

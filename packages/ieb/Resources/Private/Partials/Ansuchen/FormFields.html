@@ -15,11 +15,23 @@
     </div>
     <div class="col-9">
         <label for="name" class="req">Name des Bildungsangebots</label>
-        <f:form.textfield property="name" id="name" class="breite100 req" />
-
+        <f:form.textfield property="name" id="name" class="breite100 reqtext" />
     </div>
 </div>
 
+<!-- ############### Ansuchennummer PP3 ########### -->
+<div class="kriterium">
+    <div class="erlaeuterung ">
+        <p>Zur Beschleunigung des Akkreditierungsprozesses können Sie hier unverbindlich die Ansuchennummer des Ansuchens, das diesem.</p>
+    </div>
+    <div class="formfields row">
+        <div class="col-3">
+            <label for="name">Ansuchennummer PP3:</label><br>
+            <input type="text" />
+        </div>
+    </div>
+
+</div>
 <!-- ############### STAMMDATEN ########### -->
 
 <div class="kriterium">
@@ -147,7 +159,9 @@
         </tr>
     </table>
 
-    <div class="formzeile"><f:link.page pageUid="10" class="formlink stammdaten">Organsiation: Daten bearbeiten</f:link.page></div>
+    <div class="formzeile">
+        <f:link.page pageUid="10" class="formlink stammdaten">Organsiation: Daten bearbeiten</f:link.page>
+    </div>
 </div>
 
 <!-- ############### B1 ########### -->
@@ -194,7 +208,7 @@
                     <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Digitale Kompetenzen</label></p>
                 <p>
                     <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
-                <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
+                    <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
         </div>
@@ -260,7 +274,9 @@
 
                 <f:render partial="Form/Select" arguments="{property:'standorte',  label:'Standorte', options:standorte, multiple:1, optionLabelField:'name'}" />
 
-                <div class="formzeile"><f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page></div>
+                <div class="formzeile">
+                    <f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page>
+                </div>
             </div>
         </div>
     </div>
@@ -471,13 +487,16 @@
                     <input type="checkbox" />
                 </td>
                 <td>
-                    {angebotverantwortlich.vorname} {angebotverantwortlich.nachname} <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
+                    {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}
+                    <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
                 </td>
             </tr>
         </f:for>
 
     </table>
-    <div class="formzeile"><f:link.page pageUid="18" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</f:link.page></div>
+    <div class="formzeile">
+        <f:link.page pageUid="18" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</f:link.page>
+    </div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -495,7 +514,9 @@
 
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
-    <div class="formzeile"><f:link.page pageUid="12" class="formlink trainer">Training: Daten bearbeiten</f:link.page></div>
+    <div class="formzeile">
+        <f:link.page pageUid="12" class="formlink trainer">Training: Daten bearbeiten</f:link.page>
+    </div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -513,24 +534,26 @@
     <div class="formzeile">
         <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
     </div>
-<!--    <div id="beraterwahl">-->
-<!--        <div class="row">-->
-<!--            <div class="col-10">-->
-<!--                <f:for each="{relations.berater}" as="berater">-->
-<!--                    <p><input type="checkbox" /> {berater.vollerName}</p>-->
-<!--                </f:for>-->
-<!--            </div>-->
-<!--            <div class="col-2">-->
-<!--                Schließen<br> Jetzt hinzufügen-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    <div id="beraterwahl">-->
+    <!--        <div class="row">-->
+    <!--            <div class="col-10">-->
+    <!--                <f:for each="{relations.berater}" as="berater">-->
+    <!--                    <p><input type="checkbox" /> {berater.vollerName}</p>-->
+    <!--                </f:for>-->
+    <!--            </div>-->
+    <!--            <div class="col-2">-->
+    <!--                Schließen<br> Jetzt hinzufügen-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
 
     <f:for each="{berater}" as="berater">
         <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
     </f:for>
-    <div class="formzeile"><f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page></div>
+    <div class="formzeile">
+        <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
+    </div>
 </div>
 
 <!-- ############### ERKLÄRUNGEN ########### -->

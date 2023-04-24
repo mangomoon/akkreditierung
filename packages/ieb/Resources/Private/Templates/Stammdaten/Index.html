@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <f:flashMessages />
+
     <f:render partial="FormErrors" />
     <f:if condition="{exists}">
         <f:then>
@@ -10,6 +10,9 @@
                 <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
                 <f:form.submit value="Speichern" class="knopf-s" />
             </f:form>
+            <script>
+                validieren();
+            </script>
         </f:then>
         <f:else>
             <f:form action="create" name="newStammdaten" object="{stammdaten}" class="formStammdaten newStammdaten" enctype="multipart/form-data">

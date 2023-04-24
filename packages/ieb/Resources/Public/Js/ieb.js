@@ -4,16 +4,20 @@ function validieren() {
     // SKIZZE: if( document.getElementById("videoUploadFile").files.length == 0 )
 
     $('.req').each(function() {
-        console.log($(this).text());
-        $(this).addClass('req-leer');
-        if (!$(this).val() == '' || !$(this).text()) {
-            $(this).removeClass('req-leer');
+
+        if ($(this).val().length == 0) {
+            $(this).addClass('req-leer');
         }
 
     });
+    $('.reqtext').each(function() {
+        if ($(this).text() == '') {
+            $(this).addClass('req-leer');
+        }
+    });
     $('.reqselect').each(function() {
 
-        if ($("option:selected").val() == '') {
+        if ($(this).val() == 0) {
             $(this).addClass('req-leer');
         }
 

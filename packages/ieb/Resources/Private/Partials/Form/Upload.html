@@ -1,5 +1,19 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
-
+<f:debug>{_all}</f:debug>
+<div class="filelist">
+    <div class="links">
+        <f:media class="thumbnail" file="{stammdaten.leitbildDatei}" width="{dimensions.width}" height="{dimensions.height}" alt="{file.alternative}" title="{file.title}" loading="{settings.media.lazyLoading}" decoding="{settings.media.imageDecoding}" />
+    </div>
+    <div class="rechts">
+        <p class="filelink">
+            <a href="/fileadmin{metadaten.originalFile.properties.identifier}" target="_blank">{metadaten.originalFile.properties.name}</a>
+        </p>
+        <p>{metadaten.originalFile.properties.size -> f:format.bytes()} | {metadaten.originalFile.properties.extension}</p>
+        <p>
+            <f:format.date format="%d. %B %Y">{metadaten.originalFile.properties.creation_date}</f:format.date>
+        </p>
+    </div>
+</div>
 <div class="formfields row {req}" id="{id}">
     <div class="col-6">
         <label class="req">{label}</label>
@@ -9,6 +23,7 @@
         <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>
         <f:form.textarea property="{anmerkung}" id="{anmerkung}" class="anmerkung"></f:form.textarea>
     </div>
+
 </div>
 
 </html>
