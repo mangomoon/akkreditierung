@@ -155,4 +155,15 @@ class AnsuchenController extends BaseController
     {
         $this->angebotVerantwortlichRepository = $repository;
     }
+
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newAnsuchen');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('ansuchen');
+    }
+
 }

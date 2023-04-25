@@ -90,4 +90,13 @@ class TrainerController extends BaseController
         
         $this->redirect('index');
     }
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newTrainer');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('trainer');
+    }
 }

@@ -46,7 +46,8 @@
             </p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'qualifikationsnachweise', id:'qualifikationsnachweise', req:'req', label='nachweise', anmerkung:'qualifikationsnachweiseKommentar'}" />
+        <f:render partial="Form/Upload" arguments="{property:'qualifikationsnachweise', id:'qualifikationsnachweise', req:'req', label='nachweise', anmerkung:'qualifikationsnachweiseKommentar', metadaten='{stammdaten.qualifikationsnachweise.originalResource}', file: '{stammdaten.qualifikationsnachweise}'}"
+        />
 
     </div>
 
@@ -58,10 +59,8 @@
             <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', label='Lebenslauf', anmerkung:'lebenslaufKommentar'}" />
+        <f:render partial="Form/Upload" arguments="{property:'lebenslauf', id:'lebenslauf', req:'req', label='Lebenslauf', anmerkung:'lebenslaufKommentar', metadaten='{stammdaten.lebenslauf.originalResource}', file: '{stammdaten.lebenslauf}'}" />
 
     </div>
-
-</div>
 
 </html>

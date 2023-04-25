@@ -62,6 +62,12 @@ class BaseController extends ActionController
             'newBerater' => ['lebenslauf', 'qualifikationsnachweise'],
             'stammdaten' => ['nachweis', 'leitbildDatei', 'qmsZertifikatDatei', 'qualitaetPersonalDatei', 'qualitaetSicherungDatei', 'pruefbescheidDatei'],
             'newStammdaten' => ['nachweis', 'leitbildDatei', 'qmsZertifikatDatei', 'qualitaetPersonalDatei', 'qualitaetSicherungDatei', 'pruefbescheidDatei'],
+            'angebotVerantwortlich' => ['lebenslaufDatei'],
+            'newAngebotVerantwortlich' => ['lebenslaufDatei'],
+            'trainer' => ['qualifikationBabiDatei', 'lehrBefugnisDatei', 'qualifikationPsaDatei', 'lebenslaufDatei'],
+            'newTrainer' => ['qualifikationBabiDatei', 'lehrBefugnisDatei', 'qualifikationPsaDatei', 'lebenslaufDatei'],
+            'ansuchen' => ['uebersichtDatei', 'zielgruppenAnspracheDatei', 'lernziele', 'lernstandserhebung', 'diversity', 'beratungDatei', 'pruefbescheidDatei', 'kooperationDatei'],
+            'NewAnsuchen' => ['uebersichtDatei', 'zielgruppenAnspracheDatei', 'lernziele', 'lernstandserhebung', 'diversity', 'beratungDatei', 'pruefbescheidDatei', 'kooperationDatei'],'
         ];
         if (!isset($mapping[$argumentName])) {
             throw new \RuntimeException(sprintf('Argument "%s" not found in image conversion configuration', $argumentName), 1673611646);

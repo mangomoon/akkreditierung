@@ -3,6 +3,11 @@
 keep Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
+
+    <div class="formzeile">
+        <f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action>
+    </div>
+
     <f:if condition="{angebotVerantwortliches}">
 
 
@@ -61,44 +66,47 @@ keep Otherwise your changes will be overwritten the next time you save the exten
             </f:for>
         </table>
 
-        <h4>Nicht aktiv</h4>
-        <table class="tx_ieb angebotVerantwortlich">
-            <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
-                <f:if condition="{angebotVerantwortlich.archiviert}">
-                    <tr>
-                        <td class="nachname">
-                            {angebotVerantwortlich.nachname}
-                        </td>
-                        <td class="vorname">
-                            {angebotVerantwortlich.vorname}
-                        </td>
-                        <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <td class="">
-                            <f:if condition="{angebotVerantwortlich.ok}">
-                                <f:then>
-                                    ja
-                                </f:then>
-                                <f:else>
-                                    nein
-                                </f:else>
-                            </f:if>
+        <div class="abstand-mittel"></div>
+        <div class="archiv">
+            <h2>ARCHIV</h2>
+            <table class="tx_ieb angebotVerantwortlich">
+                <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+                    <f:if condition="{angebotVerantwortlich.archiviert}">
+                        <tr>
+                            <td class="nachname">
+                                {angebotVerantwortlich.nachname}
+                            </td>
+                            <td class="vorname">
+                                {angebotVerantwortlich.vorname}
+                            </td>
+                            <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                            <td class="">
+                                <f:if condition="{angebotVerantwortlich.ok}">
+                                    <f:then>
+                                        ja
+                                    </f:then>
+                                    <f:else>
+                                        nein
+                                    </f:else>
+                                </f:if>
 
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch revive" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
 
-                        </td>
-                    </tr>
-                </f:if>
-            </f:for>
-        </table>
+                            </td>
+                        </tr>
+                    </f:if>
+                </f:for>
+            </table>
+        </div>
     </f:if>
 
     <div class="formzeile">

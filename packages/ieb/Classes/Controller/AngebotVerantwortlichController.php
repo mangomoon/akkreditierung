@@ -152,4 +152,14 @@ class AngebotVerantwortlichController extends BaseController
         
         $this->redirect('index');
     }
+
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newAngebotVerantwortlich');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('angebotVerantwortlich');
+    }
 }
