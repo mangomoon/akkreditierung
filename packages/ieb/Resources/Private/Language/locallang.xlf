@@ -537,6 +537,12 @@
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.locked_by.description" resname="tx_ieb_domain_model_staticstammdaten.locked_by.description">
 				<source>Locked By</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung" resname="tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung">
+				<source>Weiterbildung Erklaerung</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung.description" resname="tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung.description">
+				<source>Weiterbildung Erklaerung</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_staticstammdaten.standorte" resname="tx_ieb_domain_model_staticstammdaten.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -921,29 +927,29 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz9.description" resname="tx_ieb_domain_model_ansuchen.kompetenz9.description">
 				<source>Kompetenz9</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz10" resname="tx_ieb_domain_model_ansuchen.kompetenz10">
-				<source>Kompetenz10</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd1" resname="tx_ieb_domain_model_ansuchen.erklaerungd1">
+				<source>Erklaerungd1</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz10.description" resname="tx_ieb_domain_model_ansuchen.kompetenz10.description">
-				<source>Kompetenz10</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd1.description" resname="tx_ieb_domain_model_ansuchen.erklaerungd1.description">
+				<source>Erklaerungd1</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz11" resname="tx_ieb_domain_model_ansuchen.kompetenz11">
-				<source>Kompetenz11</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd2" resname="tx_ieb_domain_model_ansuchen.erklaerungd2">
+				<source>Erklaerungd2</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz11.description" resname="tx_ieb_domain_model_ansuchen.kompetenz11.description">
-				<source>Kompetenz11</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd2.description" resname="tx_ieb_domain_model_ansuchen.erklaerungd2.description">
+				<source>Erklaerungd2</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz12" resname="tx_ieb_domain_model_ansuchen.kompetenz12">
-				<source>Kompetenz12</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd3" resname="tx_ieb_domain_model_ansuchen.erklaerungd3">
+				<source>Erklaerungd3</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz12.description" resname="tx_ieb_domain_model_ansuchen.kompetenz12.description">
-				<source>Kompetenz12</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd3.description" resname="tx_ieb_domain_model_ansuchen.erklaerungd3.description">
+				<source>Erklaerungd3</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz13" resname="tx_ieb_domain_model_ansuchen.kompetenz13">
-				<source>Kompetenz13</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd4" resname="tx_ieb_domain_model_ansuchen.erklaerungd4">
+				<source>Erklaerungd4</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz13.description" resname="tx_ieb_domain_model_ansuchen.kompetenz13.description">
-				<source>Kompetenz13</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd4.description" resname="tx_ieb_domain_model_ansuchen.erklaerungd4.description">
+				<source>Erklaerungd4</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz_text1" resname="tx_ieb_domain_model_ansuchen.kompetenz_text1">
 				<source>Kompetenz Text1</source>
@@ -956,6 +962,18 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz_text2.description" resname="tx_ieb_domain_model_ansuchen.kompetenz_text2.description">
 				<source>Kompetenz Text2</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerung_teil_a" resname="tx_ieb_domain_model_ansuchen.erklaerung_teil_a">
+				<source>Erklaerung Teil A</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerung_teil_a.description" resname="tx_ieb_domain_model_ansuchen.erklaerung_teil_a.description">
+				<source>Erklaerung Teil A</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.nummerpp3" resname="tx_ieb_domain_model_ansuchen.nummerpp3">
+				<source>Nummerpp3</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.nummerpp3.description" resname="tx_ieb_domain_model_ansuchen.nummerpp3.description">
+				<source>Nummerpp3</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
@@ -1473,6 +1491,12 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.ok.description" resname="tx_ieb_domain_model_stammdaten.ok.description">
 				<source>Ok</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.weiterbildung_erklaerung" resname="tx_ieb_domain_model_stammdaten.weiterbildung_erklaerung">
+				<source>Weiterbildung Erklaerung</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.weiterbildung_erklaerung.description" resname="tx_ieb_domain_model_stammdaten.weiterbildung_erklaerung.description">
+				<source>Weiterbildung Erklaerung</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.standorte" resname="tx_ieb_domain_model_stammdaten.standorte">
 				<source>Standorte</source>
 			</trans-unit>
@@ -1604,6 +1628,30 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien.ppd.description" resname="tx_ieb_domain_model_kriterien.ppd.description">
 				<source>Ppd</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz10" resname="tx_ieb_domain_model_ansuchen.kompetenz10">
+				<source>Kompetenz10</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz10.description" resname="tx_ieb_domain_model_ansuchen.kompetenz10.description">
+				<source>Kompetenz10</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz11" resname="tx_ieb_domain_model_ansuchen.kompetenz11">
+				<source>Kompetenz11</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz11.description" resname="tx_ieb_domain_model_ansuchen.kompetenz11.description">
+				<source>Kompetenz11</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz12" resname="tx_ieb_domain_model_ansuchen.kompetenz12">
+				<source>Kompetenz12</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz12.description" resname="tx_ieb_domain_model_ansuchen.kompetenz12.description">
+				<source>Kompetenz12</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz13" resname="tx_ieb_domain_model_ansuchen.kompetenz13">
+				<source>Kompetenz13</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz13.description" resname="tx_ieb_domain_model_ansuchen.kompetenz13.description">
+				<source>Kompetenz13</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.koopertion" resname="tx_ieb_domain_model_ansuchen.koopertion">
 				<source>Koopertion</source>

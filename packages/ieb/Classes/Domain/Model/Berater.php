@@ -272,7 +272,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
-
     public function getVollerName()
     {
         return $this->vorname . ' ' . $this->nachname;
@@ -381,7 +380,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->archiviert;
     }
-
     public function getFullName()
     {
         return implode(' ', array_filter([$this->vorname, $this->nachname]));

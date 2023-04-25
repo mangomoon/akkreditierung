@@ -674,6 +674,27 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getWeiterbildungErklaerungReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getWeiterbildungErklaerung()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setWeiterbildungErklaerungForIntSetsWeiterbildungErklaerung(): void
+    {
+        $this->subject->setWeiterbildungErklaerung(12);
+
+        self::assertEquals(12, $this->subject->_get('weiterbildungErklaerung'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStaticStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

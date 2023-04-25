@@ -223,6 +223,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $standorte = null;
 
     /**
+     * weiterbildungErklaerung
+     *
+     * @var bool
+     */
+    protected $weiterbildungErklaerung = false;
+
+    /**
      * Returns the name
      *
      * @return string
@@ -832,5 +839,36 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getAddressFilled()
     {
         return $this->getStrasse() && $this->getPlz() && $this->getOrt();
+    }
+
+    /**
+     * Returns the weiterbildungErklaerung
+     *
+     * @return bool
+     */
+    public function getWeiterbildungErklaerung()
+    {
+        return $this->weiterbildungErklaerung;
+    }
+
+    /**
+     * Sets the weiterbildungErklaerung
+     *
+     * @param bool $weiterbildungErklaerung
+     * @return void
+     */
+    public function setWeiterbildungErklaerung(bool $weiterbildungErklaerung)
+    {
+        $this->weiterbildungErklaerung = $weiterbildungErklaerung;
+    }
+
+    /**
+     * Returns the boolean state of weiterbildungErklaerung
+     *
+     * @return bool
+     */
+    public function isWeiterbildungErklaerung()
+    {
+        return $this->weiterbildungErklaerung;
     }
 }

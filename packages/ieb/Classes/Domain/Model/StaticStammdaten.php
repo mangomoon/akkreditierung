@@ -251,6 +251,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * weiterbildungErklaerung
+     *
+     * @var int
+     */
+    protected $weiterbildungErklaerung = 0;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -975,5 +982,26 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setMarkenname(string $markenname)
     {
         $this->markenname = $markenname;
+    }
+
+    /**
+     * Returns the weiterbildungErklaerung
+     *
+     * @return int
+     */
+    public function getWeiterbildungErklaerung()
+    {
+        return $this->weiterbildungErklaerung;
+    }
+
+    /**
+     * Sets the weiterbildungErklaerung
+     *
+     * @param int $weiterbildungErklaerung
+     * @return void
+     */
+    public function setWeiterbildungErklaerung(int $weiterbildungErklaerung)
+    {
+        $this->weiterbildungErklaerung = $weiterbildungErklaerung;
     }
 }

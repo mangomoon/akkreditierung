@@ -93,6 +93,7 @@ CREATE TABLE tx_ieb_domain_model_staticstammdaten (
 	review_status int(11) DEFAULT '0' NOT NULL,
 	review_frist date DEFAULT NULL,
 	locked_by int(11) NOT NULL DEFAULT '0',
+	weiterbildung_erklaerung int(11) NOT NULL DEFAULT '0',
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	based_on int(11) unsigned DEFAULT '0'
 );
@@ -159,12 +160,14 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	kompetenz7 smallint(1) unsigned NOT NULL DEFAULT '0',
 	kompetenz8 smallint(1) unsigned NOT NULL DEFAULT '0',
 	kompetenz9 smallint(1) unsigned NOT NULL DEFAULT '0',
-	kompetenz10 smallint(1) unsigned NOT NULL DEFAULT '0',
-	kompetenz11 smallint(1) unsigned NOT NULL DEFAULT '0',
-	kompetenz12 smallint(1) unsigned NOT NULL DEFAULT '0',
-	kompetenz13 smallint(1) unsigned NOT NULL DEFAULT '0',
+	erklaerungd1 smallint(1) unsigned NOT NULL DEFAULT '0',
+	erklaerungd2 smallint(1) unsigned NOT NULL DEFAULT '0',
+	erklaerungd3 smallint(1) unsigned NOT NULL DEFAULT '0',
+	erklaerungd4 smallint(1) unsigned NOT NULL DEFAULT '0',
 	kompetenz_text1 varchar(255) NOT NULL DEFAULT '',
 	kompetenz_text2 varchar(255) NOT NULL DEFAULT '',
+	erklaerung_teil_a smallint(1) unsigned NOT NULL DEFAULT '0',
+	nummerpp3 varchar(255) NOT NULL DEFAULT '',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -259,6 +262,7 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	weiterbildung_erklaerung smallint(1) unsigned NOT NULL DEFAULT '0',
 	standorte int(11) unsigned DEFAULT '0'
 );
 

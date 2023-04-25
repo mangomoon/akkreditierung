@@ -10,11 +10,11 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_commen_tr,review_b2_comment_internal,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_tr,review_total_comment_internal,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,kompetenz_text2',
+        'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_commen_tr,review_b2_comment_internal,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_tr,review_total_comment_internal,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,kompetenz_text2,nummerpp3',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, kompetenz10, kompetenz11, kompetenz12, kompetenz13, kompetenz_text1, kompetenz_text2, stammdaten_static, standorte_static, verantwortliche, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_commen_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, erklaerungd4, kompetenz_text1, kompetenz_text2, erklaerung_teil_a, nummerpp3, stammdaten_static, standorte_static, verantwortliche, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -1209,10 +1209,10 @@ return [
                 'default' => 0,
             ]
         ],
-        'kompetenz10' => [
+        'erklaerungd1' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz10',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz10.description',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd1',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd1.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1225,10 +1225,10 @@ return [
                 'default' => 0,
             ]
         ],
-        'kompetenz11' => [
+        'erklaerungd2' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz11',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz11.description',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd2',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd2.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1241,10 +1241,10 @@ return [
                 'default' => 0,
             ]
         ],
-        'kompetenz12' => [
+        'erklaerungd3' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz12',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz12.description',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd3',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd3.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1257,10 +1257,10 @@ return [
                 'default' => 0,
             ]
         ],
-        'kompetenz13' => [
+        'erklaerungd4' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz13',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz13.description',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd4',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd4.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1288,6 +1288,33 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text2',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text2.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'default' => ''
+            ],
+        ],
+        'erklaerung_teil_a' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerung_teil_a',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerung_teil_a.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'nummerpp3' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.nummerpp3',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.nummerpp3.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

@@ -1289,73 +1289,73 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getKompetenz10ReturnsInitialValueForBool(): void
+    public function getErklaerungd1ReturnsInitialValueForBool(): void
     {
-        self::assertFalse($this->subject->getKompetenz10());
+        self::assertFalse($this->subject->getErklaerungd1());
     }
 
     /**
      * @test
      */
-    public function setKompetenz10ForBoolSetsKompetenz10(): void
+    public function setErklaerungd1ForBoolSetsErklaerungd1(): void
     {
-        $this->subject->setKompetenz10(true);
+        $this->subject->setErklaerungd1(true);
 
-        self::assertEquals(true, $this->subject->_get('kompetenz10'));
+        self::assertEquals(true, $this->subject->_get('erklaerungd1'));
     }
 
     /**
      * @test
      */
-    public function getKompetenz11ReturnsInitialValueForBool(): void
+    public function getErklaerungd2ReturnsInitialValueForBool(): void
     {
-        self::assertFalse($this->subject->getKompetenz11());
+        self::assertFalse($this->subject->getErklaerungd2());
     }
 
     /**
      * @test
      */
-    public function setKompetenz11ForBoolSetsKompetenz11(): void
+    public function setErklaerungd2ForBoolSetsErklaerungd2(): void
     {
-        $this->subject->setKompetenz11(true);
+        $this->subject->setErklaerungd2(true);
 
-        self::assertEquals(true, $this->subject->_get('kompetenz11'));
+        self::assertEquals(true, $this->subject->_get('erklaerungd2'));
     }
 
     /**
      * @test
      */
-    public function getKompetenz12ReturnsInitialValueForBool(): void
+    public function getErklaerungd3ReturnsInitialValueForBool(): void
     {
-        self::assertFalse($this->subject->getKompetenz12());
+        self::assertFalse($this->subject->getErklaerungd3());
     }
 
     /**
      * @test
      */
-    public function setKompetenz12ForBoolSetsKompetenz12(): void
+    public function setErklaerungd3ForBoolSetsErklaerungd3(): void
     {
-        $this->subject->setKompetenz12(true);
+        $this->subject->setErklaerungd3(true);
 
-        self::assertEquals(true, $this->subject->_get('kompetenz12'));
+        self::assertEquals(true, $this->subject->_get('erklaerungd3'));
     }
 
     /**
      * @test
      */
-    public function getKompetenz13ReturnsInitialValueForBool(): void
+    public function getErklaerungd4ReturnsInitialValueForBool(): void
     {
-        self::assertFalse($this->subject->getKompetenz13());
+        self::assertFalse($this->subject->getErklaerungd4());
     }
 
     /**
      * @test
      */
-    public function setKompetenz13ForBoolSetsKompetenz13(): void
+    public function setErklaerungd4ForBoolSetsErklaerungd4(): void
     {
-        $this->subject->setKompetenz13(true);
+        $this->subject->setErklaerungd4(true);
 
-        self::assertEquals(true, $this->subject->_get('kompetenz13'));
+        self::assertEquals(true, $this->subject->_get('erklaerungd4'));
     }
 
     /**
@@ -1398,6 +1398,45 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setKompetenzText2('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzText2'));
+    }
+
+    /**
+     * @test
+     */
+    public function getErklaerungTeilAReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getErklaerungTeilA());
+    }
+
+    /**
+     * @test
+     */
+    public function setErklaerungTeilAForBoolSetsErklaerungTeilA(): void
+    {
+        $this->subject->setErklaerungTeilA(true);
+
+        self::assertEquals(true, $this->subject->_get('erklaerungTeilA'));
+    }
+
+    /**
+     * @test
+     */
+    public function getNummerpp3ReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getNummerpp3()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setNummerpp3ForStringSetsNummerpp3(): void
+    {
+        $this->subject->setNummerpp3('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('nummerpp3'));
     }
 
     /**

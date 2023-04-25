@@ -25,9 +25,9 @@
         <p>Zur Beschleunigung des Akkreditierungsprozesses können Sie hier unverbindlich die Ansuchennummer des Ansuchens, das diesem.</p>
     </div>
     <div class="formfields row">
-        <div class="col-3">
+        <div class="col">
             <label for="name">Ansuchennummer PP3:</label><br>
-            <input type="text" />
+            <f:form.textfield property="nummerpp3" id="nummerpp3" class="breite100 reqtext" />
         </div>
     </div>
 
@@ -42,10 +42,21 @@
                 &nbsp;
             </td>
             <td class="labeltext">
-                Rechtsgültiger Vereins- bzw. Firmenname<br>Markenname bzw. Organisationseinheit:
+                Rechtsgültiger Vereins- bzw. Firmenname
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.name}',then:'fehlt')}">
-                {relations.stammdaten.name}<br>{relations.stammdaten.markenname}
+                {relations.stammdaten.name}
+            </td>
+        </tr>
+        <tr>
+            <td class="chiffre">
+                &nbsp;
+            </td>
+            <td class="labeltext">
+                Markenname bzw. Organisationseinheit:
+            </td>
+            <td class="check">
+                {relations.stammdaten.markenname}
             </td>
         </tr>
         <tr class="linie">
@@ -57,10 +68,21 @@
 
             </td>
             <td class="labeltext">
-                Rechts-/Organisationsform (tätig seit):<br />Nachweis:
+                Rechts-/Organisationsform (tätig seit):
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.rechtsform}',then:'fehlt')}">
                 <ieb:arrayValue array="{settings.static.rechtsform}" key="{relations.stammdaten.rechtsform}" fallback="fehlt" />
+            </td>
+        </tr>
+        <tr>
+            <td class="chiffre">
+
+            </td>
+            <td class="labeltext">
+                Nachweis:
+            </td>
+            <td class="check {f:if(condition:'!{relations.stammdaten.rechtsform}',then:'fehlt')}">
+                <a href="/fileadmin{stammdaten.leitbildDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.nachweis.originalResource.properties.name}</a>
             </td>
         </tr>
         <tr class="linie">
@@ -123,25 +145,56 @@
                 Leitbild:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.leitbild}',then:'fehlt')}">
-                {relations.stammdaten.leitbild}
+                <a href="/fileadmin{relations.stammdaten.leitbildDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.leitbildDatei.originalResource.properties.name}</a><br>{relations.stammdaten.leitbild}
             </td>
         </tr>
         <tr class="linie">
             <td colspan="3"></td>
             <!-- ------------------------------ -->
         </tr>
-        <tr>
-            <td class="chiffre">
-                A.2.2
-            </td>
-            <td class="labeltext">
-                Qualität des Anbieters/Ö-Cert:
-            </td>
-            <td class="check {f:if(condition:'!{relations.stammdaten.XXXX}',then:'fehlt')}">
-                <!-- IF für alle drei!!! -->
-                {relations.stammdaten.}
-            </td>
-        </tr>
+        <f:switch expression="{relations.stammdaten.qmsTyp}">
+            <f:case value="0">
+                <tr>
+                    <td class="chiffre">
+                        A.2.2
+                    </td>
+                    <td class="labeltext">
+                        Qualität des Anbieters/Ö-Cert vor:
+                    </td>
+                    <td class="fehlt">
+                        fehlt
+                    </td>
+                </tr>
+            </f:case>
+            <f:case value="1">
+                <tr>
+                    <td class="chiffre">
+                        A.2.2
+                    </td>
+                    <td class="labeltext">
+                        Ö-Cert:
+                    </td>
+                    <td class="check {f:if(condition:'!{relations.stammdaten.qmsZertifikatDatei}',then:'fehlt')}">
+                        <a href="/fileadmin{relations.stammdaten.qmsZertifikatDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qmsZertifikatDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qmsZertifikat}
+                    </td>
+                </tr>
+            </f:case>
+            <f:case value="2">
+                <tr>
+                    <td class="chiffre">
+                        A.2.2
+                    </td>
+                    <td class="labeltext">
+                        Qualität des Anbieters (es liegt kein Ö-Cert vor):
+                    </td>
+                    <td class="check {f:if(condition:'!{relations.stammdaten.qualitaetSicherungDatei}',then:'fehlt')}">
+                        <a href="/fileadmin{relations.stammdaten.qualitaetSicherungDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qualitaetSicherungDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qualitaetSicherung}
+                    </td>
+                </tr>
+            </f:case>
+
+        </f:switch>
+
         <tr class="linie">
             <td colspan="3"></td>
             <!-- ------------------------------ -->
@@ -154,10 +207,14 @@
                 Qualitätssichernde Maßnahmen Personal:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.qualitaetPersonalDatei}',then:'fehlt')}">
-                {relations.stammdaten.qualitaetPersonalDatei}
+                <a href="/fileadmin{relations.stammdaten.qualitaetPersonalDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qualitaetPersonalDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qualitaetPersonal}
             </td>
         </tr>
     </table>
+    <div class="abstand-gross"></div>
+    <p>
+        <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" value="1" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
+    </p>
 
     <div class="formzeile">
         <f:link.page pageUid="10" class="formlink stammdaten">Organsiation: Daten bearbeiten</f:link.page>
@@ -199,15 +256,15 @@
         <div class="formfields row babi">
             <div class="col-10">
                 <p>
-                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
+                    <label for="kompetenza"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenza"/> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
                 <p>
-                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Kompetenzen in der deutschen Sprache</label></p>
+                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kompetenzen in der deutschen Sprache</label></p>
                 <p>
-                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Mathematische Kompetenzen</label></p>
+                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Mathematische Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Digitale Kompetenzen</label></p>
+                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Digitale Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
+                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
                     <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
@@ -217,21 +274,21 @@
             <div class="formfields row psa">
                 <div class="col-10">
                     <p>
-                        <label for="kompetenz6"><f:form.checkbox property="kompetenz6" id="kompetenz6" value="1" /> Deutsch – Kommunikation und Gesellschaft</label></p>
+                        <label for="kompetenzb"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzb"/> Deutsch – Kommunikation und Gesellschaft</label></p>
                     <p>
-                        <label for="kompetenz7"><f:form.checkbox property="kompetenz7" id="kompetenz7" value="1" /> Englisch – Globalität und Transkulturalität</label></p>
+                        <label for="kompetenzc"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzc"/> Englisch – Globalität und Transkulturalität</label></p>
                     <p>
-                        <label for="kompetenz8"><f:form.checkbox property="kompetenz8" id="kompetenz8" value="1" /> Mathematik</label></p>
+                        <label for="kompetenzd"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzd"/> Mathematik</label></p>
                     <p>
-                        <label for="kompetenz9"><f:form.checkbox property="kompetenz9" id="kompetenz9" value="1" /> Berufsorientierung</label></p>
+                        <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
                     <p>
-                        <label for="kompetenz10"><f:form.checkbox property="kompetenz10" id="kompetenz10" value="1" /> Kreativität und Gestaltung</label></p>
+                        <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Kreativität und Gestaltung</label></p>
                     <p>
-                        <label for="kompetenz11"><f:form.checkbox property="kompetenz11" id="kompetenz11" value="1" /> Gesundheit und Soziales</label></p>
+                        <label for="kompetenz6"><f:form.checkbox property="kompetenz6" id="kompetenz6" value="1" /> Gesundheit und Soziales</label></p>
                     <p>
-                        <label for="kompetenz12"><f:form.checkbox property="kompetenz12" id="kompetenz12" value="1" /> Natur und Technik</label></p>
+                        <label for="kompetenz7"><f:form.checkbox property="kompetenz7" id="kompetenz7" value="1" /> Natur und Technik</label></p>
                     <p>
-                        <label for="kompetenz13"><f:form.checkbox property="kompetenz13" id="kompetenz13" value="1" /> Weitere Sprachen: Welche?</label>
+                        <label for="kompetenz8"><f:form.checkbox property="kompetenz8" id="kompetenz8" value="1" /> Weitere Sprachen: Welche?</label>
                         <f:form.textfield property="kompetenzText2" id="kompetenzText2" />
                     </p>
                 </div>
@@ -261,7 +318,7 @@
                 <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
                 <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS
-                    vorhanden – die unter A. angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                    vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
                     <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="req" />
                 </p>
             </div>
@@ -321,8 +378,8 @@
         <h3>B.2.1 Ansprache und Erreichung der Zielgruppe</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.</div>
-        <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird darauf eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen Sie dar, wie Sie Ihre
-            Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie exemplarisch einen Folder, Kurs-Einladung, Plakat o.ä. hoch.
+        <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird auf diese eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen Sie dar, wie Sie
+            Ihre Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie zusätzlich einen Folder, eine Kurs-Einladung, ein Plakat o.ä. hoch.
         </p>
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
 
@@ -339,7 +396,7 @@
             <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots
                 (maximal 30%)</p>
         </div>
-        <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten möchten bezüglich</p>
+        <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
         <ul>
             <li>
                 Aufbau, Lehrinhalte, Gestaltung/Methoden
@@ -383,18 +440,22 @@
         <div class="infobox" id="b-2-c-x-hilfe">
             <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
         </div>
-        <div class="info psa"></div>
+        <!--<div class="info psa"></div>
         <div class="infobox" id="b-2-c-x-hilfe">
             <p>Die Prüfungsvorbereitung orientiert sich an der Rechtsvorschrift für Pflichtschulabschluss-Prüfungs-Gesetz und der Verordnung der Bundesministerin für Unterricht, Kunst und Kultur über die Prüfungsgebiete der Pflichtschulabschluss-Prüfung.</p>
-        </div>
+        </div>-->
         <div class="erlaeuterung">
-            <p class="babi">Lernstanderhebung: Beschreiben Sie, wie Sie den Kompetenzstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
-            <p class="psa">Lernstanderhebung: Stellen Sie dar, wie Sie die Teilnehmer/innen auf die Prüfung vorbereiten.</p>
+            <p class="babi">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
+            <p class="psa">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenzstand zu Beginn und begleitend erheben, sowie wie Sie die Teilnehmenden auf die Prüfung vorbereiten und welche Verfahren hier zum Einsatz kommen.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
         </div>
+        <div class="abstand-gross psa"></div>
+        <p>
+            <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" value="1" /> Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.
+        </p>
         <div class="formfields row">
             <div class="col-6">
-                <label class="req">Upload Lernstandserhebung (PDF)</label>
+                <label class="req">Upload Kompetenzerhebung (PDF)</label>
                 <ieb:form.upload property="lernstandserhebung" id="lernstandserhebung" class="req">
                     <f:if condition="{resource}">
                         <div id="lernstandserhebungListe">
@@ -408,7 +469,7 @@
 
     <div class="kriteriumteil">
         <div class="erlaeuterung">
-            <p>Stellen Sie dar, wie Gender- und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
+            <p>Stellen Sie dar, wie Gender und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
         </div>
 
@@ -455,13 +516,13 @@
     </div>
 </div>
 
-<!-- ############### Angebotssteuerung ########### -->
+<!-- ############### Projektsteuerung ########### -->
 
 <div class="kriterium">
-    <h2>C.1 Angebotssteuerung</h2>
+    <h2>C.1 Projektsteuerung</h2>
     <div class="erlaeuterung">
-        <p>Fügen Sie dem Ansuchen die angebotssteuernde(n) Person(en) hinzu und wählen Sie eine oder zwei Kontaktperson(en) aus.<br> Die angebotssteuernde Person bzw. das Team der Angebotssteuernden verfügt über Management-Kompetenz (Erfahrung oder formale
-            Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik, (Erfahrung oder formale Qualifikation).</p>
+        <p>Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).<br> Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation)
+            und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation)..</p>
         <p class="hinweis">
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
         </p>
@@ -495,7 +556,7 @@
 
     </table>
     <div class="formzeile">
-        <f:link.page pageUid="18" class="formlink angebotssteuernde">Angebotssteuerung: Daten bearbeiten</f:link.page>
+        <f:link.page pageUid="18" class="formlink angebotssteuernde">Projektsteuerung: Daten bearbeiten</f:link.page>
     </div>
 </div>
 
@@ -560,8 +621,8 @@
 
 <div class="kriterium">
     <h2>D Erklärungen</h2>
-    <p><input type="checkbox" /> Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen<br /> a) über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen<br /> b) und zur Verwendung
-        personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br /> Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
+    <p><input type="checkbox" /> Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
+        Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br /> Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
     </p>
     <p><input type="checkbox" /> Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
         für allfällige Kontrollen aufzubewahren.

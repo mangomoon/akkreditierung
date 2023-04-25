@@ -14,7 +14,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_staticstammdaten.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, markenname, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, review_comment_internal, review_comment_tr, review_status, review_frist, locked_by, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, markenname, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, zertifikat_bis, qualitaet_sicherung, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, pruefbescheid, pruefbescheid_datei, pruefbescheid_bis, review_comment_internal, review_comment_tr, review_status, review_frist, locked_by, weiterbildung_erklaerung, standorte, based_on, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -670,6 +670,17 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.locked_by',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.locked_by.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
+            ]
+        ],
+        'weiterbildung_erklaerung' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_staticstammdaten.weiterbildung_erklaerung.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,

@@ -607,6 +607,24 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getWeiterbildungErklaerungReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getWeiterbildungErklaerung());
+    }
+
+    /**
+     * @test
+     */
+    public function setWeiterbildungErklaerungForBoolSetsWeiterbildungErklaerung(): void
+    {
+        $this->subject->setWeiterbildungErklaerung(true);
+
+        self::assertEquals(true, $this->subject->_get('weiterbildungErklaerung'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         self::assertEquals(

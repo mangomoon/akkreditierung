@@ -393,6 +393,111 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $standortErklaerung = false;
 
     /**
+     * kompetenz1
+     *
+     * @var bool
+     */
+    protected $kompetenz1 = false;
+
+    /**
+     * kompetenz2
+     *
+     * @var bool
+     */
+    protected $kompetenz2 = false;
+
+    /**
+     * kompetenz3
+     *
+     * @var bool
+     */
+    protected $kompetenz3 = false;
+
+    /**
+     * kompetenz4
+     *
+     * @var bool
+     */
+    protected $kompetenz4 = false;
+
+    /**
+     * kompetenz5
+     *
+     * @var bool
+     */
+    protected $kompetenz5 = false;
+
+    /**
+     * kompetenz6
+     *
+     * @var bool
+     */
+    protected $kompetenz6 = false;
+
+    /**
+     * kompetenz7
+     *
+     * @var bool
+     */
+    protected $kompetenz7 = false;
+
+    /**
+     * kompetenz8
+     *
+     * @var bool
+     */
+    protected $kompetenz8 = false;
+
+    /**
+     * kompetenz9
+     *
+     * @var bool
+     */
+    protected $kompetenz9 = false;
+
+    /**
+     * erklaerungd1
+     *
+     * @var bool
+     */
+    protected $erklaerungd1 = false;
+
+    /**
+     * erklaerungd2
+     *
+     * @var bool
+     */
+    protected $erklaerungd2 = false;
+
+    /**
+     * erklaerungd3
+     *
+     * @var bool
+     */
+    protected $erklaerungd3 = false;
+
+    /**
+     * erklaerungd4
+     *
+     * @var bool
+     */
+    protected $erklaerungd4 = false;
+
+    /**
+     * kompetenzText1
+     *
+     * @var string
+     */
+    protected $kompetenzText1 = '';
+
+    /**
+     * kompetenzText2
+     *
+     * @var string
+     */
+    protected $kompetenzText2 = '';
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -464,109 +569,18 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
-     * kompetenz1
+     * erklaerungTeilA
      *
      * @var bool
      */
-    protected $kompetenz1 = false;
+    protected $erklaerungTeilA = false;
 
     /**
-     * kompetenz2
-     *
-     * @var bool
-     */
-    protected $kompetenz2 = false;
-
-    /**
-     * kompetenz3
-     *
-     * @var bool
-     */
-    protected $kompetenz3 = false;
-
-    /**
-     * kompetenz4
-     *
-     * @var bool
-     */
-    protected $kompetenz4 = false;
-
-    /**
-     * kompetenz5
-     *
-     * @var bool
-     */
-    protected $kompetenz5 = false;
-
-    /**
-     * kompetenz6
-     *
-     * @var bool
-     */
-    protected $kompetenz6 = false;
-
-    /**
-     * kompetenz7
-     *
-     * @var bool
-     */
-    protected $kompetenz7 = false;
-
-    /**
-     * kompetenz8
-     *
-     * @var bool
-     */
-    protected $kompetenz8 = false;
-
-    /**
-     * kompetenz9
-     *
-     * @var bool
-     */
-    protected $kompetenz9 = false;
-
-    /**
-     * kompetenz10
-     *
-     * @var bool
-     */
-    protected $kompetenz10 = false;
-
-    /**
-     * kompetenz11
-     *
-     * @var bool
-     */
-    protected $kompetenz11 = false;
-
-    /**
-     * kompetenz12
-     *
-     * @var bool
-     */
-    protected $kompetenz12 = false;
-
-    /**
-     * kompetenz13
-     *
-     * @var bool
-     */
-    protected $kompetenz13 = false;
-
-    /**
-     * kompetenzText1
+     * nummerpp3
      *
      * @var string
      */
-    protected $kompetenzText1 = '';
-
-    /**
-     * kompetenzText2
-     *
-     * @var string
-     */
-    protected $kompetenzText2 = '';
+    protected $nummerpp3 = '';
 
     /**
      * __construct
@@ -2383,130 +2397,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the kompetenz10
-     *
-     * @return bool
-     */
-    public function getKompetenz10()
-    {
-        return $this->kompetenz10;
-    }
-
-    /**
-     * Sets the kompetenz10
-     *
-     * @param bool $kompetenz10
-     * @return void
-     */
-    public function setKompetenz10(bool $kompetenz10)
-    {
-        $this->kompetenz10 = $kompetenz10;
-    }
-
-    /**
-     * Returns the boolean state of kompetenz10
-     *
-     * @return bool
-     */
-    public function isKompetenz10()
-    {
-        return $this->kompetenz10;
-    }
-
-    /**
-     * Returns the kompetenz11
-     *
-     * @return bool
-     */
-    public function getKompetenz11()
-    {
-        return $this->kompetenz11;
-    }
-
-    /**
-     * Sets the kompetenz11
-     *
-     * @param bool $kompetenz11
-     * @return void
-     */
-    public function setKompetenz11(bool $kompetenz11)
-    {
-        $this->kompetenz11 = $kompetenz11;
-    }
-
-    /**
-     * Returns the boolean state of kompetenz11
-     *
-     * @return bool
-     */
-    public function isKompetenz11()
-    {
-        return $this->kompetenz11;
-    }
-
-    /**
-     * Returns the kompetenz12
-     *
-     * @return bool
-     */
-    public function getKompetenz12()
-    {
-        return $this->kompetenz12;
-    }
-
-    /**
-     * Sets the kompetenz12
-     *
-     * @param bool $kompetenz12
-     * @return void
-     */
-    public function setKompetenz12(bool $kompetenz12)
-    {
-        $this->kompetenz12 = $kompetenz12;
-    }
-
-    /**
-     * Returns the boolean state of kompetenz12
-     *
-     * @return bool
-     */
-    public function isKompetenz12()
-    {
-        return $this->kompetenz12;
-    }
-
-    /**
-     * Returns the kompetenz13
-     *
-     * @return bool
-     */
-    public function getKompetenz13()
-    {
-        return $this->kompetenz13;
-    }
-
-    /**
-     * Sets the kompetenz13
-     *
-     * @param bool $kompetenz13
-     * @return void
-     */
-    public function setKompetenz13(bool $kompetenz13)
-    {
-        $this->kompetenz13 = $kompetenz13;
-    }
-
-    /**
-     * Returns the boolean state of kompetenz13
-     *
-     * @return bool
-     */
-    public function isKompetenz13()
-    {
-        return $this->kompetenz13;
-    }
-
-    /**
      * Returns the kompetenzText1
      *
      * @return string
@@ -2546,5 +2436,181 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setKompetenzText2(string $kompetenzText2)
     {
         $this->kompetenzText2 = $kompetenzText2;
+    }
+
+    /**
+     * Returns the erklaerungd1
+     *
+     * @return bool erklaerungd1
+     */
+    public function getErklaerungd1()
+    {
+        return $this->erklaerungd1;
+    }
+
+    /**
+     * Sets the erklaerungd1
+     *
+     * @param bool $erklaerungd1
+     * @return void
+     */
+    public function setErklaerungd1(bool $erklaerungd1)
+    {
+        $this->erklaerungd1 = $erklaerungd1;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungd1
+     *
+     * @return bool erklaerungd1
+     */
+    public function isErklaerungd1()
+    {
+        return $this->erklaerungd1;
+    }
+
+    /**
+     * Returns the erklaerungd2
+     *
+     * @return bool erklaerungd2
+     */
+    public function getErklaerungd2()
+    {
+        return $this->erklaerungd2;
+    }
+
+    /**
+     * Sets the erklaerungd2
+     *
+     * @param bool $erklaerungd2
+     * @return void
+     */
+    public function setErklaerungd2(bool $erklaerungd2)
+    {
+        $this->erklaerungd2 = $erklaerungd2;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungd2
+     *
+     * @return bool erklaerungd2
+     */
+    public function isErklaerungd2()
+    {
+        return $this->erklaerungd2;
+    }
+
+    /**
+     * Returns the erklaerungd3
+     *
+     * @return bool erklaerungd3
+     */
+    public function getErklaerungd3()
+    {
+        return $this->erklaerungd3;
+    }
+
+    /**
+     * Sets the erklaerungd3
+     *
+     * @param bool $erklaerungd3
+     * @return void
+     */
+    public function setErklaerungd3(bool $erklaerungd3)
+    {
+        $this->erklaerungd3 = $erklaerungd3;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungd3
+     *
+     * @return bool erklaerungd3
+     */
+    public function isErklaerungd3()
+    {
+        return $this->erklaerungd3;
+    }
+
+    /**
+     * Returns the erklaerungd4
+     *
+     * @return bool erklaerungd4
+     */
+    public function getErklaerungd4()
+    {
+        return $this->erklaerungd4;
+    }
+
+    /**
+     * Sets the erklaerungd4
+     *
+     * @param bool $erklaerungd4
+     * @return void
+     */
+    public function setErklaerungd4(bool $erklaerungd4)
+    {
+        $this->erklaerungd4 = $erklaerungd4;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungd4
+     *
+     * @return bool erklaerungd4
+     */
+    public function isErklaerungd4()
+    {
+        return $this->erklaerungd4;
+    }
+
+    /**
+     * Returns the erklaerungTeilA
+     *
+     * @return bool
+     */
+    public function getErklaerungTeilA()
+    {
+        return $this->erklaerungTeilA;
+    }
+
+    /**
+     * Sets the erklaerungTeilA
+     *
+     * @param bool $erklaerungTeilA
+     * @return void
+     */
+    public function setErklaerungTeilA(bool $erklaerungTeilA)
+    {
+        $this->erklaerungTeilA = $erklaerungTeilA;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungTeilA
+     *
+     * @return bool
+     */
+    public function isErklaerungTeilA()
+    {
+        return $this->erklaerungTeilA;
+    }
+
+    /**
+     * Returns the nummerpp3
+     *
+     * @return string
+     */
+    public function getNummerpp3()
+    {
+        return $this->nummerpp3;
+    }
+
+    /**
+     * Sets the nummerpp3
+     *
+     * @param string $nummerpp3
+     * @return void
+     */
+    public function setNummerpp3(string $nummerpp3)
+    {
+        $this->nummerpp3 = $nummerpp3;
     }
 }

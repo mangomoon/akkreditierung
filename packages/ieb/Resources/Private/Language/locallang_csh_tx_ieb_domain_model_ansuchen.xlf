@@ -186,23 +186,29 @@
 			<trans-unit id="kompetenz9.description" resname="kompetenz9.description">
 				<source>kompetenz9</source>
 			</trans-unit>
-			<trans-unit id="kompetenz10.description" resname="kompetenz10.description">
-				<source>kompetenz10</source>
+			<trans-unit id="erklaerungd1.description" resname="erklaerungd1.description">
+				<source>erklaerungd1</source>
 			</trans-unit>
-			<trans-unit id="kompetenz11.description" resname="kompetenz11.description">
-				<source>kompetenz11</source>
+			<trans-unit id="erklaerungd2.description" resname="erklaerungd2.description">
+				<source>erklaerungd2</source>
 			</trans-unit>
-			<trans-unit id="kompetenz12.description" resname="kompetenz12.description">
-				<source>kompetenz12</source>
+			<trans-unit id="erklaerungd3.description" resname="erklaerungd3.description">
+				<source>erklaerungd3</source>
 			</trans-unit>
-			<trans-unit id="kompetenz13.description" resname="kompetenz13.description">
-				<source>kompetenz13</source>
+			<trans-unit id="erklaerungd4.description" resname="erklaerungd4.description">
+				<source>erklaerungd4</source>
 			</trans-unit>
 			<trans-unit id="kompetenz_text1.description" resname="kompetenz_text1.description">
 				<source>kompetenzText1</source>
 			</trans-unit>
 			<trans-unit id="kompetenz_text2.description" resname="kompetenz_text2.description">
 				<source>kompetenzText2</source>
+			</trans-unit>
+			<trans-unit id="erklaerung_teil_a.description" resname="erklaerung_teil_a.description">
+				<source>erklaerungTeilA</source>
+			</trans-unit>
+			<trans-unit id="nummerpp3.description" resname="nummerpp3.description">
+				<source>nummerpp3</source>
 			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
@@ -233,6 +239,18 @@
 			</trans-unit>
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
+			</trans-unit>
+			<trans-unit id="kompetenz10.description" resname="kompetenz10.description">
+				<source>kompetenz10</source>
+			</trans-unit>
+			<trans-unit id="kompetenz11.description" resname="kompetenz11.description">
+				<source>kompetenz11</source>
+			</trans-unit>
+			<trans-unit id="kompetenz12.description" resname="kompetenz12.description">
+				<source>kompetenz12</source>
+			</trans-unit>
+			<trans-unit id="kompetenz13.description" resname="kompetenz13.description">
+				<source>kompetenz13</source>
 			</trans-unit>
 			<trans-unit id="koopertion.description" resname="koopertion.description">
 				<source>koopertion</source>

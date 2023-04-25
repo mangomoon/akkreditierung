@@ -867,7 +867,6 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->archiviert;
     }
-
     public function getFullName()
     {
         return implode(' ', array_filter([$this->vorname, $this->nachname]));

@@ -105,12 +105,12 @@ body {
 }
 
 a {
-    color: #c3161c;
+    color: #231f20;
     text-decoration: underline;
 }
 
 a:hover {
-    color: #caccce;
+    color: #c3161c;
 }
 
 strong {

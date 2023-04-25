@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    260.5
+                    260
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    476.5
+                    476
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    27.5
+                    27
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    26.5
+                    26
                 ]
             },
             "name": "New Model Object",
@@ -1175,6 +1175,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "125237624795"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "weiterbildungErklaerung",
+                            "propertyType": "Integer",
+                            "uid": "1076233668315"
                         }
                     ]
                 },
@@ -1210,7 +1222,7 @@
             "config": {
                 "position": [
                     646,
-                    274.5
+                    274
                 ]
             },
             "name": "New Model Object",
@@ -1980,7 +1992,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "kompetenz10",
+                            "propertyName": "erklaerungd1",
                             "propertyType": "Boolean",
                             "uid": "282866191355"
                         },
@@ -1992,7 +2004,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "kompetenz11",
+                            "propertyName": "erklaerungd2",
                             "propertyType": "Boolean",
                             "uid": "1148597275568"
                         },
@@ -2004,7 +2016,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "kompetenz12",
+                            "propertyName": "erklaerungd3",
                             "propertyType": "Boolean",
                             "uid": "53437192504"
                         },
@@ -2016,7 +2028,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "kompetenz13",
+                            "propertyName": "erklaerungd4",
                             "propertyType": "Boolean",
                             "uid": "942843159933"
                         },
@@ -2043,6 +2055,30 @@
                             "propertyName": "kompetenzText2",
                             "propertyType": "String",
                             "uid": "379071272079"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "erklaerungTeilA",
+                            "propertyType": "Boolean",
+                            "uid": "622269008184"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "nummerpp3",
+                            "propertyType": "String",
+                            "uid": "1007336114618"
                         }
                     ]
                 },
@@ -2166,7 +2202,7 @@
             "config": {
                 "position": [
                     28,
-                    51.5
+                    51
                 ]
             },
             "name": "New Model Object",
@@ -2330,7 +2366,7 @@
             "config": {
                 "position": [
                     35,
-                    478.5
+                    478
                 ]
             },
             "name": "New Model Object",
@@ -2491,7 +2527,7 @@
             "config": {
                 "position": [
                     30,
-                    268.5
+                    268
                 ]
             },
             "name": "New Model Object",
@@ -2832,7 +2868,7 @@
             "config": {
                 "position": [
                     646,
-                    31.5
+                    31
                 ]
             },
             "name": "New Model Object",
@@ -3185,6 +3221,18 @@
                             "propertyName": "ok",
                             "propertyType": "Boolean",
                             "uid": "1612046494073"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "weiterbildungErklaerung",
+                            "propertyType": "Boolean",
+                            "uid": "953402998308"
                         }
                     ]
                 },
@@ -3209,7 +3257,7 @@
             "config": {
                 "position": [
                     920,
-                    470.5
+                    470
                 ]
             },
             "name": "New Model Object",
@@ -3358,7 +3406,7 @@
             "config": {
                 "position": [
                     918,
-                    270.5
+                    270
                 ]
             },
             "name": "New Model Object",
@@ -3435,7 +3483,7 @@
             "config": {
                 "position": [
                     1186,
-                    27.5
+                    27
                 ]
             },
             "name": "New Model Object",
@@ -3825,8 +3873,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-04-13 01:36",
+        "last_modified": "2023-04-25 11:41",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (4)"
+        "be_user": " (1)"
     }
 }
