@@ -207,6 +207,9 @@
 			<trans-unit id="erklaerung_teil_a.description" resname="erklaerung_teil_a.description">
 				<source>erklaerungTeilA</source>
 			</trans-unit>
+			<trans-unit id="erklaerung_teil_b.description" resname="erklaerung_teil_b.description">
+				<source>erklaerungTeilB</source>
+			</trans-unit>
 			<trans-unit id="nummerpp3.description" resname="nummerpp3.description">
 				<source>nummerpp3</source>
 			</trans-unit>

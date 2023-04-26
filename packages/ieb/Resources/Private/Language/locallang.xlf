@@ -969,6 +969,12 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerung_teil_a.description" resname="tx_ieb_domain_model_ansuchen.erklaerung_teil_a.description">
 				<source>Erklaerung Teil A</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerung_teil_b" resname="tx_ieb_domain_model_ansuchen.erklaerung_teil_b">
+				<source>Erklaerung Teil B</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerung_teil_b.description" resname="tx_ieb_domain_model_ansuchen.erklaerung_teil_b.description">
+				<source>Erklaerung Teil B</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.nummerpp3" resname="tx_ieb_domain_model_ansuchen.nummerpp3">
 				<source>Nummerpp3</source>
 			</trans-unit>

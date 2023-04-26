@@ -75,12 +75,12 @@ function trainerfelder() {
 // Feldermanagement Ansuchen
 
 function ansuchenfelder() {
-    if ($('#ansuchenbereich').hasClass('babichecked')) {
+    if ($('#ansuchenbereichbabi').hasClass('babichecked')) {
         $('.babi').each(function() {
             $(this).addClass('ischecked');
         });
     };
-    if ($('#ansuchenbereich').hasClass('psachecked')) {
+    if ($('#ansuchenbereichpsa').hasClass('psachecked')) {
         $('.psa').each(function() {
             $(this).addClass('ischecked');
         });

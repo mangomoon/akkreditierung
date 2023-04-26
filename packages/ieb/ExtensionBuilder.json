@@ -2076,6 +2076,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "erklaerungTeilB",
+                            "propertyType": "Boolean",
+                            "uid": "528888786802"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "nummerpp3",
                             "propertyType": "String",
                             "uid": "1007336114618"
@@ -3885,7 +3897,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-04-26 06:43",
+        "last_modified": "2023-04-26 07:29",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

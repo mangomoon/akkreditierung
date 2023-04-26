@@ -1421,6 +1421,24 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getErklaerungTeilBReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getErklaerungTeilB());
+    }
+
+    /**
+     * @test
+     */
+    public function setErklaerungTeilBForBoolSetsErklaerungTeilB(): void
+    {
+        $this->subject->setErklaerungTeilB(true);
+
+        self::assertEquals(true, $this->subject->_get('erklaerungTeilB'));
+    }
+
+    /**
+     * @test
+     */
     public function getNummerpp3ReturnsInitialValueForString(): void
     {
         self::assertSame(

@@ -221,7 +221,7 @@
     </div>
 </div>
 
-<!-- ############### B1 ########### -->
+<!-- ############### B.1 ########### -->
 
 <div class="kriterium">
     <h2>B.1 Eckdaten zum Angebot</h2>
@@ -230,17 +230,17 @@
         <div class="formfields row">
             <div class="col-10">
                 <label for="typ" class="inline req">Bildungsbereich:</label>
-                <f:switch expression="{typ}">
+                <f:switch expression="{ansuchen.typ}">
                     <f:case value="0">
-                        <f:form.hidden name="typ" id="typ" value="{typ}" />
+                        <f:form.hidden name="typ" id="typ" property="typ" value="{ansuchen.typ}" />
                         <knopf class="inline ansuchenjanein istbabi">Basisbildung</knopf>
                         <knopf class="inline ansuchenjanein istpsa">Pflichtschulabschluss</knopf>
                     </f:case>
                     <f:case value="1">
-                        <span id="ansuchenbereich" class="{f:if(condition:typ==1,then:'babichecked')}">Basisbildung</span>
+                        <span id="ansuchenbereichbabi" class="{f:if(condition:'{ansuchen.typ}==1',then:'babichecked')} fett">Basisbildung</span>
                     </f:case>
                     <f:case value="2">
-                        <span id="ansuchenbereich" class="{f:if(condition:typ==2,then:'psachecked')}">Pflichtschulabschluss</span>
+                        <span id="ansuchenbereichpsa" class="{f:if(condition:'{ansuchen.typ}==2',then:'psachecked')} fett">Pflichtschulabschluss</span>
                     </f:case>
                 </f:switch>
             </div>
@@ -304,6 +304,8 @@
     </div>
 
 </div>
+
+<!-- ############### B.1.4 Standorte ########### -->
 <div class="kriterium">
 
     <div class="kriteriumteil">
@@ -328,9 +330,7 @@
                 <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
             </div>
             <div class="col-6" id="b-1-d-2">
-
-                <f:render partial="Form/Select" arguments="{property:'standorte',  label:'Standorte', options:standorte, multiple:1, optionLabelField:'name'}" />
-
+                <f:form.select property="standorte" options="{relations.standorte}" optionLabelField="name" multiple="1" />
                 <div class="formzeile">
                     <f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page>
                 </div>
@@ -339,13 +339,16 @@
     </div>
 
 </div>
+
+<!-- ############### B.1.5 Prüfung und Kooperation ########### -->
+
 <div class="kriterium psa">
     <div class="kriteriumteil">
         <h3>B.1.5 Abnahme von Prüfungen</h3>
         <div class="info"></div>
         <div class="infobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
         <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
-            <knopf class="inline pruefjanein ja">ja</knopf>
+            <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'checked')}">ja</knopf>
             <knopf class="inline pruefjanein nein">nein</knopf>
         </p>
 
@@ -451,7 +454,7 @@
         </div>
         <div class="abstand-gross psa"></div>
         <p>
-            <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" value="1" /> Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.
+            <f:form.checkbox property="erklaerungTeilB" id="erklaerungTeilB" value="1" /> Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.
         </p>
         <div class="formfields row">
             <div class="col-6">
@@ -636,7 +639,7 @@
     </p>
 </div>
 
-<!-- ############### JS ########### -->^
+<!-- ############### JS ########### -->
 
 
 <script>
