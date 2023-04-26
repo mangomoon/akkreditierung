@@ -210,6 +210,9 @@
 			<trans-unit id="nummerpp3.description" resname="nummerpp3.description">
 				<source>nummerpp3</source>
 			</trans-unit>
+			<trans-unit id="erklaerungd5.description" resname="erklaerungd5.description">
+				<source>erklaerungd5</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>

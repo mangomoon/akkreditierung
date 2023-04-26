@@ -2079,6 +2079,18 @@
                             "propertyName": "nummerpp3",
                             "propertyType": "String",
                             "uid": "1007336114618"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "erklaerungd5",
+                            "propertyType": "Boolean",
+                            "uid": "504719137185"
                         }
                     ]
                 },
@@ -3873,7 +3885,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-04-25 11:41",
+        "last_modified": "2023-04-26 06:43",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

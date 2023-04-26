@@ -237,6 +237,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lockedBy = 0;
 
     /**
+     * weiterbildungErklaerung
+     *
+     * @var int
+     */
+    protected $weiterbildungErklaerung = 0;
+
+    /**
      * standorte
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
@@ -249,13 +256,6 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Stammdaten
      */
     protected $basedOn = null;
-
-    /**
-     * weiterbildungErklaerung
-     *
-     * @var int
-     */
-    protected $weiterbildungErklaerung = 0;
 
     /**
      * __construct

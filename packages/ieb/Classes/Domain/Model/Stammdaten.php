@@ -216,18 +216,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $ok = false;
 
     /**
-     * standorte
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Standort
-     */
-    protected $standorte = null;
-
-    /**
      * weiterbildungErklaerung
      *
      * @var bool
      */
     protected $weiterbildungErklaerung = false;
+
+    /**
+     * standorte
+     *
+     * @var \GeorgRinger\Ieb\Domain\Model\Standort
+     */
+    protected $standorte = null;
 
     /**
      * Returns the name

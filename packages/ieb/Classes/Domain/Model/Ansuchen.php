@@ -498,6 +498,20 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $kompetenzText2 = '';
 
     /**
+     * erklaerungTeilA
+     *
+     * @var bool
+     */
+    protected $erklaerungTeilA = false;
+
+    /**
+     * nummerpp3
+     *
+     * @var string
+     */
+    protected $nummerpp3 = '';
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -569,18 +583,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
-     * erklaerungTeilA
+     * erklaerungd5
      *
      * @var bool
      */
-    protected $erklaerungTeilA = false;
-
-    /**
-     * nummerpp3
-     *
-     * @var string
-     */
-    protected $nummerpp3 = '';
+    protected $erklaerungd5 = false;
 
     /**
      * __construct
@@ -2612,5 +2619,36 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNummerpp3(string $nummerpp3)
     {
         $this->nummerpp3 = $nummerpp3;
+    }
+
+    /**
+     * Returns the erklaerungd5
+     *
+     * @return bool
+     */
+    public function getErklaerungd5()
+    {
+        return $this->erklaerungd5;
+    }
+
+    /**
+     * Sets the erklaerungd5
+     *
+     * @param bool $erklaerungd5
+     * @return void
+     */
+    public function setErklaerungd5(bool $erklaerungd5)
+    {
+        $this->erklaerungd5 = $erklaerungd5;
+    }
+
+    /**
+     * Returns the boolean state of erklaerungd5
+     *
+     * @return bool
+     */
+    public function isErklaerungd5()
+    {
+        return $this->erklaerungd5;
     }
 }

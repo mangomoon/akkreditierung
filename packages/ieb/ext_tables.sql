@@ -168,6 +168,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	kompetenz_text2 varchar(255) NOT NULL DEFAULT '',
 	erklaerung_teil_a smallint(1) unsigned NOT NULL DEFAULT '0',
 	nummerpp3 varchar(255) NOT NULL DEFAULT '',
+	erklaerungd5 smallint(1) unsigned NOT NULL DEFAULT '0',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',

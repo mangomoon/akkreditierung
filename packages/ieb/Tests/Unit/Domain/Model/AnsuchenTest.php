@@ -1442,6 +1442,24 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getErklaerungd5ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getErklaerungd5());
+    }
+
+    /**
+     * @test
+     */
+    public function setErklaerungd5ForBoolSetsErklaerungd5(): void
+    {
+        $this->subject->setErklaerungd5(true);
+
+        self::assertEquals(true, $this->subject->_get('erklaerungd5'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(
