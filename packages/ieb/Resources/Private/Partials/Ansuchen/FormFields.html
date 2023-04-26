@@ -330,7 +330,7 @@
                 <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
             </div>
             <div class="col-6" id="b-1-d-2">
-                <f:form.select property="standorte" options="{relations.standorte}" optionLabelField="name" multiple="1" />
+                <f:form.select property="standorte" options="{relations.standorte}" optionLabelField="name" multiple="1" class="testa" id="testa" />
                 <div class="formzeile">
                     <f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page>
                 </div>
@@ -574,7 +574,7 @@
 
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
-        <f:form.select property="trainer" options="{relations.trainer}" optionLabelField="fullName" multiple="1" />
+        <f:form.select property="trainer" options="{relations.trainer}" optionLabelField="fullName" multiple="1" class="testa" />
 
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
@@ -592,29 +592,11 @@
     </div>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
-        <f:form.select property="berater" options="{relations.berater}" optionLabelField="fullName" multiple="1" />
+        <f:form.select property="berater" options="{relations.berater}" optionLabelField="fullName" multiple="1" class="testa" />
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
     </div>
-    <div class="formzeile">
-        <div class="formlink berater beraterwahl">Berater/in hinzufügen</div>
-    </div>
-    <!--    <div id="beraterwahl">-->
-    <!--        <div class="row">-->
-    <!--            <div class="col-10">-->
-    <!--                <f:for each="{relations.berater}" as="berater">-->
-    <!--                    <p><input type="checkbox" /> {berater.vollerName}</p>-->
-    <!--                </f:for>-->
-    <!--            </div>-->
-    <!--            <div class="col-2">-->
-    <!--                Schließen<br> Jetzt hinzufügen-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
 
 
-    <f:for each="{berater}" as="berater">
-        <f:render partial="Form/Checkbox" arguments="{property:'berater', label:'{berater.vollerName}'}" />
-    </f:for>
     <div class="formzeile">
         <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
     </div>
@@ -622,7 +604,7 @@
 
 <!-- ############### ERKLÄRUNGEN ########### -->
 
-<div class="kriterium">
+<div class="kriterium" id="erklaerungen-D">
     <h2>D Erklärungen</h2>
     <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
         Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.</label>
@@ -644,6 +626,10 @@
 
 <script>
     ansuchenfelder();
+    // $('.testa').multiSelect();
+    $('.testa').multiSelect({
+        'noneText': '',
+    });
 </script>
 
 </html>
