@@ -38,6 +38,7 @@ class AnsuchenController extends BaseController
 
     public function showAction(Ansuchen $ansuchen): ResponseInterface
     {
+        $this->setTitleTag($ansuchen->getTitleTag());
         $this->view->assign('ansuchen', $ansuchen);
         return $this->htmlResponse();
     }
@@ -67,6 +68,7 @@ class AnsuchenController extends BaseController
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->setLockedAndPersist($ansuchen);
+        $this->setTitleTag($ansuchen->getTitleTag());
         $this->view->assign('ansuchen', $ansuchen);
         $this->addRelationDataToView();
         return $this->htmlResponse();

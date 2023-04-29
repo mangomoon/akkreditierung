@@ -7,6 +7,8 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\Seo\IebTitleProvider;
+use GeorgRinger\News\Seo\NewsTitleProvider;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -53,7 +55,6 @@ class BaseController extends ActionController
         }
         return $object->getPid() === $currentUser['pid'];
     }
-
 
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
@@ -107,5 +108,10 @@ class BaseController extends ActionController
 //                UploadedFileReferenceConverter::class,
 //                $uploadConfiguration
 //            );
+    }
+
+    public function setTitleTag($title): void
+    {
+        GeneralUtility::makeInstance(IebTitleProvider::class)->setTitle($title);
     }
 }
