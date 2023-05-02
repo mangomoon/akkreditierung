@@ -108,6 +108,7 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function editAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich): \Psr\Http\Message\ResponseInterface
     {
+        $this->check($angebotVerantwortlich);
         $this->view->assign('angebotVerantwortlich', $angebotVerantwortlich);
         return $this->htmlResponse();
     }
@@ -117,9 +118,9 @@ class AngebotVerantwortlichController extends BaseController
      *
      * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
      */
-    public function updateAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich)
+    public function updateAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
-    
+        $this->check($angebotVerantwortlich);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
         $this->redirect('list');
     }
