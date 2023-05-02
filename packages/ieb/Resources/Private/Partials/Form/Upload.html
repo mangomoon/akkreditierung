@@ -19,6 +19,13 @@
     <div class="col-6">
         <label class="req">{label}</label>
         <ieb:form.upload property="{property}" id="{property}" class="{req}" />
+
+        <f:if condition="{preview} && {media}">
+            <div>
+                <f:image image="{media.originalResource}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
+
+            </div>
+        </f:if>
     </div>
     <div class="col-6">
         <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>

@@ -127,4 +127,13 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter::class);
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\ObjectStorageConverter::class);
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(trim('
+    config.pageTitleProviders {
+        ieb {
+            provider = GeorgRinger\Ieb\Seo\IebTitleProvider
+            before = altPageTitle,record,seo
+        }
+    }
+'));
 })();

@@ -1,6 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
-
 <div class="formfields row">
     <div class="col-3">
         <label for="name">Ansuchennummer:</label><br>
@@ -300,7 +299,7 @@
         <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
         <div class="info"></div>
         <div class="infobox" id="ab-2-c-hilfe">Details ...</div>
-        <f:render partial="Form/Upload" arguments="{property:'uebersichtDatei', id:'uebersichtDatei', req:'req', label='Tabellarische Übersicht', anmerkung:'uebersichtText'}" />
+        <f:render partial="Form/Upload" arguments="{property:'uebersichtDatei', id:'uebersichtDatei', req:'req', label='Tabellarische Übersicht', anmerkung:'uebersichtText',preview:1,media:ansuchen.uebersichtDatei,mediaWidth:300, mediaHeight:300}" />
     </div>
 
 </div>
@@ -386,7 +385,7 @@
         </p>
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
 
-        <f:render partial="Form/Upload" arguments="{property:'zielgruppenAnspracheDatei', id:'zielgruppenAnspracheDatei', req:'req', label='Upload Zielgruppe (pdf)', anmerkung:'zielgruppenAnsprache'}" />
+        <f:render partial="Form/Upload" arguments="{property:'zielgruppenAnspracheDatei', id:'zielgruppenAnspracheDatei', req:'req', label='Upload Zielgruppe (pdf)', anmerkung:'zielgruppenAnsprache', preview:1,media:ansuchen.zielgruppenAnspracheDatei,mediaWidth:300, mediaHeight:300}" />
     </div>
 </div>
 <div class="kriterium">
