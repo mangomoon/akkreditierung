@@ -32,12 +32,14 @@ class AngebotVerantwortlichController extends BaseController
      *
      * @var \GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository
      */
-    protected $angebotVerantwortlichRepository = null;
+    // protected $angebotVerantwortlichRepository = null;
+    
+    protected AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
 
     /**
      * @param \GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository
      */
-    public function injectAngebotVerantwortlichRepository(\GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository)
+    public function injectAngebotVerantwortlichRepository(AngebotVerantwortlichRepository $angebotVerantwortlichRepository)
     {
         $this->angebotVerantwortlichRepository = $angebotVerantwortlichRepository;
     }
@@ -88,6 +90,16 @@ class AngebotVerantwortlichController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newAngebotVerantwortlich');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('angebotVerantwortlich');
+    }
+
     /**
      * action create
      *
@@ -96,7 +108,7 @@ class AngebotVerantwortlichController extends BaseController
     public function createAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $newAngebotVerantwortlich)
     {
         $this->angebotVerantwortlichRepository->add($newAngebotVerantwortlich);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 
     /**
@@ -122,7 +134,7 @@ class AngebotVerantwortlichController extends BaseController
     {
         $this->check($angebotVerantwortlich);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
-        $this->redirect('list');
+        $this->redirect('index');
     }
 
 
@@ -154,13 +166,5 @@ class AngebotVerantwortlichController extends BaseController
         $this->redirect('index');
     }
 
-    public function initializeCreateAction()
-    {
-        $this->setTypeConverterConfigurationForImageUpload('newAngebotVerantwortlich');
-    }
 
-    public function initializeUpdateAction()
-    {
-        $this->setTypeConverterConfigurationForImageUpload('angebotVerantwortlich');
-    }
 }

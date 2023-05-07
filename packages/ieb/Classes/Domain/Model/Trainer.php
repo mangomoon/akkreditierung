@@ -209,6 +209,9 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $archiviert = false;
 
+
+
+
     /**
      * Returns the nachname
      *

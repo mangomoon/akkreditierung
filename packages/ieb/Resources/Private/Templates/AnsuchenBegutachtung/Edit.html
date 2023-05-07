@@ -1,28 +1,18 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
-
-This template displays a EDIT form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Ansuchen:
-          Edit.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:layout name="Default" /> This template displays a EDIT form for the current domain object. If you modify this template, do not forget to change the overwrite settings in /Configuration/ExtensionBuilder/settings.yaml: Resources: Private: Templates: Ansuchen: Edit.html: keep Otherwise
+your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Edit Ansuchen</h1>
+    <h1>Edit Ansuchen Kritzel</h1>
 
     <f:flashMessages />
 
     <f:render partial="FormErrors" />
 
-    <f:form action="update" name="ansuchen" object="{ansuchen}" >
-    <f:render partial="Ansuchen/FormFields" arguments="{ansuchen:ansuchen}" />
-    <f:form.submit value="Save" />
+    <f:form action="update" name="ansuchen" object="{ansuchen}">
+        <f:render partial="Ansuchen/FormFields" arguments="{ansuchen:ansuchen}" />
+        <f:form.submit value="Save" />
     </f:form>
 </f:section>
+
 </html>

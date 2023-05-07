@@ -1,32 +1,40 @@
 // Validierung
 function validieren() {
 
-    // SKIZZE: if( document.getElementById("videoUploadFile").files.length == 0 )
+    var allesda = 0;
 
     $('.req').each(function() {
 
         if ($(this).val().length == 0) {
             $(this).addClass('req-leer');
+            allesda = 1;
         }
 
     });
     $('.reqtext').each(function() {
         if ($(this).text() == '') {
             $(this).addClass('req-leer');
+            allesda = 1;
         }
     });
     $('.reqselect').each(function() {
 
         if ($(this).val() == 0) {
             $(this).addClass('req-leer');
+            allesda = 1;
         }
 
     });
     $('.reqfile').each(function() {
-        if ($(this).get[0].files.length == 0) {
-            $(this).addClass('req-leer');
+        if ($(this).is('req-leer')) {
+            allesda = 1;
         }
     });
+
+    if (allesda == 0) {
+        $('#ok').attr('value', 1);
+    }
+    console.log("allesda = " + allesda);
 };
 
 function validierenansuchen() {
@@ -250,9 +258,11 @@ $(document).ready(function() {
 // JQUERY MULTISELECT ########################################
 
 (function(d) {
-    function g(a, b) { this.h = d(a);
+    function g(a, b) {
+        this.h = d(a);
         this.g = d.extend({}, k, b);
-        this.U() }
+        this.U()
+    }
     var k = {
         containerHTML: '<div class="multi-select-container">',
         menuHTML: '<div class="multi-select-menu">',
@@ -272,7 +282,8 @@ $(document).ready(function() {
         menuMinHeight: 200
     };
     d.extend(g.prototype, {
-        U: function() { this.J();
+        U: function() {
+            this.J();
             this.S();
             this.L();
             this.K();
@@ -280,7 +291,8 @@ $(document).ready(function() {
             this.P();
             this.V();
             this.W();
-            this.T() },
+            this.T()
+        },
         J: function() { if (!1 === this.h.is("select[multiple]")) throw Error("$.multiSelect only works on <select multiple> elements"); },
         S: function() { this.u = d('label[for="' + this.h.attr("id") + '"]') },
         L: function() {
@@ -291,18 +303,24 @@ $(document).ready(function() {
         K: function() {
             var a = this;
             this.l = d(this.g.buttonHTML);
-            this.l.attr({ role: "button", "aria-haspopup": "true", tabindex: 0, "aria-label": this.u.eq(0).text() }).on("keydown.multiselect", function(b) { var c = b.which;
-                13 === c || 32 === c ? (b.preventDefault(), a.l.click()) : 40 === c ? (b.preventDefault(), a.C(), (a.o || a.m).children().first().focus()) : 27 === c && a.s() }).on("click.multiselect", function() { a.D() }).on("blur.multiselect", this.v.bind(this)).appendTo(this.j);
+            this.l.attr({ role: "button", "aria-haspopup": "true", tabindex: 0, "aria-label": this.u.eq(0).text() }).on("keydown.multiselect", function(b) {
+                var c = b.which;
+                13 === c || 32 === c ? (b.preventDefault(), a.l.click()) : 40 === c ? (b.preventDefault(), a.C(), (a.o || a.m).children().first().focus()) : 27 === c && a.s()
+            }).on("click.multiselect", function() { a.D() }).on("blur.multiselect", this.v.bind(this)).appendTo(this.j);
             this.h.on("change.multiselect", function() { a.G() });
             this.G()
         },
-        G: function() { var a = [],
+        G: function() {
+            var a = [],
                 b = [];
-            this.h.find("option").each(function() { var c = d(this).text();
+            this.h.find("option").each(function() {
+                var c = d(this).text();
                 a.push(c);
-                d(this).is(":selected") && b.push(d.trim(c)) });
+                d(this).is(":selected") && b.push(d.trim(c))
+            });
             this.l.empty();
-            0 == b.length ? this.l.text(this.g.noneText) : b.length === a.length && this.g.allText ? this.l.text(this.g.allText) : this.l.text(b.join(", ")) },
+            0 == b.length ? this.l.text(this.g.noneText) : b.length === a.length && this.g.allText ? this.l.text(this.g.allText) : this.l.text(b.join(", "))
+        },
         M: function() {
             var a = this;
             this.i = d(this.g.menuHTML);
@@ -310,14 +328,18 @@ $(document).ready(function() {
             this.N();
             this.g.presets && this.R()
         },
-        N: function() { var a = this;
+        N: function() {
+            var a = this;
             this.m = d(this.g.menuItemsHTML);
             this.i.append(this.m);
             this.h.on("change.multiselect", function(b, c) {!0 !== c && a.H() });
-            this.H() },
-        H: function() { var a = this;
+            this.H()
+        },
+        H: function() {
+            var a = this;
             this.m.empty();
-            this.h.children("optgroup,option").each(function(b, c) { "OPTION" === c.nodeName ? (b = a.B(d(c), b), a.m.append(b)) : a.O(d(c), b) }) },
+            this.h.children("optgroup,option").each(function(b, c) { "OPTION" === c.nodeName ? (b = a.B(d(c), b), a.m.append(b)) : a.O(d(c), b) })
+        },
         F: function(a, b) {
             var c = b.which;
             38 === c ? (b.preventDefault(), b = d(b.currentTarget).prev(), b.length ? b.focus() : this.o && "menuitem" === a ? this.o.children().last().focus() :
@@ -331,10 +353,14 @@ $(document).ready(function() {
                 b = a.h.attr("name") + "_preset_" + b;
                 var f = d(a.g.menuItemHTML).attr({ "for": b, role: "menuitem" }).text(" " + c.name).on("keydown.multiselect", a.F.bind(a, "preset")).appendTo(a.o);
                 b = d("<input>").attr({ type: "radio", name: a.h.attr("name") + "_presets", id: b }).prependTo(f);
-                c.all && (c.options = [], a.h.find("option").each(function() { var e = d(this).val();
-                    c.options.push(e) }));
-                b.on("change.multiselect", function() { a.h.val(c.options);
-                    a.h.trigger("change") }).on("blur.multiselect", a.v.bind(a))
+                c.all && (c.options = [], a.h.find("option").each(function() {
+                    var e = d(this).val();
+                    c.options.push(e)
+                }));
+                b.on("change.multiselect", function() {
+                    a.h.val(c.options);
+                    a.h.trigger("change")
+                }).on("blur.multiselect", a.v.bind(a))
             });
             this.h.on("change.multiselect", function() { a.I() });
             this.I()
@@ -360,34 +386,49 @@ $(document).ready(function() {
                 c ? b.prop("checked", !0) : b.prop("checked", !1)
             })
         },
-        O: function(a, b) { var c = this;
-            a.children("option").each(function(f, e) { e = c.B(d(e), b + "_" + f); var h = c.g.menuItemTitleClass;
+        O: function(a, b) {
+            var c = this;
+            a.children("option").each(function(f, e) {
+                e = c.B(d(e), b + "_" + f);
+                var h = c.g.menuItemTitleClass;
                 0 !== f && (h += "sr");
                 e.addClass(h).attr("data-group-title", a.attr("label"));
-                c.m.append(e) }) },
+                c.m.append(e)
+            })
+        },
         B: function(a, b) {
             var c = this.h.attr("name") + "_" + b;
             b = d(this.g.menuItemHTML).attr({ "for": c, role: "menuitem" }).on("keydown.multiselect", this.F.bind(this, "menuitem")).text(" " + a.text());
             c = d("<input>").attr({ type: "checkbox", id: c, value: a.val() }).prependTo(b);
             a.is(":disabled") && c.attr("disabled", "disabled");
             a.is(":selected") && c.prop("checked", "checked");
-            c.on("change.multiselect", function() { d(this).prop("checked") ? a.prop("selected", !0) : a.prop("selected", !1);
-                a.trigger("change", [!0]) }).on("blur.multiselect", this.v.bind(this));
+            c.on("change.multiselect", function() {
+                d(this).prop("checked") ? a.prop("selected", !0) : a.prop("selected", !1);
+                a.trigger("change", [!0])
+            }).on("blur.multiselect", this.v.bind(this));
             return b
         },
-        P: function() { var a = this;
-            this.g.modalHTML && (this.A = d(this.g.modalHTML), this.A.on("click.multiselect", function() { a.s() }), this.A.insertBefore(this.i)) },
+        P: function() {
+            var a = this;
+            this.g.modalHTML && (this.A = d(this.g.modalHTML), this.A.on("click.multiselect", function() { a.s() }), this.A.insertBefore(this.i))
+        },
         V: function() {
             var a = this;
             d("html").on("click.multiselect", function() { a.s() });
             this.j.on("click.multiselect", function(b) { b.stopPropagation() })
         },
-        W: function() { var a = this;
-            this.u.on("click.multiselect", function(b) { b.preventDefault();
+        W: function() {
+            var a = this;
+            this.u.on("click.multiselect", function(b) {
+                b.preventDefault();
                 b.stopPropagation();
-                a.D() }) },
-        T: function() { this.h.hide();
-            this.u.removeAttr("for") },
+                a.D()
+            })
+        },
+        T: function() {
+            this.h.hide();
+            this.u.removeAttr("for")
+        },
         C: function() {
             d("html").trigger("click.multiselect");
             this.j.addClass(this.g.activeClass);
@@ -400,9 +441,11 @@ $(document).ready(function() {
             b = d(window).scrollTop() + d(window).height();
             a > b - this.g.viewportBottomGutter ? this.i.css({ maxHeight: Math.max(b - this.g.viewportBottomGutter - this.i.offset().top, this.g.menuMinHeight), overflow: "scroll" }) : this.i.css({ maxHeight: "", overflow: "" })
         },
-        s: function() { this.j.removeClass(this.g.activeClass);
+        s: function() {
+            this.j.removeClass(this.g.activeClass);
             this.j.removeClass(this.g.positionedMenuClass);
-            this.i.css("width", "auto") },
+            this.i.css("width", "auto")
+        },
         D: function() { this.j.hasClass(this.g.activeClass) ? this.s() : this.C() },
         v: function(a) { a.relatedTarget && !d(a.relatedTarget).closest(this.j).length && this.s() }
     });

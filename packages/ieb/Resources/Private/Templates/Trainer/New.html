@@ -9,7 +9,7 @@ your changes will be overwritten the next time you save the extension in the ext
 
     <f:render partial="FormErrors" />
 
-    <f:form action="create" name="newTrainer" object="{newTrainer}">
+    <f:form action="create" name="newTrainer" object="{newTrainer}" enctype="multipart/form-data">
         <f:render partial="Trainer/FormFields" />
         <f:form.submit value="Speichern" class="knopf-s" />
     </f:form>

@@ -54,8 +54,16 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
     </div>
-    <f:render partial="Form/Upload" arguments="{property:'qualifikationBabiDatei', id:'qualifikationBabiDatei', req:'req', label='Qualifikationsnachweis', anmerkung:'qualifikationBabi'}" />
-
+    <f:render partial="Form/Upload" arguments="{
+        property:'qualifikationBabiDatei', 
+        id:'qualifikationBabiDatei', 
+        req:'reqfile', 
+        label='Qualifikationsnachweis', 
+        anmerkung:'qualifikationBabi',
+        metadaten='{trainer.qualifikationBabiDatei.originalResource}',
+        preview:1,
+        media:trainer.qualifikationBabiDatei,
+        mediaWidth:300, mediaHeight:300}" />
 </div>
 
 
@@ -92,8 +100,16 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'qualifikationPsaDatei', id:'qualifikationPsaDatei', req:'req', label='Nachweis(e)',  anmerkung:'qualifikationPsa'}" />
-
+        <f:render partial="Form/Upload" arguments="{
+            property:'qualifikationPsaDatei', 
+            id:'qualifikationPsaDatei', 
+            req:'reqfile', 
+            label='Nachweise(e)', 
+            anmerkung:'qualifikationPsa',
+            metadaten='{trainer.qualifikationPsaDatei.originalResource}',
+            preview:1,
+            media:trainer.qualifikationPsaDatei,
+            mediaWidth:300, mediaHeight:300}" />
     </div>
     <div class="kriteriumteil">
         <!--<div class="info"></div>
@@ -141,7 +157,17 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <p class="hinweisextra" id="hinweisextra-c-2-1">
         HINWEIS: Nicht erforderlich, wenn eine Trainings/Prüfberechtigung der Bildungsdirektion für die Person vorliegt.
     </p>
-    <f:render partial="Form/Upload" arguments="{property:'lebenslaufDatei', id:'lebenslaufDatei', req:'req', label='Erfahrungsnachweis (pdf)',  anmerkung:'lebenslauf'}" />
+
+    <f:render partial="Form/Upload" arguments="{
+        property:'lebenslaufDatei', 
+        id:'lebenslaufDatei', 
+        req:'reqfile', 
+        label='Erfahrungsnachweis', 
+        anmerkung:'lebenslauf',
+        metadaten='{trainer.lebenslaufDatei.originalResource}',
+        preview:1,
+        media:trainer.lebenslaufDatei,
+        mediaWidth:300, mediaHeight:300}" />
 </div>
 
 

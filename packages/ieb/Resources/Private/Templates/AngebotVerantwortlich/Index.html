@@ -28,7 +28,7 @@
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
                 <f:if condition="!{angebotVerantwortlich.archiviert}">
-                    <tr>
+                    <tr class="{f:if(condition:angebotVerantwortlich.ok,then:'istok',else:'unok')}">
                         <td class="nachname">
                             {angebotVerantwortlich.nachname}
                         </td>

@@ -86,8 +86,17 @@
     </div>
 
 
-    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'req', label='Leitbild (pdf)', anmerkung:'leitbild', metadaten='{stammdaten.leitbildDatei.originalResource}', file: '{stammdaten.leitbildDatei}'}" />
-
+    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'reqfile', label='Leitbild (pdf)', anmerkung:'leitbild', metadaten='{stammdaten.leitbildDatei.originalResource}', file: '{stammdaten.leitbildDatei}'}" />
+    <f:render partial="Form/Upload" arguments="{
+        property:'leitbildDatei', 
+        id:'leitbildDatei', 
+        req:'reqfile', 
+        label='Leitbild', 
+        anmerkung:'leitbild',
+        metadaten='{stammdaten.leitbildDatei.originalResource}',
+        preview:1,
+        media:stammdaten.leitbildDatei,
+        mediaWidth:300, mediaHeight:300}" />
 
 
 </div>
@@ -123,8 +132,17 @@
                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
             </div>
 
-            <f:render partial="Form/Upload" arguments="{property:'qualitaetSicherungDatei', id:'qualitaetSicherungDatei', req:'req', label='Qualitätssicherung (pdf)', anmerkung:'qualitaetSicherung'}" />
 
+            <f:render partial="Form/Upload" arguments="{
+                property:'qualitaetSicherungDatei', 
+                id:'qualitaetSicherungDatei', 
+                req:'reqfile', 
+                label='Qualitätssicherung', 
+                anmerkung:'qualitaetSicherung',
+                metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
+                preview:1,
+                media:stammdaten.qualitaetSicherungDatei,
+                mediaWidth:300, mediaHeight:300}" />
         </div>
     </div>
 </div>
@@ -144,7 +162,16 @@
     </p>
     <div class="abstand-gross"></div>
     <f:render partial="Form/Upload" arguments="{property:'qualitaetPersonalDatei', id:'qualitaetPersonalDatei', req:'req', label='Upload (pdf)', anmerkung:'qualitaetPersonal'}" />
-
+    <f:render partial="Form/Upload" arguments="{
+        property:'qualitaetPersonalDatei', 
+        id:'qualitaetPersonalDatei', 
+        req:'reqfile', 
+        label='Qualitätssicherung', 
+        anmerkung:'qualitaetPersonal',
+        metadaten='{stammdaten.qualitaetPersonalDatei.originalResource}',
+        preview:1,
+        media:stammdaten.qualitaetPersonalDatei,
+        mediaWidth:300, mediaHeight:300}" />
 </div>
 
 

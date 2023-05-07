@@ -49,7 +49,7 @@ class AnsuchenController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function createAction(Ansuchen $newAnsuchen)
+    public function createAction(Ansuchen $newAnsuchen): ResponseInterface
     {
         $stammDaten = $this->stammdatenRepository->getLatest();
         /** @var StaticStammdaten $staticStammDaten */

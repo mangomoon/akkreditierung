@@ -211,6 +211,7 @@ p.hinweisextra {
     font-size: 0.85em;
     background: #f3efe8;
     max-width: 48%;
+    display: flex;
 }
 
 .filelist a:link {
@@ -218,7 +219,7 @@ p.hinweisextra {
 }
 
 .filelist .links {
-    margin: 0 0 0 20px;
+    margin: 0 0 0 0px;
     padding: 0 10px 0 0;
 }
 
@@ -236,7 +237,7 @@ p.hinweisextra {
     padding-bottom: 20px;
 }
 
-.thumbnail {
+.filelist .links img {
     width: 70px;
     height: auto;
 }
@@ -244,10 +245,6 @@ p.hinweisextra {
 .formfields {
     margin: 24px 0 20px 0;
     display: flex;
-}
-
-.formfields .row {
-    margin: 0;
 }
 
 .formfields .col,
@@ -274,8 +271,8 @@ label {
     display: block;
 }
 
-label.req::after,
-label.reqselect::after {
+label.reqlabel::after,
+label.reqlabel::after {
     content: '*';
     font-family: Arial;
     font-size: 1.4em;
@@ -494,6 +491,7 @@ label.labelknopf:hover {
     display: block;
 }
 
+.reqfile.req-leer input,
 input.req-leer,
 select.req-leer,
 textarea.req-leer {

@@ -9,7 +9,7 @@ your changes will be overwritten the next time you save the extension in the ext
 
     <f:render partial="FormErrors" />
 
-    <f:form action="create" name="newStammdaten" object="{newStammdaten}">
+    <f:form action="create" name="newStammdaten" object="{newStammdaten}" enctype="multipart/form-data">
         <f:render partial="Stammdaten/FormFields" />
         <f:form.submit value="Speichern" />
     </f:form>

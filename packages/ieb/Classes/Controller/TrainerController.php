@@ -47,7 +47,15 @@ class TrainerController extends BaseController
     {
         return $this->htmlResponse();
     }
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newTrainer');
+    }
 
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('trainer');
+    }
     public function createAction(Trainer $newTrainer)
     {
         $this->trainerRepository->add($newTrainer);
@@ -90,13 +98,5 @@ class TrainerController extends BaseController
         
         $this->redirect('index');
     }
-    public function initializeCreateAction()
-    {
-        $this->setTypeConverterConfigurationForImageUpload('newTrainer');
-    }
 
-    public function initializeUpdateAction()
-    {
-        $this->setTypeConverterConfigurationForImageUpload('trainer');
-    }
 }

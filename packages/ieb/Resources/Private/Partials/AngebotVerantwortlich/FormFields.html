@@ -4,11 +4,11 @@
 
     <div class="formfields row">
         <div class="col-6">
-            <label for="name" class="req">Vorname</label>
+            <label for="name" class="reqlabel">Vorname</label>
             <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 req" />
         </div>
         <div class="col-6">
-            <label for="markenname" class="req">Nachname</label>
+            <label for="markenname" class="reqlabel">Nachname</label>
             <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 req" />
         </div>
     </div>
@@ -18,19 +18,28 @@
     </div>
     <div class="formfields row">
         <div class="col-6">
-            <label for="name" class="req">E-Mail</label>
+            <label for="name" class="reqlabel">E-Mail</label>
             <f:form.textfield property="email" id="email" required="0" class="breite100 req" />
         </div>
         <div class="col-6">
-            <label for="markenname" class="req">Telefon</label>
+            <label for="markenname" class="reqlabel">Telefon</label>
             <f:form.textfield property="telefon" id="televon" required="0" class="breite100 req" />
         </div>
     </div>
 
+    <f:render partial="Form/Upload" arguments="{
+        property:'lebenslaufDatei', 
+        id:'lebenslaufDatei', 
+        req:'reqfile', 
+        label='Lebenslauf', 
+        anmerkung:'lebenslauf',
+        metadaten='{angebotVerantwortlich.lebenslaufDatei.originalResource}',
+        preview:1,
+        media:angebotVerantwortlich.lebenslaufDatei,
+        mediaWidth:300, mediaHeight:300}" />
 
 
-    <f:render partial="Form/Upload" arguments="{property:'lebenslaufDatei', id:'lebenslaufDatei', req:'req', label='Lebenslauf', anmerkung:'lebenslauf', metadaten='{angebotVerantwortlich.lebenslaufDatei.originalResource}', file: '{angebotVerantwortlich.lebenslaufDatei}'}"
-    />
+    <f:form.hidden property="ok" id="ok" value="0" />
 </div>
 
 
