@@ -492,19 +492,37 @@ class TrainerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getOkReturnsInitialValueForBool(): void
+    public function getOkbabiReturnsInitialValueForBool(): void
     {
-        self::assertFalse($this->subject->getOk());
+        self::assertFalse($this->subject->getOkbabi());
     }
 
     /**
      * @test
      */
-    public function setOkForBoolSetsOk(): void
+    public function setOkbabiForBoolSetsOkbabi(): void
     {
-        $this->subject->setOk(true);
+        $this->subject->setOkbabi(true);
 
-        self::assertEquals(true, $this->subject->_get('ok'));
+        self::assertEquals(true, $this->subject->_get('okbabi'));
+    }
+
+    /**
+     * @test
+     */
+    public function getOkpsaReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOkpsa());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkpsaForBoolSetsOkpsa(): void
+    {
+        $this->subject->setOkpsa(true);
+
+        self::assertEquals(true, $this->subject->_get('okpsa'));
     }
 
     /**

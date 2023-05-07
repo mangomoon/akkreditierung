@@ -1323,11 +1323,17 @@
 			<trans-unit id="tx_ieb_domain_model_trainer.qualifikation_psa_datei.description" resname="tx_ieb_domain_model_trainer.qualifikation_psa_datei.description">
 				<source>Qualifikation Psa Datei</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_trainer.ok" resname="tx_ieb_domain_model_trainer.ok">
-				<source>Ok</source>
+			<trans-unit id="tx_ieb_domain_model_trainer.okbabi" resname="tx_ieb_domain_model_trainer.okbabi">
+				<source>Okbabi</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_trainer.ok.description" resname="tx_ieb_domain_model_trainer.ok.description">
-				<source>Ok</source>
+			<trans-unit id="tx_ieb_domain_model_trainer.okbabi.description" resname="tx_ieb_domain_model_trainer.okbabi.description">
+				<source>Okbabi</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.okpsa" resname="tx_ieb_domain_model_trainer.okpsa">
+				<source>Okpsa</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.okpsa.description" resname="tx_ieb_domain_model_trainer.okpsa.description">
+				<source>Okpsa</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.archiviert" resname="tx_ieb_domain_model_trainer.archiviert">
 				<source>Archiviert</source>
@@ -1664,6 +1670,12 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_ansuchen.description" resname="tx_ieb_ansuchen.description">
 				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.ok" resname="tx_ieb_domain_model_trainer.ok">
+				<source>Ok</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.ok.description" resname="tx_ieb_domain_model_trainer.ok.description">
+				<source>Ok</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.kompetenz10" resname="tx_ieb_domain_model_ansuchen.kompetenz10">
 				<source>Kompetenz10</source>

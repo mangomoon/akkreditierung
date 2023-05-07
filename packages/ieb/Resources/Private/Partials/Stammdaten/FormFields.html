@@ -17,7 +17,7 @@
         </div>
         <div class="formfields row">
             <div class="col-6">
-                <label for="name" class="req">Bezeichnung</label>
+                <label for="name" class="reqlabel">Bezeichnung</label>
                 <f:form.textfield property="name" id="name" class="req" />
             </div>
             <div class="col-6">
@@ -31,15 +31,21 @@
         <div class="formfields row">
             <div class="col-6">
 
-                <f:render partial="Form/Select" arguments="{property:'rechtsform', additionalAttributes:'required', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}"
-                />
+                <f:render partial="Form/Select" arguments="{property:'rechtsform', req:'reqlabel', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}" />
 
-                <label for="seit" class="req abstandoben">tätig seit</label>
+                <label for="seit" class="reqlabel abstandoben">tätig seit</label>
                 <f:form.textfield property="seit" id="seit" class="req" />
             </div>
             <div class="col-6">
-                <label for="nachweis" class="req">Vereinsregisterauszug/Firmenbuchauszug</label>
-                <ieb:form.upload property="nachweis" id="nachweis" class="reqfile" />
+                <f:render partial="Form/Upload" arguments="{
+                    property:'nachweis', 
+                    id:'nachweis', 
+                    req:'reqfile', 
+                    label='Vereinsregisterauszug/Firmenbuchauszug', 
+                    metadaten='{stammdaten.nachweis.originalResource}',
+                    preview:1,
+                    media:stammdaten.nachweis,
+                    mediaWidth:300, mediaHeight:300}" />
             </div>
         </div>
     </div>
@@ -47,26 +53,26 @@
     <div class="" id="a-1-3">
         <div class="formfields">
             <div class="col-6">
-                <label for="strasse" class="req">Anschrift</label>
+                <label for="strasse" class="reqlabel">Anschrift</label>
                 <f:form.textarea property="strasse" id="strasse" class="reqtext"></f:form.textarea>
                 <div class="row">
-                    <div class="col-2" style="margin-right:18px;">
-                        <label for="plz" class="req">PLZ</label>
+                    <div class="col-2" style="margin-left:20px;">
+                        <label for="plz" class="reqlabel">PLZ</label>
                         <f:form.textfield property="plz" id="plz" class="req" />
                     </div>
                     <div class="col-9">
-                        <label for="ort" class="req">ORT</label>
+                        <label for="ort" class="reqlabel">ORT</label>
                         <f:form.textfield property="ort" id="ort" class="req" />
                     </div>
 
                 </div>
             </div>
             <div class="col-6">
-                <label for="email" class="req">E-Mail</label>
+                <label for="email" class="reqlabel">E-Mail</label>
                 <f:form.textfield property="email" id="email" class="req" />
-                <label for="telefon" class="req">Telefon</label>
+                <label for="telefon" class="reqlabel">Telefon</label>
                 <f:form.textfield property="telefon" id="telefon" class="req" />
-                <label for="website" class="req">Website</label>
+                <label for="website" class="reqlabel">Website</label>
                 <f:form.textfield property="website" id="website" class="req" />
             </div>
         </div>
@@ -86,7 +92,6 @@
     </div>
 
 
-    <f:render partial="Form/Upload" arguments="{property:'leitbildDatei', id:'leitbilddatei', req:'reqfile', label='Leitbild (pdf)', anmerkung:'leitbild', metadaten='{stammdaten.leitbildDatei.originalResource}', file: '{stammdaten.leitbildDatei}'}" />
     <f:render partial="Form/Upload" arguments="{
         property:'leitbildDatei', 
         id:'leitbildDatei', 
@@ -115,8 +120,33 @@
 
         <div class="oecert oecert-1 {f:if(condition:'{stammdaten.qmsTyp}==1', then:'checked')}">
 
+            <f:if condition="{stammdaten.qmsTyp}==1">
+                <f:then>
+                    <f:render partial="Form/Upload" arguments="{
+                    property:'qmsZertifikatDatei', 
+                    id:'qmsZertifikatDatei', 
+                    req:'reqfile', 
+                    label='Ö-Cert (PDF)', 
+                    anmerkung:'qmsZertifikat',
+                    metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
+                    preview:1,
+                    media:stammdaten.qmsZertifikatDatei,
+                    mediaWidth:300, mediaHeight:300}" />
+                </f:then>
+                <f:else>
+                    <f:render partial="Form/Upload" arguments="{
+                    property:'qmsZertifikatDatei', 
+                    id:'qmsZertifikatDatei', 
+                    req:'', 
+                    label='Ö-Cert (PDF)', 
+                    anmerkung:'qmsZertifikat',
+                    metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
+                    preview:1,
+                    media:stammdaten.qmsZertifikatDatei,
+                    mediaWidth:300, mediaHeight:300}" />
+                </f:else>
+            </f:if>
 
-            <f:render partial="Form/Upload" arguments="{property:'qmsZertifikatDatei', id:'qmsZertifikatDatei', req:'req', label='Ö-Cert (PDF)', anmerkung:'qmsZertifikat'}" />
             <div class="erlaeuterung">
                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
             </div>
@@ -131,18 +161,33 @@
                     technische Ausstattung, Barrierefreiheit).</p>
                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
             </div>
+            <f:if condition="{stammdaten.qmsTyp}==2">
+                <f:then>
 
-
-            <f:render partial="Form/Upload" arguments="{
-                property:'qualitaetSicherungDatei', 
-                id:'qualitaetSicherungDatei', 
-                req:'reqfile', 
-                label='Qualitätssicherung', 
-                anmerkung:'qualitaetSicherung',
-                metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
-                preview:1,
-                media:stammdaten.qualitaetSicherungDatei,
-                mediaWidth:300, mediaHeight:300}" />
+                    <f:render partial="Form/Upload" arguments="{
+                    property:'qualitaetSicherungDatei', 
+                    id:'qualitaetSicherungDatei', 
+                    req:'reqfile', 
+                    label='Qualitätssicherung', 
+                    anmerkung:'qualitaetSicherung',
+                    metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
+                    preview:1,
+                    media:stammdaten.qualitaetSicherungDatei,
+                    mediaWidth:300, mediaHeight:300}" />
+                </f:then>
+                <f:else>
+                    <f:render partial="Form/Upload" arguments="{
+                        property:'qualitaetSicherungDatei', 
+                        id:'qualitaetSicherungDatei', 
+                        req:'', 
+                        label='Qualitätssicherung', 
+                        anmerkung:'qualitaetSicherung',
+                        metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
+                        preview:1,
+                        media:stammdaten.qualitaetSicherungDatei,
+                        mediaWidth:300, mediaHeight:300}" />
+                </f:else>
+            </f:if>
         </div>
     </div>
 </div>
@@ -161,7 +206,7 @@
         <f:form.checkbox property="weiterbildungErklaerung" id="weiterbildungErklaerung" value="1" class="req" />
     </p>
     <div class="abstand-gross"></div>
-    <f:render partial="Form/Upload" arguments="{property:'qualitaetPersonalDatei', id:'qualitaetPersonalDatei', req:'req', label='Upload (pdf)', anmerkung:'qualitaetPersonal'}" />
+
     <f:render partial="Form/Upload" arguments="{
         property:'qualitaetPersonalDatei', 
         id:'qualitaetPersonalDatei', 
@@ -172,6 +217,9 @@
         preview:1,
         media:stammdaten.qualitaetPersonalDatei,
         mediaWidth:300, mediaHeight:300}" />
+
+    <f:form.hidden property="ok" id="ok" value="0" />
+
 </div>
 
 

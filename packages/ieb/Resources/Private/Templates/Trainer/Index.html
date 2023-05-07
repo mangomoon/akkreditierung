@@ -50,55 +50,17 @@
                         &nbsp;
                     </th>
                     <th>letzte Änderung</th>
-                    <th>vollständig</th>
+                    <th>vollständig BaBi</th>
+                    <th>vollständig PSA</th>
                     <th class="td-knopf" colspan="3">
 
                     </th>
             </tr>
             <f:for each="{trainers}" as="trainer">
                 <f:if condition="!{trainer.archiviert}">
-                    <tr class="{f:if(condition:trainer.ok,then:'istok',else:'unok')}">
-                        <td class="nachname">
-                            {trainer.nachname}
-                        </td>
-                        <td class="vorname">
-                            {trainer.vorname}
-                        </td>
-                        <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <td class="">
-                            <f:if condition="{trainer.ok}">
-                                <f:then>
-                                    ja
-                                </f:then>
-                                <f:else>
-                                    nein
-                                </f:else>
-                            </f:if>
+                    <f:then>
 
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{trainer : trainer}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{trainer : trainer}">
-                            </f:link.action>
-                        </td>
-                    </tr>
-                </f:if>
-            </f:for>
-        </table>
 
-        <div class="abstand-mittel"></div>
-        <div class="archiv">
-            <h2>ARCHIV</h2>
-            <table class="tx_ieb standortliste">
-                <f:for each="{trainers}" as="trainer">
-                    <f:if condition="{trainer.archiviert}">
                         <tr class="{f:if(condition:trainer.ok,then:'istok',else:'unok')}">
                             <td class="nachname">
                                 {trainer.nachname}
@@ -108,7 +70,18 @@
                             </td>
                             <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
                             <td class="">
-                                <f:if condition="{trainer.ok}">
+                                <f:if condition="{trainer.okbabi}">
+                                    <f:then>
+                                        ja
+                                    </f:then>
+                                    <f:else>
+                                        nein
+                                    </f:else>
+                                </f:if>
+
+                            </td>
+                            <td class="">
+                                <f:if condition="{trainer.okpsa}">
                                     <f:then>
                                         ja
                                     </f:then>
@@ -123,18 +96,74 @@
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{trainer : trainer}">
+                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{trainer : trainer}">
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-
+                                <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{trainer : trainer}">
+                                </f:link.action>
                             </td>
                         </tr>
-                    </f:if>
-                </f:for>
-            </table>
-        </div>
+                    </f:then>
+                    <f:else>
+                        {f:variable(name: 'archiviertexistiert', value: 'ja')}
+                    </f:else>
+                </f:if>
+            </f:for>
+        </table>
+        <f:if condition="{archiviertexistiert}=='ja'">
+            <div class="abstand-mittel"></div>
+            <div class="archiv">
+                <h2>ARCHIV</h2>
+                <table class="tx_ieb standortliste">
+                    <f:for each="{trainers}" as="trainer">
+                        <f:if condition="{trainer.archiviert}">
+                            <tr class="{f:if(condition:trainer.ok,then:'istok',else:'unok')}">
+                                <td class="nachname">
+                                    {trainer.nachname}
+                                </td>
+                                <td class="vorname">
+                                    {trainer.vorname}
+                                </td>
+                                <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                                <td class="">
+                                    <f:if condition="{trainer.okbabi}">
+                                        <f:then>
+                                            ja
+                                        </f:then>
+                                        <f:else>
+                                            nein
+                                        </f:else>
+                                    </f:if>
 
+                                </td>
+                                <td class="">
+                                    <f:if condition="{trainer.okpsa}">
+                                        <f:then>
+                                            ja
+                                        </f:then>
+                                        <f:else>
+                                            nein
+                                        </f:else>
+                                    </f:if>
+
+                                    <td class="td-knopf">
+                                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
+                                        </f:link.action>
+                                    </td>
+                                    <td class="td-knopf">
+                                        <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{trainer : trainer}">
+                                        </f:link.action>
+                                    </td>
+                                    <td class="td-knopf">
+
+                                    </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </table>
+            </div>
+        </f:if>
 
     </f:if>
 

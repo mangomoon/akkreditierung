@@ -11,43 +11,51 @@
         <table class="tx_ieb standortliste">
             <f:for each="{standorts}" as="standort">
                 <f:if condition="!{standort.archiviert}">
-                    <tr>
-                        <td class="fett">
-                            {standort.name}
-                        </td>
-                        <td class="klein">
-                            <f:format.raw>{standort.adresse}</f:format.raw><br> {standort.plz} {standort.ort}
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{standort : standort}">
-                            </f:link.action>
-                        </td>
-                    </tr>
-                </f:if>
-            </f:for>
-        </table>
-        <div class="abstand-mittel"></div>
-        <div class="archiv">
-            <h2>ARCHIV</h2>
-            <table class="tx_ieb standortliste">
-                <f:for each="{standorts}" as="standort">
-                    <f:if condition="{standort.archiviert}">
+                    <f:then>
                         <tr>
                             <td class="fett">
                                 {standort.name}
                             </td>
                             <td class="klein">
-                                {standort.adresse}<br> {standort.plz} {standort.ort}
+                                <f:format.raw>{standort.adresse}</f:format.raw><br> {standort.plz} {standort.ort}
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch revive" arguments="{standort : standort}">
+                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{standort : standort}">
                                 </f:link.action>
                             </td>
                         </tr>
-                    </f:if>
-                </f:for>
-            </table>
-        </div>
+                    </f:then>
+                    <f:else>
+                        {f:variable(name: 'archiviertexistiert', value: 'ja')}
+                    </f:else>
+                </f:if>
+            </f:for>
+        </table>
+
+        <f:if condition="{archiviertexistiert}=='ja'">
+            <div class="abstand-mittel"></div>
+            <div class="archiv">
+                <h2>ARCHIV</h2>
+                <table class="tx_ieb standortliste">
+                    <f:for each="{standorts}" as="standort">
+                        <f:if condition="{standort.archiviert}">
+                            <tr>
+                                <td class="fett">
+                                    {standort.name}
+                                </td>
+                                <td class="klein">
+                                    {standort.adresse}<br> {standort.plz} {standort.ort}
+                                </td>
+                                <td class="td-knopf">
+                                    <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch revive" arguments="{standort : standort}">
+                                    </f:link.action>
+                                </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </table>
+            </div>
+        </f:if>
     </f:if>
 
     <f:link.action action="new" class="formlink standorte">Neuen Standort anlegen</f:link.action>

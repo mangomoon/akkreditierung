@@ -1,7 +1,7 @@
 // Validierung
 function validieren() {
 
-    var allesda = 0;
+    allesda = 0;
 
     $('.req').each(function() {
 
@@ -33,9 +33,45 @@ function validieren() {
 
     if (allesda == 0) {
         $('#ok').attr('value', 1);
+    } else {
+        $('#ok').attr('value', 0);
     }
     console.log("allesda = " + allesda);
 };
+
+// Vailidierung TRAINER
+function validierentr() {
+    okbabi = 0;
+    okpsa = 0;
+    validieren();
+
+
+    if ($('#verwendungBabi').is(':checked')) {
+        babi = 1
+        console.log("ist babi");
+    };
+    if ($('#verwendungPsa').is(':checked')) {
+        babi = 1
+        console.log("ist  psa");
+    };
+    if ($('.upload-qualifikationBabiDatei').is('.ok')) {
+        bn = 1
+        console.log("Babi Nachweis ist da");
+    };
+    if ($('.upload-lehrBefugnisDatei').is('.ok')) {
+        bn = 1
+        console.log("Lehrbefugnis ist da");
+    };
+    if ($('.upload-qualifikationPsaDatei').is('.ok')) {
+        bn = 1
+        console.log("PSA Nachweis ist da");
+    };
+
+
+
+
+};
+
 
 function validierenansuchen() {
     $('.fehlt').each(function() {
@@ -63,19 +99,19 @@ function trainerfelder() {
     // console.log(babi + ' und psa: ' + psa);
 
     if (babi == 1) {
-        $('#c-2-1').show();
-        $('#c-2-a-2').show();
+        $('#c-2-1-babi').show();
+        $('#c-2-2').show();
     }
     if (babi == 0) {
-        $('#c-2-a-2').hide();
+        $('#c-2-1-babi').hide();
     }
     if (psa == 1) {
-        $('#c-2-b').show();
-        $('#c-2-1').show();
+        $('#c-2-1-psa').show();
+        $('#c-2-2').show();
         $('#hinweisextra-c-2-1').show();
     }
     if (psa == 0) {
-        $('#c-2-b').hide();
+        $('#c-2-1-psa').hide();
         $('#hinweisextra-c-2-1').hide();
     }
 }
@@ -113,6 +149,17 @@ function anmerkungoeffnen() {
 
 $(document).ready(function() {
 
+
+    $("form.tr").submit(function() {
+        validieren();
+    });
+
+    $("form.tr-standort").submit(function(event) {
+        validieren();
+        if (allesda == 1) {
+            event.preventDefault();
+        }
+    });
     trainerfelder();
     // validieren();
     anmerkungoeffnen();

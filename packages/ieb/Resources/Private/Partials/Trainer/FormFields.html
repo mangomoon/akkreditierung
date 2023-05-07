@@ -3,11 +3,11 @@
 <div class="kriterium">
     <div class="formfields row">
         <div class="col-6">
-            <label for="name" class="req">Vorname</label>
+            <label for="name" class="reqlabel">Vorname</label>
             <f:form.textfield property="vorname" id="vorname" class="breite100 req" />
         </div>
         <div class="col-6">
-            <label for="markenname" class="req">Nachname</label>
+            <label for="markenname" class="reqlabel">Nachname</label>
             <f:form.textfield property="nachname" id="nachname" class="breite100 req" />
         </div>
     </div>
@@ -34,7 +34,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium" id="c-2-a-2">
+<div class="kriterium" id="c-2-1-babi">
     <h3>C.2.1.BaBi Qualifikationsnachweis Basisbildung</h3>
     <div class="info"></div>
     <div class="infobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
@@ -67,7 +67,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 </div>
 
 
-<div class="kriterium" id="c-2-b">
+<div class="kriterium" id="c-2-1-psa">
 
     <div class="kriteriumteil">
         <h3>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h3>
@@ -77,7 +77,17 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
             <p>Liegt eine Trainings/Prüfberechtigung der Bildungsdirektion vor, laden Sie diese hoch.</p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{property:'lehrBefugnisDatei', id:'lehrBefugnisDatei', req:'req', label='Nachweis',  anmerkung:'lehrBefugnis'}" />
+
+        <f:render partial="Form/Upload" arguments="{
+            property:'lehrBefugnisDatei', 
+            id:'lehrBefugnisDatei', 
+            req:'reqfile', 
+            label='Nachweise', 
+            anmerkung:'lehrBefugnis',
+            metadaten='{trainer.lehrBefugnisDatei.originalResource}',
+            preview:1,
+            media:trainer.lehrBefugnisDatei,
+            mediaWidth:300, mediaHeight:300}" />
 
         <div class="erlaeuterung">
             <p>Liegt keine Trainings/Prüfberechtigung der Bildungsdirektion vor oder weichen die unten angegebenen Kompetenzbereiche von dieser ab, laden Sie die Qualifikationsnachweise hier hoch.</p>
@@ -147,7 +157,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium" id="c-2-1">
+<div class="kriterium" id="c-2-2">
     <h3>C.2.2 Erfahrungsnachweis</h3>
     <div class="info"></div>
     <div class="infobox" id="c-2-1-hilfe">Alle Trainer/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
@@ -155,7 +165,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
     </div>
     <p class="hinweisextra" id="hinweisextra-c-2-1">
-        HINWEIS: Nicht erforderlich, wenn eine Trainings/Prüfberechtigung der Bildungsdirektion für die Person vorliegt.
+        HINWEIS: Nicht erforderlich, wenn eine Trainsings/Prüfberechtigung der Bildungsdirektion für die Person vorliegt.
     </p>
 
     <f:render partial="Form/Upload" arguments="{

@@ -72,11 +72,17 @@
 			<trans-unit id="qualifikation_psa_datei.description" resname="qualifikation_psa_datei.description">
 				<source>qualifikationPsaDatei</source>
 			</trans-unit>
-			<trans-unit id="ok.description" resname="ok.description">
-				<source>ok</source>
+			<trans-unit id="okbabi.description" resname="okbabi.description">
+				<source>okbabi</source>
+			</trans-unit>
+			<trans-unit id="okpsa.description" resname="okpsa.description">
+				<source>okpsa</source>
 			</trans-unit>
 			<trans-unit id="archiviert.description" resname="archiviert.description">
 				<source>archiviert</source>
+			</trans-unit>
+			<trans-unit id="ok.description" resname="ok.description">
+				<source>ok</source>
 			</trans-unit>
 		</body>
 	</file>

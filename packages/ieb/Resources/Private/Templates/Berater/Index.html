@@ -58,83 +58,92 @@
             </tr>
             <f:for each="{beraters}" as="berater">
                 <f:if condition="!{berater.archiviert}">
-                    <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
-                        <td class="nachname">
-                            {berater.nachname}
-                        </td>
-                        <td class="vorname">
-                            {berater.vorname}
-                        </td>
-                        <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <td class="">
-                            <f:if condition="{berater.ok}">
-                                <f:then>
-                                    ja
-                                </f:then>
-                                <f:else>
-                                    nein
-                                </f:else>
-                            </f:if>
+                    <f:then>
 
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
-                            </f:link.action>
-                        </td>
-                    </tr>
+
+                        <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
+                            <td class="nachname">
+                                {berater.nachname}
+                            </td>
+                            <td class="vorname">
+                                {berater.vorname}
+                            </td>
+                            <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                            <td class="">
+                                <f:if condition="{berater.ok}">
+                                    <f:then>
+                                        ja
+                                    </f:then>
+                                    <f:else>
+                                        nein
+                                    </f:else>
+                                </f:if>
+
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
+                                </f:link.action>
+                            </td>
+                        </tr>
+                    </f:then>
+                    <f:else>
+                        {f:variable(name: 'archiviertexistiert', value: 'ja')}
+                    </f:else>
                 </f:if>
             </f:for>
         </table>
     </f:if>
+    <f:if condition="{archiviertexistiert}=='ja'">
+        <div class="abstand-mittel"></div>
+        <div class="archiv">
+            <h2>ARCHIV</h2>
+            <table class="tx_ieb standortliste">
+                <f:for each="{beraters}" as="berater">
+                    <f:if condition="{berater.archiviert}">
+                        <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
+                            <td class="nachname">
+                                {berater.nachname}
+                            </td>
+                            <td class="vorname">
+                                {berater.vorname}
+                            </td>
+                            <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                            <td class="">
+                                <f:if condition="{berater.ok}">
+                                    <f:then>
+                                        ja
+                                    </f:then>
+                                    <f:else>
+                                        nein
+                                    </f:else>
+                                </f:if>
 
-    <div class="archiv">
-        <h2>ARCHIV</h2>
-        <table class="tx_ieb standortliste">
-            <f:for each="{beraters}" as="berater">
-                <f:if condition="{berater.archiviert}">
-                    <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
-                        <td class="nachname">
-                            {berater.nachname}
-                        </td>
-                        <td class="vorname">
-                            {berater.vorname}
-                        </td>
-                        <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <td class="">
-                            <f:if condition="{berater.ok}">
-                                <f:then>
-                                    ja
-                                </f:then>
-                                <f:else>
-                                    nein
-                                </f:else>
-                            </f:if>
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
+                                <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{berater : berater}">
+                                </f:link.action>
+                            </td>
+                            <td class="td-knopf">
 
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{berater : berater}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-
-                        </td>
-                    </tr>
-                </f:if>
-            </f:for>
-        </table>
-    </div>
+                            </td>
+                        </tr>
+                    </f:if>
+                </f:for>
+            </table>
+        </div>
+    </f:if>
 
 
     <div class="formzeile">

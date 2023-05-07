@@ -28,49 +28,8 @@
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
                 <f:if condition="!{angebotVerantwortlich.archiviert}">
-                    <tr class="{f:if(condition:angebotVerantwortlich.ok,then:'istok',else:'unok')}">
-                        <td class="nachname">
-                            {angebotVerantwortlich.nachname}
-                        </td>
-                        <td class="vorname">
-                            {angebotVerantwortlich.vorname}
-                        </td>
-                        <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <td class="">
-                            <f:if condition="{angebotVerantwortlich.ok}">
-                                <f:then>
-                                    ja
-                                </f:then>
-                                <f:else>
-                                    nein
-                                </f:else>
-                            </f:if>
-
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                            </f:link.action>
-                        </td>
-                        <td class="td-knopf">
-                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                            </f:link.action>
-                        </td>
-                    </tr>
-                </f:if>
-            </f:for>
-        </table>
-
-        <div class="abstand-mittel"></div>
-        <div class="archiv">
-            <h2>ARCHIV</h2>
-            <table class="tx_ieb angebotVerantwortlich">
-                <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
-                    <f:if condition="{angebotVerantwortlich.archiviert}">
-                        <tr>
+                    <f:then>
+                        <tr class="{f:if(condition:angebotVerantwortlich.ok,then:'istok',else:'unok')}">
                             <td class="nachname">
                                 {angebotVerantwortlich.nachname}
                             </td>
@@ -94,17 +53,65 @@
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch revive" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-
+                                <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                </f:link.action>
                             </td>
                         </tr>
-                    </f:if>
-                </f:for>
-            </table>
-        </div>
+                    </f:then>
+                    <f:else>
+                        {f:variable(name: 'archiviertexistiert', value: 'ja')}
+                    </f:else>
+                </f:if>
+            </f:for>
+        </table>
+
+        <div class="abstand-mittel"></div>
+        <f:if condition="{archiviertexistiert}=='ja'">
+            <div class="archiv">
+                <h2>ARCHIV</h2>
+                <table class="tx_ieb angebotVerantwortlich">
+                    <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+                        <f:if condition="{angebotVerantwortlich.archiviert}">
+                            <tr>
+                                <td class="nachname">
+                                    {angebotVerantwortlich.nachname}
+                                </td>
+                                <td class="vorname">
+                                    {angebotVerantwortlich.vorname}
+                                </td>
+                                <td>{angebotVerantwortlich.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                                <td class="">
+                                    <f:if condition="{angebotVerantwortlich.ok}">
+                                        <f:then>
+                                            ja
+                                        </f:then>
+                                        <f:else>
+                                            nein
+                                        </f:else>
+                                    </f:if>
+
+                                </td>
+                                <td class="td-knopf">
+                                    <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                    </f:link.action>
+                                </td>
+                                <td class="td-knopf">
+                                    <f:link.action action="revive" title="Datensatz wieder hinzufügen" class="knopf-quadratisch revive" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                    </f:link.action>
+                                </td>
+                                <td class="td-knopf">
+
+                                </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </table>
+            </div>
+        </f:if>
     </f:if>
 
     <div class="formzeile">

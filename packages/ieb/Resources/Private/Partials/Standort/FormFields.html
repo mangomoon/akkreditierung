@@ -1,22 +1,23 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="kriterium" id="x">
+    <h3>Neuer Standort</h3>
     <div class="" id="x1">
         <div class="formfields">
             <div class="col-6">
-                <label for="name" class="req">Bezeichnung/Name</label>
+                <label for="name" class="reqlabel">Bezeichnung/Name</label>
                 <f:form.textfield property="name" id="name" class="req" />
             </div>
             <div class="col-6">
-                <label for="strasse" class="req">Anschrift</label>
+                <label for="strasse" class="reqlabel">Anschrift</label>
                 <f:form.textarea property="adresse" id="adresse" class="req"></f:form.textarea>
                 <div class="row">
-                    <div class="col-2" style="margin-right:18px;">
-                        <label for="plz" class="req">PLZ</label>
+                    <div class="col-2" style="margin-left:20px;">
+                        <label for="plz" class="reqlabel">PLZ</label>
                         <f:form.textfield property="plz" id="plz" class="req" />
                     </div>
                     <div class="col-9">
-                        <label for="ort" class="req">ORT</label>
+                        <label for="ort" class="reqlabel">ORT</label>
                         <f:form.textfield property="ort" id="ort" class="req" />
                     </div>
 

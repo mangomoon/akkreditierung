@@ -2865,9 +2865,21 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "ok",
+                            "propertyName": "okbabi",
                             "propertyType": "Boolean",
                             "uid": "1158239557301"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "okpsa",
+                            "propertyType": "Boolean",
+                            "uid": "810941842946"
                         },
                         {
                             "allowedFileTypes": "",
@@ -3897,7 +3909,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-04-26 07:29",
+        "last_modified": "2023-05-07 11:44",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

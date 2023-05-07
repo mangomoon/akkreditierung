@@ -330,8 +330,8 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->archiviert;
     }
-
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->name;
     }
 }

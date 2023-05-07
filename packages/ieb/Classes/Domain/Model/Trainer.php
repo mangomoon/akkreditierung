@@ -196,11 +196,11 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationPsaDatei = null;
 
     /**
-     * ok
+     * okbabi
      *
      * @var bool
      */
-    protected $ok = false;
+    protected $okbabi = false;
 
     /**
      * archiviert
@@ -209,8 +209,12 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $archiviert = false;
 
-
-
+    /**
+     * okpsa
+     *
+     * @var bool
+     */
+    protected $okpsa = false;
 
     /**
      * Returns the nachname
@@ -810,37 +814,6 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the ok
-     *
-     * @return bool
-     */
-    public function getOk()
-    {
-        return $this->ok;
-    }
-
-    /**
-     * Sets the ok
-     *
-     * @param bool $ok
-     * @return void
-     */
-    public function setOk(bool $ok)
-    {
-        $this->ok = $ok;
-    }
-
-    /**
-     * Returns the boolean state of ok
-     *
-     * @return bool
-     */
-    public function isOk()
-    {
-        return $this->ok;
-    }
-
-    /**
      * Returns the archiviert
      *
      * @return bool
@@ -873,5 +846,67 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getFullName()
     {
         return implode(' ', array_filter([$this->vorname, $this->nachname]));
+    }
+
+    /**
+     * Returns the okbabi
+     *
+     * @return bool okbabi
+     */
+    public function getOkbabi()
+    {
+        return $this->okbabi;
+    }
+
+    /**
+     * Sets the okbabi
+     *
+     * @param bool $okbabi
+     * @return void
+     */
+    public function setOkbabi(bool $okbabi)
+    {
+        $this->okbabi = $okbabi;
+    }
+
+    /**
+     * Returns the boolean state of okbabi
+     *
+     * @return bool okbabi
+     */
+    public function isOkbabi()
+    {
+        return $this->okbabi;
+    }
+
+    /**
+     * Returns the okpsa
+     *
+     * @return bool
+     */
+    public function getOkpsa()
+    {
+        return $this->okpsa;
+    }
+
+    /**
+     * Sets the okpsa
+     *
+     * @param bool $okpsa
+     * @return void
+     */
+    public function setOkpsa(bool $okpsa)
+    {
+        $this->okpsa = $okpsa;
+    }
+
+    /**
+     * Returns the boolean state of okpsa
+     *
+     * @return bool
+     */
+    public function isOkpsa()
+    {
+        return $this->okpsa;
     }
 }

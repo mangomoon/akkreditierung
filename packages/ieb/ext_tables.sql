@@ -232,7 +232,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lehr_befugnis_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0',
-	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	okbabi smallint(1) unsigned NOT NULL DEFAULT '0',
+	okpsa smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 

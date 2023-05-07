@@ -505,6 +505,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $erklaerungTeilA = false;
 
     /**
+     * erklaerungTeilB
+     *
+     * @var bool
+     */
+    protected $erklaerungTeilB = false;
+
+    /**
      * nummerpp3
      *
      * @var string
@@ -588,13 +595,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * erklaerungTeilB
-     *
-     * @var bool
-     */
-    protected $erklaerungTeilB = false;
 
     /**
      * __construct
@@ -2689,8 +2689,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
-
-    public function getTitleTag(): string
+    public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
     }
