@@ -120,8 +120,12 @@ class AnsuchenController extends BaseController
         $this->view->assignMultiple([
             'relations' => [
                 'standorte' => $this->standortRepository->getAll(),
+                'standorteaktiv' => $this->standortRepository->getActive(),
                 'berater' => $this->beraterRepository->getAll(),
+                'berateraktivundok' => $this->beraterRepository->getActive(),
                 'trainer' => $this->trainerRepository->getAll(),
+                'trainerbabi' => $this->trainerRepository->getActiveBabi(),
+                'trainerpsa' => $this->trainerRepository->getActivePSA(),
                 'angebotVerantwortliche' => $this->angebotVerantwortlichRepository->getAll(),
                 'stammdaten' => $this->stammdatenRepository->getLatest(),
             ],

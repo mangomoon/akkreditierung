@@ -38,4 +38,19 @@ class BeraterRepository extends BaseRepository
         }
         return $query->execute();
     }
+
+
+    public function getActive() {
+
+
+        $query = $this->getQuery();
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('ok', true)
+            )
+        );
+        return $query->execute();
+    }
+    
 }

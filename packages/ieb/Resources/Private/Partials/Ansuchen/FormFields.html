@@ -259,11 +259,13 @@
                 <p>
                     <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kompetenzen in der deutschen Sprache</label></p>
                 <p>
-                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Mathematische Kompetenzen</label></p>
+                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Deutsch als Zweitsprache</label></p>
                 <p>
-                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Digitale Kompetenzen</label></p>
+                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Mathematische Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
+                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Digitale Kompetenzen</label></p>
+                <p>
+                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
                     <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
@@ -338,7 +340,7 @@
                 <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
             </div>
             <div class="col-6" id="b-1-d-2">
-                <f:form.select property="standorte" options="{relations.standorte}" optionLabelField="name" multiple="1" class="testa" id="testa" />
+                <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa" id="testa" />
                 <div class="formzeile">
                     <f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page>
                 </div>
@@ -622,7 +624,17 @@
 
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
-        <f:form.select property="trainer" options="{relations.trainer}" optionLabelField="fullName" multiple="1" class="testa" />
+
+        <f:if condition="{ansuchen.typ}==1">
+            <f:then>
+                <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
+            </f:then>
+            <f:else>
+                <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa" />
+            </f:else>
+        </f:if>
+
+
 
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
@@ -640,7 +652,9 @@
     </div>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
-        <f:form.select property="berater" options="{relations.berater}" optionLabelField="fullName" multiple="1" class="testa" />
+
+        <f:form.select property="berater" options="{relations.berateraktivundok}" optionLabelField="fullName" multiple="1" class="testa" />
+
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
     </div>
 

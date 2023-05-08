@@ -16,4 +16,15 @@ namespace GeorgRinger\Ieb\Domain\Repository;
 
 class StandortRepository extends BaseRepository
 {
+    public function getActive() {
+
+
+        $query = $this->getQuery();
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false)
+            )
+        );
+        return $query->execute();
+    }
 }

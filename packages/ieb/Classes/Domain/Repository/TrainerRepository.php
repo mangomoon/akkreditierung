@@ -37,4 +37,31 @@ class TrainerRepository extends BaseRepository
         }
         return $query->execute();
     }
+
+    public function getActiveBabi() {
+
+
+        $query = $this->getQuery();
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('okbabi', true)
+            )
+        );
+        return $query->execute();
+    }
+
+    public function getActivePSA() {
+
+
+        $query = $this->getQuery();
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('okpsa', true)
+            )
+        );
+        return $query->execute();
+    }
+
 }
