@@ -4,11 +4,11 @@
 <div class="kriterium">
     <div class="formfields row">
         <div class="col-6">
-            <label for="name" class="req">Vorname</label>
+            <label for="name" class="reqlabel">Vorname</label>
             <f:form.textfield property="vorname" id="vorname" required="0" class="breite100 fett req" />
         </div>
         <div class="col-6">
-            <label for="markenname" class="req">Nachname</label>
+            <label for="markenname" class="reqlabel">Nachname</label>
             <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 fett req" />
         </div>
     </div>
@@ -77,6 +77,9 @@
             preview:1,
             media:berater.lebenslauf,
             mediaWidth:300, mediaHeight:300}" />
+
+
+        <f:form.hidden property="ok" id="ok" value="0" />
 
     </div>
 </div>

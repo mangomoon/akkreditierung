@@ -1,41 +1,41 @@
 // Validierung
 function validieren() {
 
-    allesda = 0;
+    allesda = 1;
 
     $('.req').each(function() {
 
         if ($(this).val().length == 0) {
             $(this).addClass('req-leer');
-            allesda = 1;
+            allesda = 0;
         }
 
     });
+
     $('.reqtext').each(function() {
         if ($(this).text() == '') {
             $(this).addClass('req-leer');
-            allesda = 1;
+            allesda = 0;
         }
     });
+
     $('.reqselect').each(function() {
 
         if ($(this).val() == 0) {
             $(this).addClass('req-leer');
-            allesda = 1;
+            allesda = 0;
         }
 
     });
+
     $('.reqfile').each(function() {
-        if ($(this).is('req-leer')) {
-            allesda = 1;
+        if ($(this).is('.req-leer')) {
+            allesda = 0;
         }
     });
 
-    if (allesda == 0) {
-        $('#ok').attr('value', 1);
-    } else {
-        $('#ok').attr('value', 0);
-    }
+    $('#ok').attr('value', allesda);
+
     console.log("allesda = " + allesda);
 };
 
@@ -47,31 +47,39 @@ function validierentr() {
 
 
     if ($('#verwendungBabi').is(':checked')) {
-        babi = 1
-        console.log("ist babi");
+        trbabi = 1;
     };
     if ($('#verwendungPsa').is(':checked')) {
-        babi = 1
-        console.log("ist  psa");
+        trpsa = 1;
     };
     if ($('.upload-qualifikationBabiDatei').is('.ok')) {
-        bn = 1
-        console.log("Babi Nachweis ist da");
+        qb = 1;
+
     };
     if ($('.upload-lehrBefugnisDatei').is('.ok')) {
-        bn = 1
-        console.log("Lehrbefugnis ist da");
+        lb = 1;
+
     };
     if ($('.upload-qualifikationPsaDatei').is('.ok')) {
-        bn = 1
-        console.log("PSA Nachweis ist da");
+        qp = 1;
+
+    };
+    if ($('.upload-lebenslaufDatei').is('.ok')) {
+        ll = 1;
+
     };
 
 
+    if (((trbabi == 1) && (qb == 1) && (ll == 1)) || ((trbabi == 1) && (qb == 1) && (lb == 1))) {
+        okbabi = 1;
+        $('#okbabi').attr('value', 1);
+    }
+    if (((trpsa == 1) && (qp == 1)) || ((trpsa == 1) && (lb == 1))) {
+        okpsa = 1;
+        $('#okpsa').attr('value', 1);
+    }
 
-
-};
-
+}
 
 function validierenansuchen() {
     $('.fehlt').each(function() {
@@ -145,13 +153,65 @@ function anmerkungoeffnen() {
     });
 }
 
-// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
+// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
+// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
+// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
+// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
 
 $(document).ready(function() {
 
+    $(".uploadfileinput").on("change", function(e) {
+        $(this).parent().parent().parent().removeClass('reqfile');
+    });
+
+    lb = 0;
+    qb = 0;
+    qp = 0;
+    ll = 0;
+    $("#qualifikationBabiDatei").on("change", function(e) {
+        if ($(this).val() !== " ") {
+            qb = 1;
+        } else {
+            return false;
+        };
+    });
+    $("#lehrBefugnisDatei").on("change", function(e) {
+        if ($(this).val() !== " ") {
+            lb = 1;
+        } else {
+            return false;
+        };
+    });
+    $("#qualifikationPsaDatei").on("change", function(e) {
+        if ($(this).val() !== " ") {
+            qp = 1;
+        } else {
+            return false;
+        };
+    });
+    $("#lebenslaufDatei").on("change", function(e) {
+        if ($(this).val() !== " ") {
+            ll = 1;
+        } else {
+            return false;
+        };
+    });
+
+    $('.sitename').click(function() {
+        validierentr();
+        console.log("VAR: qb: [" + qb + "] lb: [" + lb + "] qp: [" + qp + "] ll: [" + ll + "]" + okbabi + "---" + okpsa);
+
+        console.log("BaBi: [" + okbabi + "] OOO PSA: [" + okpsa + "]");
+
+
+    });
 
     $("form.tr").submit(function() {
         validieren();
+    });
+
+    $("form.trtrainer").submit(function() {
+        validierentr();
     });
 
     $("form.tr-standort").submit(function(event) {
@@ -160,8 +220,9 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
+
     trainerfelder();
-    // validieren();
+
     anmerkungoeffnen();
 
     // ######################################## Form Stammdaten öCert

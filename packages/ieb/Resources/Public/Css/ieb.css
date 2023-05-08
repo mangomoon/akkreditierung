@@ -688,6 +688,10 @@ table.tx_ieb {
     /* border-top: 2px solid #DADBCF; */
 }
 
+.tx-ieb table.tx_ieb.trainer {
+    border-collapse: separate;
+}
+
 table.tx_ieb th {
     font-weight: 400;
     font-size: 0.75em;
@@ -711,8 +715,24 @@ table.tx_ieb th {
     background: var(--fg1);
 }
 
+.tx_ieb tr.istok:nth-child(even) td.unok {
+    background: var(--fg0);
+    border-top: solid 3px var(--f0a);
+    border-bottom: solid 3px var(--f0a);
+}
+
+.tx_ieb tr.istok:nth-child(odd) td.unok {
+    background: var(--fg1);
+    border-top: solid 3px var(--f0b);
+    border-bottom: solid 3px var(--f0b);
+}
+
 table.tx_ieb td {
     padding: 10px 3px 10px 2px;
+}
+
+table.tx_ieb.trainer td {
+    padding: 7px 3px 7px 2px;
 }
 
 .tx-ieb table .td-knopf {
