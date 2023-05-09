@@ -13,8 +13,8 @@
         </f:if>
     </div>
     <div class="col-9">
-        <label for="name" class="req">Name des Bildungsangebots</label>
-        <f:form.textfield property="name" id="name" class="breite100 reqtext" />
+        <label for="name" class="reqlabel">Name des Bildungsangebots</label>
+        <f:form.textfield property="name" id="name" class="breite100 req" />
     </div>
 </div>
 
@@ -26,7 +26,7 @@
     <div class="formfields row">
         <div class="col">
             <label for="name">Ansuchennummer PP3:</label><br>
-            <f:form.textfield property="nummerpp3" id="nummerpp3" class="breite100 reqtext" />
+            <f:form.textfield property="nummerpp3" id="nummerpp3" />
         </div>
     </div>
 
@@ -212,7 +212,7 @@
     </table>
     <div class="abstand-gross"></div>
     <p>
-        <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" value="1" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
+        <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" class="reqcheckbox" value="0" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
     </p>
 
     <div class="formzeile">
@@ -226,9 +226,9 @@
     <h2>B.1 Eckdaten zum Angebot</h2>
     <div class="kriteriumteil">
         <h3>B.1.1 Programmbereich</h3>
-        <div class="formfields row">
+        <div id="bildungsbereich" class="formfields row bildungsbereich bb-{ansuchen.typ}">
             <div class="col-10">
-                <label for="typ" class="inline req">Bildungsbereich:</label>
+                <label for="typ" class="inline reqlabel">Bildungsbereich:</label>
                 <f:switch expression="{ansuchen.typ}">
                     <f:case value="0">
                         <f:form.hidden name="typ" id="typ" property="typ" value="{ansuchen.typ}" />
@@ -250,22 +250,22 @@
         <h3>B.1.2 Kompetenzbereiche</h3>
 
         <div class="erlaeuterung babi">
-            <p class="hinweis babi">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+            <p class="hinweis babi reqkomp">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
         <div class="formfields row babi">
             <div class="col-10">
                 <p>
-                    <label for="kompetenza"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenza"/> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
+                    <label for="kompetenza"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenza" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
                 <p>
-                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kompetenzen in der deutschen Sprache</label></p>
+                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" class="reqkomp" /> Kompetenzen in der deutschen Sprache</label></p>
                 <p>
-                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Deutsch als Zweitsprache</label></p>
+                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" class="reqkomp" /> Deutsch als Zweitsprache</label></p>
                 <p>
-                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Mathematische Kompetenzen</label></p>
+                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" class="reqkomp" /> Mathematische Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Digitale Kompetenzen</label></p>
+                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" class="reqkomp" /> Digitale Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
+                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" class="reqkomp" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
                     <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
@@ -283,13 +283,13 @@
                     <p>
                         <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
                     <p>
-                        <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" /> Kreativität und Gestaltung</label></p>
+                        <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
                     <p>
-                        <label for="kompetenz6"><f:form.checkbox property="kompetenz6" id="kompetenz6" value="1" /> Gesundheit und Soziales</label></p>
+                        <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
                     <p>
-                        <label for="kompetenz7"><f:form.checkbox property="kompetenz7" id="kompetenz7" value="1" /> Natur und Technik</label></p>
+                        <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Natur und Technik</label></p>
                     <p>
-                        <label for="kompetenz8"><f:form.checkbox property="kompetenz8" id="kompetenz8" value="1" /> Weitere Sprachen: Welche?</label>
+                        <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
                         <f:form.textfield property="kompetenzText2" id="kompetenzText2" />
                     </p>
                 </div>
@@ -329,15 +329,16 @@
             <div class="col-6">
                 <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                <p class="erklaerung">GARANTIEERKLÄRUNG: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS
-                    vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
-                    <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="req" />
+                <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert
+                    sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                    <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="reqcheckbox" />
                 </p>
             </div>
         </div>
         <div class="formfields row">
             <div class="col-6" id="b-1-d-1">
-                <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1}" />
+                <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}"
+                />
             </div>
             <div class="col-6" id="b-1-d-2">
                 <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa" id="testa" />
@@ -368,7 +369,7 @@
             <f:render partial="Form/Upload" arguments="{
                 property:'pruefbescheidDatei', 
                 id:'pruefbescheidDatei', 
-                req:'reqfile', 
+                req:'', 
                 label='Prüfbescheid (pdf)', 
                 anmerkung:'pruefbescheid',
                 metadaten='{ansuchen.pruefbescheidDatei.originalResource}',
@@ -467,8 +468,16 @@
         <div class="formfields row">
             <div class="col-6">
 
-                <f:render partial="Form/Upload" arguments="{ property:'lernziele', id:'lernziele', req:'req', label='Upload Aufbau und Inhalte', metadaten='{ansuchen.lernziele.originalResource}', preview:1, media:ansuchen.lernziele, mediaWidth:300, mediaHeight:300}"
-                />
+                <f:render partial="Form/Upload" arguments="{
+                    property:'lernziele', 
+                    id:'lernziele', 
+                    req:'reqfile', 
+                    label='Upload Aufbau und Inhalte', 
+                    metadaten='{ansuchen.lernziele.originalResource}',
+                    preview:1,
+                    media:ansuchen.lernziele,
+                    mediaWidth:300, mediaHeight:300}" />
+
             </div>
         </div>
     </div>
@@ -667,20 +676,25 @@
 <!-- ############### ERKLÄRUNGEN ########### -->
 
 <div class="kriterium" id="erklaerungen-D">
-    <h2>D Erklärungen</h2>
-    <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
+    <h2>D <span class="reqlabel">Erklärungen</span></h2>
+    <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" class="reqcheckbox" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
         Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.</label>
     </p>
-    <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
+    <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" class="reqcheckbox" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
         für allfällige Kontrollen aufzubewahren. </label>
     </p>
-    <p class="psa"><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
+    <p class="psa"><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="reqcheckbox" id="erklaerungd2" value="1" />Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
         und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</label></p>
-    <p><label for="erklaerungd3"><f:form.checkbox property="erklaerungd3" id="erklaerungd3" value="1" />Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.</label>
+    <p><label for="erklaerungd3"><f:form.checkbox property="erklaerungd3" class="reqcheckbox" id="erklaerungd3" value="1" />Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.</label>
 
     </p>
-    <p><label for="erklaerungd5"><f:form.checkbox property="erklaerungd5" id="erklaerungd5" value="1" />Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.</label>
+    <p><label for="erklaerungd5"><f:form.checkbox property="erklaerungd5" class="reqcheckbox" id="erklaerungd5" value="1" />Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.</label>
     </p>
+
+
+    <f:form.hidden property="ok" id="ok" value="0" />
+
+
 </div>
 
 <!-- ############### JS ########### -->
@@ -688,7 +702,6 @@
 
 <script>
     ansuchenfelder();
-    // $('.testa').multiSelect();
     $('.testa').multiSelect({
         'noneText': '',
     });

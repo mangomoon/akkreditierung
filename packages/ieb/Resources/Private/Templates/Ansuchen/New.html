@@ -9,7 +9,7 @@ your changes will be overwritten the next time you save the extension in the ext
 
     <f:render partial="FormErrors" />
 
-    <f:form action="create" class="tr" name="newAnsuchen" object="{newAnsuchen}" enctype="multipart/form-data">
+    <f:form action="create" class="transuchenneu" name="newAnsuchen" object="{newAnsuchen}" enctype="multipart/form-data">
         <f:render partial="Ansuchen/FormFields" arguments="{_all}" />
 
 
@@ -17,9 +17,7 @@ your changes will be overwritten the next time you save the extension in the ext
         <f:form.submit value="Speichern" class="knopf-s" />
     </f:form>
 
-    <script>
-        validierenansuchen()
-    </script>
+
 </f:section>
 
 </html>

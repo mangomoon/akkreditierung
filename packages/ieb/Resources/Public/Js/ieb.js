@@ -4,33 +4,39 @@ function validieren() {
     allesda = 1;
 
     $('.req').each(function() {
-
         if ($(this).val().length == 0) {
             $(this).addClass('req-leer');
             allesda = 0;
+            console.log($(this).attr('id'));
         }
-
     });
-
+    $('.reqcheckbox').each(function() {
+        if (!$(this).is(':checked')) {
+            $(this).addClass('req-leer');
+            allesda = 0;
+            console.log($(this).attr('id'));
+        }
+    });
     $('.reqtext').each(function() {
         if ($(this).text() == '') {
             $(this).addClass('req-leer');
             allesda = 0;
+            console.log($(this).attr('id'));
         }
     });
 
     $('.reqselect').each(function() {
-
         if ($(this).val() == 0) {
             $(this).addClass('req-leer');
             allesda = 0;
+            console.log($(this).attr('id'));
         }
-
     });
 
     $('.reqfile').each(function() {
         if ($(this).is('.req-leer')) {
             allesda = 0;
+            console.log("FILE: " + $(this).attr('id'));
         }
     });
 
@@ -54,19 +60,15 @@ function validierentr() {
     };
     if ($('.upload-qualifikationBabiDatei').is('.ok')) {
         qb = 1;
-
     };
     if ($('.upload-lehrBefugnisDatei').is('.ok')) {
         lb = 1;
-
     };
     if ($('.upload-qualifikationPsaDatei').is('.ok')) {
         qp = 1;
-
     };
     if ($('.upload-lebenslaufDatei').is('.ok')) {
         ll = 1;
-
     };
 
 
@@ -82,9 +84,70 @@ function validierentr() {
 }
 
 function validierenansuchen() {
+    allesda = 1;
     $('.fehlt').each(function() {
         $(this).html("Daten fehlen!");
+        allesda = 0;
     });
+    console.log("Stammdaten: " + allesda);
+    bb = 0;
+    if ($('#bildungsbereich').hasClass('bb-1')) {
+        bb = 1;
+    }
+    if ($('#bildungsbereich').hasClass('bb-2')) {
+        bb = 2;
+    }
+
+    // PSA/Babi Bereinigung
+    if (bb == 2) {
+        if ($('.upload-pruefbescheidDatei').hasClass('ok')) {
+            $('.upload-kooperationDatei').removeClass('req-leer');
+        }
+
+    } else {
+        $('.upload-kooperationDatei').removeClass('reqfile');
+        $('#erklaerungd2').removeClass('reqcheckbox');
+    }
+
+
+    validieren();
+    console.log("allesda ohne bb: " + allesda);
+
+    var komp = 0;
+    if ($('#kompetenz1').is(':checked')) {
+        komp++;
+    };
+    if ($('#kompetenz2').is(':checked')) {
+        komp++;
+    };
+    if ($('#kompetenz3').is(':checked')) {
+        komp++;
+    };
+    if ($('#kompetenz4').is(':checked')) {
+        komp++;
+    };
+    if ($('#kompetenz5').is(':checked')) {
+        komp++;
+    };
+
+    if ((komp < 2)) {
+        allesda = 0;
+        $('.reqkomp').each(function() {
+            $(this).addClass('req-leer');
+        })
+    }
+
+
+
+    console.log("allesda ohne Multiselect: " + allesda);
+    $('span.multi-select-button').each(function() {
+        if ($(this).html() == '') {
+            $(this).parent().addClass('reqleer');
+        }
+    });
+    console.log("allesda am Schluss: " + allesda);
+
+    $('#ok').attr('value', allesda);
 }
 
 // Feldermanagement Form Trainer Edit
@@ -197,13 +260,12 @@ $(document).ready(function() {
         };
     });
 
+    // CHECKER
     $('.sitename').click(function() {
-        validierentr();
-        console.log("VAR: qb: [" + qb + "] lb: [" + lb + "] qp: [" + qp + "] ll: [" + ll + "]" + okbabi + "---" + okpsa);
-
-        console.log("BaBi: [" + okbabi + "] OOO PSA: [" + okpsa + "]");
-
-
+        validierenansuchen();
+        //console.log($('#name').val());
+        // console.log("VAR: qb: [" + qb + "] lb: [" + lb + "] qp: [" + qp + "] ll: [" + ll + "]" + okbabi + "---" + okpsa);
+        // console.log("BaBi: [" + okbabi + "] OOO PSA: [" + okpsa + "]");
     });
 
     $("form.tr").submit(function() {
@@ -220,6 +282,17 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
+    $("form.transuchenneu").submit(function(event) {
+        if (($('#typ').val() == 0) || ($('#name').val() == '')) {
+            console.log("Modalbox öffnen: bitte Name [" + $('#name').text() + "], Typ [" + $('#typ').val() + "]!");
+            $('.bildungsbereich').addClass('req-leer');
+            event.preventDefault();
+        }
+    });
+
+
+
+
 
     trainerfelder();
 

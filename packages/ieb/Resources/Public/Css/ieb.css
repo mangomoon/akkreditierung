@@ -272,6 +272,7 @@ label {
     display: block;
 }
 
+.reqlabel::after,
 label.reqlabel::after {
     content: '*';
     font-family: Arial;
@@ -491,10 +492,16 @@ label.labelknopf:hover {
     display: block;
 }
 
+.reqleer .multi-select-menu,
+p.req-leer,
 .reqfile.req-leer input,
 input.req-leer,
 select.req-leer,
 textarea.req-leer {
+    background-color: #fceaa1;
+}
+
+.bildungsbereich.req-leer {
     background-color: #fceaa1;
 }
 
@@ -850,6 +857,10 @@ table.tx_ieb.standortliste td {
 
 
 /* ANSUCHEN: BERATERWAHL */
+
+#ansuchenbereichbabi {
+    text-transform: uppercase;
+}
 
 #beraterwahl {
     display: none;
