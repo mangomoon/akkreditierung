@@ -1221,8 +1221,8 @@
         {
             "config": {
                 "position": [
-                    646,
-                    274
+                    619,
+                    291
                 ]
             },
             "name": "New Model Object",
@@ -2136,10 +2136,21 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "verantwortliche",
-                            "relationType": "zeroToMany",
+                            "relationType": "manyToMany",
                             "relationWire": "[wired]",
-                            "renderType": "inline",
+                            "renderType": "selectMultipleSideBySide",
                             "uid": "453622018221"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "verantwortlicheMail",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "1139135734993"
                         },
                         {
                             "foreignRelationClass": "",
@@ -3292,8 +3303,8 @@
         {
             "config": {
                 "position": [
-                    920,
-                    470
+                    1131,
+                    593
                 ]
             },
             "name": "New Model Object",
@@ -3693,7 +3704,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_4",
+                "terminal": "relationWire_5",
                 "uid": "1666757799454"
             },
             "tgt": {
@@ -3753,7 +3764,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_3",
+                "terminal": "relationWire_4",
                 "uid": "406923423393"
             },
             "tgt": {
@@ -3825,7 +3836,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_5",
+                "terminal": "relationWire_6",
                 "uid": "389605358935"
             },
             "tgt": {
@@ -3861,7 +3872,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_6",
+                "terminal": "relationWire_7",
                 "uid": "1478001671435"
             },
             "tgt": {
@@ -3873,7 +3884,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_7",
+                "terminal": "relationWire_8",
                 "uid": "955536608146"
             },
             "tgt": {
@@ -3885,7 +3896,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_8",
+                "terminal": "relationWire_9",
                 "uid": "1288554962489"
             },
             "tgt": {
@@ -3897,7 +3908,7 @@
         {
             "src": {
                 "moduleId": 4,
-                "terminal": "relationWire_9",
+                "terminal": "relationWire_10",
                 "uid": "830501611820"
             },
             "tgt": {
@@ -3905,12 +3916,24 @@
                 "terminal": "SOURCES",
                 "uid": "1371801669307"
             }
+        },
+        {
+            "src": {
+                "moduleId": 4,
+                "terminal": "relationWire_3",
+                "uid": "1139135734993"
+            },
+            "tgt": {
+                "moduleId": 9,
+                "terminal": "SOURCES",
+                "uid": "481116737564"
+            }
         }
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-05-07 11:44",
+        "last_modified": "2023-05-09 05:08",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (1)"
+        "be_user": " (4)"
     }
 }

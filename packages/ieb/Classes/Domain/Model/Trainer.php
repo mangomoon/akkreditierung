@@ -203,18 +203,18 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $okbabi = false;
 
     /**
-     * archiviert
-     *
-     * @var bool
-     */
-    protected $archiviert = false;
-
-    /**
      * okpsa
      *
      * @var bool
      */
     protected $okpsa = false;
+
+    /**
+     * archiviert
+     *
+     * @var bool
+     */
+    protected $archiviert = false;
 
     /**
      * Returns the nachname

@@ -604,10 +604,10 @@
         <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich">
             <tr>
                 <td class="spalte-1">
-                    <input class="angebotssteuerungsperson" type="checkbox" />
+                    <f:form.checkbox class="angebotssteuerungsperson" property="verantwortliche" value="{angebotverantwortlich.uid}" />
                 </td>
                 <td class="spalte-2">
-                    <input type="checkbox" />
+                    <f:form.checkbox property="verantwortlicheMail" value="{angebotverantwortlich.uid}" />
                 </td>
                 <td>
                     {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}

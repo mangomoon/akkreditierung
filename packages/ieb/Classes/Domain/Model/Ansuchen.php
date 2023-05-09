@@ -543,9 +543,15 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * verantwortliche
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $verantwortliche = null;
+
+    /**
+     * verantwortlicheMail
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich>
+     */
+    protected $verantwortlicheMail = null;
 
     /**
      * trainerStatic
@@ -618,6 +624,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->standorteStatic = $this->standorteStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->verantwortliche = $this->verantwortliche ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->verantwortlicheMail = $this->verantwortlicheMail ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainerStatic = $this->trainerStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->beraterStatic = $this->beraterStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -2692,5 +2699,48 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
+    }
+
+    /**
+     * Adds a AngebotVerantwortlich
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $verantwortlicheMail
+     * @return void
+     */
+    public function addVerantwortlicheMail(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $verantwortlicheMail)
+    {
+        $this->verantwortlicheMail->attach($verantwortlicheMail);
+    }
+
+    /**
+     * Removes a AngebotVerantwortlich
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $verantwortlicheMailToRemove The AngebotVerantwortlich to be removed
+     * @return void
+     */
+    public function removeVerantwortlicheMail(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $verantwortlicheMailToRemove)
+    {
+        $this->verantwortlicheMail->detach($verantwortlicheMailToRemove);
+    }
+
+    /**
+     * Returns the verantwortlicheMail
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich>
+     */
+    public function getVerantwortlicheMail()
+    {
+        return $this->verantwortlicheMail;
+    }
+
+    /**
+     * Sets the verantwortlicheMail
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich> $verantwortlicheMail
+     * @return void
+     */
+    public function setVerantwortlicheMail(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $verantwortlicheMail)
+    {
+        $this->verantwortlicheMail = $verantwortlicheMail;
     }
 }

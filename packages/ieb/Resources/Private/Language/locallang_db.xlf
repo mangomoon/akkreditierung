@@ -1005,6 +1005,12 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.verantwortliche.description" resname="tx_ieb_domain_model_ansuchen.verantwortliche.description">
 				<source>Verantwortliche</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.verantwortliche_mail" resname="tx_ieb_domain_model_ansuchen.verantwortliche_mail">
+				<source>Verantwortliche Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.verantwortliche_mail.description" resname="tx_ieb_domain_model_ansuchen.verantwortliche_mail.description">
+				<source>Verantwortliche Mail</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.trainer_static" resname="tx_ieb_domain_model_ansuchen.trainer_static">
 				<source>Trainer Static</source>
 			</trans-unit>

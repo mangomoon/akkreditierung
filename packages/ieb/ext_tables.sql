@@ -173,6 +173,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
+	verantwortliche_mail int(11) unsigned NOT NULL DEFAULT '0',
 	trainer_static int(11) unsigned NOT NULL DEFAULT '0',
 	berater_static int(11) unsigned NOT NULL DEFAULT '0',
 	kopie_von int(11) unsigned DEFAULT '0',
@@ -270,7 +271,6 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
-	ansuchen int(11) unsigned DEFAULT '0' NOT NULL,
 	nachname varchar(255) NOT NULL DEFAULT '',
 	vorname varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',

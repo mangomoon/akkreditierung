@@ -1618,6 +1618,65 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getVerantwortlicheMailReturnsInitialValueForAngebotVerantwortlich(): void
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getVerantwortlicheMail()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setVerantwortlicheMailForObjectStorageContainingAngebotVerantwortlichSetsVerantwortlicheMail(): void
+    {
+        $verantwortlicheMail = new \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich();
+        $objectStorageHoldingExactlyOneVerantwortlicheMail = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneVerantwortlicheMail->attach($verantwortlicheMail);
+        $this->subject->setVerantwortlicheMail($objectStorageHoldingExactlyOneVerantwortlicheMail);
+
+        self::assertEquals($objectStorageHoldingExactlyOneVerantwortlicheMail, $this->subject->_get('verantwortlicheMail'));
+    }
+
+    /**
+     * @test
+     */
+    public function addVerantwortlicheMailToObjectStorageHoldingVerantwortlicheMail(): void
+    {
+        $verantwortlicheMail = new \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich();
+        $verantwortlicheMailObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $verantwortlicheMailObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($verantwortlicheMail));
+        $this->subject->_set('verantwortlicheMail', $verantwortlicheMailObjectStorageMock);
+
+        $this->subject->addVerantwortlicheMail($verantwortlicheMail);
+    }
+
+    /**
+     * @test
+     */
+    public function removeVerantwortlicheMailFromObjectStorageHoldingVerantwortlicheMail(): void
+    {
+        $verantwortlicheMail = new \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich();
+        $verantwortlicheMailObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->onlyMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $verantwortlicheMailObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($verantwortlicheMail));
+        $this->subject->_set('verantwortlicheMail', $verantwortlicheMailObjectStorageMock);
+
+        $this->subject->removeVerantwortlicheMail($verantwortlicheMail);
+    }
+
+    /**
+     * @test
+     */
     public function getTrainerStaticReturnsInitialValueForStaticTrainer(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

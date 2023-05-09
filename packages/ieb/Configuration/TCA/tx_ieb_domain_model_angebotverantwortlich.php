@@ -222,10 +222,5 @@ return [
             ]
         ],
     
-        'ansuchen' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
     ],
 ];

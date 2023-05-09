@@ -225,6 +225,9 @@
 			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
 				<source>verantwortliche</source>
 			</trans-unit>
+			<trans-unit id="verantwortliche_mail.description" resname="verantwortliche_mail.description">
+				<source>verantwortlicheMail</source>
+			</trans-unit>
 			<trans-unit id="trainer_static.description" resname="trainer_static.description">
 				<source>trainerStatic</source>
 			</trans-unit>
