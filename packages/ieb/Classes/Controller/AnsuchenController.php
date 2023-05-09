@@ -10,6 +10,7 @@ use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\StaticStammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -98,7 +99,7 @@ class AnsuchenController extends BaseController
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
-        $this->redirect('list');
+        return $this->redirectTo($ansuchen->getUid());
     }
 
     public function deleteAction(Ansuchen $ansuchen): ResponseInterface
@@ -132,6 +133,18 @@ class AnsuchenController extends BaseController
         ]);
     }
 
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['save']) && $recordId > 0) {
+            $this->redirect('edit', null, null, ['ansuchen' => $recordId]);
+        }
+        if (isset($arguments['saveAndIndex'])) {
+            $this->redirect('list');
+        }
+        $this->redirect('list');
+    }
+
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
     {
@@ -157,6 +170,7 @@ class AnsuchenController extends BaseController
     {
         $this->standortRepository = $repository;
     }
+
     public function injectAngebotVerantwortlichRepository(Repository\AngebotVerantwortlichRepository $repository): void
     {
         $this->angebotVerantwortlichRepository = $repository;
