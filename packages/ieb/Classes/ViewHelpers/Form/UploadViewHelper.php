@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\ViewHelpers\Form;
 
@@ -7,23 +8,20 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelper as UploadViewHelperCore;
 
-class UploadViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelper
+class UploadViewHelper extends UploadViewHelperCore
 {
 
     protected PropertyMapper $propertyMapper;
 
-    public function injectPropertyMapper(PropertyMapper $propertyMapper)
+    public function injectPropertyMapper(PropertyMapper $propertyMapper): void
     {
         $this->propertyMapper = $propertyMapper;
     }
 
     /**
      * Render the upload field including possible resource pointer
-     *
-     * @return string
-     * @api
      */
     public function render()
     {
@@ -54,23 +52,16 @@ class UploadViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelpe
     /**
      * Return a previously uploaded resource.
      * Return NULL if errors occurred during property mapping for this property.
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected function getUploadedResource()
+    protected function getUploadedResource(): ?FileReference
     {
         if ($this->getMappingResultsForProperty()->hasErrors()) {
             return null;
         }
-        if (is_callable([$this, 'getValueAttribute'])) {
-            $resource = $this->getValueAttribute();
-        } else {
-            // @deprecated since 7.6 will be removed once 6.2 support is removed
-            $resource = $this->getValue(false);
-        }
+        $resource = $this->getValueAttribute();
         if ($resource instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference) {
             return $resource;
         }
-        return $this->propertyMapper->convert((string)$resource, 'TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference');
+        return $this->propertyMapper->convert((string)$resource, FileReference::class);
     }
 }
