@@ -102,49 +102,64 @@ class UploadedFileReferencesConverter extends AbstractTypeConverter
     public function convertFrom($sources, $targetType, array $convertedChildProperties = [], PropertyMappingConfigurationInterface $configuration = null)
     {
         $out = new ObjectStorage();
-        foreach ($sources ?? [] as $source) {
-            $skip = false;
-            if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
-                if (isset($source['submittedFile']['resourcePointer'])) {
-                    try {
-                        $resourcePointer = $this->hashService->validateAndStripHmac($source['submittedFile']['resourcePointer']);
-                        if (strpos($resourcePointer, 'file:') === 0) {
-                            $fileUid = substr($resourcePointer, 5);
-                            $someFile = $this->createFileReferenceFromFalFileObject($this->resourceFactory->getFileObject($fileUid));
-                        } else {
-                            $someFile= $this->createFileReferenceFromFalFileReferenceObject($this->resourceFactory->getFileReferenceObject($resourcePointer), $resourcePointer);
-                        }
-                        $out->attach($someFile);
-                    } catch (\InvalidArgumentException $e) {
-                        // Nothing to do. No file is uploaded and resource pointer is invalid. Discard!
+
+        if (!is_array($sources)) {
+            return $out;
+        }
+
+        if (isset($sources['submittedFile']['resourcePointer'])) {
+            $resourcePointers = GeneralUtility::trimExplode('|', $sources['submittedFile']['resourcePointer'], true);
+            foreach ($resourcePointers as $resourcePointerString) {
+                try {
+                    $resourcePointer = $this->hashService->validateAndStripHmac($resourcePointerString);
+                    if (strpos($resourcePointer, 'file:') === 0) {
+                        $fileUid = substr($resourcePointer, 5);
+                        $someFile = $this->createFileReferenceFromFalFileObject($this->resourceFactory->getFileObject($fileUid));
+                    } else {
+                        $someFile = $this->createFileReferenceFromFalFileReferenceObject($this->resourceFactory->getFileReferenceObject($resourcePointer), $resourcePointer);
                     }
+                    $out->attach($someFile);
+                } catch (\InvalidArgumentException $e) {
+//                    dump($e->getMessage());
+                    // Nothing to do. No file is uploaded and resource pointer is invalid. Discard!
                 }
             }
+            unset($sources['submittedFile']);
+        }
 
-            if ($source['error'] !== \UPLOAD_ERR_OK) {
-                switch ($source['error']) {
+        foreach ($sources ?? [] as $source) {
+            $skip = false;
+            if (!is_array($source)) {
+                continue;
+            }
+
+            if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+            if (($source['error'] ?? null) !== \UPLOAD_ERR_OK) {
+                switch ($source['error'] ?? null) {
                     case \UPLOAD_ERR_INI_SIZE:
                     case \UPLOAD_ERR_FORM_SIZE:
                     case \UPLOAD_ERR_PARTIAL:
                         return new Error('Error Code: ' . $source['error'], 1264440823);
                     default:
-                        return new Error('An error occurred while uploading. Please try again or contact the administrator if the problem remains', 1340193849);
+//                        return new Error('An error occurred while uploading. Please try again or contact the administrator if the problem remains', 1340193849);
                 }
             }
 
             // todo
-//            if (isset($this->convertedResources[$source['tmp_name']])) {
-//                return $this->convertedResources[$source['tmp_name']];
-//            }
+            if (isset($this->convertedResources[$source['tmp_name'] ?? null])) {
+                $out->attach($this->convertedResources[$source['tmp_name']]);
+            } else {
 
-            try {
-                $someFile = $this->importUploadedResource($source, $configuration);
-                $out->attach($someFile);
-            } catch (\Exception $e) {
-                return new Error($e->getMessage(), $e->getCode());
+                try {
+                    $someFile = $this->importUploadedResource($source, $configuration);
+                    $out->attach($someFile);
+                    $this->convertedResources[$source['tmp_name']] = $someFile;
+                } catch (\Exception $e) {
+//                    return new Error($e->getMessage(), $e->getCode());
+                }
             }
-
-            $this->convertedResources[$source['tmp_name']] = $someFile;
         }
         return $out;
     }
