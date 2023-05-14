@@ -302,10 +302,10 @@
         <div class="info"></div>
         <div class="infobox" id="ab-2-c-hilfe">Details ...</div>
         <f:render partial="Form/Upload" arguments="{
-            property:'uebersichtDatei', 
-            id:'uebersichtDatei', 
-            req:'reqfile', 
-            label='Tabellarische Übersicht', 
+            property:'uebersichtDatei',
+            id:'uebersichtDatei',
+            req:'reqfile',
+            label='Tabellarische Übersicht',
             anmerkung:'uebersichtText',
             metadaten='{ansuchen.uebersichtDatei.originalResource}',
             preview:1,
@@ -389,10 +389,10 @@
                 </div>
 
                 <f:render partial="Form/Upload" arguments="{
-                    property:'kooperationDatei', 
-                    id:'kooperationDatei', 
-                    req:'reqfile', 
-                    label='Upload', 
+                    property:'kooperationDatei',
+                    id:'kooperationDatei',
+                    req:'reqfile',
+                    label='Upload',
                     anmerkung:'kooperation',
                     metadaten='{ansuchen.kooperationDatei.originalResource}',
                     preview:1,
@@ -419,10 +419,10 @@
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
 
         <f:render partial="Form/Upload" arguments="{
-            property:'zielgruppenAnspracheDatei', 
-            id:'zielgruppenAnspracheDatei', 
-            req:'reqfile', 
-            label='Upload Zielgruppe', 
+            property:'zielgruppenAnspracheDatei',
+            id:'zielgruppenAnspracheDatei',
+            req:'reqfile',
+            label='Upload Zielgruppe',
             anmerkung:'zielgruppenAnsprache',
             metadaten='{ansuchen.zielgruppenAnspracheDatei.originalResource}',
             preview:1,
@@ -468,12 +468,12 @@
         <div class="formfields row">
             <div class="col-6">
 
-                <f:render partial="Form/Upload" arguments="{
-                    property:'lernziele', 
-                    id:'lernziele', 
-                    req:'reqfile', 
-                    label='Upload Aufbau und Inhalte', 
-                    metadaten='{ansuchen.lernziele.originalResource}',
+                <f:render partial="Form/UploadMultiple" arguments="{
+                    property:'lernziele',
+                    id:'lernziele',
+                    req:'reqfile',
+                    label='Upload Aufbau und Inhalte',
+                    metadaten:ansuchen.lernziele.originalResource,
                     preview:1,
                     media:ansuchen.lernziele,
                     mediaWidth:300, mediaHeight:300}" />
@@ -505,10 +505,10 @@
             <div class="col-6">
 
                 <f:render partial="Form/Upload" arguments="{
-                    property:'lernstandserhebung', 
-                    id:'lernstandserhebung', 
-                    req:'reqfile', 
-                    label='Upload Zielgruppe', 
+                    property:'lernstandserhebung',
+                    id:'lernstandserhebung',
+                    req:'reqfile',
+                    label='Upload Zielgruppe',
                     metadaten='{ansuchen.lernstandserhebung.originalResource}',
                     preview:1,
                     media:ansuchen.lernstandserhebung,
@@ -526,10 +526,10 @@
         <div class="formfields row">
             <div class="col-6">
                 <f:render partial="Form/Upload" arguments="{
-                    property:'diversity', 
-                    id:'diversity', 
-                    req:'reqfile', 
-                    label='Upload Diversity', 
+                    property:'diversity',
+                    id:'diversity',
+                    req:'reqfile',
+                    label='Upload Diversity',
                     metadaten='{ansuchen.diversity.originalResource}',
                     preview:1,
                     media:ansuchen.diversity,
@@ -557,10 +557,10 @@
 
 
         <f:render partial="Form/Upload" arguments="{
-            property:'beratungDatei', 
-            id:'beratungDatei', 
-            req:'reqfile', 
-            label='Upload Beratungsangebot', 
+            property:'beratungDatei',
+            id:'beratungDatei',
+            req:'reqfile',
+            label='Upload Beratungsangebot',
             metadaten='{ansuchen.beratungDatei.originalResource}',
             preview:1,
             media:ansuchen.beratungDatei,

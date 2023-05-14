@@ -2,7 +2,7 @@
 
 namespace GeorgRinger\Ieb\Domain\Property\TypeConverter;
 
-class ObjectStorageConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter
+class  ObjectStorageConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter
 {
     /**
      * @var string[]

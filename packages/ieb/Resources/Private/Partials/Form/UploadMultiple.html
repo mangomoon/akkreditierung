@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="upload {req} {f:if(condition:'{media}', then: 'ok', else:'req-leer' )} upload-{id}">
+
+    <div class="filelist">
+        <f:if condition="{media}">
+            <div class="links">
+                <f:for each="{media}" as="m">
+
+                <f:if condition="{preview}">
+                    <a href="/fileadmin{m.originalFile.identifier}" target="_blank">
+                        <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
+                    </a>
+                </f:if>
+                </f:for>
+            </div>
+        </f:if>
+    </div>
+    <div class="formfields row" id="{id}">
+        <div class="col-6">
+            <label class="{f:if(condition: '{req}==reqfile', then: 'reqlabel', else: 'n' )}">{label}</label>
+            <ieb:form.uploadMultiple property="{property}" id="{property}" class="uploadfileinput" />
+        </div>
+        <div class="col-6">
+            <f:if condition="{anmerkung}">
+                <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>
+                <f:form.textarea property="{anmerkung}" id="{anmerkung}" class="anmerkung"></f:form.textarea>
+            </f:if>
+        </div>
+
+    </div>
+</div>
+
+</html>
