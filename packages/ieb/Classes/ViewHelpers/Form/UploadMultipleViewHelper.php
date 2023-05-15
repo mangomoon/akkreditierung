@@ -72,6 +72,8 @@ class UploadMultipleViewHelper extends UploadViewHelperCore
             return $resource;
         }
 
+        return null;
+
 //        dd(get_class($resource));die;
 
 //        return $this->propertyMapper->convert((string)$resource, FileReference::class);
