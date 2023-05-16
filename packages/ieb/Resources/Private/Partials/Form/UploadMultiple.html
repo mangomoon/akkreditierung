@@ -12,6 +12,9 @@
                         <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
                     </a>
                 </f:if>
+                    <f:form.checkbox name="fileDelete[m_{property}][{m.uid}]" id="fileDelete-{property}-{media.uid}" value="1"  />
+                    Datei löschen
+                    </label>
                 </f:for>
             </div>
         </f:if>

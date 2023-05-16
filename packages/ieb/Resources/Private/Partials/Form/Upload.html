@@ -20,6 +20,12 @@
                 <p>
                     <f:format.date format="%d. %B %Y">{metadaten.originalFile.properties.creation_date}</f:format.date>
                 </p>
+                <p>
+                    <label for="fileDelete-{property}-{media.uid}">
+                    <f:form.checkbox name="fileDelete[s_{property}][{media.uid}]" id="fileDelete-{property}-{media.uid}" value="1"  />
+                        Datei löschen
+                    </label>
+                </p>
             </div>
         </f:if>
     </div>
