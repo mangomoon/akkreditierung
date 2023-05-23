@@ -18,18 +18,20 @@
                     <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
                     &middot;
                     <f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action>
-                    <f:if condition="{lockInformation.editableByCurrentUser}">
-                        <f:then>
+                    <f:if condition="{ansuchen.editableByTr}">
+                        <f:if condition="{lockInformation.editableByCurrentUser}">
+                            <f:then>
+                                &middot;
+                                <f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action>
+                            </f:then>
+                            <f:else>
+                                [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                            </f:else>
+                        </f:if>
+                        <f:if condition="{lockInformation.isLockedByCurrentUser}">
                             &middot;
-                            <f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action>
-                        </f:then>
-                        <f:else>
-                            [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
-                        </f:else>
-                    </f:if>
-                    <f:if condition="{lockInformation.isLockedByCurrentUser}">
-                        &middot;
-                        <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                            <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                        </f:if>
                     </f:if>
                     &middot;
                     <f:link.action action="clone" arguments="{ansuchen : item}">Klonen</f:link.action>

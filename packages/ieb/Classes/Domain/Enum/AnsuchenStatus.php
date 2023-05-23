@@ -34,8 +34,36 @@ enum AnsuchenStatus: int
     case NICHT_AKKREDITERT = 800;
     case AKKREDITIERUNG_ENTZOGEN = 810;
 
-    public static function visibleForAg(): array
+    public static function visibleForAg(int $value): bool
     {
-        return [self::NEU_IN_ARBEIT->value, self::EINGEREICHT_ERSTEINREICHUNG->value];
+        return in_array($value, [self::NEU_IN_ARBEIT->value, self::EINGEREICHT_ERSTEINREICHUNG->value], true);
+    }
+
+    /**
+     * Alle Status, von Anträgen, die für die GS sichtbar sind
+     *
+     * @return array<int>
+     */
+    public static function statusSichtbarDurchGs(): array
+    {
+        return [
+            self::EINGEREICHT_ERSTEINREICHUNG->value,
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
+        ];
+    }
+    /**
+     * Alle Status, von Anträgen, die für die GS sichtbar sind
+     *
+     * @return array<int>
+     */
+    public static function statusSetzbarDurchGs(): array
+    {
+        return [
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
+            self::NACHBESSERUNGSAUFTRAG->value,
+            self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
+        ];
     }
 }

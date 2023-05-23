@@ -29,9 +29,7 @@ class AnsuchenRepository extends BaseRepository
     {
         $query = $this->getEmptyQuery();
         $constraints = [
-            $query->logicalNot(
-                $query->in('status', [0, 10, 30, 800, 810])
-            ),
+            $query->in('status', AnsuchenStatus::statusSichtbarDurchGs()),
         ];
         $query->matching($query->logicalAnd($constraints));
 

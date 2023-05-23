@@ -1711,7 +1711,7 @@
 				<source>Nachbesserungsauftrag</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.82" resname="ansuchen.status.82">
-				<source>eingereicht nach Nachbesserungsauf- trag</source>
+				<source>eingereicht nach Nachbesserungsauftrag</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.84" resname="ansuchen.status.84">
 				<source>Begutachtung nach eingereicht nach Nachbesserungauftrag</source>
