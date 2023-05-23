@@ -32,7 +32,6 @@ class BaseRepository extends Repository
     public function getAll(): QueryResultInterface
     {
         $query = $this->getQuery();
-        $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
 
         return $query->execute();
     }
@@ -51,6 +50,7 @@ class BaseRepository extends Repository
         $query->getQuerySettings()->setRespectStoragePage(true);
         $currentUser = self::getCurrentUser();
         $query->getQuerySettings()->setStoragePageIds([$currentUser['pid'] ?? -1]);
+        $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
 
         return $query;
     }

@@ -60,6 +60,7 @@ class AnsuchenController extends BaseController
         $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
         $newAnsuchen->setStammdatenStatic($staticStammDaten);
+        $newAnsuchen->setVersionActive(true);
 
         $this->ansuchenRepository->add($newAnsuchen);
         $this->redirect('list');
