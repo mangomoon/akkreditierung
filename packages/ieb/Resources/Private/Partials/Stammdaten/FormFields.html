@@ -37,12 +37,12 @@
                 <f:form.textfield property="seit" id="seit" class="req" />
             </div>
             <div class="col-6">
-                <f:render partial="Form/Upload" arguments="{
+                <f:render partial="Form/UploadMultiple" arguments="{
                     property:'nachweis', 
                     id:'nachweis', 
                     req:'reqfile', 
                     label='Vereinsregisterauszug/Firmenbuchauszug', 
-                    metadaten='{stammdaten.nachweis.originalResource}',
+                    metadaten=stammdaten.nachweis.originalResource,
                     preview:1,
                     media:stammdaten.nachweis,
                     mediaWidth:300, mediaHeight:300}" />

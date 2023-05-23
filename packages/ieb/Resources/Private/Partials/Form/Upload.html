@@ -12,6 +12,7 @@
                 </f:if>
             </div>
             <div class="rechts">
+                <div class="filedelete"></div>
                 <p class="filelink">
 
                     <a href="/fileadmin{metadaten.originalFile.identifier}" target="_blank">{metadaten.originalFile.properties.name}</a>
@@ -20,10 +21,10 @@
                 <p>
                     <f:format.date format="%d. %B %Y">{metadaten.originalFile.properties.creation_date}</f:format.date>
                 </p>
-                <p>
+                <p class="nextdel">
                     <label for="fileDelete-{property}-{media.uid}">
                     <f:form.checkbox name="fileDelete[s_{property}][{media.uid}]" id="fileDelete-{property}-{media.uid}" value="1"  />
-                        Datei löschen
+                        
                     </label>
                 </p>
             </div>

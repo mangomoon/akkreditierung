@@ -227,6 +227,8 @@ p.hinweisextra {
 .filelist .rechts {
     margin: 0;
     padding: 4px 10px 4px 0;
+    position: relative;
+    width: 100%;
 }
 
 .filelist .rechts p {
@@ -241,6 +243,33 @@ p.hinweisextra {
 .filelist .links img {
     width: 70px;
     height: auto;
+}
+
+.filedelete {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 2px 2px 2px var(--f2);
+    background-image: url('../Img/delete.svg');
+    opacity: 0.25;
+    z-index: 999;
+}
+
+.nextdel {
+    display: none;
+}
+
+.filedelete:hover,
+.geloescht .filedelete {
+    box-shadow: none;
+    opacity: 1;
+}
+
+.filelist.geloescht .rechts p,
+.filelist.geloescht .links img {
+    opacity: 0.3;
 }
 
 .formfields {

@@ -433,6 +433,15 @@ $(document).ready(function() {
 
     });
 
+    // ######################################## Datei löschen
+
+    $('.filedelete').click(function() {
+        $(this).parent().parent().toggleClass("geloescht");
+        var s = $('.nextdel input');
+        $(this).parent().find(s).prop("checked", !s.prop("checked"));
+    });
+
+
 
 });
 

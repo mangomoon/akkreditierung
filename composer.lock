@@ -1015,7 +1015,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ieb",
-                "reference": "ed78102387a909e7cdfb421113ac1727cf1b1cf1"
+                "reference": "8fe1b1c900e0c0588e57d6f9390257d018eb70b1"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -1153,16 +1153,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.5.1",
+            "version": "7.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "b964ca597e86b752cd994f27293e9fa6b6a95ed9"
+                "reference": "733dd89533dd371a0987172727df15f500dab0ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b964ca597e86b752cd994f27293e9fa6b6a95ed9",
-                "reference": "b964ca597e86b752cd994f27293e9fa6b6a95ed9",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/733dd89533dd371a0987172727df15f500dab0ef",
+                "reference": "733dd89533dd371a0987172727df15f500dab0ef",
                 "shasum": ""
             },
             "require": {
@@ -1193,9 +1193,6 @@
                 "bamarni-bin": {
                     "bin-links": true,
                     "forward-command": false
-                },
-                "branch-alias": {
-                    "dev-master": "7.5-dev"
                 }
             },
             "autoload": {
@@ -1261,7 +1258,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.5.1"
+                "source": "https://github.com/guzzle/guzzle/tree/7.6.0"
             },
             "funding": [
                 {
@@ -1277,7 +1274,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-17T16:30:08+00:00"
+            "time": "2023-05-14T11:23:39+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1766,7 +1763,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoon",
-                "reference": "43846426e736b693376cef32882506579c32a282"
+                "reference": "6c85c3b52304ef33687f573416f94eebd9e2fe1c"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -1803,7 +1800,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoonspecify",
-                "reference": "f846705a13b88d5547376903782dc1d5b884106c"
+                "reference": "652a3542d1f7aefbd1dcbc4d602cd0a37f96f1d8"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
