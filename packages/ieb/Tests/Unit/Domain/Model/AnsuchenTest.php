@@ -1478,6 +1478,90 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getCopyStammdatenReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyStammdaten()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyStammdatenForStringSetsCopyStammdaten(): void
+    {
+        $this->subject->setCopyStammdaten('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyStammdaten'));
+    }
+
+    /**
+     * @test
+     */
+    public function getCopyTrainerReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyTrainer()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyTrainerForStringSetsCopyTrainer(): void
+    {
+        $this->subject->setCopyTrainer('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyTrainer'));
+    }
+
+    /**
+     * @test
+     */
+    public function getCopyBeraterReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyBerater()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyBeraterForStringSetsCopyBerater(): void
+    {
+        $this->subject->setCopyBerater('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyBerater'));
+    }
+
+    /**
+     * @test
+     */
+    public function getCopyStandorteReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyStandorte()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyStandorteForStringSetsCopyStandorte(): void
+    {
+        $this->subject->setCopyStandorte('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyStandorte'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

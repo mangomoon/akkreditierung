@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Model;
 
-
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 
 /**
@@ -605,6 +604,34 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
+     * copyStammdaten
+     *
+     * @var string
+     */
+    protected $copyStammdaten = '';
+
+    /**
+     * copyTrainer
+     *
+     * @var string
+     */
+    protected $copyTrainer = '';
+
+    /**
+     * copyBerater
+     *
+     * @var string
+     */
+    protected $copyBerater = '';
+
+    /**
+     * copyStandorte
+     *
+     * @var string
+     */
+    protected $copyStandorte = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -882,7 +909,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return (int)$this->kompetenzbereiche;
+        return (int) $this->kompetenzbereiche;
     }
 
     /**
@@ -893,7 +920,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = (int)$kompetenzbereiche;
+        $this->kompetenzbereiche = (int) $kompetenzbereiche;
     }
 
     /**
@@ -2698,7 +2725,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
-
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
@@ -2746,9 +2772,92 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
-
-    public function isEditableByTr(): bool
+    public function isEditableByTr()
     {
         return AnsuchenStatus::visibleForAg($this->status);
+    }
+
+    /**
+     * Returns the copyStammdaten
+     *
+     * @return string
+     */
+    public function getCopyStammdaten()
+    {
+        return $this->copyStammdaten;
+    }
+
+    /**
+     * Sets the copyStammdaten
+     *
+     * @param string $copyStammdaten
+     * @return void
+     */
+    public function setCopyStammdaten(string $copyStammdaten)
+    {
+        $this->copyStammdaten = $copyStammdaten;
+    }
+
+    /**
+     * Returns the copyTrainer
+     *
+     * @return string
+     */
+    public function getCopyTrainer()
+    {
+        return $this->copyTrainer;
+    }
+
+    /**
+     * Sets the copyTrainer
+     *
+     * @param string $copyTrainer
+     * @return void
+     */
+    public function setCopyTrainer(string $copyTrainer)
+    {
+        $this->copyTrainer = $copyTrainer;
+    }
+
+    /**
+     * Returns the copyBerater
+     *
+     * @return string
+     */
+    public function getCopyBerater()
+    {
+        return $this->copyBerater;
+    }
+
+    /**
+     * Sets the copyBerater
+     *
+     * @param string $copyBerater
+     * @return void
+     */
+    public function setCopyBerater(string $copyBerater)
+    {
+        $this->copyBerater = $copyBerater;
+    }
+
+    /**
+     * Returns the copyStandorte
+     *
+     * @return string
+     */
+    public function getCopyStandorte()
+    {
+        return $this->copyStandorte;
+    }
+
+    /**
+     * Sets the copyStandorte
+     *
+     * @param string $copyStandorte
+     * @return void
+     */
+    public function setCopyStandorte(string $copyStandorte)
+    {
+        $this->copyStandorte = $copyStandorte;
     }
 }

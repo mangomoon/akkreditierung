@@ -216,6 +216,18 @@
 			<trans-unit id="erklaerungd5.description" resname="erklaerungd5.description">
 				<source>erklaerungd5</source>
 			</trans-unit>
+			<trans-unit id="copy_stammdaten.description" resname="copy_stammdaten.description">
+				<source>copyStammdaten</source>
+			</trans-unit>
+			<trans-unit id="copy_trainer.description" resname="copy_trainer.description">
+				<source>copyTrainer</source>
+			</trans-unit>
+			<trans-unit id="copy_berater.description" resname="copy_berater.description">
+				<source>copyBerater</source>
+			</trans-unit>
+			<trans-unit id="copy_standorte.description" resname="copy_standorte.description">
+				<source>copyStandorte</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>

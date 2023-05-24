@@ -18,7 +18,7 @@
                     <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
                     &middot;
                     <f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action>
-                    <f:if condition="{ansuchen.editableByTr}">
+                    <f:if condition="{item.editableByTr}">
                         <f:if condition="{lockInformation.editableByCurrentUser}">
                             <f:then>
                                 &middot;

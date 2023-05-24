@@ -1221,8 +1221,8 @@
         {
             "config": {
                 "position": [
-                    619,
-                    291
+                    629,
+                    187
                 ]
             },
             "name": "New Model Object",
@@ -2103,6 +2103,54 @@
                             "propertyName": "erklaerungd5",
                             "propertyType": "Boolean",
                             "uid": "504719137185"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "copyStammdaten",
+                            "propertyType": "Text",
+                            "uid": "465712551877"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "copyTrainer",
+                            "propertyType": "Text",
+                            "uid": "1114792277573"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "copyBerater",
+                            "propertyType": "Text",
+                            "uid": "1397881997647"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "copyStandorte",
+                            "propertyType": "Text",
+                            "uid": "628106485483"
                         }
                     ]
                 },
@@ -3932,7 +3980,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-05-09 05:08",
+        "last_modified": "2023-05-24 05:17",
         "extension_builder_version": "v11.0.10",
         "be_user": " (4)"
     }
