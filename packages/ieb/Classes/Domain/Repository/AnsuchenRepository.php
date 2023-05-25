@@ -9,6 +9,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -25,13 +26,24 @@ class AnsuchenRepository extends BaseRepository
         parent::__construct($objectManager);
     }
 
+    public function getAll(): QueryResultInterface
+    {
+        $query = $this->getQuery();
+        $constraints = [
+            $query->equals('version_active', 1),
+        ];
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
+
     public function getAllForBegutachtung()
     {
         $query = $this->getEmptyQuery();
         $constraints = [
-            $query->logicalNot(
-                $query->in('status', [0, 10, 30, 800, 810])
-            ),
+            $query->in('status', AnsuchenStatus::statusSichtbarDurchGs()),
+            $query->equals('version_active', 1),
         ];
         $query->matching($query->logicalAnd($constraints));
 

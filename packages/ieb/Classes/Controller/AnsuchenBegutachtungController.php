@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Controller;
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
 
@@ -30,17 +32,26 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        $ansuchen = $this->ansuchenRepository->getAllForBegutachtung();
-        $this->view->assign('ansuchen', $ansuchen);
+        $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForBegutachtung());
         return $this->htmlResponse();
     }
-
 
     public function showAction(Ansuchen $ansuchen): ResponseInterface
     {
-        $this->view->assign('ansuchen', $ansuchen);
+        $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
+        $possibleStatus = [];
+        foreach (AnsuchenStatus::statusSetzbarDurchGs() as $status) {
+            $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
+        };
+        $begutachtung->setByAnsuchen($ansuchen);
+        $this->view->assignMultiple([
+            'ansuchen' => $ansuchen,
+            'begutachtung' => $begutachtung,
+            'possibleStatus' => $possibleStatus,
+        ]);
         return $this->htmlResponse();
     }
+
     /**
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
      */
@@ -51,9 +62,11 @@ class AnsuchenBegutachtungController extends BaseController
     }
 
 
-    public function updateAction(Ansuchen $ansuchen)
+    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung): void
     {
+        $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
+        $this->addFlashMessage('Ansuchen wurde ergänzt');
         $this->redirect('list');
     }
 }

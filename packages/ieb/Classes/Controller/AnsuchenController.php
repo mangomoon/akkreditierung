@@ -60,6 +60,7 @@ class AnsuchenController extends BaseController
         $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
         $newAnsuchen->setStammdatenStatic($staticStammDaten);
+        $newAnsuchen->setVersionActive(true);
 
         $this->ansuchenRepository->add($newAnsuchen);
         $this->redirect('list');
@@ -97,7 +98,6 @@ class AnsuchenController extends BaseController
         return $this->htmlResponse();
     }
 
-
     public function updateAction(Ansuchen $ansuchen, array $fileDelete = []): ResponseInterface
     {
         $this->check($ansuchen);
@@ -115,7 +115,7 @@ class AnsuchenController extends BaseController
                 if ($split[0] === 's') {
                     $file = $ansuchen->$getter();
                     if ($file && $file->getUid() === $fileId) {
-                        $ansuchen->$setter(null);
+//                        $ansuchen->$setter(null);
                         $connection->update('sys_file_reference', ['deleted' => 1], ['uid' => $fileId]);
                     }
                 } elseif ($split[0] === 'm') {
@@ -124,10 +124,10 @@ class AnsuchenController extends BaseController
                     foreach ($files as $file) {
                         if ($file->getUid() === (int)$fileId) {
                             $connection->update('sys_file_reference', ['deleted' => 1], ['uid' => $fileId]);
-                            $files->detach($file);
+//                            $files->detach($file);
                         }
                     }
-                    $ansuchen->$setter($files);
+//                    $ansuchen->$setter($files);
                 }
             }
         }

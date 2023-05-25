@@ -15,6 +15,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -113,5 +114,11 @@ class BaseController extends ActionController
     public function setTitleTag($title): void
     {
         GeneralUtility::makeInstance(IebTitleProvider::class)->setTitle($title);
+    }
+
+    public function translate(string $key, string $fallback = ''): string
+    {
+        $label = LocalizationUtility::translate($key, 'ieb');
+        return $label ?: $fallback;
     }
 }

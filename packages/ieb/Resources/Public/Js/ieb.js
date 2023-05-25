@@ -414,6 +414,31 @@ $(document).ready(function() {
         trainerfelder();
     });
 
+    // ######################################## FORM Begutachtung
+
+    $('.knopf').click(function() {
+        $(this).parent().find('.knopf').removeClass('checked');
+        $(this).addClass('checked');
+        if ($(this).hasClass('nicht-ok')) {
+            $(this).parent().next().toggle();
+        }
+    });
+
+    $('.textbausteinoeffner').click(function() {
+        $(this).toggleClass('checked');
+        $(this).next().toggle();
+    });
+    $('.textbaustein').click(function() {
+        var t = $(this).html();
+        var u = $(this).parent().parent().find('.extern').val();
+
+        $(this).parent().parent().find('.extern').val(u + t);
+    });
+
+    $('.infoknopf').click(function() {
+        $(this).toggleClass('checked');
+        $(this).parent().parent().parent().parent().find('.erlaeuterung').toggle();
+    });
     // ########################################
 
     $(".req").focus(function() {

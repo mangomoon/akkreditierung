@@ -26,8 +26,8 @@ class CustomDataHandler
         $this->backendUser->fetchGroupData();
         $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)->createFromUserPreferences($this->backendUser);
 
-        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
-        $dataHandler->admin = true;
+        $this->dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $this->dataHandler->admin = true;
     }
 
     public function copyRecord(string $table, int $id, int $destinationPid, array $overrideValues = []): int

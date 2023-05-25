@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Model;
 
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -880,7 +882,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return (int) $this->kompetenzbereiche;
+        return (int)$this->kompetenzbereiche;
     }
 
     /**
@@ -891,7 +893,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = (int) $kompetenzbereiche;
+        $this->kompetenzbereiche = (int)$kompetenzbereiche;
     }
 
     /**
@@ -2696,6 +2698,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
+
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
@@ -2742,5 +2745,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setVerantwortlicheMail(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $verantwortlicheMail)
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
+    }
+
+    public function isEditableByTr(): bool
+    {
+        return AnsuchenStatus::visibleForAg($this->status);
     }
 }

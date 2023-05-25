@@ -1,24 +1,296 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-This template is responsible for displaying a single view for a domain object
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Ansuchen:
-          Show.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="content">
-    <h1>Single View for Ansuchen</h1>
 
-    <f:flashMessages />
-    <f:render partial="Ansuchen/Properties" arguments="{ansuchen:ansuchen}" />
-    <f:link.action action="list">Back to list</f:link.action><br />
-    <f:link.action action="new">New Ansuchen</f:link.action>
+    <div class="begutachtung-kopf row">
+        <div class="col">
+            <p class="name">Testorganisation: </p>
+            <h1><span class="nr">4-13845-02 </span> {ansuchen.name}</h1>
+        </div>
+        <div class="col">
+            <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</p>
+        </div>
+    </div>
+
+
+
+    <f:debug>{_all}</f:debug>
+
+    <div class="abstand-gross"></div>
+
+    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>A.1 Stammdaten</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="links col-7">
+                    <div class="erlaeuterung">
+                        <p>Geben Sie den rechtsgültigen Vereins- bzw. Firmennamen und die Rechtsform gemäß Vereinsregister/Firmenbuch an und laden Sie einen aktuellen Vereinsregister-/Firmenbuchauszug (nicht älter als 6 Monate) hoch. <br> Geben Sie die Kontaktdaten
+                            der einreichenden Organisation an.</p>
+                        <p class="hinweis">
+                            <span class="worthinweis">Hinweis:</span> Die Kursstandorte sind später einzutragen. Hier sind ausschließlich die Kontaktdaten der einreichenden Organisation anzugeben.
+                        </p>
+                    </div>
+                    <table class="ansuchenbegutachtung">
+                        <tr>
+                            <td class="chiffre">
+                                &nbsp;
+                            </td>
+                            <td class="labeltext">
+                                Rechtsgültiger Vereins- bzw. Firmenname
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.name} Testname Organisation
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+                                &nbsp;
+                            </td>
+                            <td class="labeltext">
+                                Markenname bzw. Organisationseinheit:
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.markenname} Abteilung Testwesen
+                            </td>
+                        </tr>
+                        <tr class="linie">
+                            <td colspan="3"></td>
+                            <!-- ------------------------------ -->
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+
+                            </td>
+                            <td class="labeltext">
+                                Rechts-/Organisationsform (tätig seit):
+                            </td>
+                            <td class="daten">
+                                <ieb:arrayValue array="{settings.static.rechtsform}" key="{relations.stammdaten.rechtsform}" fallback="fehlt" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+
+                            </td>
+                            <td class="labeltext">
+                                Nachweis:
+                            </td>
+                            <td class="daten">
+                                <a href="/fileadmin{relations.stammdaten.nachweis.originalResource.identifier}" target="_blank">{relations.stammdaten.nachweis.originalResource.properties.name}</a>
+                            </td>
+                        </tr>
+                        <tr class="linie">
+                            <td colspan="3"></td>
+                            <!-- ------------------------------ -->
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+
+                            </td>
+                            <td class="labeltext">
+                                Adresse und Kontakt:
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.strasse}Hauptstraße 67<br />{relations.stammdaten.plz} {relations.stammdaten.ort}5132 Rekawinkel
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+
+                            </td>
+                            <td class="labeltext">
+                                E-Mail:
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.email}<a href="mailto:x@mangomoon.at">x@mangomoon.at</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+                                &nbsp;
+                            </td>
+                            <td class="labeltext">
+                                Telefon:
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.telefon}123 456 789
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="chiffre">
+
+                            </td>
+                            <td class="labeltext">
+                                Website:
+                            </td>
+                            <td class="daten">
+                                {relations.stammdaten.website}<a href="https://www.mangomoon.at" target="_blank">www.mangomoon.at</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="abstand-mittel"></div>
+                </div>
+                <div class="rechts col-5">
+                    <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                        kriterium = 'blabla'
+                    }" />
+                </div>
+            </div>
+        </div>
+
+        <!-- A.2 Stammdaten #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>A.2. QUALITÄT DES ANBIETERS</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="kriteriumteil">
+                            <h3>A.2.1 Leitbild</h3>
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="b-2-c-hilfe">
+                                    <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
+                                    <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+                                    <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
+                                        Prozentsatz des Online-Angebots (maximal 30%)</p>
+                                </div>
+                                <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+                            </div>
+
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                            kriterium = 'blabla'
+                        }" />
+                        </div>
+                        <div class="kriteriumteil">
+                            <h3>A.2.2 Qualitätssicherung der Einrichtung {qmsTyp}</h3>
+
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                            kriterium = 'blabla'
+                        }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- A.2 Stammdaten #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>B.1. Eckdaten zum Angebot</h2>
+                    </div>
+                    <div class="col-6 right">
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="kriteriumteil">
+                            <h3>B.1.1 Programmbereich</h3>
+
+                            {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
+                        </div>
+                        <div class="kriteriumteil">
+                            <h3>B.1.2 Kompetenzbereiche</h3>
+                            <div class="erlaeuterung {f:if(condition:'{ansuchen.typ}==2', then:'notvisible'}">
+                                <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                            </div>
+                            <ul>
+                                <f:if condition="{ansuchen.typ}==1">
+                                    <f:then>
+                                        <li class="light">Lernkompetenzen (Autonomes Lernen, Lernen lernen)</li>
+                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
+                                        <li>Kompetenzen in der deutschen Sprache</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
+                                        <li>Mathematische Kompetenzen</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
+                                        <li>Digitale Kompetenzen</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
+                                        <li>Grundlegende Kompetenzen in einer weiteren Sprache: {ansuchen.kompetenzText1}</li>')}
+                                    </f:then>
+                                    <f:else>
+                                        <li class="light">Deutsch – Kommunikation und Gesellschaft</li>
+                                        <li class="light">Englisch – Globalität und Transkulturalität</li>
+                                        <li class="light">Mathematik</li>
+                                        <li class="light">Berufsorientierung</li>
+                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
+                                        <li>Kreativität und Gestaltung</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
+                                        <li>Gesundheit und Soziales</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
+                                        <li>Natur und Technik</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
+                                        <li>Weitere Sprachen: {ansuchen.kompetenzText2}</li>')}
+                                    </f:else>
+                                </f:if>
+
+                            </ul>
+
+                        </div>
+                        <div class="kriteriumteil">
+                            <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
+
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                kriterium = 'blabla'
+                            }" />
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                            kriterium = 'blabla'
+                        }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- B... #################################################### -->
+
+
+
+        <div class="abstand-gross"></div>
+        <div class="abstand-gross"></div>
+        <div class="abstand-gross"></div>
+        <div class="abstand-gross"></div>
+
+        <label>
+            <f:form.select property="status" options="{possibleStatus}" />
+        </label>
+        <label>
+            Kommentar <i>intern</i>
+            <f:form.textfield property="reviewTotalCommentInternal" class="form-control"/>
+        </label>
+        <f:form.submit value="Speichern" name="saveAndIndex" class="knopf-s" />
+    </f:form>
 </f:section>
+
 </html>

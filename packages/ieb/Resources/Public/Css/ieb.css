@@ -915,3 +915,230 @@ table.tx_ieb.standortliste td {
     margin: 0;
     padding: 0;
 }
+
+.light {
+    opacity: 0.5;
+}
+
+
+/* BEGUTACHTUNG ANSUCHEN  */
+
+.notvisible {
+    display: none;
+}
+
+.begutachtung-kopf p.name {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--f4);
+    padding: 0;
+    font-size: 1.1em;
+}
+
+.begutachtung-kopf span.nr {
+    color: var(--f2);
+}
+
+.begutachtung-kopf h1 {
+    color: var(--f4);
+    margin: 0;
+}
+
+.begutachtung-kopf p.typ {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--f3);
+    padding: 0;
+    font-size: 1.1em;
+    padding-top: 36px;
+    text-align: right;
+}
+
+.kriteriumtitel {
+    background: var(--f0b);
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 12px;
+}
+
+.kriteriumtitel h2 {
+    color: var(--f4);
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.kriteriumtitel .infoknopf {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(2px 2px 2px var(--f2));
+    cursor: pointer;
+    background-image: url(../Img/info.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    right: 40px;
+    margin-top: -6px;
+}
+
+.kriteriumtitel .infoknopf:hover,
+.kriteriumtitel .infoknopf.checked {
+    filter: none;
+}
+
+.kriteriumtitel .infoknopf.checked {
+    background-image: url(../Img/info-2.svg);
+}
+
+.begutachtung-kriterium {
+    margin-bottom: 40px;
+}
+
+.begutachtung-kriterium .links {
+    background: var(--f0b);
+}
+
+.begutachtung-kriterium .rechts {
+    background: var(--f2);
+}
+
+.begutachtung-kriterium h3 {
+    font-size: 1.2em;
+    color: var(--f4);
+}
+
+.begutachtung-kriterium .erlaeuterung {
+    display: none;
+    background: #f1ede4;
+    padding: 8px;
+    font-size: 0.9em;
+    margin: 12px 0 24px 0;
+}
+
+.begutachtung-kriterium .showinfobox {
+    border: solid 1px var(--standorte);
+    padding: 4px;
+}
+
+.tx-ieb table.ansuchenbegutachtung td {
+    padding: 6px 8px 0 0;
+    vertical-align: top;
+}
+
+.tx-ieb table.ansuchenbegutachtung td.chiffre {
+    width: 10%;
+}
+
+.tx-ieb table.ansuchenbegutachtung .linie td {
+    border-bottom: dotted 2px var(--f1);
+    padding-top: 6px;
+}
+
+table.ansuchenbegutachtung td.chiffre {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+table.ansuchenbegutachtung td.labeltext {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    width: 40%;
+    text-align: right;
+}
+
+table.ansuchenbegutachtung td.check {
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.komm-int {
+    color: #fff;
+    font-size: 0.8em;
+}
+
+.komm-int span.name {
+    text-transform: uppercase;
+}
+
+.begutachtung-kriterium textarea {
+    width: 100%;
+}
+
+.begutachtung-kriterium .knopf {
+    cursor: pointer;
+    padding: 8px 8px;
+    background-color: var(--f2);
+    color: #fff;
+    border: solid 1px #898989;
+    filter: drop-shadow(2px 2px 2px #677878);
+    font-size: 0.8em;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.begutachtung-kriterium .knopf:hover {
+    filter: none;
+}
+
+.begutachtung-kriterium .knopf.checked {
+    filter: none;
+}
+
+.begutachtung-kriterium .knopf.ok:hover,
+.begutachtung-kriterium .knopf.ok.checked {
+    background: var(--angebotsverantwortliche);
+    border: solid 1px #fff;
+}
+
+.begutachtung-kriterium .knopf.zweit:hover,
+.begutachtung-kriterium .knopf.zweit.checked {
+    background: var(--standorte);
+    border: solid 1px #fff;
+}
+
+.begutachtung-kriterium .knopf.plenum:hover,
+.begutachtung-kriterium .knopf.plenum.checked {
+    background: var(--stammdaten);
+    border: solid 1px #fff;
+}
+
+.begutachtung-kriterium .knopf.nicht-ok:hover,
+.begutachtung-kriterium .knopf.nicht-ok.checked {
+    background: var(--ansuchen);
+    border: solid 1px #fff;
+}
+
+.begutachtung-kriterium .knoepfe {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 30px;
+}
+
+.begutachtung-kriterium .knoepfe>* {
+    width: 25%;
+    flex-grow: 1;
+}
+
+.begutachtung-kriterium .komm-ext,
+.textbausteine {
+    display: none;
+}
+
+.textbaustein {
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: var(--f0b);
+    padding: 8px;
+    font-size: 0.8em;
+    margin-bottom: 8px;
+}
+
+.textbaustein:hover {
+    background-color: var(--f0);
+}
+
+.textbaustein p {
+    padding: 0;
+}
