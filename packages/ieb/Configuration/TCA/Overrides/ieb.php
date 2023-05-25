@@ -8,6 +8,8 @@ foreach (\GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus::cases() as $status) {
     ];
 }
 $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['status']['config']['items'] = $items;
+$GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['ctrl']['label_alt'] = 'version,version_active,version_based_on';
+$GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['ctrl']['label_alt_force'] = 1;
 
 foreach (['ansuchen', 'berater', 'trainer', 'standort', 'angebotverantwortlich'] as $tableSuffix) {
     $GLOBALS['TCA']['tx_ieb_domain_model_' . $tableSuffix]['columns']['tstamp'] = [
@@ -42,3 +44,8 @@ $GLOBALS['TCA']['tx_ieb_domain_model_stammdaten']['columns']['rechtsform']['conf
     ['Verein', 120],
     ['Sonstige', 130],
 ];
+
+foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
+    $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['readOnly'] = true;
+    $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['renderType'] = 'json';
+}

@@ -69,7 +69,7 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock,archive,revive',
         ]
     );
-    
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
         'Ansuchen',
@@ -137,4 +137,11 @@ defined('TYPO3') || die();
         }
     }
 '));
+
+
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1684948718] = [
+        'nodeName' => 'json',
+        'priority' => 40,
+        'class' => \GeorgRinger\Ieb\Backend\Element\JsonElement::class,
+    ];
 })();

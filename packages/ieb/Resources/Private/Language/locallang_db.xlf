@@ -987,6 +987,30 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.erklaerungd5.description" resname="tx_ieb_domain_model_ansuchen.erklaerungd5.description">
 				<source>Erklaerungd5</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_stammdaten" resname="tx_ieb_domain_model_ansuchen.copy_stammdaten">
+				<source>Copy Stammdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_stammdaten.description" resname="tx_ieb_domain_model_ansuchen.copy_stammdaten.description">
+				<source>Copy Stammdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_trainer" resname="tx_ieb_domain_model_ansuchen.copy_trainer">
+				<source>Copy Trainer</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_trainer.description" resname="tx_ieb_domain_model_ansuchen.copy_trainer.description">
+				<source>Copy Trainer</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_berater" resname="tx_ieb_domain_model_ansuchen.copy_berater">
+				<source>Copy Berater</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_berater.description" resname="tx_ieb_domain_model_ansuchen.copy_berater.description">
+				<source>Copy Berater</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_standorte" resname="tx_ieb_domain_model_ansuchen.copy_standorte">
+				<source>Copy Standorte</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_standorte.description" resname="tx_ieb_domain_model_ansuchen.copy_standorte.description">
+				<source>Copy Standorte</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
 			</trans-unit>
