@@ -9,7 +9,8 @@
             <h1><span class="nr">4-13845-02 </span> {ansuchen.name}</h1>
         </div>
         <div class="col">
-            <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</p>
+            <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
+            </p>
         </div>
     </div>
 
@@ -74,11 +75,21 @@
 
                             </td>
                             <td class="labeltext">
-                                Rechts-/Organisationsform (tätig seit):
+                                Rechts-/Organisationsform:
                             </td>
                             <td class="daten">
-                                <ieb:arrayValue array="{settings.static.rechtsform}" key="{relations.stammdaten.rechtsform}" fallback="fehlt" />
+                                {settings.static.rechtsform.{relations.stammdaten.rechtsform}}
                             </td>
+                        </tr>
+                        <td class="chiffre">
+
+                        </td>
+                        <td class="labeltext">
+                            tätig seit:
+                        </td>
+                        <td class="daten">
+                            {relations.stammdaten.seit}
+                        </td>
                         </tr>
                         <tr>
                             <td class="chiffre">
@@ -88,7 +99,9 @@
                                 Nachweis:
                             </td>
                             <td class="daten">
-                                <a href="/fileadmin{relations.stammdaten.nachweis.originalResource.identifier}" target="_blank">{relations.stammdaten.nachweis.originalResource.properties.name}</a>
+                                <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                    field = 'stammdaten.nachweis'
+                                }" />
                             </td>
                         </tr>
                         <tr class="linie">
@@ -180,12 +193,57 @@
                             </div>
 
                             <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                            kriterium = 'blabla'
+                            field = 'stammdaten.leitbildDatei'
                         }" />
                         </div>
                         <div class="kriteriumteil">
-                            <h3>A.2.2 Qualitätssicherung der Einrichtung {qmsTyp}</h3>
+                            <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
+                            <f:if condition="{stammdaten.qmsTyp}=1">
+                                <f:then>
+                                    <p>Die Organisation verfügt über Ö-Cert.</p>
+                                    <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                        field = 'stammdaten.qmsZertifikatDatei'
+                                    }" />
+                                    <div class="erlaeuterung">
+                                        <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <p>Die Organisation verfügt über kein Ö-Cert.</p>
+                                    <div class="erlaeuterung">
+                                        <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
+                                        </p>
+                                        <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet
+                                            wird. Denken Sie dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
+                                        <p><span class="halbstark">Anforderungen an die Infrastruktur:</span> Nennen Sie die Kriterien, nach denen Sie Ihre Räumlichkeiten auswählen/gestalten, um ein erwachsenengerechtes Lernen zu ermöglichen (Räumlichkeiten,
+                                            Größe, Lage, Erreichbarkeit, technische Ausstattung, Barrierefreiheit).</p>
+                                        <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
+                                    </div>
+                                    <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                        field = 'stammdaten.qualitaetSicherungDatei'
+                                    }" />
+                                </f:else>
+                            </f:if>
 
+                        </div>
+                        <div class="kriteriumteil">
+                            <h3>A.2.3 Qualitätssicherung Personal</h3>
+                            <div class="erlaeuterung">
+                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
+                                    Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
+                                <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
+                                    geregelt sind.</p>
+                                <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung
+                                    verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
+                                <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
+
+                                <p class="erklaerung"> Ich bestätige, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen:
+                                    &nbsp;
+                                </p>
+                            </div>
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                field = 'stammdaten.qualitaetPersonalDatei'
+                            }" />
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -258,7 +316,7 @@
                             <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
 
                             <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                                kriterium = 'blabla'
+                                field = 'ansuchen.uebersichtDatei'
                             }" />
                         </div>
                     </div>
@@ -273,21 +331,549 @@
         </div>
 
 
-        <!-- B... #################################################### -->
+
+        <!-- B.1.4 Standorte #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>B.1.4 Standorte</h3>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+
+
+                        <div class="erlaeuterung">
+                            <p>Geben Sie das Bundesland der Durchführung an. </p>
+                            <p class="hinweis">Hinweis: Wird ein Bildungsangebot von einem Träger in mehreren Bundesländern durchgeführt, ist für jedes Bundesland ein eigenes Akkreditierungsansuchen zu stellen.</p>
+                            <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
+
+                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert
+                                implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                            </p>
+                        </div>
+
+                        <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}</p>
+
+
+                        <p>Standorte:</p>
+                        <ul>
+
+                            <f:for each="{ansuchen.standorte}" as="standort">
+
+                                <li>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span></li>
+
+                            </f:for>
+                        </ul>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                            kriterium = 'blabla'
+                        }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>B.1.5 Abnahme von Prüfungen</h3>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="erlaeuterung">
+                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
+                        </div>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ja', else:'nein')}</b>.</p>
+                        <f:if condition="{ansuchen.pruefbescheidDatei}">
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                field = 'ansuchen.pruefbescheidDatei'
+                            }" />
+                        </f:if>
+                        <h4>Kooperierende Einrichtung</h4>
+                        <div class="erlaeuterung">
+                            <p class="hinweis"><span class="worthinweis">Hinweis:</span> Sollte die kooperierende Schule noch nicht feststehen, dann ist eine Bestätigung der Bildungsdirektion vorzulegen, dass eine Prüfungsschule zugeteilt wird.</p>&nbsp;<br>
+                        </div>
+                        <f:if condition="{ansuchen.pruefbescheidDatei}">
+                            <f:then>
+                                <p>Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert.</p>
+                            </f:then>
+                            <f:else>
+                                <p>Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
+                            </f:else>
+                        </f:if>
+
+                        <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                field = 'ansuchen.kooperationDatei'
+                            }" />
+
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
 
-        <div class="abstand-gross"></div>
-        <div class="abstand-gross"></div>
-        <div class="abstand-gross"></div>
+        <h2>B.2 Pädagogische und didaktische Konzeption</h2>
+
+
+        <!-- B.2.1 Ansprache und Erreichung der Zielgruppe #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>B.2.1 Ansprache und Erreichung der Zielgruppe</h3>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="erlaeuterung">
+                            <div class="showinfobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.</div>
+                            <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird auf diese eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen
+                                Sie dar, wie Sie Ihre Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie zusätzlich einen Folder, eine Kurs-Einladung, ein Plakat o.ä.
+                                hoch.
+                            </p>
+                            <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
+                        </div>
+                        <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                            field = 'ansuchen.zielgruppenAnspracheDatei'
+                        }" />
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- B.2.2 Didaktisch-methodisches Vorgehen #################################################### -->
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>B.2.2 Didaktisch-methodisches Vorgehen</h3>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="kriteriumteil">
+                            <div class="erlaeuterung">
+                                <div class="infobox" id="b-2-c-hilfe">
+                                    <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
+                                    <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+                                    <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
+                                        Prozentsatz des Online-Angebots (maximal 30%)</p>
+                                </div>
+                                <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+                                <ul>
+                                    <li>
+                                        Aufbau, Lehrinhalte, Gestaltung/Methoden
+                                    </li>
+                                    <li>
+                                        lernfeldübergreifendes Arbeiten
+                                    </li>
+                                    <li>
+                                        Medien, Materialien, Unterrichtssettings
+                                    </li>
+                                    <li>
+                                        gegebenenfalls Fernunterricht
+                                    </li>
+                                </ul>
+                                <p>und illustrieren Sie dies ergänzend anhand eines konkreten Unterrichtsbeispiels.</p>
+
+                                <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
+                            </div>
+
+                            <f:if condition="{ansuchen.fernlehre}">
+                                <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
+                            </f:if>
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                            field = 'ansuchen.lernziele'
+                        }" />
+
+                        </div>
+                        <div class="kriteriumteil">
+
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="b-2-c-x-hilfe">
+                                    <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
+                                </div>
+                                <f:if condition="{ansuchen.typ}=1">
+                                    <f:then>
+                                        <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
+                                        </p>
+                                    </f:then>
+                                    <f:else>
+                                        <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenzstand zu Beginn und begleitend erheben, sowie wie Sie die Teilnehmenden auf die Prüfung vorbereiten und welche Verfahren hier zum Einsatz kommen.</p>
+                                    </f:else>
+                                </f:if>
+
+
+                                <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
+                                <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
+                            </div>
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                            field = 'ansuchen.lernstandserhebung'
+                        }" />
+                        </div>
+                        <div class="kriteriumteil">
+
+                            <div class="erlaeuterung">
+                                <p>Stellen Sie dar, wie Gender und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
+                                <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
+                            </div>
+                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                field = 'ansuchen.lernstandserhebung'
+                            }" />
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <!-- B.2.3 Beratung, Coaching und Begleitung #################################################### -->
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="row">
+                <div class="links col-7">
+                    <div class="kriteriumteil">
+                        <h3>B.2.3 Beratung, Coaching und Begleitung</h3>
+                    </div>
+                    <div class="erlaeuterung">
+                        <div class="showinfobox" id="b-2-d-hilfe">
+                            <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
+                        </div>
+                        <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle
+                            externer sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
+                        <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
+                    </div>
+                    <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                        field = 'ansuchen.beratungDatei'
+                    }" />
+                    <h4>Kinderbetreuung</h4>
+                    <f:if condition="ansuchen.kinderbetreuung">
+                        <p>
+                            Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
+                        </p>
+                    </f:if>
+                </div>
+
+                <div class="rechts col-5">
+                    <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- C.1 Projektsteuerung #################################################### -->
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>C.1 Projektsteuerung</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+
+
+
+                <div class="row person">
+                    <div class="links col-7">
+                        Vorname Nachname &nbsp;|&nbsp; 01/123 565 983 &nbsp;|&nbsp; <a href="mailto:xyz@xyz.at">xyz@xyz.at</a><br>
+                        <a href="#">Lebenslauf</a>
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="row">
+                            <div class="col">
+                                <label for="xy"><f:form.checkbox property="xy" class="" id="xy" value="1" />Management ok</label>
+                            </div>
+                            <div class="col">
+                                <label for="xy"><f:form.checkbox property="xy" class="" id="xy" value="1" />Pädagogik ok</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row person">
+                    <div class="links col-7">
+                        <b>Vorname Bekommt Mails &nbsp;|&nbsp; 01/123 565 983 &nbsp;|&nbsp; <a href="mailto:xyz@xyz.at">xyz@xyz.at</a><br></b>
+                        <a href="#">Lebenslauf</a>
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="row">
+                            <div class="col">
+                                <label for="xy"><f:form.checkbox property="xy" class="" id="xy" value="1" />Management ok</label>
+                            </div>
+                            <div class="col">
+                                <label for="xy"><f:form.checkbox property="xy" class="" id="xy" value="1" />Pädagogik ok</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich"> -->
+                <!-- </f:for> -->
+
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="erlaeuterung">
+                            <p>Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).<br> Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
+                                Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation).</p>
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- C.2 Training #################################################### -->
+
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>C.2 Training</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+
+                <div class="row person">
+                    <div class="links col-7">
+                        Vorname Nachname
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="knopf">Begutachtung starten</div>
+                    </div>
+                </div>
+
+                <div class="row person">
+                    <div class="links col-7">
+                        Irgendwer Ist Lehrerin
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="knopf">Begutachtung starten</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="erlaeuterung">
+                            <div class="showinfobox" id="c-2-hilfe">
+                                <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums
+                                    abgedeckt sind.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                    kriterium = 'blabla'
+                }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- C.3 Beratung #################################################### -->
+
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>C.3 Beratung</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row person">
+                    <div class="links col-7">
+                        Vorname Nachname
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="knopf">Begutachtung starten</div>
+                    </div>
+                </div>
+
+                <div class="row person">
+                    <div class="links col-7">
+                        Irgendwer Berät
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="knopf">Begutachtung starten</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="kriteriumteil">
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="c-3-hilfe">
+                                    <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+                            kriterium = 'blabla'
+                        }" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- D Erklärungen #################################################### -->
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>D Erklärungen</h2>
+                    </div>
+                    <div class="col-6 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="begutachtung-kriterium" id="k1">
+                <div class="row">
+
+                    <div class="col erlaeuterung" style="background:#DADBCF;margin-top:0;">
+                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
+                            Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
+                        </p>
+                        <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
+                            für allfällige Kontrollen aufzubewahren.
+                        </p>
+                        <f:if condition="{ansuchen.typ}=2">
+                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
+                                und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
+                        </f:if>
+                        <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
+                        </p>
+                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="abstand-gross"></div>
 
-        <label>
-            <f:form.select property="status" options="{possibleStatus}" />
-        </label>
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="row">
+                <div class="links col-6">
+                    noch mehr
+                </div>
+                <div class="rechts col-6">
+                    <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
+            kriterium = 'blabla'
+        }" />
+                </div>
+            </div>
+        </div>
         <label>
             Kommentar <i>intern</i>
             <f:form.textfield property="reviewTotalCommentInternal" class="form-control"/>
+        </label>
+
+
+        <label>
+            <f:form.select property="status" options="{possibleStatus}" />
         </label>
         <f:form.submit value="Speichern" name="saveAndIndex" class="knopf-s" />
     </f:form>
