@@ -15,7 +15,7 @@
         </tr>
         <f:for each="{ansuchen}" as="item">
             <tr>
-                <td>{item.name}</td>
+                <td>{item.name} <code>[OK: {item.ok}, UID: {item.uid}]</code></td>
                 <td>{item.version}</td>
                 <td><f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> <code>[{item.status}]</code></td>
                 <td>

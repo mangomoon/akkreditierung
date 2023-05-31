@@ -52,6 +52,21 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
         ];
     }
+
+    /**
+     * Alle Status, von Anträgen, die für TR bearbeitbar sind
+     *
+     * @return array<int>
+     */
+    public static function statusBearbeitbarDurchTr(): array
+    {
+        return [
+            self::NEU_IN_ARBEIT->value,
+            self::IN_ARBEIT->value,
+            self::NACHBESSERUNGSAUFTRAG->value,
+        ];
+    }
+
     /**
      * Alle Status, von Anträgen, die für die GS sichtbar sind
      *

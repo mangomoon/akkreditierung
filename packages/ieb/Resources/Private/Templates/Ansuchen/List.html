@@ -7,9 +7,15 @@
     <f:flashMessages/>
 
     <table class="tx_ieb">
+        <tr>
+            <th>Name</th>
+            <th>v</th>
+            <th>Status</th>
+            <th>Aktionen</th>
+        </tr>
         <f:for each="{ansuchen}" as="item">
             <tr>
-                <td>{item.name} ok={item.ok}</td>
+                <td>{item.name} <code>[OK: {item.ok}, UID: {item.uid}]</code></td>
                 <td>{item.version}</td>
                 <td>
                     <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
@@ -37,7 +43,6 @@
                     &middot;
                     <f:link.action action="clone" arguments="{ansuchen : item}">Klonen</f:link.action>
                     <f:if condition="{item.status} == 10">
-                        &middot;
                         <f:link.action action="einreichen" arguments="{ansuchen : item}">Einreichen</f:link.action>
                     </f:if>
                 </td>

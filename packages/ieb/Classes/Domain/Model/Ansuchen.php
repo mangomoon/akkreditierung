@@ -2860,4 +2860,19 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->copyStandorte = $copyStandorte;
     }
+
+    public function getCopyStammdatenData()
+    {
+        return $this->getConvertedJson($this->copyStammdaten);
+    }
+
+    public function getCopyStandorteData()
+    {
+        return $this->getConvertedJson($this->copyStandorte);
+    }
+
+    protected function getConvertedJson(string $input)
+    {
+        return json_decode($input, true);
+    }
 }

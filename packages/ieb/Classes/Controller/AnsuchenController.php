@@ -35,7 +35,7 @@ class AnsuchenController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        $ansuchen = $this->ansuchenRepository->getAll();
+        $ansuchen = $this->ansuchenRepository->getAllEditableForTr();
         $this->view->assign('ansuchen', $ansuchen);
         return $this->htmlResponse();
     }
@@ -82,9 +82,11 @@ class AnsuchenController extends BaseController
     public function einreichenAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
-        $this->addFlashMessage('Wurde eingereicht');
-        $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-        $this->ansuchenRepository->update($ansuchen);
+        $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
+        $this->addFlashMessage('Das Ansuchen wurde eingereicht');
+        $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
+        $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+        $this->ansuchenRepository->update($newAnsuchen);
         $this->redirect('list');
         return $this->htmlResponse();
     }

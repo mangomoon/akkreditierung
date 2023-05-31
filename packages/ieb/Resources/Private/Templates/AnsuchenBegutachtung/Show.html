@@ -21,7 +21,9 @@
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        <f:debug>{standorte}</f:debug>
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -52,7 +54,7 @@
                                 Rechtsgültiger Vereins- bzw. Firmenname
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.name} Testname Organisation
+                                {stammdaten.name}
                             </td>
                         </tr>
                         <tr>
@@ -63,7 +65,7 @@
                                 Markenname bzw. Organisationseinheit:
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.markenname} Abteilung Testwesen
+                                {stammdaten.markenname}
                             </td>
                         </tr>
                         <tr class="linie">
@@ -78,18 +80,19 @@
                                 Rechts-/Organisationsform:
                             </td>
                             <td class="daten">
-                                {settings.static.rechtsform.{relations.stammdaten.rechtsform}}
+                                <ieb:arrayValue array="{settings.static.rechtsform}" key="{stammdaten.rechtsform}" fallback="fehlt" />
                             </td>
                         </tr>
-                        <td class="chiffre">
+                        <tr>
+                            <td class="chiffre">
 
-                        </td>
-                        <td class="labeltext">
-                            tätig seit:
-                        </td>
-                        <td class="daten">
-                            {relations.stammdaten.seit}
-                        </td>
+                            </td>
+                            <td class="labeltext">
+                                tätig seit:
+                            </td>
+                            <td class="daten">
+                                {stammdaten.seit}
+                            </td>
                         </tr>
                         <tr>
                             <td class="chiffre">
@@ -99,9 +102,13 @@
                                 Nachweis:
                             </td>
                             <td class="daten">
-                                <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                                    field = 'stammdaten.nachweis'
-                                }" />
+                                <f:if condition="{stammdaten.nachweis}">
+                                    <f:for each="{stammdaten.nachweis}" as="media">
+                                        <f:if condition="{media.publicUrl}">
+                                            <f:image src="{media.publicUrl}" maxWidth="100" />
+                                        </f:if>
+                                    </f:for>
+                                </f:if>
                             </td>
                         </tr>
                         <tr class="linie">
@@ -116,7 +123,7 @@
                                 Adresse und Kontakt:
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.strasse}Hauptstraße 67<br />{relations.stammdaten.plz} {relations.stammdaten.ort}5132 Rekawinkel
+                                {stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
                             </td>
                         </tr>
                         <tr>
@@ -127,7 +134,7 @@
                                 E-Mail:
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.email}<a href="mailto:x@mangomoon.at">x@mangomoon.at</a>
+                                <a href="mailto:{stammdaten.email}">{stammdaten.email}</a>
                             </td>
                         </tr>
                         <tr>
@@ -138,7 +145,7 @@
                                 Telefon:
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.telefon}123 456 789
+                                {stammdaten.telefon}
                             </td>
                         </tr>
                         <tr>
@@ -149,7 +156,9 @@
                                 Website:
                             </td>
                             <td class="daten">
-                                {relations.stammdaten.website}<a href="https://www.mangomoon.at" target="_blank">www.mangomoon.at</a>
+                                <f:if condition="{stammdaten.website}">
+                                <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                </f:if>
                             </td>
                         </tr>
                     </table>
@@ -367,10 +376,8 @@
                         <p>Standorte:</p>
                         <ul>
 
-                            <f:for each="{ansuchen.standorte}" as="standort">
-
+                            <f:for each="{standorte}" as="standort">
                                 <li>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span></li>
-
                             </f:for>
                         </ul>
                     </div>
