@@ -216,6 +216,19 @@ function anmerkungoeffnen() {
     });
 }
 
+// Angebotsstuerung anzeigen zweite Checkbox #####################
+
+function angebotssteuerungzwei() {
+
+    $('.angebotssteuerungsperson').each(function() {
+        if ($(this).is(':checked')) {
+            $(this).parent().parent().addClass('angebotssteuernd');
+            $(this).parent().parent().find('.spalte-2 input').show();
+        }
+    });
+
+
+}
 // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
 // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
 // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -297,6 +310,8 @@ $(document).ready(function() {
     trainerfelder();
 
     anmerkungoeffnen();
+
+    angebotssteuerungzwei();
 
     // ######################################## Form Stammdaten öCert
 
