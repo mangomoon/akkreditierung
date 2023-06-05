@@ -11,6 +11,7 @@ class BasisBegutachtung extends AbstractDomainObject
 
     public string $reviewTotalCommentInternal = '';
     public string $reviewTotalCommentTr = '';
+    public string $reviewB1CommentInternal = '';
     public int $status = 0;
 
     public function setByAnsuchen(Ansuchen $ansuchen): void
@@ -18,6 +19,7 @@ class BasisBegutachtung extends AbstractDomainObject
         $this->status = $ansuchen->getStatus();
         $this->reviewTotalCommentTr = $ansuchen->getReviewTotalCommentTr();
         $this->reviewTotalCommentInternal = $ansuchen->getReviewTotalCommentInternal();
+        $this->reviewB1CommentInternal = $ansuchen->getReviewB1CommentInternal();
     }
 
     public function copyToAnsuchen(Ansuchen $ansuchen): void
@@ -27,6 +29,7 @@ class BasisBegutachtung extends AbstractDomainObject
         }
         $ansuchen->setReviewTotalCommentTr($this->reviewTotalCommentTr);
         $ansuchen->setReviewTotalCommentInternal($this->reviewTotalCommentInternal);
+        $ansuchen->setReviewB1CommentInternal($this->reviewB1CommentInternal);
     }
 
 }
