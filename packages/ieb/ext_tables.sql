@@ -125,7 +125,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	beratung_text text,
 	beratung_datei int(11) unsigned NOT NULL DEFAULT '0',
 	review_b1_comment_internal text NOT NULL DEFAULT '',
-	review_b1_commen_tr text NOT NULL DEFAULT '',
+	review_b1_comment_tr text NOT NULL DEFAULT '',
 	review_b1_status int(11) DEFAULT '0' NOT NULL,
 	review_b2_comment_internal text NOT NULL DEFAULT '',
 	review_b2_comment_tr text NOT NULL DEFAULT '',

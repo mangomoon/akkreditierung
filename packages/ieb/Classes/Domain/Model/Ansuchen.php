@@ -210,11 +210,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewB1CommentInternal = '';
 
     /**
-     * reviewB1CommenTr
+     * reviewB1CommentTr
      *
      * @var string
      */
-    protected $reviewB1CommenTr = '';
+    protected $reviewB1CommentTr = '';
 
     /**
      * reviewB1Status
@@ -527,6 +527,34 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $erklaerungd5 = false;
 
     /**
+     * copyStammdaten
+     *
+     * @var string
+     */
+    protected $copyStammdaten = '';
+
+    /**
+     * copyTrainer
+     *
+     * @var string
+     */
+    protected $copyTrainer = '';
+
+    /**
+     * copyBerater
+     *
+     * @var string
+     */
+    protected $copyBerater = '';
+
+    /**
+     * copyStandorte
+     *
+     * @var string
+     */
+    protected $copyStandorte = '';
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -550,7 +578,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * verantwortlicheMail
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlicheMail>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich>
      */
     protected $verantwortlicheMail = null;
 
@@ -602,34 +630,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * copyStammdaten
-     *
-     * @var string
-     */
-    protected $copyStammdaten = '';
-
-    /**
-     * copyTrainer
-     *
-     * @var string
-     */
-    protected $copyTrainer = '';
-
-    /**
-     * copyBerater
-     *
-     * @var string
-     */
-    protected $copyBerater = '';
-
-    /**
-     * copyStandorte
-     *
-     * @var string
-     */
-    protected $copyStandorte = '';
 
     /**
      * __construct
@@ -1278,27 +1278,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewB1CommentInternal(string $reviewB1CommentInternal)
     {
         $this->reviewB1CommentInternal = $reviewB1CommentInternal;
-    }
-
-    /**
-     * Returns the reviewB1CommenTr
-     *
-     * @return string
-     */
-    public function getReviewB1CommenTr()
-    {
-        return $this->reviewB1CommenTr;
-    }
-
-    /**
-     * Sets the reviewB1CommenTr
-     *
-     * @param string $reviewB1CommenTr
-     * @return void
-     */
-    public function setReviewB1CommenTr(string $reviewB1CommenTr)
-    {
-        $this->reviewB1CommenTr = $reviewB1CommenTr;
     }
 
     /**
@@ -2860,24 +2839,45 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->copyStandorte = $copyStandorte;
     }
-
     public function getCopyStammdatenData()
     {
         return $this->getConvertedJson($this->copyStammdaten);
     }
-
     public function getCopyStandorteData()
     {
         return $this->getConvertedJson($this->copyStandorte);
     }
-
     public function getReviewB1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB1CommentInternal);
     }
 
+    /**
+     * @param string $input
+     */
     protected function getConvertedJson(string $input)
     {
         return json_decode($input, true);
+    }
+
+    /**
+     * Returns the reviewB1CommentTr
+     *
+     * @return string reviewB1CommentTr
+     */
+    public function getReviewB1CommentTr()
+    {
+        return $this->reviewB1CommentTr;
+    }
+
+    /**
+     * Sets the reviewB1CommentTr
+     *
+     * @param string $reviewB1CommentTr
+     * @return void
+     */
+    public function setReviewB1CommentTr(string $reviewB1CommentTr)
+    {
+        $this->reviewB1CommentTr = $reviewB1CommentTr;
     }
 }

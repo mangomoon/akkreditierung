@@ -1572,7 +1572,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "reviewB1CommenTr",
+                            "propertyName": "reviewB1CommentTr",
                             "propertyType": "Text",
                             "uid": "584665674751"
                         },
@@ -3980,7 +3980,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-05-24 05:17",
+        "last_modified": "2023-06-05 07:43",
         "extension_builder_version": "v11.0.10",
         "be_user": " (4)"
     }

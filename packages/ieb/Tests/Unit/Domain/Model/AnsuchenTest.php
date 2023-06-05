@@ -584,22 +584,22 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getReviewB1CommenTrReturnsInitialValueForString(): void
+    public function getReviewB1CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getReviewB1CommenTr()
+            $this->subject->getReviewB1CommentTr()
         );
     }
 
     /**
      * @test
      */
-    public function setReviewB1CommenTrForStringSetsReviewB1CommenTr(): void
+    public function setReviewB1CommentTrForStringSetsReviewB1CommentTr(): void
     {
-        $this->subject->setReviewB1CommenTr('Conceived at T3CON10');
+        $this->subject->setReviewB1CommentTr('Conceived at T3CON10');
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1CommenTr'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1CommentTr'));
     }
 
     /**

@@ -717,11 +717,11 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_comment_internal.description" resname="tx_ieb_domain_model_ansuchen.review_b1_comment_internal.description">
 				<source>Review B1 Comment Internal</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_commen_tr" resname="tx_ieb_domain_model_ansuchen.review_b1_commen_tr">
-				<source>Review B1 Commen Tr</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_comment_tr" resname="tx_ieb_domain_model_ansuchen.review_b1_comment_tr">
+				<source>Review B1 Comment Tr</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_commen_tr.description" resname="tx_ieb_domain_model_ansuchen.review_b1_commen_tr.description">
-				<source>Review B1 Commen Tr</source>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_comment_tr.description" resname="tx_ieb_domain_model_ansuchen.review_b1_comment_tr.description">
+				<source>Review B1 Comment Tr</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_status" resname="tx_ieb_domain_model_ansuchen.review_b1_status">
 				<source>Review B1 Status</source>
@@ -1676,6 +1676,12 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien.ppd.description" resname="tx_ieb_domain_model_kriterien.ppd.description">
 				<source>Ppd</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_commen_tr" resname="tx_ieb_domain_model_ansuchen.review_b1_commen_tr">
+				<source>Review B1 Commen Tr</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b1_commen_tr.description" resname="tx_ieb_domain_model_ansuchen.review_b1_commen_tr.description">
+				<source>Review B1 Commen Tr</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.ok" resname="tx_ieb_domain_model_trainer.ok">
 				<source>Ok</source>
