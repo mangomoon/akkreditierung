@@ -158,7 +158,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render section="comment" arguments="{property:'reviewB1CommentInternal', comments:ansuchen.reviewB1CommentInternalData}" />
+                    <f:render section="comment" arguments="{property:'reviewB1', comments:ansuchen.reviewB1CommentInternalData}" />
                 </div>
             </div>
         </div>
@@ -882,7 +882,6 @@
 </f:section>
 
 <f:section name="comment">
-    <f:debug inline="1">{comments}</f:debug>
     <div class="komm-int">
         <f:for each="{comments}" as="comment">
             <p>
@@ -891,16 +890,17 @@
         </f:for>
     </div>
     <div>
-        <f:form.textarea property="{property}" id="comment1-{property}" class=""></f:form.textarea>
+        <f:form.textarea property="{property}CommentInternal" id="comment1-{property}" class="" />
     </div>
     <div class="knoepfe">
-        <div class="knopf ok">ok</div>
-        <div class="knopf zweit">zweit</div>
-        <div class="knopf plenum">Plenum</div>
-        <div class="knopf nicht-ok">nicht-ok</div>
+        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
+        <label class="knopf ok" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
+        <label class="knopf zweit" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
+        <label class="knopf plenum" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
+        <label class="knopf nicht-ok" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
     </div>
     <div class="komm-ext">
-        <f:form.textarea property="{k1}" id="{k1}" class="extern"></f:form.textarea>
+        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="" />
         <div class="knopf textbausteinoeffner">Textbausteine</div>
         <div class="textbausteine">
             <div class="textbaustein">
