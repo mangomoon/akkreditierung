@@ -158,7 +158,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render section="comment" arguments="{property:'reviewB1CommentInternal'}" />
+                    <f:render section="comment" arguments="{property:'reviewB1CommentInternal', comments:ansuchen.reviewB1CommentInternalData}" />
                 </div>
             </div>
         </div>
@@ -882,10 +882,13 @@
 </f:section>
 
 <f:section name="comment">
+    <f:debug inline="1">{comments}</f:debug>
     <div class="komm-int">
-        <p>
-            <span class="name">Vorname Nachname [23.04.2023]: </span>Hier der Kommentartext, der nicht mehr verändert wird und an den der unten eingetragene Text samt Stempel (Name, Datum) angehängt wird.
-        </p>
+        <f:for each="{comments}" as="comment">
+            <p>
+                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+            </p>
+        </f:for>
     </div>
     <div>
         <f:form.textarea property="{property}" id="comment1-{property}" class=""></f:form.textarea>

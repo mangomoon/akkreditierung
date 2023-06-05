@@ -39,6 +39,21 @@ trait CurrentUserTrait
         return self::getCurrentUserField('tr_admin') === 1;
     }
 
+    public static function getCurrentUserName(): string
+    {
+        $user = self::getCurrentUser();
+        if (!$user) {
+            throw new \UnexpectedValueException('No user logged in', 1685990939);
+        }
+        if ($user['first_name'] && $user['last_name']) {
+            return $user['first_name'] . ' ' . $user['last_name'];
+        }
+        if ($user['name']) {
+            return $user['name'];
+        }
+        return $user['username'];
+    }
+
     public static function currentSysFolderPageName(): string
     {
         $pid = self::getCurrentUserPid();
@@ -50,7 +65,7 @@ trait CurrentUserTrait
     {
         $user = self::getCurrentUser();
         if (!$user) {
-            throw new \UnexpectedValueException('No user logged in');
+            throw new \UnexpectedValueException('No user logged in', 1685990940);
         }
         return $user[$field] ?? null;
     }
