@@ -1105,6 +1105,11 @@ table.ansuchenbegutachtung td.check {
     margin-bottom: 12px;
 }
 
+.begutachtung-kriterium .knopf.nan,
+.begutachtung-kriterium .knopf input {
+    display: none;
+}
+
 .begutachtung-kriterium .knopf:hover {
     filter: none;
 }
@@ -1151,6 +1156,10 @@ table.ansuchenbegutachtung td.check {
 .begutachtung-kriterium .komm-ext,
 .textbausteine {
     display: none;
+}
+
+.begutachtung-kriterium .komm-ext.vis {
+    display: block;
 }
 
 .textbaustein {

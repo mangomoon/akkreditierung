@@ -1,204 +1,293 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <table class="tx-ieb">
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.name" /></td>
-		<td>{ansuchen.name}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.version" /></td>
-		<td>{ansuchen.version}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.version_based_on" /></td>
-		<td>{ansuchen.versionBasedOn}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.version_active" /></td>
-		<td>{ansuchen.versionActive}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.nummer" /></td>
-		<td>{ansuchen.nummer}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_datum" /></td>
-		<td>{ansuchen.akkreditierungDatum -> f:format.date()}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.einreich_datum" /></td>
-		<td>{ansuchen.einreichDatum -> f:format.date()}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.zuteilung_datum" /></td>
-		<td>{ansuchen.zuteilungDatum}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_entscheidung_datum" /></td>
-		<td>{ansuchen.akkreditierungEntscheidungDatum -> f:format.date()}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.typ" /></td>
-		<td>{ansuchen.typ}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.bundesland" /></td>
-		<td>{ansuchen.bundesland}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche" /></td>
-		<td>{ansuchen.kompetenzbereiche}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche_text" /></td>
-		<td>{ansuchen.kompetenzbereicheText}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_text" /></td>
-		<td>{ansuchen.uebersichtText}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_datei" /></td>
-		<td>
-				<a href="{ansuchen.uebersichtDatei.originalResource.publicUrl}">
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.name" />
+        </td>
+        <td>{ansuchen.name}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.version" />
+        </td>
+        <td>{ansuchen.version}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.version_based_on" />
+        </td>
+        <td>{ansuchen.versionBasedOn}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.version_active" />
+        </td>
+        <td>{ansuchen.versionActive}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.nummer" />
+        </td>
+        <td>{ansuchen.nummer}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_datum" />
+        </td>
+        <td>{ansuchen.akkreditierungDatum -> f:format.date()}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.einreich_datum" />
+        </td>
+        <td>{ansuchen.einreichDatum -> f:format.date()}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.zuteilung_datum" />
+        </td>
+        <td>{ansuchen.zuteilungDatum}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.akkreditierung_entscheidung_datum" />
+        </td>
+        <td>{ansuchen.akkreditierungEntscheidungDatum -> f:format.date()}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.typ" />
+        </td>
+        <td>{ansuchen.typ}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.bundesland" />
+        </td>
+        <td>{ansuchen.bundesland}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche" />
+        </td>
+        <td>{ansuchen.kompetenzbereiche}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.kompetenzbereiche_text" />
+        </td>
+        <td>{ansuchen.kompetenzbereicheText}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_text" />
+        </td>
+        <td>{ansuchen.uebersichtText}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.uebersicht_datei" />
+        </td>
+        <td>
+            <a href="{ansuchen.uebersichtDatei.originalResource.publicUrl}">
 					{ansuchen.uebersichtDatei.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache" /></td>
-		<td>{ansuchen.zielgruppenAnsprache}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache_datei" /></td>
-		<td>
-				<a href="{ansuchen.zielgruppenAnspracheDatei.originalResource.publicUrl}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache" />
+        </td>
+        <td>{ansuchen.zielgruppenAnsprache}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.zielgruppen_ansprache_datei" />
+        </td>
+        <td>
+            <a href="{ansuchen.zielgruppenAnspracheDatei.originalResource.publicUrl}">
 					{ansuchen.zielgruppenAnspracheDatei.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.fernlehre" /></td>
-		<td>{ansuchen.fernlehre}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.kinderbetreuung" /></td>
-		<td>{ansuchen.kinderbetreuung}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.lernziele" /></td>
-		<td>
-				<a href="{ansuchen.lernziele.originalResource.publicUrl}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.fernlehre" />
+        </td>
+        <td>{ansuchen.fernlehre}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.kinderbetreuung" />
+        </td>
+        <td>{ansuchen.kinderbetreuung}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.lernziele" />
+        </td>
+        <td>
+            <a href="{ansuchen.lernziele.originalResource.publicUrl}">
 					{ansuchen.lernziele.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.lernstandserhebung" /></td>
-		<td>
-				<a href="{ansuchen.lernstandserhebung.originalResource.publicUrl}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.lernstandserhebung" />
+        </td>
+        <td>
+            <a href="{ansuchen.lernstandserhebung.originalResource.publicUrl}">
 					{ansuchen.lernstandserhebung.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.diversity" /></td>
-		<td>
-				<a href="{ansuchen.diversity.originalResource.publicUrl}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.diversity" />
+        </td>
+        <td>
+            <a href="{ansuchen.diversity.originalResource.publicUrl}">
 					{ansuchen.diversity.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.didaktik_kommentar" /></td>
-		<td>{ansuchen.didaktikKommentar}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.beratung_text" /></td>
-		<td>{ansuchen.beratungText}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.beratung_datei" /></td>
-		<td>
-				<a href="{ansuchen.beratungDatei.originalResource.publicUrl}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.didaktik_kommentar" />
+        </td>
+        <td>{ansuchen.didaktikKommentar}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.beratung_text" />
+        </td>
+        <td>{ansuchen.beratungText}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.beratung_datei" />
+        </td>
+        <td>
+            <a href="{ansuchen.beratungDatei.originalResource.publicUrl}">
 					{ansuchen.beratungDatei.originalResource.name}
 				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_comment_internal" /></td>
-		<td>{ansuchen.reviewB1CommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_commen_tr" /></td>
-		<td>{ansuchen.reviewB1CommenTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b1_status" /></td>
-		<td>{ansuchen.reviewB1Status}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_internal" /></td>
-		<td>{ansuchen.reviewB2CommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_tr" /></td>
-		<td>{ansuchen.reviewB2CommentTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_b2_status" /></td>
-		<td>{ansuchen.reviewB2Status}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_internal" /></td>
-		<td>{ansuchen.reviewC1CommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_tr" /></td>
-		<td>{ansuchen.reviewC1CommentTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c1_status" /></td>
-		<td>{ansuchen.reviewC1Status}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_internal" /></td>
-		<td>{ansuchen.reviewC2CommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_tr" /></td>
-		<td>{ansuchen.reviewC2CommentTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c2_status" /></td>
-		<td>{ansuchen.reviewC2Status}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_internal" /></td>
-		<td>{ansuchen.reviewC3CommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_tr" /></td>
-		<td>{ansuchen.reviewC3CommentTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_c3_status" /></td>
-		<td>{ansuchen.reviewC3Status}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_internal" /></td>
-		<td>{ansuchen.reviewTotalCommentInternal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_tr" /></td>
-		<td>{ansuchen.reviewTotalCommentTr}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_total_status" /></td>
-		<td>{ansuchen.reviewTotalStatus}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_ansuchen.review_total_frist" /></td>
-		<td>{ansuchen.reviewTotalFrist -> f:format.date()}</td>
-	</tr>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b1_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewB1CommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b1_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewB1CommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b1_status" />
+        </td>
+        <td>{ansuchen.reviewB1Status}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewB2CommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b2_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewB2CommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_b2_status" />
+        </td>
+        <td>{ansuchen.reviewB2Status}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewC1CommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c1_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewC1CommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c1_status" />
+        </td>
+        <td>{ansuchen.reviewC1Status}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewC2CommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c2_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewC2CommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c2_status" />
+        </td>
+        <td>{ansuchen.reviewC2Status}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewC3CommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c3_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewC3CommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_c3_status" />
+        </td>
+        <td>{ansuchen.reviewC3Status}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_internal" />
+        </td>
+        <td>{ansuchen.reviewTotalCommentInternal}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_total_comment_tr" />
+        </td>
+        <td>{ansuchen.reviewTotalCommentTr}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_total_status" />
+        </td>
+        <td>{ansuchen.reviewTotalStatus}</td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_ieb_domain_model_ansuchen.review_total_frist" />
+        </td>
+        <td>{ansuchen.reviewTotalFrist -> f:format.date()}</td>
+    </tr>
 </table>
+
 </html>

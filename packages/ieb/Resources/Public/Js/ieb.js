@@ -243,17 +243,12 @@
 
  $(document).ready(function() {
 
+     // MODAL BOX 
      const modal = document.querySelector("#modal");
-
      const closeModal = document.querySelector(".close");
-
      console.log(closeModal);
      closeModal.addEventListener("click", () => {
          modal.close();
-     });
-
-     $('.sitename').click(function() {
-         document.querySelector("#modal").showModal();
      });
 
 
@@ -455,11 +450,14 @@
 
      // ######################################## FORM Begutachtung
 
-     $('.knopf').click(function() {
-         $(this).parent().find('.knopf').removeClass('checked');
-         $(this).addClass('checked');
-         if ($(this).hasClass('nicht-ok')) {
-             $(this).parent().next().toggle();
+     $('.knopf input').click(function() {
+
+         $(this).parent().parent().find('.knopf').removeClass('checked');
+         $(this).parent().addClass('checked');
+         if ($(this).parent().hasClass('nicht-ok')) {
+             $(this).parent().parent().next().toggle();
+         } else {
+             $(this).parent().parent().next().hide();
          }
      });
 
@@ -468,9 +466,8 @@
          $(this).next().toggle();
      });
      $('.textbaustein').click(function() {
-         var t = $(this).html();
+         var t = $(this).text();
          var u = $(this).parent().parent().find('.extern').val();
-
          $(this).parent().parent().find('.extern').val(u + t);
      });
 

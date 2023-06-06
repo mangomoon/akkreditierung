@@ -17,8 +17,7 @@
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
-        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -150,7 +149,7 @@
                             </td>
                             <td class="daten">
                                 <f:if condition="{stammdaten.website}">
-                                <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                    <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
                                 </f:if>
                             </td>
                         </tr>
@@ -158,7 +157,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render section="comment" arguments="{property:'reviewB1', comments:ansuchen.reviewB1CommentInternalData}" />
+                    <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
                 </div>
             </div>
         </div>
@@ -192,8 +191,7 @@
                                 <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
                             </div>
 
-                            <f:render section="media" arguments="{media:stammdaten.leitbildDatei}" />
-                        }" />
+                            <f:render section="media" arguments="{media:stammdaten.leitbildDatei}" /> }" />
                         </div>
                         <div class="kriteriumteil">
                             <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
@@ -870,13 +868,13 @@
         </label>
         <f:form.submit value="Speichern" name="saveAndIndex" class="knopf-s" />
     </f:form>
+
 </f:section>
 
 <f:section name="media">
     <f:if condition="{media.publicUrl}">
         <a href="{media.publicUrl}" target="_blank">
-            <f:image src="{media.publicUrl}" alt="{media.alternative}"
-                     width="{f:if(condition: width,then:width,else:150)}"/>
+            <f:image src="{media.publicUrl}" alt="{media.alternative}" width="{f:if(condition: width,then:width,else:150)}" />
         </a>
     </f:if>
 </f:section>
@@ -894,25 +892,20 @@
     </div>
     <div class="knoepfe">
         <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
-        <label class="knopf ok" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
-        <label class="knopf zweit" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
-        <label class="knopf plenum" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
-        <label class="knopf nicht-ok" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
+        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
+        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
+        <label class="knopf plenum {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
+        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
     </div>
-    <div class="komm-ext">
-        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="" />
+    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
         <div class="knopf textbausteinoeffner">Textbausteine</div>
         <div class="textbausteine">
-            <div class="textbaustein">
-                <p>Lorem ipsum dolet</p>
-            </div>
-            <div class="textbaustein">
-                <p>Und so weiter!</p>
-            </div>
-            <div class="textbaustein">
-                <p>Und so fort ...</p>
-            </div>
+            <div class="textbaustein">Lorem ipsum dolet</div>
+            <div class="textbaustein">Und so weiter!</div>
+            <div class="textbaustein">Und so fort ...</div>
         </div>
     </div>
 </f:section>
+
 </html>

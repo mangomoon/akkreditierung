@@ -261,8 +261,8 @@
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
 			</trans-unit>
-			<trans-unit id="review_b1_commen_tr.description" resname="review_b1_commen_tr.description">
-				<source>reviewB1CommenTr</source>
+			<trans-unit id="review_b1_comment_tr.description" resname="review_b1_comment_tr.description">
+				<source>reviewB1CommentTr</source>
 			</trans-unit>
 			<trans-unit id="kompetenz10.description" resname="kompetenz10.description">
 				<source>kompetenz10</source>
