@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
-
+<f:debug>{_all}</f:debug>
 <div class="formfields row">
     <div class="col-3">
         <label for="name">Ansuchennummer:</label><br>
@@ -225,8 +225,13 @@
 
 <!-- ############### B.1 ########### -->
 
-<div class="kriterium">
+<div class="kriterium {f:if(condition:'{ansuchen.reviewB1Status}==4',then:'nicht-ok')}">
     <h2>B.1 Eckdaten zum Angebot</h2>
+
+    <f:if condition="{ansuchen.reviewB1CommentTr}">
+        <div class="nicht-ok-kommentar">{ansuchen.reviewB1CommentTr}</div>
+    </f:if>
+
     <div class="kriteriumteil">
         <h3>B.1.1 Programmbereich</h3>
         <div id="bildungsbereich" class="formfields row bildungsbereich bb-{ansuchen.typ}">

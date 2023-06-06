@@ -107,6 +107,17 @@ label.inline {
     margin-bottom: 36px;
 }
 
+.kriterium.nicht-ok {
+    border: 2px solid var(--stammdaten);
+}
+
+.nicht-ok-kommentar {
+    border: 4px solid #fff;
+    background: #F4C67E;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
 h2 {
     color: var(--f4);
 }
