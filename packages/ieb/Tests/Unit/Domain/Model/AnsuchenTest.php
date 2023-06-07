@@ -1562,6 +1562,258 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewB14CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14CommentInternalForStringSetsReviewB14CommentInternal(): void
+    {
+        $this->subject->setReviewB14CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB14CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14CommentTrForStringSetsReviewB14CommentTr(): void
+    {
+        $this->subject->setReviewB14CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14CommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB14StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewB14Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14StatusForIntSetsReviewB14Status(): void
+    {
+        $this->subject->setReviewB14Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewB14Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15CommentInternalForStringSetsReviewB15CommentInternal(): void
+    {
+        $this->subject->setReviewB15CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15CommentTrForStringSetsReviewB15CommentTr(): void
+    {
+        $this->subject->setReviewB15CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15CommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewB15Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15StatusForIntSetsReviewB15Status(): void
+    {
+        $this->subject->setReviewB15Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewB15Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22CommentInternalForStringSetsReviewB22CommentInternal(): void
+    {
+        $this->subject->setReviewB22CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22CommentTrForStringSetsReviewB22CommentTr(): void
+    {
+        $this->subject->setReviewB22CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22CommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22StatusReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22StatusForStringSetsReviewB22Status(): void
+    {
+        $this->subject->setReviewB22Status('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23CommentInternalForStringSetsReviewB23CommentInternal(): void
+    {
+        $this->subject->setReviewB23CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23CommentTrForStringSetsReviewB23CommentTr(): void
+    {
+        $this->subject->setReviewB23CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23CommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewB23Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23StatusForIntSetsReviewB23Status(): void
+    {
+        $this->subject->setReviewB23Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewB23Status'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

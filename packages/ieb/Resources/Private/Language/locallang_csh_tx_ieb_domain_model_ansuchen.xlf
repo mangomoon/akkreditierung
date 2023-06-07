@@ -228,6 +228,42 @@
 			<trans-unit id="copy_standorte.description" resname="copy_standorte.description">
 				<source>copyStandorte</source>
 			</trans-unit>
+			<trans-unit id="review_b14_comment_internal.description" resname="review_b14_comment_internal.description">
+				<source>reviewB14CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b14_comment_tr.description" resname="review_b14_comment_tr.description">
+				<source>reviewB14CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_b14_status.description" resname="review_b14_status.description">
+				<source>reviewB14Status</source>
+			</trans-unit>
+			<trans-unit id="review_b15_comment_internal.description" resname="review_b15_comment_internal.description">
+				<source>reviewB15CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b15_comment_tr.description" resname="review_b15_comment_tr.description">
+				<source>reviewB15CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_b15_status.description" resname="review_b15_status.description">
+				<source>reviewB15Status</source>
+			</trans-unit>
+			<trans-unit id="review_b22_comment_internal.description" resname="review_b22_comment_internal.description">
+				<source>reviewB22CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b22_comment_tr.description" resname="review_b22_comment_tr.description">
+				<source>reviewB22CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_b22_status.description" resname="review_b22_status.description">
+				<source>reviewB22Status</source>
+			</trans-unit>
+			<trans-unit id="review_b23_comment_internal.description" resname="review_b23_comment_internal.description">
+				<source>reviewB23CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b23_comment_tr.description" resname="review_b23_comment_tr.description">
+				<source>reviewB23CommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_b23_status.description" resname="review_b23_status.description">
+				<source>reviewB23Status</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>
@@ -260,9 +296,6 @@
 			</trans-unit>
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
-			</trans-unit>
-			<trans-unit id="review_b1_comment_tr.description" resname="review_b1_comment_tr.description">
-				<source>reviewB1CommentTr</source>
 			</trans-unit>
 			<trans-unit id="kompetenz10.description" resname="kompetenz10.description">
 				<source>kompetenz10</source>

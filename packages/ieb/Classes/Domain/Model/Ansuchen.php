@@ -159,7 +159,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * lernziele
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $lernziele = null;
@@ -630,6 +630,90 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
+
+    /**
+     * reviewB14CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB14CommentInternal = '';
+
+    /**
+     * reviewB14CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB14CommentTr = '';
+
+    /**
+     * reviewB14Status
+     *
+     * @var int
+     */
+    protected $reviewB14Status = 0;
+
+    /**
+     * reviewB15CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB15CommentInternal = '';
+
+    /**
+     * reviewB15CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB15CommentTr = '';
+
+    /**
+     * reviewB15Status
+     *
+     * @var int
+     */
+    protected $reviewB15Status = 0;
+
+    /**
+     * reviewB22CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB22CommentInternal = '';
+
+    /**
+     * reviewB22CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB22CommentTr = '';
+
+    /**
+     * reviewB22Status
+     *
+     * @var string
+     */
+    protected $reviewB22Status = '';
+
+    /**
+     * reviewB23CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB23CommentInternal = '';
+
+    /**
+     * reviewB23CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB23CommentTr = '';
+
+    /**
+     * reviewB23Status
+     *
+     * @var int
+     */
+    protected $reviewB23Status = 0;
 
     /**
      * __construct
@@ -2879,5 +2963,257 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewB1CommentTr(string $reviewB1CommentTr)
     {
         $this->reviewB1CommentTr = $reviewB1CommentTr;
+    }
+
+    /**
+     * Returns the reviewB14CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewB14CommentInternal()
+    {
+        return $this->reviewB14CommentInternal;
+    }
+
+    /**
+     * Sets the reviewB14CommentInternal
+     *
+     * @param string $reviewB14CommentInternal
+     * @return void
+     */
+    public function setReviewB14CommentInternal(string $reviewB14CommentInternal)
+    {
+        $this->reviewB14CommentInternal = $reviewB14CommentInternal;
+    }
+
+    /**
+     * Returns the reviewB14CommentTr
+     *
+     * @return string
+     */
+    public function getReviewB14CommentTr()
+    {
+        return $this->reviewB14CommentTr;
+    }
+
+    /**
+     * Sets the reviewB14CommentTr
+     *
+     * @param string $reviewB14CommentTr
+     * @return void
+     */
+    public function setReviewB14CommentTr(string $reviewB14CommentTr)
+    {
+        $this->reviewB14CommentTr = $reviewB14CommentTr;
+    }
+
+    /**
+     * Returns the reviewB14Status
+     *
+     * @return int
+     */
+    public function getReviewB14Status()
+    {
+        return $this->reviewB14Status;
+    }
+
+    /**
+     * Sets the reviewB14Status
+     *
+     * @param int $reviewB14Status
+     * @return void
+     */
+    public function setReviewB14Status(int $reviewB14Status)
+    {
+        $this->reviewB14Status = $reviewB14Status;
+    }
+
+    /**
+     * Returns the reviewB15CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewB15CommentInternal()
+    {
+        return $this->reviewB15CommentInternal;
+    }
+
+    /**
+     * Sets the reviewB15CommentInternal
+     *
+     * @param string $reviewB15CommentInternal
+     * @return void
+     */
+    public function setReviewB15CommentInternal(string $reviewB15CommentInternal)
+    {
+        $this->reviewB15CommentInternal = $reviewB15CommentInternal;
+    }
+
+    /**
+     * Returns the reviewB15CommentTr
+     *
+     * @return string
+     */
+    public function getReviewB15CommentTr()
+    {
+        return $this->reviewB15CommentTr;
+    }
+
+    /**
+     * Sets the reviewB15CommentTr
+     *
+     * @param string $reviewB15CommentTr
+     * @return void
+     */
+    public function setReviewB15CommentTr(string $reviewB15CommentTr)
+    {
+        $this->reviewB15CommentTr = $reviewB15CommentTr;
+    }
+
+    /**
+     * Returns the reviewB15Status
+     *
+     * @return int
+     */
+    public function getReviewB15Status()
+    {
+        return $this->reviewB15Status;
+    }
+
+    /**
+     * Sets the reviewB15Status
+     *
+     * @param int $reviewB15Status
+     * @return void
+     */
+    public function setReviewB15Status(int $reviewB15Status)
+    {
+        $this->reviewB15Status = $reviewB15Status;
+    }
+
+    /**
+     * Returns the reviewB22CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewB22CommentInternal()
+    {
+        return $this->reviewB22CommentInternal;
+    }
+
+    /**
+     * Sets the reviewB22CommentInternal
+     *
+     * @param string $reviewB22CommentInternal
+     * @return void
+     */
+    public function setReviewB22CommentInternal(string $reviewB22CommentInternal)
+    {
+        $this->reviewB22CommentInternal = $reviewB22CommentInternal;
+    }
+
+    /**
+     * Returns the reviewB22CommentTr
+     *
+     * @return string
+     */
+    public function getReviewB22CommentTr()
+    {
+        return $this->reviewB22CommentTr;
+    }
+
+    /**
+     * Sets the reviewB22CommentTr
+     *
+     * @param string $reviewB22CommentTr
+     * @return void
+     */
+    public function setReviewB22CommentTr(string $reviewB22CommentTr)
+    {
+        $this->reviewB22CommentTr = $reviewB22CommentTr;
+    }
+
+    /**
+     * Returns the reviewB22Status
+     *
+     * @return string
+     */
+    public function getReviewB22Status()
+    {
+        return $this->reviewB22Status;
+    }
+
+    /**
+     * Sets the reviewB22Status
+     *
+     * @param string $reviewB22Status
+     * @return void
+     */
+    public function setReviewB22Status(string $reviewB22Status)
+    {
+        $this->reviewB22Status = $reviewB22Status;
+    }
+
+    /**
+     * Returns the reviewB23CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewB23CommentInternal()
+    {
+        return $this->reviewB23CommentInternal;
+    }
+
+    /**
+     * Sets the reviewB23CommentInternal
+     *
+     * @param string $reviewB23CommentInternal
+     * @return void
+     */
+    public function setReviewB23CommentInternal(string $reviewB23CommentInternal)
+    {
+        $this->reviewB23CommentInternal = $reviewB23CommentInternal;
+    }
+
+    /**
+     * Returns the reviewB23CommentTr
+     *
+     * @return string
+     */
+    public function getReviewB23CommentTr()
+    {
+        return $this->reviewB23CommentTr;
+    }
+
+    /**
+     * Sets the reviewB23CommentTr
+     *
+     * @param string $reviewB23CommentTr
+     * @return void
+     */
+    public function setReviewB23CommentTr(string $reviewB23CommentTr)
+    {
+        $this->reviewB23CommentTr = $reviewB23CommentTr;
+    }
+
+    /**
+     * Returns the reviewB23Status
+     *
+     * @return int
+     */
+    public function getReviewB23Status()
+    {
+        return $this->reviewB23Status;
+    }
+
+    /**
+     * Sets the reviewB23Status
+     *
+     * @param int $reviewB23Status
+     * @return void
+     */
+    public function setReviewB23Status(int $reviewB23Status)
+    {
+        $this->reviewB23Status = $reviewB23Status;
     }
 }
