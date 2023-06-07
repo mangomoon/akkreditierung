@@ -76,10 +76,12 @@ return [
     'FE' => [
         'debug' => true,
         'disableNoCacheParameter' => true,
+        'lifetime' => 99999997,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'permalogin' => '1',
     ],
     'GFX' => [
         'processor' => 'GraphicsMagick',

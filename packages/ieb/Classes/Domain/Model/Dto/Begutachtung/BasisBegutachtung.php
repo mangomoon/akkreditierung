@@ -17,6 +17,18 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $reviewB1CommentInternal = '';
     public string $reviewB1CommentTr = '';
     public int $reviewB1Status = 0;
+    public string $reviewB14CommentInternal = '';
+    public string $reviewB14CommentTr = '';
+    public int $reviewB14Status = 0;
+    public string $reviewB15CommentInternal = '';
+    public string $reviewB15CommentTr = '';
+    public int $reviewB15Status = 0;
+    public string $reviewB22CommentInternal = '';
+    public string $reviewB22CommentTr = '';
+    public int $reviewB22Status = 0;
+    public string $reviewB23CommentInternal = '';
+    public string $reviewB23CommentTr = '';
+    public int $reviewB23Status = 0;
     public string $reviewB2CommentInternal = '';
     public string $reviewB2CommentTr = '';
     public int $reviewB2Status = 0;
@@ -34,6 +46,10 @@ class BasisBegutachtung extends AbstractDomainObject
     private const FIELDS = [
         'reviewTotalCommentInternal', 'reviewTotalCommentTr',
         'reviewB1CommentInternal', 'reviewB1CommentTr', 'reviewB1Status',
+        'reviewB14CommentInternal', 'reviewB14CommentTr', 'reviewB14Status',
+        'reviewB15CommentInternal', 'reviewB15CommentTr', 'reviewB15Status',
+        'reviewB22CommentInternal', 'reviewB22CommentTr', 'reviewB22Status',
+        'reviewB23CommentInternal', 'reviewB23CommentTr', 'reviewB23Status',
         'reviewB2CommentInternal', 'reviewB2CommentTr', 'reviewB2Status',
         'reviewC1CommentInternal', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternal', 'reviewC2CommentTr', 'reviewC2Status',
@@ -67,6 +83,10 @@ class BasisBegutachtung extends AbstractDomainObject
         // json fields
         try {
             $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
             $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
             $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
             $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
