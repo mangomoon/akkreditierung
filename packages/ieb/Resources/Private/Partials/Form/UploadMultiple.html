@@ -8,7 +8,7 @@
                 <f:for each="{media}" as="m">
 
                     <f:if condition="{preview}">
-                        <a href="/fileadmin{m.originalFile.identifier}" target="_blank">
+                        <a href="{m.originalResource.publicUrl}" target="_blank">
                             <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
                         </a>
                     </f:if>
