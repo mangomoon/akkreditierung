@@ -555,6 +555,90 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $copyStandorte = '';
 
     /**
+     * reviewB14CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB14CommentInternal = '';
+
+    /**
+     * reviewB14CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB14CommentTr = '';
+
+    /**
+     * reviewB14Status
+     *
+     * @var int
+     */
+    protected $reviewB14Status = 0;
+
+    /**
+     * reviewB15CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB15CommentInternal = '';
+
+    /**
+     * reviewB15CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB15CommentTr = '';
+
+    /**
+     * reviewB15Status
+     *
+     * @var int
+     */
+    protected $reviewB15Status = 0;
+
+    /**
+     * reviewB22CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB22CommentInternal = '';
+
+    /**
+     * reviewB22CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB22CommentTr = '';
+
+    /**
+     * reviewB22Status
+     *
+     * @var int
+     */
+    protected $reviewB22Status = '';
+
+    /**
+     * reviewB23CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewB23CommentInternal = '';
+
+    /**
+     * reviewB23CommentTr
+     *
+     * @var string
+     */
+    protected $reviewB23CommentTr = '';
+
+    /**
+     * reviewB23Status
+     *
+     * @var int
+     */
+    protected $reviewB23Status = 0;
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -630,90 +714,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * reviewB14CommentInternal
-     *
-     * @var string
-     */
-    protected $reviewB14CommentInternal = '';
-
-    /**
-     * reviewB14CommentTr
-     *
-     * @var string
-     */
-    protected $reviewB14CommentTr = '';
-
-    /**
-     * reviewB14Status
-     *
-     * @var int
-     */
-    protected $reviewB14Status = 0;
-
-    /**
-     * reviewB15CommentInternal
-     *
-     * @var string
-     */
-    protected $reviewB15CommentInternal = '';
-
-    /**
-     * reviewB15CommentTr
-     *
-     * @var string
-     */
-    protected $reviewB15CommentTr = '';
-
-    /**
-     * reviewB15Status
-     *
-     * @var int
-     */
-    protected $reviewB15Status = 0;
-
-    /**
-     * reviewB22CommentInternal
-     *
-     * @var string
-     */
-    protected $reviewB22CommentInternal = '';
-
-    /**
-     * reviewB22CommentTr
-     *
-     * @var string
-     */
-    protected $reviewB22CommentTr = '';
-
-    /**
-     * reviewB22Status
-     *
-     * @var string
-     */
-    protected $reviewB22Status = '';
-
-    /**
-     * reviewB23CommentInternal
-     *
-     * @var string
-     */
-    protected $reviewB23CommentInternal = '';
-
-    /**
-     * reviewB23CommentTr
-     *
-     * @var string
-     */
-    protected $reviewB23CommentTr = '';
-
-    /**
-     * reviewB23Status
-     *
-     * @var int
-     */
-    protected $reviewB23Status = 0;
 
     /**
      * __construct
@@ -3134,27 +3134,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the reviewB22Status
-     *
-     * @return string
-     */
-    public function getReviewB22Status()
-    {
-        return $this->reviewB22Status;
-    }
-
-    /**
-     * Sets the reviewB22Status
-     *
-     * @param string $reviewB22Status
-     * @return void
-     */
-    public function setReviewB22Status(string $reviewB22Status)
-    {
-        $this->reviewB22Status = $reviewB22Status;
-    }
-
-    /**
      * Returns the reviewB23CommentInternal
      *
      * @return string
@@ -3215,5 +3194,26 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewB23Status(int $reviewB23Status)
     {
         $this->reviewB23Status = $reviewB23Status;
+    }
+
+    /**
+     * Returns the reviewB22Status
+     *
+     * @return int reviewB22Status
+     */
+    public function getReviewB22Status()
+    {
+        return $this->reviewB22Status;
+    }
+
+    /**
+     * Sets the reviewB22Status
+     *
+     * @param string $reviewB22Status
+     * @return void
+     */
+    public function setReviewB22Status(string $reviewB22Status)
+    {
+        $this->reviewB22Status = $reviewB22Status;
     }
 }

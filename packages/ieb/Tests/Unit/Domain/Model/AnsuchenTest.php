@@ -1730,10 +1730,10 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getReviewB22StatusReturnsInitialValueForString(): void
+    public function getReviewB22StatusReturnsInitialValueForInt(): void
     {
         self::assertSame(
-            '',
+            0,
             $this->subject->getReviewB22Status()
         );
     }
@@ -1741,11 +1741,11 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function setReviewB22StatusForStringSetsReviewB22Status(): void
+    public function setReviewB22StatusForIntSetsReviewB22Status(): void
     {
-        $this->subject->setReviewB22Status('Conceived at T3CON10');
+        $this->subject->setReviewB22Status(12);
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22Status'));
+        self::assertEquals(12, $this->subject->_get('reviewB22Status'));
     }
 
     /**

@@ -10,7 +10,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_comment_tr,review_b2_comment_internal,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_tr,review_total_comment_internal,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,kompetenz_text2,nummerpp3,copy_stammdaten,copy_trainer,copy_berater,copy_standorte,review_b14_comment_internal,review_b14_comment_tr,review_b15_comment_internal,review_b15_comment_tr,review_b22_comment_internal,review_b22_comment_tr,review_b22_status,review_b23_comment_internal,review_b23_comment_tr',
+        'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_comment_tr,review_b2_comment_internal,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_tr,review_total_comment_internal,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,kompetenz_text2,nummerpp3,copy_stammdaten,copy_trainer,copy_berater,copy_standorte,review_b14_comment_internal,review_b14_comment_tr,review_b15_comment_internal,review_b15_comment_tr,review_b22_comment_internal,review_b22_comment_tr,review_b23_comment_internal,review_b23_comment_tr',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
@@ -1509,12 +1509,15 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.review_b22_status',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.review_b22_status.description',
             'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim',
-                'default' => ''
-            ]
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['-- Label --', 0],
+                ],
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
+            ],
         ],
         'review_b23_comment_internal' => [
             'exclude' => true,

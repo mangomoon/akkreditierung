@@ -182,7 +182,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_b15_status int(11) DEFAULT '0' NOT NULL,
 	review_b22_comment_internal text NOT NULL DEFAULT '',
 	review_b22_comment_tr text NOT NULL DEFAULT '',
-	review_b22_status text NOT NULL DEFAULT '',
+	review_b22_status int(11) DEFAULT '0' NOT NULL,
 	review_b23_comment_internal text NOT NULL DEFAULT '',
 	review_b23_comment_tr text NOT NULL DEFAULT '',
 	review_b23_status int(11) DEFAULT '0' NOT NULL,

@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    260
+                    259.5
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    476
+                    475.5
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    27
+                    26.5
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    26
+                    25.5
                 ]
             },
             "name": "New Model Object",
@@ -1222,7 +1222,7 @@
             "config": {
                 "position": [
                     629,
-                    187
+                    186.5
                 ]
             },
             "name": "New Model Object",
@@ -2257,7 +2257,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "reviewB22Status",
-                            "propertyType": "Text",
+                            "propertyType": "Select",
                             "uid": "271501705817"
                         },
                         {
@@ -2429,7 +2429,7 @@
             "config": {
                 "position": [
                     28,
-                    51
+                    50.5
                 ]
             },
             "name": "New Model Object",
@@ -2593,7 +2593,7 @@
             "config": {
                 "position": [
                     35,
-                    478
+                    477.5
                 ]
             },
             "name": "New Model Object",
@@ -2754,7 +2754,7 @@
             "config": {
                 "position": [
                     30,
-                    268
+                    267.5
                 ]
             },
             "name": "New Model Object",
@@ -3107,7 +3107,7 @@
             "config": {
                 "position": [
                     646,
-                    31
+                    30.5
                 ]
             },
             "name": "New Model Object",
@@ -3496,7 +3496,7 @@
             "config": {
                 "position": [
                     1131,
-                    593
+                    592.5
                 ]
             },
             "name": "New Model Object",
@@ -3645,7 +3645,7 @@
             "config": {
                 "position": [
                     918,
-                    270
+                    269.5
                 ]
             },
             "name": "New Model Object",
@@ -3722,7 +3722,7 @@
             "config": {
                 "position": [
                     1186,
-                    27
+                    26.5
                 ]
             },
             "name": "New Model Object",
@@ -4124,8 +4124,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-06-07 08:07",
+        "last_modified": "2023-06-08 07:22",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (1)"
+        "be_user": " (4)"
     }
 }
