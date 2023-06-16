@@ -81,4 +81,23 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
         ];
     }
+
+    /**
+     * Alle Status, die verhindern, dass relationen geändert werden können
+     *
+     * @return array<int>
+     */
+    public static function statusRelationenGesperrt(): array
+    {
+        return [
+            self::EINGEREICHT_ERSTEINREICHUNG->value,
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
+            self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
+            self::ERSTBEGUTACHTUNG_DURCH_AG->value,
+            self::FESTLEGUNG_EINES_AKKREDITIERUNGSSTATUS->value,
+            self::NACHBESSERUNGSAUFTRAG->value,
+            self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
+            self::BEGUTACHTUNG_NACH_EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
+        ];
+    }
 }

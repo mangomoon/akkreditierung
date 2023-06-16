@@ -7,7 +7,9 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Seo\IebTitleProvider;
+use GeorgRinger\Ieb\Service\RelationLockService;
 use GeorgRinger\News\Seo\NewsTitleProvider;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
@@ -29,6 +31,15 @@ class BaseController extends ActionController
 {
 
     use CurrentUserTrait;
+
+    protected RelationLockService $relationLockService;
+    protected ExtensionConfiguration $extensionConfiguration;
+
+    public function initializeAction()
+    {
+        $this->extensionConfiguration = new ExtensionConfiguration();
+        $this->relationLockService = GeneralUtility::makeInstance(RelationLockService::class);
+    }
 
     protected function initializeView($view)
     {

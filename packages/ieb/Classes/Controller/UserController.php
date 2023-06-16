@@ -27,7 +27,6 @@ class UserController extends BaseController
 
     protected StammdatenRepository $stammdatenRepository;
     protected UserRepository $userRepository;
-    protected ExtensionConfiguration $extensionConfiguration;
 
     public function listAction(): ResponseInterface
     {
@@ -116,11 +115,6 @@ class UserController extends BaseController
             $user->getEmail(),
             $user->getFullName()
         );
-    }
-
-    public function initializeAction()
-    {
-        $this->extensionConfiguration = new ExtensionConfiguration();
     }
 
     public function injectUserRepository(UserRepository $userRepository): void

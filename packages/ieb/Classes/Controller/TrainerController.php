@@ -8,6 +8,7 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
+use GeorgRinger\Ieb\Service\RelationLockService;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -32,7 +33,7 @@ class TrainerController extends BaseController
     {
         $this->view->assignMultiple([
             'trainers' => $this->trainerRepository->findBySearch($trainerSearch),
-            'trainerSearch' => $trainerSearch
+            'trainerSearch' => $trainerSearch,
         ]);
         return $this->htmlResponse();
     }
@@ -47,6 +48,7 @@ class TrainerController extends BaseController
     {
         return $this->htmlResponse();
     }
+
     public function initializeCreateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('newTrainer');
@@ -56,6 +58,7 @@ class TrainerController extends BaseController
     {
         $this->setTypeConverterConfigurationForImageUpload('trainer');
     }
+
     public function createAction(Trainer $newTrainer)
     {
         $this->trainerRepository->add($newTrainer);
@@ -65,37 +68,48 @@ class TrainerController extends BaseController
     public function editAction(Trainer $trainer): ResponseInterface
     {
         $this->check($trainer);
-        $this->view->assign('trainer', $trainer);
+        $this->view->assignMultiple([
+            'trainer' => $trainer,
+            'relationUsages' => $this->relationLockService->usedByAnsuchenInReview($trainer),
+        ]);
         return $this->htmlResponse();
     }
 
     public function updateAction(Trainer $trainer)
     {
         $this->check($trainer);
-        $this->trainerRepository->update($trainer);
+        if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
+            $this->trainerRepository->update($trainer);
+        }
         $this->redirect('index');
     }
 
     public function deleteAction(Trainer $trainer)
     {
         $this->check($trainer);
-        $this->trainerRepository->remove($trainer);
+        if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
+            $this->trainerRepository->remove($trainer);
+        }
         $this->redirect('index');
     }
+
     public function archiveAction(Trainer $trainer): ResponseInterface
     {
         $this->check($trainer);
-        $trainer->setArchiviert(TRUE);
-        $this->trainerRepository->update($trainer);
-        
+        if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
+            $trainer->setArchiviert(true);
+            $this->trainerRepository->update($trainer);
+        }
         $this->redirect('index');
     }
+
     public function reviveAction(Trainer $trainer): ResponseInterface
     {
         $this->check($trainer);
-        $trainer->setArchiviert(FALSE);
-        $this->trainerRepository->update($trainer);
-        
+        if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
+            $trainer->setArchiviert(false);
+            $this->trainerRepository->update($trainer);
+        }
         $this->redirect('index');
     }
 

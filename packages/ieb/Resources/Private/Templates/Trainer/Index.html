@@ -1,5 +1,8 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
 
 <f:section name="content">
     <f:if condition="{trainers -> f:count()} > 10">
@@ -8,20 +11,21 @@
                 <div class="row">
                     <div class="col-5">
                         <label for="vorname">Vorname</label>
-                        <f:form.textfield property="vorname" id="vorname" class="breite100" />
+                        <f:form.textfield property="vorname" id="vorname" class="breite100"/>
                     </div>
                     <div class="col-5">
                         <label for="nachname">Nachname</label>
-                        <f:form.textfield property="nachname" id="nachname" class="breite100" />
+                        <f:form.textfield property="nachname" id="nachname" class="breite100"/>
                     </div>
                     <div class="col-2">
-                        <f:form.submit value="Suche" class="knopf-s2 suche" />
+                        <f:form.submit value="Suche" class="knopf-s2 suche"/>
                     </div>
                 </div>
                 <f:if condition="{trainerSearch.used}">
                     <div class="row">
                         <div class="col">
-                            <p><span class="label">Gesucht wurde nach:</span> <span class="suchwort">»{trainerSearch.vorname} {trainerSearch.nachname}«</span></p>
+                            <p><span class="label">Gesucht wurde nach:</span> <span class="suchwort">»{trainerSearch.vorname} {trainerSearch.nachname}«</span>
+                            </p>
                             <p>
                                 <f:link.page class="knopf-s2 suchezurueck">Suche zurücksetzen</f:link.page>
                             </p>
@@ -45,16 +49,15 @@
             <tr>
                 <th class="nachname">
                     &nbsp;
-                    </td>
-                    <th class="vorname">
-                        &nbsp;
-                    </th>
-                    <th>letzte Änderung</th>
-                    <th>vollständig BaBi</th>
-                    <th>vollständig PSA</th>
-                    <th class="td-knopf" colspan="3">
+                <th class="vorname">
+                    &nbsp;
+                </th>
+                <th>letzte Änderung</th>
+                <th>vollständig BaBi</th>
+                <th>vollständig PSA</th>
+                <th class="td-knopf" colspan="3">
 
-                    </th>
+                </th>
             </tr>
             <f:for each="{trainers}" as="trainer">
                 <f:if condition="!{trainer.archiviert}">
@@ -94,16 +97,33 @@
                         </f:if>
 
                         <td class="td-knopf">
-                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
+                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show"
+                                           arguments="{trainer : trainer}">
                             </f:link.action>
                         </td>
                         <td class="td-knopf">
-                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{trainer : trainer}">
+                            <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide"
+                                           arguments="{trainer : trainer}">
                             </f:link.action>
                         </td>
                         <td class="td-knopf">
-                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{trainer : trainer}">
-                            </f:link.action>
+                            <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
+                            <f:if condition="{relationUsages}">
+                                <f:then>
+                                    LOCKED
+                                    <div style="display: none">
+                                        <f:for each="{relationUsages}" as="relationUsage">
+                                            {relationUsage.name},
+                                        </f:for>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit"
+                                                   arguments="{trainer : trainer}">
+                                    </f:link.action>
+                                </f:else>
+                            </f:if>
+
                         </td>
                         </tr>
                     </f:then>
@@ -149,17 +169,19 @@
                                         </f:else>
                                     </f:if>
 
-                                    <td class="td-knopf">
-                                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
-                                        </f:link.action>
-                                    </td>
-                                    <td class="td-knopf">
-                                        <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{trainer : trainer}">
-                                        </f:link.action>
-                                    </td>
-                                    <td class="td-knopf">
+                                <td class="td-knopf">
+                                    <f:link.action action="show" title="Datensatz anzeigen"
+                                                   class="knopf-quadratisch show" arguments="{trainer : trainer}">
+                                    </f:link.action>
+                                </td>
+                                <td class="td-knopf">
+                                    <f:link.action action="revive" title="Datensatz wiederherstellen"
+                                                   class="knopf-quadratisch revive" arguments="{trainer : trainer}">
+                                    </f:link.action>
+                                </td>
+                                <td class="td-knopf">
 
-                                    </td>
+                                </td>
                             </tr>
                         </f:if>
                     </f:for>

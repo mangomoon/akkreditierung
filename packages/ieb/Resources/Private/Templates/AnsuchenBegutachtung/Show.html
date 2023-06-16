@@ -6,7 +6,7 @@
     <div class="begutachtung-kopf row">
         <div class="col">
             <p class="name">Testorganisation: </p>
-            <h1><span class="nr">4-13845-02 </span> {ansuchen.name}</h1>
+            <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} <code>[UID {ansuchen.uid}]</code></h1>
         </div>
         <div class="col">
             <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
@@ -680,7 +680,6 @@
 
 
         <!-- C.2 Training #################################################### -->
-
 
 
         <div class="begutachtung-kriterium" id="k1">
