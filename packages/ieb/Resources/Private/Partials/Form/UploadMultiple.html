@@ -2,20 +2,38 @@
 
 <div class="upload {req} {f:if(condition:'{media}', then: 'ok', else:'req-leer' )} upload-{id}">
 
-    <div class="filelist">
-        <f:if condition="{media}">
-            <div class="links">
-                <f:for each="{media}" as="m">
+    <div class="uploadlist">
 
-                    <f:if condition="{preview}">
-                        <a href="{m.originalResource.publicUrl}" target="_blank">
-                            <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
-                        </a>
-                    </f:if>
-                    <f:form.checkbox name="fileDelete[m_{property}][{m.uid}]" id="fileDelete-{property}-{media.uid}" value="1" /> Datei löschen
-                    </label>
-                </f:for>
-            </div>
+        <f:if condition="{media}">
+            <f:for each="{media}" as="m">
+                <div class="filelist">
+                    <div class="links">
+
+                        <f:if condition="{preview}">
+                            <a href="{m.originalResource.publicUrl}" target="_blank">
+                                <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
+                            </a>
+                        </f:if>
+
+                    </div>
+                    <div class="rechts">
+                        <div class="filedelete"></div>
+                        <p class="filelink">
+                            <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name} TEST</a>
+                        </p>
+                        <p>{m.originalResource.originalFile.properties.size -> f:format.bytes()} | {m.originalResource.originalFile.properties.extension}</p>
+                        <p>
+                            <f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>
+                        </p>
+                        <p class="nextdel">
+                            <label for="fileDelete-{property}-{media.uid}">
+                                <f:form.checkbox name="fileDelete[m_{property}][{m.uid}]" id="fileDelete-{property}-{media.uid}" value="1" />
+                                Löschen
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </f:for>
         </f:if>
     </div>
     <div class="formfields row" id="{id}">

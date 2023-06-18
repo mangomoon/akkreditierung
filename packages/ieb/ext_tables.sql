@@ -118,7 +118,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	zielgruppen_ansprache_datei int(11) unsigned NOT NULL DEFAULT '0',
 	fernlehre smallint(1) unsigned NOT NULL DEFAULT '0',
 	kinderbetreuung smallint(1) unsigned NOT NULL DEFAULT '0',
-	lernziele int(11) unsigned NOT NULL DEFAULT '0',
+	lernziele int(11) unsigned DEFAULT '0',
 	lernstandserhebung int(11) unsigned NOT NULL DEFAULT '0',
 	diversity int(11) unsigned NOT NULL DEFAULT '0',
 	didaktik_kommentar text,

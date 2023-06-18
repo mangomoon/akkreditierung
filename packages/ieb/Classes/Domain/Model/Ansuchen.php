@@ -615,7 +615,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected $reviewB22Status = '';
+    protected $reviewB22Status = 0;
 
     /**
      * reviewB23CommentInternal

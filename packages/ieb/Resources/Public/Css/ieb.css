@@ -240,10 +240,18 @@ p.hinweisextra {
 
 /* ###### FILELIST ######### */
 
+.uploadlist {
+    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .filelist {
+    flex-grow: 1;
+    flex-basis: 20%;
     font-size: 0.85em;
     background: #f3efe8;
-    max-width: 48%;
+    max-width: 30%;
     display: flex;
 }
 
@@ -253,12 +261,12 @@ p.hinweisextra {
 
 .filelist .links {
     margin: 0 0 0 0px;
-    padding: 0 10px 0 0;
+    padding: 0 5px 0 0;
 }
 
 .filelist .rechts {
     margin: 0;
-    padding: 4px 10px 4px 0;
+    padding: 4px 10px 0 0;
     position: relative;
     width: 100%;
 }
@@ -269,18 +277,18 @@ p.hinweisextra {
 }
 
 .filelist .rechts p.filelink {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
 }
 
 .filelist .links img {
-    width: 70px;
+    width: 80px;
     height: auto;
 }
 
 .filedelete {
     position: absolute;
-    top: 8px;
-    right: 10px;
+    top: 3px;
+    right: 3px;
     width: 20px;
     height: 20px;
     box-shadow: 2px 2px 2px var(--f2);
@@ -629,7 +637,7 @@ table.ansuchenliste td.check {
 .check.fehlt {
     text-transform: uppercase;
     font-size: 0.8em;
-    font-weight 600;
+    font-weight: 600;
     color: #c3161c;
 }
 

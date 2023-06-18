@@ -473,10 +473,10 @@
             </div>
         </div>
 
-        <div class="formfields row">
-            <div class="col-6">
+        <div class="formfields row"></div>
 
-                <f:render partial="Form/UploadMultiple" arguments="{
+        <!-- Upload LERNZIELE-->
+        <f:render partial="Form/UploadMultiple" arguments="{
                     property:'lernziele',
                     id:'lernziele',
                     req:'reqfile',
@@ -486,8 +486,8 @@
                     media:ansuchen.lernziele,
                     mediaWidth:300, mediaHeight:300}" />
 
-            </div>
-        </div>
+
+
     </div>
 
 
@@ -516,7 +516,7 @@
                     property:'lernstandserhebung',
                     id:'lernstandserhebung',
                     req:'reqfile',
-                    label='Upload Zielgruppe',
+                    label='Upload Lernstandserhebung',
                     metadaten='{ansuchen.lernstandserhebung.originalResource}',
                     preview:1,
                     media:ansuchen.lernstandserhebung,
