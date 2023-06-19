@@ -3007,6 +3007,16 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->getConvertedJson($this->copyStandorte);
     }
 
+    public function getCopyTrainerData()
+    {
+        return $this->getConvertedJson($this->copyTrainer);
+    }
+
+    public function getCopyBeraterData()
+    {
+        return $this->getConvertedJson($this->copyBerater);
+    }
+
     public function getReviewB1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB1CommentInternal);
@@ -3036,14 +3046,17 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->getConvertedJson($this->reviewB2CommentInternal);
     }
+
     public function getReviewC1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC1CommentInternal);
     }
+
     public function getReviewC2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC2CommentInternal);
     }
+
     public function getReviewC3CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC3CommentInternal);

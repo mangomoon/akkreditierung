@@ -17,7 +17,9 @@
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -705,23 +707,19 @@
             </div>
             <div class="begutachtung-kriterium" id="k1">
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Vorname Nachname
-                    </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                <f:for each="{trainer}" as="t">
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Irgendwer Ist Lehrerin
+                    <div class="row person">
+                        <div class="links col-7">
+                           {t.fullName}
+                        </div>
+                        <div class="rechts col-5">
+                            <div class="knopf">
+                                <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action></div>
+                        </div>
                     </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                </f:for>
+
 
                 <div class="row">
                     <div class="links col-7">
