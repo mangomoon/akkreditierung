@@ -81,6 +81,9 @@
 			<trans-unit id="review_b1_comment_internal.description" resname="review_b1_comment_internal.description">
 				<source>reviewB1CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_b1_comment_internal_step.description" resname="review_b1_comment_internal_step.description">
+				<source>reviewB1CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_b1_comment_tr.description" resname="review_b1_comment_tr.description">
 				<source>reviewB1CommentTr</source>
 			</trans-unit>
@@ -89,6 +92,9 @@
 			</trans-unit>
 			<trans-unit id="review_b2_comment_internal.description" resname="review_b2_comment_internal.description">
 				<source>reviewB2CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b2_comment_internal_step.description" resname="review_b2_comment_internal_step.description">
+				<source>reviewB2CommentInternalStep</source>
 			</trans-unit>
 			<trans-unit id="review_b2_comment_tr.description" resname="review_b2_comment_tr.description">
 				<source>reviewB2CommentTr</source>
@@ -99,6 +105,9 @@
 			<trans-unit id="review_c1_comment_internal.description" resname="review_c1_comment_internal.description">
 				<source>reviewC1CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_c1_comment_internal_step.description" resname="review_c1_comment_internal_step.description">
+				<source>reviewC1CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_c1_comment_tr.description" resname="review_c1_comment_tr.description">
 				<source>reviewC1CommentTr</source>
 			</trans-unit>
@@ -107,6 +116,9 @@
 			</trans-unit>
 			<trans-unit id="review_c2_comment_internal.description" resname="review_c2_comment_internal.description">
 				<source>reviewC2CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c2_comment_internal_step.description" resname="review_c2_comment_internal_step.description">
+				<source>reviewC2CommentInternalStep</source>
 			</trans-unit>
 			<trans-unit id="review_c2_comment_tr.description" resname="review_c2_comment_tr.description">
 				<source>reviewC2CommentTr</source>
@@ -117,6 +129,9 @@
 			<trans-unit id="review_c3_comment_internal.description" resname="review_c3_comment_internal.description">
 				<source>reviewC3CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_c3_comment_internal_step.description" resname="review_c3_comment_internal_step.description">
+				<source>reviewC3CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_c3_comment_tr.description" resname="review_c3_comment_tr.description">
 				<source>reviewC3CommentTr</source>
 			</trans-unit>
@@ -125,6 +140,9 @@
 			</trans-unit>
 			<trans-unit id="review_total_comment_internal.description" resname="review_total_comment_internal.description">
 				<source>reviewTotalCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_total_comment_internal_step.description" resname="review_total_comment_internal_step.description">
+				<source>reviewTotalCommentInternalStep</source>
 			</trans-unit>
 			<trans-unit id="review_total_comment_tr.description" resname="review_total_comment_tr.description">
 				<source>reviewTotalCommentTr</source>
@@ -231,6 +249,9 @@
 			<trans-unit id="review_b14_comment_internal.description" resname="review_b14_comment_internal.description">
 				<source>reviewB14CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_b14_comment_internal_step.description" resname="review_b14_comment_internal_step.description">
+				<source>reviewB14CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_b14_comment_tr.description" resname="review_b14_comment_tr.description">
 				<source>reviewB14CommentTr</source>
 			</trans-unit>
@@ -239,6 +260,9 @@
 			</trans-unit>
 			<trans-unit id="review_b15_comment_internal.description" resname="review_b15_comment_internal.description">
 				<source>reviewB15CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b15_comment_internal_step.description" resname="review_b15_comment_internal_step.description">
+				<source>reviewB15CommentInternalStep</source>
 			</trans-unit>
 			<trans-unit id="review_b15_comment_tr.description" resname="review_b15_comment_tr.description">
 				<source>reviewB15CommentTr</source>
@@ -249,6 +273,9 @@
 			<trans-unit id="review_b22_comment_internal.description" resname="review_b22_comment_internal.description">
 				<source>reviewB22CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_b22_comment_internal_step.description" resname="review_b22_comment_internal_step.description">
+				<source>reviewB22CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_b22_comment_tr.description" resname="review_b22_comment_tr.description">
 				<source>reviewB22CommentTr</source>
 			</trans-unit>
@@ -257,6 +284,9 @@
 			</trans-unit>
 			<trans-unit id="review_b23_comment_internal.description" resname="review_b23_comment_internal.description">
 				<source>reviewB23CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_b23_comment_internal_step.description" resname="review_b23_comment_internal_step.description">
+				<source>reviewB23CommentInternalStep</source>
 			</trans-unit>
 			<trans-unit id="review_b23_comment_tr.description" resname="review_b23_comment_tr.description">
 				<source>reviewB23CommentTr</source>

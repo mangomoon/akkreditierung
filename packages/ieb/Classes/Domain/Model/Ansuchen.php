@@ -716,6 +716,76 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
+     * reviewB1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB1CommentInternalStep = '';
+
+    /**
+     * reviewB2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB2CommentInternalStep = '';
+
+    /**
+     * reviewC1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC1CommentInternalStep = '';
+
+    /**
+     * reviewC2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2CommentInternalStep = '';
+
+    /**
+     * reviewC3CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3CommentInternalStep = '';
+
+    /**
+     * reviewTotalCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewTotalCommentInternalStep = '';
+
+    /**
+     * reviewB14CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB14CommentInternalStep = '';
+
+    /**
+     * reviewB15CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB15CommentInternalStep = '';
+
+    /**
+     * reviewB22CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB22CommentInternalStep = '';
+
+    /**
+     * reviewB23CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB23CommentInternalStep = '';
+
+    /**
      * __construct
      */
     public function __construct()

@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    259.5
+                    259
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    475.5
+                    475
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    26.5
+                    26
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    25.5
+                    25
                 ]
             },
             "name": "New Model Object",
@@ -1136,6 +1136,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewCommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1265839906943"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewCommentTr",
                             "propertyType": "Text",
                             "uid": "1363591693618"
@@ -1222,7 +1234,7 @@
             "config": {
                 "position": [
                     629,
-                    186.5
+                    186
                 ]
             },
             "name": "New Model Object",
@@ -1572,6 +1584,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewB1CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "392394983805"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewB1CommentTr",
                             "propertyType": "Text",
                             "uid": "584665674751"
@@ -1599,6 +1623,18 @@
                             "propertyName": "reviewB2CommentInternal",
                             "propertyType": "Text",
                             "uid": "718671613129"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewB2CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "718671613130"
                         },
                         {
                             "allowedFileTypes": "",
@@ -1644,6 +1680,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewC1CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "317071532647"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewC1CommentTr",
                             "propertyType": "Text",
                             "uid": "316586260767"
@@ -1671,6 +1719,18 @@
                             "propertyName": "reviewC2CommentInternal",
                             "propertyType": "Text",
                             "uid": "810563139255"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewC2CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "810563139256"
                         },
                         {
                             "allowedFileTypes": "",
@@ -1716,6 +1776,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewC3CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1375318860269"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewC3CommentTr",
                             "propertyType": "Text",
                             "uid": "1358895922141"
@@ -1743,6 +1815,18 @@
                             "propertyName": "reviewTotalCommentInternal",
                             "propertyType": "Text",
                             "uid": "1668979405031"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewTotalCommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1668979405032"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2172,6 +2256,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewB14CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1208840065673"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewB14CommentTr",
                             "propertyType": "Text",
                             "uid": "821319528666"
@@ -2199,6 +2295,18 @@
                             "propertyName": "reviewB15CommentInternal",
                             "propertyType": "Text",
                             "uid": "976244943771"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewB15CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "976244943772"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2244,6 +2352,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewB22CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "181479786358"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewB22CommentTr",
                             "propertyType": "Text",
                             "uid": "1551384464363"
@@ -2271,6 +2391,18 @@
                             "propertyName": "reviewB23CommentInternal",
                             "propertyType": "Text",
                             "uid": "938513646328"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewB23CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "938513646329"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2429,7 +2561,7 @@
             "config": {
                 "position": [
                     28,
-                    50.5
+                    50
                 ]
             },
             "name": "New Model Object",
@@ -2593,7 +2725,7 @@
             "config": {
                 "position": [
                     35,
-                    477.5
+                    477
                 ]
             },
             "name": "New Model Object",
@@ -2754,7 +2886,7 @@
             "config": {
                 "position": [
                     30,
-                    267.5
+                    267
                 ]
             },
             "name": "New Model Object",
@@ -3107,7 +3239,7 @@
             "config": {
                 "position": [
                     646,
-                    30.5
+                    30
                 ]
             },
             "name": "New Model Object",
@@ -3496,7 +3628,7 @@
             "config": {
                 "position": [
                     1131,
-                    592.5
+                    592
                 ]
             },
             "name": "New Model Object",
@@ -3645,7 +3777,7 @@
             "config": {
                 "position": [
                     918,
-                    269.5
+                    269
                 ]
             },
             "name": "New Model Object",
@@ -3722,7 +3854,7 @@
             "config": {
                 "position": [
                     1186,
-                    26.5
+                    26
                 ]
             },
             "name": "New Model Object",
@@ -4124,7 +4256,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-06-08 07:22",
+        "last_modified": "2023-06-19 06:28",
         "extension_builder_version": "v11.0.10",
         "be_user": " (4)"
     }

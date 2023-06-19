@@ -258,6 +258,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $basedOn = null;
 
     /**
+     * reviewCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewCommentInternalStep = '';
+
+    /**
      * __construct
      */
     public function __construct()
