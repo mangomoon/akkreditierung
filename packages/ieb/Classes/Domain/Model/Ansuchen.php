@@ -3209,10 +3209,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the reviewB22Status
      *
-     * @param string $reviewB22Status
+     * @param int $reviewB22Status
      * @return void
      */
-    public function setReviewB22Status(string $reviewB22Status)
+    public function setReviewB22Status(int $reviewB22Status)
     {
         $this->reviewB22Status = $reviewB22Status;
     }

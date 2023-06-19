@@ -146,7 +146,7 @@
             <td class="labeltext">
                 Leitbild:
             </td>
-            <td class="check {f:if(condition:'!{relations.stammdaten.leitbild}',then:'fehlt')}">
+            <td class="check {f:if(condition:'!{relations.stammdaten.leitbildDatei}',then:'fehlt')}">
                 <a href="/fileadmin{relations.stammdaten.leitbildDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.leitbildDatei.originalResource.properties.name}</a><br>{relations.stammdaten.leitbild}
             </td>
         </tr>

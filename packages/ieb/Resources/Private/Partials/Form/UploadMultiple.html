@@ -7,7 +7,7 @@
         <f:if condition="{media}">
             <f:for each="{media}" as="m">
                 <div class="filelist">
-                    <div class="links">
+                    <div class="filelist-links">
 
                         <f:if condition="{preview}">
                             <a href="{m.originalResource.publicUrl}" target="_blank">
@@ -16,7 +16,7 @@
                         </f:if>
 
                     </div>
-                    <div class="rechts">
+                    <div class="filelist-rechts">
                         <div class="filedelete"></div>
                         <p class="filelink">
                             <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name} TEST</a>

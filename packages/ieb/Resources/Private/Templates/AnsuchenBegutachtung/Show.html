@@ -101,6 +101,9 @@
                                         <f:render section="media" arguments="{media:media}" />
                                     </f:for>
                                 </f:if>
+                                <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                    field = 'stammdaten.nachweis'
+                                }" />
                             </td>
                         </tr>
                         <tr class="linie">
@@ -191,7 +194,7 @@
                                 <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
                             </div>
 
-                            <f:render section="media" arguments="{media:stammdaten.leitbildDatei}" /> }" />
+                            <f:render section="media" arguments="{media:stammdaten.leitbildDatei}" />
                         </div>
                         <div class="kriteriumteil">
                             <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
@@ -516,9 +519,12 @@
                             <f:if condition="{ansuchen.fernlehre}">
                                 <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
                             </f:if>
-                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                                field = 'ansuchen.lernziele'
-                            }" />
+
+                            <f:render section="uploadmultiple" arguments="{media:ansuchen.lernziele}" />
+
+
+
+
 
                         </div>
                         <div class="kriteriumteil">
@@ -551,9 +557,9 @@
                                 <p>Stellen Sie dar, wie Gender und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
                                 <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
                             </div>
-                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                                field = 'ansuchen.lernstandserhebung'
-                            }" />
+
+                            <f:render section="uploadmultiple" arguments="{media:ansuchen.lernstandserhebung}" />
+
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -858,6 +864,39 @@
             <f:image src="{media.publicUrl}" alt="{media.alternative}" width="{f:if(condition: width,then:width,else:150)}" />
         </a>
     </f:if>
+</f:section>
+
+<f:section name="uploadmultiple">
+    <div class="uploadlist">
+        <f:if condition="{media}">
+            <f:then>
+                <f:for each="{media}" as="m">
+                    <div class="filelist">
+                        <div class="filelist-links">
+                            <a href="{m.originalResource.publicUrl}" target="_blank">
+                                <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
+                            </a>
+                        </div>
+                        <div class="filelist-rechts">
+                            <p class="filelink">
+                                <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name} TEST</a>
+                            </p>
+                            <p>{m.originalResource.originalFile.properties.size -> f:format.bytes()} | {m.originalResource.originalFile.properties.extension}</p>
+                            <p>
+                                <f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>
+                            </p>
+                        </div>
+                    </div>
+                </f:for>
+            </f:then>
+            <f:else>
+                <p class="hinweis">Keine Dateien verfügbar</p>
+            </f:else>
+        </f:if>
+
+    </div>
+
+
 </f:section>
 
 <f:section name="comment">

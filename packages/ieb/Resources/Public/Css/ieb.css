@@ -250,37 +250,41 @@ p.hinweisextra {
     flex-grow: 1;
     flex-basis: 20%;
     font-size: 0.85em;
-    background: #f3efe8;
-    max-width: 30%;
+    background: #fdfaf0;
+    max-width: 33%;
     display: flex;
+}
+
+.filelist:hover {
+    background-color: #fffdf7;
 }
 
 .filelist a:link {
     color: var(--f4);
 }
 
-.filelist .links {
+.filelist-links {
     margin: 0 0 0 0px;
     padding: 0 5px 0 0;
 }
 
-.filelist .rechts {
+.filelist-rechts {
     margin: 0;
     padding: 4px 10px 0 0;
     position: relative;
     width: 100%;
 }
 
-.filelist .rechts p {
+.filelist-rechts p {
     padding: 0;
     margin: 0;
 }
 
-.filelist .rechts p.filelink {
+.filelist-rechts p.filelink {
     padding-bottom: 16px;
 }
 
-.filelist .links img {
+.filelist-links img {
     width: 80px;
     height: auto;
 }
@@ -851,6 +855,11 @@ table.tx_ieb.trainer td {
 
 .td-knopf .knopf-quadratisch.revive {
     background-image: url('../Img/revive_hell.svg');
+}
+
+.td-knopf .knopf-quadratisch.locked {
+    background-image: url('../Img/lock.svg');
+    background-size: 100%;
 }
 
 table.tx_ieb td.nachname {
