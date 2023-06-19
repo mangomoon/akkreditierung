@@ -71,7 +71,6 @@ class BasisBegutachtung extends AbstractDomainObject
             $getter = 'get' . ucfirst($field);
             $this->$field = $ansuchen->$getter();
         }
-        echo 'x';
         $this->status = $ansuchen->getStatus();
     }
 

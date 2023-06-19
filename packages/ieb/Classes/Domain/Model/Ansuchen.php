@@ -3009,7 +3009,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     public function getReviewB1CommentInternalData()
     {
-        DebuggerUtility::var_dump($this->reviewB1CommentInternal);
         return $this->getConvertedJson($this->reviewB1CommentInternal);
     }
 
