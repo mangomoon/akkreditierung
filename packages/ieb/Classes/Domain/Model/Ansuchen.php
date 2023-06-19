@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Model;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -1063,7 +1064,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return (int) $this->kompetenzbereiche;
+        return (int)$this->kompetenzbereiche;
     }
 
     /**
@@ -1074,7 +1075,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = (int) $kompetenzbereiche;
+        $this->kompetenzbereiche = (int)$kompetenzbereiche;
     }
 
     /**
@@ -2858,6 +2859,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
+
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
@@ -2905,6 +2907,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
+
     public function isEditableByTr()
     {
         return AnsuchenStatus::visibleForAg($this->status);
@@ -2993,17 +2996,58 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->copyStandorte = $copyStandorte;
     }
+
     public function getCopyStammdatenData()
     {
         return $this->getConvertedJson($this->copyStammdaten);
     }
+
     public function getCopyStandorteData()
     {
         return $this->getConvertedJson($this->copyStandorte);
     }
+
     public function getReviewB1CommentInternalData()
     {
+        DebuggerUtility::var_dump($this->reviewB1CommentInternal);
         return $this->getConvertedJson($this->reviewB1CommentInternal);
+    }
+
+    public function getReviewB14CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewB14CommentInternal);
+    }
+
+    public function getReviewB15CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewB15CommentInternal);
+    }
+
+    public function getReviewB22CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewB22CommentInternal);
+    }
+
+    public function getReviewB23CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewB23CommentInternal);
+    }
+
+    public function getReviewB2CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewB2CommentInternal);
+    }
+    public function getReviewC1CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewC1CommentInternal);
+    }
+    public function getReviewC2CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewC2CommentInternal);
+    }
+    public function getReviewC3CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewC3CommentInternal);
     }
 
     /**
@@ -3285,5 +3329,165 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewB22Status(int $reviewB22Status)
     {
         $this->reviewB22Status = $reviewB22Status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB1CommentInternalStep(): string
+    {
+        return $this->reviewB1CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB1CommentInternalStep
+     */
+    public function setReviewB1CommentInternalStep(string $reviewB1CommentInternalStep): void
+    {
+        $this->reviewB1CommentInternalStep = $reviewB1CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB2CommentInternalStep(): string
+    {
+        return $this->reviewB2CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB2CommentInternalStep
+     */
+    public function setReviewB2CommentInternalStep(string $reviewB2CommentInternalStep): void
+    {
+        $this->reviewB2CommentInternalStep = $reviewB2CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewC1CommentInternalStep(): string
+    {
+        return $this->reviewC1CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewC1CommentInternalStep
+     */
+    public function setReviewC1CommentInternalStep(string $reviewC1CommentInternalStep): void
+    {
+        $this->reviewC1CommentInternalStep = $reviewC1CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewC2CommentInternalStep(): string
+    {
+        return $this->reviewC2CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewC2CommentInternalStep
+     */
+    public function setReviewC2CommentInternalStep(string $reviewC2CommentInternalStep): void
+    {
+        $this->reviewC2CommentInternalStep = $reviewC2CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewC3CommentInternalStep(): string
+    {
+        return $this->reviewC3CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewC3CommentInternalStep
+     */
+    public function setReviewC3CommentInternalStep(string $reviewC3CommentInternalStep): void
+    {
+        $this->reviewC3CommentInternalStep = $reviewC3CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewTotalCommentInternalStep(): string
+    {
+        return $this->reviewTotalCommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewTotalCommentInternalStep
+     */
+    public function setReviewTotalCommentInternalStep(string $reviewTotalCommentInternalStep): void
+    {
+        $this->reviewTotalCommentInternalStep = $reviewTotalCommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB14CommentInternalStep(): string
+    {
+        return $this->reviewB14CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB14CommentInternalStep
+     */
+    public function setReviewB14CommentInternalStep(string $reviewB14CommentInternalStep): void
+    {
+        $this->reviewB14CommentInternalStep = $reviewB14CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB15CommentInternalStep(): string
+    {
+        return $this->reviewB15CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB15CommentInternalStep
+     */
+    public function setReviewB15CommentInternalStep(string $reviewB15CommentInternalStep): void
+    {
+        $this->reviewB15CommentInternalStep = $reviewB15CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB22CommentInternalStep(): string
+    {
+        return $this->reviewB22CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB22CommentInternalStep
+     */
+    public function setReviewB22CommentInternalStep(string $reviewB22CommentInternalStep): void
+    {
+        $this->reviewB22CommentInternalStep = $reviewB22CommentInternalStep;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReviewB23CommentInternalStep(): string
+    {
+        return $this->reviewB23CommentInternalStep;
+    }
+
+    /**
+     * @param string $reviewB23CommentInternalStep
+     */
+    public function setReviewB23CommentInternalStep(string $reviewB23CommentInternalStep): void
+    {
+        $this->reviewB23CommentInternalStep = $reviewB23CommentInternalStep;
     }
 }

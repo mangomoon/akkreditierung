@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
+    <f:flashMessages />
     <div class="begutachtung-kopf row">
         <div class="col">
             <p class="name">Testorganisation: </p>
@@ -317,7 +317,10 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
+                        <!--
                         <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
+                        -->
+                        B1 ist aktuell 2x in verwendung...siehe below
                     </div>
 
                 </div>
@@ -853,7 +856,8 @@
         <label>
             <f:form.select property="status" options="{possibleStatus}" />
         </label>
-        <f:form.submit value="Speichern" name="saveAndIndex" class="knopf-s" />
+        <f:form.submit value="Speichern" name="save" class="knopf-s" />
+        <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
     </f:form>
 
 </f:section>
@@ -908,7 +912,7 @@
         </f:for>
     </div>
     <div>
-        <f:form.textarea property="{property}CommentInternal" id="comment1-{property}" class="" />
+        <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
     </div>
     <div class="knoepfe">
         <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
