@@ -195,6 +195,14 @@ td {
     z-index: 9999;
 }
 
+.infobox a {
+    color: #fff;
+}
+
+.infobox a:hover {
+    color: var(--fg0);
+}
+
 .kriteriumteil .infobox {
     top: 25px;
 }

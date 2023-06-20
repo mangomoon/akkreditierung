@@ -17,7 +17,11 @@
         <f:form.textfield property="name" id="name" class="breite100 req" />
     </div>
 </div>
-
+<div class="formfields row">
+    <div class="col">
+        <p class="hinweis">Hinweis: Auf allen Dokumenten muss ersichtlich sein, welcher Organisation ein Dokument zuzuordnen ist, alle Dokumente sind eindeutig zu kennzeichnen (z. B. durch Logo, Fußzeile). Die mit Sternchen gekennzeichneten Felder sind Pflichtfelder.</p>
+    </div>
+</div>
 <!-- ############### Ansuchennummer PP3 ########### -->
 <f:if condition="!{ansuchen.nummer}">
     <div class="kriterium">
@@ -265,7 +269,7 @@
                 <p>
                     <label for="kompetenza"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenza" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
                 <p>
-                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" class="reqkomp" /> Kompetenzen in der deutschen Sprache</label></p>
+                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" class="reqkomp" /> Deutsch als Erstsprache bzw. überwiegende Sprache</label></p>
                 <p>
                     <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" class="reqkomp" /> Deutsch als Zweitsprache</label></p>
                 <p>
@@ -290,6 +294,7 @@
                         <label for="kompetenzd"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzd"/> Mathematik</label></p>
                     <p>
                         <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
+                    <p>Wahlmodule:</p>
                     <p>
                         <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
                     <p>
@@ -308,7 +313,7 @@
     <div class="kriteriumteil">
         <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
         <div class="info"></div>
-        <div class="infobox" id="ab-2-c-hilfe">Details ...</div>
+        <div class="infobox" id="ab-2-c-hilfe">Sie können <a href="#">diese Vorlage</a> für die Erstellung der Übersicht verwenden.</div>
         <f:render partial="Form/Upload" arguments="{
             property:'uebersichtDatei',
             id:'uebersichtDatei',
@@ -516,7 +521,7 @@
                     property:'lernstandserhebung',
                     id:'lernstandserhebung',
                     req:'reqfile',
-                    label='Upload Lernstandserhebung',
+                    label='Upload Kompetenzerhebung',
                     metadaten='{ansuchen.lernstandserhebung.originalResource}',
                     preview:1,
                     media:ansuchen.lernstandserhebung,
@@ -589,10 +594,13 @@
 <!-- ############### Projektsteuerung ########### -->
 
 <div class="kriterium">
-    <h2>C.1 Projektsteuerung</h2>
+    <h2>C.1 Projektleitung</h2>
+    <div class="info"></div>
+    <div class="infobox" id="c-1-hilfe">
+        <p>Die Projektleitung verfügt über Management-Kompetenz und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
+    </div>
     <div class="erlaeuterung">
-        <p>Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).<br> Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation)
-            und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation).</p>
+        <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
         <p class="hinweis">
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
         </p>
@@ -648,6 +656,9 @@
             </f:then>
             <f:else>
                 <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa" />
+                <f:if condition="{ansuchen.pruefbescheidDatei}">
+                    <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                </f:if>
             </f:else>
         </f:if>
 
@@ -688,11 +699,7 @@
     <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" class="reqcheckbox" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
         Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.</label>
     </p>
-    <p><label for="erklaerungd1"><f:form.checkbox property="erklaerungd1" class="reqcheckbox" id="erklaerungd1" value="1" />Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
-        für allfällige Kontrollen aufzubewahren. </label>
-    </p>
-    <p class="psa"><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="reqcheckbox" id="erklaerungd2" value="1" />Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
-        und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</label></p>
+
     <p><label for="erklaerungd3"><f:form.checkbox property="erklaerungd3" class="reqcheckbox" id="erklaerungd3" value="1" />Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.</label>
 
     </p>

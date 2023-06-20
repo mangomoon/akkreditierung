@@ -12,10 +12,7 @@
             <f:form.textfield property="nachname" id="nachname" required="0" class="breite100 req" />
         </div>
     </div>
-    <div class="erlaeuterung">
-        <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind. Kompetenzen in Management und Erwachsenenpädagogik
-            können durch formale Qualifikation oder 1-jährige Erfahrung nachgewiesen werden.</p>
-    </div>
+
     <div class="formfields row">
         <div class="col-6">
             <label for="name" class="reqlabel">E-Mail</label>
@@ -26,7 +23,10 @@
             <f:form.textfield property="telefon" id="televon" required="0" class="breite100 req" />
         </div>
     </div>
-
+    <div class="erlaeuterung">
+        <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktionen, Qualifikationen und Aus- und Weiterbildungen angeführt sind. Kompetenzen in Management und Erwachsenenpädagogik
+            können durch formale Qualifikation oder 1-jährige Erfahrung nachgewiesen werden.</p>
+    </div>
     <f:render partial="Form/Upload" arguments="{
         property:'lebenslaufDatei', 
         id:'lebenslaufDatei', 

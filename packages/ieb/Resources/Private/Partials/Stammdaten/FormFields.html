@@ -4,53 +4,55 @@
     <h2>A.1 STAMMDATEN</h2>
 
 
-
-    <div class="" id="a-1-1">
-        <!--<div class="info"></div>
+    <div class="kriteriumteil">
+        <div class="" id="a-1-1">
+            <!--<div class="info"></div>
         div class="infobox" id="a-1-1-hilfe"></div-->
-        <div class="erlaeuterung">
-            <p>Geben Sie den rechtsgültigen Vereins- bzw. Firmennamen und die Rechtsform gemäß Vereinsregister/Firmenbuch an und laden Sie einen aktuellen Vereinsregister-/Firmenbuchauszug (nicht älter als 6 Monate) hoch. <br> Geben Sie die Kontaktdaten
-                der einreichenden Organisation an.</p>
-            <p class="hinweis">
-                <span class="worthinweis">Hinweis:</span> Die Kursstandorte sind später einzutragen. Hier sind ausschließlich die Kontaktdaten der einreichenden Organisation anzugeben.
-            </p>
-        </div>
-        <div class="formfields row">
-            <div class="col-6">
-                <label for="name" class="reqlabel">Bezeichnung</label>
-                <f:form.textfield property="name" id="name" class="req" />
+            <div class="erlaeuterung">
+                <p>Geben Sie den rechtsgültigen Vereins- bzw. Firmennamen und die Rechtsform gemäß Vereinsregister/Firmenbuch an und laden Sie einen aktuellen Vereinsregister-/Firmenbuchauszug (nicht älter als 6 Monate) hoch. </p>
+                <p class="hinweis">
+                    <span class="worthinweis">Hinweis:</span> Die Kursstandorte sind später einzutragen. Hier sind ausschließlich die Kontaktdaten der einreichenden Organisation anzugeben.
+                </p>
             </div>
-            <div class="col-6">
-                <label for="markenname">Markenname/Organisationseinheit</label>
-                <f:form.textfield property="markenname" id="markenname" />
+            <div class="formfields row">
+                <div class="col-6">
+                    <label for="name" class="reqlabel">Vereins-/Firmenname</label>
+                    <f:form.textfield property="name" id="name" class="req" />
+                </div>
+                <div class="col-6">
+                    <f:render partial="Form/Select" arguments="{property:'rechtsform', req:'reqlabel', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}" />
+
+                    <f:render partial="Form/Upload" arguments="{
+                        property:'nachweis', 
+                        id:'nachweis', 
+                        req:'reqfile', 
+                        label='Vereinsregisterauszug/Firmenbuchauszug', 
+                        metadaten=stammdaten.nachweis.originalResource,
+                        preview:1,
+                        media:stammdaten.nachweis,
+                        mediaWidth:300, mediaHeight:300}" />
+                </div>
+
             </div>
         </div>
     </div>
 
     <div class="" id="a-1-2">
+        <div class="erlaeuterung">
+            <p>Geben Sie die Kontaktdaten der einreichenden Einrichtung/Organisationseinheit an.</p>
+        </div>
         <div class="formfields row">
             <div class="col-6">
-
-                <f:render partial="Form/Select" arguments="{property:'rechtsform', req:'reqlabel', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}" />
-
-                <label for="seit" class="reqlabel abstandoben">tätig seit</label>
-                <f:form.textfield property="seit" id="seit" class="req" />
+                <label for="markenname">Markenname/Organisationseinheit</label>
+                <f:form.textfield property="markenname" id="markenname" />
             </div>
             <div class="col-6">
-                <f:render partial="Form/Upload" arguments="{
-                    property:'nachweis', 
-                    id:'nachweis', 
-                    req:'reqfile', 
-                    label='Vereinsregisterauszug/Firmenbuchauszug', 
-                    metadaten=stammdaten.nachweis.originalResource,
-                    preview:1,
-                    media:stammdaten.nachweis,
-                    mediaWidth:300, mediaHeight:300}" />
+                <label for="seit" class="reqlabel">tätig seit</label>
+                <f:form.textfield property="seit" id="seit" class="req" />
             </div>
         </div>
-    </div>
 
-    <div class="" id="a-1-3">
+
         <div class="formfields">
             <div class="col-6">
                 <label for="strasse" class="reqlabel">Anschrift</label>
@@ -87,7 +89,7 @@
     <div class="info"></div>
     <div class="infobox" id="a-2-1-hilfe">Das Leitbild weist einen Erwachsenenbildungsbezug aus.</div>
     <div class="erlaeuterung">
-        <p>Laden Sie ein Leitbild der Einrichtung hoch.</p>
+        <p>Laden Sie das Leitbild der Einrichtung hoch.</p>
         <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
     </div>
 
@@ -195,9 +197,10 @@
 <div class="kriterium" id="a-2-3">
     <h2>A.2.3 Qualitätssicherung Personal</h2>
     <div class="erlaeuterung">
+        <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision) geregelt sind.</p>
         <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen Sie dabei die inhaltliche
             und die psychosoziale Ebene.</p>
-        <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision) geregelt sind.</p>
+
         <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung verpflichtet
             (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>

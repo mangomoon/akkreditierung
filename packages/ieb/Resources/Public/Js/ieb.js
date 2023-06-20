@@ -307,7 +307,7 @@
 
      $("form.tr-standort").submit(function(event) {
          validieren();
-         if (allesda == 1) {
+         if (allesda == 0) {
              event.preventDefault();
          }
      });

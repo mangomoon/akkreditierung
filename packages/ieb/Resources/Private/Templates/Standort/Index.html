@@ -8,6 +8,7 @@
     <f:link.action action="new" class="formlink standorte">Neuen Standort anlegen</f:link.action>
 
     <f:if condition="{standorts}">
+        <h2>Aktuelle Standorte</h2>
         <table class="tx_ieb standortliste">
             <f:for each="{standorts}" as="standort">
                 <f:if condition="!{standort.archiviert}">
