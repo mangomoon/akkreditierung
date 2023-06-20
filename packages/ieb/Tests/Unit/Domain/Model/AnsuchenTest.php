@@ -584,6 +584,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewB1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB1CommentInternalStepForStringSetsReviewB1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewB1CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -642,6 +663,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setReviewB2CommentInternal('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB2CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB2CommentInternalStepForStringSetsReviewB2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB2CommentInternalStep'));
     }
 
     /**
@@ -710,6 +752,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewC1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1CommentInternalStepForStringSetsReviewC1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewC1CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -768,6 +831,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setReviewC2CommentInternal('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2CommentInternalStepForStringSetsReviewC2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2CommentInternalStep'));
     }
 
     /**
@@ -836,6 +920,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewC3CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3CommentInternalStepForStringSetsReviewC3CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewC3CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -894,6 +999,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setReviewTotalCommentInternal('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewTotalCommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewTotalCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewTotalCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalCommentInternalStepForStringSetsReviewTotalCommentInternalStep(): void
+    {
+        $this->subject->setReviewTotalCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewTotalCommentInternalStep'));
     }
 
     /**
@@ -1583,6 +1709,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewB14CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14CommentInternalStepForStringSetsReviewB14CommentInternalStep(): void
+    {
+        $this->subject->setReviewB14CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewB14CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -1641,6 +1788,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setReviewB15CommentInternal('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15CommentInternalStepForStringSetsReviewB15CommentInternalStep(): void
+    {
+        $this->subject->setReviewB15CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15CommentInternalStep'));
     }
 
     /**
@@ -1709,6 +1877,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewB22CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22CommentInternalStepForStringSetsReviewB22CommentInternalStep(): void
+    {
+        $this->subject->setReviewB22CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewB22CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -1767,6 +1956,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setReviewB23CommentInternal('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23CommentInternalStepForStringSetsReviewB23CommentInternalStep(): void
+    {
+        $this->subject->setReviewB23CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23CommentInternalStep'));
     }
 
     /**

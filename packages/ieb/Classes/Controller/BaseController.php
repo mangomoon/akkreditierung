@@ -16,6 +16,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -86,7 +87,7 @@ class BaseController extends ActionController
             throw new \RuntimeException(sprintf('Argument "%s" not found in image conversion configuration', $argumentName), 1673611646);
         }
 
-        GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+        GeneralUtility::makeInstance(Container::class)
             ->registerImplementation(
                 \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
                 FileReference::class

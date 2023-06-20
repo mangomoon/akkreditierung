@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
+    <f:flashMessages />
     <div class="begutachtung-kopf row">
         <div class="col">
             <p class="name">Testorganisation: </p>
@@ -17,7 +17,9 @@
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -317,7 +319,10 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
+                        <!--
                         <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
+                        -->
+                        B1 ist aktuell 2x in verwendung...siehe below
                     </div>
 
                 </div>
@@ -702,23 +707,19 @@
             </div>
             <div class="begutachtung-kriterium" id="k1">
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Vorname Nachname
-                    </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                <f:for each="{trainer}" as="t">
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Irgendwer Ist Lehrerin
+                    <div class="row person">
+                        <div class="links col-7">
+                           {t.fullName}
+                        </div>
+                        <div class="rechts col-5">
+                            <div class="knopf">
+                                <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action></div>
+                        </div>
                     </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                </f:for>
+
 
                 <div class="row">
                     <div class="links col-7">
@@ -853,7 +854,8 @@
         <label>
             <f:form.select property="status" options="{possibleStatus}" />
         </label>
-        <f:form.submit value="Speichern" name="saveAndIndex" class="knopf-s" />
+        <f:form.submit value="Speichern" name="save" class="knopf-s" />
+        <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
     </f:form>
 
 </f:section>
@@ -908,7 +910,7 @@
         </f:for>
     </div>
     <div>
-        <f:form.textarea property="{property}CommentInternal" id="comment1-{property}" class="" />
+        <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
     </div>
     <div class="knoepfe">
         <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>

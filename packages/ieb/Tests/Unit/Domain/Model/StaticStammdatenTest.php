@@ -589,6 +589,27 @@ class StaticStammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewCommentInternalStepForStringSetsReviewCommentInternalStep(): void
+    {
+        $this->subject->setReviewCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewCommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(

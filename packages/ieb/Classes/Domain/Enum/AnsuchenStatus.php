@@ -95,7 +95,6 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
             self::ERSTBEGUTACHTUNG_DURCH_AG->value,
             self::FESTLEGUNG_EINES_AKKREDITIERUNGSSTATUS->value,
-            self::NACHBESSERUNGSAUFTRAG->value,
             self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
             self::BEGUTACHTUNG_NACH_EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
         ];

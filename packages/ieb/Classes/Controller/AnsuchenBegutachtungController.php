@@ -61,12 +61,29 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-
     public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung): void
     {
         $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->addFlashMessage('Ansuchen wurde ergänzt');
+
+        // if status changes, no need to stay in record show
+        if ($begutachtung->status > 0) {
+            $this->redirect('list');
+        }
+        $this->redirectTo($ansuchen->getUid());
+    }
+
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['save']) && $recordId > 0) {
+            $this->redirect('show', null, null, ['ansuchen' => $recordId]);
+        }
+        if (isset($arguments['saveAndIndex'])) {
+            $this->redirect('list');
+        }
         $this->redirect('list');
     }
+
 }

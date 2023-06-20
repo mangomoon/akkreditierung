@@ -29,6 +29,7 @@ class UploadViewHelper extends UploadViewHelperCore
         $hashService = GeneralUtility::makeInstance(HashService::class);
 
         $resource = $this->getUploadedResource();
+
         if ($resource !== null) {
             $resourcePointerIdAttribute = '';
             if ($this->hasArgument('id')) {
