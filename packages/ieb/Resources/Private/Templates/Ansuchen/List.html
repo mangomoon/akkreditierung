@@ -44,7 +44,7 @@
                             </f:if>
                             &middot;
                             <f:link.action action="clone" arguments="{ansuchen : item}">Klonen</f:link.action>
-                            <f:if condition="{item.status} == 10">
+                            <f:if condition="{item.einReichbarDurchTr}">
                                 <f:link.action action="einreichen" arguments="{ansuchen : item}">Einreichen</f:link.action>
                             </f:if>
                         </td>

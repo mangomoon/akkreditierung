@@ -3502,4 +3502,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->reviewB23CommentInternalStep = $reviewB23CommentInternalStep;
     }
+
+    public function isEinReichbarDurchTr(): bool
+    {
+        return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
+    }
 }

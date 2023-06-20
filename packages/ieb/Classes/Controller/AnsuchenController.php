@@ -89,7 +89,14 @@ class AnsuchenController extends BaseController
         $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
         $this->addFlashMessage('Das Ansuchen wurde eingereicht');
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
-        $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+        switch ($ansuchen->getStatus()) {
+            case 0:
+                $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                break;
+            case 80:
+                $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
+                break;
+        }
         $this->ansuchenRepository->update($newAnsuchen);
         $this->redirect('list');
         return $this->htmlResponse();
