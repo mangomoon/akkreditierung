@@ -23,11 +23,7 @@ class AnsuchenBegutachtungController extends BaseController
 {
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
-
-    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
-    {
-        $this->ansuchenRepository = $ansuchenRepository;
-    }
+    protected Repository\StammdatenRepository $stammdatenRepository;
 
 
     public function listAction(): ResponseInterface
@@ -69,6 +65,7 @@ class AnsuchenBegutachtungController extends BaseController
 
         // if status changes, no need to stay in record show
         if ($begutachtung->status > 0) {
+            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());
@@ -84,6 +81,17 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('list');
         }
         $this->redirect('list');
+    }
+
+
+    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
+    {
+        $this->ansuchenRepository = $ansuchenRepository;
+    }
+
+    public function injectStammdatanRepository(Repository\StammdatenRepository $stammdatenRepository): void
+    {
+        $this->stammdatenRepository = $stammdatenRepository;
     }
 
 }
