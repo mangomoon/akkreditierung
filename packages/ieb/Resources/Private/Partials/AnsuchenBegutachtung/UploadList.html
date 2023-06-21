@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+</html>
+
+
+<div class="uploadlist">
+    <f:if condition="{media}">
+        <f:then>
+            <f:for each="{media}" as="m">
+                <div class="filelist">
+                    <div class="filelist-links">
+                        <a href="{m.originalResource.publicUrl}" target="_blank">
+                            <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
+                        </a>
+                    </div>
+                    <div class="filelist-rechts">
+                        <p class="filelink">
+                            <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a>
+                        </p>
+                        <p>{m.originalResource.originalFile.properties.size -> f:format.bytes()} | {m.originalResource.originalFile.properties.extension}</p>
+                        <p>
+                            <f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>
+                        </p>
+                    </div>
+                </div>
+            </f:for>
+        </f:then>
+        <f:else>
+            <p class="hinweis">Keine Dateien verfügbar</p>
+        </f:else>
+    </f:if>
+
+</div>
