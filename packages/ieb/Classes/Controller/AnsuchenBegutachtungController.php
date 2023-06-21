@@ -61,11 +61,12 @@ class AnsuchenBegutachtungController extends BaseController
     {
         $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
         $this->addFlashMessage('Ansuchen wurde ergänzt');
 
         // if status changes, no need to stay in record show
         if ($begutachtung->status > 0) {
-            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
+            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid() ));
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());
@@ -89,7 +90,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository = $ansuchenRepository;
     }
 
-    public function injectStammdatanRepository(Repository\StammdatenRepository $stammdatenRepository): void
+    public function injectStammdatenRepository(Repository\StammdatenRepository $stammdatenRepository): void
     {
         $this->stammdatenRepository = $stammdatenRepository;
     }

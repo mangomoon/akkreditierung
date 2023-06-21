@@ -41,15 +41,22 @@ class BaseRepository extends Repository
         return $this->getAll()->getFirst();
     }
 
+    public function getLatestByPid(int $pid): ?object
+    {
+        $query = $this->getQuery($pid);
+        return $query->execute()->getFirst();
+    }
+
     /**
      * Get query with predefined pid check
      */
-    protected function getQuery(): QueryInterface
+    protected function getQuery(int $forcedPid = 0): QueryInterface
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(true);
         $currentUser = self::getCurrentUser();
-        $query->getQuerySettings()->setStoragePageIds([$currentUser['pid'] ?? -1]);
+        $pid = $forcedPid > 0 ? $forcedPid : $currentUser['pid'] ?? -1;
+        $query->getQuerySettings()->setStoragePageIds([$pid]);
         $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
 
         return $query;
