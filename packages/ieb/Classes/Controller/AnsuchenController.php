@@ -90,7 +90,7 @@ class AnsuchenController extends BaseController
         $this->addFlashMessage('Das Ansuchen wurde eingereicht');
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
         switch ($ansuchen->getStatus()) {
-            case 0:
+            case 10:
                 $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                 break;
             case 80:

@@ -1172,6 +1172,12 @@ table.ansuchenbegutachtung td.check {
     border: solid 1px #fff;
 }
 
+.begutachtung-kriterium .knopf.auflage:hover,
+.begutachtung-kriterium .knopf.auflage.checked {
+    background: #7c549a;
+    border: solid 1px #fff;
+}
+
 .begutachtung-kriterium .knopf.nicht-ok:hover,
 .begutachtung-kriterium .knopf.nicht-ok.checked {
     background: var(--ansuchen);
@@ -1196,6 +1202,16 @@ table.ansuchenbegutachtung td.check {
 
 .begutachtung-kriterium .komm-ext.vis {
     display: block;
+}
+
+#summestatus .knopf {
+    filter: drop-shadow(0 0 0 #677878);
+}
+
+#summestatus .knopf:hover {
+    cursor: default;
+    background-color: var(--f2);
+    border: solid 1px #898989;
 }
 
 .textbaustein {
@@ -1236,4 +1252,31 @@ table.ansuchenbegutachtung td.check {
 
 .begutachtung-kriterium .row.person .rechts {
     border-bottom: 2px dotted #fff;
+}
+
+
+/* Checkboxes Begutachtung */
+
+span.checkbox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--f4);
+    background: #fff;
+    background-color: rgb(255, 255, 255);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-image: none;
+    background-size: auto;
+    margin-right: 12px;
+    margin-bottom: -2px;
+}
+
+span.checkbox.checked {
+    background-color: var(--f2);
+    background-image: url('../Img/hakerl.svg');
+    background-size: 86%;
+    background-position: center;
+    background-repeat: no-repeat;
 }

@@ -50,6 +50,7 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_ERSTEINREICHUNG->value,
             self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
             self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
+            self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
         ];
     }
 
@@ -75,10 +76,12 @@ enum AnsuchenStatus: int
     public static function statusSetzbarDurchGs(): array
     {
         return [
-            self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
-            self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
             self::NACHBESSERUNGSAUFTRAG->value,
-            self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERUNG_AUSGESETZT->value,
+            self::NICHT_AKKREDITERT->value,
+            self::AKKREDITIERUNG_ENTZOGEN->value,
         ];
     }
 

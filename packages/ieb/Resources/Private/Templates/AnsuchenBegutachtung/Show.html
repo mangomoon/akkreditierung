@@ -3,23 +3,25 @@
 
 <f:section name="content">
     <f:flashMessages />
-    <div class="begutachtung-kopf row">
-        <div class="col">
-            <p class="name">Testorganisation: </p>
-            <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} <code>[UID {ansuchen.uid}]</code></h1>
-        </div>
-        <div class="col">
-            <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
-            </p>
-        </div>
-    </div>
+
 
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
-        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
-        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+
+        <div class="begutachtung-kopf row">
+            <div class="col">
+                <p class="name">{stammdaten.name}: </p>
+                <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
+            </div>
+            <div class="col">
+                <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
+                </p>
+            </div>
+        </div>
+        <div class="abstand-gross"></div>
+
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -162,7 +164,12 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
+                    <!-- 
                     <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
+                        
+
+                    -->
+                    Auch Dummy, weil Relation.
                 </div>
             </div>
         </div>
@@ -319,10 +326,10 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <!--
+
                         <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
-                        -->
-                        B1 ist aktuell 2x in verwendung...siehe below
+
+                        <!-- B1 ist aktuell 2x in verwendung...siehe below: unten ist B14! -->
                     </div>
 
                 </div>
@@ -618,14 +625,14 @@
 
 
 
-        <!-- C.1 Projektsteuerung #################################################### -->
+        <!-- C.1 Projektleitung #################################################### -->
 
 
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
-                        <h2>C.1 Projektsteuerung</h2>
+                        <h2>C.1 Projektleitung</h2>
                     </div>
                     <div class="col-6 right">
                         <div class="infoknopf"></div>
@@ -711,11 +718,12 @@
 
                     <div class="row person">
                         <div class="links col-7">
-                           {t.fullName}
+                            {t.fullName}
                         </div>
                         <div class="rechts col-5">
                             <div class="knopf">
-                                <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action></div>
+                                <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
+                            </div>
                         </div>
                     </div>
                 </f:for>
@@ -852,7 +860,8 @@
 
 
         <label>
-            <f:form.select property="status" options="{possibleStatus}" />
+            <f:render partial="Form/Select" arguments="{property:'status', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'zum Abschließen auswählen'}"
+                />
         </label>
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
@@ -912,7 +921,7 @@
     <div>
         <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
     </div>
-    <div class="knoepfe">
+    <div class="ansuchen knoepfe">
         <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
         <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
         <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
