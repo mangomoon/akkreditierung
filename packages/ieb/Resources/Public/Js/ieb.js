@@ -452,19 +452,26 @@
 
      $('.ansuchen .knopf input').click(function() {
 
-         $(this).parent().parent().find('.knopf').removeClass('checked');
-         $(this).parent().addClass('checked');
-         if ($(this).parent().hasClass('nicht-ok')) {
-             $(this).parent().parent().next().toggle();
-         } else {
-             $(this).parent().parent().next().hide();
-         }
+        if($(this).parent().hasClass('checked')) {
+            $(this).parent().removeClass('checked');
+            $(this).parent().parent().find('.nan').prop('checked', true);
+        } else {
+            $(this).parent().parent().find('.knopf').removeClass('checked');
+            $(this).parent().addClass('checked');
+        }
+
+        if ($(this).parent().hasClass('nicht-ok')) {
+            $(this).parent().parent().next().toggle();
+        } else {
+            $(this).parent().parent().next().hide();
+        }
 
      });
 
      $('.textbausteinoeffner').click(function() {
          $(this).toggleClass('checked');
          $(this).next().toggle();
+         
      });
      $('.textbaustein').click(function() {
          var t = $(this).text();

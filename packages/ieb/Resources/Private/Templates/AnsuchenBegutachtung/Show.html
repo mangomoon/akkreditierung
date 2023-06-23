@@ -236,10 +236,10 @@
                         <div class="kriteriumteil">
                             <h3>A.2.3 Qualitätssicherung Personal</h3>
                             <div class="erlaeuterung">
-                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
-                                    Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
                                 <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
                                     geregelt sind.</p>
+                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
+                                    Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
                                 <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung
                                     verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
                                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
@@ -294,7 +294,7 @@
                                     <f:then>
                                         <li class="light">Lernkompetenzen (Autonomes Lernen, Lernen lernen)</li>
                                         {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
-                                        <li>Kompetenzen in der deutschen Sprache</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Deutsch als Erstsprache bzw. überwiegende Sprache</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
                                         <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
                                         <li>Mathematische Kompetenzen</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
                                         <li>Digitale Kompetenzen</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
@@ -306,6 +306,7 @@
                                         <li class="light">Mathematik</li>
                                         <li class="light">Berufsorientierung</li>
                                         {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
+                                        <p>Wahlmodule</p>
                                         <li>Kreativität und Gestaltung</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
                                         <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
                                         <li>Gesundheit und Soziales</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
@@ -683,8 +684,9 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <p>Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).<br> Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
-                                Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation).</p>
+                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p> 
+                            <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
+                                Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
