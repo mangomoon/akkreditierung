@@ -8,6 +8,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Repository;
+use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
 
 
@@ -44,6 +45,7 @@ class AnsuchenBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'possibleStatus' => $possibleStatus,
+            'diff' => (new DiffService())->generateDiff($ansuchen)
         ]);
         return $this->htmlResponse();
     }

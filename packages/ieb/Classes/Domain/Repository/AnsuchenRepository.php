@@ -95,17 +95,17 @@ class AnsuchenRepository extends BaseRepository
         $copyStandorte = $copyBerater = $copyTrainer = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
-                $copyStandorte[] = ObjectAccess::getGettableProperties($standort);
+                $copyStandorte[$standort->getUid()] = ObjectAccess::getGettableProperties($standort);
             }
         }
         if ($ansuchen->getTrainer()) {
             foreach ($ansuchen->getTrainer() as $trainer) {
-                $copyTrainer[] = ObjectAccess::getGettableProperties($trainer);
+                $copyTrainer[$trainer->getUid()] = ObjectAccess::getGettableProperties($trainer);
             }
         }
         if ($ansuchen->getBerater()) {
             foreach ($ansuchen->getBerater() as $berater) {
-                $copyBerater[] = ObjectAccess::getGettableProperties($berater);
+                $copyBerater[$berater->getUid()] = ObjectAccess::getGettableProperties($berater);
             }
         }
         $copyStammdaten = $stammdaten ? $this->convertObjectToArray(ObjectAccess::getGettableProperties($stammdaten)) : [];
@@ -130,20 +130,21 @@ class AnsuchenRepository extends BaseRepository
         return $newEventId;
     }
 
-    protected function convertObjectToArray(array $item) {
-        foreach($item as $key => $value) {
+    protected function convertObjectToArray(array $item)
+    {
+        foreach ($item as $key => $value) {
             if (is_object($value)) {
                 switch (get_class($value)) {
                     case ObjectStorage::class:
                         $out = [];
-                        foreach($value as $object) {
+                        foreach ($value as $object) {
                             switch (get_class($object)) {
                                 case FileReference::class;
                                     $out[] = [
                                         'publicUrl' => $object->getOriginalResource()->getPublicUrl(),
                                     ];
                                     break;
-                               default:
+                                default:
                                     throw new RuntimeException(sprintf('Class %s not supported', get_class($object)));
                                     break;
                             }
