@@ -217,6 +217,118 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $archiviert = false;
 
     /**
+     * reviewC21BabiStatus
+     *
+     * @var int
+     */
+    protected $reviewC21BabiStatus = 0;
+
+    /**
+     * reviewC21PsaStatus
+     *
+     * @var int
+     */
+    protected $reviewC21PsaStatus = 0;
+
+    /**
+     * reviewC22BabiStatus
+     *
+     * @var int
+     */
+    protected $reviewC22BabiStatus = 0;
+
+    /**
+     * reviewC22PsaStatus
+     *
+     * @var int
+     */
+    protected $reviewC22PsaStatus = 0;
+
+    /**
+     * reviewC22Quali1
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali1 = false;
+
+    /**
+     * reviewC22Quali2
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali2 = false;
+
+    /**
+     * reviewC22Quali3
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali3 = false;
+
+    /**
+     * reviewC22Quali4
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali4 = false;
+
+    /**
+     * reviewC22Quali5
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali5 = false;
+
+    /**
+     * reviewC22Quali6
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali6 = false;
+
+    /**
+     * reviewC22Quali7
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali7 = false;
+
+    /**
+     * reviewC22Quali8
+     *
+     * @var bool
+     */
+    protected $reviewC22Quali8 = false;
+
+    /**
+     * reviewC2BabiCommentInternal
+     *
+     * @var string
+     */
+    protected $reviewC2BabiCommentInternal = '';
+
+    /**
+     * reviewC2BabiCommentTr
+     *
+     * @var string
+     */
+    protected $reviewC2BabiCommentTr = '';
+
+    /**
+     * reviewC2PsaCommentInternal
+     *
+     * @var string
+     */
+    protected $reviewC2PsaCommentInternal = '';
+
+    /**
+     * reviewC2PsaCommentTr
+     *
+     * @var string
+     */
+    protected $reviewC2PsaCommentTr = '';
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -908,5 +1020,421 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isOkpsa()
     {
         return $this->okpsa;
+    }
+
+    /**
+     * Returns the reviewC21BabiStatus
+     *
+     * @return int
+     */
+    public function getReviewC21BabiStatus()
+    {
+        return $this->reviewC21BabiStatus;
+    }
+
+    /**
+     * Sets the reviewC21BabiStatus
+     *
+     * @param int $reviewC21BabiStatus
+     * @return void
+     */
+    public function setReviewC21BabiStatus(int $reviewC21BabiStatus)
+    {
+        $this->reviewC21BabiStatus = $reviewC21BabiStatus;
+    }
+
+    /**
+     * Returns the reviewC21PsaStatus
+     *
+     * @return int
+     */
+    public function getReviewC21PsaStatus()
+    {
+        return $this->reviewC21PsaStatus;
+    }
+
+    /**
+     * Sets the reviewC21PsaStatus
+     *
+     * @param int $reviewC21PsaStatus
+     * @return void
+     */
+    public function setReviewC21PsaStatus(int $reviewC21PsaStatus)
+    {
+        $this->reviewC21PsaStatus = $reviewC21PsaStatus;
+    }
+
+    /**
+     * Returns the reviewC22BabiStatus
+     *
+     * @return int
+     */
+    public function getReviewC22BabiStatus()
+    {
+        return $this->reviewC22BabiStatus;
+    }
+
+    /**
+     * Sets the reviewC22BabiStatus
+     *
+     * @param int $reviewC22BabiStatus
+     * @return void
+     */
+    public function setReviewC22BabiStatus(int $reviewC22BabiStatus)
+    {
+        $this->reviewC22BabiStatus = $reviewC22BabiStatus;
+    }
+
+    /**
+     * Returns the reviewC22PsaStatus
+     *
+     * @return int
+     */
+    public function getReviewC22PsaStatus()
+    {
+        return $this->reviewC22PsaStatus;
+    }
+
+    /**
+     * Sets the reviewC22PsaStatus
+     *
+     * @param int $reviewC22PsaStatus
+     * @return void
+     */
+    public function setReviewC22PsaStatus(int $reviewC22PsaStatus)
+    {
+        $this->reviewC22PsaStatus = $reviewC22PsaStatus;
+    }
+
+    /**
+     * Returns the reviewC22Quali1
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali1()
+    {
+        return $this->reviewC22Quali1;
+    }
+
+    /**
+     * Sets the reviewC22Quali1
+     *
+     * @param bool $reviewC22Quali1
+     * @return void
+     */
+    public function setReviewC22Quali1(bool $reviewC22Quali1)
+    {
+        $this->reviewC22Quali1 = $reviewC22Quali1;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali1
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali1()
+    {
+        return $this->reviewC22Quali1;
+    }
+
+    /**
+     * Returns the reviewC22Quali2
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali2()
+    {
+        return $this->reviewC22Quali2;
+    }
+
+    /**
+     * Sets the reviewC22Quali2
+     *
+     * @param bool $reviewC22Quali2
+     * @return void
+     */
+    public function setReviewC22Quali2(bool $reviewC22Quali2)
+    {
+        $this->reviewC22Quali2 = $reviewC22Quali2;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali2
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali2()
+    {
+        return $this->reviewC22Quali2;
+    }
+
+    /**
+     * Returns the reviewC22Quali3
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali3()
+    {
+        return $this->reviewC22Quali3;
+    }
+
+    /**
+     * Sets the reviewC22Quali3
+     *
+     * @param bool $reviewC22Quali3
+     * @return void
+     */
+    public function setReviewC22Quali3(bool $reviewC22Quali3)
+    {
+        $this->reviewC22Quali3 = $reviewC22Quali3;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali3
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali3()
+    {
+        return $this->reviewC22Quali3;
+    }
+
+    /**
+     * Returns the reviewC22Quali4
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali4()
+    {
+        return $this->reviewC22Quali4;
+    }
+
+    /**
+     * Sets the reviewC22Quali4
+     *
+     * @param bool $reviewC22Quali4
+     * @return void
+     */
+    public function setReviewC22Quali4(bool $reviewC22Quali4)
+    {
+        $this->reviewC22Quali4 = $reviewC22Quali4;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali4
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali4()
+    {
+        return $this->reviewC22Quali4;
+    }
+
+    /**
+     * Returns the reviewC22Quali5
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali5()
+    {
+        return $this->reviewC22Quali5;
+    }
+
+    /**
+     * Sets the reviewC22Quali5
+     *
+     * @param bool $reviewC22Quali5
+     * @return void
+     */
+    public function setReviewC22Quali5(bool $reviewC22Quali5)
+    {
+        $this->reviewC22Quali5 = $reviewC22Quali5;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali5
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali5()
+    {
+        return $this->reviewC22Quali5;
+    }
+
+    /**
+     * Returns the reviewC22Quali6
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali6()
+    {
+        return $this->reviewC22Quali6;
+    }
+
+    /**
+     * Sets the reviewC22Quali6
+     *
+     * @param bool $reviewC22Quali6
+     * @return void
+     */
+    public function setReviewC22Quali6(bool $reviewC22Quali6)
+    {
+        $this->reviewC22Quali6 = $reviewC22Quali6;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali6
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali6()
+    {
+        return $this->reviewC22Quali6;
+    }
+
+    /**
+     * Returns the reviewC22Quali7
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali7()
+    {
+        return $this->reviewC22Quali7;
+    }
+
+    /**
+     * Sets the reviewC22Quali7
+     *
+     * @param bool $reviewC22Quali7
+     * @return void
+     */
+    public function setReviewC22Quali7(bool $reviewC22Quali7)
+    {
+        $this->reviewC22Quali7 = $reviewC22Quali7;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali7
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali7()
+    {
+        return $this->reviewC22Quali7;
+    }
+
+    /**
+     * Returns the reviewC22Quali8
+     *
+     * @return bool
+     */
+    public function getReviewC22Quali8()
+    {
+        return $this->reviewC22Quali8;
+    }
+
+    /**
+     * Sets the reviewC22Quali8
+     *
+     * @param bool $reviewC22Quali8
+     * @return void
+     */
+    public function setReviewC22Quali8(bool $reviewC22Quali8)
+    {
+        $this->reviewC22Quali8 = $reviewC22Quali8;
+    }
+
+    /**
+     * Returns the boolean state of reviewC22Quali8
+     *
+     * @return bool
+     */
+    public function isReviewC22Quali8()
+    {
+        return $this->reviewC22Quali8;
+    }
+
+    /**
+     * Returns the reviewC2BabiCommentInternal
+     *
+     * @return string
+     */
+    public function getReviewC2BabiCommentInternal()
+    {
+        return $this->reviewC2BabiCommentInternal;
+    }
+
+    /**
+     * Sets the reviewC2BabiCommentInternal
+     *
+     * @param string $reviewC2BabiCommentInternal
+     * @return void
+     */
+    public function setReviewC2BabiCommentInternal(string $reviewC2BabiCommentInternal)
+    {
+        $this->reviewC2BabiCommentInternal = $reviewC2BabiCommentInternal;
+    }
+
+    /**
+     * Returns the reviewC2BabiCommentTr
+     *
+     * @return string
+     */
+    public function getReviewC2BabiCommentTr()
+    {
+        return $this->reviewC2BabiCommentTr;
+    }
+
+    /**
+     * Sets the reviewC2BabiCommentTr
+     *
+     * @param string $reviewC2BabiCommentTr
+     * @return void
+     */
+    public function setReviewC2BabiCommentTr(string $reviewC2BabiCommentTr)
+    {
+        $this->reviewC2BabiCommentTr = $reviewC2BabiCommentTr;
+    }
+
+    /**
+     * Returns the reviewC2PsaCommentInternal
+     *
+     * @return string
+     */
+    public function getReviewC2PsaCommentInternal()
+    {
+        return $this->reviewC2PsaCommentInternal;
+    }
+
+    /**
+     * Sets the reviewC2PsaCommentInternal
+     *
+     * @param string $reviewC2PsaCommentInternal
+     * @return void
+     */
+    public function setReviewC2PsaCommentInternal(string $reviewC2PsaCommentInternal)
+    {
+        $this->reviewC2PsaCommentInternal = $reviewC2PsaCommentInternal;
+    }
+
+    /**
+     * Returns the reviewC2PsaCommentTr
+     *
+     * @return string
+     */
+    public function getReviewC2PsaCommentTr()
+    {
+        return $this->reviewC2PsaCommentTr;
+    }
+
+    /**
+     * Sets the reviewC2PsaCommentTr
+     *
+     * @param string $reviewC2PsaCommentTr
+     * @return void
+     */
+    public function setReviewC2PsaCommentTr(string $reviewC2PsaCommentTr)
+    {
+        $this->reviewC2PsaCommentTr = $reviewC2PsaCommentTr;
     }
 }

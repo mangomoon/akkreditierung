@@ -140,24 +140,6 @@ class AngebotVerantwortlichTest extends UnitTestCase
     /**
      * @test
      */
-    public function getOkReturnsInitialValueForBool(): void
-    {
-        self::assertFalse($this->subject->getOk());
-    }
-
-    /**
-     * @test
-     */
-    public function setOkForBoolSetsOk(): void
-    {
-        $this->subject->setOk(true);
-
-        self::assertEquals(true, $this->subject->_get('ok'));
-    }
-
-    /**
-     * @test
-     */
     public function getLebenslaufDateiReturnsInitialValueForFileReference(): void
     {
         self::assertEquals(
@@ -201,6 +183,24 @@ class AngebotVerantwortlichTest extends UnitTestCase
     /**
      * @test
      */
+    public function getOkReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getOk());
+    }
+
+    /**
+     * @test
+     */
+    public function setOkForBoolSetsOk(): void
+    {
+        $this->subject->setOk(true);
+
+        self::assertEquals(true, $this->subject->_get('ok'));
+    }
+
+    /**
+     * @test
+     */
     public function getArchiviertReturnsInitialValueForBool(): void
     {
         self::assertFalse($this->subject->getArchiviert());
@@ -214,5 +214,41 @@ class AngebotVerantwortlichTest extends UnitTestCase
         $this->subject->setArchiviert(true);
 
         self::assertEquals(true, $this->subject->_get('archiviert'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC1BabiReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC1Babi());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1BabiForBoolSetsReviewC1Babi(): void
+    {
+        $this->subject->setReviewC1Babi(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC1Babi'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC1PsaReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC1Psa());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1PsaForBoolSetsReviewC1Psa(): void
+    {
+        $this->subject->setReviewC1Psa(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC1Psa'));
     }
 }

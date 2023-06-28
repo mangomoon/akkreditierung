@@ -542,4 +542,316 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('archiviert'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewC21BabiStatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC21BabiStatus()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC21BabiStatusForIntSetsReviewC21BabiStatus(): void
+    {
+        $this->subject->setReviewC21BabiStatus(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC21BabiStatus'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC21PsaStatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC21PsaStatus()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC21PsaStatusForIntSetsReviewC21PsaStatus(): void
+    {
+        $this->subject->setReviewC21PsaStatus(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC21PsaStatus'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22BabiStatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC22BabiStatus()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22BabiStatusForIntSetsReviewC22BabiStatus(): void
+    {
+        $this->subject->setReviewC22BabiStatus(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC22BabiStatus'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22PsaStatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC22PsaStatus()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22PsaStatusForIntSetsReviewC22PsaStatus(): void
+    {
+        $this->subject->setReviewC22PsaStatus(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC22PsaStatus'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali1ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali1());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali1ForBoolSetsReviewC22Quali1(): void
+    {
+        $this->subject->setReviewC22Quali1(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali1'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali2ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali2());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali2ForBoolSetsReviewC22Quali2(): void
+    {
+        $this->subject->setReviewC22Quali2(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali2'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali3ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali3());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali3ForBoolSetsReviewC22Quali3(): void
+    {
+        $this->subject->setReviewC22Quali3(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali3'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali4ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali4());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali4ForBoolSetsReviewC22Quali4(): void
+    {
+        $this->subject->setReviewC22Quali4(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali4'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali5ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali5());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali5ForBoolSetsReviewC22Quali5(): void
+    {
+        $this->subject->setReviewC22Quali5(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali5'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali6ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali6());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali6ForBoolSetsReviewC22Quali6(): void
+    {
+        $this->subject->setReviewC22Quali6(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali6'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali7ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali7());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali7ForBoolSetsReviewC22Quali7(): void
+    {
+        $this->subject->setReviewC22Quali7(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali7'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC22Quali8ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewC22Quali8());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC22Quali8ForBoolSetsReviewC22Quali8(): void
+    {
+        $this->subject->setReviewC22Quali8(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewC22Quali8'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiCommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiCommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiCommentInternalForStringSetsReviewC2BabiCommentInternal(): void
+    {
+        $this->subject->setReviewC2BabiCommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiCommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiCommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiCommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiCommentTrForStringSetsReviewC2BabiCommentTr(): void
+    {
+        $this->subject->setReviewC2BabiCommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiCommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaCommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2PsaCommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaCommentInternalForStringSetsReviewC2PsaCommentInternal(): void
+    {
+        $this->subject->setReviewC2PsaCommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaCommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaCommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2PsaCommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaCommentTrForStringSetsReviewC2PsaCommentTr(): void
+    {
+        $this->subject->setReviewC2PsaCommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaCommentTr'));
+    }
 }

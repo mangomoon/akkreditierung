@@ -12,17 +12,9 @@
         </p>
         <f:if condition="{ansuchen.typ}==1">
             <f:then>
-                <f:if condition="{trainer.verwendungPSA}">
-                    <p class="hinweis">Die Person soll auch für den Bereich PSA verwendet werden.</p>
-                </f:if>
-            </f:then>
-            <f:else>
-                <f:if condition="{trainer.verwendungBabi}">
-                    <p class="hinweis">Die Person soll auch für den Bereich BaBi verwendet werden.</p>
-                </f:if>
-            </f:else>
-        </f:if>
-        </p>
+
+            
+        <!-- ############################ BASISBILDUNG ############################### -->
 
         <div class="begutachtung-kriterium" id="c21b">
             <div class="kriteriumtitel">
@@ -68,78 +60,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="begutachtung-kriterium" id="c21p">
-            <div class="kriteriumtitel">
-                <div class="row">
-                    <div class="col-7">
-                        <h2>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h2>
-                    </div>
-                    <div class="col-5 right">
-                        <div class="infoknopf"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="links col-7">
-                    <div class="erlaeuterung">
-
-                        <div class="showinfobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
-                        <p><strong>Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.</strong></p>
-                        <p>Liegt keine Trainings/Prüfberechtigung der Bildungsdirektion vor oder weichen die unten angegebenen Kompetenzbereiche von dieser ab, laden Sie die Qualifikationsnachweise hier hoch.</p>
-                        <p class="hinweis"><span class="worthinweis">Hinweis:</span> Anerkannt werden:</p>
-                        <ul class="hinweis">
-                            <li>
-                                abgeschlossenes Lehramtsstudium
-                            </li>
-                            <li>
-                                von der Landesschulbehörde ausgestellte Lehrbefugnis (nicht älter als drei Jahre)
-                            </li>
-                            <li>
-                                abgeschlossenes facheinschlägiges Studium an einer anerkannten postsekundären Bildungseinrichtung und zumindest 12-monatige Berufserfahrung im (sozial)pädagogischen Bereich mit Jugendlichen oder Erwachsenen – Es muss eine Begründung eingereicht werden,
-                                warum das Studium als facheinschlägig betrachtet wird. Als Nachweis für die Berufserfahrung sind Angaben zu Umfang, Zielgruppe, Dienstgeber, Zeitraum und Kurs/Projekttitel zu machen.
-                            </li>
-                            <li>
-                                eine positiv abgeschlossene erwachsenenpädagogische Ausbildung mit Schwerpunkt Didaktik/Training, die mindestens dem Referenzsystem wba-Zertifikat/Diplom“ (wba.or.at ) entspricht.
-                            </li>
-                            <li>
-                                Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
-                            </li>
-                            <li>
-                                Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
-                            </li>
-                        </ul>
-                    </div>
-
-                    <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
-
-                    <p>Haken Sie die für den/die Trainer/in vorgesehenen Kompetenzbereiche an.</p>
-
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa1}',then:'checked')}"></span> Deutsch – Kommunikation und Gesellschaft</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa2}',then:'checked')}"></span> Englisch – Globalität und Transkulturalität</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa3}',then:'checked')}"></span> Mathematik</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa4}',then:'checked')}"></span> Berufsorientierung</p>
-                    <p>Wahlmodule:</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa5}',then:'checked')}"></span> Kreativität und Gestaltung</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa6}',then:'checked')}"></span> Gesundheit und Soziales</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa7}',then:'checked')}"></span> Natur und Technik</p>
-                    <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa8}',then:'checked')}"></span> Weitere Sprachen: {trainer.qualifikationPsaKommentar}</p>
-
-                </div>
-                <div class="rechts col-5">
-
-                    <div class="knoepfe teilstatus">
-                        <label class="knopf nan c21p" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c21p"/>nan</label>
-                        <label class="knopf ok c21p {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21p"/>ok</label>
-                        <label class="knopf zweit c21p {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c21p"/>fraglich</label>
-                        <label class="knopf auflage c21p {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c21p"/>Auflage</label>
-                        <label class="knopf nicht-ok c21p {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c21p"/>nicht-ok</label>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
         <div class="begutachtung-kriterium" id="c22">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -175,6 +95,200 @@
                 </div>
             </div>
         </div>
+
+
+
+    </f:then>
+    <f:else>
+                <!-- ############################ PSA ############################### -->
+
+                <div class="begutachtung-kriterium" id="c21p">
+                    <div class="kriteriumtitel">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h2>
+                            </div>
+                            <div class="col-5 right">
+                                <div class="infoknopf"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="links col-7">
+                            <div class="erlaeuterung">
+        
+                                <div class="showinfobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
+                                <p><strong>Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.</strong></p>
+                                <p>Liegt keine Trainings/Prüfberechtigung der Bildungsdirektion vor oder weichen die unten angegebenen Kompetenzbereiche von dieser ab, laden Sie die Qualifikationsnachweise hier hoch.</p>
+                                <p class="hinweis"><span class="worthinweis">Hinweis:</span> Anerkannt werden:</p>
+                                <ul class="hinweis">
+                                    <li>
+                                        abgeschlossenes Lehramtsstudium
+                                    </li>
+                                    <li>
+                                        von der Landesschulbehörde ausgestellte Lehrbefugnis (nicht älter als drei Jahre)
+                                    </li>
+                                    <li>
+                                        abgeschlossenes facheinschlägiges Studium an einer anerkannten postsekundären Bildungseinrichtung und zumindest 12-monatige Berufserfahrung im (sozial)pädagogischen Bereich mit Jugendlichen oder Erwachsenen – Es muss eine Begründung eingereicht werden,
+                                        warum das Studium als facheinschlägig betrachtet wird. Als Nachweis für die Berufserfahrung sind Angaben zu Umfang, Zielgruppe, Dienstgeber, Zeitraum und Kurs/Projekttitel zu machen.
+                                    </li>
+                                    <li>
+                                        eine positiv abgeschlossene erwachsenenpädagogische Ausbildung mit Schwerpunkt Didaktik/Training, die mindestens dem Referenzsystem wba-Zertifikat/Diplom“ (wba.or.at ) entspricht.
+                                    </li>
+                                    <li>
+                                        Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
+                                    </li>
+                                    <li>
+                                        Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
+                                    </li>
+                                </ul>
+                            </div>
+        
+                            <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                        </div>
+                        <div class="rechts col-5">
+                            <div class="knoepfe teilstatus">
+                                <label class="knopf nan c21p" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c21p"/>nan</label>
+                                <label class="knopf ok c21p {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21p"/>ok</label>
+                                <label class="knopf zweit c21p {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c21p"/>fraglich</label>
+                                <label class="knopf auflage c21p {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c21p"/>Auflage</label>
+                                <label class="knopf nicht-ok c21p {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c21p"/>nicht-ok</label>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col trainerqualifikationsbegutachtung">
+
+
+                                <p>Haken Sie die für den/die Trainer/in vorgesehenen Kompetenzbereiche an.</p>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td class="r">
+                                            <input type="checkbox" id="checkall"/> alle auswählen
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa1}',then:'checked')}"></span> Deutsch – Kommunikation und Gesellschaft
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali1" id="trainer.reviewC22Quali1" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa2}',then:'checked')}"></span> Englisch – Globalität und Transkulturalität
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali2" id="trainer.reviewC22Quali2" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa3}',then:'checked')}"></span> Mathematik
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali3" id="trainer.reviewC22Quali3" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa4}',then:'checked')}"></span> Berufsorientierung
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali4" id="trainer.reviewC22Quali4" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                           Wahlmodule
+                                        </td>
+                                        <td class="r">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa5}',then:'checked')}"></span> Kreativität und Gestaltung
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali5" id="trainer.reviewC22Quali5" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa6}',then:'checked')}"></span> Gesundheit und Soziales
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali6" id="trainer.reviewC22Quali6" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa7}',then:'checked')}"></span> Natur und Technik
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali7" id="trainer.reviewC22Quali7" value="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa8}',then:'checked')}"></span> Weitere Sprachen: {trainer.qualifikationPsaKommentar}
+                                        </td>
+                                        <td class="r">
+                                            <f:form.checkbox property="trainer.reviewC22Quali8" id="trainer.reviewC22Quali8" value="1" />
+                                        </td>
+                                    </tr>
+                                </table>
+        
+            
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="begutachtung-kriterium" id="c22">
+                    <div class="kriteriumtitel">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2>C.2.2 Erfahrungsnachweis</h2>
+                            </div>
+                            <div class="col-5 right">
+                                <div class="infoknopf"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="links col-7">
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="c-2-1-hilfe">Alle Trainer/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
+                                <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktionen, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+                                <p class="hinweis">
+                                    HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
+                                </p>
+                            </div>
+                            <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                        </div>
+                        <div class="rechts col-5">
+        
+                            <div class="knoepfe teilstatus">
+                                <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
+                                <label class="knopf ok c22 {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                                <label class="knopf zweit c22 {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                                <label class="knopf auflage c22 {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                                <label class="knopf nicht-ok c22 {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+    </f:else>
+</f:if>
+
         <div class="begutachtung-kriterium" id="k1">
             <div class="row">
                 <div class="links col-7">
@@ -191,22 +305,6 @@
                     </div>
                     <div>
                         <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
-                    </div>
-                    <label>akkreditierbarkeit <strong>BaBi</strong> (automatisch errechnet):</label>
-                    <div id="summestatus" class="knoepfe">
-                        <label class="knopf c-0 nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
-                        <label class="knopf c-1 ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
-                        <!-- <label class="knopf c-2 zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />fraglich</label> -->
-                        <label class="knopf c-3 auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Auflage</label>
-                        <label class="knopf c-4 nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
-                    </div>
-                    <label>akkreditierbarkeit <strong>PSA</strong> (automatisch errechnet):</label>
-                    <div id="summestatus" class="knoepfe">
-                        <label class="knopf c-0 nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
-                        <label class="knopf c-1 ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
-                        <!-- <label class="knopf c-2 zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />fraglich</label> -->
-                        <label class="knopf c-3 auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Auflage</label>
-                        <label class="knopf c-4 nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
                     </div>
                     <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
                         <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />

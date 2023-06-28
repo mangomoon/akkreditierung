@@ -209,6 +209,13 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewCommentInternal = '';
 
     /**
+     * reviewCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewCommentInternalStep = '';
+
+    /**
      * reviewCommentTr
      *
      * @var string
@@ -256,13 +263,6 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\Stammdaten
      */
     protected $basedOn = null;
-
-    /**
-     * reviewCommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewCommentInternalStep = '';
 
     /**
      * __construct

@@ -223,6 +223,69 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewC3StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC3Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3StatusForIntSetsReviewC3Status(): void
+    {
+        $this->subject->setReviewC3Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC3Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3CommentInternalForStringSetsReviewC3CommentInternal(): void
+    {
+        $this->subject->setReviewC3CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3CommentTrForStringSetsReviewC3CommentTr(): void
+    {
+        $this->subject->setReviewC3CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3CommentTr'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

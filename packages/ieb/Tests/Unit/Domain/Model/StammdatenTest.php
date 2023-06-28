@@ -625,6 +625,132 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewA1StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewA1Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA1StatusForIntSetsReviewA1Status(): void
+    {
+        $this->subject->setReviewA1Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewA1Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewA1CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewA1CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA1CommentInternalForStringSetsReviewA1CommentInternal(): void
+    {
+        $this->subject->setReviewA1CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA1CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewA1CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewA1CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA1CommentTrForStringSetsReviewA1CommentTr(): void
+    {
+        $this->subject->setReviewA1CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA1CommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewA2StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewA2Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA2StatusForIntSetsReviewA2Status(): void
+    {
+        $this->subject->setReviewA2Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewA2Status'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewA2CommentInternalReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewA2CommentInternal()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA2CommentInternalForStringSetsReviewA2CommentInternal(): void
+    {
+        $this->subject->setReviewA2CommentInternal('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA2CommentInternal'));
+    }
+
+    /**
+     * @test
+     */
+    public function getRreviewA2CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getRreviewA2CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setRreviewA2CommentTrForStringSetsRreviewA2CommentTr(): void
+    {
+        $this->subject->setRreviewA2CommentTr('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('rreviewA2CommentTr'));
+    }
+
+    /**
+     * @test
+     */
     public function getStandorteReturnsInitialValueForStandort(): void
     {
         self::assertEquals(

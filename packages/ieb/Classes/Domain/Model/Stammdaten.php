@@ -223,6 +223,48 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $weiterbildungErklaerung = false;
 
     /**
+     * reviewA1Status
+     *
+     * @var int
+     */
+    protected $reviewA1Status = 0;
+
+    /**
+     * reviewA1CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewA1CommentInternal = '';
+
+    /**
+     * reviewA1CommentTr
+     *
+     * @var string
+     */
+    protected $reviewA1CommentTr = '';
+
+    /**
+     * reviewA2Status
+     *
+     * @var int
+     */
+    protected $reviewA2Status = 0;
+
+    /**
+     * reviewA2CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewA2CommentInternal = '';
+
+    /**
+     * rreviewA2CommentTr
+     *
+     * @var string
+     */
+    protected $rreviewA2CommentTr = '';
+
+    /**
      * standorte
      *
      * @var \GeorgRinger\Ieb\Domain\Model\Standort
@@ -870,5 +912,131 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isWeiterbildungErklaerung()
     {
         return $this->weiterbildungErklaerung;
+    }
+
+    /**
+     * Returns the reviewA1Status
+     *
+     * @return int
+     */
+    public function getReviewA1Status()
+    {
+        return $this->reviewA1Status;
+    }
+
+    /**
+     * Sets the reviewA1Status
+     *
+     * @param int $reviewA1Status
+     * @return void
+     */
+    public function setReviewA1Status(int $reviewA1Status)
+    {
+        $this->reviewA1Status = $reviewA1Status;
+    }
+
+    /**
+     * Returns the reviewA1CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewA1CommentInternal()
+    {
+        return $this->reviewA1CommentInternal;
+    }
+
+    /**
+     * Sets the reviewA1CommentInternal
+     *
+     * @param string $reviewA1CommentInternal
+     * @return void
+     */
+    public function setReviewA1CommentInternal(string $reviewA1CommentInternal)
+    {
+        $this->reviewA1CommentInternal = $reviewA1CommentInternal;
+    }
+
+    /**
+     * Returns the reviewA1CommentTr
+     *
+     * @return string
+     */
+    public function getReviewA1CommentTr()
+    {
+        return $this->reviewA1CommentTr;
+    }
+
+    /**
+     * Sets the reviewA1CommentTr
+     *
+     * @param string $reviewA1CommentTr
+     * @return void
+     */
+    public function setReviewA1CommentTr(string $reviewA1CommentTr)
+    {
+        $this->reviewA1CommentTr = $reviewA1CommentTr;
+    }
+
+    /**
+     * Returns the reviewA2Status
+     *
+     * @return int
+     */
+    public function getReviewA2Status()
+    {
+        return $this->reviewA2Status;
+    }
+
+    /**
+     * Sets the reviewA2Status
+     *
+     * @param int $reviewA2Status
+     * @return void
+     */
+    public function setReviewA2Status(int $reviewA2Status)
+    {
+        $this->reviewA2Status = $reviewA2Status;
+    }
+
+    /**
+     * Returns the reviewA2CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewA2CommentInternal()
+    {
+        return $this->reviewA2CommentInternal;
+    }
+
+    /**
+     * Sets the reviewA2CommentInternal
+     *
+     * @param string $reviewA2CommentInternal
+     * @return void
+     */
+    public function setReviewA2CommentInternal(string $reviewA2CommentInternal)
+    {
+        $this->reviewA2CommentInternal = $reviewA2CommentInternal;
+    }
+
+    /**
+     * Returns the rreviewA2CommentTr
+     *
+     * @return string
+     */
+    public function getRreviewA2CommentTr()
+    {
+        return $this->rreviewA2CommentTr;
+    }
+
+    /**
+     * Sets the rreviewA2CommentTr
+     *
+     * @param string $rreviewA2CommentTr
+     * @return void
+     */
+    public function setRreviewA2CommentTr(string $rreviewA2CommentTr)
+    {
+        $this->rreviewA2CommentTr = $rreviewA2CommentTr;
     }
 }

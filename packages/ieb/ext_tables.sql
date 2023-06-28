@@ -119,7 +119,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	zielgruppen_ansprache_datei int(11) unsigned NOT NULL DEFAULT '0',
 	fernlehre smallint(1) unsigned NOT NULL DEFAULT '0',
 	kinderbetreuung smallint(1) unsigned NOT NULL DEFAULT '0',
-	lernziele int(11) unsigned DEFAULT '0',
+	lernziele int(11) unsigned NOT NULL DEFAULT '0',
 	lernstandserhebung int(11) unsigned NOT NULL DEFAULT '0',
 	diversity int(11) unsigned NOT NULL DEFAULT '0',
 	didaktik_kommentar text,
@@ -233,6 +233,9 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c3_status int(11) DEFAULT '0' NOT NULL,
+	review_c3_comment_internal text NOT NULL DEFAULT '',
+	review_c3_comment_tr text NOT NULL DEFAULT '',
 	standorte int(11) unsigned NOT NULL DEFAULT '0'
 );
 
@@ -262,13 +265,29 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	qualifikation_psa_datei int(11) unsigned NOT NULL DEFAULT '0',
 	okbabi smallint(1) unsigned NOT NULL DEFAULT '0',
 	okpsa smallint(1) unsigned NOT NULL DEFAULT '0',
-	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c21_babi_status int(11) DEFAULT '0' NOT NULL,
+	review_c21_psa_status int(11) DEFAULT '0' NOT NULL,
+	review_c22_babi_status int(11) DEFAULT '0' NOT NULL,
+	review_c22_psa_status int(11) DEFAULT '0' NOT NULL,
+	review_c22_quali1 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali2 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali3 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali4 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali5 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali6 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali7 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c22_quali8 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c2_babi_comment_internal text NOT NULL DEFAULT '',
+	review_c2_babi_comment_tr text NOT NULL DEFAULT '',
+	review_c2_psa_comment_internal text NOT NULL DEFAULT '',
+	review_c2_psa_comment_tr text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
 	name varchar(255) NOT NULL DEFAULT '',
 	markenname varchar(255) NOT NULL DEFAULT '',
-	nachweis int(11) DEFAULT '0',
+	nachweis int(11) unsigned NOT NULL DEFAULT '0',
 	rechtsform int(11) DEFAULT '0' NOT NULL,
 	strasse varchar(255) NOT NULL DEFAULT '',
 	plz int(11) NOT NULL DEFAULT '0',
@@ -278,22 +297,28 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
 	leitbild varchar(255) NOT NULL DEFAULT '',
-	leitbild_datei int(11) unsigned DEFAULT '0',
-	qms_zertifikat_datei int(11) unsigned DEFAULT '0',
+	leitbild_datei int(11) unsigned NOT NULL DEFAULT '0',
+	qms_zertifikat_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qms_zertifikat text NOT NULL DEFAULT '',
 	qms_typ int(11) DEFAULT '0' NOT NULL,
 	qualitaet_sicherung text,
 	zertifikat_bis int(11) NOT NULL DEFAULT '0',
-	qualitaet_sicherung_datei int(11) unsigned DEFAULT '0',
+	qualitaet_sicherung_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualitaet_personal text,
-	qualitaet_personal_datei int(11) unsigned DEFAULT '0',
+	qualitaet_personal_datei int(11) unsigned NOT NULL DEFAULT '0',
 	tr_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	pruefbescheid_datei int(11) unsigned DEFAULT '0',
+	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
 	pruefbescheid text,
 	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	weiterbildung_erklaerung smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_a1_status int(11) DEFAULT '0' NOT NULL,
+	review_a1_comment_internal text NOT NULL DEFAULT '',
+	review_a1_comment_tr text NOT NULL DEFAULT '',
+	review_a2_status int(11) DEFAULT '0' NOT NULL,
+	review_a2_comment_internal text NOT NULL DEFAULT '',
+	rreview_a2_comment_tr text NOT NULL DEFAULT '',
 	standorte int(11) unsigned DEFAULT '0'
 );
 
@@ -303,17 +328,18 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
 	verantwortlich smallint(1) unsigned NOT NULL DEFAULT '0',
-	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lebenslauf varchar(255) NOT NULL DEFAULT '',
-	archiviert smallint(1) unsigned NOT NULL DEFAULT '0'
+	ok smallint(1) unsigned NOT NULL DEFAULT '0',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c1_babi smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_c1_psa smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

@@ -1280,3 +1280,23 @@ span.checkbox.checked {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.trainerqualifikationsbegutachtung {
+    background: var(--f0b);
+    padding-right: 0;
+}
+.trainerqualifikationsbegutachtung table {
+    width: 100%;
+}
+.trainerqualifikationsbegutachtung table td.r{
+    background: var(--f2);
+    width: 42.66666667%;
+    padding-left: 24px;
+}
+.trainerqualifikationsbegutachtung table td{
+    border-bottom: 1px solid #fff;
+    padding: 12px 0 10px 12px;
+}
+.trainerqualifikationsbegutachtung table tr:hover td {
+    background: var(--f1);
+}

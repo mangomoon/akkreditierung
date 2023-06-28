@@ -81,6 +81,54 @@
 			<trans-unit id="archiviert.description" resname="archiviert.description">
 				<source>archiviert</source>
 			</trans-unit>
+			<trans-unit id="review_c21_babi_status.description" resname="review_c21_babi_status.description">
+				<source>reviewC21BabiStatus</source>
+			</trans-unit>
+			<trans-unit id="review_c21_psa_status.description" resname="review_c21_psa_status.description">
+				<source>reviewC21PsaStatus</source>
+			</trans-unit>
+			<trans-unit id="review_c22_babi_status.description" resname="review_c22_babi_status.description">
+				<source>reviewC22BabiStatus</source>
+			</trans-unit>
+			<trans-unit id="review_c22_psa_status.description" resname="review_c22_psa_status.description">
+				<source>reviewC22PsaStatus</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali1.description" resname="review_c22_quali1.description">
+				<source>reviewC22Quali1</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali2.description" resname="review_c22_quali2.description">
+				<source>reviewC22Quali2</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali3.description" resname="review_c22_quali3.description">
+				<source>reviewC22Quali3</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali4.description" resname="review_c22_quali4.description">
+				<source>reviewC22Quali4</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali5.description" resname="review_c22_quali5.description">
+				<source>reviewC22Quali5</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali6.description" resname="review_c22_quali6.description">
+				<source>reviewC22Quali6</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali7.description" resname="review_c22_quali7.description">
+				<source>reviewC22Quali7</source>
+			</trans-unit>
+			<trans-unit id="review_c22_quali8.description" resname="review_c22_quali8.description">
+				<source>reviewC22Quali8</source>
+			</trans-unit>
+			<trans-unit id="review_c2_babi_comment_internal.description" resname="review_c2_babi_comment_internal.description">
+				<source>reviewC2BabiCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c2_babi_comment_tr.description" resname="review_c2_babi_comment_tr.description">
+				<source>reviewC2BabiCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_comment_internal.description" resname="review_c2_psa_comment_internal.description">
+				<source>reviewC2PsaCommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_comment_tr.description" resname="review_c2_psa_comment_tr.description">
+				<source>reviewC2PsaCommentTr</source>
+			</trans-unit>
 			<trans-unit id="ok.description" resname="ok.description">
 				<source>ok</source>
 			</trans-unit>

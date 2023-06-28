@@ -262,7 +262,7 @@
         </div>
 
 
-        <!-- A.2 Stammdaten #################################################### -->
+        <!-- B.1. Eckdaten zum Angebot #################################################### -->
 
         <div class="begutachtung-kriterium" id="k1">
             <div class="kriteriumtitel">
@@ -320,10 +320,11 @@
                         </div>
                         <div class="kriteriumteil">
                             <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
-
-                            <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
-                                field = 'ansuchen.uebersichtDatei'
-                            }" />
+                            <f:if condition="{ansuchen.uebersichtDatei}">
+                                <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                    field = 'ansuchen.uebersichtDatei'
+                                }" />
+                            </f:if>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -426,10 +427,11 @@
                                 <p>Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
                             </f:else>
                         </f:if>
-
+                        <f:if condition="{ansuchen.kooperationDatei}">
                         <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
                                 field = 'ansuchen.kooperationDatei'
                             }" />
+                            </f:if>
 
                     </div>
                     <div class="rechts col-5">
@@ -470,9 +472,11 @@
                             </p>
                             <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
                         </div>
+                        <f:if condition="{ansuchen.zielgruppenAnspracheDatei}">
                         <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
                             field = 'ansuchen.zielgruppenAnspracheDatei'
                         }" />
+                    </f:if>
                     </div>
                     <div class="rechts col-5">
                         <f:render section="comment" arguments="{property:'reviewB2', status:ansuchen.reviewB2Status, comments:ansuchen.reviewB2CommentInternalData}" />
@@ -533,8 +537,12 @@
                                 <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
                             </f:if>
 
-                            <f:render section="uploadmultiple" arguments="{media:ansuchen.lernziele}" />
 
+                            <f:if condition="{ansuchen.lernziele}">
+                                <f:render partial="AnsuchenBegutachtung/ShowUpload" arguments="{
+                                    field = 'ansuchen.lernziele'
+                                }" />
+                            </f:if>
 
 
 

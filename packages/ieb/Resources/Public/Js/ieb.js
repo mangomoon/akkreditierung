@@ -523,7 +523,17 @@
          return false;
      });
 
-
+     //  ########################################### FORM Begutachtung Trainer Checkall
+        $('#checkall').on("change", function(e) {
+            if( $(this).hasClass('checked') ) {
+                $(this).removeClass('checked');
+                $('.trainerqualifikationsbegutachtung input').each (function() {
+                    $(this).prop("checked");
+                    });
+            } else {
+                $(this).addClass('checked')
+            }
+        });
 
      // ########################################
 

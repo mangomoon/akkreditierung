@@ -61,13 +61,6 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $verantwortlich = false;
 
     /**
-     * ok
-     *
-     * @var bool
-     */
-    protected $ok = false;
-
-    /**
      * lebenslaufDatei
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -83,11 +76,32 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $lebenslauf = '';
 
     /**
+     * ok
+     *
+     * @var bool
+     */
+    protected $ok = false;
+
+    /**
      * archiviert
      *
      * @var bool
      */
     protected $archiviert = false;
+
+    /**
+     * reviewC1Babi
+     *
+     * @var bool
+     */
+    protected $reviewC1Babi = false;
+
+    /**
+     * reviewC1Psa
+     *
+     * @var bool
+     */
+    protected $reviewC1Psa = false;
 
     /**
      * Returns the nachname
@@ -306,5 +320,67 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function isArchiviert()
     {
         return $this->archiviert;
+    }
+
+    /**
+     * Returns the reviewC1Babi
+     *
+     * @return bool
+     */
+    public function getReviewC1Babi()
+    {
+        return $this->reviewC1Babi;
+    }
+
+    /**
+     * Sets the reviewC1Babi
+     *
+     * @param bool $reviewC1Babi
+     * @return void
+     */
+    public function setReviewC1Babi(bool $reviewC1Babi)
+    {
+        $this->reviewC1Babi = $reviewC1Babi;
+    }
+
+    /**
+     * Returns the boolean state of reviewC1Babi
+     *
+     * @return bool
+     */
+    public function isReviewC1Babi()
+    {
+        return $this->reviewC1Babi;
+    }
+
+    /**
+     * Returns the reviewC1Psa
+     *
+     * @return bool
+     */
+    public function getReviewC1Psa()
+    {
+        return $this->reviewC1Psa;
+    }
+
+    /**
+     * Sets the reviewC1Psa
+     *
+     * @param bool $reviewC1Psa
+     * @return void
+     */
+    public function setReviewC1Psa(bool $reviewC1Psa)
+    {
+        $this->reviewC1Psa = $reviewC1Psa;
+    }
+
+    /**
+     * Returns the boolean state of reviewC1Psa
+     *
+     * @return bool
+     */
+    public function isReviewC1Psa()
+    {
+        return $this->reviewC1Psa;
     }
 }

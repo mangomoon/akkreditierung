@@ -96,6 +96,27 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $archiviert = false;
 
     /**
+     * reviewC3Status
+     *
+     * @var int
+     */
+    protected $reviewC3Status = 0;
+
+    /**
+     * reviewC3CommentInternal
+     *
+     * @var string
+     */
+    protected $reviewC3CommentInternal = '';
+
+    /**
+     * reviewC3CommentTr
+     *
+     * @var string
+     */
+    protected $reviewC3CommentTr = '';
+
+    /**
      * standorte
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
@@ -383,5 +404,68 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getFullName()
     {
         return implode(' ', array_filter([$this->vorname, $this->nachname]));
+    }
+
+    /**
+     * Returns the reviewC3Status
+     *
+     * @return int
+     */
+    public function getReviewC3Status()
+    {
+        return $this->reviewC3Status;
+    }
+
+    /**
+     * Sets the reviewC3Status
+     *
+     * @param int $reviewC3Status
+     * @return void
+     */
+    public function setReviewC3Status(int $reviewC3Status)
+    {
+        $this->reviewC3Status = $reviewC3Status;
+    }
+
+    /**
+     * Returns the reviewC3CommentInternal
+     *
+     * @return string
+     */
+    public function getReviewC3CommentInternal()
+    {
+        return $this->reviewC3CommentInternal;
+    }
+
+    /**
+     * Sets the reviewC3CommentInternal
+     *
+     * @param string $reviewC3CommentInternal
+     * @return void
+     */
+    public function setReviewC3CommentInternal(string $reviewC3CommentInternal)
+    {
+        $this->reviewC3CommentInternal = $reviewC3CommentInternal;
+    }
+
+    /**
+     * Returns the reviewC3CommentTr
+     *
+     * @return string
+     */
+    public function getReviewC3CommentTr()
+    {
+        return $this->reviewC3CommentTr;
+    }
+
+    /**
+     * Sets the reviewC3CommentTr
+     *
+     * @param string $reviewC3CommentTr
+     * @return void
+     */
+    public function setReviewC3CommentTr(string $reviewC3CommentTr)
+    {
+        $this->reviewC3CommentTr = $reviewC3CommentTr;
     }
 }

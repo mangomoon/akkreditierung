@@ -160,7 +160,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * lernziele
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $lernziele = null;
@@ -211,6 +211,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewB1CommentInternal = '';
 
     /**
+     * reviewB1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB1CommentInternalStep = '';
+
+    /**
      * reviewB1CommentTr
      *
      * @var string
@@ -230,6 +237,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewB2CommentInternal = '';
+
+    /**
+     * reviewB2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB2CommentInternalStep = '';
 
     /**
      * reviewB2CommentTr
@@ -253,6 +267,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC1CommentInternal = '';
 
     /**
+     * reviewC1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC1CommentInternalStep = '';
+
+    /**
      * reviewC1CommentTr
      *
      * @var string
@@ -272,6 +293,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewC2CommentInternal = '';
+
+    /**
+     * reviewC2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2CommentInternalStep = '';
 
     /**
      * reviewC2CommentTr
@@ -295,6 +323,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC3CommentInternal = '';
 
     /**
+     * reviewC3CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3CommentInternalStep = '';
+
+    /**
      * reviewC3CommentTr
      *
      * @var string
@@ -314,6 +349,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewTotalCommentInternal = '';
+
+    /**
+     * reviewTotalCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewTotalCommentInternalStep = '';
 
     /**
      * reviewTotalCommentTr
@@ -563,6 +605,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewB14CommentInternal = '';
 
     /**
+     * reviewB14CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB14CommentInternalStep = '';
+
+    /**
      * reviewB14CommentTr
      *
      * @var string
@@ -582,6 +631,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewB15CommentInternal = '';
+
+    /**
+     * reviewB15CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB15CommentInternalStep = '';
 
     /**
      * reviewB15CommentTr
@@ -605,6 +661,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewB22CommentInternal = '';
 
     /**
+     * reviewB22CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB22CommentInternalStep = '';
+
+    /**
      * reviewB22CommentTr
      *
      * @var string
@@ -624,6 +687,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewB23CommentInternal = '';
+
+    /**
+     * reviewB23CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewB23CommentInternalStep = '';
 
     /**
      * reviewB23CommentTr
@@ -715,76 +785,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * reviewB1CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB1CommentInternalStep = '';
-
-    /**
-     * reviewB2CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB2CommentInternalStep = '';
-
-    /**
-     * reviewC1CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewC1CommentInternalStep = '';
-
-    /**
-     * reviewC2CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewC2CommentInternalStep = '';
-
-    /**
-     * reviewC3CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewC3CommentInternalStep = '';
-
-    /**
-     * reviewTotalCommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewTotalCommentInternalStep = '';
-
-    /**
-     * reviewB14CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB14CommentInternalStep = '';
-
-    /**
-     * reviewB15CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB15CommentInternalStep = '';
-
-    /**
-     * reviewB22CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB22CommentInternalStep = '';
-
-    /**
-     * reviewB23CommentInternalStep
-     *
-     * @var string
-     */
-    protected $reviewB23CommentInternalStep = '';
 
     /**
      * __construct
@@ -1064,7 +1064,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getKompetenzbereiche()
     {
-        return (int)$this->kompetenzbereiche;
+        return (int) $this->kompetenzbereiche;
     }
 
     /**
@@ -1075,7 +1075,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setKompetenzbereiche($kompetenzbereiche)
     {
-        $this->kompetenzbereiche = (int)$kompetenzbereiche;
+        $this->kompetenzbereiche = (int) $kompetenzbereiche;
     }
 
     /**
@@ -2859,7 +2859,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
-
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
@@ -2907,7 +2906,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
-
     public function isEditableByTr()
     {
         return AnsuchenStatus::visibleForAg($this->status);
@@ -2996,67 +2994,54 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->copyStandorte = $copyStandorte;
     }
-
     public function getCopyStammdatenData()
     {
         return $this->getConvertedJson($this->copyStammdaten);
     }
-
     public function getCopyStandorteData()
     {
         return $this->getConvertedJson($this->copyStandorte);
     }
-
     public function getCopyTrainerData()
     {
         return $this->getConvertedJson($this->copyTrainer);
     }
-
     public function getCopyBeraterData()
     {
         return $this->getConvertedJson($this->copyBerater);
     }
-
     public function getReviewB1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB1CommentInternal);
     }
-
     public function getReviewB14CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB14CommentInternal);
     }
-
     public function getReviewB15CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB15CommentInternal);
     }
-
     public function getReviewB22CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB22CommentInternal);
     }
-
     public function getReviewB23CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB23CommentInternal);
     }
-
     public function getReviewB2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB2CommentInternal);
     }
-
     public function getReviewC1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC1CommentInternal);
     }
-
     public function getReviewC2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC2CommentInternal);
     }
-
     public function getReviewC3CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC3CommentInternal);
@@ -3346,7 +3331,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB1CommentInternalStep(): string
+    public function getReviewB1CommentInternalStep()
     {
         return $this->reviewB1CommentInternalStep;
     }
@@ -3354,7 +3339,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB1CommentInternalStep
      */
-    public function setReviewB1CommentInternalStep(string $reviewB1CommentInternalStep): void
+    public function setReviewB1CommentInternalStep(string $reviewB1CommentInternalStep)
     {
         $this->reviewB1CommentInternalStep = $reviewB1CommentInternalStep;
     }
@@ -3362,7 +3347,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB2CommentInternalStep(): string
+    public function getReviewB2CommentInternalStep()
     {
         return $this->reviewB2CommentInternalStep;
     }
@@ -3370,7 +3355,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB2CommentInternalStep
      */
-    public function setReviewB2CommentInternalStep(string $reviewB2CommentInternalStep): void
+    public function setReviewB2CommentInternalStep(string $reviewB2CommentInternalStep)
     {
         $this->reviewB2CommentInternalStep = $reviewB2CommentInternalStep;
     }
@@ -3378,7 +3363,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewC1CommentInternalStep(): string
+    public function getReviewC1CommentInternalStep()
     {
         return $this->reviewC1CommentInternalStep;
     }
@@ -3386,7 +3371,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewC1CommentInternalStep
      */
-    public function setReviewC1CommentInternalStep(string $reviewC1CommentInternalStep): void
+    public function setReviewC1CommentInternalStep(string $reviewC1CommentInternalStep)
     {
         $this->reviewC1CommentInternalStep = $reviewC1CommentInternalStep;
     }
@@ -3394,7 +3379,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewC2CommentInternalStep(): string
+    public function getReviewC2CommentInternalStep()
     {
         return $this->reviewC2CommentInternalStep;
     }
@@ -3402,7 +3387,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewC2CommentInternalStep
      */
-    public function setReviewC2CommentInternalStep(string $reviewC2CommentInternalStep): void
+    public function setReviewC2CommentInternalStep(string $reviewC2CommentInternalStep)
     {
         $this->reviewC2CommentInternalStep = $reviewC2CommentInternalStep;
     }
@@ -3410,7 +3395,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewC3CommentInternalStep(): string
+    public function getReviewC3CommentInternalStep()
     {
         return $this->reviewC3CommentInternalStep;
     }
@@ -3418,7 +3403,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewC3CommentInternalStep
      */
-    public function setReviewC3CommentInternalStep(string $reviewC3CommentInternalStep): void
+    public function setReviewC3CommentInternalStep(string $reviewC3CommentInternalStep)
     {
         $this->reviewC3CommentInternalStep = $reviewC3CommentInternalStep;
     }
@@ -3426,7 +3411,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewTotalCommentInternalStep(): string
+    public function getReviewTotalCommentInternalStep()
     {
         return $this->reviewTotalCommentInternalStep;
     }
@@ -3434,7 +3419,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewTotalCommentInternalStep
      */
-    public function setReviewTotalCommentInternalStep(string $reviewTotalCommentInternalStep): void
+    public function setReviewTotalCommentInternalStep(string $reviewTotalCommentInternalStep)
     {
         $this->reviewTotalCommentInternalStep = $reviewTotalCommentInternalStep;
     }
@@ -3442,7 +3427,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB14CommentInternalStep(): string
+    public function getReviewB14CommentInternalStep()
     {
         return $this->reviewB14CommentInternalStep;
     }
@@ -3450,7 +3435,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB14CommentInternalStep
      */
-    public function setReviewB14CommentInternalStep(string $reviewB14CommentInternalStep): void
+    public function setReviewB14CommentInternalStep(string $reviewB14CommentInternalStep)
     {
         $this->reviewB14CommentInternalStep = $reviewB14CommentInternalStep;
     }
@@ -3458,7 +3443,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB15CommentInternalStep(): string
+    public function getReviewB15CommentInternalStep()
     {
         return $this->reviewB15CommentInternalStep;
     }
@@ -3466,7 +3451,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB15CommentInternalStep
      */
-    public function setReviewB15CommentInternalStep(string $reviewB15CommentInternalStep): void
+    public function setReviewB15CommentInternalStep(string $reviewB15CommentInternalStep)
     {
         $this->reviewB15CommentInternalStep = $reviewB15CommentInternalStep;
     }
@@ -3474,7 +3459,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB22CommentInternalStep(): string
+    public function getReviewB22CommentInternalStep()
     {
         return $this->reviewB22CommentInternalStep;
     }
@@ -3482,7 +3467,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB22CommentInternalStep
      */
-    public function setReviewB22CommentInternalStep(string $reviewB22CommentInternalStep): void
+    public function setReviewB22CommentInternalStep(string $reviewB22CommentInternalStep)
     {
         $this->reviewB22CommentInternalStep = $reviewB22CommentInternalStep;
     }
@@ -3490,7 +3475,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getReviewB23CommentInternalStep(): string
+    public function getReviewB23CommentInternalStep()
     {
         return $this->reviewB23CommentInternalStep;
     }
@@ -3498,12 +3483,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $reviewB23CommentInternalStep
      */
-    public function setReviewB23CommentInternalStep(string $reviewB23CommentInternalStep): void
+    public function setReviewB23CommentInternalStep(string $reviewB23CommentInternalStep)
     {
         $this->reviewB23CommentInternalStep = $reviewB23CommentInternalStep;
     }
-
-    public function isEinReichbarDurchTr(): bool
+    public function isEinReichbarDurchTr()
     {
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }

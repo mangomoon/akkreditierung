@@ -18,17 +18,23 @@
 			<trans-unit id="verantwortlich.description" resname="verantwortlich.description">
 				<source>verantwortlich</source>
 			</trans-unit>
-			<trans-unit id="ok.description" resname="ok.description">
-				<source>ok</source>
-			</trans-unit>
 			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
 				<source>lebenslaufDatei</source>
 			</trans-unit>
 			<trans-unit id="lebenslauf.description" resname="lebenslauf.description">
 				<source>lebenslauf</source>
 			</trans-unit>
+			<trans-unit id="ok.description" resname="ok.description">
+				<source>ok</source>
+			</trans-unit>
 			<trans-unit id="archiviert.description" resname="archiviert.description">
 				<source>archiviert</source>
+			</trans-unit>
+			<trans-unit id="review_c1_babi.description" resname="review_c1_babi.description">
+				<source>reviewC1Babi</source>
+			</trans-unit>
+			<trans-unit id="review_c1_psa.description" resname="review_c1_psa.description">
+				<source>reviewC1Psa</source>
 			</trans-unit>
 		</body>
 	</file>

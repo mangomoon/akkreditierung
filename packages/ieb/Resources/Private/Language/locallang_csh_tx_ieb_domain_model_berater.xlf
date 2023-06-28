@@ -30,6 +30,15 @@
 			<trans-unit id="archiviert.description" resname="archiviert.description">
 				<source>archiviert</source>
 			</trans-unit>
+			<trans-unit id="review_c3_status.description" resname="review_c3_status.description">
+				<source>reviewC3Status</source>
+			</trans-unit>
+			<trans-unit id="review_c3_comment_internal.description" resname="review_c3_comment_internal.description">
+				<source>reviewC3CommentInternal</source>
+			</trans-unit>
+			<trans-unit id="review_c3_comment_tr.description" resname="review_c3_comment_tr.description">
+				<source>reviewC3CommentTr</source>
+			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
 			</trans-unit>
