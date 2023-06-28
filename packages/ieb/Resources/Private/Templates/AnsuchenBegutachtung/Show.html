@@ -369,8 +369,11 @@
                             </p>
                         </div>
 
-                        <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}</p>
+                        <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
 
+                        {ieb:diff(diff:diff,field:'bundesland')}
+                        </p>
+                        <f:debug>{diff}</f:debug>
 
                         <p>Standorte:</p>
                         <ul>
@@ -729,6 +732,8 @@
                     <div class="row person">
                         <div class="links col-7">
                             {t.fullName}
+
+                            {ieb:diff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
                         </div>
                         <div class="rechts col-5">
                             <div class="knopf">

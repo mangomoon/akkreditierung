@@ -33,7 +33,7 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Ansuchen $ansuchen): ResponseInterface
+    public function showAction(Ansuchen $ansuchen, int $alternativeId = 0): ResponseInterface
     {
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
         $possibleStatus = [];
@@ -45,7 +45,7 @@ class AnsuchenBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'possibleStatus' => $possibleStatus,
-            'diff' => (new DiffService())->generateDiff($ansuchen)
+            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $alternativeId ?: $ansuchen->getVersionBasedOn()),
         ]);
         return $this->htmlResponse();
     }

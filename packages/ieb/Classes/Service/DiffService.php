@@ -13,23 +13,81 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class DiffService
 {
 
-    public function generateDiff(Ansuchen $ansuchen)
+    public function generateDiff(int $ansuchenId, int $basedOn): array
     {
+        $final = [];
 
-        $current = $this->getRaw($ansuchen->getUid());
+        $current = $this->getRaw($ansuchenId);
+        $previous = $this->getRaw($basedOn);
+
+        if (($current['pid'] ?? 0) !== ($previous['pid'] ?? 0)) {
+            throw new \UnexpectedValueException('Cannot compare ansuchen with different pid');
+        }
 //        $current = $this->getRaw(22);
-        $previous = $this->getRaw($ansuchen->getVersionBasedOn());
 //        $previous = $this->getRaw(12);
 
-//        unset($current['copy_trainer'][1]);
-        $result = ArrayDiffMultidimensional::compare($current, $previous);
+        $modifiedOrAdded = ArrayDiffMultidimensional::compare($current, $previous);
+        foreach ($modifiedOrAdded as $field => $change) {
+            if (is_string($change)) {
+                $final[$field]['previous'] = $previous[$field] ?? null;
+                $final[$field]['current'] = $current[$field] ?? null;
+            } elseif (is_array($change)) {
+                foreach ($change as $id => $rel) {
+                    if (is_array($rel)) {
+                        foreach ($rel as $relField => $relChange) {
+                            if (is_string($relChange)) {
+                                $final[$field][$id][$relField]['previous'] = $previous[$field][$id][$relField] ?? null;
+                                $final[$field][$id][$relField]['current'] = $current[$field][$id][$relField] ?? null;
+                            } elseif (is_array($relChange)) {
+                                foreach ($relChange as $relId => $relRel) {
+                                    $final[$field][$id][$relField][$relId]['previous'] = $previous[$field][$id][$relField][$relId] ?? null;
+                                    $final[$field][$id][$relField][$relId]['current'] = $current[$field][$id][$relField][$relId] ?? null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-        // todo check if something is *removed* in current
-        // todo what if a raw is empty!!
+
+//        // todo check if something is *removed* in current
+//        // todo what if a raw is empty!!
         $result2 = ArrayDiffMultidimensional::compare($previous, $current);
-//        print_r($result);
-//        print_r($result2);
-//        return $result;
+
+        foreach ($result2 as $field => $change) {
+            if (is_string($change)) {
+                if (!isset($final[$field])) {
+                    $final[$field]['previous'] = $previous[$field] ?? null;
+                    $final[$field]['current'] = $current[$field] ?? null;
+                }
+            } elseif (is_array($change)) {
+                foreach ($change as $id => $rel) {
+                    if (is_array($rel)) {
+                        foreach ($rel as $relField => $relChange) {
+                            if (is_string($relChange)) {
+                                if (!isset($final[$field][$id][$relField])) {
+                                    $final[$field][$id][$relField]['previous'] = $previous[$field][$id][$relField] ?? null;
+                                    $final[$field][$id][$relField]['current'] = $current[$field][$id][$relField] ?? null;
+                                }
+                            } elseif (is_array($relChange)) {
+                                foreach ($relChange as $relId => $relRel) {
+                                    if (!isset($final[$field][$id][$relField][$relId])) {
+                                        $final[$field][$id][$relField][$relId]['previous'] = $previous[$field][$id][$relField][$relId] ?? null;
+                                        $final[$field][$id][$relField][$relId]['current'] = $current[$field][$id][$relField][$relId] ?? null;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+//        print_r($modifiedOrAdded);
+//        print_r($final);
+//        die;
+        return $final;
     }
 
     protected function getRaw(int $id)
