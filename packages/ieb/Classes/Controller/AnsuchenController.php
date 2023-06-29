@@ -44,6 +44,7 @@ class AnsuchenController extends BaseController
     {
         $this->setTitleTag($ansuchen->getTitleTag());
         $this->view->assign('ansuchen', $ansuchen);
+        $this->addRelationDataToView();
         return $this->htmlResponse();
     }
 

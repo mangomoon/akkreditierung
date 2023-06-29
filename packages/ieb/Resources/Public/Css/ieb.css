@@ -144,6 +144,11 @@ td {
     background-size: 100%;
 }
 
+.icon-small {
+    width: 1.5em;
+    height: auto;
+}
+
 
 /* MODAL BOX #################### */
 
@@ -621,7 +626,7 @@ span.ansuchennr {
 }
 
 .tx-ieb table.ansuchenliste.stammdaten td.chiffre {
-    width: 30%;
+    width: 12%;
 }
 
 .tx-ieb table.ansuchenliste .linie td {
@@ -724,6 +729,10 @@ table.ansuchenliste td.check {
 
 .anmerkung {
     display: none;
+}
+
+.anmerkunglabel {
+    margin-top: 26px;
 }
 
 p.erklaerung {
@@ -1299,4 +1308,10 @@ span.checkbox.checked {
 }
 .trainerqualifikationsbegutachtung table tr:hover td {
     background: var(--f1);
+}
+
+
+/* READONLY  ############# */
+.begutachtung-kopf.readonly p.typ {
+    padding-top: 10px;
 }

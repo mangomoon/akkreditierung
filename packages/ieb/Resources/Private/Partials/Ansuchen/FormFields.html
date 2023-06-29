@@ -481,7 +481,7 @@
         <div class="formfields row"></div>
 
         <!-- Upload LERNZIELE-->
-        <f:render partial="Form/UploadMultiple" arguments="{
+        <f:render partial="Form/Upload" arguments="{
                     property:'lernziele',
                     id:'lernziele',
                     req:'reqfile',
@@ -601,17 +601,17 @@
     </div>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
-        <p class="hinweis">
+        <!--p class="hinweis">
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
-        </p>
+        </p-->
     </div>
     <table class="angebotssteuerung">
         <tr>
             <th class="spalte-1">
-                I
+                
             </th>
             <th class="spalte-2">
-                II
+                <f:image src="EXT:ieb/Resources/Public/Img/Email.svg" class="icon-small" alt="Email" />
             </th>
             <th>
                 &nbsp;
@@ -625,7 +625,7 @@
                 <td class="spalte-2">
                     <f:form.checkbox property="verantwortlicheMail" value="{angebotverantwortlich.uid}" />
                 </td>
-                <td>
+                <td>&nbsp;&nbsp;
                     {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}
                     <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
                 </td>
