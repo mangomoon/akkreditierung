@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\Exception\MissingArrayPathException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -27,21 +28,27 @@ class DiffViewHelper extends AbstractViewHelper
         $diff = $arguments['diff'] ?? [];
         $field = $arguments['field'] ?? '';
 
-        $data = ArrayUtility::getValueByPath($diff, $field);
-        if (isset($data['previous'])) {
-            return sprintf('<span class="diff" style="color:#666;background: #53d9f0">vorher: %s</span>', htmlspecialchars($data['previous']));
-        }
+        try {
+            $data = ArrayUtility::getValueByPath($diff, $field);
 
-        $fields = [];
-        foreach ($data as $key => $value) {
-            $fields[] = sprintf(
-                '<li></li><strong>%s</strong>: <s>%s</s> %s</li>',
-                htmlspecialchars(self::getLabel($key, $arguments['lll'] ?? '')),
-                htmlspecialchars($value['previous']),
-                htmlspecialchars($value['current'])
-            );
+            if (isset($data['previous'])) {
+                return sprintf('<span class="diff" style="color:#666;background: #53d9f0">vorher: %s</span>', htmlspecialchars($data['previous']));
+            }
+
+            $fields = [];
+            foreach ($data as $key => $value) {
+                $fields[] = sprintf(
+                    '<li></li><strong>%s</strong>: <s>%s</s> %s</li>',
+                    htmlspecialchars(self::getLabel($key, $arguments['lll'] ?? '')),
+                    htmlspecialchars((string)($value['previous'] ?? '')),
+                    htmlspecialchars((string)($value['current'] ?? ''))
+                );
+            }
+            return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
+
+        } catch (MissingArrayPathException $e) {
+            return '';
         }
-        return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
     }
 
     public static function getLabel(string $key, string $label = ''): string
