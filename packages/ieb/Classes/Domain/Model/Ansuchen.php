@@ -3491,4 +3491,16 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
+
+    /** @var \DateTime */
+    protected $tstamp;
+
+    /**
+     * @return \DateTime
+     */
+    public function getTstamp()
+    {
+        return $this->tstamp;
+    }
+
 }

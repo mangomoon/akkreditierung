@@ -6,6 +6,28 @@
 
 
     <div class="abstand-gross"></div>
+    <f:if condition="{versions}">
+        <div>
+            <f:for each="{versions}" as="version">
+                <div style="padding:3px;margin:3px;border:1px solid #{f:if(condition:'{diffWithAlternativeId}=={version.uid}',then:'ff0000',else:'ccc')}">
+                    <strong>Version {version.version} von {version.tstamp -> f:format.date(format:'d.m.Y H:i')}</strong><br>
+                    <f:link.action action="show" arguments="{ansuchen:ansuchen,diffWithAlternativeId:version.uid}">Mit aktueller Version vergleichen</f:link.action>
+                </div>
+            </f:for>
+        </div>
+        <f:if condition="{diffWithAlternativeId}">
+            <p>
+                <f:link.action action="show" arguments="{ansuchen:ansuchen}">reset</f:link.action>
+            </p>
+        </f:if>
+    </f:if>
+    <f:if condition="{diffWithAlternativeId}">
+        <h2><strong>ACHTUNG</strong>, diff mit einer älteren Version aktiv!</h2>
+    </f:if>
+    <f:if condition="{diff}">
+        <h3>Global diff</h3>
+        <f:debug inline="1">{diff}</f:debug>
+    </f:if>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
