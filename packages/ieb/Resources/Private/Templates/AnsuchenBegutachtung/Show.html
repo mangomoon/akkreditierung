@@ -8,7 +8,9 @@
     <div class="abstand-gross"></div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
+
+        <f:debug>{diff}</f:debug>
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -64,6 +66,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.markenname}
+                                {ieb:diff(diff:diff,field:'stammdaten.markenname')}
                             </td>
                         </tr>
                         <tr class="linie">
@@ -110,7 +113,7 @@
                                 }" />
                             </td>
                         </tr>
-                        <tr class="linie">f
+                        <tr class="linie">
                             <td colspan="3"></td>
                             <!-- ------------------------------ -->
                         </tr>
@@ -164,12 +167,9 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <!-- 
-                    <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
-                        
+                    
+                    <f:render section="comment" arguments="{property:'stammdaten.reviewA1CommentTr', status:stammdaten.reviewB1Status, comments:stammdaten.reviewB1CommentInternalData}" />
 
-                    -->
-                    Auch Dummy, weil Relation.
                 </div>
             </div>
         </div>
@@ -371,15 +371,16 @@
 
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
 
-                            {ieb:diff(diff:diff,field:'bundesland')}
+                            {ieb:diff(diff:diff,field:'ansuchen.bundesland')}
                             </p>
-                            <f:debug>{diff}</f:debug>
+                            
 
                         <p>Standorte:</p>
                         <ul>
 
                             <f:for each="{standorte}" as="standort">
                                 <li>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span></li>
+                                {ieb:diff(diff:diff,field:'standort')}
                             </f:for>
                         </ul>
                     </div>
@@ -779,23 +780,22 @@
 
             </div>
             <div class="begutachtung-kriterium" id="k1">
-                <div class="row person">
-                    <div class="links col-7">
-                        Vorname Nachname
-                    </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                <f:for each="{berater}" as="b">
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Irgendwer Berät
+                    <div class="row person">
+                        <div class="links col-7">
+                            {b.fullName}
+
+                            {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
+                            {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
+                        </div>
+                        <div class="rechts col-5">
+                            <div class="knopf">
+                                <f:link.action action="show" controller="BeraterBegutachtung" arguments="{berater:b.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rechts col-5">
-                        <div class="knopf">Begutachtung starten</div>
-                    </div>
-                </div>
+                </f:for>
 
                 <div class="row">
                     <div class="links col-7">

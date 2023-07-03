@@ -44,7 +44,7 @@
                         </ul>
                     </div>
 
-                    <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                    <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
 
                 </div>
                 <div class="rechts col-5">
@@ -80,7 +80,7 @@
                             HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
                         </p>
                     </div>
-                    <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                    <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
                 </div>
                 <div class="rechts col-5">
 
@@ -144,7 +144,7 @@
                                 </ul>
                             </div>
         
-                            <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                            <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
                         </div>
                         <div class="rechts col-5">
                             <div class="knoepfe teilstatus">
@@ -271,7 +271,7 @@
                                     HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
                                 </p>
                             </div>
-                            <f:render partial="AnsuchenBegutachtung/UploadList" arguments="{media:ansuchen.lernziele}" />
+                            <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
                         </div>
                         <div class="rechts col-5">
         
@@ -319,6 +319,8 @@
                 </div>
             </div>
         </div>
+
+        <f:form.submit value="Speichern" name="save" class="knopf-s" />
     </form>
 </f:section>
 <f:section name="teilstatus">

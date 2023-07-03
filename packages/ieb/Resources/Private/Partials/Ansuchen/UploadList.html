@@ -7,22 +7,7 @@
     <f:if condition="{media555}">
         <f:then>
             <f:for each="{media}" as="m">
-                <div class="filelist">
-                    <div class="filelist-links">
-                        <a href="{m.originalResource.publicUrl}" target="_blank">
-                            <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
-                        </a>
-                    </div>
-                    <div class="filelist-rechts">
-                        <p class="filelink">
-                            <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a>
-                        </p>
-                        <p>{m.originalResource.originalFile.properties.size -> f:format.bytes()} | {m.originalResource.originalFile.properties.extension}</p>
-                        <p>
-                            <f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>
-                        </p>
-                    </div>
-                </div>
+                <div class="filelistitem">(ICON? {m.originalResource.originalFile.properties.extension}) <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a> [<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]</div>
             </f:for>
         </f:then>
         <f:else>
