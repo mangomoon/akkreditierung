@@ -10,8 +10,8 @@
         <div>
             <f:for each="{versions}" as="version">
                 <div style="padding:3px;margin:3px;border:1px solid #{f:if(condition:'{diffWithAlternativeId}=={version.uid}',then:'ff0000',else:'ccc')}">
-                    <strong>Version {version.version} von {version.tstamp -> f:format.date(format:'d.m.Y H:i')}</strong><br>
-                    <f:link.action action="show" arguments="{ansuchen:ansuchen,diffWithAlternativeId:version.uid}">Mit aktueller Version vergleichen</f:link.action>
+                    <strong>Version {version.version} [uid: {version.uid}] von {version.tstamp -> f:format.date(format:'d.m.Y H:i')}</strong><br>
+                    <f:link.action action="show" arguments="{ansuchen:ansuchen,diffWithAlternativeId:version.uid}">Mit dieser Version vergleichen</f:link.action>
                 </div>
             </f:for>
         </div>
@@ -186,9 +186,9 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <!-- 
+                    <!--
                     <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
-                        
+
 
                     -->
                     Auch Dummy, weil Relation.
@@ -717,7 +717,7 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p> 
+                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
                             <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
                                 Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         </div>
