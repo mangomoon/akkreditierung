@@ -37,27 +37,49 @@ class StammdatenBegutachtungController extends BaseController
         $this->stammdatenRepository = $stammdatenRepository;
     }
 
-    public function showAction(Stammdaten $trainer, Ansuchen $ansuchen): ResponseInterface
+    public function showAction(Ansuchen $ansuchen, ?Dto\Begutachtung\StammdatenBegutachtung $begutachtung = null): ResponseInterface
     {
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
+        if (!$stammdaten) {
+            return $this->htmlResponse('Not found');
+        }
+
+        $begutachtung = $begutachtung ?? new Dto\Begutachtung\StammdatenBegutachtung();
+        $begutachtung->stammdatenId = $stammdaten->getUid();
+        $begutachtung->ansuchenId = $ansuchen->getUid();
+
+        $values = $this->getPropertiesOfBegutachtung($begutachtung);
+        foreach ($values as $property => $value) {
+            $getter = 'get' . ucfirst($property);
+            $begutachtung->$property = $stammdaten->$getter();
+        }
+
         $this->view->assignMultiple([
-            'stammdaten' => $trainer,
+            'stammdaten' => $stammdaten,
+            'begutachtung' => $begutachtung,
             'ansuchen' => $ansuchen,
         ]);
         return $this->htmlResponse();
     }
 
-    /**
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("trainer")
-     */
-    public function editAction(Stammdaten $stammdaten): ResponseInterface
-    {
-        $this->view->assign('stammdaten', $stammdaten);
-        return $this->htmlResponse();
-    }
 
-    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\StammdatenBegutachtung $begutachtung): void
+    public function updateAction(Dto\Begutachtung\StammdatenBegutachtung $begutachtung)
     {
-//        todo
+        // check
+        $ansuchen = $this->ansuchenRepository->findByIdentifier($begutachtung->ansuchenId);
+        $stammdaten = $this->stammdatenRepository->findByIdentifier($begutachtung->stammdatenId);
+        if (!$stammdaten || !$ansuchen || $ansuchen->getPid() !== $stammdaten->getPid()) {
+            return $this->htmlResponse('Nicht erlaubt!');
+        }
+
+        $values = $this->getPropertiesOfBegutachtung($begutachtung);
+        foreach ($values as $property => $value) {
+            $setter = 'set' . ucfirst($property);
+            $stammdaten->$setter($value);
+        }
+        $this->stammdatenRepository->update($stammdaten);
+        $this->addFlashMessage('Begutachtung gespeichert');
+        $this->redirect('show', null, null, ['stammdaten' => $stammdaten, 'ansuchen' => $ansuchen]);
     }
 
 }

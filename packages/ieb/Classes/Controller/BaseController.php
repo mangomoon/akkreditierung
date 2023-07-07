@@ -18,6 +18,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -132,5 +133,14 @@ class BaseController extends ActionController
     {
         $label = LocalizationUtility::translate($key, 'ieb');
         return $label ?: $fallback;
+    }
+
+    protected function getPropertiesOfBegutachtung($object):array
+    {
+        $properties = ObjectAccess::getGettableProperties($object);
+        foreach (['stammdatenId', 'ansuchenId', 'trainerId', 'pid', 'uid'] as $property) {
+            unset($properties[$property]);
+        }
+        return $properties;
     }
 }

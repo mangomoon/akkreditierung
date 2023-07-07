@@ -1,0 +1,73 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <h2>Begutachtung Stammdaten</h2>
+    <f:debug inline="1}">{_all}</f:debug>
+    <f:flashMessages />
+    <f:form name="begutachtung" object="{begutachtung}" action="update" id="trainerbegutachtung">
+        <f:form.hidden property="ansuchenId" />
+        <f:form.hidden property="stammdatenId" />
+        
+        <div class="row">
+            <div class="links col-7">
+                <strong>reviewA1Status</strong>
+            </div>
+            <div class="rechts col-5">
+
+                <div class="knoepfe teilstatus">
+                    <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewA1Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
+                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA1Status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewA1Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA1Status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewA1Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA1Status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewA1Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA1Status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewA1Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="links col-7">
+                <strong>reviewA2Status</strong>
+            </div>
+            <div class="rechts col-5">
+
+                <div class="knoepfe teilstatus">
+                    <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewA2Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
+                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewA2Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA2Status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewA2Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA2Status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewA2Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewA2Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="links col-7">
+                <strong>reviewA1CommentInternal</strong>
+            </div>
+            <div class="rechts col-5">
+                <f:form.textarea property="reviewA1CommentInternal"/>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="links col-7">
+                <strong>reviewA1CommentTr</strong>
+            </div>
+            <div class="rechts col-5">
+                <f:form.textarea property="reviewA1CommentTr"/>
+            </div>
+        </div>
+
+
+        <f:form.submit value="Speichern" name="save" class="knopf-s" />
+    </f:form>
+</f:section>
+
+
+
+</html>

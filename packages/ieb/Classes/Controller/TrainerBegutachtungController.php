@@ -66,16 +66,6 @@ class TrainerBegutachtungController extends BaseController
         $this->redirect('show', null, null, ['trainer' => $trainer, 'ansuchen' => $ansuchen]);
     }
 
-    protected function getPropertiesOfBegutachtung(Dto\Begutachtung\TrainerBegutachtung $object):array
-    {
-        $properties = ObjectAccess::getGettableProperties($object);
-        foreach (['ansuchenId', 'trainerId', 'pid', 'uid'] as $property) {
-            unset($properties[$property]);
-        }
-        return $properties;
-    }
-
-
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
     {
         $this->ansuchenRepository = $ansuchenRepository;
