@@ -9,6 +9,7 @@
     <f:if condition="{ansuchen}">
         <f:then>
             <f:for each="{ansuchen}" as="item">
+                <f:debug>{settings}</f:debug>
                 <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
                 <div>
                 <table class="ansuchenliste">
