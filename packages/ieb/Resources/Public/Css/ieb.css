@@ -495,7 +495,7 @@ input[type="file"]::file-selector-button:hover {
     cursor: pointer;
 }
 
-input[type="submit"].knopf-s {
+input[type="submit"].knopf-s, .knopfersatz.knopf-s{
     padding: 12px 48px;
     background-color: var(--f3);
     border: none;
@@ -503,8 +503,15 @@ input[type="submit"].knopf-s {
     filter: drop-shadow(2px 2px 2px var(--f2));
     font-size: 0.9em;
 }
+.knopfersatz.knopf-s{
+    border-radius: 4px;
+    width: 175px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
 
-input[type="submit"].knopf-s:hover {
+input[type="submit"].knopf-s:hover, .knopfersatz.knopf-s:hover {
     background-color: var(--f2);
     filter: none;
 }

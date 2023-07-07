@@ -234,6 +234,12 @@
 
 
  }
+
+
+// Standort Dings ...
+ function submitten() {
+    $('.tr-standort').submit();
+ };
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -324,12 +330,21 @@
          validierentr();
      });
 
-     $("form.tr-standort").submit(function(event) {
-         validieren();
-         if (allesda == 0) {
-             event.preventDefault();
+    //  Submit Standorte mit Frage 
+
+
+
+     $("#submitstart").click(function() {
+
+        validieren();
+         if (allesda == 1) {
+            $('.modalcontent').html('<p>Sie können diese Daten später nicht mehr bearbeiten: bitte achten Sie auf korrekte Angaben!<p><a class="knopfersatz knopf-s" href="javascript:submitten()">Alles korrekt: Daten speichern!</a>');
+            $(".close").html('Zurück zum Formular');
+            $(".close").css('width','220px');
+            modal.showModal();
          }
      });
+
      $("form.transuchenneu").submit(function(event) {
          if (($('#typ').val() == 0) || ($('#name').val() == '')) {
 
