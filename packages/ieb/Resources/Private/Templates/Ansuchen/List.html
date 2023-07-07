@@ -27,8 +27,10 @@
                             <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                         </td>
                         <td class="td-knopf">
+                            <f:if condition="{item.editableByTr}">
+                                <f:then>
                             <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
-                            <f:if condition="{ansuchen.editableByTr}">
+
                                 <f:if condition="{lockInformation.editableByCurrentUser}">
                                     <f:then>
                                         &middot;
@@ -42,6 +44,10 @@
                                     &middot;
                                     <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
                                 </f:if>
+                                </f:then>
+                                <f:else>
+                                    nur show
+                                </f:else>
                             </f:if>
                         </td>
                         <td class="td-knopf">
