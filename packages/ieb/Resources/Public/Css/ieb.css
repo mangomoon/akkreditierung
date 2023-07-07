@@ -58,6 +58,19 @@ rot: c3161c
 
 /* print ende */
 
+#mangoTooltip {
+  display: none;
+  position: fixed;
+  background: #fff;
+  border: solid 1px #76736a;
+  border-radius: 3px 3px 3px 0;
+  padding: 3px 12px;
+  font-size: 0.8em;
+}
+#mangoTooltip.active {
+  display: block;
+}
+
 body {
     background-color: #f1ede4;
 }
