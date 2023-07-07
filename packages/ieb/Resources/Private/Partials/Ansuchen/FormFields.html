@@ -2,10 +2,10 @@
 
 <div class="formfields row">
     <div class="col-3">
-        <label for="name">Ansuchennummer:</label><br>
+        <label for="name">Ansuchennummer:</label>
         <f:if condition="{ansuchen.nummer}">
             <f:then>
-                <b> {ansuchen.nummer}</b>
+                <span class="ansuchennr"> {ansuchen.nummer}</span>
             </f:then>
             <f:else>
                 wird automatisch vergeben

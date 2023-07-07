@@ -8,30 +8,30 @@
 
     <f:if condition="{ansuchen}">
         <f:then>
-            <table class="tx_ieb">
-                <tr>
-                    <th>Name</th>
-                    <th>v</th>
-                    <th>Status</th>
-                    <th>Aktionen</th>
-                </tr>
-                <f:for each="{ansuchen}" as="item">
+            <f:for each="{ansuchen}" as="item">
+                <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
+                <div>
+                <table class="ansuchenliste">
                     <tr>
-                        <td>{item.nummer} {item.name} <code>[OK: {item.ok}, UID: {item.uid}]</code></td>
-                        <td>{item.version}</td>
+                        <td class="ansuchenliste_ansuchennr">
+                            {item.nummer}
+                        </td>
                         <td>
+                            <span class="ansuchenliste_ansuchenname">{item.name}</span>
+                            <br>
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
-                            <code>[{item.status}]</code></td>
-                        <td>
-                            <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
-                            &middot;
-                            <f:link.action action="show" arguments="{ansuchen : item}">Anzeigen</f:link.action>
-                            <f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action>
+                            <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version}]</code>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
                             <f:if condition="{ansuchen.editableByTr}">
                                 <f:if condition="{lockInformation.editableByCurrentUser}">
                                     <f:then>
                                         &middot;
-                                        <f:link.action action="edit" arguments="{ansuchen : item}">Bearbeiten</f:link.action>
+                                        <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit"></f:link.action>
                                     </f:then>
                                     <f:else>
                                         [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
@@ -42,15 +42,30 @@
                                     <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
                                 </f:if>
                             </f:if>
-                            &middot;
-                            <f:link.action action="clone" arguments="{ansuchen : item}">Klonen</f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="clone" arguments="{ansuchen : item}" class="knopf-quadratisch clone" title="Ansuchen kopieren"></f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:if condition="{item.status} == 10">
+                                <f:link.action action="delete" arguments="{ansuchen : item}" class="knopf-quadratisch delete" title="Ansuchen löschen"></f:link.action>
+                            </f:if>
+                            
+                        </td>
+                        <td class="td-knopf">
                             <f:if condition="{item.einReichbarDurchTr}">
-                                <f:link.action action="einreichen" arguments="{ansuchen : item}">Einreichen</f:link.action>
+                                <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
                             </f:if>
                         </td>
                     </tr>
-                </f:for>
-            </table>
+                </table>
+            </div>
+            </f:for>
+            
+
+
+
+
         </f:then>
         <f:else>
             <div>Aktuell gibt es für diese Ansicht kein Ansuchen (das sichtbar ist)</div>

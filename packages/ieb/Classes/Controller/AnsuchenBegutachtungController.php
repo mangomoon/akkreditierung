@@ -33,7 +33,7 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Ansuchen $ansuchen, int $alternativeId = 0): ResponseInterface
+    public function showAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
         $possibleStatus = [];
@@ -45,7 +45,9 @@ class AnsuchenBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'possibleStatus' => $possibleStatus,
-            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $alternativeId ?: $ansuchen->getVersionBasedOn()),
+            'diffWithAlternativeId' => $diffWithAlternativeId,
+            'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
+            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn()),
         ]);
         return $this->htmlResponse();
     }
@@ -68,7 +70,7 @@ class AnsuchenBegutachtungController extends BaseController
 
         // if status changes, no need to stay in record show
         if ($begutachtung->status > 0) {
-            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid() ));
+            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid()));
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());

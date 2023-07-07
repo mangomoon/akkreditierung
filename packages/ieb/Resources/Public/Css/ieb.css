@@ -601,10 +601,44 @@ textarea.req-leer {
 }
 
 
+
+/* ANSUCHEN LISTE  */
+table.ansuchenliste {
+    border: solid 1px var(--f3);
+    background: var(--f0);
+    margin-bottom: 12px;
+}
+table.ansuchenliste td{
+    padding: 8px;
+}
+.ansuchenliste_ansuchennr {
+    width: 80px;
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--f3);
+}
+.ansuchenliste_ansuchenname {
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--f4);
+}
+.ansuchenliste_ansuchenname code {
+    font-size: 0.7em;
+    font-weight: 400;
+    padding-top: 6px;
+    display: block;
+}
+
 /* ANSUCHEN NEW/EDIT */
 
 span.ansuchennr {
-    font-size: 1.5em;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--f3);
+    display: blocK;
+    padding-top: 8px;
 }
 
 #b-1-g-1 input,
@@ -621,8 +655,7 @@ span.ansuchennr {
 /* DL */
 
 .tx-ieb table.ansuchenliste td {
-    padding: 6px 8px 0 0;
-    vertical-align: top;
+
 }
 
 .tx-ieb table.ansuchenliste.stammdaten td.chiffre {
@@ -878,7 +911,18 @@ table.tx_ieb.trainer td {
     background-image: url('../Img/lock.svg');
     background-size: 100%;
 }
-
+.td-knopf .knopf-quadratisch.delete {
+    background-image: url('../Img/delete.svg');
+    background-size: 100%;
+}
+.td-knopf .knopf-quadratisch.einreichen {
+    background-image: url('../Img/einreichen.svg');
+    background-size: 100%;
+}
+.td-knopf .knopf-quadratisch.clone {
+    background-image: url('../Img/clone.svg');
+    background-size: 100%;
+}
 table.tx_ieb td.nachname {
     padding-left: 8px;
     font-weight: 600;

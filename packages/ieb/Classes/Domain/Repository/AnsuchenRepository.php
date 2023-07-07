@@ -11,6 +11,7 @@ use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Model\Standort;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
 use http\Exception\RuntimeException;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -60,6 +61,28 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
+    /**
+     * @param int $id
+     * @return Ansuchen[]
+     */
+    public function getAllPreviousVersions(int $id): array
+    {
+        $collection = [];
+        $this->buildHistory($id, $collection);
+        return $collection;
+    }
+
+    private function buildHistory(int $id, array &$collection): void
+    {
+        /** @var Ansuchen $item */
+        $item = $this->findByIdentifier($id);
+        if ($item) {
+            $collection[$item->getUid()] = $item;
+            if ($item->getVersionBasedOn()) {
+                $this->buildHistory($item->getVersionBasedOn(), $collection);
+            }
+        }
+    }
 
     public function getAllForBegutachtung()
     {

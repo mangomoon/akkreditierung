@@ -9,6 +9,7 @@ use Neos\Diff\Diff;
 use Rogervila\ArrayDiffMultidimensional;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class DiffService
 {
@@ -27,8 +28,9 @@ class DiffService
 //        $previous = $this->getRaw(12);
 
         $modifiedOrAdded = ArrayDiffMultidimensional::compare($current, $previous);
+//        DebuggerUtility::var_dump($modifiedOrAdded);die;
         foreach ($modifiedOrAdded as $field => $change) {
-            if (is_string($change)) {
+            if (is_scalar($change)) {
                 $final[$field]['previous'] = $previous[$field] ?? null;
                 $final[$field]['current'] = $current[$field] ?? null;
             } elseif (is_array($change)) {

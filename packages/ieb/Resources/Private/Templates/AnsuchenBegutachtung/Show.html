@@ -10,7 +10,7 @@
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
 
-        <f:debug>{diff}</f:debug>
+        <f:debug>{_all}</f:debug>
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -167,9 +167,12 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    
-                    <f:render section="comment" arguments="{property:'stammdaten.reviewA1CommentTr', status:stammdaten.reviewB1Status, comments:stammdaten.reviewB1CommentInternalData}" />
+                    <!-- 
+                    <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
+                        
 
+                    -->
+                    Auch Dummy, weil Relation.
                 </div>
             </div>
         </div>
@@ -690,13 +693,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich"> -->
-                <!-- </f:for> -->
+                <f:for each="{angebotVerantwortliche}" as="angebotverantwortlich">
+                    {angebotverantwortlich.uid}
+                </f:for>
 
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p> 
+                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
                             <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
                                 Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         </div>
@@ -782,20 +786,19 @@
             <div class="begutachtung-kriterium" id="k1">
                 <f:for each="{berater}" as="b">
 
-                    <div class="row person">
-                        <div class="links col-7">
-                            {b.fullName}
+                <div class="row person">
+                    <div class="links col-7">
+                        {b.fullName}
 
-                            {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
-                            {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
-                        </div>
-                        <div class="rechts col-5">
-                            <div class="knopf">
-                                <f:link.action action="show" controller="BeraterBegutachtung" arguments="{berater:b.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
-                            </div>
+                        {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="knopf">
+                            <f:link.action action="show" controller="BeraterBegutachtung" arguments="{berater:b.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                         </div>
                     </div>
-                </f:for>
+                </div>
+            </f:for>
 
                 <div class="row">
                     <div class="links col-7">
