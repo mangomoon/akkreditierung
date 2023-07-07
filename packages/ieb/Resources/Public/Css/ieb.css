@@ -643,6 +643,14 @@ table.ansuchenliste td{
     padding-top: 6px;
     display: block;
 }
+table.ansuchenliste td.ansuchenliste_tr {
+    background: var(--f4);
+    color: #fff;
+    font-size: 1em;
+    padding: 0 8px;
+    font-weight: 600;
+}
+
 
 /* ANSUCHEN NEW/EDIT */
 

@@ -1,4 +1,4 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="content">
@@ -6,22 +6,56 @@
 
     <f:flashMessages />
 
-    <table class="tx_ieb">
-        <tr>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.name" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.version" /></th>
-            <th><f:translate key="tx_ieb_domain_model_ansuchen.status" /></th>
-            <th></th>
-        </tr>
+    <table class="ansuchenliste">
         <f:for each="{ansuchen}" as="item">
+        <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
             <tr>
-                <td>{item.nummer} {item.name} <code>[OK: {item.ok}, UID: {item.uid}]</code></td>
-                <td>{item.version}</td>
-                <td><f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> <code>[{item.status}]</code></td>
-                <td>
-                        &middot; <f:link.action action="show" arguments="{ansuchen : item}">Anzeigen/Begutachten</f:link.action>
+                <td colspan="7" class="ansuchenliste_tr">
+                    {item.stammdatenStatic.name}
                 </td>
             </tr>
+            <tr>
+                <td class="ansuchenliste_ansuchennr">
+                    {item.nummer}
+                        </td>
+                        <td>
+                            <span class="ansuchenliste_ansuchenname">{item.name}</span>
+                            <br>
+                            <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                            <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version}]</code>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                        </td>
+                        <td class="td-knopf">
+                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
+                            <f:if condition="{ansuchen.editableByTr}">
+                                <f:if condition="{lockInformation.editableByCurrentUser}">
+                                    <f:then>
+                                        &middot;
+                                        <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit"></f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                                    </f:else>
+                                </f:if>
+                                <f:if condition="{lockInformation.isLockedByCurrentUser}">
+                                    &middot;
+                                    <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                                </f:if>
+                            </f:if>
+                        </td>
+                        <td class="td-knopf">
+
+                        </td>
+                        <td class="td-knopf">
+
+
+                        </td>
+                        <td class="td-knopf">
+
+                        </td>
+                    </tr>
         </f:for>
     </table>
 </f:section>

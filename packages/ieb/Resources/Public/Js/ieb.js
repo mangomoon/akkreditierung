@@ -244,14 +244,23 @@
  $(document).ready(function() {
 
     // Tooltip
+
     $('.knopf-quadratisch').hover(function(e) {
-        var title = $(this).attr('title');
-        $('#mangoTooltip').html(title);
-        var offset = $(this).offset();
-        $('#mangoTooltip').css({ 'top':offset.top-20, 'left':offset.left+16 });     
-        $('#mangoTooltip').toggleClass('active');
-        $(this).removeAttr('title');
-      });
+        e.preventDefault();
+            var title = $(this).attr('title');
+            $('#mangoTooltip').html(title);
+            var offset = $(this).offset();
+            $('#mangoTooltip').css({ 'top':offset.top-20, 'left':offset.left+16 });     
+            $('#mangoTooltip').addClass('active');
+            $(this).attr('title', '');
+            $(this).attr('alt', title);
+        },
+        function() {
+            $('#mangoTooltip').removeClass('active');
+            var title = $(this).attr('alt');
+            console.log(title);
+            $(this).attr('title', title);
+        });
 
      // MODAL BOX 
      const modal = document.querySelector("#modal");
