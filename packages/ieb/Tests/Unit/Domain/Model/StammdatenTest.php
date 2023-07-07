@@ -730,22 +730,22 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRreviewA2CommentTrReturnsInitialValueForString(): void
+    public function getreviewA2CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getRreviewA2CommentTr()
+            $this->subject->getreviewA2CommentTr()
         );
     }
 
     /**
      * @test
      */
-    public function setRreviewA2CommentTrForStringSetsRreviewA2CommentTr(): void
+    public function setreviewA2CommentTrForStringSetsreviewA2CommentTr(): void
     {
-        $this->subject->setRreviewA2CommentTr('Conceived at T3CON10');
+        $this->subject->setreviewA2CommentTr('Conceived at T3CON10');
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('rreviewA2CommentTr'));
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA2CommentTr'));
     }
 
     /**

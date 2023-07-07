@@ -1827,11 +1827,11 @@
 			<trans-unit id="tx_ieb_domain_model_stammdaten.review_a2_comment_internal.description" resname="tx_ieb_domain_model_stammdaten.review_a2_comment_internal.description">
 				<source>Review A2 Comment Internal</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_stammdaten.rreview_a2_comment_tr" resname="tx_ieb_domain_model_stammdaten.rreview_a2_comment_tr">
-				<source>Rreview A2 Comment Tr</source>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.review_a2_comment_tr" resname="tx_ieb_domain_model_stammdaten.review_a2_comment_tr">
+				<source>Review A2 Comment Tr</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_stammdaten.rreview_a2_comment_tr.description" resname="tx_ieb_domain_model_stammdaten.rreview_a2_comment_tr.description">
-				<source>Rreview A2 Comment Tr</source>
+			<trans-unit id="tx_ieb_domain_model_stammdaten.review_a2_comment_tr.description" resname="tx_ieb_domain_model_stammdaten.review_a2_comment_tr.description">
+				<source>Review A2 Comment Tr</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten.standorte" resname="tx_ieb_domain_model_stammdaten.standorte">
 				<source>Standorte</source>

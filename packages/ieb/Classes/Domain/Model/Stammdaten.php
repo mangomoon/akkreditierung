@@ -258,11 +258,11 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewA2CommentInternal = '';
 
     /**
-     * rreviewA2CommentTr
+     * reviewA2CommentTr
      *
      * @var string
      */
-    protected $rreviewA2CommentTr = '';
+    protected $reviewA2CommentTr = '';
 
     /**
      * standorte
@@ -1020,23 +1020,23 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the rreviewA2CommentTr
+     * Returns the reviewA2CommentTr
      *
      * @return string
      */
-    public function getRreviewA2CommentTr()
+    public function getreviewA2CommentTr()
     {
-        return $this->rreviewA2CommentTr;
+        return $this->reviewA2CommentTr;
     }
 
     /**
-     * Sets the rreviewA2CommentTr
+     * Sets the reviewA2CommentTr
      *
-     * @param string $rreviewA2CommentTr
+     * @param string $reviewA2CommentTr
      * @return void
      */
-    public function setRreviewA2CommentTr(string $rreviewA2CommentTr)
+    public function setreviewA2CommentTr(string $reviewA2CommentTr)
     {
-        $this->rreviewA2CommentTr = $rreviewA2CommentTr;
+        $this->reviewA2CommentTr = $reviewA2CommentTr;
     }
 }

@@ -318,7 +318,7 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	review_a1_comment_tr text NOT NULL DEFAULT '',
 	review_a2_status int(11) DEFAULT '0' NOT NULL,
 	review_a2_comment_internal text NOT NULL DEFAULT '',
-	rreview_a2_comment_tr text NOT NULL DEFAULT '',
+	review_a2_comment_tr text NOT NULL DEFAULT '',
 	standorte int(11) unsigned DEFAULT '0'
 );
 

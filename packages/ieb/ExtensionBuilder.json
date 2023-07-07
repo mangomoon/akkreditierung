@@ -3901,7 +3901,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "rreviewA2CommentTr",
+                            "propertyName": "reviewA2CommentTr",
                             "propertyType": "Text",
                             "uid": "410316542207"
                         }
