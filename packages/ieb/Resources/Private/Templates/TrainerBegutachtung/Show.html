@@ -3,7 +3,10 @@
 
 <f:section name="content">
 
-    <form id="trainerbegutachtung">
+    <f:flashMessages />
+    <f:form name="begutachtung" object="{begutachtung}" action="update" id="trainerbegutachtung">
+        <f:form.hidden property="ansuchenId" />
+        <f:form.hidden property="trainerId" />
         <h2>{trainer.fullName}</h2>
         <p>Begutachtung basierend auf <strong>{ansuchen.name} <span class="nummer">[{ansuchen.nummer}]</strong></span>
         </p>
@@ -51,10 +54,10 @@
 
                     <div class="knoepfe teilstatus">
                         <label class="knopf nan c21b" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" name="c21b"/>nan</label>
-                        <label class="knopf ok c21b {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21b"/>ok</label>
-                        <label class="knopf zweit c21b {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" name="c21b" />fraglich</label>
-                        <label class="knopf auflage c21b {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" name="c21b" />Auflage</label>
-                        <label class="knopf nicht-ok c21b {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" name="c21b" />nicht-ok</label>
+                        <label class="knopf ok c21b {f:if(condition:'{begutchtung.reviewC21BabiStatus}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewC21BabiStatus" id="{property}Status-1" value="1" />ok</label>
+                        <label class="knopf zweit c21b {f:if(condition:'{begutchtung.reviewC21BabiStatus}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewC21BabiStatus" id="{property}Status-2" value="2"  />fraglich</label>
+                        <label class="knopf auflage c21b {f:if(condition:'{begutchtung.reviewC21BabiStatus}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewC21BabiStatus" id="{property}Status-3" value="3"  />Auflage</label>
+                        <label class="knopf nicht-ok c21b {f:if(condition:'{begutchtung.reviewC21BabiStatus}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewC21BabiStatus" id="{property}Status-4" value="4"  />nicht-ok</label>
                     </div>
 
                 </div>
@@ -85,11 +88,11 @@
                 <div class="rechts col-5">
 
                     <div class="knoepfe teilstatus">
-                        <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
-                        <label class="knopf ok c22 {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
-                        <label class="knopf zweit c22 {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
-                        <label class="knopf auflage c22 {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
-                        <label class="knopf nicht-ok c22 {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                        <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewC22BabiStatus" id="{property}Status-0" value="0"  name="c22"/>nan</label>
+                        <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewC22BabiStatus}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewC22BabiStatus" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                        <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewC22BabiStatus}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewC22BabiStatus" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                        <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewC22BabiStatus}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewC22BabiStatus" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                        <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewC22BabiStatus}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewC22BabiStatus" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
                     </div>
 
                 </div>
@@ -148,11 +151,11 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="knoepfe teilstatus">
-                                <label class="knopf nan c21p" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c21p"/>nan</label>
-                                <label class="knopf ok c21p {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21p"/>ok</label>
-                                <label class="knopf zweit c21p {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c21p"/>fraglich</label>
-                                <label class="knopf auflage c21p {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c21p"/>Auflage</label>
-                                <label class="knopf nicht-ok c21p {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c21p"/>nicht-ok</label>
+                                <label class="knopf nan c21p" for="reviewC21PsaStatus"><f:form.radio property="reviewC21PsaStatus" id="reviewC21PsaStatus" value="0"  name="c21p"/>nan</label>
+                                <label class="knopf ok c21p {f:if(condition:'{begutachtung.reviewC21PsaStatus}==1', then:'checked')}" for="reviewC21PsaStatusStatus-1"><f:form.radio property="reviewC21PsaStatus" id="reviewC21PsaStatusStatus-1" value="1" name="c21p"/>ok</label>
+                                <label class="knopf zweit c21p {f:if(condition:'{begutachtung.reviewC21PsaStatus}==2', then:'checked')}" for="reviewC21PsaStatusStatus-2"><f:form.radio property="reviewC21PsaStatus" id="reviewC21PsaStatusStatus-2" value="2"  name="c21p"/>fraglich</label>
+                                <label class="knopf auflage c21p {f:if(condition:'{begutachtung.reviewC21PsaStatus}==3', then:'checked')}" for="reviewC21PsaStatusStatus-3"><f:form.radio property="reviewC21PsaStatus" id="reviewC21PsaStatusStatus-3" value="3"  name="c21p"/>Auflage</label>
+                                <label class="knopf nicht-ok c21p {f:if(condition:'{begutachtung.reviewC21PsaStatus}==4', then:'checked')}" for="reviewC21PsaStatusStatus-4"><f:form.radio property="reviewC21PsaStatus" id="reviewC21PsaStatusStatus-4" value="4"  name="c21p"/>nicht-ok</label>
                             </div>
                         </div>
                         </div>
@@ -175,7 +178,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa1}',then:'checked')}"></span> Deutsch – Kommunikation und Gesellschaft
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali1" id="trainer.reviewC22Quali1" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali1" id="reviewC22Quali1" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -183,7 +186,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa2}',then:'checked')}"></span> Englisch – Globalität und Transkulturalität
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali2" id="trainer.reviewC22Quali2" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali2" id="trainer.reviewC22Quali2" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -191,7 +194,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa3}',then:'checked')}"></span> Mathematik
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali3" id="trainer.reviewC22Quali3" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali3" id="trainer.reviewC22Quali3" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -199,7 +202,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa4}',then:'checked')}"></span> Berufsorientierung
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali4" id="trainer.reviewC22Quali4" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali4" id="trainer.reviewC22Quali4" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -215,7 +218,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa5}',then:'checked')}"></span> Kreativität und Gestaltung
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali5" id="trainer.reviewC22Quali5" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali5" id="trainer.reviewC22Quali5" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -223,7 +226,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa6}',then:'checked')}"></span> Gesundheit und Soziales
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali6" id="trainer.reviewC22Quali6" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali6" id="trainer.reviewC22Quali6" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -231,7 +234,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa7}',then:'checked')}"></span> Natur und Technik
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali7" id="trainer.reviewC22Quali7" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali7" id="trainer.reviewC22Quali7" value="1" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -239,7 +242,7 @@
                                             <span class="checkbox {f:if(condition:'{trainer.qualifikationPsa8}',then:'checked')}"></span> Weitere Sprachen: {trainer.qualifikationPsaKommentar}
                                         </td>
                                         <td class="r">
-                                            <f:form.checkbox property="trainer.reviewC22Quali8" id="trainer.reviewC22Quali8" value="1" />
+                                            <f:form.checkbox property="reviewC22Quali8" id="trainer.reviewC22Quali8" value="1" />
                                         </td>
                                     </tr>
                                 </table>
@@ -276,11 +279,11 @@
                         <div class="rechts col-5">
         
                             <div class="knoepfe teilstatus">
-                                <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
-                                <label class="knopf ok c22 {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
-                                <label class="knopf zweit c22 {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
-                                <label class="knopf auflage c22 {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
-                                <label class="knopf nicht-ok c22 {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                                <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewC22PsaStatus" id="{property}Status-0" value="0"  name="c22"/>nan</label>
+                                <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewC22PsaStatus}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewC22PsaStatus" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                                <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewC22PsaStatus}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewC22PsaStatus" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                                <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewC22PsaStatus}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewC22PsaStatus" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                                <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewC22PsaStatus}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewC22PsaStatus" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
                             </div>
         
                         </div>
@@ -304,10 +307,10 @@
                         </f:for>
                     </div>
                     <div>
-                        <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
+                        <f:form.textarea property="reviewC2BabiCommentInternal" id="comment1" class="" />
                     </div>
                     <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
-                        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
+                        <f:form.textarea property="reviewC2BabiCommentTr" id="comment2-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
                             <div class="textbaustein">Lorem ipsum dolet</div>
@@ -321,16 +324,16 @@
         </div>
 
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
-    </form>
+    </f:form>
 </f:section>
 <f:section name="teilstatus">
-    <div class="knoepfe teilstatus">
-        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" name="c21b"/>nan</label>
-        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21b"/>ok</label>
-        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" name="c21b" />fraglich</label>
-        <label class="knopf auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" name="c21b" />Auflage</label>
-        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" name="c21b" />nicht-ok</label>
-    </div>
+<!--    <div class="knoepfe teilstatus">-->
+<!--        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" name="c21b"/>nan</label>-->
+<!--        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21b"/>ok</label>-->
+<!--        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" name="c21b" />fraglich</label>-->
+<!--        <label class="knopf auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" name="c21b" />Auflage</label>-->
+<!--        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" name="c21b" />nicht-ok</label>-->
+<!--    </div>-->
 </f:section>
 <f:section name="comment">
 

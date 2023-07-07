@@ -55,7 +55,7 @@ class StammdatenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung): void
+    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\StammdatenBegutachtung $begutachtung): void
     {
 //        todo
     }
