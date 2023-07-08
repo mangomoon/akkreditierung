@@ -8,7 +8,6 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
-use GeorgRinger\Ieb\Service\RelationLockService;
 use Psr\Http\Message\ResponseInterface;
 
 /**

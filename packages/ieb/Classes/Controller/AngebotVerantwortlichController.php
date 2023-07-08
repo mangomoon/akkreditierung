@@ -33,7 +33,7 @@ class AngebotVerantwortlichController extends BaseController
      * @var \GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository
      */
     // protected $angebotVerantwortlichRepository = null;
-    
+
     protected AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
 
     /**
@@ -47,9 +47,16 @@ class AngebotVerantwortlichController extends BaseController
     /**
      * action index
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    public function indexAction(): \Psr\Http\Message\ResponseInterface
+    public function indexAction(): ResponseInterface
+    {
+        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
+        $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
+        return $this->htmlResponse();
+    }
+
+    public function listAction(): ResponseInterface
     {
         $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
         $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
@@ -57,35 +64,15 @@ class AngebotVerantwortlichController extends BaseController
     }
 
     /**
-     * action list
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @param AngebotVerantwortlich $angebotVerantwortlich
      */
-    public function listAction(): \Psr\Http\Message\ResponseInterface
-    {
-        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
-        $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
-        return $this->htmlResponse();
-    }
-
-    /**
-     * action show
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function showAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich): \Psr\Http\Message\ResponseInterface
+    public function showAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
         $this->view->assign('angebotVerantwortlich', $angebotVerantwortlich);
         return $this->htmlResponse();
     }
 
-    /**
-     * action new
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function newAction(): \Psr\Http\Message\ResponseInterface
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
@@ -103,9 +90,9 @@ class AngebotVerantwortlichController extends BaseController
     /**
      * action create
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $newAngebotVerantwortlich
+     * @param AngebotVerantwortlich $newAngebotVerantwortlich
      */
-    public function createAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $newAngebotVerantwortlich)
+    public function createAction(AngebotVerantwortlich $newAngebotVerantwortlich)
     {
         $this->angebotVerantwortlichRepository->add($newAngebotVerantwortlich);
         $this->redirect('index');
@@ -114,11 +101,10 @@ class AngebotVerantwortlichController extends BaseController
     /**
      * action edit
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     * @param AngebotVerantwortlich $angebotVerantwortlich
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("angebotVerantwortlich")
-     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function editAction(\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich): \Psr\Http\Message\ResponseInterface
+    public function editAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
         $this->check($angebotVerantwortlich);
         $this->view->assign('angebotVerantwortlich', $angebotVerantwortlich);
@@ -128,7 +114,7 @@ class AngebotVerantwortlichController extends BaseController
     /**
      * action update
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     * @param AngebotVerantwortlich $angebotVerantwortlich
      */
     public function updateAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
@@ -141,28 +127,28 @@ class AngebotVerantwortlichController extends BaseController
     /**
      * action archive
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     * @param AngebotVerantwortlich $angebotVerantwortlich
      */
     public function archiveAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
         $this->check($angebotVerantwortlich);
-        $angebotVerantwortlich->setArchiviert(TRUE);
+        $angebotVerantwortlich->setArchiviert(true);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
-        
+
         $this->redirect('index');
     }
 
     /**
      * action revive
      *
-     * @param \GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich $angebotVerantwortlich
+     * @param AngebotVerantwortlich $angebotVerantwortlich
      */
     public function reviveAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
     {
         $this->check($angebotVerantwortlich);
-        $angebotVerantwortlich->setArchiviert(FALSE);
+        $angebotVerantwortlich->setArchiviert(false);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
-        
+
         $this->redirect('index');
     }
 

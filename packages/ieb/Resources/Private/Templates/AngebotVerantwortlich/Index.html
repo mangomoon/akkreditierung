@@ -1,4 +1,7 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 <f:section name="content">
 
@@ -27,6 +30,7 @@
                     </th>
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+                <f:variable name="relationUsages">{ieb:relationUsed(object: angebotVerantwortlich)}</f:variable>
                 <f:if condition="!{angebotVerantwortlich.archiviert}">
                     <f:then>
                         <tr class="{f:if(condition:angebotVerantwortlich.ok,then:'istok',else:'unok')}">
@@ -57,8 +61,20 @@
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                                </f:link.action>
+                                <f:if condition="{relationUsages}">
+                                    <f:then>
+                                        <div class="locked knopf-quadratisch"></div>
+                                        <div style="display: none">
+                                            <f:for each="{relationUsages}" as="relationUsage">
+                                                {relationUsage.name},
+                                            </f:for>
+                                        </div>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
+                                        </f:link.action>
+                                    </f:else>
+                                </f:if>
                             </td>
                         </tr>
                     </f:then>

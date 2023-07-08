@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Service;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
+use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -18,6 +20,14 @@ class RelationLockService
         Trainer::class => [
             'table' => 'tx_ieb_domain_model_trainer',
             'mm' => 'tx_ieb_ansuchen_trainer_mm',
+        ],
+        Berater::class => [
+            'table' => 'tx_ieb_domain_model_berater',
+            'mm' => 'tx_ieb_ansuchen_berater_mm',
+        ],
+        AngebotVerantwortlich::class => [
+            'table' => 'tx_ieb_domain_model_angebotverantwortlich',
+            'mm' => 'tx_ieb_ansuchen_angebotverantwortlich_mm',
         ],
     ];
 

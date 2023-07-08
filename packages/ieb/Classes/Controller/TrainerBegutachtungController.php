@@ -9,8 +9,6 @@ use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 /**
@@ -34,7 +32,7 @@ class TrainerBegutachtungController extends BaseController
         $begutachtung->ansuchenId = $ansuchen->getUid();
 
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
-        foreach($values as $property => $value) {
+        foreach ($values as $property => $value) {
             $getter = 'get' . ucfirst($property);
             $begutachtung->$property = $trainer->$getter();
         }
@@ -57,7 +55,7 @@ class TrainerBegutachtungController extends BaseController
         }
 
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
-        foreach($values as $property => $value) {
+        foreach ($values as $property => $value) {
             $setter = 'set' . ucfirst($property);
             $trainer->$setter($value);
         }

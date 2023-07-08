@@ -69,7 +69,10 @@ class BeraterController extends BaseController
     public function editAction(Berater $berater): ResponseInterface
     {
         $this->check($berater);
-        $this->view->assign('berater', $berater);
+        $this->view->assignMultiple([
+            'berater' => $berater,
+            'relationUsages' => $this->relationLockService->usedByAnsuchenInReview($berater),
+        ]);
         return $this->htmlResponse();
     }
 
@@ -86,21 +89,23 @@ class BeraterController extends BaseController
         $this->beraterRepository->remove($berater);
         $this->redirect('index');
     }
+
     public function archiveAction(Berater $berater)
     {
         $this->check($berater);
-        $berater->setArchiviert(TRUE);
+        $berater->setArchiviert(true);
         $this->beraterRepository->update($berater);
-        
+
         $this->redirect('index');
     }
+
     public function reviveAction(Berater $berater)
     {
         $this->check($berater);
-        $berater->setArchiviert(FALSE);
+        $berater->setArchiviert(false);
         $this->beraterRepository->update($berater);
-        
+
         $this->redirect('index');
-    }   
+    }
 
 }

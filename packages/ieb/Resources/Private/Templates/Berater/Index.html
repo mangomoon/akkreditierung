@@ -1,4 +1,7 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="content">
@@ -57,6 +60,7 @@
                     </th>
             </tr>
             <f:for each="{beraters}" as="berater">
+                <f:variable name="relationUsages">{ieb:relationUsed(object: berater)}</f:variable>
                 <f:if condition="!{berater.archiviert}">
                     <f:then>
 
@@ -89,8 +93,20 @@
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
-                                </f:link.action>
+                                <f:if condition="{relationUsages}">
+                                    <f:then>
+                                        <div class="locked knopf-quadratisch"></div>
+                                        <div style="display: none">
+                                            <f:for each="{relationUsages}" as="relationUsage">
+                                                {relationUsage.name},
+                                            </f:for>
+                                        </div>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
+                                        </f:link.action>
+                                    </f:else>
+                                </f:if>
                             </td>
                         </tr>
                     </f:then>
@@ -107,6 +123,7 @@
             <h2>ARCHIV</h2>
             <table class="tx_ieb standortliste">
                 <f:for each="{beraters}" as="berater">
+                    <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
                     <f:if condition="{berater.archiviert}">
                         <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
                             <td class="nachname">
