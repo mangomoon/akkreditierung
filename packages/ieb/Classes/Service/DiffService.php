@@ -2,14 +2,10 @@
 
 namespace GeorgRinger\Ieb\Service;
 
-use DrLenux\ArraySmartDiff\ArrayDiff;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
-use GeorgRinger\Ieb\Domain\Model\Ansuchen;
-use Neos\Diff\Diff;
 use Rogervila\ArrayDiffMultidimensional;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class DiffService
 {
@@ -21,7 +17,7 @@ class DiffService
         $current = $this->getRaw($ansuchenId);
         $previous = $this->getRaw($basedOn);
 
-        if (($current['pid'] ?? 0) !== ($previous['pid'] ?? 0)) {
+        if ($previous && (($current['pid'] ?? 0) !== ($previous['pid'] ?? 0))) {
             throw new \UnexpectedValueException('Cannot compare ansuchen with different pid');
         }
 //        $current = $this->getRaw(22);
@@ -92,7 +88,7 @@ class DiffService
         return $final;
     }
 
-    protected function getRaw(int $id)
+    protected function getRaw(int $id): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
 
@@ -105,7 +101,11 @@ class DiffService
             ->execute()
             ->fetchAssociative();
 
-        foreach (['uid', 'tstamp', 'crdate', 'version', 'version_based_on', 'version_active', 'status'] as $field) {
+        if (!$row) {
+            return [];
+        }
+
+        foreach (['uid', 'tstamp', 'crdate', 'version', 'version_based_on', 'version_active', 'status', 'cruser_id', 'locked_by'] as $field) {
             unset($row[$field]);
         }
         // json fields

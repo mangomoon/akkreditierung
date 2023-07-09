@@ -28,7 +28,11 @@ enum AnsuchenStatus: int
 
     public static function visibleForAg(int $value): bool
     {
-        return in_array($value, [self::NEU_IN_ARBEIT->value, self::EINGEREICHT_ERSTEINREICHUNG->value], true);
+        return in_array($value, [
+            self::NEU_IN_ARBEIT->value,
+            self::EINGEREICHT_ERSTEINREICHUNG->value,
+            self::NACHBESSERUNGSAUFTRAG->value,
+        ], true);
     }
 
     /**

@@ -3,7 +3,7 @@
 
 <f:section name="content">
     <f:flashMessages />
-
+    <f:debug>{diff}</f:debug>
 
     <div class="abstand-gross"></div>
 
@@ -377,7 +377,7 @@
 
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
 
-                            {ieb:diff(diff:diff,field:'ansuchen.bundesland')}
+                            {ieb:diff(diff:diff,field:'bundesland')}
                             </p>
                             
 
@@ -386,7 +386,7 @@
 
                             <f:for each="{standorte}" as="standort">
                                 <li>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span></li>
-                                {ieb:diff(diff:diff,field:'standort')}
+                                {ieb:diff(diff:diff,field:'copy_standorte/{standort.uid}')}
                             </f:for>
                         </ul>
                     </div>

@@ -61,7 +61,7 @@ class AnsuchenController extends BaseController
         /** @var StaticStammdaten $staticStammDaten */
         $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
-         $newAnsuchen->setStammdatenStatic($staticStammDaten);
+        $newAnsuchen->setStammdatenStatic($staticStammDaten);
         $newAnsuchen->setVersionActive(true);
 
         $this->ansuchenRepository->add($newAnsuchen);
@@ -88,18 +88,31 @@ class AnsuchenController extends BaseController
     public function einreichenAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
-        $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
         $this->addFlashMessage('Das Ansuchen wurde eingereicht');
-        $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
-        switch ($ansuchen->getStatus()) {
-            case 10:
-                $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-                break;
-            case 80:
-                $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
-                break;
+        $newSnapShotIfVersionChangedByTr = false;
+        if ($newSnapShotIfVersionChangedByTr) {
+            $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
+            $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
+            switch ($ansuchen->getStatus()) {
+                case 10:
+                    $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    break;
+                case 80:
+                    $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
+                    break;
+            }
+            $this->ansuchenRepository->update($newAnsuchen);
+        } else {
+            switch ($ansuchen->getStatus()) {
+                case 10:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    break;
+                case 80:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
+                    break;
+            }
+            $this->ansuchenRepository->update($ansuchen);
         }
-        $this->ansuchenRepository->update($newAnsuchen);
         $this->redirect('list');
         return $this->htmlResponse();
     }
