@@ -104,7 +104,19 @@ class AnsuchenRepository extends BaseRepository
             'name' => $ansuchen->getName() . ' [KOPIE]',
             'kopie_von' => $ansuchen->getUid(),
         ];
-        $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
+        $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
+
+        GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_ieb_domain_model_ansuchen')
+            ->update(
+                'tx_ieb_domain_model_ansuchen',
+                ['nummer' => $this->createAnsuchenNummer($newId, $ansuchen->getTyp())],
+                ['uid' => $newId]
+            );
+    }
+
+    public function createAnsuchenNummer(int $uid, int $typ): string
+    {
+        return sprintf('4-%s-%s', str_pad((string)$uid, 4, '0', STR_PAD_LEFT), $typ);
     }
 
     public function createNewSnapshot(Ansuchen $ansuchen, Stammdaten $stammdaten): int

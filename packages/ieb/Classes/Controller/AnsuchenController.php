@@ -66,7 +66,7 @@ class AnsuchenController extends BaseController
 
         $this->ansuchenRepository->add($newAnsuchen);
         $this->ansuchenRepository->forcePersist();
-        $newAnsuchen->setNummer(sprintf('4-%s-%s', str_pad((String)$newAnsuchen->getUid(), 4, '0', STR_PAD_LEFT), $newAnsuchen->getTyp()));
+        $newAnsuchen->setNummer($this->ansuchenRepository->createAnsuchenNummer($newAnsuchen->getUid(), $newAnsuchen->getTyp()));
         $this->ansuchenRepository->update($newAnsuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');
