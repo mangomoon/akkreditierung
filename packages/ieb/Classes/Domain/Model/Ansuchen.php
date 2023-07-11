@@ -2908,7 +2908,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
     public function isEditableByTr()
     {
-        return AnsuchenStatus::visibleForAg($this->status);
+        return AnsuchenStatus::statusBearbeitbarDurchTrCheck($this->status);
     }
 
     /**

@@ -26,27 +26,24 @@
                         <td class="td-knopf">
                             <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                         </td>
-                        <td class="td-knopf">
+                        
                             <f:if condition="{item.editableByTr}">
                                 <f:then>
-                            <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
 
                                 <f:if condition="{lockInformation.editableByCurrentUser}">
                                     <f:then>
-                                        &middot;
-                                        <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit"></f:link.action>
+                                        <td class="td-knopf"><f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action></td>
                                     </f:then>
                                     <f:else>
-                                        [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                                        <td class="td-knopf"><f:link.action action="unlock" class="knopf-quadratisch locked" arguments="{ansuchen : item}" title="gesperrt von {lockInformation.lockedBy.username}"></f:link.action> [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]</td>
                                     </f:else>
                                 </f:if>
                                 <f:if condition="{lockInformation.isLockedByCurrentUser}">
-                                    &middot;
-                                    <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                                    <!-- braucht es das? -->
                                 </f:if>
                                 </f:then>
                                 <f:else>
-                                    nur show
+                                    <td class="td-knopf">&nbsp;</td>
                                 </f:else>
                             </f:if>
                         </td>

@@ -176,6 +176,7 @@
                     <div class="knopf">
                         <f:link.action action="show" controller="StammdatenBegutachtung" arguments="{ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                     </div>
+                    <p>Und das ist der Kommentar: {ansuchen.reviewA1CommentInternal}</p>
                 </div>
             </div>
         </div>
@@ -736,7 +737,6 @@
             <div class="begutachtung-kriterium" id="k1">
 
                 <f:for each="{trainer}" as="t">
-
                     <div class="row person">
                         <div class="links col-7">
                             {t.fullName}
@@ -747,6 +747,7 @@
                             <div class="knopf">
                                 <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                             </div>
+                            <p>####################{t.reviewC2BabiCommentInternal}</p>
                         </div>
                     </div>
                 </f:for>

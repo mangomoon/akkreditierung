@@ -61,7 +61,27 @@ enum AnsuchenStatus: int
             self::NEU_IN_ARBEIT->value,
             self::IN_ARBEIT->value,
             self::NACHBESSERUNGSAUFTRAG->value,
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
         ];
+    }
+
+    /**
+     * Ist ein Status, von Ansuchen, das für TR bearbeitbar ist
+     *
+     * @return array<int>
+     */
+    public static function statusBearbeitbarDurchTrCheck(int $value): bool
+    {
+        return in_array($value, [
+            self::NEU_IN_ARBEIT->value,
+            self::IN_ARBEIT->value,
+            self::NACHBESSERUNGSAUFTRAG->value,
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+        ], true);
     }
 
     /**
