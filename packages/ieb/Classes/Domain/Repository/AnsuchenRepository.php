@@ -165,6 +165,13 @@ class AnsuchenRepository extends BaseRepository
         return $newEventId;
     }
 
+    public function removeLockByUser(int $ansuchenId): void
+    {
+        $this->getConnection()->update('tx_ieb_domain_model_ansuchen',
+            ['locked_by' => 0], ['uid' => $ansuchenId]
+        );
+    }
+
     protected function convertObjectToArray(array $item)
     {
         foreach ($item as $key => $value) {

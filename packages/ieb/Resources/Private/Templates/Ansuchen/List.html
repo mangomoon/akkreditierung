@@ -29,15 +29,16 @@
                         
                             <f:if condition="{item.editableByTr}">
                                 <f:then>
-
-                                <f:if condition="{lockInformation.editableByCurrentUser}">
-                                    <f:then>
-                                        <td class="td-knopf"><f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action></td>
-                                    </f:then>
-                                    <f:else>
-                                        <td class="td-knopf"><f:link.action action="unlock" class="knopf-quadratisch locked" arguments="{ansuchen : item}" title="gesperrt von {lockInformation.lockedBy.username}"></f:link.action> [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]</td>
-                                    </f:else>
-                                </f:if>
+                                    <td class="td-knopf">
+                                        <f:if condition="{lockInformation.editableByCurrentUser}">
+                                            <f:then>
+                                                <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
+                                            </f:then>
+                                            <f:else>
+                                                <f:link.action action="unlock" class="knopf-quadratisch locked" arguments="{ansuchen : item}" title="gesperrt von {lockInformation.lockedBy.username}"></f:link.action> [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                                            </f:else>
+                                        </f:if>
+                                    </td>
                                 <f:if condition="{lockInformation.isLockedByCurrentUser}">
                                     <!-- braucht es das? -->
                                 </f:if>
