@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\StammdatenRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -24,11 +25,7 @@ class StammdatenController extends BaseController
 
 
     protected StammdatenRepository $stammdatenRepository;
-
-    public function injectStammdatenRepository(StammdatenRepository $stammdatenRepository)
-    {
-        $this->stammdatenRepository = $stammdatenRepository;
-    }
+    protected AnsuchenRepository $ansuchenRepository;
 
     public function newAction(): ResponseInterface
     {
@@ -65,7 +62,10 @@ class StammdatenController extends BaseController
             $stammdaten = new Stammdaten();
             $this->view->assign('exists', false);
         } else {
-            $this->view->assign('exists', true);
+            $this->view->assignMultiple([
+                'exists' => true,
+                'usedInAnsuchen' => $this->ansuchenRepository->getAllForBegutachtung(),
+            ]);
         }
         $this->view->assignMultiple([
             'stammdaten' => $stammdaten,
@@ -84,5 +84,14 @@ class StammdatenController extends BaseController
         $this->setTypeConverterConfigurationForImageUpload('stammdaten');
     }
 
+    public function injectStammdatenRepository(StammdatenRepository $stammdatenRepository): void
+    {
+        $this->stammdatenRepository = $stammdatenRepository;
+    }
+
+    public function injectAnsuchenRepository(AnsuchenRepository $ansuchenRepository): void
+    {
+        $this->ansuchenRepository = $ansuchenRepository;
+    }
 
 }
