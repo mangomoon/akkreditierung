@@ -111,6 +111,7 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
                     break;
             }
+            $this->ansuchenRepository->updateJsonRelations($ansuchen, $this->stammdatenRepository->getLatest());
             $this->ansuchenRepository->update($ansuchen);
         }
         $this->redirect('list');
