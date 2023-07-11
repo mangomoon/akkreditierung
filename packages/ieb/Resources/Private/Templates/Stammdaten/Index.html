@@ -6,13 +6,21 @@
     <f:render partial="FormErrors" />
     <f:if condition="{exists}">
         <f:then>
-            <f:form action="update" name="stammdaten" object="{stammdaten}" class="formStammdaten editStammdaten" enctype="multipart/form-data">
-                <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
-                <f:form.submit value="Speichern" class="knopf-s" />
-            </f:form>
-            <script>
-                validieren();
-            </script>
+            <f:if condition="{locked}">
+                <f:then>
+                    <f:form action="update" name="stammdaten" object="{stammdaten}" class="formStammdaten editStammdaten" enctype="multipart/form-data">
+                        <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
+                        <f:form.submit value="Speichern" class="knopf-s" />
+                    </f:form>
+                    <script>
+                        validieren();
+                    </script>
+                </f:then>
+                <f:else>
+                    <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
+                </f:else>
+            </f:if>
+            
         </f:then>
         <f:else>
             <f:form action="create" name="newStammdaten" object="{stammdaten}" class="formStammdaten newStammdaten" enctype="multipart/form-data">

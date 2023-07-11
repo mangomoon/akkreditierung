@@ -936,10 +936,15 @@ table.tx_ieb.trainer td {
 }
 
 .td-knopf .knopf-quadratisch.locked {
+    background-image: url('../Img/lock.svg');
+    background-size: 100%;
+}
+
+.td-knopf .knopf-quadratisch.locked-to-unlock {
     background-image: url('../Img/lock_invers.svg');
     background-size: 100%;
 }
-.td-knopf .knopf-quadratisch.locked:hover {
+.td-knopf .knopf-quadratisch.locked-to-unluck:hover {
     background-image: url('../Img/unlock_invers.svg');
     background-size: 100%;
 }
