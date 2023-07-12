@@ -174,7 +174,7 @@ class AnsuchenController extends BaseController
     public function unlockAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
-        $this->ansuchenRepository->setUnlockedAndPersist($ansuchen);
+        $this->ansuchenRepository->removeLockByUser($ansuchen->getUid());
         $this->redirect('list');
     }
 
@@ -202,6 +202,7 @@ class AnsuchenController extends BaseController
             $this->redirect('edit', null, null, ['ansuchen' => $recordId]);
         }
         if (isset($arguments['saveAndIndex'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirect('list');
         }
         $this->redirect('list');
