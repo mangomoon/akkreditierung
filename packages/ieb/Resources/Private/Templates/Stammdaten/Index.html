@@ -2,7 +2,18 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
+    <f:if condition="{usedInAnsuchen -> f:count()}">
+        <div style="border:1px solid red;">
+            <strong>Folgende Ansuchen sind offen und verwenden die Stammdaten!!!</strong>
+            <!-- todo beim speichern werden ansuchen nicht geändert, ich denke
+            das ist keine gute idee ... -->
+            <ul>
+                <f:for each="{usedInAnsuchen}" as="ansuchen">
+                    <li>{ansuchen.name}</li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
     <f:render partial="FormErrors" />
     <f:if condition="{exists}">
         <f:then>

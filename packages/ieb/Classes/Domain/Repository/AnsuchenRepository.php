@@ -126,7 +126,38 @@ class AnsuchenRepository extends BaseRepository
             'version_based_on' => $ansuchen->getUid(),
             'version' => $ansuchen->getVersion() + 1,
         ];
+        $jsons = $this->getJsonFromRelations($ansuchen, $stammdaten);
+        foreach ($jsons as $key => $value) {
+            $overrideValues[$key] = $value;
+        }
 
+        $newEventId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
+        $this->getConnection()->update(
+            'tx_ieb_domain_model_ansuchen',
+            [
+                'version_active' => 0,
+//                'copy_standorte' => $overrideValues['copy_standorte'],
+//                'copy_trainer' => $overrideValues['copy_trainer'],
+//                'copy_berater' => $overrideValues['copy_berater'],
+//                'copy_stammdaten' => $overrideValues['copy_stammdaten'],
+            ],
+            ['uid' => $ansuchen->getUid()]
+        );
+        return $newEventId;
+    }
+
+    public function updateJsonRelations(Ansuchen $ansuchen, Stammdaten $stammdaten): void
+    {
+        $jsons = $this->getJsonFromRelations($ansuchen, $stammdaten);
+        $this->getConnection()->update(
+            'tx_ieb_domain_model_ansuchen',
+            $jsons,
+            ['uid' => $ansuchen->getUid()]
+        );
+    }
+
+    protected function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
+    {
         $copyStandorte = $copyBerater = $copyTrainer = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
@@ -145,24 +176,12 @@ class AnsuchenRepository extends BaseRepository
         }
         $copyStammdaten = $stammdaten ? $this->convertObjectToArray(ObjectAccess::getGettableProperties($stammdaten)) : [];
 
-        $overrideValues['copy_standorte'] = json_encode($copyStandorte, JSON_PRETTY_PRINT);
-        $overrideValues['copy_trainer'] = json_encode($copyTrainer, JSON_PRETTY_PRINT);
-        $overrideValues['copy_berater'] = json_encode($copyBerater, JSON_PRETTY_PRINT);
-        $overrideValues['copy_stammdaten'] = json_encode($copyStammdaten, JSON_PRETTY_PRINT);
-
-        $newEventId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
-        $this->getConnection()->update(
-            'tx_ieb_domain_model_ansuchen',
-            [
-                'version_active' => 0,
-//                'copy_standorte' => $overrideValues['copy_standorte'],
-//                'copy_trainer' => $overrideValues['copy_trainer'],
-//                'copy_berater' => $overrideValues['copy_berater'],
-//                'copy_stammdaten' => $overrideValues['copy_stammdaten'],
-            ],
-            ['uid' => $ansuchen->getUid()]
-        );
-        return $newEventId;
+        return [
+            'copy_standorte' => json_encode($copyStandorte, JSON_PRETTY_PRINT),
+            'copy_trainer' => json_encode($copyTrainer, JSON_PRETTY_PRINT),
+            'copy_berater' => json_encode($copyBerater, JSON_PRETTY_PRINT),
+            'copy_stammdaten' => json_encode($copyStammdaten, JSON_PRETTY_PRINT),
+        ];
     }
 
     public function removeLockByUser(int $ansuchenId): void
