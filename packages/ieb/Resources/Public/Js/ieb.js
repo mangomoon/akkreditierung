@@ -240,6 +240,49 @@
  function submitten() {
     $('.tr-standort').submit();
  };
+
+
+// Trainer Begutachtung: öffnen der nicht-ok-Kommentarfelder und Check all ... ##########################
+
+function oeffnenTrainerBegutachtung() {
+    var s = 1;
+    a = $("#trainerbegutachtung input.c21b:checked").val();
+    b = $("#trainerbegutachtung input.c21psa:checked").val();
+    c = $("#trainerbegutachtung input.c22r:checked").val();
+    c = $(this).find('input.c22r:checked').val();
+    if (a + b + c < 4) {
+             s = 1;
+         }
+         if ((a == 2) || (b == 2) || (c == 2)) {
+             s = 2;
+         }
+         if ((a == 3) || (b == 3) || (c == 3)) {
+             s = 3;
+         }
+         if ((a == 4) || (b == 4) || (c == 4)) {
+             s = 4;
+         }
+         if (s < 3) {
+             $('.komm-ext').hide();
+         } else {
+             $('.komm-ext').show();
+         }
+
+    var t = 0;
+    $('.trainerqualifikationsbegutachtung input').each (function() {
+        if($(this).prop('checked')){
+            t++;
+            console.log(t);
+        }
+    });
+    if(t == 8){
+        $('#checkall').addClass('checked');
+    }
+};
+
+
+
+
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -522,38 +565,16 @@
 
      //  ########################################### FORM Begutachtung Trainer
      $('.teilstatus label.knopf').click(function() {
-         var s = 1;
+         
          $(this).find("input").prop('checked', true);
-         a = $("#trainerbegutachtung input[name=c21b]:checked").val();
-         b = $("#trainerbegutachtung input[name=c21p]:checked").val();
-         c = $("#trainerbegutachtung input[name=c22]:checked").val();
-
-         if (a + b + c < 4) {
-             s = 1;
-         }
-         if ((a == 2) || (b == 2) || (c == 2)) {
-             s = 2;
-         }
-         if ((a == 3) || (b == 3) || (c == 3)) {
-             s = 3;
-         }
-         if ((a == 4) || (b == 4) || (c == 4)) {
-             s = 4;
-         }
-         console.log(a, b, c + "und s: " + s);
-
-         sr = ".c-" + s;
+         
+         oeffnenTrainerBegutachtung();
 
          $('#summestatus label').removeClass('checked');
-         $(sr).addClass('checked');
+         //$(sr).addClass('checked');
          $(this).parent().parent().find('.knopf').removeClass('checked');
          $(this).addClass('checked');
 
-         if (s < 3) {
-             $('.komm-ext').hide();
-         } else {
-             $('.komm-ext').show();
-         }
          return false;
      });
 
@@ -562,10 +583,13 @@
             if( $(this).hasClass('checked') ) {
                 $(this).removeClass('checked');
                 $('.trainerqualifikationsbegutachtung input').each (function() {
-                    $(this).prop("checked");
+                    $(this).prop("checked", false);
                     });
             } else {
-                $(this).addClass('checked')
+                $(this).addClass('checked');
+                $('.trainerqualifikationsbegutachtung input').each (function() {
+                    $(this).prop("checked", true);
+                    });
             }
         });
 

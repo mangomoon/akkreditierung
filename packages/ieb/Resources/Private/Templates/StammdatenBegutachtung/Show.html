@@ -4,7 +4,7 @@
 <f:section name="content">
 
     <h2>Begutachtung Stammdaten</h2>
-    <f:debug inline="1}">{_all}</f:debug>
+    <f:debug inline="1">{_all}</f:debug>
     <f:flashMessages />
     <f:form name="begutachtung" object="{begutachtung}" action="update" id="trainerbegutachtung">
         <f:form.hidden property="ansuchenId" />
@@ -35,10 +35,14 @@
 
                 <div class="knoepfe teilstatus">
                     <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewA2Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
-                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewA2Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
-                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA2Status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewA2Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
-                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA2Status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewA2Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
-                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewA2Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==1', then:'checked')}" for="{property}Status-1">
+                        <f:form.radio property="reviewA2Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
+                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA2Status}==2', then:'checked')}" for="{property}Status-2">
+                        <f:form.radio property="reviewA2Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
+                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA2Status}==3', then:'checked')}" for="{property}Status-3">
+                        <f:form.radio property="reviewA2Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
+                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==4', then:'checked')}" for="{property}Status-4">
+                        <f:form.radio property="reviewA2Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
                 </div>
 
             </div>

@@ -1,12 +1,16 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
-<div class="kriterium" id="a-1">
+<div class="kriterium status-{stammdaten.reviewA1Status}" id="a-1">
     <h2>A.1 STAMMDATEN</h2>
 
-<f:debug>{_all}</f:debug>
     <div class="kriteriumteil">
         <div class="" id="a-1-1">
-            <p>Und das ist der Kommentar: {stammdaten.reviewA1CommentInternal}</p>
+            <f:if condition="{stammdaten.reviewA1CommentTr }">
+                <div class="commentTr">
+                    <p>{stammdaten.reviewA1CommentTr }</p>
+                </div>
+            </f:if>
+            
             <!--<div class="info"></div>
         div class="infobox" id="a-1-1-hilfe"></div-->
             <div class="erlaeuterung">
@@ -85,32 +89,45 @@
 
 <h2>A.2. QUALITÄT DES ANBIETERS</h2>
 
-<div class="kriterium" id="a-2-1">
-    <h2>A.2.1 Leitbild</h2>
-    <div class="info"></div>
-    <div class="infobox" id="a-2-1-hilfe">Das Leitbild weist einen Erwachsenenbildungsbezug aus.</div>
-    <div class="erlaeuterung">
-        <p>Laden Sie das Leitbild der Einrichtung hoch.</p>
-        <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
-    </div>
+<div class="kriterium  status-{stammdaten.reviewA2Status}" id="a-2-1">
+    <h2>A.2. QUALITÄT DES ANBIETERS</h2>
+        <f:if condition="{stammdaten.reviewA2CommentTr }">
+                <div class="commentTr">
+                    <p>{stammdaten.reviewA2CommentTr }</p>
+                </div>
+        </f:if>
+        <div class="kriteriumteil">   
+            <h2>A.2.1 Leitbild</h2>
+            <div class="info"></div>
+            <div class="infobox" id="a-2-1-hilfe">Das Leitbild weist einen Erwachsenenbildungsbezug aus.</div>
+            <f:if condition="{stammdaten.reviewA2CommentTr }">
+                        <div class="commentTr">
+                            <p>{stammdaten.reviewA2CommentTr }</p>
+                        </div>
+                    </f:if>
+            <div class="erlaeuterung">
+                <p>Laden Sie das Leitbild der Einrichtung hoch.</p>
+                <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
+            </div>
 
 
-    <f:render partial="Form/Upload" arguments="{
-        property:'leitbildDatei', 
-        id:'leitbildDatei', 
-        req:'reqfile', 
-        label='Leitbild', 
-        anmerkung:'leitbild',
-        metadaten='{stammdaten.leitbildDatei.originalResource}',
-        preview:1,
-        media:stammdaten.leitbildDatei,
-        mediaWidth:300, mediaHeight:300}" />
+            <f:render partial="Form/Upload" arguments="{
+                property:'leitbildDatei', 
+                id:'leitbildDatei', 
+                req:'reqfile', 
+                label='Leitbild', 
+                anmerkung:'leitbild',
+                metadaten='{stammdaten.leitbildDatei.originalResource}',
+                preview:1,
+                media:stammdaten.leitbildDatei,
+                mediaWidth:300, mediaHeight:300}" />
 
 
-</div>
+        </div>
+        
 
 
-<div class="kriterium" id="a-2-2">
+<div class="kriteriumteil" id="a-2-2">
     <h2>A.2.2 Qualitätssicherung der Einrichtung {qmsTyp}</h2>
     <div class="janeinwechsel">
 
@@ -195,7 +212,7 @@
     </div>
 </div>
 
-<div class="kriterium" id="a-2-3">
+<div class="kriteriumteil" id="a-2-3">
     <h2>A.2.3 Qualitätssicherung Personal</h2>
     <div class="erlaeuterung">
         <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision) geregelt sind.</p>
@@ -225,6 +242,7 @@
     <f:form.hidden property="ok" id="ok" value="0" />
 
 </div>
+
 
 
 </html>
