@@ -42,8 +42,12 @@
 
 <div class="kriterium">
     <h3>A.1 Angaben zur Organisation</h3>
-    <p>Und das ist der Kommentar: {relations.stammdaten.reviewA1CommentInternal}</p>
-    <table class="ansuchenliste stammdaten">
+    <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA1Status}">
+        <f:if condition="{relations.stammdaten.reviewA1CommentTr}">
+            <tr class="commentTr">
+                <td colspan="3">{relations.stammdaten.reviewA1CommentTr}</td>
+            </tr>
+        </f:if>
         <tr>
             <td class="chiffre">
                 &nbsp;
@@ -115,7 +119,7 @@
                 E-Mail:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.email}',then:'fehlt')}">
-                {relations.stammdaten.email}
+                <a href="mailto:{relations.stammdaten.email}">{relations.stammdaten.email}</a>
             </td>
         </tr>
         <tr>
@@ -143,7 +147,7 @@
     </table>
 
     <h3>A.2 Qualität des Anbieters</h3>
-    <table class="ansuchenliste stammdaten">
+    <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA2Status}">
         <tr>
             <td class="chiffre">
                 A.2.1
@@ -230,11 +234,13 @@
 
 <!-- ############### B.1 ########### -->
 
-<div class="kriterium {f:if(condition:'{ansuchen.reviewB1Status}==4',then:'nicht-ok')}">
+<div class="kriterium  status-{ansuchen.reviewB1Status}">
     <h2>B.1 Eckdaten zum Angebot</h2>
 
     <f:if condition="{ansuchen.reviewB1CommentTr}">
-        <div class="nicht-ok-kommentar">{ansuchen.reviewB1CommentTr}</div>
+        <div class="commentTr">
+            <p>{stammdaten.reviewB1CommentTr}</p>
+        </div>
     </f:if>
 
     <div class="kriteriumteil">
@@ -304,7 +310,7 @@
                         <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Natur und Technik</label></p>
                     <p>
                         <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
-                        <f:form.textfield property="kompetenzText2" id="kompetenzText2" />
+                        <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                     </p>
                 </div>
             </div>
@@ -330,10 +336,15 @@
 </div>
 
 <!-- ############### B.1.4 Standorte ########### -->
-<div class="kriterium">
+<div class="kriterium  status-{ansuchen.reviewB14Status}">
 
     <div class="kriteriumteil">
         <h3>B.1.4 Kursstandorte</h3>
+        <f:if condition="{ansuchen.reviewB14CommentTr}">
+            <div class="commentTr">
+                <p>{stammdaten.reviewB14CommentTr}</p>
+            </div>
+        </f:if>
         <div class="formfields row">
             <div class="col-6">
                 <p>Geben Sie das Bundesland der Durchführung an. </p>
@@ -367,7 +378,7 @@
 
 <!-- ############### B.1.5 Prüfung und Kooperation ########### -->
 
-<div class="kriterium psa">
+<div class="kriterium psa  status-{ansuchen.reviewB15Status}">
     <div class="kriteriumteil">
         <h3>B.1.5 Abnahme von Prüfungen</h3>
         <div class="info"></div>
@@ -376,6 +387,11 @@
             <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'checked')}">ja</knopf>
             <knopf class="inline pruefjanein nein">nein</knopf>
         </p>
+        <f:if condition="{ansuchen.reviewB15CommentTr}">
+            <div class="commentTr">
+                <p>{stammdaten.reviewB15CommentTr}</p>
+            </div>
+        </f:if>
 
 
         <div class="japruef {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ischecked')}">
@@ -420,9 +436,13 @@
 
 <!-- ############### B.2  ########### -->
 
-<div class="kriterium">
+<div class="kriterium status-{ansuchen.reviewB21Status}">
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
-
+    <f:if condition="{ansuchen.reviewB2CommentTr}">
+        <div class="commentTr">
+            <p>{stammdaten.reviewB2CommentTr}</p>
+        </div>
+    </f:if>
     <div class="kriteriumteil">
         <h3>B.2.1 Ansprache und Erreichung der Zielgruppe</h3>
         <div class="info"></div>
@@ -444,7 +464,7 @@
             mediaWidth:300, mediaHeight:300}" />
     </div>
 </div>
-<div class="kriterium">
+<div class="kriterium status-{ansuchen.reviewB22Status}">
     <div class="kriteriumteil">
         <h3>B.2.2 Didaktisch-methodisches Vorgehen</h3>
         <div class="info"></div>
@@ -454,6 +474,11 @@
             <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots
                 (maximal 30%)</p>
         </div>
+        <f:if condition="{ansuchen.reviewB22CommentTr}">
+            <div class="commentTr">
+                <p>{stammdaten.reviewB22CommentTr}</p>
+            </div>
+        </f:if>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
         <ul>
             <li>
@@ -556,13 +581,20 @@
         </div>
     </div>
 </div>
-<div class="kriterium">
+
+
+<div class="kriterium status-{ansuchen.reviewB23Status}">
     <div class="kriteriumteil">
         <h3>B.2.3 Beratung, Coaching und Begleitung</h3>
         <div class="info"></div>
         <div class="infobox" id="b-2-d-hilfe">
             <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
         </div>
+        <f:if condition="{ansuchen.reviewB23CommentTr}">
+            <div class="commentTr">
+                <p>{stammdaten.reviewB23CommentTr}</p>
+            </div>
+        </f:if>
         <div class="erlaeuterung">
             <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle externer
                 sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
@@ -594,12 +626,17 @@
 
 <!-- ############### Projektsteuerung ########### -->
 
-<div class="kriterium">
+<div class="kriterium status-{ansuchen.reviewC1Status}">
     <h2>C.1 Projektleitung</h2>
     <div class="info"></div>
     <div class="infobox" id="c-1-hilfe">
         <p>Die Projektleitung verfügt über Management-Kompetenz und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
     </div>
+    <f:if condition="{ansuchen.reviewC1CommentTr}">
+        <div class="commentTr">
+            <p>{stammdaten.reviewC1CommentTr}</p>
+        </div>
+    </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
         <!--p class="hinweis">
@@ -641,13 +678,17 @@
 
 <!-- ############### BERATUNG ########### -->
 
-<div class="kriterium">
+<div class="kriterium status-{ansuchen.reviewC2Status}">
     <h2>C.2 Training</h2>
     <div class="info"></div>
     <div class="infobox" id="c-2-hilfe">
         <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
     </div>
-
+    <f:if condition="{ansuchen.reviewC2CommentTr}">
+        <div class="commentTr">
+            <p>{stammdaten.reviewC2CommentTr}</p>
+        </div>
+    </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Trainer/innen hinzu.</p>
 
@@ -673,12 +714,17 @@
 </div>
 
 <!-- ############### BERATUNG ########### -->
-<div class="kriterium">
+<div class="kriterium status-{ansuchen.reviewC3Status}">
     <h2>C.3 Beratung</h2>
     <div class="info"></div>
     <div class="infobox" id="c-3-hilfe">
         <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
     </div>
+    <f:if condition="{ansuchen.reviewC3CommentTr}">
+        <div class="commentTr">
+            <p>{stammdaten.reviewC3CommentTr}</p>
+        </div>
+    </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
 

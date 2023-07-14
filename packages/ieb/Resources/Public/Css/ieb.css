@@ -1394,16 +1394,21 @@ span.checkbox.checked {
 
 
 /* ############################ TR FormFields NACH BEUTACHTUNG ############### */
-.kriterium.status-4 {
-    border: solid 3px var(--ansuchen);
+.kriterium.status-4, .begutachtung-kriterium.status-4, table.ansuchenliste.status-4 {
+    border: solid 3px var(--stammdaten);
 }
 .commentTr {
-    border: solid 2px var(--ansuchen);
-    background: var(--fg0);
+    border: solid 3px #fff;
+    background-color: #feb14c;
     padding: 0 12px;
     font-style:italic;
 }
-
+.commentTr td{
+    border: solid 3px var(--stammdaten);
+    background-color: #feb14c;
+    padding: 0 12px;
+    font-style:italic;
+}
 /* READONLY  ############# */
 .begutachtung-kopf.readonly p.typ {
     padding-top: 10px;
