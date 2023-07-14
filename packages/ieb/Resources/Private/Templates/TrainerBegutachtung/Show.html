@@ -338,7 +338,8 @@
                 </div>
     </f:else>
 </f:if>
-
+<f:if condition="{ansuchen.typ}==1">
+    <f:then>
         <div class="begutachtung-kriterium" id="k1">
             <div class="row">
                 <div class="links col-7">
@@ -369,6 +370,41 @@
                 </div>
             </div>
         </div>
+    </f:then>
+    <f:else>
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="row">
+                <div class="links col-7">
+
+                </div>
+                <div class="rechts col-5">
+
+                    <div class="komm-int">
+                        <f:for each="{comments}" as="comment">
+                            <p>
+                                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                            </p>
+                        </f:for>
+                    </div>
+                    <div>
+                        <f:form.textarea property="reviewC2PsaCommentInternal" id="comment1" class="" />
+                    </div>
+                    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+                        <f:form.textarea property="reviewC2PsaCommentTr" id="comment2-{property}" class="extern" />
+                        <div class="knopf textbausteinoeffner">Textbausteine</div>
+                        <div class="textbausteine">
+                            <div class="textbaustein">Lorem ipsum dolet</div>
+                            <div class="textbaustein">Und so weiter!</div>
+                            <div class="textbaustein">Und so fort ...</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </f:else>
+</f:if>
+
 
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
     </f:form>

@@ -13,7 +13,18 @@
     </div>
 </div>
 
-<p>################ {trainer.reviewC2BabiCommentInternal}</p>
+            <f:if condition="{stammdaten.reviewA1CommentTr }">
+                <div class="commentTr">
+                    <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
+                    <p>{stammdaten.reviewC2BabiCommentTr }</p>
+                </div>
+            </f:if>
+            <f:if condition="{stammdaten.reviewA1CommentTr }">
+                <div class="commentTr">
+                    <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
+                    <p>{stammdaten.reviewC2PsaCommentTr }</p>
+                </div>
+            </f:if>
 
 <p class="hinweis">Hinweis: Bis Ende der 3. PP (Ende 2023) anerkannte Trainer/innen bleiben anerkannt. Für bereits IEB anerkannte Trainer/innen und Berater/innen sind keine neuen Unterlagen erforderlich.<br>&nbsp;<br>&nbsp;
 </p>
@@ -36,8 +47,8 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium" id="c-2-1-babi">
-    <h3>C.2.1.BaBi Qualifikationsnachweis Basisbildung</h3>
+<div class="kriterium status-{trainer.reviewC21BabiStatus}" id="c-2-1-babi">
+    <h3>C.2.1 Qualifikationsnachweis Basisbildung</h3>
     <div class="info"></div>
     <div class="infobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
     <div class="erlaeuterung">
@@ -69,7 +80,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 </div>
 
 
-<div class="kriterium" id="c-2-1-psa">
+<div class="kriterium  status-{trainer.reviewC21PsaStatus}" id="c-2-1-psa">
 
     <div class="kriteriumteil">
         <h3>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h3>
@@ -162,7 +173,15 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium" id="c-2-2">
+<div class="kriterium <f:if condition='{trainer.reviewC22BabiStatus} > {trainer.reviewC22PsaStatus}'>
+    <f:then>
+        status-{trainer.reviewC22BabiStatus}
+    </f:then>
+    <f:else>
+        status-{trainer.reviewC22PsaStatus}
+    </f:else>
+    </f:if>    
+    " id="c-2-2">
     <h3>C.2.2 Erfahrungsnachweis</h3>
     <div class="info"></div>
     <div class="infobox" id="c-2-1-hilfe">Alle Trainer/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
