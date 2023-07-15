@@ -556,6 +556,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $copyBerater = '';
 
     /**
+     * copyVerantwortliche
+     *
+     * @var string
+     */
+    protected $copyVerantwortliche = '';
+
+    /**
      * copyStandorte
      *
      * @var string
@@ -750,13 +757,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * copyVerantwortliche
-     *
-     * @var string
-     */
-    protected $copyVerantwortliche = '';
 
     /**
      * __construct

@@ -345,3 +345,8 @@ CREATE TABLE tx_ieb_domain_model_kriterien (
 	hilfetext text,
 	ppd text
 );
+
+CREATE TABLE tx_ieb_domain_model_textbausteine (
+	kriterium varchar(255) NOT NULL DEFAULT '',
+	baustein text NOT NULL DEFAULT ''
+);
