@@ -10,60 +10,23 @@
         <f:form.hidden property="ansuchenId" />
         <f:form.hidden property="stammdatenId" />
 
-        <div class="row">
-            <div class="links col-7">
-                <strong>reviewA1Status</strong>
-            </div>
-            <div class="rechts col-5">
-
-                <div class="knoepfe teilstatus">
-                    <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewA1Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
-                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA1Status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="reviewA1Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
-                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA1Status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="reviewA1Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
-                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA1Status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="reviewA1Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
-                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA1Status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="reviewA1Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+        
+        <div class="begutachtung-kriterium">
+            <div class="row">
+                <div class="links col-7">
                 </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="links col-7">
-                <strong>reviewA2Status</strong>
-            </div>
-            <div class="rechts col-5">
-
-                <div class="knoepfe teilstatus">
-                    <label class="knopf nan c22" for="{property}Status-0"><f:form.radio property="reviewA2Status" id="{property}Status-0" value="0"  name="c22"/>nan</label>
-                    <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==1', then:'checked')}" for="{property}Status-1">
-                        <f:form.radio property="reviewA2Status" id="{property}Status-1" value="1" name="c22"/>ok</label>
-                    <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewA2Status}==2', then:'checked')}" for="{property}Status-2">
-                        <f:form.radio property="reviewA2Status" id="{property}Status-2" value="2"  name="c22"/>fraglich</label>
-                    <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewA2Status}==3', then:'checked')}" for="{property}Status-3">
-                        <f:form.radio property="reviewA2Status" id="{property}Status-3" value="3"  name="c22"/>Auflage</label>
-                    <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewA2Status}==4', then:'checked')}" for="{property}Status-4">
-                        <f:form.radio property="reviewA2Status" id="{property}Status-4" value="4"  name="c22"/>nicht-ok</label>
+                <div class="rechts col-5">
+                    <f:render section="comment" arguments="{property:'reviewA1', status:ansuchen.reviewA1Status, comments:ansuchen.reviewA1CommentInternalData}" />
                 </div>
-
             </div>
         </div>
-
-        <div class="row">
-            <div class="links col-7">
-                <strong>reviewA1CommentInternal</strong>
-            </div>
-            <div class="rechts col-5">
-                <f:form.textarea property="reviewA1CommentInternal"/>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="links col-7">
-                <strong>reviewA1CommentTr</strong>
-            </div>
-            <div class="rechts col-5">
-                <f:form.textarea property="reviewA1CommentTr"/>
+        <div class="begutachtung-kriterium">
+            <div class="row">
+                <div class="links col-7">
+                </div>
+                <div class="rechts col-5">
+                    <f:render section="comment" arguments="{property:'reviewA2', status:ansuchen.reviewA2Status, comments:ansuchen.reviewA2CommentInternalData}" />
+                </div>
             </div>
         </div>
 
@@ -71,7 +34,28 @@
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
     </f:form>
 </f:section>
+<f:section name="comment">
 
+    <div>
+        <f:form.textarea property="{property}CommentInternal" id="comment1-{property}" class="" />
+    </div>
+    <div class="ansuchen knoepfe">
+        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
+        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
+        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
+        <label class="knopf plenum {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
+        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
+    </div>
+    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
+        <div class="knopf textbausteinoeffner">Textbausteine</div>
+        <div class="textbausteine">
+            <div class="textbaustein">Lorem ipsum dolet</div>
+            <div class="textbaustein">Und so weiter!</div>
+            <div class="textbaustein">Und so fort ...</div>
+        </div>
+    </div>
+</f:section>
 
 
 </html>

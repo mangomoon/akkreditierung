@@ -269,48 +269,6 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getKompetenzbereicheReturnsInitialValueForInt(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getKompetenzbereiche()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setKompetenzbereicheForIntSetsKompetenzbereiche(): void
-    {
-        $this->subject->setKompetenzbereiche(12);
-
-        self::assertEquals(12, $this->subject->_get('kompetenzbereiche'));
-    }
-
-    /**
-     * @test
-     */
-    public function getKompetenzbereicheTextReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getKompetenzbereicheText()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setKompetenzbereicheTextForStringSetsKompetenzbereicheText(): void
-    {
-        $this->subject->setKompetenzbereicheText('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzbereicheText'));
-    }
-
-    /**
-     * @test
-     */
     public function getUebersichtTextReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -1469,24 +1427,6 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getErklaerungd4ReturnsInitialValueForBool(): void
-    {
-        self::assertFalse($this->subject->getErklaerungd4());
-    }
-
-    /**
-     * @test
-     */
-    public function setErklaerungd4ForBoolSetsErklaerungd4(): void
-    {
-        $this->subject->setErklaerungd4(true);
-
-        self::assertEquals(true, $this->subject->_get('erklaerungd4'));
-    }
-
-    /**
-     * @test
-     */
     public function getKompetenzText1ReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -1503,27 +1443,6 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setKompetenzText1('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzText1'));
-    }
-
-    /**
-     * @test
-     */
-    public function getKompetenzText2ReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getKompetenzText2()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setKompetenzText2ForStringSetsKompetenzText2(): void
-    {
-        $this->subject->setKompetenzText2('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kompetenzText2'));
     }
 
     /**
@@ -1560,27 +1479,6 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setErklaerungTeilB(true);
 
         self::assertEquals(true, $this->subject->_get('erklaerungTeilB'));
-    }
-
-    /**
-     * @test
-     */
-    public function getNummerpp3ReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getNummerpp3()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setNummerpp3ForStringSetsNummerpp3(): void
-    {
-        $this->subject->setNummerpp3('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('nummerpp3'));
     }
 
     /**
@@ -1662,6 +1560,27 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setCopyBerater('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyBerater'));
+    }
+
+    /**
+     * @test
+     */
+    public function getCopyVerantwortlicheReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyVerantwortliche()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyVerantwortlicheForStringSetsCopyVerantwortliche(): void
+    {
+        $this->subject->setCopyVerantwortliche('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyVerantwortliche'));
     }
 
     /**

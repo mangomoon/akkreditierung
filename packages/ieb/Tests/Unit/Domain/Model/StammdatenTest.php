@@ -503,71 +503,6 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPruefbescheidDateiReturnsInitialValueForFileReference(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getPruefbescheidDatei()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPruefbescheidDateiForFileReferenceSetsPruefbescheidDatei(): void
-    {
-        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $this->subject->setPruefbescheidDatei($fileReferenceFixture);
-
-        self::assertEquals($fileReferenceFixture, $this->subject->_get('pruefbescheidDatei'));
-    }
-
-    /**
-     * @test
-     */
-    public function getPruefbescheidReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getPruefbescheid()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPruefbescheidForStringSetsPruefbescheid(): void
-    {
-        $this->subject->setPruefbescheid('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('pruefbescheid'));
-    }
-
-    /**
-     * @test
-     */
-    public function getPruefbescheidBisReturnsInitialValueForDateTime(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getPruefbescheidBis()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPruefbescheidBisForDateTimeSetsPruefbescheidBis(): void
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setPruefbescheidBis($dateTimeFixture);
-
-        self::assertEquals($dateTimeFixture, $this->subject->_get('pruefbescheidBis'));
-    }
-
-    /**
-     * @test
-     */
     public function getLockedByReturnsInitialValueForInt(): void
     {
         self::assertSame(
@@ -688,6 +623,27 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewA1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewA1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA1CommentInternalStepForStringSetsReviewA1CommentInternalStep(): void
+    {
+        $this->subject->setReviewA1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewA2StatusReturnsInitialValueForInt(): void
     {
         self::assertSame(
@@ -730,43 +686,42 @@ class StammdatenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getreviewA2CommentTrReturnsInitialValueForString(): void
+    public function getReviewA2CommentInternalStepReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getreviewA2CommentTr()
+            $this->subject->getReviewA2CommentInternalStep()
         );
     }
 
     /**
      * @test
      */
-    public function setreviewA2CommentTrForStringSetsreviewA2CommentTr(): void
+    public function setReviewA2CommentInternalStepForStringSetsReviewA2CommentInternalStep(): void
     {
-        $this->subject->setreviewA2CommentTr('Conceived at T3CON10');
+        $this->subject->setReviewA2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewA2CommentTrReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewA2CommentTr()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewA2CommentTrForStringSetsReviewA2CommentTr(): void
+    {
+        $this->subject->setReviewA2CommentTr('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA2CommentTr'));
-    }
-
-    /**
-     * @test
-     */
-    public function getStandorteReturnsInitialValueForStandort(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getStandorte()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStandorteForStandortSetsStandorte(): void
-    {
-        $standorteFixture = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $this->subject->setStandorte($standorteFixture);
-
-        self::assertEquals($standorteFixture, $this->subject->_get('standorte'));
     }
 }

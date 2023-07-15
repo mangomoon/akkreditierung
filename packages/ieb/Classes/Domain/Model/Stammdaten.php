@@ -180,28 +180,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $trPp3 = false;
 
     /**
-     * pruefbescheidDatei
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $pruefbescheidDatei = null;
-
-    /**
-     * pruefbescheid
-     *
-     * @var string
-     */
-    protected $pruefbescheid = '';
-
-    /**
-     * pruefbescheidBis
-     *
-     * @var \DateTime
-     */
-    protected $pruefbescheidBis = null;
-
-    /**
      * lockedBy
      *
      * @var int
@@ -244,6 +222,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewA1CommentTr = '';
 
     /**
+     * reviewA1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewA1CommentInternalStep = '';
+
+    /**
      * reviewA2Status
      *
      * @var int
@@ -258,18 +243,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewA2CommentInternal = '';
 
     /**
+     * reviewA2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewA2CommentInternalStep = '';
+
+    /**
      * reviewA2CommentTr
      *
      * @var string
      */
     protected $reviewA2CommentTr = '';
-
-    /**
-     * standorte
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\Standort
-     */
-    protected $standorte = null;
 
     /**
      * Returns the name
@@ -702,90 +687,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the pruefbescheid
-     *
-     * @return string
-     */
-    public function getPruefbescheid()
-    {
-        return $this->pruefbescheid;
-    }
-
-    /**
-     * Sets the pruefbescheid
-     *
-     * @param string $pruefbescheid
-     * @return void
-     */
-    public function setPruefbescheid(string $pruefbescheid)
-    {
-        $this->pruefbescheid = $pruefbescheid;
-    }
-
-    /**
-     * Returns the pruefbescheidDatei
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getPruefbescheidDatei()
-    {
-        return $this->pruefbescheidDatei;
-    }
-
-    /**
-     * Sets the pruefbescheidDatei
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei
-     * @return void
-     */
-    public function setPruefbescheidDatei($pruefbescheidDatei)
-    {
-        $this->pruefbescheidDatei = $pruefbescheidDatei;
-    }
-
-    /**
-     * Returns the pruefbescheidBis
-     *
-     * @return \DateTime
-     */
-    public function getPruefbescheidBis()
-    {
-        return $this->pruefbescheidBis;
-    }
-
-    /**
-     * Sets the pruefbescheidBis
-     *
-     * @param \DateTime $pruefbescheidBis
-     * @return void
-     */
-    public function setPruefbescheidBis(\DateTime $pruefbescheidBis)
-    {
-        $this->pruefbescheidBis = $pruefbescheidBis;
-    }
-
-    /**
-     * Returns the standorte
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\Standort
-     */
-    public function getStandorte()
-    {
-        return $this->standorte;
-    }
-
-    /**
-     * Sets the standorte
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorte
-     * @return void
-     */
-    public function setStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorte)
-    {
-        $this->standorte = $standorte;
-    }
-
-    /**
      * Returns the lockedBy
      *
      * @return int
@@ -1038,5 +939,47 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setreviewA2CommentTr(string $reviewA2CommentTr)
     {
         $this->reviewA2CommentTr = $reviewA2CommentTr;
+    }
+
+    /**
+     * Returns the reviewA1CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewA1CommentInternalStep()
+    {
+        return $this->reviewA1CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewA1CommentInternalStep
+     *
+     * @param string $reviewA1CommentInternalStep
+     * @return void
+     */
+    public function setReviewA1CommentInternalStep(string $reviewA1CommentInternalStep)
+    {
+        $this->reviewA1CommentInternalStep = $reviewA1CommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewA2CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewA2CommentInternalStep()
+    {
+        return $this->reviewA2CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewA2CommentInternalStep
+     *
+     * @param string $reviewA2CommentInternalStep
+     * @return void
+     */
+    public function setReviewA2CommentInternalStep(string $reviewA2CommentInternalStep)
+    {
+        $this->reviewA2CommentInternalStep = $reviewA2CommentInternalStep;
     }
 }

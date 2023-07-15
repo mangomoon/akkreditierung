@@ -383,27 +383,6 @@ class TrainerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getTitle()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleForStringSetsTitle(): void
-    {
-        $this->subject->setTitle('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
-    }
-
-    /**
-     * @test
-     */
     public function getLebenslaufDateiReturnsInitialValueForFileReference(): void
     {
         self::assertEquals(
@@ -853,5 +832,47 @@ class TrainerTest extends UnitTestCase
         $this->subject->setReviewC2PsaCommentTr('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaCommentTr'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2PsaCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaCommentInternalStepForStringSetsReviewC2PsaCommentInternalStep(): void
+    {
+        $this->subject->setReviewC2PsaCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiCommentInternalStepForStringSetsReviewC2BabiCommentInternalStep(): void
+    {
+        $this->subject->setReviewC2BabiCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiCommentInternalStep'));
     }
 }

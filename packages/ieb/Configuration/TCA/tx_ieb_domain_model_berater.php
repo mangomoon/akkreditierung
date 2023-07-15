@@ -12,11 +12,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'nachname,vorname,title,lebenslauf_kommentar,qualifikationsnachweise_kommentar,review_c3_comment_internal,review_c3_comment_tr',
+        'searchFields' => 'nachname,vorname,lebenslauf_kommentar,qualifikationsnachweise_kommentar,review_c3_comment_internal,review_c3_comment_internal_step,review_c3_comment_tr',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, title, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c3_comment_internal, review_c3_comment_tr, standorte, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -194,17 +194,6 @@ return [
             ),
             
         ],
-        'title' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.title',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.title.description',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'default' => ''
-            ],
-        ],
         'lebenslauf_kommentar' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf_kommentar',
@@ -286,6 +275,18 @@ return [
                 'default' => ''
             ]
         ],
+        'review_c3_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_c3_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_c3_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
         'review_c3_comment_tr' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_c3_comment_tr',
@@ -297,33 +298,6 @@ return [
                 'eval' => 'trim',
                 'default' => ''
             ]
-        ],
-        'standorte' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.standorte',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.standorte.description',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_ieb_domain_model_standort',
-                'MM' => 'tx_ieb_berater_standort_mm',
-                'size' => 10,
-                'autoSizeMax' => 30,
-                'maxitems' => 9999,
-                'multiple' => 0,
-                'fieldControl' => [
-                    'editPopup' => [
-                        'disabled' => false,
-                    ],
-                    'addRecord' => [
-                        'disabled' => false,
-                    ],
-                    'listModule' => [
-                        'disabled' => true,
-                    ],
-                ],
-            ],
-            
         ],
     
     ],

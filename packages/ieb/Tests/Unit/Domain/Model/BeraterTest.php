@@ -124,27 +124,6 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleReturnsInitialValueForString(): void
-    {
-        self::assertSame(
-            '',
-            $this->subject->getTitle()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleForStringSetsTitle(): void
-    {
-        $this->subject->setTitle('Conceived at T3CON10');
-
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('title'));
-    }
-
-    /**
-     * @test
-     */
     public function getLebenslaufKommentarReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -265,6 +244,27 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewC3CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3CommentInternalStepForStringSetsReviewC3CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewC3CommentTrReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -281,64 +281,5 @@ class BeraterTest extends UnitTestCase
         $this->subject->setReviewC3CommentTr('Conceived at T3CON10');
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3CommentTr'));
-    }
-
-    /**
-     * @test
-     */
-    public function getStandorteReturnsInitialValueForStandort(): void
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getStandorte()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStandorteForObjectStorageContainingStandortSetsStandorte(): void
-    {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $objectStorageHoldingExactlyOneStandorte = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneStandorte->attach($standorte);
-        $this->subject->setStandorte($objectStorageHoldingExactlyOneStandorte);
-
-        self::assertEquals($objectStorageHoldingExactlyOneStandorte, $this->subject->_get('standorte'));
-    }
-
-    /**
-     * @test
-     */
-    public function addStandorteToObjectStorageHoldingStandorte(): void
-    {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $standorteObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($standorte));
-        $this->subject->_set('standorte', $standorteObjectStorageMock);
-
-        $this->subject->addStandorte($standorte);
-    }
-
-    /**
-     * @test
-     */
-    public function removeStandorteFromObjectStorageHoldingStandorte(): void
-    {
-        $standorte = new \GeorgRinger\Ieb\Domain\Model\Standort();
-        $standorteObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($standorte));
-        $this->subject->_set('standorte', $standorteObjectStorageMock);
-
-        $this->subject->removeStandorte($standorte);
     }
 }

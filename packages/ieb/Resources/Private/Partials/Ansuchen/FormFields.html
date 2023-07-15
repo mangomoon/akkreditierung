@@ -148,6 +148,11 @@
 
     <h3>A.2 Qualität des Anbieters</h3>
     <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA2Status}">
+        <f:if condition="{relations.stammdaten.reviewA2CommentTr}">
+            <tr class="commentTr">
+                <td colspan="3">{relations.stammdaten.reviewA2CommentTr}</td>
+            </tr>
+        </f:if>
         <tr>
             <td class="chiffre">
                 A.2.1
@@ -228,7 +233,7 @@
     </p>
 
     <div class="formzeile">
-        <f:link.page pageUid="10" class="formlink stammdaten">Organsiation: Daten bearbeiten</f:link.page>
+        <f:link.page pageUid="10" class="formlink stammdaten">Organisation: Daten bearbeiten</f:link.page>
     </div>
 </div>
 
@@ -239,7 +244,7 @@
 
     <f:if condition="{ansuchen.reviewB1CommentTr}">
         <div class="commentTr">
-            <p>{stammdaten.reviewB1CommentTr}</p>
+            <p>{ansuchen.reviewB1CommentTr}</p>
         </div>
     </f:if>
 
@@ -342,7 +347,7 @@
         <h3>B.1.4 Kursstandorte</h3>
         <f:if condition="{ansuchen.reviewB14CommentTr}">
             <div class="commentTr">
-                <p>{stammdaten.reviewB14CommentTr}</p>
+                <p>{ansuchen.reviewB14CommentTr}</p>
             </div>
         </f:if>
         <div class="formfields row">
@@ -389,7 +394,7 @@
         </p>
         <f:if condition="{ansuchen.reviewB15CommentTr}">
             <div class="commentTr">
-                <p>{stammdaten.reviewB15CommentTr}</p>
+                <p>{ansuchen.reviewB15CommentTr}</p>
             </div>
         </f:if>
 
@@ -440,7 +445,7 @@
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
     <f:if condition="{ansuchen.reviewB2CommentTr}">
         <div class="commentTr">
-            <p>{stammdaten.reviewB2CommentTr}</p>
+            <p>{ansuchen.reviewB2CommentTr}</p>
         </div>
     </f:if>
     <div class="kriteriumteil">
@@ -476,7 +481,7 @@
         </div>
         <f:if condition="{ansuchen.reviewB22CommentTr}">
             <div class="commentTr">
-                <p>{stammdaten.reviewB22CommentTr}</p>
+                <p>{ansuchen.reviewB22CommentTr}</p>
             </div>
         </f:if>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
@@ -592,7 +597,7 @@
         </div>
         <f:if condition="{ansuchen.reviewB23CommentTr}">
             <div class="commentTr">
-                <p>{stammdaten.reviewB23CommentTr}</p>
+                <p>{ansuchen.reviewB23CommentTr}</p>
             </div>
         </f:if>
         <div class="erlaeuterung">
@@ -634,7 +639,7 @@
     </div>
     <f:if condition="{ansuchen.reviewC1CommentTr}">
         <div class="commentTr">
-            <p>{stammdaten.reviewC1CommentTr}</p>
+            <p>{ansuchen.reviewC1CommentTr}</p>
         </div>
     </f:if>
     <div class="erlaeuterung">
@@ -686,7 +691,7 @@
     </div>
     <f:if condition="{ansuchen.reviewC2CommentTr}">
         <div class="commentTr">
-            <p>{stammdaten.reviewC2CommentTr}</p>
+            <p>{ansuchen.reviewC2CommentTr}</p>
         </div>
     </f:if>
     <div class="erlaeuterung">
@@ -722,7 +727,7 @@
     </div>
     <f:if condition="{ansuchen.reviewC3CommentTr}">
         <div class="commentTr">
-            <p>{stammdaten.reviewC3CommentTr}</p>
+            <p>{ansuchen.reviewC3CommentTr}</p>
         </div>
     </f:if>
     <div class="erlaeuterung">

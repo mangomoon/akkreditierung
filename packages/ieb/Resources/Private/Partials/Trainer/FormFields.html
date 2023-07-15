@@ -12,17 +12,17 @@
         </div>
     </div>
 </div>
-
-            <f:if condition="{stammdaten.reviewA1CommentTr }">
+<f:debug>{trainer}</f:debug>
+            <f:if condition="{trainer.reviewC2BabiCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
-                    <p>{stammdaten.reviewC2BabiCommentTr }</p>
+                    <p>{trainer.reviewC2BabiCommentTr}</p>
                 </div>
             </f:if>
-            <f:if condition="{stammdaten.reviewA1CommentTr }">
+            <f:if condition="{trainer.reviewC2PsaCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
-                    <p>{stammdaten.reviewC2PsaCommentTr }</p>
+                    <p>{trainer.reviewC2PsaCommentTr}</p>
                 </div>
             </f:if>
 

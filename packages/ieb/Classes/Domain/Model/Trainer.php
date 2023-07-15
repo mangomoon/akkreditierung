@@ -157,13 +157,6 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $anerkennungPp3 = false;
 
     /**
-     * title
-     *
-     * @var string
-     */
-    protected $title = '';
-
-    /**
      * lebenslaufDatei
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -327,6 +320,20 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $reviewC2PsaCommentTr = '';
+
+    /**
+     * reviewC2PsaCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2PsaCommentInternalStep = '';
+
+    /**
+     * reviewC2BabiCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2BabiCommentInternalStep = '';
 
     /**
      * Returns the nachname
@@ -814,27 +821,6 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isAnerkennungPp3()
     {
         return $this->anerkennungPp3;
-    }
-
-    /**
-     * Returns the title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Sets the title
-     *
-     * @param string $title
-     * @return void
-     */
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
     }
     public function getVollerName()
     {
@@ -1436,5 +1422,47 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewC2PsaCommentTr(string $reviewC2PsaCommentTr)
     {
         $this->reviewC2PsaCommentTr = $reviewC2PsaCommentTr;
+    }
+
+    /**
+     * Returns the reviewC2PsaCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2PsaCommentInternalStep()
+    {
+        return $this->reviewC2PsaCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2PsaCommentInternalStep
+     *
+     * @param string $reviewC2PsaCommentInternalStep
+     * @return void
+     */
+    public function setReviewC2PsaCommentInternalStep(string $reviewC2PsaCommentInternalStep)
+    {
+        $this->reviewC2PsaCommentInternalStep = $reviewC2PsaCommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2BabiCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2BabiCommentInternalStep()
+    {
+        return $this->reviewC2BabiCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2BabiCommentInternalStep
+     *
+     * @param string $reviewC2BabiCommentInternalStep
+     * @return void
+     */
+    public function setReviewC2BabiCommentInternalStep(string $reviewC2BabiCommentInternalStep)
+    {
+        $this->reviewC2BabiCommentInternalStep = $reviewC2BabiCommentInternalStep;
     }
 }

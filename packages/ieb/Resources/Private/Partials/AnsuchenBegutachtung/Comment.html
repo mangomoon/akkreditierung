@@ -1,0 +1,30 @@
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+<div class="komm-int">
+    <f:for each="{comments}" as="comment">
+        <p>
+            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+        </p>
+    </f:for>
+</div>
+<div>
+    <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
+</div>
+<div class="ansuchen knoepfe">
+    <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
+    <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
+    <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
+    <label class="knopf plenum {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
+    <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
+</div>
+<div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+    <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
+    <div class="knopf textbausteinoeffner">Textbausteine</div>
+    <div class="textbausteine">
+        <div class="textbaustein">Lorem ipsum dolet</div>
+        <div class="textbaustein">Und so weiter!</div>
+        <div class="textbaustein">Und so fort ...</div>
+    </div>
+</div>

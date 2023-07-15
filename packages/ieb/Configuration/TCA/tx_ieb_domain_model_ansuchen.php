@@ -10,11 +10,11 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'name,nummer,zuteilung_datum,kompetenzbereiche_text,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_comment_internal_step,review_b1_comment_tr,review_b2_comment_internal,review_b2_comment_internal_step,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_internal_step,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_internal_step,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_internal_step,review_c3_comment_tr,review_total_comment_internal,review_total_comment_internal_step,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,kompetenz_text2,nummerpp3,copy_stammdaten,copy_trainer,copy_berater,copy_standorte,review_b14_comment_internal,review_b14_comment_internal_step,review_b14_comment_tr,review_b15_comment_internal,review_b15_comment_internal_step,review_b15_comment_tr,review_b22_comment_internal,review_b22_comment_internal_step,review_b22_comment_tr,review_b23_comment_internal,review_b23_comment_internal_step,review_b23_comment_tr',
+        'searchFields' => 'name,nummer,zuteilung_datum,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_comment_internal_step,review_b1_comment_tr,review_b2_comment_internal,review_b2_comment_internal_step,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_internal_step,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_internal_step,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_internal_step,review_c3_comment_tr,review_total_comment_internal,review_total_comment_internal_step,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,copy_stammdaten,copy_trainer,copy_berater,copy_verantwortliche,copy_standorte,review_b14_comment_internal,review_b14_comment_internal_step,review_b14_comment_tr,review_b15_comment_internal,review_b15_comment_internal_step,review_b15_comment_tr,review_b22_comment_internal,review_b22_comment_internal_step,review_b22_comment_tr,review_b23_comment_internal,review_b23_comment_internal_step,review_b23_comment_tr',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, kompetenzbereiche, kompetenzbereiche_text, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_comment_internal_step, review_b1_comment_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_internal_step, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_internal_step, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_internal_step, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_internal_step, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, erklaerungd4, kompetenz_text1, kompetenz_text2, erklaerung_teil_a, erklaerung_teil_b, nummerpp3, erklaerungd5, copy_stammdaten, copy_trainer, copy_berater, copy_standorte, review_b14_comment_internal, review_b14_comment_internal_step, review_b14_comment_tr, review_b14_status, review_b15_comment_internal, review_b15_comment_internal_step, review_b15_comment_tr, review_b15_status, review_b22_comment_internal, review_b22_comment_internal_step, review_b22_comment_tr, review_b22_status, review_b23_comment_internal, review_b23_comment_internal_step, review_b23_comment_tr, review_b23_status, stammdaten_static, standorte_static, verantwortliche, verantwortliche_mail, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_comment_internal_step, review_b1_comment_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_internal_step, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_internal_step, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_internal_step, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_internal_step, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, kompetenz_text1, erklaerung_teil_a, erklaerung_teil_b, erklaerungd5, copy_stammdaten, copy_trainer, copy_berater, copy_verantwortliche, copy_standorte, review_b14_comment_internal, review_b14_comment_internal_step, review_b14_comment_tr, review_b14_status, review_b15_comment_internal, review_b15_comment_internal_step, review_b15_comment_tr, review_b15_status, review_b22_comment_internal, review_b22_comment_internal_step, review_b22_comment_tr, review_b22_status, review_b23_comment_internal, review_b23_comment_internal_step, review_b23_comment_tr, review_b23_status, stammdaten_static, standorte_static, verantwortliche, verantwortliche_mail, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -172,29 +172,6 @@ return [
                 'maxitems' => 1,
                 'eval' => ''
             ],
-        ],
-        'kompetenzbereiche' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenzbereiche',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenzbereiche.description',
-            'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int',
-                'default' => 0
-            ]
-        ],
-        'kompetenzbereiche_text' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenzbereiche_text',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenzbereiche_text.description',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim',
-                'default' => ''
-            ]
         ],
         'uebersicht_text' => [
             'exclude' => true,
@@ -1329,37 +1306,10 @@ return [
                 'default' => 0,
             ]
         ],
-        'erklaerungd4' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd4',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.erklaerungd4.description',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                    ]
-                ],
-                'default' => 0,
-            ]
-        ],
         'kompetenz_text1' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text1',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text1.description',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'default' => ''
-            ],
-        ],
-        'kompetenz_text2' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text2',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kompetenz_text2.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -1398,17 +1348,6 @@ return [
                 ],
                 'default' => 0,
             ]
-        ],
-        'nummerpp3' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.nummerpp3',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.nummerpp3.description',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'default' => ''
-            ],
         ],
         'erklaerungd5' => [
             'exclude' => true,
@@ -1454,6 +1393,18 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.copy_berater',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.copy_berater.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'copy_verantwortliche' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.copy_verantwortliche',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.copy_verantwortliche.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,

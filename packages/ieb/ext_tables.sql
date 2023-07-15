@@ -111,8 +111,6 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	akkreditierung_entscheidung_datum datetime DEFAULT NULL,
 	typ int(11) DEFAULT '0' NOT NULL,
 	bundesland int(11) DEFAULT '0' NOT NULL,
-	kompetenzbereiche int(11) NOT NULL DEFAULT '0',
-	kompetenzbereiche_text text NOT NULL DEFAULT '',
 	uebersicht_text text NOT NULL DEFAULT '',
 	uebersicht_datei int(11) unsigned NOT NULL DEFAULT '0',
 	zielgruppen_ansprache text NOT NULL DEFAULT '',
@@ -170,16 +168,14 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	erklaerungd1 smallint(1) unsigned NOT NULL DEFAULT '0',
 	erklaerungd2 smallint(1) unsigned NOT NULL DEFAULT '0',
 	erklaerungd3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	erklaerungd4 smallint(1) unsigned NOT NULL DEFAULT '0',
 	kompetenz_text1 varchar(255) NOT NULL DEFAULT '',
-	kompetenz_text2 varchar(255) NOT NULL DEFAULT '',
 	erklaerung_teil_a smallint(1) unsigned NOT NULL DEFAULT '0',
 	erklaerung_teil_b smallint(1) unsigned NOT NULL DEFAULT '0',
-	nummerpp3 varchar(255) NOT NULL DEFAULT '',
 	erklaerungd5 smallint(1) unsigned NOT NULL DEFAULT '0',
 	copy_stammdaten text NOT NULL DEFAULT '',
 	copy_trainer text NOT NULL DEFAULT '',
 	copy_berater text NOT NULL DEFAULT '',
+	copy_verantwortliche text NOT NULL DEFAULT '',
 	copy_standorte text NOT NULL DEFAULT '',
 	review_b14_comment_internal text NOT NULL DEFAULT '',
 	review_b14_comment_internal_step text NOT NULL DEFAULT '',
@@ -228,15 +224,14 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	vorname varchar(255) NOT NULL DEFAULT '',
 	lebenslauf int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikationsnachweise int(11) unsigned NOT NULL DEFAULT '0',
-	title varchar(255) NOT NULL DEFAULT '',
 	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
 	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_c3_status int(11) DEFAULT '0' NOT NULL,
 	review_c3_comment_internal text NOT NULL DEFAULT '',
-	review_c3_comment_tr text NOT NULL DEFAULT '',
-	standorte int(11) unsigned NOT NULL DEFAULT '0'
+	review_c3_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_comment_tr text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_trainer (
@@ -258,7 +253,6 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	qualifikation_psa text NOT NULL DEFAULT '',
 	qualifikation_psa_kommentar text NOT NULL DEFAULT '',
 	anerkennung_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	title varchar(255) NOT NULL DEFAULT '',
 	lebenslauf_datei int(11) unsigned NOT NULL DEFAULT '0',
 	qualifikation_babi_datei int(11) unsigned NOT NULL DEFAULT '0',
 	lehr_befugnis_datei int(11) unsigned NOT NULL DEFAULT '0',
@@ -281,7 +275,9 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_babi_comment_internal text NOT NULL DEFAULT '',
 	review_c2_babi_comment_tr text NOT NULL DEFAULT '',
 	review_c2_psa_comment_internal text NOT NULL DEFAULT '',
-	review_c2_psa_comment_tr text NOT NULL DEFAULT ''
+	review_c2_psa_comment_tr text NOT NULL DEFAULT '',
+	review_c2_psa_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_babi_comment_internal_step text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -307,19 +303,17 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	qualitaet_personal text,
 	qualitaet_personal_datei int(11) unsigned NOT NULL DEFAULT '0',
 	tr_pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	pruefbescheid_datei int(11) unsigned NOT NULL DEFAULT '0',
-	pruefbescheid text,
-	pruefbescheid_bis int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	weiterbildung_erklaerung smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_a1_status int(11) DEFAULT '0' NOT NULL,
 	review_a1_comment_internal text NOT NULL DEFAULT '',
 	review_a1_comment_tr text NOT NULL DEFAULT '',
+	review_a1_comment_internal_step text NOT NULL DEFAULT '',
 	review_a2_status int(11) DEFAULT '0' NOT NULL,
 	review_a2_comment_internal text NOT NULL DEFAULT '',
-	review_a2_comment_tr text NOT NULL DEFAULT '',
-	standorte int(11) unsigned DEFAULT '0'
+	review_a2_comment_internal_step text NOT NULL DEFAULT '',
+	review_a2_comment_tr text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
@@ -339,7 +333,8 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

@@ -61,13 +61,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qualifikationsnachweise = null;
 
     /**
-     * title
-     *
-     * @var string
-     */
-    protected $title = '';
-
-    /**
      * lebenslaufKommentar
      *
      * @var string
@@ -110,18 +103,18 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC3CommentInternal = '';
 
     /**
+     * reviewC3CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3CommentInternalStep = '';
+
+    /**
      * reviewC3CommentTr
      *
      * @var string
      */
     protected $reviewC3CommentTr = '';
-
-    /**
-     * standorte
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
-     */
-    protected $standorte = null;
 
     /**
      * __construct
@@ -143,7 +136,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function initializeObject()
     {
-        $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -228,70 +220,6 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQualifikationsnachweise($qualifikationsnachweise)
     {
         $this->qualifikationsnachweise = $qualifikationsnachweise;
-    }
-
-    /**
-     * Adds a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorte
-     * @return void
-     */
-    public function addStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorte)
-    {
-        $this->standorte->attach($standorte);
-    }
-
-    /**
-     * Removes a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove The Standort to be removed
-     * @return void
-     */
-    public function removeStandorte(\GeorgRinger\Ieb\Domain\Model\Standort $standorteToRemove)
-    {
-        $this->standorte->detach($standorteToRemove);
-    }
-
-    /**
-     * Returns the standorte
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort>
-     */
-    public function getStandorte()
-    {
-        return $this->standorte;
-    }
-
-    /**
-     * Sets the standorte
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Standort> $standorte
-     * @return void
-     */
-    public function setStandorte(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorte)
-    {
-        $this->standorte = $standorte;
-    }
-
-    /**
-     * Returns the title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Sets the title
-     *
-     * @param string $title
-     * @return void
-     */
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
     }
     public function getVollerName()
     {
@@ -467,5 +395,26 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewC3CommentTr(string $reviewC3CommentTr)
     {
         $this->reviewC3CommentTr = $reviewC3CommentTr;
+    }
+
+    /**
+     * Returns the reviewC3CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC3CommentInternalStep()
+    {
+        return $this->reviewC3CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC3CommentInternalStep
+     *
+     * @param string $reviewC3CommentInternalStep
+     * @return void
+     */
+    public function setReviewC3CommentInternalStep(string $reviewC3CommentInternalStep)
+    {
+        $this->reviewC3CommentInternalStep = $reviewC3CommentInternalStep;
     }
 }

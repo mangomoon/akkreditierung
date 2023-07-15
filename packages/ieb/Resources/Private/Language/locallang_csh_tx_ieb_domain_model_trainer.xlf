@@ -57,9 +57,6 @@
 			<trans-unit id="anerkennung_pp3.description" resname="anerkennung_pp3.description">
 				<source>anerkennungPp3</source>
 			</trans-unit>
-			<trans-unit id="title.description" resname="title.description">
-				<source>title</source>
-			</trans-unit>
 			<trans-unit id="lebenslauf_datei.description" resname="lebenslauf_datei.description">
 				<source>lebenslaufDatei</source>
 			</trans-unit>
@@ -128,6 +125,15 @@
 			</trans-unit>
 			<trans-unit id="review_c2_psa_comment_tr.description" resname="review_c2_psa_comment_tr.description">
 				<source>reviewC2PsaCommentTr</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_comment_internal_step.description" resname="review_c2_psa_comment_internal_step.description">
+				<source>reviewC2PsaCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_babi_comment_internal_step.description" resname="review_c2_babi_comment_internal_step.description">
+				<source>reviewC2BabiCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
 			</trans-unit>
 			<trans-unit id="ok.description" resname="ok.description">
 				<source>ok</source>

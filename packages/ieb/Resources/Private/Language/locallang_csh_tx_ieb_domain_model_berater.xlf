@@ -15,9 +15,6 @@
 			<trans-unit id="qualifikationsnachweise.description" resname="qualifikationsnachweise.description">
 				<source>qualifikationsnachweise</source>
 			</trans-unit>
-			<trans-unit id="title.description" resname="title.description">
-				<source>title</source>
-			</trans-unit>
 			<trans-unit id="lebenslauf_kommentar.description" resname="lebenslauf_kommentar.description">
 				<source>lebenslaufKommentar</source>
 			</trans-unit>
@@ -36,8 +33,14 @@
 			<trans-unit id="review_c3_comment_internal.description" resname="review_c3_comment_internal.description">
 				<source>reviewC3CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_c3_comment_internal_step.description" resname="review_c3_comment_internal_step.description">
+				<source>reviewC3CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_c3_comment_tr.description" resname="review_c3_comment_tr.description">
 				<source>reviewC3CommentTr</source>
+			</trans-unit>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
 			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>

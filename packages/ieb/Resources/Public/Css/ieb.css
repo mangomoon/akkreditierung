@@ -1400,7 +1400,7 @@ span.checkbox.checked {
 .commentTr {
     border: solid 3px #fff;
     background-color: #feb14c;
-    padding: 0 12px;
+    padding: 6px 12px;
     font-style:italic;
 }
 .commentTr td{

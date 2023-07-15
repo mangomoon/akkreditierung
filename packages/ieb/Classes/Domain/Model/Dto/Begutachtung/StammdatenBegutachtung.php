@@ -7,11 +7,14 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
 class StammdatenBegutachtung extends AbstractDomainObject
 {
-
     public int $ansuchenId = 0;
     public int $stammdatenId = 0;
     public int $reviewA1Status = 0;
     public string $reviewA1CommentInternal = '';
+    public string $reviewA1CommentInternalStep = '';
     public string $reviewA1CommentTr = '';
     public int $reviewA2Status = 0;
+    public string $reviewA2CommentInternal = '';
+    public string $reviewA2CommentInternalStep = '';
+    public string $reviewA2CommentTr = '';
 }

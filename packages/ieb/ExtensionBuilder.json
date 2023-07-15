@@ -1233,8 +1233,8 @@
         {
             "config": {
                 "position": [
-                    629,
-                    186
+                    645,
+                    267
                 ]
             },
             "name": "New Model Object",
@@ -1395,30 +1395,6 @@
                             "propertyName": "bundesland",
                             "propertyType": "Select",
                             "uid": "694064422519"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "kompetenzbereiche",
-                            "propertyType": "Integer",
-                            "uid": "1476407134919"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "kompetenzbereicheText",
-                            "propertyType": "Text",
-                            "uid": "289339687888"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2112,33 +2088,9 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "erklaerungd4",
-                            "propertyType": "Boolean",
-                            "uid": "942843159933"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
                             "propertyName": "kompetenzText1",
                             "propertyType": "String",
                             "uid": "758496396831"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "kompetenzText2",
-                            "propertyType": "String",
-                            "uid": "379071272079"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2163,18 +2115,6 @@
                             "propertyName": "erklaerungTeilB",
                             "propertyType": "Boolean",
                             "uid": "528888786802"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "nummerpp3",
-                            "propertyType": "String",
-                            "uid": "1007336114618"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2223,6 +2163,18 @@
                             "propertyName": "copyBerater",
                             "propertyType": "Text",
                             "uid": "1397881997647"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "copyVerantwortliche",
+                            "propertyType": "Text",
+                            "uid": "1400244309938"
                         },
                         {
                             "allowedFileTypes": "",
@@ -2811,18 +2763,6 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "title",
-                            "propertyType": "String",
-                            "uid": "117266985960"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
                             "propertyName": "lebenslaufKommentar",
                             "propertyType": "String",
                             "uid": "422718190163"
@@ -2895,6 +2835,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewC3CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "883318416004"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewC3CommentTr",
                             "propertyType": "Text",
                             "uid": "1632080931652"
@@ -2902,19 +2854,7 @@
                     ]
                 },
                 "relationGroup": {
-                    "relations": [
-                        {
-                            "foreignRelationClass": "",
-                            "lazyLoading": false,
-                            "propertyIsExcludeField": true,
-                            "relationDescription": "",
-                            "relationName": "standorte",
-                            "relationType": "manyToMany",
-                            "relationWire": "[wired]",
-                            "renderType": "selectMultipleSideBySide",
-                            "uid": "582396994021"
-                        }
-                    ]
+                    "relations": []
                 }
             }
         },
@@ -3167,18 +3107,6 @@
                             "propertyName": "anerkennungPp3",
                             "propertyType": "Boolean",
                             "uid": "1230264457838"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "title",
-                            "propertyType": "String",
-                            "uid": "317524960614"
                         },
                         {
                             "allowedFileTypes": "",
@@ -3455,6 +3383,30 @@
                             "propertyName": "reviewC2PsaCommentTr",
                             "propertyType": "Text",
                             "uid": "401784931039"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewC2PsaCommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1267628856784"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewC2BabiCommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "503332311184"
                         }
                     ]
                 },
@@ -3769,42 +3721,6 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "pruefbescheidDatei",
-                            "propertyType": "File",
-                            "uid": "1297792623896"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "pruefbescheid",
-                            "propertyType": "RichText",
-                            "uid": "548114500900"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "pruefbescheidBis",
-                            "propertyType": "Date",
-                            "uid": "436048293001"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "651968016407"
@@ -3877,6 +3793,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewA1CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "349350857243"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewA2Status",
                             "propertyType": "Select",
                             "uid": "796869104826"
@@ -3901,6 +3829,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewA2CommentInternalStep",
+                            "propertyType": "Text",
+                            "uid": "1088613974559"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewA2CommentTr",
                             "propertyType": "Text",
                             "uid": "410316542207"
@@ -3908,19 +3848,7 @@
                     ]
                 },
                 "relationGroup": {
-                    "relations": [
-                        {
-                            "foreignRelationClass": "",
-                            "lazyLoading": false,
-                            "propertyIsExcludeField": true,
-                            "relationDescription": "",
-                            "relationName": "standorte",
-                            "relationType": "zeroToOne",
-                            "relationWire": "[wired]",
-                            "renderType": "selectSingle",
-                            "uid": "893270584296"
-                        }
-                    ]
+                    "relations": []
                 }
             }
         },
@@ -4387,18 +4315,6 @@
         },
         {
             "src": {
-                "moduleId": 6,
-                "terminal": "relationWire_0",
-                "uid": "582396994021"
-            },
-            "tgt": {
-                "moduleId": 5,
-                "terminal": "SOURCES",
-                "uid": "74057418700"
-            }
-        },
-        {
-            "src": {
                 "moduleId": 0,
                 "terminal": "relationWire_0",
                 "uid": "1318679459974"
@@ -4431,18 +4347,6 @@
                 "moduleId": 8,
                 "terminal": "SOURCES",
                 "uid": "1089499079581"
-            }
-        },
-        {
-            "src": {
-                "moduleId": 8,
-                "terminal": "relationWire_0",
-                "uid": "893270584296"
-            },
-            "tgt": {
-                "moduleId": 5,
-                "terminal": "SOURCES",
-                "uid": "74057418700"
             }
         },
         {
@@ -4580,7 +4484,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-06-27 09:47",
+        "last_modified": "2023-07-14 07:11",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

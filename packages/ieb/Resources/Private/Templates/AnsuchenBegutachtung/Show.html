@@ -336,7 +336,7 @@
                     </div>
                     <div class="rechts col-5">
 
-                        <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
 
                         <!-- B1 ist aktuell 2x in verwendung...siehe below: unten ist B14! -->
                     </div>
@@ -392,7 +392,7 @@
                         </ul>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewB14', status:ansuchen.reviewB14Status, comments:ansuchen.reviewB14CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB14', status:ansuchen.reviewB14Status, comments:ansuchen.reviewB14CommentInternalData}" />
                     </div>
 
                 </div>
@@ -446,7 +446,7 @@
 
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewB15', status:ansuchen.reviewB15Status, comments:ansuchen.reviewB15CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB15', status:ansuchen.reviewB15Status, comments:ansuchen.reviewB15CommentInternalData}" />
                     </div>
 
                 </div>
@@ -490,7 +490,7 @@
                     </f:if>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewB2', status:ansuchen.reviewB2Status, comments:ansuchen.reviewB2CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB2', status:ansuchen.reviewB2Status, comments:ansuchen.reviewB2CommentInternalData}" />
                     </div>
 
                 </div>
@@ -596,7 +596,7 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewB22', status:ansuchen.reviewB22Status, comments:ansuchen.reviewB22CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB22', status:ansuchen.reviewB22Status, comments:ansuchen.reviewB22CommentInternalData}" />
                     </div>
                 </div>
 
@@ -637,7 +637,7 @@
                 </div>
 
                 <div class="rechts col-5">
-                    <f:render section="comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData}" />
+                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData}" />
                 </div>
 
             </div>
@@ -711,7 +711,7 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData}" />
                     </div>
 
                 </div>
@@ -764,7 +764,7 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewC2', status:ansuchen.reviewC2Status, comments:ansuchen.reviewC2CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC2', status:ansuchen.reviewC2Status, comments:ansuchen.reviewC2CommentInternalData}" />
                     </div>
 
                 </div>
@@ -816,7 +816,7 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <f:render section="comment" arguments="{property:'reviewC3', status:ansuchen.reviewC3Status, comments:ansuchen.reviewC3CommentInternalData}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC3', status:ansuchen.reviewC3Status, comments:ansuchen.reviewC3CommentInternalData}" />
                     </div>
 
                 </div>
@@ -870,9 +870,7 @@
                     noch mehr
                 </div>
                 <div class="rechts col-6">
-                    <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
-            kriterium = 'blabla'
-        }" />
+                    SCHULSSKOMMENTAR
                 </div>
             </div>
         </div>
@@ -934,32 +932,7 @@
 </f:section>
 
 <f:section name="comment">
-    <div class="komm-int">
-        <f:for each="{comments}" as="comment">
-            <p>
-                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
-            </p>
-        </f:for>
-    </div>
-    <div>
-        <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
-    </div>
-    <div class="ansuchen knoepfe">
-        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" />nan</label>
-        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" />ok</label>
-        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" />zweit</label>
-        <label class="knopf plenum {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" />Plenum</label>
-        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
-    </div>
-    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
-        <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
-        <div class="knopf textbausteinoeffner">Textbausteine</div>
-        <div class="textbausteine">
-            <div class="textbaustein">Lorem ipsum dolet</div>
-            <div class="textbaustein">Und so weiter!</div>
-            <div class="textbaustein">Und so fort ...</div>
-        </div>
-    </div>
+
 </f:section>
 
 </html>

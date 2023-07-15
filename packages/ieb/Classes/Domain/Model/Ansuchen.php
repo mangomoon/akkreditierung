@@ -100,20 +100,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $bundesland = 0;
 
     /**
-     * kompetenzbereiche
-     *
-     * @var int
-     */
-    protected $kompetenzbereiche = 0;
-
-    /**
-     * kompetenzbereicheText
-     *
-     * @var string
-     */
-    protected $kompetenzbereicheText = '';
-
-    /**
      * uebersichtText
      *
      * @var string
@@ -521,25 +507,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $erklaerungd3 = false;
 
     /**
-     * erklaerungd4
-     *
-     * @var bool
-     */
-    protected $erklaerungd4 = false;
-
-    /**
      * kompetenzText1
      *
      * @var string
      */
     protected $kompetenzText1 = '';
-
-    /**
-     * kompetenzText2
-     *
-     * @var string
-     */
-    protected $kompetenzText2 = '';
 
     /**
      * erklaerungTeilA
@@ -554,13 +526,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var bool
      */
     protected $erklaerungTeilB = false;
-
-    /**
-     * nummerpp3
-     *
-     * @var string
-     */
-    protected $nummerpp3 = '';
 
     /**
      * erklaerungd5
@@ -785,6 +750,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
+
+    /**
+     * copyVerantwortliche
+     *
+     * @var string
+     */
+    protected $copyVerantwortliche = '';
 
     /**
      * __construct
@@ -1055,48 +1027,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBundesland(int $bundesland)
     {
         $this->bundesland = $bundesland;
-    }
-
-    /**
-     * Returns the kompetenzbereiche
-     *
-     * @return int
-     */
-    public function getKompetenzbereiche()
-    {
-        return (int) $this->kompetenzbereiche;
-    }
-
-    /**
-     * Sets the kompetenzbereiche
-     *
-     * @param int $kompetenzbereiche
-     * @return void
-     */
-    public function setKompetenzbereiche($kompetenzbereiche)
-    {
-        $this->kompetenzbereiche = (int) $kompetenzbereiche;
-    }
-
-    /**
-     * Returns the kompetenzbereicheText
-     *
-     * @return string
-     */
-    public function getKompetenzbereicheText()
-    {
-        return $this->kompetenzbereicheText;
-    }
-
-    /**
-     * Sets the kompetenzbereicheText
-     *
-     * @param string $kompetenzbereicheText
-     * @return void
-     */
-    public function setKompetenzbereicheText(string $kompetenzbereicheText)
-    {
-        $this->kompetenzbereicheText = $kompetenzbereicheText;
     }
 
     /**
@@ -2602,27 +2532,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the kompetenzText2
-     *
-     * @return string
-     */
-    public function getKompetenzText2()
-    {
-        return $this->kompetenzText2;
-    }
-
-    /**
-     * Sets the kompetenzText2
-     *
-     * @param string $kompetenzText2
-     * @return void
-     */
-    public function setKompetenzText2(string $kompetenzText2)
-    {
-        $this->kompetenzText2 = $kompetenzText2;
-    }
-
-    /**
      * Returns the erklaerungd1
      *
      * @return bool erklaerungd1
@@ -2716,37 +2625,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the erklaerungd4
-     *
-     * @return bool erklaerungd4
-     */
-    public function getErklaerungd4()
-    {
-        return $this->erklaerungd4;
-    }
-
-    /**
-     * Sets the erklaerungd4
-     *
-     * @param bool $erklaerungd4
-     * @return void
-     */
-    public function setErklaerungd4(bool $erklaerungd4)
-    {
-        $this->erklaerungd4 = $erklaerungd4;
-    }
-
-    /**
-     * Returns the boolean state of erklaerungd4
-     *
-     * @return bool erklaerungd4
-     */
-    public function isErklaerungd4()
-    {
-        return $this->erklaerungd4;
-    }
-
-    /**
      * Returns the erklaerungTeilA
      *
      * @return bool
@@ -2775,27 +2653,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isErklaerungTeilA()
     {
         return $this->erklaerungTeilA;
-    }
-
-    /**
-     * Returns the nummerpp3
-     *
-     * @return string
-     */
-    public function getNummerpp3()
-    {
-        return $this->nummerpp3;
-    }
-
-    /**
-     * Sets the nummerpp3
-     *
-     * @param string $nummerpp3
-     * @return void
-     */
-    public function setNummerpp3(string $nummerpp3)
-    {
-        $this->nummerpp3 = $nummerpp3;
     }
 
     /**
@@ -3492,9 +3349,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
 
-    /** @var \DateTime */
-    protected $tstamp;
-
     /**
      * @return \DateTime
      */
@@ -3503,4 +3357,24 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->tstamp;
     }
 
+    /**
+     * Returns the copyVerantwortliche
+     *
+     * @return string
+     */
+    public function getCopyVerantwortliche()
+    {
+        return $this->copyVerantwortliche;
+    }
+
+    /**
+     * Sets the copyVerantwortliche
+     *
+     * @param string $copyVerantwortliche
+     * @return void
+     */
+    public function setCopyVerantwortliche(string $copyVerantwortliche)
+    {
+        $this->copyVerantwortliche = $copyVerantwortliche;
+    }
 }

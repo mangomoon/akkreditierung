@@ -69,15 +69,6 @@
 			<trans-unit id="tr_pp3.description" resname="tr_pp3.description">
 				<source>trPp3</source>
 			</trans-unit>
-			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
-				<source>pruefbescheidDatei</source>
-			</trans-unit>
-			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
-				<source>pruefbescheid</source>
-			</trans-unit>
-			<trans-unit id="pruefbescheid_bis.description" resname="pruefbescheid_bis.description">
-				<source>pruefbescheidBis</source>
-			</trans-unit>
 			<trans-unit id="locked_by.description" resname="locked_by.description">
 				<source>lockedBy</source>
 			</trans-unit>
@@ -96,14 +87,29 @@
 			<trans-unit id="review_a1_comment_tr.description" resname="review_a1_comment_tr.description">
 				<source>reviewA1CommentTr</source>
 			</trans-unit>
+			<trans-unit id="review_a1_comment_internal_step.description" resname="review_a1_comment_internal_step.description">
+				<source>reviewA1CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_a2_status.description" resname="review_a2_status.description">
 				<source>reviewA2Status</source>
 			</trans-unit>
 			<trans-unit id="review_a2_comment_internal.description" resname="review_a2_comment_internal.description">
 				<source>reviewA2CommentInternal</source>
 			</trans-unit>
+			<trans-unit id="review_a2_comment_internal_step.description" resname="review_a2_comment_internal_step.description">
+				<source>reviewA2CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="review_a2_comment_tr.description" resname="review_a2_comment_tr.description">
 				<source>reviewA2CommentTr</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
+				<source>pruefbescheidDatei</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid.description" resname="pruefbescheid.description">
+				<source>pruefbescheid</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_bis.description" resname="pruefbescheid_bis.description">
+				<source>pruefbescheidBis</source>
 			</trans-unit>
 			<trans-unit id="standorte.description" resname="standorte.description">
 				<source>standorte</source>
