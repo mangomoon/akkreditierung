@@ -5,9 +5,9 @@
 
     <div class="kriteriumteil">
         <div class="" id="a-1-1">
-            <f:if condition="{stammdaten.reviewA1CommentTr }">
+            <f:if condition="{stammdaten.reviewA1Status}==4">
                 <div class="commentTr">
-                    <p>{stammdaten.reviewA1CommentTr }</p>
+                    <p>{stammdaten.reviewA1CommentTr}</p>
                 </div>
             </f:if>
             
@@ -91,7 +91,7 @@
 
 <div class="kriterium  status-{stammdaten.reviewA2Status}" id="a-2-1">
     <h2>A.2. QUALITÄT DES ANBIETERS</h2>
-        <f:if condition="{stammdaten.reviewA2CommentTr }">
+        <f:if condition="{stammdaten.reviewA2Status}==4">
                 <div class="commentTr">
                     <p>{stammdaten.reviewA2CommentTr }</p>
                 </div>
@@ -100,11 +100,6 @@
             <h2>A.2.1 Leitbild</h2>
             <div class="info"></div>
             <div class="infobox" id="a-2-1-hilfe">Das Leitbild weist einen Erwachsenenbildungsbezug aus.</div>
-            <f:if condition="{stammdaten.reviewA2CommentTr }">
-                        <div class="commentTr">
-                            <p>{stammdaten.reviewA2CommentTr }</p>
-                        </div>
-                    </f:if>
             <div class="erlaeuterung">
                 <p>Laden Sie das Leitbild der Einrichtung hoch.</p>
                 <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>

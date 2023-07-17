@@ -47,6 +47,7 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_ZUR_BEGUTACHTUNG->value,
             self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
             self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
         ];
     }
 

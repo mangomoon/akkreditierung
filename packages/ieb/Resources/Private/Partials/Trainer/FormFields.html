@@ -13,13 +13,13 @@
     </div>
 </div>
 <f:debug>{trainer}</f:debug>
-            <f:if condition="{trainer.reviewC2BabiCommentTr}">
+            <f:if condition="{trainer.reviewC2BabiStatus}==4">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
                     <p>{trainer.reviewC2BabiCommentTr}</p>
                 </div>
             </f:if>
-            <f:if condition="{trainer.reviewC2PsaCommentTr}">
+            <f:if condition="{trainer.reviewC2PsaStatus}==4">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
                     <p>{trainer.reviewC2PsaCommentTr}</p>

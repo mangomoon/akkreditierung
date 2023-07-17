@@ -43,7 +43,7 @@
 <div class="kriterium">
     <h3>A.1 Angaben zur Organisation</h3>
     <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA1Status}">
-        <f:if condition="{relations.stammdaten.reviewA1CommentTr}">
+        <f:if condition="{relations.stammdaten.reviewA1Status}==4">
             <tr class="commentTr">
                 <td colspan="3">{relations.stammdaten.reviewA1CommentTr}</td>
             </tr>
@@ -148,7 +148,7 @@
 
     <h3>A.2 Qualität des Anbieters</h3>
     <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA2Status}">
-        <f:if condition="{relations.stammdaten.reviewA2CommentTr}">
+        <f:if condition="{relations.stammdaten.reviewA2Status}==4">
             <tr class="commentTr">
                 <td colspan="3">{relations.stammdaten.reviewA2CommentTr}</td>
             </tr>
@@ -242,7 +242,7 @@
 <div class="kriterium  status-{ansuchen.reviewB1Status}">
     <h2>B.1 Eckdaten zum Angebot</h2>
 
-    <f:if condition="{ansuchen.reviewB1CommentTr}">
+    <f:if condition="{ansuchen.reviewB1Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewB1CommentTr}</p>
         </div>
@@ -345,7 +345,7 @@
 
     <div class="kriteriumteil">
         <h3>B.1.4 Kursstandorte</h3>
-        <f:if condition="{ansuchen.reviewB14CommentTr}">
+        <f:if condition="{ansuchen.reviewB14Status}==4">
             <div class="commentTr">
                 <p>{ansuchen.reviewB14CommentTr}</p>
             </div>
@@ -392,7 +392,7 @@
             <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'checked')}">ja</knopf>
             <knopf class="inline pruefjanein nein">nein</knopf>
         </p>
-        <f:if condition="{ansuchen.reviewB15CommentTr}">
+        <f:if condition="{ansuchen.reviewB15Status}==4">
             <div class="commentTr">
                 <p>{ansuchen.reviewB15CommentTr}</p>
             </div>
@@ -441,9 +441,9 @@
 
 <!-- ############### B.2  ########### -->
 
-<div class="kriterium status-{ansuchen.reviewB21Status}">
+<div class="kriterium status-{ansuchen.reviewB2Status}">
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
-    <f:if condition="{ansuchen.reviewB2CommentTr}">
+    <f:if condition="{ansuchen.reviewB2Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewB2CommentTr}</p>
         </div>
@@ -479,7 +479,7 @@
             <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots
                 (maximal 30%)</p>
         </div>
-        <f:if condition="{ansuchen.reviewB22CommentTr}">
+        <f:if condition="{ansuchen.reviewB22Status}==4">
             <div class="commentTr">
                 <p>{ansuchen.reviewB22CommentTr}</p>
             </div>
@@ -595,7 +595,7 @@
         <div class="infobox" id="b-2-d-hilfe">
             <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
         </div>
-        <f:if condition="{ansuchen.reviewB23CommentTr}">
+        <f:if condition="{ansuchen.reviewB23Status}==4">
             <div class="commentTr">
                 <p>{ansuchen.reviewB23CommentTr}</p>
             </div>
@@ -637,7 +637,7 @@
     <div class="infobox" id="c-1-hilfe">
         <p>Die Projektleitung verfügt über Management-Kompetenz und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
     </div>
-    <f:if condition="{ansuchen.reviewC1CommentTr}">
+    <f:if condition="{ansuchen.reviewC1Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewC1CommentTr}</p>
         </div>
@@ -689,7 +689,7 @@
     <div class="infobox" id="c-2-hilfe">
         <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
     </div>
-    <f:if condition="{ansuchen.reviewC2CommentTr}">
+    <f:if condition="{ansuchen.reviewC2Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewC2CommentTr}</p>
         </div>
@@ -725,7 +725,7 @@
     <div class="infobox" id="c-3-hilfe">
         <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
     </div>
-    <f:if condition="{ansuchen.reviewC3CommentTr}">
+    <f:if condition="{ansuchen.reviewC3Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewC3CommentTr}</p>
         </div>
