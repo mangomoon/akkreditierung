@@ -2101,22 +2101,22 @@
 				<source>akkreditiert, muss nachakkreditiert werden</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.120" resname="ansuchen.status.120">
-				<source>Akkreditierung aus- gesetzt</source>
+				<source>Akkreditierung ausgesetzt</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.130" resname="ansuchen.status.130">
 				<source>akkreditiert, in Arbeit zur Nachakkreditie- rung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.140" resname="ansuchen.status.140">
-				<source>akkreditiert mit Auf- lagen</source>
+				<source>akkreditiert mit Auflagen</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.142" resname="ansuchen.status.142">
 				<source>akkreditiert mit Auflagen, muss noch akkreditiert werden</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.150">
-				<source>eingereicht zur Nach- akkreditierung oder Auflagenerfüllung</source>
+				<source>eingereicht zur Nachakkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.160">
-				<source>Begutachtung nach Einreichung zur Nach- akkreditierung oder Auflagenerfüllung</source>
+				<source>Begutachtung nach Einreichung zur Nachakkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.800" resname="ansuchen.status.800">
 				<source>nicht akkreditiert</source>

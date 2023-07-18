@@ -3,14 +3,11 @@
 
 <f:section name="content">
     <f:flashMessages />
-    <f:debug>{diff}</f:debug>
+    <f:debug>{_all}</f:debug>
 
     <div class="abstand-gross"></div>
-
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
-
-        <f:debug>{_all}</f:debug>
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -24,7 +21,8 @@
         </div>
         <div class="abstand-gross"></div>
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{stammdaten.reviewA1Status}" id="kA1">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -67,6 +65,9 @@
                             <td class="daten">
                                 {stammdaten.markenname}
                                 {ieb:diff(diff:diff,field:'stammdaten.markenname')}
+                                <f:if condition="{diff.copy_stammdaten.markenname}">
+                                    <div class="diff">{diff.copy_stammdaten.markenname}</div>
+                                </f:if>
                             </td>
                         </tr>
                         <tr class="linie">
@@ -111,6 +112,7 @@
                                 <f:render partial="Ansuchen/UploadList" arguments="{
                                     field = 'stammdaten.nachweis'
                                 }" />
+                                
                             </td>
                         </tr>
                         <tr class="linie">
@@ -179,12 +181,14 @@
                     <p>Und das ist der Kommentar: {ansuchen.reviewA1CommentInternal}</p>
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- A.2 Stammdaten #################################################### -->
 
-        <div class="begutachtung-kriterium" id="k1">
-            <div class="kriteriumtitel">
+        <div class="begutachtung-kriterium row status-{stammdaten.reviewA2Status}" id="kA2">
+            <div class="col">
+                            <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
                         <h2>A.2. QUALITÄT DES ANBIETERS</h2>
@@ -195,7 +199,7 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
+
                 <div class="row">
                     <div class="links col-7">
                         <div class="kriteriumteil">
@@ -218,6 +222,9 @@
                                 <f:then>
                                     <p>Die Organisation verfügt über Ö-Cert.</p>
                                     <f:render section="media" arguments="{media:stammdaten.qmsZertifikatDatei}" />
+                                    <f:if condition="{diff.copy_stammdaten.qmsZertifikatDatei}">
+                                        <div class="diff"> {diff.copy_stammdaten.qmsZertifikatDatei.publicUrl.previous} </div>
+                                    </f:if>
                                     <div class="erlaeuterung">
                                         <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
                                     </div>
@@ -236,6 +243,10 @@
                                     <f:render partial="Ansuchen/UploadList" arguments="{
                                         field = 'stammdaten.qualitaetSicherungDatei'
                                     }" />
+                                    <f:render section="uploadmultiple" arguments="{
+                                        media = 'stammdaten.qualitaetSicherungDatei'
+                                    }" />
+
                                 </f:else>
                             </f:if>
 
@@ -256,6 +267,10 @@
                                 </p>
                             </div>
                             <f:render section="media" arguments="{media:stammdaten.qualitaetPersonalDatei}" />
+                            #########>>{stammdaten.qualitaetPersonalDatei.title}<<#########
+                            <f:if condition="{diff.copy_stammdaten.qualitaetPersonalDatei}">
+                                        <div class="diff"> {diff.copy_stammdaten.qualitaetPersonalDatei.publicUrl.previous} </div>
+                                    </f:if>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -271,7 +286,8 @@
 
         <!-- B.1. Eckdaten zum Angebot #################################################### -->
 
-        <div class="begutachtung-kriterium  status-{ansuchen.reviewB1Status}" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB1Status}" id="kB1">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -283,7 +299,7 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
+
                 <div class="row">
                     <div class="links col-7">
                         <div class="kriteriumteil">
@@ -342,14 +358,16 @@
                     </div>
 
                 </div>
-            </div>
+
         </div>
+    </div>
 
 
 
         <!-- B.1.4 Standorte #################################################### -->
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB14Status}" id="kB14">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -359,9 +377,8 @@
                         <div class="infoknopf"></div>
                     </div>
                 </div>
-
             </div>
-            <div class="begutachtung-kriterium" id="k1">
+
                 <div class="row">
                     <div class="links col-7">
 
@@ -402,7 +419,8 @@
 
         <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB15Status}" id="kB15">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -414,7 +432,7 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
+
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
@@ -460,7 +478,8 @@
 
         <!-- B.2.1 Ansprache und Erreichung der Zielgruppe #################################################### -->
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB2Status}" id="kB2">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -472,7 +491,6 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
@@ -501,7 +519,8 @@
         <!-- B.2.2 Didaktisch-methodisches Vorgehen #################################################### -->
 
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB22Status}" id="kB22">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -513,7 +532,6 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
                 <div class="row">
                     <div class="links col-7">
                         <div class="kriteriumteil">
@@ -611,7 +629,8 @@
         <!-- B.2.3 Beratung, Coaching und Begleitung #################################################### -->
 
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewB23Status}" id="kB23">
+            <div class="col">
             <div class="row">
                 <div class="links col-7">
                     <div class="kriteriumteil">
@@ -641,7 +660,7 @@
                 </div>
 
             </div>
-
+            </div>
         </div>
 
 
@@ -649,7 +668,8 @@
         <!-- C.1 Projektleitung #################################################### -->
 
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewC1Status}" id="kC1">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -661,7 +681,6 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
 
 
 
@@ -723,7 +742,8 @@
         <!-- C.2 Training #################################################### -->
 
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewC2Status}" id="kC2">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -735,20 +755,20 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
 
                 <f:for each="{trainer}" as="t">
                     <div class="row person">
                         <div class="links col-7">
-                            {t.fullName}
+                            {t.fullName} 
 
+                            {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
                             {ieb:diff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
                         </div>
                         <div class="rechts col-5">
                             <div class="knopf">
                                 <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                             </div>
-                            <p>####################{t.reviewC2BabiCommentInternal}</p>
+                            <p>{t.reviewC2BabiCommentInternal}</p>
                         </div>
                     </div>
                 </f:for>
@@ -776,7 +796,8 @@
 
 
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium row status-{ansuchen.reviewC3Status}" id="kC3">
+            <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -788,7 +809,7 @@
                 </div>
 
             </div>
-            <div class="begutachtung-kriterium" id="k1">
+
                 <f:for each="{berater}" as="b">
 
                 <div class="row person">
@@ -826,7 +847,7 @@
 
         <!-- D Erklärungen #################################################### -->
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium" id="kD">
             <div class="kriteriumtitel">
                 <div class="row">
                     <div class="col-6">
@@ -893,7 +914,7 @@
 <f:section name="media">
     <f:if condition="{media.publicUrl}">
         <a href="{media.publicUrl}" target="_blank">
-            <f:image src="{media.publicUrl}" alt="{media.alternative}" width="{f:if(condition: width,then:width,else:150)}" />
+            {media.publicUrl}
         </a>
     </f:if>
 </f:section>
@@ -904,20 +925,7 @@
             <f:then>
                 <f:for each="{media}" as="m">
                     <div class="filelist">
-                        <div class="filelist-links">
-                            <a href="{m.originalResource.publicUrl}" target="_blank">
-                                <f:image image="{m}" alt="{label}" title="{label}" maxWidth="{mediaWidth}" maxHeight="{mediaHeight}" />
-                            </a>
-                        </div>
-                        <div class="filelist-rechts">
-                            <p class="filelink">
-                                <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a>
-                            </p>
-                            <p>{m.originalResource.originalFile.properties.size -> f:format.bytes()} | {m.originalResource.originalFile.properties.extension}</p>
-                            <p>
-                                <f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>
-                            </p>
-                        </div>
+                        <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a> [<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
                     </div>
                 </f:for>
             </f:then>

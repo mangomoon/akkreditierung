@@ -1140,6 +1140,9 @@ table.tx_ieb.standortliste td {
 .begutachtung-kriterium {
     margin-bottom: 40px;
 }
+.begutachtung-kriterium .col{
+    padding-top: 0;
+}
 
 .begutachtung-kriterium .links {
     background: var(--f0b);
@@ -1412,4 +1415,12 @@ span.checkbox.checked {
 /* READONLY  ############# */
 .begutachtung-kopf.readonly p.typ {
     padding-top: 10px;
+}
+
+
+
+/* ############### DIFF ################### */
+.diff {
+    background: var(--beratung);
+    padding: 4px;
 }
