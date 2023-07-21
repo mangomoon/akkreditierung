@@ -336,6 +336,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC2BabiCommentInternalStep = '';
 
     /**
+     * lockedBy
+     *
+     * @var int
+     */
+    protected $lockedBy = 0;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -1464,5 +1471,26 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewC2BabiCommentInternalStep(string $reviewC2BabiCommentInternalStep)
     {
         $this->reviewC2BabiCommentInternalStep = $reviewC2BabiCommentInternalStep;
+    }
+
+    /**
+     * Returns the lockedBy
+     *
+     * @return int
+     */
+    public function getLockedBy()
+    {
+        return $this->lockedBy;
+    }
+
+    /**
+     * Sets the lockedBy
+     *
+     * @param int $lockedBy
+     * @return void
+     */
+    public function setLockedBy(int $lockedBy)
+    {
+        $this->lockedBy = $lockedBy;
     }
 }

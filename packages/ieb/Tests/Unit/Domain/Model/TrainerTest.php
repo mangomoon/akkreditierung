@@ -875,4 +875,25 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiCommentInternalStep'));
     }
+
+    /**
+     * @test
+     */
+    public function getLockedByReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getLockedBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLockedByForIntSetsLockedBy(): void
+    {
+        $this->subject->setLockedBy(12);
+
+        self::assertEquals(12, $this->subject->_get('lockedBy'));
+    }
 }

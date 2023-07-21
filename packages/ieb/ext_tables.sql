@@ -231,7 +231,8 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	review_c3_status int(11) DEFAULT '0' NOT NULL,
 	review_c3_comment_internal text NOT NULL DEFAULT '',
 	review_c3_comment_internal_step text NOT NULL DEFAULT '',
-	review_c3_comment_tr text NOT NULL DEFAULT ''
+	review_c3_comment_tr text NOT NULL DEFAULT '',
+	locked_by int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_trainer (
@@ -277,7 +278,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_psa_comment_internal text NOT NULL DEFAULT '',
 	review_c2_psa_comment_tr text NOT NULL DEFAULT '',
 	review_c2_psa_comment_internal_step text NOT NULL DEFAULT '',
-	review_c2_babi_comment_internal_step text NOT NULL DEFAULT ''
+	review_c2_babi_comment_internal_step text NOT NULL DEFAULT '',
+	locked_by int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -333,8 +335,7 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (

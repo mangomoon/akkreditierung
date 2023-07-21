@@ -2850,6 +2850,18 @@
                             "propertyName": "reviewC3CommentTr",
                             "propertyType": "Text",
                             "uid": "1632080931652"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "777304711204"
                         }
                     ]
                 },
@@ -3407,6 +3419,18 @@
                             "propertyName": "reviewC2BabiCommentInternalStep",
                             "propertyType": "Text",
                             "uid": "503332311184"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "lockedBy",
+                            "propertyType": "Integer",
+                            "uid": "400542981672"
                         }
                     ]
                 },
@@ -4549,7 +4573,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-07-15 07:26",
+        "last_modified": "2023-07-21 10:50",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

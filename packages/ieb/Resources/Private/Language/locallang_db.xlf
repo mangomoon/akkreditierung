@@ -1335,6 +1335,12 @@
 			<trans-unit id="tx_ieb_domain_model_berater.review_c3_comment_tr.description" resname="tx_ieb_domain_model_berater.review_c3_comment_tr.description">
 				<source>Review C3 Comment Tr</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.locked_by" resname="tx_ieb_domain_model_berater.locked_by">
+				<source>Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.locked_by.description" resname="tx_ieb_domain_model_berater.locked_by.description">
+				<source>Locked By</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer" resname="tx_ieb_domain_model_trainer">
 				<source>Trainer</source>
 			</trans-unit>
@@ -1598,6 +1604,12 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.review_c2_babi_comment_internal_step.description" resname="tx_ieb_domain_model_trainer.review_c2_babi_comment_internal_step.description">
 				<source>Review C2 Babi Comment Internal Step</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.locked_by" resname="tx_ieb_domain_model_trainer.locked_by">
+				<source>Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.locked_by.description" resname="tx_ieb_domain_model_trainer.locked_by.description">
+				<source>Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>

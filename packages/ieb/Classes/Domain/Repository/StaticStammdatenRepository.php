@@ -17,6 +17,6 @@ namespace GeorgRinger\Ieb\Domain\Repository;
 /**
  * The repository for StaticStammdatens
  */
-class StaticStammdatenRepository extends BaseRepository
+class StaticStammdatenRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 }

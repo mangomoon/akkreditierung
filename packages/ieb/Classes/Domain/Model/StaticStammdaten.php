@@ -11,7 +11,7 @@ namespace GeorgRinger\Ieb\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2022 Georg Ringer <mail@ringer.it>
+ * (c) 2023 Georg Ringer <mail@ringer.it>
  */
 
 /**
@@ -75,7 +75,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected $seit = null;
+    protected $seit = '';
 
     /**
      * website
@@ -309,6 +309,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the markenname
+     *
+     * @return string
+     */
+    public function getMarkenname()
+    {
+        return $this->markenname;
+    }
+
+    /**
+     * Sets the markenname
+     *
+     * @param string $markenname
+     * @return void
+     */
+    public function setMarkenname(string $markenname)
+    {
+        $this->markenname = $markenname;
+    }
+
+    /**
      * Returns the nachweis
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -324,7 +345,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $nachweis
      * @return void
      */
-    public function setNachweis($nachweis)
+    public function setNachweis(\TYPO3\CMS\Extbase\Domain\Model\FileReference $nachweis)
     {
         $this->nachweis = $nachweis;
     }
@@ -411,6 +432,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setOrt(string $ort)
     {
         $this->ort = $ort;
+    }
+
+    /**
+     * Returns the seit
+     *
+     * @return string
+     */
+    public function getSeit()
+    {
+        return $this->seit;
+    }
+
+    /**
+     * Sets the seit
+     *
+     * @param string $seit
+     * @return void
+     */
+    public function setSeit(string $seit)
+    {
+        $this->seit = $seit;
     }
 
     /**
@@ -513,7 +555,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $leitbildDatei
      * @return void
      */
-    public function setLeitbildDatei($leitbildDatei)
+    public function setLeitbildDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $leitbildDatei)
     {
         $this->leitbildDatei = $leitbildDatei;
     }
@@ -534,7 +576,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei
      * @return void
      */
-    public function setQmsZertifikatDatei($qmsZertifikatDatei)
+    public function setQmsZertifikatDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qmsZertifikatDatei)
     {
         $this->qmsZertifikatDatei = $qmsZertifikatDatei;
     }
@@ -639,7 +681,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei
      * @return void
      */
-    public function setQualitaetSicherungDatei($qualitaetSicherungDatei)
+    public function setQualitaetSicherungDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetSicherungDatei)
     {
         $this->qualitaetSicherungDatei = $qualitaetSicherungDatei;
     }
@@ -681,7 +723,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei
      * @return void
      */
-    public function setQualitaetPersonalDatei($qualitaetPersonalDatei)
+    public function setQualitaetPersonalDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $qualitaetPersonalDatei)
     {
         $this->qualitaetPersonalDatei = $qualitaetPersonalDatei;
     }
@@ -754,7 +796,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei
      * @return void
      */
-    public function setPruefbescheidDatei($pruefbescheidDatei)
+    public function setPruefbescheidDatei(\TYPO3\CMS\Extbase\Domain\Model\FileReference $pruefbescheidDatei)
     {
         $this->pruefbescheidDatei = $pruefbescheidDatei;
     }
@@ -799,6 +841,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewCommentInternal(string $reviewCommentInternal)
     {
         $this->reviewCommentInternal = $reviewCommentInternal;
+    }
+
+    /**
+     * Returns the reviewCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewCommentInternalStep()
+    {
+        return $this->reviewCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewCommentInternalStep
+     *
+     * @param string $reviewCommentInternalStep
+     * @return void
+     */
+    public function setReviewCommentInternalStep(string $reviewCommentInternalStep)
+    {
+        $this->reviewCommentInternalStep = $reviewCommentInternalStep;
     }
 
     /**
@@ -886,6 +949,27 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the weiterbildungErklaerung
+     *
+     * @return int
+     */
+    public function getWeiterbildungErklaerung()
+    {
+        return $this->weiterbildungErklaerung;
+    }
+
+    /**
+     * Sets the weiterbildungErklaerung
+     *
+     * @param int $weiterbildungErklaerung
+     * @return void
+     */
+    public function setWeiterbildungErklaerung(int $weiterbildungErklaerung)
+    {
+        $this->weiterbildungErklaerung = $weiterbildungErklaerung;
+    }
+
+    /**
      * Adds a StaticStandort
      *
      * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorte
@@ -947,68 +1031,5 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBasedOn(\GeorgRinger\Ieb\Domain\Model\Stammdaten $basedOn)
     {
         $this->basedOn = $basedOn;
-    }
-
-    /**
-     * Returns the seit
-     *
-     * @return string seit
-     */
-    public function getSeit()
-    {
-        return $this->seit;
-    }
-
-    /**
-     * Sets the seit
-     *
-     * @param \DateTime $seit
-     * @return void
-     */
-    public function setSeit(\DateTime $seit)
-    {
-        $this->seit = $seit;
-    }
-
-    /**
-     * Returns the markenname
-     *
-     * @return string
-     */
-    public function getMarkenname()
-    {
-        return $this->markenname;
-    }
-
-    /**
-     * Sets the markenname
-     *
-     * @param string $markenname
-     * @return void
-     */
-    public function setMarkenname(string $markenname)
-    {
-        $this->markenname = $markenname;
-    }
-
-    /**
-     * Returns the weiterbildungErklaerung
-     *
-     * @return int
-     */
-    public function getWeiterbildungErklaerung()
-    {
-        return $this->weiterbildungErklaerung;
-    }
-
-    /**
-     * Sets the weiterbildungErklaerung
-     *
-     * @param int $weiterbildungErklaerung
-     * @return void
-     */
-    public function setWeiterbildungErklaerung(int $weiterbildungErklaerung)
-    {
-        $this->weiterbildungErklaerung = $weiterbildungErklaerung;
     }
 }

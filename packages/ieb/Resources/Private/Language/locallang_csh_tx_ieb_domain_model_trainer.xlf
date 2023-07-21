@@ -132,6 +132,9 @@
 			<trans-unit id="review_c2_babi_comment_internal_step.description" resname="review_c2_babi_comment_internal_step.description">
 				<source>reviewC2BabiCommentInternalStep</source>
 			</trans-unit>
+			<trans-unit id="locked_by.description" resname="locked_by.description">
+				<source>lockedBy</source>
+			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>

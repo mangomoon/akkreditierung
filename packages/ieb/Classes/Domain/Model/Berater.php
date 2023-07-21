@@ -117,6 +117,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC3CommentTr = '';
 
     /**
+     * lockedBy
+     *
+     * @var int
+     */
+    protected $lockedBy = 0;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -416,5 +423,26 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewC3CommentInternalStep(string $reviewC3CommentInternalStep)
     {
         $this->reviewC3CommentInternalStep = $reviewC3CommentInternalStep;
+    }
+
+    /**
+     * Returns the lockedBy
+     *
+     * @return int
+     */
+    public function getLockedBy()
+    {
+        return $this->lockedBy;
+    }
+
+    /**
+     * Sets the lockedBy
+     *
+     * @param int $lockedBy
+     * @return void
+     */
+    public function setLockedBy(int $lockedBy)
+    {
+        $this->lockedBy = $lockedBy;
     }
 }
