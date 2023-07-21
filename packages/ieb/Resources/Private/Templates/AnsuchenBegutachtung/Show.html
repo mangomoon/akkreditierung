@@ -764,7 +764,7 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="knopf">
-                                <f:link.action action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
+                                <f:link.action pageUid="22" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                             </div>
                             <p>{t.reviewC2BabiCommentInternal}</p>
                         </div>

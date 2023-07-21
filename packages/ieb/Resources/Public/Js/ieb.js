@@ -1,8 +1,3 @@
- // Modal Box als <dialog> #####
-
-
-
-
  // Validierung
  function validieren() {
 
