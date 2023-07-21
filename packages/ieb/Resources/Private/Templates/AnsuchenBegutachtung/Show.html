@@ -3,7 +3,6 @@
 
 <f:section name="content">
     <f:flashMessages />
-    <f:debug>{_all}</f:debug>
 
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
@@ -103,16 +102,16 @@
                             <td class="labeltext">
                                 Nachweis:
                             </td>
+
                             <td class="daten">
-                                <f:if condition="{stammdaten.nachweis}">
-                                    <f:for each="{stammdaten.nachweis}" as="media">
-                                        <f:render section="media" arguments="{media:media}" />
-                                    </f:for>
+                                <f:if condition="{stammdaten.nachweis.publicUrl}">
+                                    <f:then>
+                                    <f:render section="singleFile" arguments="{path:stammdaten.nachweis.publicUrl}" />
+                                    </f:then>
+                                    <f:else>
+                                        Nicht vorhanden
+                                    </f:else>
                                 </f:if>
-                                <f:render partial="Ansuchen/UploadList" arguments="{
-                                    field = 'stammdaten.nachweis'
-                                }" />
-                                
                             </td>
                         </tr>
                         <tr class="linie">
@@ -761,7 +760,6 @@
                         <div class="links col-7">
                             {t.fullName} 
 
-                            {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
                             {ieb:diff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
                         </div>
                         <div class="rechts col-5">
@@ -941,6 +939,16 @@
 
 <f:section name="comment">
 
+</f:section>
+
+<f:section name="singleFile">
+    <ieb:fal path="{path}">
+        <f:if condition="{file}">
+            ext: {file.extension}<br>
+            size: {f:format.bytes(value:file.size)}<br>
+            <f:image image="{file}" width="100c" height="100c" />
+        </f:if>
+    </ieb:fal>
 </f:section>
 
 </html>
