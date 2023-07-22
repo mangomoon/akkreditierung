@@ -57,6 +57,14 @@ TCEFORM {
         }
       }
     }
+
+    pages {
+      layout {
+        addItems {
+          17 = Modal
+        }
+      }
+    }
 }
 
 
