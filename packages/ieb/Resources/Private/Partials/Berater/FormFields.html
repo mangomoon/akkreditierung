@@ -52,16 +52,14 @@
             </p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'qualifikationsnachweise', 
             id:'qualifikationsnachweise', 
             req:'reqfile', 
             label='Nachweise', 
             anmerkung:'qualifikationsnachweiseKommentar',
             metadaten='{berater.qualifikationsnachweise.originalResource}',
-            preview:1,
-            media:berater.qualifikationsnachweise,
-            mediaWidth:300, mediaHeight:300}" />
+            media:berater.qualifikationsnachweise}" />
 
     </div>
 
@@ -73,16 +71,14 @@
             <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
         </div>
 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'lebenslauf', 
             id:'lebenslauf', 
             req:'reqfile', 
             label='Lebenslauf', 
             anmerkung:'lebenslaufKommentar',
             metadaten='{berater.lebenslauf.originalResource}',
-            preview:1,
-            media:berater.lebenslauf,
-            mediaWidth:300, mediaHeight:300}" />
+            media:berater.lebenslauf}" />
 
 
         <f:form.hidden property="ok" id="ok" value="0" />

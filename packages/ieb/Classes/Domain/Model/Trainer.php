@@ -159,7 +159,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * lebenslaufDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $lebenslaufDatei = null;
@@ -167,7 +167,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qualifikationBabiDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qualifikationBabiDatei = null;
@@ -175,7 +175,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * lehrBefugnisDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $lehrBefugnisDatei = null;
@@ -183,7 +183,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qualifikationPsaDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qualifikationPsaDatei = null;

@@ -616,7 +616,7 @@ function oeffnenTrainerBegutachtung() {
      // ######################################## Datei löschen
 
      $('.filedelete').click(function() {
-         $(this).parent().parent().toggleClass("geloescht");
+         $(this).parent().toggleClass("geloescht");
          var s = $('.nextdel input');
          $(this).parent().find(s).prop("checked", !s.prop("checked"));
      });

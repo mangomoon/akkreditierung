@@ -47,7 +47,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * lebenslauf
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $lebenslauf = null;
@@ -55,7 +55,7 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qualifikationsnachweise
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qualifikationsnachweise = null;

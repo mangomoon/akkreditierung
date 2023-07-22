@@ -37,7 +37,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * nachweis
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $nachweis = null;
@@ -108,7 +108,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * leitbildDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $leitbildDatei = null;
@@ -116,7 +116,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qmsZertifikatDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qmsZertifikatDatei = null;
@@ -152,7 +152,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qualitaetSicherungDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qualitaetSicherungDatei = null;
@@ -167,7 +167,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * qualitaetPersonalDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $qualitaetPersonalDatei = null;

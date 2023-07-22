@@ -67,16 +67,14 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
     </div>
-    <f:render partial="Form/Upload" arguments="{
+    <f:render partial="Form/UploadMultiple" arguments="{
         property:'qualifikationBabiDatei', 
         id:'qualifikationBabiDatei', 
         req:'reqfile', 
         label='Qualifikationsnachweis', 
         anmerkung:'qualifikationBabi',
         metadaten='{trainer.qualifikationBabiDatei.originalResource}',
-        preview:1,
-        media:trainer.qualifikationBabiDatei,
-        mediaWidth:300, mediaHeight:300}" />
+        media:trainer.qualifikationBabiDatei}" />
 </div>
 
 
@@ -91,16 +89,14 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         </div>
 
         <!-- 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'lehrBefugnisDatei', 
             id:'lehrBefugnisDatei', 
             req:'reqfile', 
             label='Nachweise', 
             anmerkung:'lehrBefugnis',
             metadaten='{trainer.lehrBefugnisDatei.originalResource}',
-            preview:1,
-            media:trainer.lehrBefugnisDatei,
-            mediaWidth:300, mediaHeight:300}" />
+            media:trainer.lehrBefugnisDatei}" />
 -->
         <div class="erlaeuterung">
             <p>Liegt keine Trainings/Prüfberechtigung der Bildungsdirektion vor oder weichen die unten angegebenen Kompetenzbereiche von dieser ab, laden Sie die Qualifikationsnachweise hier hoch.</p>
@@ -126,16 +122,14 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
         </div>
 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'qualifikationPsaDatei', 
             id:'qualifikationPsaDatei', 
             req:'reqfile', 
             label='Nachweise(e)', 
             anmerkung:'qualifikationPsa',
             metadaten='{trainer.qualifikationPsaDatei.originalResource}',
-            preview:1,
-            media:trainer.qualifikationPsaDatei,
-            mediaWidth:300, mediaHeight:300}" />
+            media:trainer.qualifikationPsaDatei}" />
     </div>
     <div class="kriteriumteil">
         <!--<div class="info"></div>
@@ -192,16 +186,14 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
     </p>
 
-    <f:render partial="Form/Upload" arguments="{
+    <f:render partial="Form/UploadMultiple" arguments="{
         property:'lebenslaufDatei', 
         id:'lebenslaufDatei', 
         req:'reqfile', 
         label='Erfahrungsnachweis', 
         anmerkung:'lebenslauf',
         metadaten='{trainer.lebenslaufDatei.originalResource}',
-        preview:1,
-        media:trainer.lebenslaufDatei,
-        mediaWidth:300, mediaHeight:300}" />
+        media:trainer.lebenslaufDatei}" />
 </div>
 
 <f:form.hidden property="okbabi" id="okbabi" value="0" />

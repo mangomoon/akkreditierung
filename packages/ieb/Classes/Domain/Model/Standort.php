@@ -65,7 +65,7 @@ class Standort extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * koopSchuleDatei
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $koopSchuleDatei = null;

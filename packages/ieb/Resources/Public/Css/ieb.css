@@ -267,58 +267,47 @@ p.hinweisextra {
 /* ###### FILELIST ######### */
 
 .uploadlist {
-    gap: 16px;
-    display: flex;
-    flex-wrap: wrap;
+
 }
 
-.filelist {
-    flex-grow: 1;
-    flex-basis: 20%;
+.filelist-item {
     font-size: 0.85em;
     background: #fdfaf0;
-    max-width: 33%;
-    display: flex;
+    max-width: 802px;
+    padding: 6px;
+    margin-bottom: 6px;
 }
 
-.filelist:hover {
+.filelist-item:hover {
     background-color: #fffdf7;
 }
 
-.filelist a:link {
+.filelist-item a:link {
     color: var(--f4);
 }
-
-.filelist-links {
-    margin: 0 0 0 0px;
-    padding: 0 5px 0 0;
+.filelist-item a {
+    padding-left: 24px;
+    background-image: url("../Img/extension/wasauchimmer.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+.filelist-item a.ext-pdf, .filelist-item a.ext-PDF {
+    background-image: url("../Img/extension/pdf.svg");
+}
+.filelist-item a.ext-docx, .filelist-item a.ext-doc, .filelist-item a.ext-rtf, .filelist-item a.ext-odt {
+    background-image: url("../Img/extension/doc.svg");
+}
+.filelist-item a.ext-xlsx, .filelist-item a.ext-xls {
+    background-image: url("../Img/extension/xls.svg");
+}
+.filelist-item a.ext-jpg, .filelist-item a.ext-JPG, .filelist-item a.ext-jpeg, .filelist-item a.ext-gif, .filelist-item a.ext-png {
+    background-image: url("../Img/extension/jpg.svg");
 }
 
-.filelist-rechts {
-    margin: 0;
-    padding: 4px 10px 0 0;
-    position: relative;
-    width: 100%;
-}
-
-.filelist-rechts p {
-    padding: 0;
-    margin: 0;
-}
-
-.filelist-rechts p.filelink {
-    padding-bottom: 16px;
-}
-
-.filelist-links img {
-    width: 80px;
-    height: auto;
-}
 
 .filedelete {
-    position: absolute;
-    top: 3px;
-    right: 3px;
+    margin-top: -2px;
+    float: right;
     width: 20px;
     height: 20px;
     box-shadow: 2px 2px 2px var(--f2);
@@ -337,8 +326,7 @@ p.hinweisextra {
     opacity: 1;
 }
 
-.filelist.geloescht .rechts p,
-.filelist.geloescht .links img {
+.filelist-item.geloescht  {
     opacity: 0.3;
 }
 

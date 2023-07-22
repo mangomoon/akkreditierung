@@ -27,15 +27,13 @@
                 <div class="col-6">
                     <f:render partial="Form/Select" arguments="{property:'rechtsform', req:'reqlabel', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}" />
 
-                    <f:render partial="Form/Upload" arguments="{
+                    <f:render partial="Form/UploadMultiple" arguments="{
                         property:'nachweis', 
                         id:'nachweis', 
                         req:'reqfile', 
                         label='Vereinsregisterauszug/Firmenbuchauszug', 
                         metadaten=stammdaten.nachweis.originalResource,
-                        preview:1,
-                        media:stammdaten.nachweis,
-                        mediaWidth:300, mediaHeight:300}" />
+                        media:stammdaten.nachweis}" />
                 </div>
 
             </div>
@@ -106,16 +104,14 @@
             </div>
 
 
-            <f:render partial="Form/Upload" arguments="{
+            <f:render partial="Form/UploadMultiple" arguments="{
                 property:'leitbildDatei', 
                 id:'leitbildDatei', 
                 req:'reqfile', 
                 label='Leitbild', 
                 anmerkung:'leitbild',
                 metadaten='{stammdaten.leitbildDatei.originalResource}',
-                preview:1,
-                media:stammdaten.leitbildDatei,
-                mediaWidth:300, mediaHeight:300}" />
+                media:stammdaten.leitbildDatei}" />
 
 
         </div>
@@ -137,28 +133,24 @@
 
             <f:if condition="{stammdaten.qmsTyp}==1">
                 <f:then>
-                    <f:render partial="Form/Upload" arguments="{
+                    <f:render partial="Form/UploadMultiple" arguments="{
                     property:'qmsZertifikatDatei', 
                     id:'qmsZertifikatDatei', 
                     req:'reqfile', 
                     label='Ö-Cert (PDF)', 
                     anmerkung:'qmsZertifikat',
                     metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
-                    preview:1,
-                    media:stammdaten.qmsZertifikatDatei,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:stammdaten.qmsZertifikatDatei}" />
                 </f:then>
                 <f:else>
-                    <f:render partial="Form/Upload" arguments="{
+                    <f:render partial="Form/UploadMultiple" arguments="{
                     property:'qmsZertifikatDatei', 
                     id:'qmsZertifikatDatei', 
                     req:'', 
                     label='Ö-Cert (PDF)', 
                     anmerkung:'qmsZertifikat',
                     metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
-                    preview:1,
-                    media:stammdaten.qmsZertifikatDatei,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:stammdaten.qmsZertifikatDatei}" />
                 </f:else>
             </f:if>
 
@@ -179,28 +171,24 @@
             <f:if condition="{stammdaten.qmsTyp}==2">
                 <f:then>
 
-                    <f:render partial="Form/Upload" arguments="{
+                    <f:render partial="Form/UploadMultiple" arguments="{
                     property:'qualitaetSicherungDatei', 
                     id:'qualitaetSicherungDatei', 
                     req:'reqfile', 
                     label='Qualitätssicherung', 
                     anmerkung:'qualitaetSicherung',
                     metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
-                    preview:1,
-                    media:stammdaten.qualitaetSicherungDatei,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:stammdaten.qualitaetSicherungDatei}" />
                 </f:then>
                 <f:else>
-                    <f:render partial="Form/Upload" arguments="{
+                    <f:render partial="Form/UploadMultiple" arguments="{
                         property:'qualitaetSicherungDatei', 
                         id:'qualitaetSicherungDatei', 
                         req:'', 
                         label='Qualitätssicherung', 
                         anmerkung:'qualitaetSicherung',
                         metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
-                        preview:1,
-                        media:stammdaten.qualitaetSicherungDatei,
-                        mediaWidth:300, mediaHeight:300}" />
+                        media:stammdaten.qualitaetSicherungDatei}" />
                 </f:else>
             </f:if>
         </div>
@@ -223,16 +211,14 @@
     </p>
     <div class="abstand-gross"></div>
 
-    <f:render partial="Form/Upload" arguments="{
+    <f:render partial="Form/UploadMultiple" arguments="{
         property:'qualitaetPersonalDatei', 
         id:'qualitaetPersonalDatei', 
         req:'reqfile', 
         label='Qualitätssicherung', 
         anmerkung:'qualitaetPersonal',
         metadaten='{stammdaten.qualitaetPersonalDatei.originalResource}',
-        preview:1,
-        media:stammdaten.qualitaetPersonalDatei,
-        mediaWidth:300, mediaHeight:300}" />
+        media:stammdaten.qualitaetPersonalDatei}" />
 
     <f:form.hidden property="ok" id="ok" value="0" />
 

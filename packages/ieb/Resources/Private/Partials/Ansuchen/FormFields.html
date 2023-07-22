@@ -326,16 +326,16 @@
         <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
         <div class="info"></div>
         <div class="infobox" id="ab-2-c-hilfe">Sie können <a href="#">diese Vorlage</a> für die Erstellung der Übersicht verwenden.</div>
-        <f:render partial="Form/Upload" arguments="{
+
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'uebersichtDatei',
             id:'uebersichtDatei',
             req:'reqfile',
             label='Tabellarische Übersicht',
             anmerkung:'uebersichtText',
             metadaten='{ansuchen.uebersichtDatei.originalResource}',
-            preview:1,
-            media:ansuchen.uebersichtDatei,
-            mediaWidth:300, mediaHeight:300}" />
+            media:ansuchen.uebersichtDatei
+        }" />
     </div>
 
 </div>
@@ -401,16 +401,14 @@
 
         <div class="japruef {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ischecked')}">
 
-            <f:render partial="Form/Upload" arguments="{
+            <f:render partial="Form/UploadMultiple" arguments="{
                 property:'pruefbescheidDatei', 
                 id:'pruefbescheidDatei', 
                 req:'', 
                 label='Prüfbescheid (pdf)', 
                 anmerkung:'pruefbescheid',
                 metadaten='{ansuchen.pruefbescheidDatei.originalResource}',
-                preview:1,
-                media:ansuchen.pruefbescheidDatei,
-                mediaWidth:300, mediaHeight:300}" />
+                media:ansuchen.pruefbescheidDatei}" />
         </div>
 
         <div class="formfields row">
@@ -423,16 +421,14 @@
                     <p>&nbsp;</p>
                 </div>
 
-                <f:render partial="Form/Upload" arguments="{
+                <f:render partial="Form/UploadMultiple" arguments="{
                     property:'kooperationDatei',
                     id:'kooperationDatei',
                     req:'reqfile',
                     label='Upload',
                     anmerkung:'kooperation',
                     metadaten='{ansuchen.kooperationDatei.originalResource}',
-                    preview:1,
-                    media:ansuchen.kooperationDatei,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:ansuchen.kooperationDatei}" />
 
             </div>
         </div>
@@ -457,16 +453,14 @@
         </p>
         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'zielgruppenAnspracheDatei',
             id:'zielgruppenAnspracheDatei',
             req:'reqfile',
             label='Upload Zielgruppe',
             anmerkung:'zielgruppenAnsprache',
             metadaten='{ansuchen.zielgruppenAnspracheDatei.originalResource}',
-            preview:1,
-            media:ansuchen.zielgruppenAnspracheDatei,
-            mediaWidth:300, mediaHeight:300}" />
+            media:ansuchen.zielgruppenAnspracheDatei}" />
     </div>
 </div>
 <div class="kriterium status-{ansuchen.reviewB22Status}">
@@ -512,15 +506,13 @@
         <div class="formfields row"></div>
 
         <!-- Upload LERNZIELE-->
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
                     property:'lernziele',
                     id:'lernziele',
                     req:'reqfile',
                     label='Upload Aufbau und Inhalte',
                     metadaten:'{ansuchen.lernziele.originalResource}',
-                    preview:1,
-                    media:ansuchen.lernziele,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:ansuchen.lernziele,}" />
 
 
 
@@ -548,15 +540,13 @@
         <div class="formfields row">
             <div class="col-6">
 
-                <f:render partial="Form/Upload" arguments="{
+                <f:render partial="Form/UploadMultiple" arguments="{
                     property:'lernstandserhebung',
                     id:'lernstandserhebung',
                     req:'reqfile',
                     label='Upload Kompetenzerhebung',
                     metadaten='{ansuchen.lernstandserhebung.originalResource}',
-                    preview:1,
-                    media:ansuchen.lernstandserhebung,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:ansuchen.lernstandserhebung,}" />
             </div>
         </div>
     </div>
@@ -569,15 +559,13 @@
 
         <div class="formfields row">
             <div class="col-6">
-                <f:render partial="Form/Upload" arguments="{
+                <f:render partial="Form/UploadMultiple" arguments="{
                     property:'diversity',
                     id:'diversity',
                     req:'reqfile',
                     label='Upload Diversity',
                     metadaten='{ansuchen.diversity.originalResource}',
-                    preview:1,
-                    media:ansuchen.diversity,
-                    mediaWidth:300, mediaHeight:300}" />
+                    media:ansuchen.diversity,}" />
             </div>
             <div class="col-6">
                 <label for="didaktikKommentar">Anmerkung zu allen drei Uploads</label>
@@ -607,15 +595,13 @@
         </div>
 
 
-        <f:render partial="Form/Upload" arguments="{
+        <f:render partial="Form/UploadMultiple" arguments="{
             property:'beratungDatei',
             id:'beratungDatei',
             req:'reqfile',
             label='Upload Beratungsangebot',
             metadaten='{ansuchen.beratungDatei.originalResource}',
-            preview:1,
             media:ansuchen.beratungDatei,
-            mediaWidth:300, mediaHeight:300,
             anmerkung:'beratungText'}" />
 
     </div>
