@@ -26,6 +26,7 @@
             <f:form action="create" name="newStammdaten" object="{stammdaten}" class="formStammdaten newStammdaten" enctype="multipart/form-data">
                 <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
                 <f:form.submit value="Speichern" class="knopf-s" />
+                <script>reqleerLoeschen();</script>
             </f:form>
         </f:else>
     </f:if>

@@ -707,7 +707,8 @@ table.ansuchenliste td.check {
     color: #c3161c;
 }
 
-.formlink {
+.formlink, input[type="submit"].formlink {
+    border: 0;
     border-radius: 4px;
     padding: 8px 20px;
     text-transform: uppercase;
@@ -719,7 +720,7 @@ table.ansuchenliste td.check {
     display: inline-block;
 }
 
-.formlink:hover {
+.formlink:hover, input[type="submit"].formlink:hover {
     box-shadow: none;
     color: #fff;
 }

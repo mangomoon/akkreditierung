@@ -276,7 +276,12 @@ function oeffnenTrainerBegutachtung() {
 };
 
 
-
+// Löschen der Validierung für Uploads bei ACTION=new
+function reqleerLoeschen() {
+    $('.upload').each(function() {
+        $(this).removeClass('req-leer');
+    });
+}
 
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //

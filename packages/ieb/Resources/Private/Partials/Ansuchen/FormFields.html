@@ -371,10 +371,20 @@
                 />
             </div>
             <div class="col-6" id="b-1-d-2">
-                <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa" id="testa" />
-                <div class="formzeile">
-                    <f:link.page pageUid="11" class="formlink standorte">Standorte: Daten bearbeiten</f:link.page>
-                </div>
+                <f:if condition="{relations.standorteaktiv}">
+                    <f:then>
+                        <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa" id="testa" />
+                            <div class="formzeile">
+                                <f:form.submit value="Standorte: Daten bearbeiten" name="saveAndStandorte" class="formlink standorte" />
+                            </div>
+                    </f:then>
+                    <f:else>
+                        <div class="formzeile">
+                            Sie müssen zuerst &nbsp; <f:form.submit value="Standorte anlegen" name="saveAndStandorte" class="formlink standorte" />
+                        </div>
+                    </f:else>
+                </f:if>
+                
             </div>
         </div>
     </div>
@@ -634,37 +644,47 @@
             Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
         </p-->
     </div>
-    <table class="angebotssteuerung">
-        <tr>
-            <th class="spalte-1">
-                
-            </th>
-            <th class="spalte-2">
-                <f:image src="EXT:ieb/Resources/Public/Img/Email.svg" class="icon-small" alt="Email" />
-            </th>
-            <th>
-                &nbsp;
-            </th>
-        </tr>
-        <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich">
-            <tr>
-                <td class="spalte-1">
-                    <f:form.checkbox class="angebotssteuerungsperson" property="verantwortliche" value="{angebotverantwortlich.uid}" />
-                </td>
-                <td class="spalte-2">
-                    <f:form.checkbox property="verantwortlicheMail" value="{angebotverantwortlich.uid}" />
-                </td>
-                <td>&nbsp;&nbsp;
-                    {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}
-                    <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
-                </td>
-            </tr>
-        </f:for>
+    <f:if condition="{relations.angebotVerantwortliche}">
+        <f:then>
+            <table class="angebotssteuerung">
+                <tr>
+                    <th class="spalte-1">
+                        
+                    </th>
+                    <th class="spalte-2">
+                        <f:image src="EXT:ieb/Resources/Public/Img/Email.svg" class="icon-small" alt="Email" />
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+                <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich">
+                    <tr>
+                        <td class="spalte-1">
+                            <f:form.checkbox class="angebotssteuerungsperson" property="verantwortliche" value="{angebotverantwortlich.uid}" />
+                        </td>
+                        <td class="spalte-2">
+                            <f:form.checkbox property="verantwortlicheMail" value="{angebotverantwortlich.uid}" />
+                        </td>
+                        <td>&nbsp;&nbsp;
+                            {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}
+                            <f:if condition="{angebotverantwortlich.email}">(<a href="mailto:{angebotverantwortlich.email}">{angebotverantwortlich.email}</a>)</f:if>
+                        </td>
+                    </tr>
+                </f:for>
+        
+            </table>
+            <div class="formzeile">
+                <f:form.submit value="Projektleitung: Daten bearbeiten" name="saveAndVerantwortliche" class="formlink angebotssteuernde" />
+            </div>
+        </f:then>
+        <f:else>
+            <div class="formzeile">
+                Sie müssen zuerst &nbsp; <f:form.submit value="Personen für die Projektleitung anlegen" name="saveAndVerantwortliche" class="formlink angebotssteuernde" />
+            </div>
+        </f:else>
+    </f:if>
 
-    </table>
-    <div class="formzeile">
-        <f:link.page pageUid="18" class="formlink angebotssteuernde">Projektsteuerung: Daten bearbeiten</f:link.page>
-    </div>
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -685,13 +705,39 @@
 
         <f:if condition="{ansuchen.typ}==1">
             <f:then>
-                <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
+                <f:if condition="{relations.trainerbabi}">
+                    <f:then>
+                        <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
+                        <div class="formzeile">
+                            <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="formzeile">
+                            Sie müssen zuerst &nbsp; <f:form.submit value="Trainer:innen für den Bereich Basisbildung anlegen" name="saveAndTrainer" class="formlink trainer" />
+                        </div>  
+                    </f:else>
+                </f:if>
+                
             </f:then>
             <f:else>
-                <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa" />
-                <f:if condition="{ansuchen.pruefbescheidDatei}">
-                    <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                <f:if condition="{relations.trainerpsa}">
+                    <f:then>
+                        <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa" />
+                        <f:if condition="{ansuchen.pruefbescheidDatei}">
+                            <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                        </f:if>
+                        <div class="formzeile">
+                            <f:form.submit value="Beratung: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="formzeile">
+                            Sie müssen zuerst &nbsp; <f:form.submit value="Trainer:innen für den Bereich Pflichtschulsabschluss anlegen" name="saveAndTrainer" class="formlink trainer" />
+                        </div>
+                    </f:else>
                 </f:if>
+                
             </f:else>
         </f:if>
 
@@ -699,9 +745,7 @@
 
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
     </div>
-    <div class="formzeile">
-        <f:link.page pageUid="12" class="formlink trainer">Training: Daten bearbeiten</f:link.page>
-    </div>
+
 </div>
 
 <!-- ############### BERATUNG ########### -->
@@ -711,6 +755,7 @@
     <div class="infobox" id="c-3-hilfe">
         <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
     </div>
+    
     <f:if condition="{ansuchen.reviewC3Status}==4">
         <div class="commentTr">
             <p>{ansuchen.reviewC3CommentTr}</p>
@@ -718,16 +763,19 @@
     </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
-
-        <f:form.select property="berater" options="{relations.berateraktivundok}" optionLabelField="fullName" multiple="1" class="testa" />
-
         <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
     </div>
-
-
-    <div class="formzeile">
-        <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
-    </div>
+    <f:if condition="{relations.berateraktivundok}">
+        <f:then>
+            <f:form.select property="berater" options="{relations.berateraktivundok}" optionLabelField="fullName" multiple="1" class="testa" />
+            <div class="formzeile">
+                <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
+            </div>
+        </f:then>
+        <f:else>
+            Sie müssen zuerst &nbsp; <f:form.submit value="Berater:innen anlegen" name="saveAndBerater" class="formlink berater" />
+        </f:else>
+    </f:if>    
 </div>
 
 <!-- ############### ERKLÄRUNGEN ########### -->

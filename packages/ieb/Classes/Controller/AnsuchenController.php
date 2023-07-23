@@ -59,9 +59,9 @@ class AnsuchenController extends BaseController
     {
         $stammDaten = $this->stammdatenRepository->getLatest();
         /** @var StaticStammdaten $staticStammDaten */
-        $staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
+        //$staticStammDaten = $this->stammdatenRepository->duplicateToStaticVersion($stammDaten);
         $newAnsuchen->setStatus(AnsuchenStatus::NEU_IN_ARBEIT->value);
-        $newAnsuchen->setStammdatenStatic($staticStammDaten);
+        //$newAnsuchen->setStammdatenStatic($staticStammDaten);
         $newAnsuchen->setVersionActive(true);
 
         $this->ansuchenRepository->add($newAnsuchen);
@@ -208,6 +208,22 @@ class AnsuchenController extends BaseController
         if (isset($arguments['saveAndIndex'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirect('list');
+        }
+        if (isset($arguments['saveAndTrainer'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/uebersicht-tr/training");
+        }
+        if (isset($arguments['saveAndStandorte'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/uebersicht-tr/standorte");
+        }
+        if (isset($arguments['saveAndBerater'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/uebersicht-tr/beratung");
+        }
+        if (isset($arguments['saveAndVerantwortliche'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/uebersicht-tr/projektleitung");
         }
         $this->redirect('list');
     }
