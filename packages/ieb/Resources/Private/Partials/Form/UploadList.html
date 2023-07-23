@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+</html>
+
+
+<div class="upload">
+    
+    <div class="uploadlist">
+
+        <f:if condition="{media}">
+            <f:for each="{media}" as="m">
+                <div class="filelist-item">
+                    <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}">{m.originalResource.originalFile.properties.name}</a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
+                </div>
+            </f:for>
+        </f:if>
+
+        <f:if condition="{anmerkung}">
+            <div class="anmerkungstext">
+                {anmerkung}
+            </div>
+        </f:if>
+    </div>
