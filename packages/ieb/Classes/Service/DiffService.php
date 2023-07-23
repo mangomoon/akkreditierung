@@ -6,6 +6,7 @@ use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use Rogervila\ArrayDiffMultidimensional;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class DiffService
 {
@@ -43,11 +44,13 @@ class DiffService
                                 }
                             }
                         }
+                    } elseif (is_scalar($rel)) {
+                        $final[$field][$id]['previous'] = $previous[$field][$id] ?? null;
+                        $final[$field][$id]['current'] = $current[$field][$id] ?? null;
                     }
                 }
             }
         }
-
 
 //        // todo check if something is *removed* in current
 //        // todo what if a raw is empty!!

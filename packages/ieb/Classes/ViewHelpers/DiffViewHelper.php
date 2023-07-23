@@ -47,7 +47,7 @@ class DiffViewHelper extends AbstractViewHelper
             return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
 
         } catch (MissingArrayPathException $e) {
-            return '';
+            return getenv('IS_DDEV_PROJECT') ? ('ERROR: ' . $e->getMessage()) : '';
         }
     }
 

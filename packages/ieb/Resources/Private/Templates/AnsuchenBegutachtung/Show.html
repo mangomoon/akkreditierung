@@ -3,7 +3,7 @@
 
 <f:section name="content">
     <f:flashMessages />
-
+<f:debug>{diff}</f:debug>
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
@@ -63,10 +63,8 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.markenname}
-                                {ieb:diff(diff:diff,field:'stammdaten.markenname')}
-                                <f:if condition="{diff.copy_stammdaten.markenname}">
-                                    <div class="diff">{diff.copy_stammdaten.markenname}</div>
-                                </f:if>
+                                {ieb:diff(diff:diff,field:'copy_stammdaten/markenname')}
+
                             </td>
                         </tr>
                         <tr class="linie">
@@ -93,6 +91,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.seit}
+                                {ieb:diff(diff:diff,field:'copy_stammdaten/seit')}
                             </td>
                         </tr>
                         <tr>
@@ -127,6 +126,8 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
+
+                                {ieb:diff(diff:diff,field:'copy_stammdaten/ort')}
                             </td>
                         </tr>
                         <tr>
@@ -149,6 +150,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.telefon}
+                                {ieb:diff(diff:diff,field:'copy_stammdaten/telefon')}
                             </td>
                         </tr>
                         <tr>
@@ -162,6 +164,7 @@
                                 <f:if condition="{stammdaten.website}">
                                     <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
                                 </f:if>
+                                {ieb:diff(diff:diff,field:'copy_stammdaten/website')}
                             </td>
                         </tr>
                     </table>
