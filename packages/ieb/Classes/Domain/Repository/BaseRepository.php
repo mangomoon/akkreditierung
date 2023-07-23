@@ -36,6 +36,13 @@ class BaseRepository extends Repository
         return $query->execute();
     }
 
+    public function getAllSorted(string $sorter): QueryResultInterface
+    {
+        $query = $this->getQuery();
+        $query->setOrderings(array($sorter => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        return $query->execute();
+    }
+
     public function getLatest(): ?object
     {
         return $this->getAll()->getFirst();

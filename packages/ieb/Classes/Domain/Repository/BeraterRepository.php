@@ -22,6 +22,7 @@ class BeraterRepository extends BaseRepository
     public function findBySearch(?BeraterSearch $search)
     {
         $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         if (!$search) {
             return $query->execute();
         }
@@ -44,6 +45,7 @@ class BeraterRepository extends BaseRepository
 
 
         $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),

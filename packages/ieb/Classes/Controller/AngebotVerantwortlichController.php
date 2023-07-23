@@ -51,7 +51,7 @@ class AngebotVerantwortlichController extends BaseController
      */
     public function indexAction(): ResponseInterface
     {
-        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAll();
+        $angebotVerantwortliches = $this->angebotVerantwortlichRepository->getAllSorted('nachname');
         $this->view->assign('angebotVerantwortliches', $angebotVerantwortliches);
         return $this->htmlResponse();
     }

@@ -92,8 +92,10 @@
             <td class="labeltext">
                 Nachweis:
             </td>
-            <td class="check {f:if(condition:'!{relations.stammdaten.rechtsform}',then:'fehlt')}">
-                <a href="/fileadmin{relations.stammdaten.nachweis.originalResource.identifier}" target="_blank">{relations.stammdaten.nachweis.originalResource.properties.name}</a>
+            <td class="check {f:if(condition:'!{relations.stammdaten.nachweis}',then:'fehlt')}">
+
+                <f:render partial="Form/UploadList" arguments="{ 
+                    media:relations.stammdaten.nachweis}" />
             </td>
         </tr>
         <tr class="linie">
@@ -161,7 +163,9 @@
                 Leitbild:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.leitbildDatei}',then:'fehlt')}">
-                <a href="/fileadmin{relations.stammdaten.leitbildDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.leitbildDatei.originalResource.properties.name}</a><br>{relations.stammdaten.leitbild}
+                <f:render partial="Form/UploadList" arguments="{ 
+                    media:relations.stammdaten.leitbildDatei,
+                    anmerkung:relations.stammdaten.leitbild}" />
             </td>
         </tr>
         <tr class="linie">
@@ -191,7 +195,9 @@
                         Ö-Cert:
                     </td>
                     <td class="check {f:if(condition:'!{relations.stammdaten.qmsZertifikatDatei}',then:'fehlt')}">
-                        <a href="/fileadmin{relations.stammdaten.qmsZertifikatDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qmsZertifikatDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qmsZertifikat}
+                        <f:render partial="Form/UploadList" arguments="{ 
+                            media:relations.stammdaten.qmsZertifikatDatei,
+                            anmerkung:relations.stammdaten.qmsZertifikat}" />
                     </td>
                 </tr>
             </f:case>
@@ -204,7 +210,9 @@
                         Qualität des Anbieters (es liegt kein Ö-Cert vor):
                     </td>
                     <td class="check {f:if(condition:'!{relations.stammdaten.qualitaetSicherungDatei}',then:'fehlt')}">
-                        <a href="/fileadmin{relations.stammdaten.qualitaetSicherungDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qualitaetSicherungDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qualitaetSicherung}
+                        <f:render partial="Form/UploadList" arguments="{ 
+                            media:relations.stammdaten.qualitaetSicherungDatei,
+                            anmerkung:relations.stammdaten.qualitaetSicherung}" />
                     </td>
                 </tr>
             </f:case>
@@ -223,7 +231,9 @@
                 Qualitätssichernde Maßnahmen Personal:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.qualitaetPersonalDatei}',then:'fehlt')}">
-                <a href="/fileadmin{relations.stammdaten.qualitaetPersonalDatei.originalResource.identifier}" target="_blank">{relations.stammdaten.qualitaetPersonalDatei.originalResource.properties.name}</a><br>{relations.stammdaten.qualitaetPersonal}
+                <f:render partial="Form/UploadList" arguments="{ 
+                    media:relations.stammdaten.qualitaetPersonalDatei,
+                    anmerkung:relations.stammdaten.qualitaetPersonal}" />
             </td>
         </tr>
     </table>

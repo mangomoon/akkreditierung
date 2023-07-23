@@ -21,6 +21,7 @@ class TrainerRepository extends BaseRepository
     public function findBySearch(?TrainerSearch $search)
     {
         $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         if (!$search) {
             return $query->execute();
         }
@@ -42,6 +43,7 @@ class TrainerRepository extends BaseRepository
 
 
         $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),
@@ -55,6 +57,7 @@ class TrainerRepository extends BaseRepository
 
 
         $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),

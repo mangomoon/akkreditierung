@@ -98,7 +98,7 @@ class StandortController extends BaseController
 
     public function indexAction(): ResponseInterface
     {
-        $standorts = $this->standortRepository->getAll();
+        $standorts = $this->standortRepository->getAllSorted('name');
         $this->view->assign('standorts', $standorts);
         return $this->htmlResponse();
     }
