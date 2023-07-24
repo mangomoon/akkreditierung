@@ -4,7 +4,7 @@
         data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 <f:section name="content">
-
+    
     <div class="formzeile">
         <f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action>
     </div>
@@ -30,6 +30,7 @@
                     </th>
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
+
                 <f:variable name="relationUsages">{ieb:relationUsed(object: angebotVerantwortlich)}</f:variable>
                 <f:if condition="!{angebotVerantwortlich.archiviert}">
                     <f:then>
@@ -63,12 +64,9 @@
                             <td class="td-knopf">
                                 <f:if condition="{relationUsages}">
                                     <f:then>
-                                        <div class="locked knopf-quadratisch"></div>
-                                        <div style="display: none">
-                                            <f:for each="{relationUsages}" as="relationUsage">
-                                                {relationUsage.name},
-                                            </f:for>
-                                        </div>
+                                        <div class="locked knopf-quadratisch" title="Wird verwendet in: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                            {relationUsage.nummer} ({relationUsage.name})<br>
+                                        </f:for>"></div>
                                     </f:then>
                                     <f:else>
                                         <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{angebotVerantwortlich : angebotVerantwortlich}">

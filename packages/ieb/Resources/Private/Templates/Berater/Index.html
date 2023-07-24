@@ -95,12 +95,9 @@
                             <td class="td-knopf">
                                 <f:if condition="{relationUsages}">
                                     <f:then>
-                                        <div class="locked knopf-quadratisch"></div>
-                                        <div style="display: none">
-                                            <f:for each="{relationUsages}" as="relationUsage">
-                                                {relationUsage.name},
-                                            </f:for>
-                                        </div>
+                                        <div class="locked knopf-quadratisch" title="Wird verwendet in: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                            {relationUsage.nummer} ({relationUsage.name})<br>
+                                        </f:for>"></div>
                                     </f:then>
                                     <f:else>
                                         <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">

@@ -7,6 +7,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
 use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
+use GeorgRinger\Ieb\Domain\Model\Standort;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -28,6 +29,10 @@ class RelationLockService
         AngebotVerantwortlich::class => [
             'table' => 'tx_ieb_domain_model_angebotverantwortlich',
             'mm' => 'tx_ieb_ansuchen_angebotverantwortlich_mm',
+        ],
+        Standort::class => [
+            'table' => 'tx_ieb_domain_model_standort',
+            'mm' => 'tx_ieb_ansuchen_standort_mm',
         ],
     ];
 
