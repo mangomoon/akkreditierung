@@ -330,7 +330,7 @@
                         </div>
                         <div class="kriteriumteil">
                             <h3>B.1.2 Kompetenzbereiche</h3>
-                            <div class="erlaeuterung {f:if(condition:'{ansuchen.typ}==2', then:'notvisible'}">
+                            <div class="erlaeuterung {f:if condition:'{ansuchen.typ}==2', then:'notvisible'}">
                                 <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
                             </div>
                             <ul>
@@ -783,8 +783,9 @@
                     <div class="row person">
                         <div class="links col-7">
                             {t.fullName} 
-
-                            {ieb:diff(diff:diff,field:'copy_trainer/{t.uid}', lll:'tx_ieb_domain_model_trainer')}
+                            
+  
+                            {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
                         </div>
                         <div class="rechts col-5">
                             <div class="knopf">
@@ -795,6 +796,9 @@
                     </div>
                 </f:for>
 
+                <f:for each="{diff.copy_trainer}" as="tt">
+                    <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                </f:for>
 
                 <div class="row">
                     <div class="links col-7">
@@ -832,20 +836,26 @@
 
             </div>
 
-                <f:for each="{berater}" as="b">
-
+            <f:for each="{berater}" as="t">
                 <div class="row person">
                     <div class="links col-7">
-                        {b.fullName}
+                        {t.fullName} 
+                        
 
-                        {ieb:diff(diff:diff,field:'copy_berater/{b.uid}', lll:'tx_ieb_domain_model_trainer')}
+                        {ieb:ifDiff(diff:diff,field:'copy_berater/{t.uid}')}
+
                     </div>
                     <div class="rechts col-5">
                         <div class="knopf">
-                            <f:link.action action="show" controller="BeraterBegutachtung" arguments="{berater:b.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
+                            <f:link.action pageUid="22" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
                         </div>
+                        <p>{t.reviewC2BabiCommentInternal}</p>
                     </div>
                 </div>
+            </f:for>
+
+            <f:for each="{diff.copy_berater}" as="tt">
+                <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
             </f:for>
 
                 <div class="row">

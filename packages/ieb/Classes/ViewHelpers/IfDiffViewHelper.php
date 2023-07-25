@@ -47,7 +47,7 @@ class IfDiffViewHelper extends AbstractViewHelper
             // }
             //return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
 
-            return sprintf("<span class='diffwarnung'>Achtung!</span>");
+            return sprintf("<span class='vorher-knopf'>neu</span>");
 
         } catch (MissingArrayPathException $e) {
             return '';
