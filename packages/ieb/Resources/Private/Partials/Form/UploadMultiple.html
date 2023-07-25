@@ -7,11 +7,11 @@
         <f:if condition="{media}">
             <f:for each="{media}" as="m">
                 <div class="filelist-item">
-                    <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}">{m.originalResource.originalFile.properties.name}</a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
+                    <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}" title="{m.originalResource.originalFile.properties.name}"><f:format.crop maxCharacters="40">{m.originalResource.originalFile.properties.name}</f:format.crop></a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
 
                     <div class="filedelete"></div>
                         
-                    <p class="nextdel"><label for="fileDelete-{property}-{media.uid}"><f:form.checkbox name="fileDelete[m_{property}][{m.uid}]" id="fileDelete-{property}-{media.uid}" value="1" /></label></p>
+                    <p class="nextdel"><label for="fileDelete-{property}-{m.uid}"><f:form.checkbox name="fileDelete[m_{property}][{m.uid}]" id="fileDelete-{property}-{m.uid}" value="1" /></label></p>
 
                 </div>
             </f:for>

@@ -112,6 +112,10 @@ label.inline {
     display: inline;
 }
 
+.rechtsbuendig {
+    text-align: right;
+}
+
 .kriterium {
     position: relative;
     border: solid 1px var(--f3);
@@ -1411,5 +1415,21 @@ span.checkbox.checked {
 /* ############### DIFF ################### */
 .diff {
     background: var(--beratung);
-    padding: 4px;
+    padding: 0 4px 0 8px;
+}
+.diff .vorher {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.vorher-knopf {
+    background: var(--beratung);
+    padding: 2px 8px 0 8px;
+    margin-left: 12px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #fff;
+    display: inline-block;
+    line-height: 16px;
 }

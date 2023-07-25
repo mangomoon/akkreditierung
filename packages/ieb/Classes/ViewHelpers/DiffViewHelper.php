@@ -32,7 +32,11 @@ class DiffViewHelper extends AbstractViewHelper
             $data = ArrayUtility::getValueByPath($diff, $field);
 
             if (isset($data['previous'])) {
-                return sprintf('<span class="diff" style="color:#666;background: #53d9f0">vorher: %s</span>', htmlspecialchars($data['previous']));
+                if (($data['previous'])=='') {
+                    return sprintf('<div class="diff"><span class="vorher">vorher leer</span></div>');
+                } else {
+                    return sprintf('<div class="diff"><span class="vorher">vorher:</span> %s</div>', htmlspecialchars($data['previous']));
+                }
             }
 
             $fields = [];
