@@ -6,10 +6,11 @@
 
 <f:section name="content">
     
+
     <f:render partial="FormErrors" />
     <f:if condition="{exists}">
         <f:then>
-            <f:if condition="{locked}">
+            <f:if condition="{usedInAnsuchen}">
                 <f:then>
                     <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
                 </f:then>

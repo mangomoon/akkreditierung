@@ -8,10 +8,12 @@
 
     <table class="ansuchenliste">
         <f:for each="{ansuchen}" as="item">
+            {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+
         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
             <tr>
                 <td colspan="7" class="ansuchenliste_tr">
-                    {item.stammdaten.name} {item.pid}
+                    <span class="fett">{stammdaten.name}</span> — {stammdaten.markenname}
                 </td>
             </tr>
             <tr>

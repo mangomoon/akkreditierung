@@ -241,7 +241,6 @@
                                         anmerkung='{stammdaten.qmsZertifikat}',
                                         diff='{diff.copy_stammdaten.qmsZertifikatDatei}',
                                     }" />
-<f:debug>{diff}</f:debug>
 
                                     {ieb:diff(diff:diff,field:'copy_stammdaten/qmsZertifikat')}
                                     <div class="erlaeuterung">
@@ -705,7 +704,29 @@
 
             </div>
 
-
+            <f:for each="{verantwortliche}" as="p">
+                <div class="row person">
+                    <div class="links col-7">
+                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a><br>
+                        <label>Lebenslauf</label>
+                        <f:render partial="Form/UploadListDiff" arguments="{
+                            media='{p.lebenslaufDatei}',
+                            anmerkung='{lebenslauf}',
+                        }" />
+                    </div>
+                    <div class="rechts col-5">
+                        <div class="row">
+                            <div class="col">
+                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Management ok</label>
+                            </div>
+                            <div class="col">
+                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Pädagogik ok</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:for>
+            
 
                 <div class="row person">
                     <div class="links col-7">
