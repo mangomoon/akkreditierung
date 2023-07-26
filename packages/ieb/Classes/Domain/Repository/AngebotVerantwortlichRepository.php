@@ -19,4 +19,17 @@ namespace GeorgRinger\Ieb\Domain\Repository;
  */
 class AngebotVerantwortlichRepository extends BaseRepository
 {
+    public function getActive() {
+
+
+        $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('ok', true)
+            )
+        );
+        return $query->execute();
+    }
 }
