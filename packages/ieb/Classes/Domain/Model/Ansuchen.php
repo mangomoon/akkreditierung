@@ -2867,6 +2867,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->getConvertedJson($this->copyBerater);
     }
+    public function getCopyVerantwortlicheData()
+    {
+        return $this->getConvertedJson($this->copyVerantwortliche);
+    }
     public function getReviewB1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB1CommentInternal);

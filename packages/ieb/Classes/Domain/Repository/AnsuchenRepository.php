@@ -158,7 +158,7 @@ class AnsuchenRepository extends BaseRepository
 
     protected function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
     {
-        $copyStandorte = $copyBerater = $copyTrainer = [];
+        $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
                 $copyStandorte[$standort->getUid()] = ObjectAccess::getGettableProperties($standort);
@@ -174,6 +174,11 @@ class AnsuchenRepository extends BaseRepository
                 $copyBerater[$berater->getUid()] = ObjectAccess::getGettableProperties($berater);
             }
         }
+        if ($ansuchen->getVerantwortliche()) {
+            foreach ($ansuchen->getVerantwortliche() as $verantwortliche) {
+                $copyVerantwortliche[$verantwortliche->getUid()] = ObjectAccess::getGettableProperties($verantwortliche);
+            }
+        }
         $copyStammdaten = $stammdaten ? $this->convertObjectToArray(ObjectAccess::getGettableProperties($stammdaten)) : [];
 
         return [
@@ -181,6 +186,7 @@ class AnsuchenRepository extends BaseRepository
             'copy_trainer' => json_encode($copyTrainer, JSON_PRETTY_PRINT),
             'copy_berater' => json_encode($copyBerater, JSON_PRETTY_PRINT),
             'copy_stammdaten' => json_encode($copyStammdaten, JSON_PRETTY_PRINT),
+            'copy_verantwortliche' => json_encode($copyVerantwortliche, JSON_PRETTY_PRINT),
         ];
     }
 

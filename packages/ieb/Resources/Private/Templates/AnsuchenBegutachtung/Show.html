@@ -5,7 +5,7 @@
     <f:flashMessages />
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -705,6 +705,7 @@
             </div>
 
             <f:for each="{verantwortliche}" as="p">
+                <f:debug>{p}</f:debug>
                 <div class="row person">
                     <div class="links col-7">
                         {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a><br>
@@ -728,42 +729,6 @@
             </f:for>
             
 
-                <div class="row person">
-                    <div class="links col-7">
-                        Vorname Nachname &nbsp;|&nbsp; 01/123 565 983 &nbsp;|&nbsp; <a href="mailto:xyz@xyz.at">xyz@xyz.at</a><br>
-                        <a href="#">Lebenslauf</a>
-                    </div>
-                    <div class="rechts col-5">
-                        <div class="row">
-                            <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Management ok</label>
-                            </div>
-                            <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Pädagogik ok</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row person">
-                    <div class="links col-7">
-                        <b>Vorname Bekommt Mails &nbsp;|&nbsp; 01/123 565 983 &nbsp;|&nbsp; <a href="mailto:xyz@xyz.at">xyz@xyz.at</a><br></b>
-                        <a href="#">Lebenslauf</a>
-                    </div>
-                    <div class="rechts col-5">
-                        <div class="row">
-                            <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Management ok</label>
-                            </div>
-                            <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Pädagogik ok</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <f:for each="{angebotVerantwortliche}" as="angebotverantwortlich">
-                    {angebotverantwortlich.uid}
-                </f:for>
 
                 <div class="row">
                     <div class="links col-7">
