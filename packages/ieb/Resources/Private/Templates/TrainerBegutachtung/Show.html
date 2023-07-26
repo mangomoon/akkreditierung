@@ -13,6 +13,7 @@
 
         <p>Programmbereich des Ansuchens: <strong>{f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</strong>
         </p>
+
         <f:if condition="{ansuchen.typ}==1">
             <f:then>
 
@@ -47,7 +48,11 @@
                         </ul>
                     </div>
 
-                    <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
+                    <f:render partial="Form/UploadListDiff" arguments="{
+                        media='{trainer.qualifikationBabiDatei}',
+                        anmerkung='{trainer.qualifikationBabi}',
+                        diff='{diff.copy_trainer.qualifikationBabiDatei}'
+                    }" />
 
                 </div>
                 <div class="rechts col-5">
@@ -96,7 +101,11 @@
                             HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
                         </p>
                     </div>
-                    <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
+                    <f:render partial="Form/UploadListDiff" arguments="{
+                        media='{trainer.lebenslaufDatei}',
+                        anmerkung='{trainer.lebenslauf}',
+                        diff='{diff.copy_trainer.lebenslaufDatei}'
+                    }" />
                 </div>
                 <div class="rechts col-5">
 
@@ -175,7 +184,11 @@
                                 </ul>
                             </div>
         
-                            <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
+                            <f:render partial="Form/UploadListDiff" arguments="{
+                                media='{trainer.qualifikationPsaDatei}',
+                                anmerkung='{trainer.qualifikationPsa}',
+                                diff='{diff.copy_trainer.qualifikationPsaDatei}'
+                            }" />
                         </div>
                         <div class="rechts col-5">
                             <div class="knoepfe teilstatus">
@@ -307,6 +320,11 @@
                                 </p>
                             </div>
                             <f:render partial="Ansuchen/UploadList" arguments="{media:ansuchen.lernziele}" />
+                            <f:render partial="Form/UploadListDiff" arguments="{
+                                media='{trainer.lebenslaufDatei}',
+                                anmerkung='{trainer.lebenslauf}',
+                                diff='{diff.copy_trainer.lebenslaufDatei}'
+                            }" />
                         </div>
                         <div class="rechts col-5">
         

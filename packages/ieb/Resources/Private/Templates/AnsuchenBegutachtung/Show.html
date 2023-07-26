@@ -4,8 +4,8 @@
 <f:section name="content">
     <f:flashMessages />
     <div class="abstand-gross"></div>
-    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -705,7 +705,6 @@
             </div>
 
             <f:for each="{verantwortliche}" as="p">
-                <f:debug>{p}</f:debug>
                 <div class="row person">
                     <div class="links col-7">
                         {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a><br>
@@ -774,9 +773,20 @@
                             {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
                         </div>
                         <div class="rechts col-5">
-                            <div class="knopf">
-                                <f:link.action pageUid="22" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
-                            </div>
+                            <div class="abstand-klein"></div>
+                                <f:link.action class="knopf" pageUid="19" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
+                                <f:for each="{trainerorig}" as="tt">
+                                    <f:if condition="{t.uid}=={tt.uid}">
+                                        <div class="status-babi">
+                                            <span class="person-statuskugel status-{tt.reviewC21BabiStatus}"></span>
+                                            <span class="person-statuskugel status-{tt.reviewC22BabiStatus}"></span>
+                                        </div>
+                                        <div class="status-psa">
+                                            <span class="person-statuskugel status-{tt.reviewC21PsaStatus}"></span>
+                                            <span class="person-statuskugel status-{tt.reviewC22PsaStatus}"></span>
+                                        </div>
+                                    </f:if>
+                                </f:for>
                             <p>{t.reviewC2BabiCommentInternal}</p>
                         </div>
                     </div>
@@ -790,8 +800,7 @@
                     <div class="links col-7">
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="c-2-hilfe">
-                                <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums
-                                    abgedeckt sind.</p>
+                                <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
                             </div>
                         </div>
                     </div>
@@ -832,9 +841,14 @@
 
                     </div>
                     <div class="rechts col-5">
-                        <div class="knopf">
-                            <f:link.action pageUid="22" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
-                        </div>
+                        <div class="abstand-klein"></div>
+                            <f:link.action class="knopf" pageUid="19" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="BeraterBegutachtung" arguments="{berater:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
+                            <f:for each="{beraterorig}" as="tt">
+                                <f:if condition="{t.uid}=={tt.uid}">
+                                        <span class="person-statuskugel status-{tt.reviewC21BabiStatus}"></span>
+                                        <span class="person-statuskugel status-{tt.reviewC22BabiStatus}"></span>
+                                </f:if>
+                            </f:for>
                         <p>{t.reviewC2BabiCommentInternal}</p>
                     </div>
                 </div>
@@ -929,33 +943,7 @@
 
 </f:section>
 
-<f:section name="media">
-    <f:if condition="{media.publicUrl}">
-        <a href="{media.publicUrl}" target="_blank">
-            {media.publicUrl}
-        </a>
-    </f:if>
-</f:section>
 
-<f:section name="uploadmultiple">
-    <div class="uploadlist">
-        <f:if condition="{media}">
-            <f:then>
-                <f:for each="{media}" as="m">
-                    <div class="filelist">
-                        <a href="{m.originalResource.publicUrl}" target="_blank">{m.originalResource.originalFile.properties.name}</a> [<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
-                    </div>
-                </f:for>
-            </f:then>
-            <f:else>
-                <p class="hinweis">Keine Dateien verfügbar</p>
-            </f:else>
-        </f:if>
-
-    </div>
-
-
-</f:section>
 
 <f:section name="comment">
 

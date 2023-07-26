@@ -568,6 +568,10 @@ knopf.inline.checked {
     box-shadow: 1px 1px 2px var(--f3) inset;
 }
 
+a.knopf {
+    text-decoration: none;
+}
+
 label.labelknopf {
     padding: 4px 16px;
     background-color: var(--f0);
@@ -1339,6 +1343,37 @@ table.ansuchenbegutachtung td.check {
     border-bottom: 2px dotted #fff;
 }
 
+.person-statuskugel {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    margin-left: 24px;
+    vertical-align: top;
+}
+.status-babi, .status-psa {
+    display: inline;
+    width: auto;
+}
+.bereich-1 .status-babi .person-statuskugel,.bereich-2 .status-psa .person-statuskugel{
+    border: solid 2px #fff;
+}
+.bereich-2 .status-babi .person-statuskugel, .bereich-1 .status-psa .person-statuskugel{
+    border: solid 2px var(--f5);
+    opacity: 0.6;
+}
+.person-statuskugel.status-1 {
+    background-color: var(--angebotsverantwortliche);
+}
+span.person-statuskugel.status-2 {
+    background-color: var(--stammdaten); 
+}
+span.person-statuskugel.status-3 {
+    background-color: var(--beratung);
+}
+.person-statuskugel.status-4 {
+    background-color: var(--ansuchen);
+}
 
 /* Checkboxes Begutachtung */
 
