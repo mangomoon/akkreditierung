@@ -171,10 +171,12 @@ td {
 
 .modal::backdrop {
     background: rgb(0 0 0 / 0.4);
+    
 }
 
 #modal {
     border: solid 2px var(--f4);
+    max-width: 1200px;
 }
 
 .knopf-s2.close {
@@ -1371,7 +1373,7 @@ span.person-statuskugel.status-2 {
     background-color: var(--stammdaten); 
 }
 span.person-statuskugel.status-3 {
-    background-color: var(--beratung);
+    background-color: #7c549a;
 }
 .person-statuskugel.status-4 {
     background-color: var(--ansuchen);

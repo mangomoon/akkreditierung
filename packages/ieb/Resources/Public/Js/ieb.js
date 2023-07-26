@@ -7,21 +7,21 @@
          if ($(this).val().length == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+             //console.log($(this).attr('id'));
          }
      });
      $('.reqcheckbox').each(function() {
          if (!$(this).is(':checked')) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+             //console.log($(this).attr('id'));
          }
      });
      $('.reqtext').each(function() {
          if ($(this).text() == '') {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+             //console.log($(this).attr('id'));
          }
      });
 
@@ -29,20 +29,20 @@
          if ($(this).val() == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+             //console.log($(this).attr('id'));
          }
      });
 
      $('.reqfile').each(function() {
          if ($(this).is('.req-leer')) {
              allesda = 0;
-             console.log("FILE: " + $(this).attr('id'));
+             //console.log("FILE: " + $(this).attr('id'));
          }
      });
 
      $('#ok').attr('value', allesda);
 
-     console.log("allesda = " + allesda);
+     //console.log("allesda = " + allesda);
  };
 
  // Vailidierung TRAINER
@@ -89,7 +89,7 @@
          $(this).html("Daten fehlen!");
          allesda = 0;
      });
-     console.log("Stammdaten: " + allesda);
+     //console.log("Stammdaten: " + allesda);
      bb = 0;
      if ($('#bildungsbereich').hasClass('bb-1')) {
          bb = 1;
@@ -111,7 +111,7 @@
 
 
      validieren();
-     console.log("allesda ohne bb: " + allesda);
+     //console.log("allesda ohne bb: " + allesda);
 
      var komp = 0;
      if ($('#kompetenz1').is(':checked')) {
@@ -139,13 +139,13 @@
 
 
 
-     console.log("allesda ohne Multiselect: " + allesda);
+     //console.log("allesda ohne Multiselect: " + allesda);
      $('span.multi-select-button').each(function() {
          if ($(this).html() == '') {
              $(this).parent().addClass('reqleer');
          }
      });
-     console.log("allesda am Schluss: " + allesda);
+//     console.log("allesda am Schluss: " + allesda);
 
      $('#ok').attr('value', allesda);
  }
@@ -244,7 +244,6 @@ function oeffnenTrainerBegutachtung() {
     a = $("#trainerbegutachtung input.c21b:checked").val();
     b = $("#trainerbegutachtung input.c21psa:checked").val();
     c = $("#trainerbegutachtung input.c22r:checked").val();
-    c = $(this).find('input.c22r:checked').val();
     if (a + b + c < 4) {
              s = 1;
          }
@@ -267,7 +266,7 @@ function oeffnenTrainerBegutachtung() {
     $('.trainerqualifikationsbegutachtung input').each (function() {
         if($(this).prop('checked')){
             t++;
-            console.log(t);
+            //console.log(t);
         }
     });
     if(t == 8){
@@ -275,6 +274,12 @@ function oeffnenTrainerBegutachtung() {
     }
 };
 
+function oeffnenBeraterBegutachtung() {
+    a = $("#beraterbegutachtung input.c3:checked").val();
+    if (a > 3) {
+        $('.komm-ext').show();
+    }
+}
 
 // Löschen der Validierung für Uploads bei ACTION=new
 function reqleerLoeschen() {
@@ -307,14 +312,13 @@ function reqleerLoeschen() {
         function() {
             $('#mangoTooltip').removeClass('active');
             var title = $(this).attr('alt');
-            console.log(title);
+            //console.log(title);
             $(this).attr('title', title);
         });
 
      // MODAL BOX 
      const modal = document.querySelector("#modal");
      const closeModal = document.querySelector(".close");
-     console.log(closeModal);
      closeModal.addEventListener("click", () => {
          modal.close();
      });
@@ -538,9 +542,9 @@ function reqleerLoeschen() {
         }
 
         if ($(this).parent().hasClass('nicht-ok')) {
-            $(this).parent().parent().next().toggle();
+            $(this).parent().parent().parent().find('.komm-ext').toggle();
         } else {
-            $(this).parent().parent().next().hide();
+            $(this).parent().parent().parent().find('.komm-ext').hide();
         }
 
      });
@@ -594,6 +598,20 @@ function reqleerLoeschen() {
         });
 
      // ########################################
+
+
+     //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
+
+     $("#beraterbegutachtung").submit(function() {
+        var t = $('#beraterId').val();
+        var s = $("#beraterbegutachtung input.c3:checked").val();
+        var c = 'status-'+s;
+        var b = '#berater-'+ t +' .person-statuskugel';
+        var x = $('#berater-2 .links').html();
+        console.log(x);
+        //$(b).addClass(c);
+        $('#oben').hide();
+    });
 
 
      $(".req").focus(function() {

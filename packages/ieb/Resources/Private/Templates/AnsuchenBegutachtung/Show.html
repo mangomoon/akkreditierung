@@ -765,7 +765,7 @@
             </div>
 
                 <f:for each="{trainer}" as="t">
-                    <div class="row person">
+                    <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.fullName} 
                             
@@ -832,7 +832,7 @@
             </div>
 
             <f:for each="{berater}" as="t">
-                <div class="row person">
+                <div class="row person" id="berater-{t.uid}">
                     <div class="links col-7">
                         {t.fullName} 
                         
