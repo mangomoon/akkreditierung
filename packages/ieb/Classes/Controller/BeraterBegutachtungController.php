@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+namespace GeorgRinger\Ieb\Controller;
+
+use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Dto;
+use GeorgRinger\Ieb\Domain\Model\Berater;
+use GeorgRinger\Ieb\Domain\Repository;
+use Psr\Http\Message\ResponseInterface;
+
+
+/**
+ * This file is part of the "ieb" Extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * (c) 2022 Georg Ringer <mail@ringer.it>
+ */
+class BeraterBegutachtungController extends BaseController
+{
+
+    protected Repository\AnsuchenRepository $ansuchenRepository;
+    protected Repository\BeraterRepository $beraterRepository;
+
+    public function showAction(Berater $berater, Ansuchen $ansuchen, Dto\Begutachtung\BeraterBegutachtung $begutachtung = null): ResponseInterface
+    {
+        $begutachtung = $begutachtung ?? new Dto\Begutachtung\BeraterBegutachtung();
+        $begutachtung->beraterId = $berater->getUid();
+        $begutachtung->ansuchenId = $ansuchen->getUid();
+
+        $values = $this->getPropertiesOfBegutachtung($begutachtung);
+        foreach ($values as $property => $value) {
+            $getter = 'get' . ucfirst($property);
+            $begutachtung->$property = $berater->$getter();
+        }
+
+        $this->view->assignMultiple([
+            'berater' => $berater,
+            'ansuchen' => $ansuchen,
+            'begutachtung' => $begutachtung,
+        ]);
+        return $this->htmlResponse();
+    }
+
+    public function updateAction(Dto\Begutachtung\BeraterBegutachtung $begutachtung)
+    {
+        // check
+        $ansuchen = $this->ansuchenRepository->findByIdentifier($begutachtung->ansuchenId);
+        $berater = $this->beraterRepository->findByIdentifier($begutachtung->beraterId);
+        if (!$berater || !$ansuchen || $ansuchen->getPid() !== $berater->getPid()) {
+            return $this->htmlResponse('Nicht erlaubt!');
+        }
+
+        $values = $this->getPropertiesOfBegutachtung($begutachtung);
+        foreach ($values as $property => $value) {
+            $setter = 'set' . ucfirst($property);
+            $berater->$setter($value);
+        }
+        $this->beraterRepository->update($berater);
+        $this->addFlashMessage('Begutachtung gespeichert');
+        $this->redirect('show', null, null, ['berater' => $berater, 'ansuchen' => $ansuchen]);
+    }
+
+    public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
+    {
+        $this->ansuchenRepository = $ansuchenRepository;
+    }
+
+    public function injectBeraterRepository(Repository\BeraterRepository $beraterRepository): void
+    {
+        $this->beraterRepository = $beraterRepository;
+    }
+
+}

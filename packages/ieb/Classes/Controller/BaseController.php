@@ -138,7 +138,7 @@ class BaseController extends ActionController
     protected function getPropertiesOfBegutachtung($object):array
     {
         $properties = ObjectAccess::getGettableProperties($object);
-        foreach (['stammdatenId', 'ansuchenId', 'trainerId', 'pid', 'uid'] as $property) {
+        foreach (['stammdatenId', 'ansuchenId', 'trainerId', 'beraterId', 'pid', 'uid'] as $property) {
             unset($properties[$property]);
         }
         return $properties;

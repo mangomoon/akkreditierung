@@ -87,11 +87,13 @@ defined('TYPO3') || die();
         [
             \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update',
             \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list,show,edit,update',
+            \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update',
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list,show,edit,update',
         ],
         [
             \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update',
             \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list, show,edit, update',
+            \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update',
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list, show,edit, update',
         ]
     );

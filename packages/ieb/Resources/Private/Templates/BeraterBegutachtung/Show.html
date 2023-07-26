@@ -1,0 +1,174 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <f:flashMessages />
+    <f:form name="begutachtung" object="{begutachtung}" action="update" id="beraterbegutachtung">
+        <f:form.hidden property="ansuchenId" />
+        <f:form.hidden property="beraterId" />
+        <h2>{berater.fullName}</h2>
+        <p>Begutachtung basierend auf <strong>{ansuchen.name} <span class="nummer">[{ansuchen.nummer}]</strong></span>
+        </p>
+
+        <p>Programmbereich des Ansuchens: <strong>{f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</strong>
+        </p>
+
+
+        <div class="begutachtung-kriterium" id="c31">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-7">
+                        <h2>C.3.1 Qualifikationsnachweise Beratung</h2>
+                    </div>
+                    <div class="col-5 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="links col-7">
+                    <div class="erlaeuterung">
+                        <div class="showinfobox" id="c-2-a-2-hilfe">Alle Berater/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
+                        <p>
+                            Laden Sie die Nachweise über den Abschluss einer fachspezifischen Ausbildung zur Beratung hoch.
+                        </p>
+                        <p class="hinweis">
+                            <span class="worhinweis">Hinweis:</span> Anerkannt werden:
+                        </p>
+                        <ul class="hinweis">
+                            <li>
+                                Ausbildungen zur Bildungs- und Berufsberatung am bifeb
+                            </li>
+                            <li>
+                                wba-Zertifikat/-Diplom mit Schwerpunkt Beratung
+                            </li>
+                            <li>
+                                eine postsekundäre Ausbildung zur Sozialarbeit oder Sozialpädagogik (mit FH-, Akademie- oder Universitätsabschluss)
+                            </li>
+                        </ul>
+                        <p class="hinweis">
+                            Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen sind im Programmplanungsdokument Kapitel 3.3.3. nachzulesen.
+                        </p>
+                    </div>
+                    <f:render partial="Form/UploadListDiff" arguments="{
+                        media='{berater.qualifikationsnachweise}',
+                        anmerkung='{berater.qualifikationsnachweiseKommentar}',
+                        diff='{diff.copy_berater.qualifikationsnachweise}'
+                    }" />
+
+                </div>
+                <div class="rechts ohne-bg col-5">
+
+                    &nbsp;
+
+                </div>
+            </div>
+        </div>
+        <div class="begutachtung-kriterium" id="c32">
+            <div class="kriteriumtitel">
+                <div class="row">
+                    <div class="col-7">
+                        <h2>C.3.2 Erfahrungsnachweis</h2>
+                    </div>
+                    <div class="col-5 right">
+                        <div class="infoknopf"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="links col-7">
+                    <div class="erlaeuterung">
+                        <div class="showinfobox" id="c-2-1-hilfe">Alle Berater/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
+                        <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+                    </div>
+                    <f:render partial="Form/UploadListDiff" arguments="{
+                        media='{berater.lebenslauf}',
+                        anmerkung='{berater.lebenslaufKommentar}',
+                        diff='{diff.copy_berater.lebenslauf}'
+                    }" />
+                </div>
+                <div class="rechts col-5">
+
+                    <div class="knoepfe teilstatus">
+                        <label class="knopf nan c22" for="{property}Status-0">
+                            <f:form.radio property="reviewC3Status" id="{property}Status-0" value="0"  class="c22r"/>
+                            nan
+                        </label>
+                        <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewC3Status}==1', then:'checked')}" for="{property}Status-1">
+                            <f:form.radio property="reviewC3Status" id="{property}Status-1" value="1" class="c22r"/>
+                            ok
+                        </label>
+                        <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewC3Status}==2', then:'checked')}" for="{property}Status-2">
+                            <f:form.radio property="reviewC3Status" id="{property}Status-2" value="2"  class="c22r"/>
+                            fraglich
+                        </label>
+                        <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewC3Status}==3', then:'checked')}" for="{property}Status-3">
+                            <f:form.radio property="reviewC3Status" id="{property}Status-3" value="3"  class="c22r"/>
+                            Auflage
+                        </label>
+                        <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewC3Status}==4', then:'checked')}" for="{property}Status-4">
+                            <f:form.radio property="reviewC3Status" id="{property}Status-4" value="4"  class="c22r"/>
+                            nicht-ok
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="begutachtung-kriterium" id="k1">
+            <div class="row">
+                <div class="links col-7">
+
+                </div>
+                <div class="rechts col-5">
+
+                    <div class="komm-int">
+                        <f:for each="{comments}" as="comment">
+                            <p>
+                                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                            </p>
+                        </f:for>
+                    </div>
+                    <div>
+                        <f:form.textarea property="reviewC3CommentInternal" id="comment1" class="" />
+                    </div>
+                    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+                        <f:form.textarea property="reviewC3CommentTr" id="comment3-{property}" class="extern" />
+                        <div class="knopf textbausteinoeffner">Textbausteine</div>
+                        <div class="textbausteine">
+                            <div class="textbaustein">Lorem ipsum dolet</div>
+                            <div class="textbaustein">Und so weiter!</div>
+                            <div class="textbaustein">Und so fort ...</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+
+
+        <f:form.submit value="Speichern" name="save" class="knopf-s" />
+    </f:form>
+
+    <script>oeffnenTrainerBegutachtung();</script>
+</f:section>
+<f:section name="teilstatus">
+<!--    <div class="knoepfe teilstatus">-->
+<!--        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" name="c21b"/>nan</label>-->
+<!--        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21b"/>ok</label>-->
+<!--        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" name="c21b" />fraglich</label>-->
+<!--        <label class="knopf auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" name="c21b" />Auflage</label>-->
+<!--        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" name="c21b" />nicht-ok</label>-->
+<!--    </div>-->
+</f:section>
+<f:section name="comment">
+
+</f:section>
+
+</html>

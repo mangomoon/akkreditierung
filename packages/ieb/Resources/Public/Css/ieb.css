@@ -1148,7 +1148,9 @@ table.tx_ieb.standortliste td {
 .begutachtung-kriterium .rechts {
     background: var(--f2);
 }
-
+.begutachtung-kriterium .rechts.ohne-bg {
+    background: var(--f0b);
+}
 .begutachtung-kriterium h3 {
     font-size: 1.2em;
     color: var(--f4);
@@ -1355,7 +1357,7 @@ table.ansuchenbegutachtung td.check {
     display: inline;
     width: auto;
 }
-.bereich-1 .status-babi .person-statuskugel,.bereich-2 .status-psa .person-statuskugel{
+.bereich-1 .status-babi .person-statuskugel,.bereich-2 .status-psa .person-statuskugel, .berater.person-statuskugel{
     border: solid 2px #fff;
 }
 .bereich-2 .status-babi .person-statuskugel, .bereich-1 .status-psa .person-statuskugel{
