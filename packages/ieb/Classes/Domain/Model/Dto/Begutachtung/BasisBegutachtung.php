@@ -14,6 +14,7 @@ class BasisBegutachtung extends AbstractDomainObject
 
     public string $reviewTotalCommentInternal = '';
     public string $reviewTotalCommentTr = '';
+    //public date $reviewTotalFrist = NULL;
     public string $reviewB1CommentInternal = '';
     public string $reviewB1CommentInternalStep = '';
     public string $reviewB1CommentTr = '';
@@ -53,7 +54,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $status = 0;
 
     private const FIELDS = [
-        'reviewTotalCommentInternal', 'reviewTotalCommentTr',
+        'reviewTotalCommentInternal', 'reviewTotalCommentTr', 
         'reviewB1CommentInternalStep', 'reviewB1CommentTr', 'reviewB1Status',
         'reviewB14CommentInternalStep', 'reviewB14CommentTr', 'reviewB14Status',
         'reviewB15CommentInternalStep', 'reviewB15CommentTr', 'reviewB15Status',

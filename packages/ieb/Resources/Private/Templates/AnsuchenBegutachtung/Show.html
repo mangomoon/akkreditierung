@@ -2,10 +2,11 @@
 <f:layout name="Default" />
 
 <f:section name="content">
+    <f:debug>{_all}</f:debug>
     <f:flashMessages />
     <div class="abstand-gross"></div>
-    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
+        {ansuchen.stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -20,7 +21,7 @@
         </div>
         <div class="abstand-gross"></div>
 
-        <div class="begutachtung-kriterium row status-{stammdaten.reviewA1Status}" id="kA1">
+        <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -194,7 +195,7 @@
 
         <!-- A.2 Stammdaten #################################################### -->
 
-        <div class="begutachtung-kriterium row status-{stammdaten.reviewA2Status}" id="kA2">
+        <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA2Status}" id="kA2">
             <div class="col">
                             <div class="kriteriumtitel">
                 <div class="row">
@@ -523,6 +524,8 @@
                         </div>
                         <f:render partial="Form/UploadListDiff" arguments="{
                             media='{ansuchen.zielgruppenAnspracheDatei}',
+                            anmerkung='{ansuchen.zielgruppenAnsprache}',
+                            diff='{diff.zielgruppen_ansprache_datei}',
                         }" />
                     </div>
                     <div class="rechts col-5">
@@ -630,7 +633,14 @@
                             }" />
 
                             <p><i>Kommentar zu allen drei Uploads:</i></p>
-                            <p>{ansuchen.didaktikKommentar}</p>
+                            <p>{ansuchen.didaktikKommentar}
+                                <f:if condition="!{diff.didaktik_kommentar.current} && {diff.didaktik_kommentar.previous}">
+                                    <p class="diff"><span class="vorher-knopf">gelöscht. vorher: </span>{diff.didaktik_kommentar.previous}</p>
+                                </f:if>
+                            </p>
+                            <f:if condition="{diff.didaktik_kommentar.prvious} && {diff.didaktik_kommentar.current}">
+                                <p class="diff"><span class="vorher">vorher: </span>{diff.didaktik_kommentar.previous}</p>
+                            </f:if>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -916,20 +926,24 @@
 
         <div class="abstand-gross"></div>
 
-        <div class="begutachtung-kriterium" id="k1">
+        <div class="begutachtung-kriterium schlusskommentar" id="k1">
             <div class="row">
-                <div class="links col-6">
-                    noch mehr
-                </div>
-                <div class="rechts col-6">
+                <div class="col">
                     SCHULSSKOMMENTAR
                 </div>
             </div>
+            <label>
+                Allgemeiner Kommentar <i>intern</i>
+                <f:form.textarea property="reviewTotalCommentInternal" class="form-control"/>
+            </label>
+            <label>
+                Allgemeiner Text an den Träger
+                <f:form.textarea property="reviewTotalCommentTr" class="form-control"/>
+            </label>
+            <label>Frist
+                
+            </label>
         </div>
-        <label>
-            Kommentar <i>intern</i>
-            <f:form.textfield property="reviewTotalCommentInternal" class="form-control"/>
-        </label>
 
 
         <label>

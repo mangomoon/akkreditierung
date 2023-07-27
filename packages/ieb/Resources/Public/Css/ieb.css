@@ -1379,6 +1379,27 @@ span.person-statuskugel.status-3 {
     background-color: var(--ansuchen);
 }
 
+
+.begutachtung-kriterium.status-4 {
+    border: solid 3px var(--ansuchen);
+}
+.begutachtung-kriterium.status-3 {
+    border: solid 3px var(--stammdaten);
+}
+.begutachtung-kriterium.status-2 {
+    border: solid 3px var(--standorte);
+}
+
+/* Schlusskommentar */
+.schlusskommentar {
+    background: var(--f2);
+    margin: 0 -20px;
+    padding: 20px;
+}
+.schlusskommentar textarea {
+    font-size: 1.3em;
+}
+
 /* Checkboxes Begutachtung */
 
 span.checkbox {
@@ -1428,7 +1449,7 @@ span.checkbox.checked {
 
 
 /* ############################ TR FormFields NACH BEUTACHTUNG ############### */
-.kriterium.status-4, .begutachtung-kriterium.status-4, table.ansuchenliste.status-4 {
+.kriterium.status-4, table.ansuchenliste.status-4 {
     border: solid 3px var(--stammdaten);
 }
 .commentTr {

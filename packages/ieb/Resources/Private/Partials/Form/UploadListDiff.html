@@ -17,7 +17,7 @@
                 </f:if>
                 
                 <ieb:fal path="{m.publicUrl}">
-                    <f:if condition="{file}">
+                    <f:if condition="{file}"><f:debug>{diff}</f:debug>
                         <div class="filelist-item">
                             <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] <f:if condition="{diff}">
                                 <f:for each="{diff}" as="file">
@@ -33,6 +33,7 @@
                 
 
             </f:for>
+            
             <f:if condition="{diff}">
                 <f:for each="{diff}" as="file">
                         <f:if condition="{file.publicUrl.previous}">
