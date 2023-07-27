@@ -93,6 +93,7 @@ class AnsuchenController extends BaseController
         if ($newSnapShotIfVersionChangedByTr) {
             $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
             $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
+            $newAnsuchen->setEinreichDatum(new \DateTime());
             switch ($ansuchen->getStatus()) {
                 case 10:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
@@ -103,6 +104,7 @@ class AnsuchenController extends BaseController
             }
             $this->ansuchenRepository->update($newAnsuchen);
         } else {
+            $ansuchen->setEinreichDatum(new \DateTime());
             switch ($ansuchen->getStatus()) {
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
