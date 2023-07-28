@@ -420,13 +420,18 @@
                             
 
                         <p>Standorte:</p>
-                        <ul>
-
                             <f:for each="{standorte}" as="standort">
-                                <li>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span></li>
-                                {ieb:diff(diff:diff,field:'copy_standorte/{standort.uid}')}
+                                <div>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
+                                {ieb:ifDiff(diff:diff,field:'copy_standorte/{standort.uid}')}</div>
                             </f:for>
-                        </ul>
+                            <f:if condition="{diff.copy_standorte}">
+                                <p>&nbsp;</p>
+                                <f:for each="{diff.copy_standorte}" as="p">
+                                        <f:if condition="{p.fullName.previous} && !{p.fullName.current}">
+                                            <div class="diff"><span class="vorher">gelöscht:</span> {p.fullName.previous}</div>
+                                        </f:if>
+                                </f:for>
+                            </f:if>
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB14', status:ansuchen.reviewB14Status, comments:ansuchen.reviewB14CommentInternalData}" />
@@ -803,7 +808,9 @@
                 </f:for>
 
                 <f:for each="{diff.copy_trainer}" as="tt">
-                    <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                    <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
+                        <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                    </f:if>
                 </f:for>
 
                 <div class="row">
@@ -864,8 +871,10 @@
             </f:for>
 
             <f:for each="{diff.copy_berater}" as="tt">
-                <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
-            </f:for>
+                    <f:if condition="{tt.uid.previous} && !{tt.uid.current}">
+                        <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                    </f:if>
+                </f:for>
 
                 <div class="row">
                     <div class="links col-7">

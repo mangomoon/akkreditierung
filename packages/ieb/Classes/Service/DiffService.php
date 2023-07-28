@@ -108,7 +108,7 @@ class DiffService
             return [];
         }
 
-        foreach (['uid', 'tstamp', 'crdate', 'version', 'version_based_on', 'version_active', 'status', 'cruser_id', 'locked_by'] as $field) {
+        foreach (['tstamp', 'crdate', 'version', 'version_based_on', 'version_active', 'status', 'cruser_id', 'locked_by'] as $field) {
             unset($row[$field]);
         }
         // json fields
