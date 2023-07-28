@@ -88,6 +88,13 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
+    public function finalizestatusAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $ansuchen->setStatus($ansuchen->getUpcomingStatus());
+        $this->ansuchenRepository->update($ansuchen);
+        $this->redirect('list');
+    }
+
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
     {
