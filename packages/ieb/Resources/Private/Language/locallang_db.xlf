@@ -1125,6 +1125,12 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_b23_status.description" resname="tx_ieb_domain_model_ansuchen.review_b23_status.description">
 				<source>Review B23 Status</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.upcoming_status" resname="tx_ieb_domain_model_ansuchen.upcoming_status">
+				<source>Upcoming Status</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.upcoming_status.description" resname="tx_ieb_domain_model_ansuchen.upcoming_status.description">
+				<source>Upcoming Status</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
 			</trans-unit>

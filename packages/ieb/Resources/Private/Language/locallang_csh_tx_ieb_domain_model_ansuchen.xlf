@@ -282,6 +282,9 @@
 			<trans-unit id="review_b23_status.description" resname="review_b23_status.description">
 				<source>reviewB23Status</source>
 			</trans-unit>
+			<trans-unit id="upcoming_status.description" resname="upcoming_status.description">
+				<source>upcomingStatus</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>

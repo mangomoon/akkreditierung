@@ -1446,7 +1446,13 @@ span.checkbox.checked {
     background: var(--f1);
 }
 
-
+select#field_upcomingStatus {
+    font-size: 1.2em;
+    width: 330px;
+}
+select#field_upcomingStatus option[value=100] {
+    background-color: var(--angebotsverantwortliche);
+}
 
 /* ############################ TR FormFields NACH BEUTACHTUNG ############### */
 .kriterium.status-4, table.ansuchenliste.status-4 {

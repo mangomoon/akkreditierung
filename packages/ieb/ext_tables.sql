@@ -193,6 +193,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_b23_comment_internal_step text NOT NULL DEFAULT '',
 	review_b23_comment_tr text NOT NULL DEFAULT '',
 	review_b23_status int(11) DEFAULT '0' NOT NULL,
+	upcoming_status int(11) DEFAULT '0' NOT NULL,
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',

@@ -759,6 +759,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
+     * upcomingStatus
+     *
+     * @var int
+     */
+    protected $upcomingStatus = 0;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -3380,5 +3387,26 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCopyVerantwortliche(string $copyVerantwortliche)
     {
         $this->copyVerantwortliche = $copyVerantwortliche;
+    }
+
+    	/**
+     * Returns the upcomingStatus
+     *
+     * @return int
+     */
+    public function getUpcomingStatus()
+    {
+        return $this->upcomingStatus;
+    }
+
+    /**
+     * Sets the upcomingStatus
+     *
+     * @param int $upcomingStatus
+     * @return void
+     */
+    public function setUpcomingStatus(int $upcomingStatus)
+    {
+        $this->upcomingStatus = $upcomingStatus;
     }
 }

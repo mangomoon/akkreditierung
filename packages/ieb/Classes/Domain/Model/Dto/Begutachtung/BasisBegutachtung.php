@@ -51,6 +51,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $reviewC3CommentInternalStep = '';
     public string $reviewC3CommentTr = '';
     public int $reviewC3Status = 0;
+    public int $upcomingStatus = 0;
     public int $status = 0;
 
     private const FIELDS = [
@@ -63,7 +64,7 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewB2CommentInternalStep', 'reviewB2CommentTr', 'reviewB2Status',
         'reviewC1CommentInternalStep', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
-        'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'reviewC3Status',
+        'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 'reviewC3Status',
     ];
 
     public function setByAnsuchen(Ansuchen $ansuchen): void

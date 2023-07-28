@@ -2379,6 +2379,18 @@
                             "propertyName": "reviewB23Status",
                             "propertyType": "Select",
                             "uid": "1038560278124"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "upcomingStatus",
+                            "propertyType": "Select",
+                            "uid": "1247645406017"
                         }
                     ]
                 },
@@ -4573,7 +4585,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-07-21 10:50",
+        "last_modified": "2023-07-28 06:15",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

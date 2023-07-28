@@ -806,7 +806,8 @@
                         </div>
                     </div>
                 </f:for>
-
+                        
+                <!-- mango: UID vergleichen! -->
                 <f:for each="{diff.copy_trainer}" as="tt">
                     <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
                         <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
@@ -952,13 +953,15 @@
             <label>Frist
                 
             </label>
+
+            <label>
+                <f:render partial="Form/Select" arguments="{property:'upcomingStatus', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}"
+                    />
+            </label>
         </div>
 
 
-        <label>
-            <f:render partial="Form/Select" arguments="{property:'status', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'zum Abschließen auswählen'}"
-                />
-        </label>
+        
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
     </f:form>

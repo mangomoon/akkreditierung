@@ -1943,6 +1943,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getUpcomingStatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getUpcomingStatus()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setUpcomingStatusForIntSetsUpcomingStatus(): void
+    {
+        $this->subject->setUpcomingStatus(12);
+
+        self::assertEquals(12, $this->subject->_get('upcomingStatus'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(
