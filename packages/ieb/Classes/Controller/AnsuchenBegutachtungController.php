@@ -93,6 +93,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         $this->ansuchenRepository->update($ansuchen);
         $this->redirect('list');
+        $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
 
 
