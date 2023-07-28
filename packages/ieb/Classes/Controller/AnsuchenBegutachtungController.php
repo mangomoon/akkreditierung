@@ -91,7 +91,10 @@ class AnsuchenBegutachtungController extends BaseController
     public function finalizestatusAction(Ansuchen $ansuchen): ResponseInterface
     {
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
+        $ansuchen->setUpcomingStatus(0);
         $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
+        $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid()));
         $this->redirect('list');
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
