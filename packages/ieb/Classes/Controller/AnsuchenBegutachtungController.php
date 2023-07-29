@@ -41,13 +41,15 @@ class AnsuchenBegutachtungController extends BaseController
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
         };
         $begutachtung->setByAnsuchen($ansuchen);
+        $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn());
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'possibleStatus' => $possibleStatus,
             'diffWithAlternativeId' => $diffWithAlternativeId,
             'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
-            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn()),
+            'diff' => $diffResult,
+            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE))
         ]);
         return $this->htmlResponse();
     }

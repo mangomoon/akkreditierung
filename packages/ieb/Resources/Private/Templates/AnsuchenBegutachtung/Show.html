@@ -4,6 +4,7 @@
 <f:section name="content">
     <f:debug>{_all}</f:debug>
     <f:flashMessages />
+    {diffAsJson -> f:format.raw()}
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
         {ansuchen.stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
