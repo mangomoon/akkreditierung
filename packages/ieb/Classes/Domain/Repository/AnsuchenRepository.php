@@ -161,17 +161,17 @@ class AnsuchenRepository extends BaseRepository
         $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
-                $copyStandorte[$standort->getUid()] = ObjectAccess::getGettableProperties($standort);
+                $copyStandorte[$standort->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($standort));
             }
         }
         if ($ansuchen->getTrainer()) {
             foreach ($ansuchen->getTrainer() as $trainer) {
-                $copyTrainer[$trainer->getUid()] = ObjectAccess::getGettableProperties($trainer);
+                $copyTrainer[$trainer->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($trainer));
             }
         }
         if ($ansuchen->getBerater()) {
             foreach ($ansuchen->getBerater() as $berater) {
-                $copyBerater[$berater->getUid()] = ObjectAccess::getGettableProperties($berater);
+                $copyBerater[$berater->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($berater));
             }
         }
         if ($ansuchen->getVerantwortliche()) {
