@@ -176,7 +176,7 @@ class AnsuchenRepository extends BaseRepository
         }
         if ($ansuchen->getVerantwortliche()) {
             foreach ($ansuchen->getVerantwortliche() as $verantwortliche) {
-                $copyVerantwortliche[$verantwortliche->getUid()] = ObjectAccess::getGettableProperties($verantwortliche);
+                $copyVerantwortliche[$verantwortliche->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($verantwortliche));
             }
         }
         $copyStammdaten = $stammdaten ? $this->convertObjectToArray(ObjectAccess::getGettableProperties($stammdaten)) : [];
@@ -207,7 +207,7 @@ class AnsuchenRepository extends BaseRepository
                         foreach ($value as $object) {
                             switch (get_class($object)) {
                                 case FileReference::class;
-                                    $out[] = [
+                                    $out[$object->getOriginalResource()->getUid()] = [
                                         'publicUrl' => $object->getOriginalResource()->getPublicUrl(),
                                     ];
                                     break;
