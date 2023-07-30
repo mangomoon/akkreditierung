@@ -47,9 +47,10 @@ class StammdatenController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function updateAction(Stammdaten $stammdaten): ResponseInterface
+    public function updateAction(Stammdaten $stammdaten, array $fileDelete = []): ResponseInterface
     {
         $this->check($stammdaten);
+        $this->deleteFiles($fileDelete, $stammdaten);
         $this->stammdatenRepository->update($stammdaten);
         $this->addFlashMessage('Wurde erfolgreich gespeichert');
         $this->redirect('index');

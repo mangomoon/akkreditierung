@@ -76,9 +76,10 @@ class BeraterController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function updateAction(Berater $berater)
+    public function updateAction(Berater $berater, array $fileDelete = [])
     {
         $this->check($berater);
+        $this->deleteFiles($fileDelete, $berater);
         $this->beraterRepository->update($berater);
         $this->redirect('index');
     }

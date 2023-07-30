@@ -74,10 +74,11 @@ class TrainerController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function updateAction(Trainer $trainer)
+    public function updateAction(Trainer $trainer, array $fileDelete = [])
     {
         $this->check($trainer);
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
+            $this->deleteFiles($fileDelete, $trainer);
             $this->trainerRepository->update($trainer);
         }
         $this->redirect('index');

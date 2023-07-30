@@ -116,9 +116,10 @@ class AngebotVerantwortlichController extends BaseController
      *
      * @param AngebotVerantwortlich $angebotVerantwortlich
      */
-    public function updateAction(AngebotVerantwortlich $angebotVerantwortlich): ResponseInterface
+    public function updateAction(AngebotVerantwortlich $angebotVerantwortlich, array $fileDelete = []): ResponseInterface
     {
         $this->check($angebotVerantwortlich);
+        $this->deleteFiles($fileDelete, $angebotVerantwortlich);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
         $this->redirect('index');
     }

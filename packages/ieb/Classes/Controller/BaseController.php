@@ -12,13 +12,16 @@ use GeorgRinger\Ieb\Seo\IebTitleProvider;
 use GeorgRinger\Ieb\Service\RelationLockService;
 use GeorgRinger\News\Seo\NewsTitleProvider;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\Container\Container;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -142,5 +145,39 @@ class BaseController extends ActionController
             unset($properties[$property]);
         }
         return $properties;
+    }
+
+    protected function deleteFiles(array $fileDelete, AbstractEntity $object): void
+    {
+        DebuggerUtility::var_dump($fileDelete);die;
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('sys_file_reference');
+        foreach ($fileDelete as $propertyType => $deletes) {
+            $split = explode('_', $propertyType);
+            $property = $split[1];
+            foreach ($deletes as $fileId => $action) {
+                if ($action !== '1') {
+                    continue;
+                }
+                $fileId = (int)$fileId;
+                $getter = 'get' . ucfirst($property);
+DebuggerUtility::var_dump($split);
+                if ($split[0] === 's') {
+                    $file = $object->$getter();
+                    if ($file && $file->getUid() === $fileId) {
+                        $connection->update('sys_file_reference', ['deleted' => 1], ['uid' => $fileId]);
+                    }
+                } elseif ($split[0] === 'm') {
+                    /** @var ObjectStorage $files */
+                    $files = $object->$getter();
+                    foreach ($files as $file) {
+                        if ($file->getUid() === $fileId) {
+                            DebuggerUtility::var_dump([$split, $fileId, $files]);
+                            $connection->update('sys_file_reference', ['deleted' => 1], ['uid' => $fileId]);
+                        }
+                    }
+                }
+            }
+        }
+        die;
     }
 }
