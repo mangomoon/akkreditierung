@@ -111,9 +111,9 @@
                             <td class="daten">
                                 
                                 <f:render partial="Form/UploadListDiff" arguments="{
-                                    media='{stammdaten.nachweis}',
-                                    anmerkung='',
-                                    diff='{diff.copy_stammdaten.nachweis}',
+                                    media:'{stammdaten.nachweis}',
+                                    anmerkung:'',
+                                    diff:'{diff.copy_stammdaten.nachweis}',
                                 }" />
 
                             </td>
@@ -225,9 +225,9 @@
                                 <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
                             </div>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{stammdaten.leitbildDatei}',
-                                anmerkung='{stammdaten.leitbild}',
-                                diff='{diff.copy_stammdaten.leitbildDatei}'
+                                media:'{stammdaten.leitbildDatei}',
+                                anmerkung:'{stammdaten.leitbild}',
+                                diff:'{diff.copy_stammdaten.leitbildDatei}'
                             }" />
 
                             {ieb:diff(diff:diff,field:'copy_stammdaten/leitbild')}
@@ -240,9 +240,9 @@
                                     <p>Die Organisation verfügt über Ö-Cert.</p>
 
                                     <f:render partial="Form/UploadListDiff" arguments="{
-                                        media='{stammdaten.qmsZertifikatDatei}',
-                                        anmerkung='{stammdaten.qmsZertifikat}',
-                                        diff='{diff.copy_stammdaten.qmsZertifikatDatei}',
+                                        media:'{stammdaten.qmsZertifikatDatei}',
+                                        anmerkung:'{stammdaten.qmsZertifikat}',
+                                        diff:'{diff.copy_stammdaten.qmsZertifikatDatei}',
                                     }" />
 
                                     {ieb:diff(diff:diff,field:'copy_stammdaten/qmsZertifikat')}
@@ -262,9 +262,9 @@
                                         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
                                     </div>
                                     <f:render partial="Form/UploadListDiff" arguments="{
-                                        media='{stammdaten.qualitaetSicherungDatei}',
-                                        anmerkung='{stammdaten.qualitaetsSicherung}',
-                                        diff='{diff.copy_stammdaten.qualitaetSicherungDatei}',
+                                        media:'{stammdaten.qualitaetSicherungDatei}',
+                                        anmerkung:'{stammdaten.qualitaetsSicherung}',
+                                        diff:'{diff.copy_stammdaten.qualitaetSicherungDatei}',
                                     }" />
 
                                 </f:else>
@@ -288,9 +288,9 @@
                             </div>
 
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{stammdaten.qualitaetPersonalDatei}',
-                                anmerkung='{stammdaten.qualitaetPersonal}',
-                                diff='{diff.copy_stammdaten.qualitaetPersonalDatei}'
+                                media:'{stammdaten.qualitaetPersonalDatei}',
+                                anmerkung:'{stammdaten.qualitaetPersonal}',
+                                diff:'{diff.copy_stammdaten.qualitaetPersonalDatei}'
                             }" />
 
 
@@ -367,8 +367,8 @@
                         <div class="kriteriumteil">
                             <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{ansuchen.uebersichtDatei}',
-                                anmerkung='{ansuchen.uebersicht}',
+                                media:'{ansuchen.uebersichtDatei}',
+                                anmerkung:'{ansuchen.uebersicht}',
                             }" />
                         </div>
                     </div>
@@ -467,8 +467,8 @@
                         </div>
                         <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ja', else:'nein')}</b>.</p>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{ansuchen.pruefbescheidDatei}',
-                                anmerkung='{ansuchen.pruefbescheid}',
+                                media:'{ansuchen.pruefbescheidDatei}',
+                                anmerkung:'{ansuchen.pruefbescheid}',
                             }" />
 
                         <h4>Kooperierende Einrichtung</h4>
@@ -485,8 +485,8 @@
                         </f:if>
 
                         <f:render partial="Form/UploadListDiff" arguments="{
-                            media='{ansuchen.kooperationDatei}',
-                            anmerkung='{ansuchen.kooperation}',
+                            media:'{ansuchen.kooperationDatei}',
+                            anmerkung:'{ansuchen.kooperation}',
                         }" />
 
 
@@ -530,9 +530,9 @@
                             <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 2 Seiten (ohne Folder)</p>
                         </div>
                         <f:render partial="Form/UploadListDiff" arguments="{
-                            media='{ansuchen.zielgruppenAnspracheDatei}',
-                            anmerkung='{ansuchen.zielgruppenAnsprache}',
-                            diff='{diff.zielgruppen_ansprache_datei}',
+                            media:'{ansuchen.zielgruppenAnspracheDatei}',
+                            anmerkung:'{ansuchen.zielgruppenAnsprache}',
+                            diff:'{diff.zielgruppen_ansprache_datei}',
                         }" />
                     </div>
                     <div class="rechts col-5">
@@ -596,7 +596,7 @@
 
                             <p><i>Zielgruppengerechter Lernprozess</i></p>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{ansuchen.lernziele}',
+                                media:'{ansuchen.lernziele}',
                             }" />
 
 
@@ -625,7 +625,7 @@
                             </div>
                             <p><i>Kompetenzerhebung</i></p>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{ansuchen.lernstandserhebung}',
+                                media:'{ansuchen.lernstandserhebung}',
                             }" />
                         </div>
                         <div class="kriteriumteil">
@@ -636,7 +636,7 @@
                             </div>
                             <p><i>Diversity</i></p>
                             <f:render partial="Form/UploadListDiff" arguments="{
-                                media='{ansuchen.diversity}',
+                                media:'{ansuchen.diversity}',
                             }" />
 
                             <p><i>Kommentar zu allen drei Uploads:</i></p>
@@ -683,8 +683,8 @@
                     </div>
 
                     <f:render partial="Form/UploadListDiff" arguments="{
-                        media='{ansuchen.beratungnDatei}',
-                        anmerkung='{ansuchen.beratung}',
+                        media:'{ansuchen.beratungnDatei}',
+                        anmerkung:'{ansuchen.beratung}',
                     }" />
                     <h4>Kinderbetreuung</h4>
                     <f:if condition="ansuchen.kinderbetreuung">
@@ -759,8 +759,8 @@
                             </f:then>
                             <f:else>
                                 <f:render partial="Form/UploadListDiff" arguments="{
-                                    media='{p.lebenslaufDatei}',
-                                    anmerkung='{p.lebenslauf}'
+                                    media:'{p.lebenslaufDatei}',
+                                    anmerkung:'{p.lebenslauf}'
                                 }" />
                             </f:else>
                         </f:if>

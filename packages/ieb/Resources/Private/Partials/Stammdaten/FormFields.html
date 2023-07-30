@@ -31,7 +31,7 @@
                         property:'nachweis', 
                         id:'nachweis', 
                         req:'reqfile', 
-                        label='Vereinsregisterauszug/Firmenbuchauszug', 
+                        label:'Vereinsregisterauszug/Firmenbuchauszug',
                         metadaten=stammdaten.nachweis.originalResource,
                         media:stammdaten.nachweis}" />
                 </div>
@@ -108,9 +108,9 @@
                 property:'leitbildDatei', 
                 id:'leitbildDatei', 
                 req:'reqfile', 
-                label='Leitbild', 
+                label:'Leitbild',
                 anmerkung:'leitbild',
-                metadaten='{stammdaten.leitbildDatei.originalResource}',
+                metadaten:'{stammdaten.leitbildDatei.originalResource}',
                 media:stammdaten.leitbildDatei}" />
 
 
@@ -137,9 +137,9 @@
                     property:'qmsZertifikatDatei', 
                     id:'qmsZertifikatDatei', 
                     req:'reqfile', 
-                    label='Ö-Cert (PDF)', 
+                    label:'Ö-Cert (PDF)',
                     anmerkung:'qmsZertifikat',
-                    metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
+                    metadaten:'{stammdaten.qmsZertifikatDatei.originalResource}',
                     media:stammdaten.qmsZertifikatDatei}" />
                 </f:then>
                 <f:else>
@@ -147,9 +147,9 @@
                     property:'qmsZertifikatDatei', 
                     id:'qmsZertifikatDatei', 
                     req:'', 
-                    label='Ö-Cert (PDF)', 
+                    label:'Ö-Cert (PDF)',
                     anmerkung:'qmsZertifikat',
-                    metadaten='{stammdaten.qmsZertifikatDatei.originalResource}',
+                    metadaten:'{stammdaten.qmsZertifikatDatei.originalResource}',
                     media:stammdaten.qmsZertifikatDatei}" />
                 </f:else>
             </f:if>
@@ -175,9 +175,9 @@
                     property:'qualitaetSicherungDatei', 
                     id:'qualitaetSicherungDatei', 
                     req:'reqfile', 
-                    label='Qualitätssicherung', 
+                    label:'Qualitätssicherung',
                     anmerkung:'qualitaetSicherung',
-                    metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
+                    metadaten:'{stammdaten.qualitaetSicherungDatei.originalResource}',
                     media:stammdaten.qualitaetSicherungDatei}" />
                 </f:then>
                 <f:else>
@@ -185,9 +185,9 @@
                         property:'qualitaetSicherungDatei', 
                         id:'qualitaetSicherungDatei', 
                         req:'', 
-                        label='Qualitätssicherung', 
+                        label:'Qualitätssicherung',
                         anmerkung:'qualitaetSicherung',
-                        metadaten='{stammdaten.qualitaetSicherungDatei.originalResource}',
+                        metadaten:'{stammdaten.qualitaetSicherungDatei.originalResource}',
                         media:stammdaten.qualitaetSicherungDatei}" />
                 </f:else>
             </f:if>
@@ -215,9 +215,9 @@
         property:'qualitaetPersonalDatei', 
         id:'qualitaetPersonalDatei', 
         req:'reqfile', 
-        label='Qualitätssicherung', 
+        label:'Qualitätssicherung',
         anmerkung:'qualitaetPersonal',
-        metadaten='{stammdaten.qualitaetPersonalDatei.originalResource}',
+        metadaten:'{stammdaten.qualitaetPersonalDatei.originalResource}',
         media:stammdaten.qualitaetPersonalDatei}" />
 
     <f:form.hidden property="ok" id="ok" value="0" />
