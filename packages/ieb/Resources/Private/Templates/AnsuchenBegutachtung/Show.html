@@ -7,7 +7,8 @@
     {diffAsJson -> f:format.raw()}
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
-        {ansuchen.stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+        {ansuchen.stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')} 
+
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -723,12 +724,52 @@
             <f:for each="{verantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
-                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a><br>
+                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
+                        {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}/fullname')} 
+
+                        <div class="abstand-klein"></div>
                         <label>Lebenslauf</label>
-                        <f:render partial="Form/UploadListDiff" arguments="{
-                            media='{p.lebenslaufDatei}',
-                            anmerkung='{lebenslauf}',
-                        }" />
+                        <div class="abstand-klein"></div>
+
+                        <f:if condition="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}">
+                            <f:then>
+                                <div class="upload">
+                                    <div class="uploadlist">
+                                        <f:for each="{p.lebenslaufDatei}" as="m">
+                                            <ieb:fal path="{m.publicUrl}">
+                                                <f:if condition="{file}">
+                                                    <div class="filelist-item">
+                                                        <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] <f:if condition="{diff}">
+                                                            <f:for each="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}" as="file">
+                                                                    <f:if condition="{file.current.publicUrl}=={m.publicUrl}">
+                                                                        <span class="vorher-knopf">neu</span>
+                                                                    </f:if>
+                                                            </f:for>
+                                                        </f:if>
+                                                    </div>
+                                                </f:if>
+
+                                            </ieb:fal>
+                                        </f:for>
+                                        <f:for each="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei.previous}" as="m">
+                                            <div class="diff"><span class="vorher">gelöscht:</span> {diff.copy_verantwortliche.{p.uid}.lebenslaufDatei.previous.originalResource.originalFile.properties.name}</div>
+                                        </f:for>
+                                    </div>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <f:render partial="Form/UploadListDiff" arguments="{
+                                    media='{p.lebenslaufDatei}',
+                                    anmerkung='{p.lebenslauf}'
+                                }" />
+                            </f:else>
+                        </f:if>
+                        <f:if condition="{diff.copy_verantwortliche.{p.uid}.lebenslauf}">
+                            <div class="diff"><span class="vorher">vorher:</span> {diff.copy_verantwortliche.{p.uid}.lebenslauf.previous}</div>
+                        </f:if>
+
+
+
                     </div>
                     <div class="rechts col-5">
                         <div class="row">
@@ -742,7 +783,11 @@
                     </div>
                 </div>
             </f:for>
-            
+                <f:for each="{diff.copy_verantwortliche}" as="tt">
+                    <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
+                        <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                    </f:if>
+                </f:for>
 
 
                 <div class="row">
