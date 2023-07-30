@@ -112,7 +112,7 @@ class DiffService
             unset($row[$field]);
         }
         // json fields
-        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte', 'copy_verantwortliche'] as $field) {
+        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte'] as $field) {
             if (!empty($row[$field])) {
                 $items = json_decode($row[$field], true);
                 foreach ($items as $k => $item) {

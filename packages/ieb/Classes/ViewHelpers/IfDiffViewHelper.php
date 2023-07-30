@@ -32,7 +32,9 @@ class IfDiffViewHelper extends AbstractViewHelper
         try {
             $data = ArrayUtility::getValueByPath($diff, $field);
 
-
+            if (isset($data['previous'])) {
+                return sprintf('<span class="diff" style="color:#666;background: #53d9f0">vorher: %s</span>', htmlspecialchars($data['previous']));
+            }
 
             // $fields = [];
             // foreach ($data as $key => $value) {
@@ -43,14 +45,9 @@ class IfDiffViewHelper extends AbstractViewHelper
             //         htmlspecialchars((string)($value['current'] ?? ''))
             //     );
             // }
-
-            if ((isset($data['previous'])=='') || (isset($data['previous'])==' ')) {
-                return sprintf("<span class='vorher-knopf'>neu</span>");
-            } else {
-                return sprintf("<span class='vorher-knopf'>Änderung!</span>");
-            }
             //return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
 
+            return sprintf("<span class='vorher-knopf'>neu</span>");
 
         } catch (MissingArrayPathException $e) {
             return '';
