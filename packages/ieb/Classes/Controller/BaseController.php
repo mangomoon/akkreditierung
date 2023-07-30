@@ -149,7 +149,7 @@ class BaseController extends ActionController
 
     protected function deleteFiles(array $fileDelete, AbstractEntity $object): void
     {
-        DebuggerUtility::var_dump($fileDelete);die;
+//        DebuggerUtility::var_dump($fileDelete);die;
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('sys_file_reference');
         foreach ($fileDelete as $propertyType => $deletes) {
             $split = explode('_', $propertyType);
@@ -160,7 +160,7 @@ class BaseController extends ActionController
                 }
                 $fileId = (int)$fileId;
                 $getter = 'get' . ucfirst($property);
-DebuggerUtility::var_dump($split);
+//DebuggerUtility::var_dump($split);
                 if ($split[0] === 's') {
                     $file = $object->$getter();
                     if ($file && $file->getUid() === $fileId) {
