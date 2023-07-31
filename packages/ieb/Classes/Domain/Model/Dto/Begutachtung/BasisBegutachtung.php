@@ -4,8 +4,10 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Model\Dto\Begutachtung;
 
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class BasisBegutachtung extends AbstractDomainObject
 {
@@ -54,6 +56,16 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $upcomingStatus = 0;
     public int $status = 0;
 
+
+    public int $stammdatenReviewA1Status = 0;
+    public string $stammdatenReviewA1CommentInternal = '';
+    public string $stammdatenReviewA1CommentInternalStep = '';
+    public string $stammdatenReviewA1CommentTr = '';
+    public int $stammdatenReviewA2Status = 0;
+    public string $stammdatenReviewA2CommentInternal = '';
+    public string $stammdatenReviewA2CommentInternalStep = '';
+    public string $stammdatenReviewA2CommentTr = '';
+
     private const FIELDS = [
         'reviewTotalCommentInternal', 'reviewTotalCommentTr', 
         'reviewB1CommentInternalStep', 'reviewB1CommentTr', 'reviewB1Status',
@@ -66,14 +78,25 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
         'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 'reviewC3Status',
     ];
+    
+    private const FIELDS_STAMMDATEN = [
+        'stammdatenReviewA1Status', 'stammdatenReviewA1CommentInternal', 'stammdatenReviewA1CommentInternalStep', 'stammdatenReviewA1CommentTr',
+        'stammdatenReviewA2Status', 'stammdatenReviewA2CommentInternal', 'stammdatenReviewA2CommentInternalStep', 'stammdatenReviewA2CommentTr',
+    ];
 
-    public function setByAnsuchen(Ansuchen $ansuchen): void
+    public function setByAnsuchen(Ansuchen $ansuchen, Stammdaten $stammdaten): void
     {
         foreach (self::FIELDS as $field) {
             $getter = 'get' . ucfirst($field);
             $this->$field = $ansuchen->$getter();
         }
         $this->status = $ansuchen->getStatus();
+
+        foreach(self::FIELDS_STAMMDATEN as $field) {
+            $realFieldName = str_replace('stammdatenR', 'r', $field);
+            $getter = 'get' . ucfirst($realFieldName);
+            $this->$field = $stammdaten->$getter();
+        }
     }
 
     public function copyToAnsuchen(Ansuchen $ansuchen): void
@@ -104,6 +127,38 @@ class BasisBegutachtung extends AbstractDomainObject
             $setter = 'set' . ucfirst($field);
             $ansuchen->$setter($this->$field);
         }
+    }
+
+    public function copyToStammdaten(Stammdaten $stammdaten): void
+    {
+//        $statusChanged = false;
+//        if ($this->status > 0) {
+//            $statusChanged = $ansuchen->getStatus() !== $this->status;
+//            $ansuchen->setStatus($this->status);
+//        }
+//
+//        // json fields
+//        if ($statusChanged) {
+//            try {
+//                $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
+//                $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
+//            } catch (\JsonException $e) {
+//            }
+//        }
+
+        foreach (self::FIELDS_STAMMDATEN as $field) {
+            $realFieldName = str_replace('stammdatenR', 'r', $field);
+            $setter = 'set' . ucfirst($realFieldName);
+            $stammdaten->$setter($this->$field);
+        }
+        DebuggerUtility::var_dump($stammdaten, 'xx');
     }
 
     protected function addNewComment(Ansuchen $ansuchen, string $fieldName): void

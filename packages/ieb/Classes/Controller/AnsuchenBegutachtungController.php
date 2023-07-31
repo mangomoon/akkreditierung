@@ -7,9 +7,11 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto;
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 /**
@@ -35,12 +37,14 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function showAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
+        /** @var Stammdaten $stammdaten */
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
         $possibleStatus = [];
         foreach (AnsuchenStatus::statusSetzbarDurchGs() as $status) {
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
         };
-        $begutachtung->setByAnsuchen($ansuchen);
+        $begutachtung->setByAnsuchen($ansuchen, $stammdaten);
         $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn());
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
@@ -49,7 +53,8 @@ class AnsuchenBegutachtungController extends BaseController
             'diffWithAlternativeId' => $diffWithAlternativeId,
             'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
             'diff' => $diffResult,
-            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE))
+//            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE)),
+            'stammdaten' => $stammdaten,
         ]);
         return $this->htmlResponse();
     }
@@ -65,14 +70,18 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung): void
     {
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
+        $begutachtung->copyToStammdaten($stammdaten);
+        $this->stammdatenRepository->update($stammdaten);
+        $this->stammdatenRepository->forcePersist();
         $this->addFlashMessage('Ansuchen wurde ergänzt');
 
         // if status changes, no need to stay in record show
         if ($begutachtung->status > 0) {
-            $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid()));
+            $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());
