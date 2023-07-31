@@ -180,11 +180,8 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <!-- 
-                    <f:render section="comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
-                        
+                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
 
-                    -->
 
                     <div class="knopf">
                         <f:link.action action="show" controller="StammdatenBegutachtung" arguments="{ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
