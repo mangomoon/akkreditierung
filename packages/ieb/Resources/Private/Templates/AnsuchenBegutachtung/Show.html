@@ -783,11 +783,11 @@
                     </div>
                 </div>
             </f:for>
-                <f:for each="{diff.copy_verantwortliche}" as="tt">
-                    <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
-                        <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
-                    </f:if>
-                </f:for>
+            <f:for each="{diff.copy_verantwortliche}" as="tt">
+                <f:if condition="{tt.nachname.previous} && !{tt.nachname.current}">
+                    <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.vorname.previous} {tt.nachname.previous}</i></div><div class="rechts col-5"></div></div>
+                </f:if>
+            </f:for>
 
 
                 <div class="row">
