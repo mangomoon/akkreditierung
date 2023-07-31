@@ -769,12 +769,19 @@
 
                     </div>
                     <div class="rechts col-5">
+                        <f:variable value="{angebotVerantwortlicheLive.{p.uid}}" name="item" />
                         <div class="row">
                             <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Management ok</label>
+                                <label for="verantwortliche-{p.uid}-mgmt">
+                                    <f:form.checkbox id="verantwortliche-{p.uid}-mgmt" name="verantwortliche[{p.uid}][babi]" checked="{item.reviewC1Babi}" value="1" />
+                                    Management ok [babi]
+                                </label>
                             </div>
                             <div class="col">
-                                <label for="xy"><input type="checkbox" class="" id="xy" value="1" />Pädagogik ok</label>
+                                <label for="verantwortliche-{p.uid}-pad">
+                                    <f:form.checkbox id="verantwortliche-{p.uid}-pad" name="verantwortliche[{p.uid}][psa]" checked="{item.reviewC1Psa}" value="1" />
+                                    Pädagogik ok [psa]
+                                </label>
                             </div>
                         </div>
                     </div>

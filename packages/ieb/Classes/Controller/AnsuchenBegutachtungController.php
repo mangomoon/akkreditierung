@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
@@ -27,6 +28,7 @@ class AnsuchenBegutachtungController extends BaseController
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\StammdatenRepository $stammdatenRepository;
+    protected Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
 
 
     public function listAction(): ResponseInterface
@@ -45,6 +47,8 @@ class AnsuchenBegutachtungController extends BaseController
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
         };
         $begutachtung->setByAnsuchen($ansuchen, $stammdaten);
+
+
         $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn());
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
@@ -53,6 +57,7 @@ class AnsuchenBegutachtungController extends BaseController
             'diffWithAlternativeId' => $diffWithAlternativeId,
             'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
             'diff' => $diffResult,
+            'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
 //            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE)),
             'stammdaten' => $stammdaten,
         ]);
@@ -68,8 +73,9 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung): void
+    public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung, array $verantwortliche = []): void
     {
+        $begutachtung->verantwortliche = $verantwortliche;
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
@@ -77,6 +83,20 @@ class AnsuchenBegutachtungController extends BaseController
         $begutachtung->copyToStammdaten($stammdaten);
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
+        foreach ($verantwortliche as $id => $params) {
+            /** @var AngebotVerantwortlich $verantwortlich */
+            $verantwortlich = $this->angebotVerantwortlichRepository->getByIdAndPid($id, $ansuchen->getPid());
+            if ($verantwortlich) {
+                if (isset($params['babi'])) {
+                    $verantwortlich->setReviewC1Babi((bool)$params['babi']);
+                }
+                if (isset($params['psa'])) {
+                    $verantwortlich->setReviewC1Psa((bool)$params['psa']);
+                }
+                $this->angebotVerantwortlichRepository->update($verantwortlich);
+            }
+        }
+        $this->angebotVerantwortlichRepository->forcePersist();
         $this->addFlashMessage('Ansuchen wurde ergänzt');
 
         // if status changes, no need to stay in record show
@@ -99,6 +119,15 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
+    protected function getAllVerantwortliche(int $pid): array
+    {
+        $items = [];
+        foreach ($this->angebotVerantwortlichRepository->getActive($pid) as $item) {
+            $items[$item->getUid()] = $item;
+        }
+        return $items;
+    }
+
     public function finalizestatusAction(Ansuchen $ansuchen): ResponseInterface
     {
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
@@ -119,6 +148,11 @@ class AnsuchenBegutachtungController extends BaseController
     public function injectStammdatenRepository(Repository\StammdatenRepository $stammdatenRepository): void
     {
         $this->stammdatenRepository = $stammdatenRepository;
+    }
+
+    public function injectAngebotVerantwortlicheRepository(Repository\AngebotVerantwortlichRepository $repository): void
+    {
+        $this->angebotVerantwortlichRepository = $repository;
     }
 
 }

@@ -178,6 +178,5 @@ class BaseController extends ActionController
                 }
             }
         }
-        die;
     }
 }

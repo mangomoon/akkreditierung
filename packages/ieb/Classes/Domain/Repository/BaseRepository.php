@@ -39,7 +39,7 @@ class BaseRepository extends Repository
     public function getAllSorted(string $sorter): QueryResultInterface
     {
         $query = $this->getQuery();
-        $query->setOrderings(array($sorter => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->setOrderings([$sorter => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
         return $query->execute();
     }
 
@@ -51,6 +51,17 @@ class BaseRepository extends Repository
     public function getLatestByPid(int $pid): ?object
     {
         $query = $this->getQuery($pid);
+        return $query->execute()->getFirst();
+    }
+
+    public function getByIdAndPid(int $identifier, int $pid): ?object
+    {
+        $query = $this->getQuery($pid);
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals('uid', $identifier)
+            )
+        );
         return $query->execute()->getFirst();
     }
 

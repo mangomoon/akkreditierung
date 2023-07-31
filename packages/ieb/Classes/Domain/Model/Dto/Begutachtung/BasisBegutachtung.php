@@ -56,6 +56,8 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $upcomingStatus = 0;
     public int $status = 0;
 
+    public array $verantwortliche = [];
+
 
     public int $stammdatenReviewA1Status = 0;
     public string $stammdatenReviewA1CommentInternal = '';
