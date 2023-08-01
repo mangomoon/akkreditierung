@@ -130,7 +130,7 @@ class AnsuchenBegutachtungController extends BaseController
         return $items;
     }
 
-    public function finalizestatusAction(Ansuchen $ansuchen): ResponseInterface
+    public function finalizeStatusAction(Ansuchen $ansuchen): ResponseInterface
     {
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         $ansuchen->setUpcomingStatus(0);
