@@ -132,15 +132,58 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function finalizeStatusAction(Ansuchen $ansuchen): ResponseInterface
     {
+        /** @var Stammdaten $stammdaten */
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
+
+        try {
+            $this->addNewComment($stammdaten, 'reviewA1CommentInternal');
+            $this->addNewComment($stammdaten, 'reviewA2CommentInternal');
+
+            $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
+        } catch (\JsonException $e) {
+        }
+
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         $ansuchen->setUpcomingStatus(0);
+
+        $this->stammdatenRepository->update($stammdaten);
+        $this->stammdatenRepository->forcePersist();
+
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
-        $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatestByPid($ansuchen->getPid()));
+        $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
         $this->redirect('list');
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
 
+    protected function addNewComment(Ansuchen|Stammdaten $object, string $fieldName): void
+    {
+        $commentFieldGetter = 'get' . ucfirst($fieldName . 'Step');
+        $comment = $object->$commentFieldGetter();
+        if (!$comment) {
+            return;
+        }
+        $getterForData = 'get' . ucfirst($fieldName) . 'Data';
+        $comments = $object->$getterForData();
+        $comments[] = [
+            'user' => self::getCurrentUserName(),
+            'user_uid' => self::getCurrentUserId(),
+            'comment' => $comment,
+            'date' => time(),
+        ];
+        $setter = 'set' . ucfirst($fieldName);
+        $setterStep = 'set' . ucfirst($fieldName) . 'Step';
+        $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
+        $object->$setterStep('');
+    }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
     {

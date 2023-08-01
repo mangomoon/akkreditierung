@@ -21,7 +21,7 @@
                             <span class="ansuchenliste_ansuchenname">{item.name}</span>
                             <br>
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
-                            <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version}]</code>
+                            <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn}]</code>
                         </td>
                         <td class="td-knopf">
                             <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
