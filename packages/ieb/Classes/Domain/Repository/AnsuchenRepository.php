@@ -156,7 +156,7 @@ class AnsuchenRepository extends BaseRepository
         );
     }
 
-    protected function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
+    public function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
     {
         $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = [];
         if ($ansuchen->getStandorte()) {
