@@ -101,7 +101,7 @@ class AnsuchenRepository extends BaseRepository
         // todo clear all review fields
         $overrideValues = [
             'status' => AnsuchenStatus::NEU_IN_ARBEIT->value,
-            'name' => $ansuchen->getName() . ' [KOPIE]',
+            'name' => 'NEU [Kopie von ' . $ansuchen->getName() . ']',
             'kopie_von' => $ansuchen->getUid(),
         ];
         $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);

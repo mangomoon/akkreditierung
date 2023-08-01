@@ -2,12 +2,13 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <f:debug>{_all}</f:debug>
+
     <f:flashMessages />
     {diffAsJson -> f:format.raw()}
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
-        {ansuchen.stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')} 
+        {stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')} 
+
 
 
         <div class="begutachtung-kopf row">
@@ -22,7 +23,7 @@
             </div>
         </div>
         <div class="abstand-gross"></div>
-
+        
         <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
             <div class="col">
             <div class="kriteriumtitel">
@@ -55,7 +56,10 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.name}
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/name')}
+                                <!-- NEU als Partial wegen DIff bei Kopie! -->
+                                <f:if condition="{ansuchen.status} != 20">
+                                    {ieb:diff(diff:diff,field:'copy_stammdaten/name')}
+                                </f:if>
                             </td>
                         </tr>
                         <tr>
@@ -67,6 +71,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.markenname}
+                                <f:if condition="{ansuchen.status} != 20"></f:if>
                                 {ieb:diff(diff:diff,field:'copy_stammdaten/markenname')}
 
                             </td>
@@ -112,6 +117,7 @@
                                 
                                 <f:render partial="Form/UploadListDiff" arguments="{
                                     media:'{stammdaten.nachweis}',
+                                    status:'{ansuchen.status}',
                                     anmerkung:'',
                                     diff:'{diff.copy_stammdaten.nachweis}',
                                 }" />
@@ -180,14 +186,9 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:ansuchen.reviewA1Status, comments:ansuchen.reviewA1CommentInternalData}" />
-
-
-                    <div class="knopf">
-                        <f:link.action action="show" controller="StammdatenBegutachtung" arguments="{ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action>
-                    </div>
-                    <p>Und das ist der Kommentar: {ansuchen.reviewA1CommentInternal}</p>
+                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:ansuchen.reviewA1CommentInternalData}" />
                 </div>
+            
             </div>
             </div>
         </div>
@@ -294,9 +295,7 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
-                        <f:render partial="AnsuchenBegutachtung/Kriterium" arguments="{
-                            kriterium = 'blabla'
-                        }" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData}" />
                     </div>
 
                 </div>
@@ -420,7 +419,7 @@
 
                         <p>Standorte:</p>
                             <f:for each="{standorte}" as="standort">
-                                <div>{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
+                                <div class="standort">{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
                                 {ieb:ifDiff(diff:diff,field:'copy_standorte/{standort.uid}')}</div>
                             </f:for>
                             <f:if condition="{diff.copy_standorte}">
@@ -774,13 +773,13 @@
                             <div class="col">
                                 <label for="verantwortliche-{p.uid}-mgmt">
                                     <f:form.checkbox id="verantwortliche-{p.uid}-mgmt" name="verantwortliche[{p.uid}][babi]" checked="{item.reviewC1Babi}" value="1" />
-                                    Management ok [babi]
+                                    Management ok
                                 </label>
                             </div>
                             <div class="col">
                                 <label for="verantwortliche-{p.uid}-pad">
                                     <f:form.checkbox id="verantwortliche-{p.uid}-pad" name="verantwortliche[{p.uid}][psa]" checked="{item.reviewC1Psa}" value="1" />
-                                    Pädagogik ok [psa]
+                                    Pädagogik ok
                                 </label>
                             </div>
                         </div>

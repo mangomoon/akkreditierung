@@ -636,7 +636,7 @@ function reqleerLoeschen() {
      $('.filedelete').click(function() {
          $(this).parent().toggleClass("geloescht");
          var s = $('.nextdel input');
-         $(this).parent().find(s).prop("checked", !s.prop("checked"));
+        $(this).parent().find(s).prop("checked", true);
      });
 
 

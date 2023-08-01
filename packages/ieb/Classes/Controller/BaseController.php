@@ -171,7 +171,7 @@ class BaseController extends ActionController
                     $files = $object->$getter();
                     foreach ($files as $file) {
                         if ($file->getUid() === $fileId) {
-                            DebuggerUtility::var_dump([$split, $fileId, $files]);
+                            //DebuggerUtility::var_dump([$split, $fileId, $files]);
                             $connection->update('sys_file_reference', ['deleted' => 1], ['uid' => $fileId]);
                         }
                     }

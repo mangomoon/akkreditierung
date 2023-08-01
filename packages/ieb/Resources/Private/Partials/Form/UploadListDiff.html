@@ -7,7 +7,7 @@
     
     <div class="uploadlist">
 
-        <f:if condition="{media}">
+        <f:if condition="{media} && ({status} != 20)">
 
             <f:for each="{media}" as="m">
                 <f:if condition="{m.originalResource}">

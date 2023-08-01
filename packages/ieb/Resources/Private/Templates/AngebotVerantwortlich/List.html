@@ -43,7 +43,12 @@
                                 nein
                             </f:else>
                         </f:if>
-
+                        <f:if condition="{angebotVerantwortlich.reviewC1Babi}">
+                            M
+                        </f:if>
+                        <f:if condition="{angebotVerantwortlich.reviewC1Psa}">
+                            P
+                        </f:if>
                     </td>
                     <td class="td-knopf">
                         <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{angebotVerantwortlich : angebotVerantwortlich}">

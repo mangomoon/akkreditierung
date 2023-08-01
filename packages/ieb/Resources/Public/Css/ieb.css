@@ -1307,6 +1307,12 @@ table.ansuchenbegutachtung td.check {
     border: solid 1px #898989;
 }
 
+.begutachtung-kriterium .standort {
+    background: var(--f0a);
+    padding: 4px;
+    margin-bottom: 12px;
+}
+
 .textbaustein {
     cursor: pointer;
     border-radius: 3px;
@@ -1480,12 +1486,13 @@ select#field_upcomingStatus option[value=100] {
 /* ############### DIFF ################### */
 .diff {
     background: var(--beratung);
-    padding: 0 4px 0 8px;
+    padding: 2px 4px 2px 8px;
     margin-top: 8px;
+    font-size: 0.85em;
 }
 .diff .vorher {
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #fff;
 }
 
