@@ -82,7 +82,7 @@ class AnsuchenBegutachtungController extends BaseController
         $begutachtung->copyToAnsuchen($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
-        $begutachtung->copyToStammdaten($stammdaten);
+        $begutachtung->copyToStammdaten($stammdaten, $ansuchen);
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
         foreach ($verantwortliche as $id => $params) {
