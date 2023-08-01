@@ -1023,6 +1023,12 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_verantwortliche.description" resname="tx_ieb_domain_model_ansuchen.copy_verantwortliche.description">
 				<source>Copy Verantwortliche</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_verantwortliche_mail" resname="tx_ieb_domain_model_ansuchen.copy_verantwortliche_mail">
+				<source>Copy Verantwortliche Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_verantwortliche_mail.description" resname="tx_ieb_domain_model_ansuchen.copy_verantwortliche_mail.description">
+				<source>Copy Verantwortliche Mail</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.copy_standorte" resname="tx_ieb_domain_model_ansuchen.copy_standorte">
 				<source>Copy Standorte</source>
 			</trans-unit>

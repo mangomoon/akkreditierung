@@ -176,6 +176,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	copy_trainer text NOT NULL DEFAULT '',
 	copy_berater text NOT NULL DEFAULT '',
 	copy_verantwortliche text NOT NULL DEFAULT '',
+	copy_verantwortliche_mail text NOT NULL DEFAULT '',
 	copy_standorte text NOT NULL DEFAULT '',
 	review_b14_comment_internal text NOT NULL DEFAULT '',
 	review_b14_comment_internal_step text NOT NULL DEFAULT '',

@@ -123,7 +123,7 @@ class DiffService
             unset($row[$field]);
         }
         // json fields
-        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte', 'copy_verantwortliche'] as $field) {
+        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte', 'copy_verantwortliche', 'copy_verantwortliche_mail'] as $field) {
             if (!empty($row[$field])) {
                 $items = json_decode($row[$field], true);
                 foreach ($items as $k => $item) {
@@ -136,7 +136,7 @@ class DiffService
             }
 
         }
-
+DebuggerUtility::var_dump($row);
         // bundesland
         $bl = array_column(BundeslandEnum::cases(), 'name', 'value');
         $row['bundesland'] = $bl[$row['bundesland']] ?? 'error mit bundesland';

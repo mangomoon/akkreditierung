@@ -1586,6 +1586,27 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getCopyVerantwortlicheMailReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCopyVerantwortlicheMail()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCopyVerantwortlicheMailForStringSetsCopyVerantwortlicheMail(): void
+    {
+        $this->subject->setCopyVerantwortlicheMail('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('copyVerantwortlicheMail'));
+    }
+
+    /**
+     * @test
+     */
     public function getCopyStandorteReturnsInitialValueForString(): void
     {
         self::assertSame(
