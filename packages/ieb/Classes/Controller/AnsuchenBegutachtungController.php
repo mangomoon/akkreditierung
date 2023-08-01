@@ -70,6 +70,8 @@ class AnsuchenBegutachtungController extends BaseController
     public function editAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->view->assign('ansuchen', $ansuchen);
+        $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
+        $begutachtung->reviewTotalFrist = '';
         return $this->htmlResponse();
     }
 

@@ -360,7 +360,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * reviewTotalFrist
      *
-     * @var \DateTime
+     * @var \Date
      */
     protected $reviewTotalFrist = null;
 
