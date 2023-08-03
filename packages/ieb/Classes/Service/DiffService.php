@@ -136,7 +136,7 @@ class DiffService
             }
 
         }
-DebuggerUtility::var_dump($row);
+//DebuggerUtility::var_dump($row);
         // bundesland
         $bl = array_column(BundeslandEnum::cases(), 'name', 'value');
         $row['bundesland'] = $bl[$row['bundesland']] ?? 'error mit bundesland';

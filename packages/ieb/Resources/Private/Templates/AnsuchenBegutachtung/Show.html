@@ -56,10 +56,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.name}
-                                <!-- NEU als Partial wegen DIff bei Kopie! -->
-                                <f:if condition="{ansuchen.status} != 20">
-                                    {ieb:diff(diff:diff,field:'copy_stammdaten/name')}
-                                </f:if>
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.name}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                         <tr>
@@ -71,8 +68,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.markenname}
-                                <f:if condition="{ansuchen.status} != 20"></f:if>
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/markenname')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.markenname}', status='{ansuchen.status}'}" />
 
                             </td>
                         </tr>
@@ -89,7 +85,7 @@
                             </td>
                             <td class="daten">
                                 <ieb:arrayValue array="{settings.static.rechtsform}" key="{stammdaten.rechtsform}" fallback="fehlt" />
-
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.rechtsform}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                         <tr>
@@ -101,7 +97,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.seit} 
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/seit')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.seit}', status='{ansuchen.status}'}" />
                                 
                             </td>
                         </tr>
@@ -137,11 +133,9 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/strasse')}
-                                <f:if condition="{diff.copy_stammdaten.plz}">
-                                    <div class="diff"><span class="vorher">vorher:</span> {diff.copy_stammdaten.plz.previous}</div>
-                                </f:if>
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/ort')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.strasse}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.plz}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.ort}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                         <tr>
@@ -153,7 +147,7 @@
                             </td>
                             <td class="daten">
                                 <a href="mailto:{stammdaten.email}">{stammdaten.email}</a>
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/email')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.email}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                         <tr>
@@ -165,7 +159,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.telefon}
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/telefon')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.relefon}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                         <tr>
@@ -179,7 +173,7 @@
                                 <f:if condition="{stammdaten.website}">
                                     <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
                                 </f:if>
-                                {ieb:diff(diff:diff,field:'copy_stammdaten/website')}
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.website}', status='{ansuchen.status}'}" />
                             </td>
                         </tr>
                     </table>
@@ -838,7 +832,7 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="abstand-klein"></div>
-                                <f:link.action class="knopf" pageUid="19" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
+                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
                                 <f:for each="{trainerorig}" as="tt">
                                     <f:if condition="{t.uid}=={tt.uid}">
                                         <div class="status-babi">
@@ -909,7 +903,7 @@
                     </div>
                     <div class="rechts col-5">
                         <div class="abstand-klein"></div>
-                            <f:link.action class="knopf" pageUid="19" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="BeraterBegutachtung" arguments="{berater:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
+                            <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="BeraterBegutachtung" arguments="{berater:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
                             <f:for each="{beraterorig}" as="tt">
                                 <f:if condition="{t.uid}=={tt.uid}">
                                         <span class="person-statuskugel berater status-{tt.reviewC3Status}"></span>
