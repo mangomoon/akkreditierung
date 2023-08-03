@@ -231,6 +231,9 @@
 			<trans-unit id="copy_verantwortliche.description" resname="copy_verantwortliche.description">
 				<source>copyVerantwortliche</source>
 			</trans-unit>
+			<trans-unit id="copy_verantwortliche_mail.description" resname="copy_verantwortliche_mail.description">
+				<source>copyVerantwortlicheMail</source>
+			</trans-unit>
 			<trans-unit id="copy_standorte.description" resname="copy_standorte.description">
 				<source>copyStandorte</source>
 			</trans-unit>

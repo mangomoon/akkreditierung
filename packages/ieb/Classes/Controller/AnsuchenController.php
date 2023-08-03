@@ -9,6 +9,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\StaticStammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
+use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -81,7 +82,16 @@ class AnsuchenController extends BaseController
         $this->check($ansuchen);
         $this->ansuchenRepository->setLockedAndPersist($ansuchen);
         $this->setTitleTag($ansuchen->getTitleTag());
-        $this->view->assign('ansuchen', $ansuchen);
+
+        $stammdaten = $this->stammdatenRepository->getLatest();
+        $jsonsOfCurrentAnsuchen = $this->ansuchenRepository->getJsonFromRelations($ansuchen, $stammdaten);
+        $diffResult = (new DiffService($jsonsOfCurrentAnsuchen))->generateDiff($ansuchen->getUid(), $ansuchen->getVersionBasedOn());
+
+        $this->view->assignMultiple([
+            'ansuchen' => $ansuchen,
+            'stammdaten' => $stammdaten,
+            'diff' => $diffResult
+        ]);
         $this->addRelationDataToView();
         return $this->htmlResponse();
     }

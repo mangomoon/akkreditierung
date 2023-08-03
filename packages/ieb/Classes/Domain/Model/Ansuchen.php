@@ -682,6 +682,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewB23Status = 0;
 
     /**
+     * upcomingStatus
+     *
+     * @var int
+     */
+    protected $upcomingStatus = 0;
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -759,11 +766,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
-     * upcomingStatus
+     * copyVerantwortlicheMail
      *
-     * @var int
+     * @var string
      */
-    protected $upcomingStatus = 0;
+    protected $copyVerantwortlicheMail = '';
 
     /**
      * __construct
@@ -3360,6 +3367,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
 
+
+    /** @var \DateTime */
+    protected $tstamp;
+
     /**
      * @return \DateTime
      */
@@ -3389,7 +3400,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->copyVerantwortliche = $copyVerantwortliche;
     }
 
-    	/**
+    /**
      * Returns the upcomingStatus
      *
      * @return int

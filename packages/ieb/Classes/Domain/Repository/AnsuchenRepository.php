@@ -156,9 +156,9 @@ class AnsuchenRepository extends BaseRepository
         );
     }
 
-    protected function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
+    public function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
     {
-        $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = [];
+        $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = $copyVerantwortlicheMail = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
                 $copyStandorte[$standort->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($standort));
@@ -179,6 +179,11 @@ class AnsuchenRepository extends BaseRepository
                 $copyVerantwortliche[$verantwortliche->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($verantwortliche));
             }
         }
+        if ($ansuchen->getVerantwortlicheMail()) {
+            foreach ($ansuchen->getVerantwortlicheMail() as $verantwortliche) {
+                $copyVerantwortlicheMail[$verantwortliche->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($verantwortliche));
+            }
+        }
         $copyStammdaten = $stammdaten ? $this->convertObjectToArray(ObjectAccess::getGettableProperties($stammdaten)) : [];
 
         return [
@@ -187,6 +192,7 @@ class AnsuchenRepository extends BaseRepository
             'copy_berater' => json_encode($copyBerater, JSON_PRETTY_PRINT),
             'copy_stammdaten' => json_encode($copyStammdaten, JSON_PRETTY_PRINT),
             'copy_verantwortliche' => json_encode($copyVerantwortliche, JSON_PRETTY_PRINT),
+            'copy_verantwortliche_mail' => json_encode($copyVerantwortlicheMail, JSON_PRETTY_PRINT),
         ];
     }
 

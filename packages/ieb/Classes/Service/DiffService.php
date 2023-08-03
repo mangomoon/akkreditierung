@@ -11,16 +11,25 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class DiffService
 {
 
+    public function __construct(
+        protected readonly array $forcedOverlayCurrent = [],
+        protected readonly array $forcedOverlayPrevious = []
+    )
+    {
+
+    }
+
     public function generateDiff(int $ansuchenId, int $basedOn): array
     {
         $final = [];
 
-        $current = $this->getRaw($ansuchenId);
-        $previous = $this->getRaw($basedOn);
+        $current = $this->getRaw($ansuchenId, $this->forcedOverlayCurrent);
+        $previous = $this->getRaw($basedOn, $this->forcedOverlayPrevious);
 
         if ($previous && (($current['pid'] ?? 0) !== ($previous['pid'] ?? 0))) {
             throw new \UnexpectedValueException('Cannot compare ansuchen with different pid');
         }
+
 //        $current = $this->getRaw(22);
 //        $previous = $this->getRaw(12);
 
@@ -91,7 +100,7 @@ class DiffService
         return $final;
     }
 
-    protected function getRaw(int $id): array
+    protected function getRaw(int $id, array $overlay = []): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
 
@@ -108,11 +117,13 @@ class DiffService
             return [];
         }
 
+        $row = array_merge($row, $overlay);
+
         foreach (['tstamp', 'crdate', 'version', 'version_based_on', 'version_active', 'status', 'cruser_id', 'locked_by'] as $field) {
             unset($row[$field]);
         }
         // json fields
-        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte', 'copy_verantwortliche'] as $field) {
+        foreach (['copy_stammdaten', 'copy_berater', 'copy_trainer', 'copy_standorte', 'copy_verantwortliche', 'copy_verantwortliche_mail'] as $field) {
             if (!empty($row[$field])) {
                 $items = json_decode($row[$field], true);
                 foreach ($items as $k => $item) {
@@ -125,7 +136,7 @@ class DiffService
             }
 
         }
-
+DebuggerUtility::var_dump($row);
         // bundesland
         $bl = array_column(BundeslandEnum::cases(), 'name', 'value');
         $row['bundesland'] = $bl[$row['bundesland']] ?? 'error mit bundesland';

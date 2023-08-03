@@ -69,7 +69,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $stammdatenReviewA2CommentTr = '';
 
     private const FIELDS = [
-        'reviewTotalCommentInternal', 'reviewTotalCommentTr', 
+        'reviewTotalCommentInternal', 'reviewTotalCommentTr',
         'reviewB1CommentInternalStep', 'reviewB1CommentTr', 'reviewB1Status',
         'reviewB14CommentInternalStep', 'reviewB14CommentTr', 'reviewB14Status',
         'reviewB15CommentInternalStep', 'reviewB15CommentTr', 'reviewB15Status',
@@ -80,7 +80,7 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
         'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 'reviewC3Status',
     ];
-    
+
     private const FIELDS_STAMMDATEN = [
         'stammdatenReviewA1Status', 'stammdatenReviewA1CommentInternal', 'stammdatenReviewA1CommentInternalStep', 'stammdatenReviewA1CommentTr',
         'stammdatenReviewA2Status', 'stammdatenReviewA2CommentInternal', 'stammdatenReviewA2CommentInternalStep', 'stammdatenReviewA2CommentTr',
@@ -94,7 +94,7 @@ class BasisBegutachtung extends AbstractDomainObject
         }
         $this->status = $ansuchen->getStatus();
 
-        foreach(self::FIELDS_STAMMDATEN as $field) {
+        foreach (self::FIELDS_STAMMDATEN as $field) {
             $realFieldName = str_replace('stammdatenR', 'r', $field);
             $getter = 'get' . ucfirst($realFieldName);
             $this->$field = $stammdaten->$getter();
@@ -103,85 +103,20 @@ class BasisBegutachtung extends AbstractDomainObject
 
     public function copyToAnsuchen(Ansuchen $ansuchen): void
     {
-        $statusChanged = false;
-        if ($this->status > 0) {
-            $statusChanged = $ansuchen->getStatus() !== $this->status;
-            $ansuchen->setStatus($this->status);
-        }
-
-        // json fields
-        if ($statusChanged) {
-            try {
-                $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
-                $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
-            } catch (\JsonException $e) {
-            }
-        }
-
         foreach (self::FIELDS as $field) {
             $setter = 'set' . ucfirst($field);
             $ansuchen->$setter($this->$field);
         }
     }
 
-    public function copyToStammdaten(Stammdaten $stammdaten): void
+    public function copyToStammdaten(Stammdaten $stammdaten, Ansuchen $ansuchen): void
     {
-//        $statusChanged = false;
-//        if ($this->status > 0) {
-//            $statusChanged = $ansuchen->getStatus() !== $this->status;
-//            $ansuchen->setStatus($this->status);
-//        }
-//
-//        // json fields
-//        if ($statusChanged) {
-//            try {
-//                $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
-//                $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
-//            } catch (\JsonException $e) {
-//            }
-//        }
-
         foreach (self::FIELDS_STAMMDATEN as $field) {
             $realFieldName = str_replace('stammdatenR', 'r', $field);
             $setter = 'set' . ucfirst($realFieldName);
             $stammdaten->$setter($this->$field);
         }
-        DebuggerUtility::var_dump($stammdaten, 'xx');
     }
 
-    protected function addNewComment(Ansuchen $ansuchen, string $fieldName): void
-    {
-        $commentField = $fieldName . 'Step';
-        $comment = $this->$commentField;
-        if (!$comment) {
-            return;
-        }
-        $getterForData = 'get' . ucfirst($fieldName) . 'Data';
-        $comments = $ansuchen->$getterForData();
-        $comments[] = [
-            'user' => self::getCurrentUserName(),
-            'user_uid' => self::getCurrentUserId(),
-            'comment' => $comment,
-            'date' => time(),
-        ];
-        $setter = 'set' . ucfirst($fieldName);
-        $setterStep = 'set' . ucfirst($fieldName) . 'Step';
-        $ansuchen->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
-        $ansuchen->$setterStep('');
-    }
 
 }

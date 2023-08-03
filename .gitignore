@@ -1,6 +1,7 @@
 /public/typo3/
 /public/index.php
 /public/typo3conf/ext/
+/public/typo3conf/AdditionalConfiguration.php
 /public/fileadmin
 public/_assets/
 public/typo3temp/
