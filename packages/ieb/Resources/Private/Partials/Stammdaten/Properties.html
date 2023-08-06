@@ -1,124 +1,255 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<table class="tx-ieb">
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.name" /></td>
-		<td>{stammdaten.name}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.nachweis" /></td>
-		<td>
-				<a href="{stammdaten.nachweis.originalResource.publicUrl}">
-					{stammdaten.nachweis.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.rechtsform" /></td>
-		<td>{stammdaten.rechtsform}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.strasse" /></td>
-		<td>{stammdaten.strasse}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.plz" /></td>
-		<td>{stammdaten.plz}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.ort" /></td>
-		<td>{stammdaten.ort}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.seit" /></td>
-		<td>{stammdaten.seit -> f:format.date()}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.website" /></td>
-		<td>{stammdaten.website}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.email" /></td>
-		<td>{stammdaten.email}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.telefon" /></td>
-		<td>{stammdaten.telefon}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.leitbild" /></td>
-		<td>{stammdaten.leitbild}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.leitbild_datei" /></td>
-		<td>
-				<a href="{stammdaten.leitbildDatei.originalResource.publicUrl}">
-					{stammdaten.leitbildDatei.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat_datei" /></td>
-		<td>
-				<a href="{stammdaten.qmsZertifikatDatei.originalResource.publicUrl}">
-					{stammdaten.qmsZertifikatDatei.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_zertifikat" /></td>
-		<td>{stammdaten.qmsZertifikat}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qms_typ" /></td>
-		<td>{stammdaten.qmsTyp}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.zertifikat_bis" /></td>
-		<td>{stammdaten.zertifikatBis -> f:format.date()}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung" /></td>
-		<td>{stammdaten.qualitaetSicherung}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei" /></td>
-		<td>
-				<a href="{stammdaten.qualitaetSicherungDatei.originalResource.publicUrl}">
-					{stammdaten.qualitaetSicherungDatei.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal" /></td>
-		<td>{stammdaten.qualitaetPersonal}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.qualitaet_personal_datei" /></td>
-		<td>
-				<a href="{stammdaten.qualitaetPersonalDatei.originalResource.publicUrl}">
-					{stammdaten.qualitaetPersonalDatei.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.tr_pp3" /></td>
-		<td>{stammdaten.trPp3}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid" /></td>
-		<td>{stammdaten.pruefbescheid}</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_datei" /></td>
-		<td>
-				<a href="{stammdaten.pruefbescheidDatei.originalResource.publicUrl}">
-					{stammdaten.pruefbescheidDatei.originalResource.name}
-				</a>
-			</td>
-	</tr>
-	<tr>
-		<td><f:translate key="tx_ieb_domain_model_stammdaten.pruefbescheid_bis" /></td>
-		<td>{stammdaten.pruefbescheidBis -> f:format.date()}</td>
-	</tr>
-</table>
+	<div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
+		<div class="col">
+		<div class="kriteriumtitel">
+			<div class="row">
+				<div class="col-6">
+					<h2>A.1 Stammdaten</h2>
+				</div>
+				<div class="col-6 right">
+					<div class="infoknopf"></div>
+				</div>
+			</div>
+	
+		</div>
+		<div class="row">
+			<div class="links col-7">
+				<div class="erlaeuterung">
+					<p>Geben Sie den rechtsgültigen Vereins- bzw. Firmennamen und die Rechtsform gemäß Vereinsregister/Firmenbuch an und laden Sie einen aktuellen Vereinsregister-/Firmenbuchauszug (nicht älter als 6 Monate) hoch. <br> Geben Sie die Kontaktdaten
+						der einreichenden Organisation an.</p>
+					<p class="hinweis">
+						<span class="worthinweis">Hinweis:</span> Die Kursstandorte sind später einzutragen. Hier sind ausschließlich die Kontaktdaten der einreichenden Organisation anzugeben.
+					</p>
+				</div>
+				<table class="ansuchenbegutachtung">
+					<tr>
+						<td class="chiffre">
+							&nbsp;
+						</td>
+						<td class="labeltext">
+							Rechtsgültiger Vereins- bzw. Firmenname
+						</td>
+						<td class="daten">
+							{stammdaten.name}
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+							&nbsp;
+						</td>
+						<td class="labeltext">
+							Markenname bzw. Organisationseinheit:
+						</td>
+						<td class="daten">
+							{stammdaten.markenname}
+						</td>
+					</tr>
+					<tr class="linie">
+						<td colspan="3"></td>
+						<!-- ------------------------------ -->
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							Rechts-/Organisationsform:
+						</td>
+						<td class="daten">
+							<ieb:arrayValue array="{settings.static.rechtsform}" key="{stammdaten.rechtsform}" fallback="fehlt" />
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							tätig seit:
+						</td>
+						<td class="daten">
+							{stammdaten.seit} 
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							Nachweis:
+						</td>
+	
+						<td class="daten">
+							
+							<f:render partial="Form/UploadList" arguments="{
+								media:'{stammdaten.nachweis}',
+								anmerkung:''
+							}" />
+	
+						</td>
+					</tr>
+					<tr class="linie">
+						<td colspan="3"></td>
+						<!-- ------------------------------ -->
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							Adresse und Kontakt:
+						</td>
+						<td class="daten">
+							{stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							E-Mail:
+						</td>
+						<td class="daten">
+							<a href="mailto:{stammdaten.email}">{stammdaten.email}</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+							&nbsp;
+						</td>
+						<td class="labeltext">
+							Telefon:
+						</td>
+						<td class="daten">
+							{stammdaten.telefon}
+						</td>
+					</tr>
+					<tr>
+						<td class="chiffre">
+	
+						</td>
+						<td class="labeltext">
+							Website:
+						</td>
+						<td class="daten">
+							<f:if condition="{stammdaten.website}">
+								<a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+							</f:if>
+						</td>
+					</tr>
+				</table>
+				<div class="abstand-mittel"></div>
+			</div>
+			<div class="rechts col-5">
+				
+			</div>
+		
+		</div>
+		</div>
+	</div>
+	
+	<!-- A.2 Stammdaten #################################################### -->
+	
+	<div class="begutachtung-kriterium row status-{stammdatenorig.reviewA2Status}" id="kA2">
+		<div class="col">
+						<div class="kriteriumtitel">
+			<div class="row">
+				<div class="col-6">
+					<h2>A.2. QUALITÄT DES ANBIETERS</h2>
+				</div>
+				<div class="col-6 right">
+					<div class="infoknopf"></div>
+				</div>
+			</div>
+	
+		</div>
+	
+			<div class="row">
+				<div class="links col-7">
+					<div class="kriteriumteil">
+						<h3>A.2.1 Leitbild</h3>
+						<div class="erlaeuterung">
+							<div class="showinfobox" id="b-2-c-hilfe">
+								<p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
+								<p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+								<p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
+									Prozentsatz des Online-Angebots (maximal 30%)</p>
+							</div>
+							<p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+						</div>
+						<f:render partial="Form/UploadList" arguments="{
+							media:'{stammdaten.leitbildDatei}',
+							anmerkung:'{stammdaten.leitbild}'
+						}" />
+	
+	
+						
+					</div>
+					<div class="kriteriumteil">
+						<h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
+						<f:if condition="{stammdaten.qmsTyp}=1">
+							<f:then>
+								<p>Die Organisation verfügt über Ö-Cert.</p>
+	
+								<f:render partial="Form/UploadList" arguments="{
+									media:'{stammdaten.qmsZertifikatDatei}',
+									anmerkung:'{stammdaten.qmsZertifikat}'
+								}" />
+	
+	
+								<div class="erlaeuterung">
+									<p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
+								</div>
+							</f:then>
+							<f:else>
+								<p>Die Organisation verfügt über kein Ö-Cert.</p>
+								<div class="erlaeuterung">
+									<p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
+									</p>
+									<p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet
+										wird. Denken Sie dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
+									<p><span class="halbstark">Anforderungen an die Infrastruktur:</span> Nennen Sie die Kriterien, nach denen Sie Ihre Räumlichkeiten auswählen/gestalten, um ein erwachsenengerechtes Lernen zu ermöglichen (Räumlichkeiten,
+										Größe, Lage, Erreichbarkeit, technische Ausstattung, Barrierefreiheit).</p>
+									<p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
+								</div>
+								<f:render partial="Form/UploadList" arguments="{
+									media:'{stammdaten.qualitaetSicherungDatei}',
+									anmerkung:'{stammdaten.qualitaetsSicherung}'
+								}" />
+	
+							</f:else>
+						</f:if>
+	
+					</div>
+					<div class="kriteriumteil">
+						<h3>A.2.3 Qualitätssicherung Personal</h3>
+						<div class="erlaeuterung">
+							<p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
+								geregelt sind.</p>
+							<p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
+								Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
+							<p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung
+								verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
+							<p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
+	
+							<p class="erklaerung"> Ich bestätige, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen:
+								&nbsp;
+							</p>
+						</div>
+	
+						<f:render partial="Form/UploadList" arguments="{
+							media:'{stammdaten.qualitaetPersonalDatei}',
+							anmerkung:'{stammdaten.qualitaetPersonal}'
+						}" />
+	
+	
+					</div>
+				</div>
+				<div class="rechts col-5">
+					
+				</div>
+	
+			</div>
+		</div>
+	</div>
 </html>

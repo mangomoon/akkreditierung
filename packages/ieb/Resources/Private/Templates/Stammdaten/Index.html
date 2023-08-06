@@ -12,7 +12,9 @@
         <f:then>
             <f:if condition="{usedInAnsuchen}">
                 <f:then>
-                    <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
+                    <div id="stammdaten-show">
+                        <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
+                    </div>
                 </f:then>
                 <f:else>
                     <f:form action="update" name="stammdaten" object="{stammdaten}" class="formStammdaten editStammdaten" enctype="multipart/form-data">
