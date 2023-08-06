@@ -14,11 +14,41 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Single View for AngebotVerantwortlich</h1>
+  <div id="berater-show">
 
-    <f:flashMessages />
-    <f:render partial="AngebotVerantwortlich/Properties" arguments="{angebotVerantwortlich:angebotVerantwortlich}" />
-    <f:link.action action="list">Back to list</f:link.action><br />
-    <f:link.action action="new">New AngebotVerantwortlich</f:link.action>
+    <div class="begutachtung-kriterium" id="c31">
+      <div class="kriteriumtitel">
+          <div class="row">
+              <div class="col-7">
+                <h1>{angebotVerantwortlich.vorname} {angebotVerantwortlich.nachname}</h1>
+              </div>
+              <div class="col-5 right">
+                  <div class="infoknopf"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="links col-7">
+          <div class="erlaeuterung">
+            <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktionen, Qualifikationen und Aus- und Weiterbildungen angeführt sind. Kompetenzen in Management und Erwachsenenpädagogik
+                können durch formale Qualifikation oder 1-jährige Erfahrung nachgewiesen werden.</p>
+          </div>
+          <p>Email: <b><a href="{angebotVerantwortlich.email}">{angebotVerantwortlich.email}</a></b></p>
+          <p>Telefon: <b>{angebotVerantwortlich.telefon}</b></p>
+          <label>Lebenslauf:</label>
+          <f:render partial="Form/UploadList" arguments="{
+            media:'{angebotVerantwortlich.lebenslaufDatei}',
+            anmerkung:'{angebotVerantwortlich.lebenslauf}'
+          }" />
+        </div>
+
+        <div class="rechts ohne-bg col-5">
+
+          &nbsp;
+
+      </div>
+</div>
+
+
 </f:section>
 </html>
