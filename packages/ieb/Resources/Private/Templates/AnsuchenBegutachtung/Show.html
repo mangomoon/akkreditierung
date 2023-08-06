@@ -10,6 +10,12 @@
         {stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')} 
 
 
+        <f:debug>{_all}</f:debug>
+
+        <f:if condition="{ansuchen.status}!=20">
+            <f:variable name="difftyp">1</f:variable>
+        </f:if>
+
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -114,6 +120,7 @@
                                 <f:render partial="Form/UploadListDiff" arguments="{
                                     media:'{stammdaten.nachweis}',
                                     status:'{ansuchen.status}',
+                                    difftyp:'{difftyp}',
                                     anmerkung:'',
                                     diff:'{diff.copy_stammdaten.nachweis}',
                                 }" />
@@ -180,7 +187,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:ansuchen.reviewA1CommentInternalData}" />
+                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData}" />
                 </div>
             
             </div>
@@ -219,10 +226,12 @@
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{stammdaten.leitbildDatei}',
                                 anmerkung:'{stammdaten.leitbild}',
-                                diff:'{diff.copy_stammdaten.leitbildDatei}'
+                                difftyp:'{difftyp}',
+                                diff:'{diff.copy_stammdaten.leitbildDatei}',
+                                diffanmerkung:'{diff.copy_stammdaten.leitbild}'
                             }" />
 
-                            {ieb:diff(diff:diff,field:'copy_stammdaten/leitbild')}
+
                             
                         </div>
                         <div class="kriteriumteil">
@@ -234,10 +243,12 @@
                                     <f:render partial="Form/UploadListDiff" arguments="{
                                         media:'{stammdaten.qmsZertifikatDatei}',
                                         anmerkung:'{stammdaten.qmsZertifikat}',
+                                        difftyp:'{difftyp}',
                                         diff:'{diff.copy_stammdaten.qmsZertifikatDatei}',
+                                        diffanmerkung:'{diff.copy_stammdaten.qmsZertifikat}'
                                     }" />
 
-                                    {ieb:diff(diff:diff,field:'copy_stammdaten/qmsZertifikat')}
+
                                     <div class="erlaeuterung">
                                         <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
                                     </div>
@@ -256,7 +267,9 @@
                                     <f:render partial="Form/UploadListDiff" arguments="{
                                         media:'{stammdaten.qualitaetSicherungDatei}',
                                         anmerkung:'{stammdaten.qualitaetsSicherung}',
+                                        difftyp:'{difftyp}',
                                         diff:'{diff.copy_stammdaten.qualitaetSicherungDatei}',
+                                        diffanmerkung:'{diff.copy_stammdaten.qualitaetSicherung}'
                                     }" />
 
                                 </f:else>
@@ -282,7 +295,9 @@
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{stammdaten.qualitaetPersonalDatei}',
                                 anmerkung:'{stammdaten.qualitaetPersonal}',
+                                difftyp:'{difftyp}',
                                 diff:'{diff.copy_stammdaten.qualitaetPersonalDatei}'
+                                diffanmerkung:'{diff.copy_stammdaten.qualitaetPersonal}'
                             }" />
 
 
@@ -359,6 +374,9 @@
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.uebersichtDatei}',
                                 anmerkung:'{ansuchen.uebersicht}',
+                                difftyp:'{difftyp}',
+                                diff:'{diff.ubersichtDatei}',
+                                diffanmerkung:'{diff.uebersicht}'
                             }" />
                         </div>
                     </div>
@@ -374,8 +392,7 @@
         </div>
     </div>
 
-
-
+    
         <!-- B.1.4 Standorte #################################################### -->
 
         <div class="begutachtung-kriterium row status-{ansuchen.reviewB14Status}" id="kB14">
@@ -406,15 +423,15 @@
                         </div>
 
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
-
-                            {ieb:diff(diff:diff,field:'bundesland')}
+                            <f:if condition="{difftyp}">{ieb:diff(diff:diff,field:'bundesland')}</f:if>
+                            
                             </p>
                             
 
                         <p>Standorte:</p>
                             <f:for each="{standorte}" as="standort">
                                 <div class="standort">{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
-                                {ieb:ifDiff(diff:diff,field:'copy_standorte/{standort.uid}')}</div>
+                                <f:if condition="{difftyp}">{ieb:ifDiff(diff:diff,field:'copy_standorte/{standort.uid}')}</f:if></div>
                             </f:for>
                             <f:if condition="{diff.copy_standorte}">
                                 <p>&nbsp;</p>
@@ -432,7 +449,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
 
@@ -477,6 +493,9 @@
                         <f:render partial="Form/UploadListDiff" arguments="{
                             media:'{ansuchen.kooperationDatei}',
                             anmerkung:'{ansuchen.kooperation}',
+                            diff:'{diff.kooperationDatei}',
+                            diffanmerkung:'{diff.kooperation}',
+                            difftyp:'{difftyp}',
                         }" />
 
 
@@ -488,8 +507,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <h2>B.2 Pädagogische und didaktische Konzeption</h2>
 
@@ -522,7 +539,9 @@
                         <f:render partial="Form/UploadListDiff" arguments="{
                             media:'{ansuchen.zielgruppenAnspracheDatei}',
                             anmerkung:'{ansuchen.zielgruppenAnsprache}',
-                            diff:'{diff.zielgruppen_ansprache_datei}',
+                            diff:'{diff.zielgruppenAnspracheDatei}',
+                            difftyp:'{difftyp}',
+                            diffanmerkung:'{diff.copy_stammdaten.zielgruppenAnsprache}'
                         }" />
                     </div>
                     <div class="rechts col-5">
@@ -532,7 +551,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- B.2.2 Didaktisch-methodisches Vorgehen #################################################### -->
 
@@ -550,148 +568,158 @@
                 </div>
 
             </div>
-                <div class="row">
-                    <div class="links col-7">
-                        <div class="kriteriumteil">
-                            <div class="erlaeuterung">
-                                <div class="infobox" id="b-2-c-hilfe">
-                                    <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
-                                    <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-                                    <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
-                                        Prozentsatz des Online-Angebots (maximal 30%)</p>
-                                </div>
-                                <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
-                                <ul>
-                                    <li>
-                                        Aufbau, Lehrinhalte, Gestaltung/Methoden
-                                    </li>
-                                    <li>
-                                        lernfeldübergreifendes Arbeiten
-                                    </li>
-                                    <li>
-                                        Medien, Materialien, Unterrichtssettings
-                                    </li>
-                                    <li>
-                                        gegebenenfalls Fernunterricht
-                                    </li>
-                                </ul>
-                                <p>und illustrieren Sie dies ergänzend anhand eines konkreten Unterrichtsbeispiels.</p>
 
-                                <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
+
+            <div class="row">
+                <div class="links col-7">
+                    <div class="kriteriumteil">
+                        <div class="erlaeuterung">
+                            <div class="infobox" id="b-2-c-hilfe">
+                                <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
+                                <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+                                <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
+                                    Prozentsatz des Online-Angebots (maximal 30%)</p>
                             </div>
+                            <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+                            <ul>
+                                <li>
+                                    Aufbau, Lehrinhalte, Gestaltung/Methoden
+                                </li>
+                                <li>
+                                    lernfeldübergreifendes Arbeiten
+                                </li>
+                                <li>
+                                    Medien, Materialien, Unterrichtssettings
+                                </li>
+                                <li>
+                                    gegebenenfalls Fernunterricht
+                                </li>
+                            </ul>
+                            <p>und illustrieren Sie dies ergänzend anhand eines konkreten Unterrichtsbeispiels.</p>
 
-                            <f:if condition="{ansuchen.fernlehre}">
-                                <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
+                            <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
+                        </div>
+
+                        <f:if condition="{ansuchen.fernlehre}">
+                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
+                        </f:if>
+
+                        <p><i>Zielgruppengerechter Lernprozess</i></p>
+                        <f:render partial="Form/UploadListDiff" arguments="{
+                            media:'{ansuchen.lernziele}',
+                            difftyp:'{difftyp}',
+                            diff:'{diff.lernziele}',
+                        }" />
+                    </div>
+
+
+                    <div class="kriteriumteil">
+                        <div class="erlaeuterung">
+                            <div class="showinfobox" id="b-2-c-x-hilfe">
+                                <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
+                            </div>
+                            <f:if condition="{ansuchen.typ}=1">
+                                <f:then>
+                                    <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
+                                    </p>
+                                </f:then>
+                                <f:else>
+                                    <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenzstand zu Beginn und begleitend erheben, sowie wie Sie die Teilnehmenden auf die Prüfung vorbereiten und welche Verfahren hier zum Einsatz kommen.</p>
+                                </f:else>
                             </f:if>
 
-                            <p><i>Zielgruppengerechter Lernprozess</i></p>
-                            <f:render partial="Form/UploadListDiff" arguments="{
-                                media:'{ansuchen.lernziele}',
-                            }" />
 
-
-
-
+                            <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
+                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
                         </div>
-                        <div class="kriteriumteil">
+                        <p><i>Kompetenzerhebung</i></p>
+                        <f:render partial="Form/UploadListDiff" arguments="{
+                            media:'{ansuchen.lernstandserhebung}',
+                            difftyp:'{difftyp}',
+                            diff:'{diff.lernstandserhebung}'
+                        }" />
+                    </div>
+                    <div class="kriteriumteil">
 
-                            <div class="erlaeuterung">
-                                <div class="showinfobox" id="b-2-c-x-hilfe">
-                                    <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
-                                </div>
-                                <f:if condition="{ansuchen.typ}=1">
-                                    <f:then>
-                                        <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
-                                        </p>
-                                    </f:then>
-                                    <f:else>
-                                        <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenzstand zu Beginn und begleitend erheben, sowie wie Sie die Teilnehmenden auf die Prüfung vorbereiten und welche Verfahren hier zum Einsatz kommen.</p>
-                                    </f:else>
-                                </f:if>
-
-
-                                <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
-                                <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
-                            </div>
-                            <p><i>Kompetenzerhebung</i></p>
-                            <f:render partial="Form/UploadListDiff" arguments="{
-                                media:'{ansuchen.lernstandserhebung}',
-                            }" />
+                        <div class="erlaeuterung">
+                            <p>Stellen Sie dar, wie Gender und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
+                            <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
                         </div>
-                        <div class="kriteriumteil">
+                        <p><i>Diversity</i></p>
+                        <f:render partial="Form/UploadListDiff" arguments="{
+                            media:'{ansuchen.diversity}',
+                            difftyp:'{difftyp}',
+                            diff:'{diff.diversity}'
+                        }" />
 
-                            <div class="erlaeuterung">
-                                <p>Stellen Sie dar, wie Gender und Diversity in der methodisch-didaktischen Konzeption sichtbar wird.</p>
-                                <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
-                            </div>
-                            <p><i>Diversity</i></p>
-                            <f:render partial="Form/UploadListDiff" arguments="{
-                                media:'{ansuchen.diversity}',
-                            }" />
-
-                            <p><i>Kommentar zu allen drei Uploads:</i></p>
-                            <p>{ansuchen.didaktikKommentar}
-                                <f:if condition="!{diff.didaktik_kommentar.current} && {diff.didaktik_kommentar.previous}">
-                                    <p class="diff"><span class="vorher-knopf">gelöscht. vorher: </span>{diff.didaktik_kommentar.previous}</p>
-                                </f:if>
-                            </p>
-                            <f:if condition="{diff.didaktik_kommentar.prvious} && {diff.didaktik_kommentar.current}">
-                                <p class="diff"><span class="vorher">vorher: </span>{diff.didaktik_kommentar.previous}</p>
+                        <p><i>Kommentar zu allen drei Uploads:</i></p>
+                        <p>{ansuchen.didaktikKommentar}
+                            <f:if condition="(!{diff.didaktik_kommentar.current} && {diff.didaktik_kommentar.previous}) && {difftyp}">
+                                <p class="diff"><span class="vorher-knopf">gelöscht. vorher: </span>{diff.didaktik_kommentar.previous}</p>
                             </f:if>
-                        </div>
+                        </p>
+                        <f:if condition="({diff.didaktik_kommentar.previous} && {diff.didaktik_kommentar.current}) && {difftyp}">
+                            <p class="diff"><span class="vorher">vorher: </span>{diff.didaktik_kommentar.previous}</p>
+                        </f:if>
+                    </div>
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB22', status:ansuchen.reviewB22Status, comments:ansuchen.reviewB22CommentInternalData}" />
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
-
-
 
         <!-- B.2.3 Beratung, Coaching und Begleitung #################################################### -->
 
 
         <div class="begutachtung-kriterium row status-{ansuchen.reviewB23Status}" id="kB23">
             <div class="col">
-            <div class="row">
-                <div class="links col-7">
-                    <div class="kriteriumteil">
-                        <h3>B.2.3 Beratung, Coaching und Begleitung</h3>
-                    </div>
-                    <div class="erlaeuterung">
-                        <div class="showinfobox" id="b-2-d-hilfe">
-                            <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
+                <div class="kriteriumtitel">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>B.2.3 Beratung, Coaching und Begleitung</h3>
                         </div>
-                        <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle
-                            externer sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
-                        <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
+                        <div class="col-6 right">
+                            <div class="infoknopf"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="links col-7">
+                        <div class="kriteriumteil">
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="b-2-d-hilfe">
+                                    <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
+                                </div>
+                                <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle
+                                    externer sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
+                                <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
+                            </div>
+
+                            <f:render partial="Form/UploadListDiff" arguments="{
+                                media:'{ansuchen.beratungDatei}',
+                                anmerkung:'{ansuchen.beratung}',
+                                difftyp:'{difftyp}',
+                                diff:'{diff.beratungDatei}',
+                                diffanmerkung:'{diff.beratung}'
+                            }" />
+                            <h4>Kinderbetreuung</h4>
+                            <f:if condition="ansuchen.kinderbetreuung">
+                                <p>
+                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
+                                </p>
+                            </f:if>
+                        </div>
                     </div>
 
-                    <f:render partial="Form/UploadListDiff" arguments="{
-                        media:'{ansuchen.beratungnDatei}',
-                        anmerkung:'{ansuchen.beratung}',
-                    }" />
-                    <h4>Kinderbetreuung</h4>
-                    <f:if condition="ansuchen.kinderbetreuung">
-                        <p>
-                            Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
-                        </p>
-                    </f:if>
-                </div>
+                    <div class="rechts col-5">
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData}" />
+                    </div>
 
-                <div class="rechts col-5">
-                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData}" />
                 </div>
-
-            </div>
             </div>
         </div>
-
 
 
         <!-- C.1 Projektleitung #################################################### -->
@@ -717,11 +745,14 @@
                         {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
                         {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}/fullname')} 
 
+
+
+
                         <div class="abstand-klein"></div>
                         <label>Lebenslauf</label>
                         <div class="abstand-klein"></div>
 
-                        <f:if condition="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}">
+                        <f:if condition="({diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}) && {difftyp}">
                             <f:then>
                                 <div class="upload">
                                     <div class="uploadlist">
@@ -751,6 +782,7 @@
                                 <f:render partial="Form/UploadListDiff" arguments="{
                                     media:'{p.lebenslaufDatei}',
                                     anmerkung:'{p.lebenslauf}'
+                                    
                                 }" />
                             </f:else>
                         </f:if>
@@ -827,8 +859,10 @@
                         <div class="links col-7">
                             {t.fullName} 
                             
-  
-                            {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
+                            <f:if condition="{difftyp}">
+                                {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
+                            </f:if>
+                            
                         </div>
                         <div class="rechts col-5">
                             <div class="abstand-klein"></div>
@@ -845,12 +879,11 @@
                                         </div>
                                     </f:if>
                                 </f:for>
-                            <p>{t.reviewC2BabiCommentInternal}</p>
+                            <!--p>{t.reviewC2BabiCommentInternal}</p-->
                         </div>
                     </div>
                 </f:for>
                         
-                <!-- mango: UID vergleichen! -->
                 <f:for each="{diff.copy_trainer}" as="tt">
                     <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
                         <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
@@ -897,8 +930,10 @@
                     <div class="links col-7">
                         {t.fullName} 
                         
-
-                        {ieb:ifDiff(diff:diff,field:'copy_berater/{t.uid}')}
+                        <f:if condition="{difftyp}">
+                            {ieb:ifDiff(diff:diff,field:'copy_berater/{t.uid}')}
+                        </f:if>
+                        
 
                     </div>
                     <div class="rechts col-5">

@@ -7,7 +7,7 @@
     
     <div class="uploadlist">
 
-        <f:if condition="{media} && ({status} != 20)">
+        <f:if condition="{media}">
 
             <f:for each="{media}" as="m">
                 <f:if condition="{m.originalResource}">
@@ -19,13 +19,14 @@
                 <ieb:fal path="{m.publicUrl}">
                     <f:if condition="{file}">
                         <div class="filelist-item">
-                            <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] <f:if condition="{diff}">
+                            <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] 
+                            <f:if condition="{diff}  && ({status} != 20)">
                                 <f:for each="{diff}" as="file">
-                                        <f:if condition="{file.publicUrl.current}=={m.publicUrl}">
-                                            <span class="vorher-knopf">neu</span>
-                                        </f:if>
+                                    <f:if condition="{file.publicUrl.current}=={m.publicUrl}">
+                                        <span class="vorher-knopf">neu</span>
+                                    </f:if>
                                 </f:for>
-                             </f:if>
+                        </f:if>
                         </div>
                     </f:if>
 
@@ -34,7 +35,7 @@
 
             </f:for>
             
-            <f:if condition="{diff}">
+            <f:if condition="{diff}  && {difftyp}">
                 <f:for each="{diff}" as="file">
                         <f:if condition="{file.publicUrl.previous}">
                             <div class="diff"><span class="vorher">vorher:</span> {file.publicUrl.previous}</div>
@@ -48,8 +49,8 @@
                 {anmerkung}
             </div>
         </f:if>
-        <f:if condition="{diffanmerkung}">
-            <div class="diff"><span class="vorher">vorher:</span> {diffanmerkung}</div>
+        <f:if condition="{diffanmerkung} && ({status} != 20)">
+            <div class="diff"><span class="vorher">vorher:</span> {diffanmerkung.previous}</div>
         </f:if>
     </div>
     </div>

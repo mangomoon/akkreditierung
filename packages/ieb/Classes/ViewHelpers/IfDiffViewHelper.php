@@ -32,19 +32,7 @@ class IfDiffViewHelper extends AbstractViewHelper
         try {
             $data = ArrayUtility::getValueByPath($diff, $field);
 
-
-
-            // $fields = [];
-            // foreach ($data as $key => $value) {
-            //     $fields[] = sprintf(
-            //         '<li></li><strong>%s</strong>: <s>%s</s> %s</li>',
-            //         htmlspecialchars(self::getLabel($key, $arguments['lll'] ?? '')),
-            //         htmlspecialchars((string)($value['previous'] ?? '')),
-            //         htmlspecialchars((string)($value['current'] ?? ''))
-            //     );
-            // }
-
-            if ((isset($data['previous'])=='') || (isset($data['previous'])==' ')) {
+            if (isset($data['uid']['previous'])) {
                 return sprintf("<span class='vorher-knopf'>neu</span>");
             } else {
                 return sprintf("<span class='vorher-knopf'>Änderung!</span>");
