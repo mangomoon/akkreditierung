@@ -11,46 +11,54 @@
 
             <f:for each="{media}" as="m">
                 <f:if condition="{m.originalResource}">
+                    
+                        
                     <div class="filelist-item">
-                    <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}">{m.originalResource.originalFile.properties.name}</a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
-                </div>
-                </f:if>
-                
-                <ieb:fal path="{m.publicUrl}">
-                    <f:if condition="{file}">
-                        <div class="filelist-item">
-                            <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] 
-                            <f:if condition="{diff}  && ({status} != 20)">
-                                <f:for each="{diff}" as="file">
-                                    <f:if condition="{file.publicUrl.current}=={m.publicUrl}">
-                                        <span class="vorher-knopf">neu</span>
-                                    </f:if>
-                                </f:for>
-                        </f:if>
-                        </div>
+                        <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}">{m.originalResource.originalFile.properties.name}</a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
+                    </div>
+
+                    <ieb:fal path="{m.originalResource.publicUrl}">
+                    <f:if condition="{diff} && {difftyp}">
+                        <f:for each="{diff}" as="file">
+
+                            <ieb:fal path="{file}">{file.extension}</ieb:fal>
+                            <f:if condition="{file.current}">
+                                <span class="vorher-knopf">neu</span>
+                            </f:if>
+                            <f:if condition="{f.publicUrl.current}=={m.originalResource.publicUrl}">
+                                <span class="vorher-knopf">neu2</span>
+                            </f:if>
+
+                     </f:for>
                     </f:if>
 
-                </ieb:fal>
+                    </ieb:fal>
+                </f:if>
+                
                 
 
             </f:for>
-            
-            <f:if condition="{diff}  && {difftyp}">
+
+            <f:if condition="{diff} && {difftyp}">
                 <f:for each="{diff}" as="file">
-                        <f:if condition="{file.publicUrl.previous}">
-                            <div class="diff"><span class="vorher">vorher:</span> {file.publicUrl.previous}</div>
-                        </f:if>
+                    <f:debug>{file}</f:debug>
+                    <f:if condition="{file.publicUrl.previous}">
+                        <div class="diff"><span class="vorher">gelöscht:</span> {file.publicUrl.previous}</div>
+                    </f:if>
                 </f:for>
              </f:if>
         </f:if>
 
         <f:if condition="{anmerkung}">
             <div class="anmerkungstext">
-                {anmerkung}
+                {anmerkung} <f:if condition="{diffanmerkung} && {difftyp} && ({diffanmerkung.previous} == '')">
+                    <span class="vorher-knopf">neu</span> 
+                </f:if>
             </div>
         </f:if>
-        <f:if condition="{diffanmerkung} && ({status} != 20)">
+        <f:if condition="{diffanmerkung} && {difftyp} && {diffanmerkung.previous}">
             <div class="diff"><span class="vorher">vorher:</span> {diffanmerkung.previous}</div>
         </f:if>
+
     </div>
     </div>

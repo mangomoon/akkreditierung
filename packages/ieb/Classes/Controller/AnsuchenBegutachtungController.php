@@ -67,7 +67,7 @@ class AnsuchenBegutachtungController extends BaseController
     /**
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
      */
-    public function editAction(Ansuchen $ansuchen): ResponseInterface
+    public function editAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
         $this->view->assign('ansuchen', $ansuchen);
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();

@@ -1,0 +1,52 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+</html>
+
+
+<div class="upload">
+    
+    <div class="uploadlist">
+
+        <f:if condition="{media}">
+
+            <f:for each="{media}" as="m">
+
+                <ieb:fal path="{m.publicUrl}">
+                    <f:if condition="{file}">
+                        <div class="filelist-item">
+                            <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] 
+                            <f:if condition="{diff} && {difftyp}">
+                                <f:for each="{diff}" as="file">
+                                    <f:if condition="{file.publicUrl.current}=={m.publicUrl}">
+                                        <span class="vorher-knopf">neu</span>
+                                    </f:if>
+                                </f:for>
+                            </f:if>
+                        </div>
+                    </f:if>
+                </ieb:fal>
+                
+
+            </f:for>
+            <f:if condition="{diff}  && {difftyp}">
+                <f:for each="{diff}" as="file">
+                        <f:if condition="{file.publicUrl.previous}">
+                            <div class="diff"><span class="vorher">gelöscht:</span> {file.publicUrl.previous}</div>
+                        </f:if>
+                </f:for>
+             </f:if>
+        </f:if>
+
+        <f:if condition="{anmerkung}">
+            <div class="anmerkungstext">
+                {anmerkung} <f:if condition="{diffanmerkung} && {difftyp} && ({diffanmerkung.previous} == '')">
+                    <span class="vorher-knopf">neu</span> 
+                </f:if>
+            </div>
+        </f:if>
+        <f:if condition="{diffanmerkung} && {difftyp} && {diffanmerkung.previous}">
+            <div class="diff"><span class="vorher">vorher:</span> {diffanmerkung.previous}</div>
+        </f:if>
+
+    </div>
+    </div>

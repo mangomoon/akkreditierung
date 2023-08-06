@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Alle Ansuchen</h1>
+
 
     <f:flashMessages />
 
@@ -27,7 +27,7 @@
                             <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn}]</code>
                         </td>
                         <td class="td-knopf">
-                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                            <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                         </td>
                         <td class="td-knopf">
                             <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
