@@ -14,10 +14,145 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Single View for Trainer</h1>
+    <h1>{trainer.fullName}</h1>
 
-    <f:flashMessages />
-    <f:render partial="Trainer/Properties" arguments="{trainer:trainer}" />
-    <f:link.action action="index">Back to list</f:link.action><br />
+    <div class="begutachtung-kriterium" id="c21b">
+      <div class="kriteriumtitel">
+          <div class="row">
+              <div class="col-7">
+                  <h2>C.2.1.BaBi Qualifikationsnachweis Basisbildung</h2>
+              </div>
+              <div class="col-5 right">
+                  <div class="infoknopf"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="links col-7">
+              <div class="erlaeuterung">
+                  <div class="showinfobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
+                  <p>Laden Sie den Nachweis für den Abschluss einer fachspezifischen Ausbildung gemäß Qualifikationsprofil Basisbildner/in hoch.</p>
+                  <p class="hinweis">
+                      <span class="worthinweis">Hinweis: </span>Anerkannt werden:</p>
+                  <ul class="hinweis">
+                      <li>
+                          <a href="https://www.initiative-erwachsenenbildung.at/ieb/infos-fuer-trainerinnen" target="_blank">von der IEB anerkannte Ausbildungslehrgänge für Basisbildner/innen</a>
+                      </li>
+                      <li>
+                          wba-Zertifikat "Zertifizierte/r Basisbildner/in"
+                      </li>
+                  </ul>
+              </div>
+
+              <f:render partial="Form/UploadList" arguments="{
+                  media:'{trainer.qualifikationBabiDatei}',
+                  anmerkung:'{trainer.qualifikationBabi}'
+              }" />
+
+          </div>
+          <div class="rechts col-5">
+          </div>
+      </div>
+    </div>
+
+                <!-- ############################ PSA ############################### -->
+
+                <div class="begutachtung-kriterium" id="c21p">
+                  <div class="kriteriumtitel">
+                      <div class="row">
+                          <div class="col-7">
+                              <h2>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h2>
+                          </div>
+                          <div class="col-5 right">
+                              <div class="infoknopf"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="links col-7">
+                          <div class="erlaeuterung">
+      
+                              <div class="showinfobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
+                              <p><strong>Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.</strong></p>
+                              <p>Liegt keine Trainings/Prüfberechtigung der Bildungsdirektion vor oder weichen die unten angegebenen Kompetenzbereiche von dieser ab, laden Sie die Qualifikationsnachweise hier hoch.</p>
+                              <p class="hinweis"><span class="worthinweis">Hinweis:</span> Anerkannt werden:</p>
+                              <ul class="hinweis">
+                                  <li>
+                                      abgeschlossenes Lehramtsstudium
+                                  </li>
+                                  <li>
+                                      von der Landesschulbehörde ausgestellte Lehrbefugnis (nicht älter als drei Jahre)
+                                  </li>
+                                  <li>
+                                      abgeschlossenes facheinschlägiges Studium an einer anerkannten postsekundären Bildungseinrichtung und zumindest 12-monatige Berufserfahrung im (sozial)pädagogischen Bereich mit Jugendlichen oder Erwachsenen – Es muss eine Begründung eingereicht werden,
+                                      warum das Studium als facheinschlägig betrachtet wird. Als Nachweis für die Berufserfahrung sind Angaben zu Umfang, Zielgruppe, Dienstgeber, Zeitraum und Kurs/Projekttitel zu machen.
+                                  </li>
+                                  <li>
+                                      eine positiv abgeschlossene erwachsenenpädagogische Ausbildung mit Schwerpunkt Didaktik/Training, die mindestens dem Referenzsystem wba-Zertifikat/Diplom“ (wba.or.at ) entspricht.
+                                  </li>
+                                  <li>
+                                      Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
+                                  </li>
+                                  <li>
+                                      Das wba-Zertifikat zum/r zertifizierten/r Erwachsenenbildner/in „Lehren/Gruppenleitung/Training“ und das wba-Zertifikat Basisbildner/in werden anerkannt.
+                                  </li>
+                              </ul>
+                          </div>
+      
+                          <f:render partial="Form/UploadList" arguments="{
+                              media:'{trainer.qualifikationPsaDatei}',
+                              anmerkung:'{trainer.qualifikationPsa}'
+                          }" />
+                      </div>
+                      <div class="rechts col-5">
+
+                      </div>
+                      </div>
+                      <div class="row">
+                          <div class="col trainerqualifikationsbegutachtung">
+                              <p>Haken Sie die für den/die Trainer/in vorgesehenen Kompetenzbereiche an.</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa1}',then:'checked')}"></span> Deutsch – Kommunikation und Gesellschaft</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa2}',then:'checked')}"></span> Englisch – Globalität und Transkulturalität</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa3}',then:'checked')}"></span> Mathematik</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa4}',then:'checked')}"></span> Berufsorientierung</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa5}',then:'checked')}"></span> Kreativität und Gestaltung</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa6}',then:'checked')}"></span> Gesundheit und Soziales</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa7}',then:'checked')}"></span> Natur und Technik</p>
+                              <p><span class="checkbox {f:if(condition:'{trainer.qualifikationPsa8}',then:'checked')}"></span> Weitere Sprachen: {trainer.qualifikationPsaKommentar}</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="begutachtung-kriterium" id="c22">
+                    <div class="kriteriumtitel">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2>C.2.2 Erfahrungsnachweis</h2>
+                            </div>
+                            <div class="col-5 right">
+                                <div class="infoknopf"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="links col-7">
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="c-2-1-hilfe">Alle Trainer/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
+                                <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktionen, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+                                <p class="hinweis">
+                                    HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
+                                </p>
+                            </div>
+                            <f:render partial="Form/UploadList" arguments="{
+                                media:'{trainer.lebenslaufDatei}',
+                                anmerkung:'{trainer.lebenslauf}'
+                            }" />
+                        </div>
+                        <div class="rechts col-5">
+                        </div>
+                    </div>
+                </div>
+
+
+
 </f:section>
 </html>
