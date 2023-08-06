@@ -1,24 +1,87 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-This template is responsible for displaying a single view for a domain object
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Berater:
-          Show.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Single View for Berater</h1>
+  <div id="berater-show">
+    <h1>{berater.fullName}</h1>
 
-    <f:flashMessages />
-    <f:render partial="Berater/Properties" arguments="{berater:berater}" />
-    <f:link.action action="list">Back to list</f:link.action><br />
-    <f:link.action action="new">New Berater</f:link.action>
+    <div class="begutachtung-kriterium" id="c31">
+      <div class="kriteriumtitel">
+          <div class="row">
+              <div class="col-7">
+                  <h2>C.3.1 Qualifikationsnachweise Beratung</h2>
+              </div>
+              <div class="col-5 right">
+                  <div class="infoknopf"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="links col-7">
+              <div class="erlaeuterung">
+                  <div class="showinfobox" id="c-2-a-2-hilfe">Alle Berater/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
+                  <p>
+                      Laden Sie die Nachweise über den Abschluss einer fachspezifischen Ausbildung zur Beratung hoch.
+                  </p>
+                  <p class="hinweis">
+                      <span class="worhinweis">Hinweis:</span> Anerkannt werden:
+                  </p>
+                  <ul class="hinweis">
+                      <li>
+                          Ausbildungen zur Bildungs- und Berufsberatung am bifeb
+                      </li>
+                      <li>
+                          wba-Zertifikat/-Diplom mit Schwerpunkt Beratung
+                      </li>
+                      <li>
+                          eine postsekundäre Ausbildung zur Sozialarbeit oder Sozialpädagogik (mit FH-, Akademie- oder Universitätsabschluss)
+                      </li>
+                  </ul>
+                  <p class="hinweis">
+                      Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen sind im Programmplanungsdokument Kapitel 3.3.3. nachzulesen.
+                  </p>
+              </div>
+              <f:render partial="Form/UploadList" arguments="{
+                  media:'{berater.qualifikationsnachweise}',
+                  anmerkung:'{berater.qualifikationsnachweiseKommentar}'
+              }" />
+
+          </div>
+          <div class="rechts ohne-bg col-5">
+
+              &nbsp;
+
+          </div>
+      </div>
+  </div>
+  <div class="begutachtung-kriterium" id="c32">
+      <div class="kriteriumtitel">
+          <div class="row">
+              <div class="col-7">
+                  <h2>C.3.2 Erfahrungsnachweis</h2>
+              </div>
+              <div class="col-5 right">
+                  <div class="infoknopf"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="links col-7">
+              <div class="erlaeuterung">
+                  <div class="showinfobox" id="c-2-1-hilfe">Alle Berater/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
+                  <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
+              </div>
+              <f:render partial="Form/UploadList" arguments="{
+                  media:'{berater.lebenslauf}',
+                  anmerkung:'{berater.lebenslaufKommentar}'
+              }" />
+          </div>
+          <div class="rechts col-5">
+
+          </div>
+      </div>
+  </div>
+</div>
 </f:section>
 </html>

@@ -842,6 +842,14 @@ table.angebotssteuerung {
 }
 
 
+/* ANSUCHEN SHOW */
+
+#ansuchen-show .begutachtung-kriterium .rechts,
+#trainer-show .begutachtung-kriterium .rechts,
+#berater-show .begutachtung-kriterium .rechts {
+    background: var(--f0b);
+}
+
 /* TABELLE  */
 
 table.tx_ieb {
