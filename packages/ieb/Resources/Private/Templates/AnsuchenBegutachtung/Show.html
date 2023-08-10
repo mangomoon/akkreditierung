@@ -7,7 +7,15 @@
     {diffAsJson -> f:format.raw()}
     <div class="abstand-gross"></div>
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
-        {stammdaten -> f:variable(name: 'stammdatenorig')} {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} {ansuchen.trainer -> f:variable(name: 'trainerorig')} {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} {ansuchen.berater -> f:variable(name: 'beraterorig')} {ansuchen.copyBeraterData -> f:variable(name: 'berater')} {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')} 
+        {stammdaten -> f:variable(name: 'stammdatenorig')} 
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
+        {ansuchen.trainer -> f:variable(name: 'trainerorig')} 
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+        {ansuchen.berater -> f:variable(name: 'beraterorig')} 
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+        {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+        {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
 
 
         <f:debug>{_all}</f:debug>
@@ -780,11 +788,15 @@
             <f:for each="{verantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
-                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
+                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a> 
 
                         {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}/fullname')} 
 
-
+                        <f:for each="{verantwortlicheMail}" as="pm">
+                            <f:if condition ="{p.uid} == {pm.uid}">
+                                <span class="pseudoknopf mail"></span>
+                            </f:if>
+                        </f:for>
 
 
                         <div class="abstand-klein"></div>
@@ -864,6 +876,13 @@
                             <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
                                 Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         </div>
+                        <f:if condition="{diff.copy_verantwortliche_mail}">
+                            <div class="diff">Mail-Adressat zuvor: 
+                            <f:for each="{diff.copy_verantwortliche_mail}" as="a">
+                                {a.vorname.previous} {a.nachname.previous}
+                            </f:for>
+                            </div>
+                        </f:if>
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData}" />
@@ -908,12 +927,12 @@
                                 <f:for each="{trainerorig}" as="tt">
                                     <f:if condition="{t.uid}=={tt.uid}">
                                         <div class="status-babi">
-                                            <span class="person-statuskugel status-{tt.reviewC21BabiStatus}"></span>
-                                            <span class="person-statuskugel status-{tt.reviewC22BabiStatus}"></span>
+                                            <span class="person-statuskugel-a person-statuskugel status-{tt.reviewC21BabiStatus}"></span>
+                                            <span class="person-statuskugel-b person-statuskugel status-{tt.reviewC22BabiStatus}"></span>
                                         </div>
                                         <div class="status-psa">
-                                            <span class="person-statuskugel status-{tt.reviewC21PsaStatus}"></span>
-                                            <span class="person-statuskugel status-{tt.reviewC22PsaStatus}"></span>
+                                            <span class="person-statuskugel-c person-statuskugel status-{tt.reviewC21PsaStatus}"></span>
+                                            <span class="person-statuskugel-d person-statuskugel status-{tt.reviewC22PsaStatus}"></span>
                                         </div>
                                     </f:if>
                                 </f:for>
@@ -923,7 +942,7 @@
                 </f:for>
                         
                 <f:for each="{diff.copy_trainer}" as="tt">
-                    <f:if condition="{tt.fullName.previous} && !{tt.fulllName.current}">
+                    <f:if condition="{tt.fullName.previous} && !{tt.fullName.current}">
                         <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
                     </f:if>
                 </f:for>
@@ -988,10 +1007,12 @@
             </f:for>
 
             <f:for each="{diff.copy_berater}" as="tt">
-                    <f:if condition="{tt.uid.previous} && !{tt.uid.current}">
-                        <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
-                    </f:if>
-                </f:for>
+      
+                <f:if condition="{tt.fullName.previous} && !{tt.fullName.current}">
+                    <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
+                </f:if>
+
+            </f:for>
 
                 <div class="row">
                     <div class="links col-7">

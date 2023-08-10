@@ -95,7 +95,9 @@ body {
 .abstand-mittel {
     height: 16px
 }
-
+.hidden {
+    display: none;
+}
 .abstand-gross {
     height: 40px;
 }
@@ -166,6 +168,17 @@ td {
     height: auto;
 }
 
+span.pseudoknopf {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: top;
+}
+span.pseudoknopf.mail {
+    background: url('../Img/Email.svg');
+    background-repeat: no-repeat;
+    margin-left: 12px;
+}
 
 /* MODAL BOX #################### */
 

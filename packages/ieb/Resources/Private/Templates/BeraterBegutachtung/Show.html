@@ -7,6 +7,7 @@
     <f:form name="begutachtung" object="{begutachtung}" action="update" class="personenbegutachtung begutachtung" id="beraterbegutachtung">
         <f:form.hidden property="ansuchenId" />
         <f:form.hidden property="beraterId" id="beraterId"/>
+        <div class="hidden" id="pID">{berater.uid}</div>
         <h2>{berater.fullName}</h2>
         <p>Begutachtung basierend auf <strong>{ansuchen.name} <span class="nummer">[{ansuchen.nummer}]</strong></span>
         </p>

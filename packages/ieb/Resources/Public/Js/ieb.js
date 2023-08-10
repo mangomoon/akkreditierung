@@ -602,17 +602,70 @@ function reqleerLoeschen() {
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
 
+
      $("#beraterbegutachtung").submit(function() {
+        
         var t = $('#beraterId').val();
         var s = $("#beraterbegutachtung input.c3:checked").val();
         var c = 'status-'+s;
         var b = '#berater-'+ t +' .person-statuskugel';
-        var x = $('#berater-2 .links').html();
-        console.log(x);
-        //$(b).addClass(c);
-        $('#oben').hide();
+        
+        $(b, window.parent.document).removeClass('status-0');
+        $(b, window.parent.document).removeClass('status-1');
+        $(b, window.parent.document).removeClass('status-2');
+        $(b, window.parent.document).removeClass('status-3');
+        $(b, window.parent.document).removeClass('status-4');
+        $(b, window.parent.document).addClass(c);
     });
 
+    $("#trainerbegutachtung").submit(function() {
+        
+        var t = $('#trainerId').val();
+        var as = $("#trainerbegutachtung input.c21b:checked").val();
+        var bs = $("#trainerbegutachtung input.c22b:checked").val();
+        var cs = $("#trainerbegutachtung input.c21p:checked").val();
+        var ds = $("#trainerbegutachtung input.c22p:checked").val();
+        var ac = 'status-'+as;
+        var bc = 'status-'+bs;
+        var cc = 'status-'+cs;
+        var dc = 'status-'+ds;
+        var a = '#trainer-'+ t +' .person-statuskugel-a';
+        var b = '#trainer-'+ t +' .person-statuskugel-b';
+        var c = '#trainer-'+ t +' .person-statuskugel-c';
+        var d = '#trainer-'+ t +' .person-statuskugel-d';
+        var at = $('#at').html();
+        
+        if (at == 1) {
+            $(a, window.parent.document).removeClass('status-0');
+            $(a, window.parent.document).removeClass('status-1');
+            $(a, window.parent.document).removeClass('status-2');
+            $(a, window.parent.document).removeClass('status-3');
+            $(a, window.parent.document).removeClass('status-4');
+            $(b, window.parent.document).removeClass('status-0');
+            $(b, window.parent.document).removeClass('status-1');
+            $(b, window.parent.document).removeClass('status-2');
+            $(b, window.parent.document).removeClass('status-3');
+            $(b, window.parent.document).removeClass('status-4');
+        }
+        if (at == 2) {
+            $(c, window.parent.document).removeClass('status-0');
+            $(c, window.parent.document).removeClass('status-1');
+            $(c, window.parent.document).removeClass('status-2');
+            $(c, window.parent.document).removeClass('status-3');
+            $(c, window.parent.document).removeClass('status-4');
+            $(d, window.parent.document).removeClass('status-0');
+            $(d, window.parent.document).removeClass('status-1');
+            $(d, window.parent.document).removeClass('status-2');
+            $(d, window.parent.document).removeClass('status-3');
+            $(d, window.parent.document).removeClass('status-4');
+        }
+
+        $(a, window.parent.document).addClass(ac);
+        $(b, window.parent.document).addClass(bc);
+        $(c, window.parent.document).addClass(cc);
+        $(d, window.parent.document).addClass(dc);
+
+    });
 
      $(".req").focus(function() {
          $(this).removeClass("req-leer");

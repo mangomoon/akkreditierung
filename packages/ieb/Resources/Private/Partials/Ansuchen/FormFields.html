@@ -283,7 +283,8 @@
     <div class="kriteriumteil">
         <h3>B.1.2 Kompetenzbereiche</h3>
 
-        <div class="erlaeuterung babi">
+        <f:if condition="{ansuchen.typ}==1">
+            <div class="erlaeuterung babi">
             <p class="hinweis babi reqkomp">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
         <div class="formfields row babi">
@@ -304,32 +305,35 @@
                 </p>
             </div>
         </div>
-        <div class="erlaeuterung psa">
-            <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
-            <div class="formfields row psa">
-                <div class="col-10">
-                    <p>
-                        <label for="kompetenzb"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzb"/> Deutsch – Kommunikation und Gesellschaft</label></p>
-                    <p>
-                        <label for="kompetenzc"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzc"/> Englisch – Globalität und Transkulturalität</label></p>
-                    <p>
-                        <label for="kompetenzd"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzd"/> Mathematik</label></p>
-                    <p>
-                        <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
-                    <p>Wahlmodule:</p>
-                    <p>
-                        <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
-                    <p>
-                        <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
-                    <p>
-                        <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Natur und Technik</label></p>
-                    <p>
-                        <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
-                        <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
-                    </p>
+        </f:if>
+        <f:if condition="{ansuchen.typ}==2">
+            <div class="erlaeuterung psa">
+                <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
+                <div class="formfields row psa">
+                    <div class="col-10">
+                        <p>
+                            <label for="kompetenzb"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzb"/> Deutsch – Kommunikation und Gesellschaft</label></p>
+                        <p>
+                            <label for="kompetenzc"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzc"/> Englisch – Globalität und Transkulturalität</label></p>
+                        <p>
+                            <label for="kompetenzd"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenzd"/> Mathematik</label></p>
+                        <p>
+                            <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
+                        <p>Wahlmodule:</p>
+                        <p>
+                            <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
+                        <p>
+                            <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
+                        <p>
+                            <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Natur und Technik</label></p>
+                        <p>
+                            <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
+                            <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </f:if>
     </div>
 
     <div class="kriteriumteil">
@@ -699,7 +703,7 @@
 
 <!-- ############### BERATUNG ########### -->
 
-<div class="kriterium status-{ansuchen.reviewC2Status}">
+<div id="c2" class="kriterium status-{ansuchen.reviewC2Status}">
     <h2>C.2 Training</h2>
     <div class="info"></div>
     <div class="infobox" id="c-2-hilfe">

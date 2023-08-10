@@ -32,10 +32,10 @@ class IfDiffViewHelper extends AbstractViewHelper
         try {
             $data = ArrayUtility::getValueByPath($diff, $field);
 
-            if (isset($data['uid']['previous'])) {
-                return sprintf("<span class='vorher-knopf'>Änderung!</span>");
-            } else {
+            if (isset($data['crdate'])) {
                 return sprintf("<span class='vorher-knopf'>neu</span>");
+            } else {
+                return sprintf("<span class='vorher-knopf'>Änderung</span>");
             }
             //return sprintf('<div class="diff" style="color:#666;background: #53d9f0"><ul>%s</ul></div>', implode(LF, $fields));
 
