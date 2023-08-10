@@ -39,14 +39,19 @@
 
             </f:for>
             <f:if condition="{diff} && {difftyp}">
-                <f:for each="{diff}" as="file">
-                    <f:debug>{file}</f:debug>
+                <f:for each="{diff}" as="f">
+                    <ieb:fal path="{f.originalResource}">
+                        <f:debug>{file}</f:debug>
+                    {file.name}</ieb:fal>
                     <f:if condition="{file.publicUrl.previous}">
                         <div class="diff"><span class="vorher">gelöscht:</span> {file.publicUrl.previous}</div>
                     </f:if>
                 </f:for>
              </f:if>
         </f:if>
+
+
+
 
         <f:if condition="{anmerkung}">
             <div class="anmerkungstext">

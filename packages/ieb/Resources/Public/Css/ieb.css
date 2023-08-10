@@ -282,6 +282,10 @@ p.hinweisextra {
     color: var(--f4);
 }
 
+.fancybox-button--arrow_right, .fancybox-button--arrow_left, .fancybox-button--play, .fancybox-infobar {
+    display: none;
+}
+
 
 /* ###### FILELIST ######### */
 

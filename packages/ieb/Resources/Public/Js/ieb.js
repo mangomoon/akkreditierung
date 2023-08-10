@@ -665,6 +665,12 @@ function reqleerLoeschen() {
         $(c, window.parent.document).addClass(cc);
         $(d, window.parent.document).addClass(dc);
 
+        // parent.$.fancybox.close();
+
+    });
+
+    $('fancyclose').click(function(){
+        parent.$.fancybox.close();
     });
 
      $(".req").focus(function() {

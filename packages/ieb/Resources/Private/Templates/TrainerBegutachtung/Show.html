@@ -51,12 +51,12 @@
                             </li>
                         </ul>
                     </div>
-
+                    <f:debug>{diff}</f:debug>
                     <f:render partial="Form/UploadListDiff" arguments="{
                         media:'{trainer.qualifikationBabiDatei}',
                         anmerkung:'{trainer.qualifikationBabi}',
                         difftyp:'{difftyp}',
-                        diff:'{diff.copy_trainer.qualifikationBabiDatei}',
+                        diff:'{diff.copy_trainer.trainer.qualifikationBabiDatei}',
                     }" />
 
                 </div>
@@ -437,15 +437,7 @@
 
     <script>oeffnenTrainerBegutachtung();</script>
 </f:section>
-<f:section name="teilstatus">
-<!--    <div class="knoepfe teilstatus">-->
-<!--        <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" name="c21b"/>nan</label>-->
-<!--        <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" name="c21b"/>ok</label>-->
-<!--        <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" name="c21b" />fraglich</label>-->
-<!--        <label class="knopf auflage {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" name="c21b" />Auflage</label>-->
-<!--        <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" name="c21b" />nicht-ok</label>-->
-<!--    </div>-->
-</f:section>
+
 <f:section name="comment">
 
 </f:section>

@@ -838,12 +838,13 @@
                                 </div>
                             </f:then>
                             <f:else>
-                                <f:render partial="Form/UploadListDiff" arguments="{
+                                <f:render partial="Form/UploadListDiffRel" arguments="{
                                     media:'{p.lebenslaufDatei}',
                                     anmerkung:'{p.lebenslauf}'
                                 }" />
                             </f:else>
                         </f:if>
+
                         <f:if condition="{diff.copy_verantwortliche.{p.uid}.previous}">
                             <div class="diff"><span class="vorher">vorher:</span> {diff.copy_verantwortliche.{p.uid}.vorname.previous} {diff.copy_verantwortliche.{p.uid}.nachname.previous}</div>
                         </f:if>
@@ -931,7 +932,7 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="abstand-klein"></div>
-                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
+                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid, diff:diff.copy_trainer}" target="_blank">Begutachtung starten</f:link.action> 
                                 <f:for each="{trainerorig}" as="tt">
                                     <f:if condition="{t.uid}=={tt.uid}">
                                         <div class="status-babi">
