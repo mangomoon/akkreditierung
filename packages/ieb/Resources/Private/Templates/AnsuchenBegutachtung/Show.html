@@ -477,7 +477,15 @@
                         <p>Standorte:</p>
                             <f:for each="{standorte}" as="standort">
                                 <div class="standort">{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
-                                <f:if condition="{difftyp}">{ieb:ifDiff(diff:diff,field:'copy_standorte/{standort.uid}')}</f:if></div>
+
+                                    <f:if condition="{difftyp} && {diff.copy_standorte}">
+                                        <f:for each="{diff.copy_standorte}" as="p">
+                                            <f:if condition="({p.name.current} == {standort.name})  && ({p.name.previous} == '')">
+                                                <span class="vorher-knopf">neu</span>
+                                            </f:if>
+                                        </f:for>
+                                    </f:if>
+                                </div>
                             </f:for>
                             <f:if condition="{diff.copy_standorte}">
                                 <p>&nbsp;</p>
