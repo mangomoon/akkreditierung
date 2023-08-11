@@ -230,11 +230,3 @@ page.bodyTagCObject.stdWrap.dataWrap = <body class="pagelayout-{field:layout}" i
 
 ############# FE LOGIN ############
 
-plugin.tx_felogin_login {
-  view {
-    templateRootPaths {
-      0 = EXT:felogin/Resources/Private/Templates/
-      10 = EXT:mangomoon/Resources/Private/felogin/Templates/
-    }
-  }
-}

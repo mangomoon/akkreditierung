@@ -180,6 +180,23 @@ span.pseudoknopf.mail {
     margin-left: 12px;
 }
 
+/* LOGIN ######################## */
+
+.frame-type-felogin_login input[type="text"],.frame-type-felogin_login input[type="password"] {
+    width: 300px;
+    margin-bottom: 20px;
+    border: solid 1px var(--f1);
+    font-size: 1rem;
+}
+.frame-type-felogin_login label.permalogin {
+    width: 174px;
+    display: inline;
+    padding-right: 20px;
+}
+#permalogin {
+    margin-left: 20px;
+}
+
 /* MODAL BOX #################### */
 
 .modal::backdrop {
@@ -401,12 +418,17 @@ textarea {
     accent-color: var(--f3);
 }
 
-input[type="text"] {
+input[type="text"],input[type="email"], input[type="password"] {
     width: 80%;
     margin-bottom: 20px;
     border: solid 1px var(--f1);
 }
-
+input[type="email"] {
+    margin: 6px 0;
+    padding: 6px;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+}
 input[type="text"].breite100 {
     width: 97%;
 }

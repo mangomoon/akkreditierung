@@ -37,3 +37,13 @@ page.includeJS {
 #page.includeJS {
 #    name = EXT:ieb/Resources/Public/Js/ieb.js
 #}
+
+
+plugin.tx_felogin_login {
+  view {
+    templateRootPaths {
+      0 = EXT:felogin/Resources/Private/Templates/
+      20 = EXT:mangomoonspecify/Resources/Private/fe-login/
+    }
+  }
+}

@@ -5,6 +5,122 @@
 <f:section name="content">
     <f:flashMessages />
 
-    <f:link.action action="registrationForm" class="btn btn-primary">Registrierung starten</f:link.action>
+    <!-- <f:link.action action="registrationForm" class="btn btn-primary">Registrierung starten</f:link.action> -->
+
+
+    <f:form action="registrationSuccess" name="registrationForm" object="{registrationForm}">
+        <div class="kriterium">
+            <div class="kriteriumteil">
+                <h2>Angaben zur Person</h2>
+                <div class="erläaeuterung">
+                    <p>Bitte geben Sie hier Ihre persönlichen Daten an. Diese betreffen nur Ihren Zugang zur Akkreditierungsdatenbank. Kontaktdaten für Ihre Organisation werden unten sowie an späterer Stelle anzugeben sein.</p>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'vorname', label: 'Vorname', required:1}" />
+                    </div>
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'nachname', label: 'Nachname', required:1}" />
+                    </div>
+                </div>
+                
+                <f:render partial="Form/Input" arguments="{property: 'email', type:'email', label: 'E-Mail', required:1}" />
+
+                <div class="row">
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'password', type:'password', label: 'Passwort', required:1}" />
+                    </div>
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'passwordRepeat', type:'password', label: 'Passwort wiederholen', required:1}" />
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+
+
+        <div class="kriterium">
+            <div class="kriteriumteil">
+                <h2>Angaben zu Ihrer Organisation</h2>
+                <div class="erläaeuterung"><p class="Hinweis:">Hinweis: Diese Angaben können zu einem späteren Zeitpunkt geändert und ergänzt werden.</p></div>
+
+                <f:render partial="Form/Input" arguments="{property: 'trName', label: 'Rechtsgültiger Vereins- bzw. Firmenname', required:1}" />
+
+                <div class="row">
+                    <div class="col">
+                         <f:render partial="Form/Input" arguments="{property: 'trStrasse', label: 'Anschrift', required:1}" />
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-2" style="margin-right:34px;">
+                        <f:render partial="Form/Input" arguments="{property: 'trPlz', label: 'PLZ', required:1}" />
+                    </div>
+                    <div class="col-9">
+                        <f:render partial="Form/Input" arguments="{property: 'trOrt', label: 'Ort', required:1}" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'trEmail', label: 'Email TR', required:1}" />
+                    </div>
+                    <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'trTel', label: 'Tel TR', required:1}" />
+                    </div>
+                </div>
+                
+
+                <f:render partial="Form/Input" arguments="{property: 'trWww', label: 'Www TR', required:1}" />
+
+            </div>
+        </div>
+
+        <div class="kriterium klein">
+            <h2>Einwilligung</h2>
+            <p>zur Verarbeitung von personenbezogenen Daten gemäß Art. 7 DSGVO</p>
+            <div class="erlaeuterung">
+                
+
+                <p>Ich willige ein, dass folgende personenbezogenen Daten:</p>
+
+                <p><i>Vor- und Nachname, Name der Institution, Funktion, Adresse der Institution, Telefonnummer, Fax-Nummer und Email-Adresse, Website der Institution</i></p>
+
+                <p>für den Zweck bzw. die Zwecke:</p>
+                <ul>
+                    <li>Registrierung und User-Verwaltung in der Akkreditierungsdatenbank auf akkreditierung.initiative-erwachsenenbildung.at für das Einreichen von Bildungsansuchen zur Akkreditierung im Rahmen der Initiative Erwachsenenbildung</li>
+                    <li>Automatisierte Email-Kommunikation im Zuge des Akkreditierungsprozesses</li>
+                    <li>Aufnahme in den Email-Verteiler (geschlossener AdressatInnenkreis) der Geschäftsstelle Initiative Erwachsenenbildung für regelmäßige Aussendungen betreffend die Initiative Erwachsenenbildung und Informationen aus der Abteilung Erwachsenenbildung des BMBWF</li>
+                    <li>Statistische Auswertungen über Anzahl der registrierten User (kein Personenbezug)</li>
+                </ul>
+                    
+                <p>Ihre Daten werden von uns nicht für andere Zwecke verwendet.</p>
+                
+
+                <p>durch:</p>
+
+                <p><b>Verantwortlich:</b> Bundesministerium für Bildung, Wissenschaft und Forschung</p>
+
+                <p><b>Auftragsverarbeitung:</b>	mangomoon KG, Michael Shorny (Wartung, Support, Datensicherheit)</p>
+
+                <p>Bearbeitet wird die Datenbank von der Geschäftsstelle der Initiative Erwachsenenbildung (Kulturkontakt Austria) auf Grundlage der „Art. 15a B-VG zwischen dem Bund und den Ländern über die Förderung von Bildungsmaßnahmen im Bereich Basisbildung sowie von Bildungsmaßnahmen zum Nachholen des Pflichtschulabschlusses für die Jahre 2018 bis 2021“ gespeichert und verarbeitet werden dürfen.
+                </p>
+                
+
+                <p><b>Widerrufsmöglichkeit:</b></p>
+
+                <p>Gemäß Art. 7 Abs. 3 DSGVO können Sie Ihre Einwilligung jederzeit widerrufen per Email an office@initiative-erwachsenenbildung.at oder per Post an Geschäftsstelle Initiative Erwachsenenbildung (Kulturkontakt Austria), Universitätsstraße 5, 1010 Wien.<br>
+                Durch den Widerruf ist ab dem Widerrufszeitpunkt eine Verarbeitung Ihrer personenbezogenen Daten nicht mehr zulässig. Bitte beachten Sie aber, dass allfällige Verarbeitungen Ihrer personenbezogenen Daten aufgrund anderer Bedingungen als der Einwilligung, wenn diese dem Art. 6 DSGVO entsprechen (z.B. aufgrund einer gesetzlichen Grundlage), auch weiterhin erfolgen können.</p>
+                    <p>&nbsp;</p>
+                    <p style="display: inline;">
+                        <f:form.checkbox value="1" property="{dsgvo}" class=""  id="dsgvo" />Ich gebe die Einwilligung zur oben genannten Datenverarbeitung.</p>
+                    <p>&nbsp;</p>
+            </div>
+        </div>
+
+
+        <f:form.submit value="Registrieren" class="knopf-s"/>
+    </f:form>
 </f:section>
 </html>
