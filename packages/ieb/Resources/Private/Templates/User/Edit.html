@@ -3,7 +3,7 @@
 
 
 <f:section name="content">
-    <h1>Edit User</h1>
+    <h2>Person bearbeiten</h2>
 
     <f:flashMessages />
 
@@ -11,7 +11,7 @@
 
     <f:form action="update" name="user" object="{user}" >
     <f:render partial="User/FormFields" arguments="{user:user}" />
-    <f:form.submit value="Save" />
+    <f:form.submit class="knopf-s" value="Speichern" />
     </f:form>
 </f:section>
 </html>

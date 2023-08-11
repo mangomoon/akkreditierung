@@ -1,18 +1,20 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<label for="firstName">
-	Vorname
-</label><br />
-	<f:form.textfield property="firstName" id="firstName" /><br />
-<label for="lastName">
-	Nachname
-</label><br />
-	<f:form.textfield property="lastName" id="lastName" /><br />
-<label for="email">
-	<f:translate key="tx_ieb_domain_model_user.email" />
-</label><br />
-	<f:form.textfield property="email" id="email" type="email" /><br />
-<label for="trAdmin">
-	<f:translate key="tx_ieb_domain_model_user.tr_admin" />
-</label><br />
-	<f:form.checkbox property="trAdmin" id="trAdmin" value="1" /><br />
+
+
+<div class="kriterium">
+	<div class="kriteriumteil">
+		<div class="row">
+			<div class="col">
+				<f:render partial="Form/Input" arguments="{property: 'firstName', label: 'Vorname', required:1}" />
+			</div>
+			<div class="col">
+				<f:render partial="Form/Input" arguments="{property: 'lastName', label: 'Nachname', required:1}" />
+			</div>
+		</div>
+		<f:render partial="Form/Input" arguments="{property: 'email', type: 'email', label: 'Email', required:1}" />
+		<p>&nbsp;</p>
+		<f:form.checkbox value="1" property="trAdmin" class=""  id="trAdmin" />Die Person hat Admin-Rechte.</p>
+	</div>
+</div>
+
 </html>

@@ -3,32 +3,33 @@
 
 
 <f:section name="content">
-    <h1>Listing for User</h1>
 
-    <f:flashMessages />
     <table class="tx_ieb">
         <tr>
             <th>Benutzername</th>
             <th><f:translate key="tx_ieb_domain_model_user.name" /></th>
             <th><f:translate key="tx_ieb_domain_model_user.email" /></th>
-            <th><f:translate key="tx_ieb_domain_model_user.tr_admin" /></th>
-            <th>deaktiviert</th>
+            <th>Admin</th>
+            <th></th>
             <th></th>
         </tr>
         <f:for each="{users}" as="user">
             <tr>
                 <td>{user.username}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+                <td>{user.firstname} <b>{user.lastname}</b></td>
+                <td><a href="mailto:{user.email}">{user.email}</a></td>
                 <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
-                <td>{f:if(condition:user.disable,then:'deaktiviert',else:'aktiv')}</td>
-                <td><f:link.action action="edit" arguments="{user : user}">Edit</f:link.action></td>
+                <!-- <td>{f:if(condition:user.disable,then:'deaktiviert',else:'aktiv')}</td> -->
+                <td class="td-knopf"><f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}">
+                </f:link.action></td>
+                <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
+                </f:link.action></td>
             </tr>
         </f:for>
     </table>
 
     <f:if condition="{currentUser.tr_admin}">
-        <p>Als TRU-Admin können Sie einen neuen User anlegen!:  <f:link.action action="new">Jetzt anlegen</f:link.action> </p>
+        <p><f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action> </p>
 
     </f:if>
 
