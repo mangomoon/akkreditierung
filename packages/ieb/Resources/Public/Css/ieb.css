@@ -371,7 +371,10 @@ p.hinweisextra {
 }
 
 .anmerkungstext {
-    padding: 12px 0;
+    padding: 6px 3px;
+    margin-top: -6px;
+    background: #fdfaf0;
+    font-size: 0.9em;
 }
 
 
@@ -1213,7 +1216,7 @@ table.tx_ieb.standortliste td {
 
 .begutachtung-kriterium .erlaeuterung {
     display: none;
-    background: #f1ede4;
+    background: #e3e4d9;
     padding: 8px;
     font-size: 0.9em;
     margin: 12px 0 24px 0;
@@ -1423,7 +1426,7 @@ table.ansuchenbegutachtung td.check {
 }
 .bereich-2 .status-babi .person-statuskugel, .bereich-1 .status-psa .person-statuskugel{
     border: solid 2px var(--f5);
-    opacity: 0.6;
+    opacity: 0.3;
 }
 .person-statuskugel.status-1 {
     background-color: var(--angebotsverantwortliche);

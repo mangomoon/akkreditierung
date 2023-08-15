@@ -283,7 +283,7 @@
     <div class="kriteriumteil">
         <h3>B.1.2 Kompetenzbereiche</h3>
 
-        <f:if condition="{ansuchen.typ}==1">
+        <f:if condition="({ansuchen.typ}==1) || {ansuchen.typ}==0)">
             <div class="erlaeuterung babi">
             <p class="hinweis babi reqkomp">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
@@ -306,7 +306,7 @@
             </div>
         </div>
         </f:if>
-        <f:if condition="{ansuchen.typ}==2">
+        <f:if condition="({ansuchen.typ}==2) || {ansuchen.typ}==0)">
             <div class="erlaeuterung psa">
                 <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
                 <div class="formfields row psa">

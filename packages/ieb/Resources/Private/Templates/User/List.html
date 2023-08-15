@@ -20,8 +20,10 @@
                 <td><a href="mailto:{user.email}">{user.email}</a></td>
                 <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
                 <!-- <td>{f:if(condition:user.disable,then:'deaktiviert',else:'aktiv')}</td> -->
-                <td class="td-knopf"><f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}">
-                </f:link.action></td>
+                <td class="td-knopf">
+                    <f:if condition="{currentUser.tr_admin}">
+                        <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
+                    </f:if></td>
                 <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
                 </f:link.action></td>
             </tr>
@@ -30,7 +32,6 @@
 
     <f:if condition="{currentUser.tr_admin}">
         <p><f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action> </p>
-
     </f:if>
 
 </f:section>
