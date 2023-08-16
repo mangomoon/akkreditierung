@@ -11,6 +11,8 @@ plugin.tx_ieb_default {
         # cat=plugin.tx_ieb_default//a; type=string; label=Default storage PID
         storagePid =
     }
+    settings.modalPid = 
+    settings.ansuchenShowPid = 
 }
 plugin.tx_ieb_stamm {
     view {

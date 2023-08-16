@@ -4,12 +4,11 @@
 <f:section name="content">
 
 
-    <f:flashMessages />
 
-    <table class="ansuchenliste">
+    
         <f:for each="{ansuchen}" as="item">
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
-
+            <table class="ansuchenliste">
         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
             <tr>
                 <td colspan="7" class="ansuchenliste_tr">
@@ -60,7 +59,8 @@
                             </f:if>
                         </td>
                     </tr>
+            </table>
         </f:for>
-    </table>
+    
 </f:section>
 </html>

@@ -242,18 +242,20 @@
 function oeffnenTrainerBegutachtung() {
     var s = 1;
     a = $("#trainerbegutachtung input.c21b:checked").val();
-    b = $("#trainerbegutachtung input.c21psa:checked").val();
-    c = $("#trainerbegutachtung input.c22r:checked").val();
-    if (a + b + c < 4) {
+    b = $("#trainerbegutachtung input.c21p:checked").val();
+    c = $("#trainerbegutachtung input.c22b:checked").val();
+    d = $("#trainerbegutachtung input.c22p:checked").val();
+    $("#trainerbegutachtung input.c22p").show();
+    if (a + b + c + d < 5) {
              s = 1;
          }
-         if ((a == 2) || (b == 2) || (c == 2)) {
+         if ((a == 2) || (b == 2) || (c == 2) || (d == 2)) {
              s = 2;
          }
-         if ((a == 3) || (b == 3) || (c == 3)) {
+         if ((a == 3) || (b == 3) || (c == 3) || (d == 3)) {
              s = 3;
          }
-         if ((a == 4) || (b == 4) || (c == 4)) {
+         if ((a == 4) || (b == 4) || (c == 4) || (d == 4)) {
              s = 4;
          }
          if (s < 3) {
@@ -261,6 +263,7 @@ function oeffnenTrainerBegutachtung() {
          } else {
              $('.komm-ext').show();
          }
+         console.log(a,b,c,d);
 
     var t = 0;
     $('.trainerqualifikationsbegutachtung input').each (function() {
