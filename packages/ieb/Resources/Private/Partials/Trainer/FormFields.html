@@ -13,16 +13,16 @@
     </div>
 </div>
 
-            <f:if condition="{trainer.reviewC2BabiStatus}==4">
+            <f:if condition="({trainer.reviewC21BabiStatus}==4) || ({trainer.reviewC22BabiStatus}==4)">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
-                    <p>{trainer.reviewC2BabiCommentTr}</p>
+                    <p><f:format.nl2br>{trainer.reviewC2BabiCommentTr}</f:format.nl2br></p>
                 </div>
             </f:if>
-            <f:if condition="{trainer.reviewC2PsaStatus}==4">
+            <f:if condition="({trainer.reviewC21PsaStatus}==4) || ({trainer.reviewC22PsaStatus}==4)">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
-                    <p>{trainer.reviewC2PsaCommentTr}</p>
+                    <p><f:format.nl2br>{trainer.reviewC2PsaCommentTr}</f:format.nl2br></p>
                 </div>
             </f:if>
 
@@ -35,12 +35,12 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 <div class="formfields row">
     <div class="col-6">
         <h3>
-            <f:form.checkbox property="verwendungBabi" id="verwendungBabi" value="1" class="checker" /> &nbsp;Basisbildung
+            <f:form.checkbox property="verwendungBabi" id="verwendungBabi" value="1" class="trainerchecker" /> &nbsp;Basisbildung
         </h3>
     </div>
     <div class="col-6">
         <h3>
-            <f:form.checkbox property="verwendungPsa" id="verwendungPsa" value="1" class="checker" /> &nbsp;Pflichtschulabschluss
+            <f:form.checkbox property="verwendungPsa" id="verwendungPsa" value="1" class="trainerchecker" /> &nbsp;Pflichtschulabschluss
         </h3>
     </div>
 </div>
@@ -186,8 +186,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
     </p>
 
-    <f:if condition="{ansuchen.pruefbescheidDatei}">
-        <f:then>
+
             <f:render partial="Form/UploadMultiple" arguments="{
                 property:'lebenslaufDatei', 
                 id:'lebenslaufDatei', 
@@ -196,18 +195,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                 anmerkung:'lebenslauf',
                 metadaten:'{trainer.lebenslaufDatei.originalResource}',
                 media:trainer.lebenslaufDatei}" />
-        </f:then>    
-        <f:else>
-            <f:render partial="Form/UploadMultiple" arguments="{
-                property:'lebenslaufDatei', 
-                id:'lebenslaufDatei', 
-                req:'reqfile', 
-                label:'Erfahrungsnachweis',
-                anmerkung:'lebenslauf',
-                metadaten:'{trainer.lebenslaufDatei.originalResource}',
-                media:trainer.lebenslaufDatei}" />
-        </f:else>
-    </f:if>
+
     
 </div>
 

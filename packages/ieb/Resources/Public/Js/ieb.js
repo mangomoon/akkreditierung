@@ -172,9 +172,11 @@
      if (babi == 1) {
          $('#c-2-1-babi').show();
          $('#c-2-2').show();
+         $('.upload-lebenslaufDatei').addClass('reqfile');
      }
      if (babi == 0) {
          $('#c-2-1-babi').hide();
+         $('.upload-lebenslaufDatei').removeClass('reqfile');
      }
      if (psa == 1) {
          $('#c-2-1-psa').show();
@@ -528,7 +530,7 @@ function reqleerLoeschen() {
 
      // ######################################## FORM Trainer BaBi/PSA
 
-     $('.checker').click(function() {
+     $('.trainerchecker').click(function() {
          trainerfelder();
      });
 

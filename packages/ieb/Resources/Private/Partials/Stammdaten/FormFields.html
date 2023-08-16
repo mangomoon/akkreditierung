@@ -7,7 +7,7 @@
         <div class="" id="a-1-1">
             <f:if condition="{stammdaten.reviewA1Status}==4">
                 <div class="commentTr">
-                    <p>{stammdaten.reviewA1CommentTr}</p>
+                    <p><f:format.nl2br>{stammdaten.reviewA1CommentTr}</f:format.nl2br></p>
                 </div>
             </f:if>
             
@@ -91,7 +91,7 @@
     <h2>A.2. QUALITÄT DES ANBIETERS</h2>
         <f:if condition="{stammdaten.reviewA2Status}==4">
                 <div class="commentTr">
-                    <p>{stammdaten.reviewA2CommentTr }</p>
+                    <p><f:format.nl2br>{stammdaten.reviewA2CommentTr }</f:format.nl2br></p>
                 </div>
         </f:if>
         <div class="kriteriumteil">   

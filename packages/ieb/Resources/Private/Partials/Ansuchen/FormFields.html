@@ -45,7 +45,7 @@
     <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA1Status}">
         <f:if condition="{relations.stammdaten.reviewA1Status}==4">
             <tr class="commentTr">
-                <td colspan="3">{relations.stammdaten.reviewA1CommentTr}</td>
+                <td colspan="3"><f:format.nl2br>{relations.stammdaten.reviewA1CommentTr}</f:format.nl2br></td>
             </tr>
         </f:if>
         <tr>
@@ -152,7 +152,7 @@
     <table class="ansuchenliste stammdaten status-{relations.stammdaten.reviewA2Status}">
         <f:if condition="{relations.stammdaten.reviewA2Status}==4">
             <tr class="commentTr">
-                <td colspan="3">{relations.stammdaten.reviewA2CommentTr}</td>
+                <td colspan="3"><f:format.nl2br>{relations.stammdaten.reviewA2CommentTr}</f:format.nl2br></td>
             </tr>
         </f:if>
         <tr>
@@ -254,7 +254,7 @@
 
     <f:if condition="{ansuchen.reviewB1Status}==4">
         <div class="commentTr">
-            <p>{ansuchen.reviewB1CommentTr}</p>
+            <p><f:format.nl2br>{ansuchen.reviewB1CommentTr}</f:format.nl2br></p>
         </div>
     </f:if>
 
@@ -361,7 +361,7 @@
         <h3>B.1.4 Kursstandorte</h3>
         <f:if condition="{ansuchen.reviewB14Status}==4">
             <div class="commentTr">
-                <p>{ansuchen.reviewB14CommentTr}</p>
+                <p><f:format.nl2br>{ansuchen.reviewB14CommentTr}</f:format.nl2br></p>
             </div>
         </f:if>
         <div class="formfields row">
@@ -418,7 +418,7 @@
         </p>
         <f:if condition="{ansuchen.reviewB15Status}==4">
             <div class="commentTr">
-                <p>{ansuchen.reviewB15CommentTr}</p>
+                <p><f:format.nl2br>{ansuchen.reviewB15CommentTr}</f:format.nl2br></p>
             </div>
         </f:if>
 
@@ -465,7 +465,7 @@
     <h2>B.2 Pädagogische und didaktische Konzeption</h2>
     <f:if condition="{ansuchen.reviewB2Status}==4">
         <div class="commentTr">
-            <p>{ansuchen.reviewB2CommentTr}</p>
+            <p><f:format.nl2br>{ansuchen.reviewB2CommentTr}</f:format.nl2br></p>
         </div>
     </f:if>
     <div class="kriteriumteil">
@@ -499,7 +499,7 @@
         </div>
         <f:if condition="{ansuchen.reviewB22Status}==4">
             <div class="commentTr">
-                <p>{ansuchen.reviewB22CommentTr}</p>
+                <p><f:format.nl2br>{ansuchen.reviewB22CommentTr}</f:format.nl2br></p>
             </div>
         </f:if>
         <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
@@ -609,7 +609,7 @@
         </div>
         <f:if condition="{ansuchen.reviewB23Status}==4">
             <div class="commentTr">
-                <p>{ansuchen.reviewB23CommentTr}</p>
+                <p><f:format.nl2br>{ansuchen.reviewB23CommentTr}</f:format.nl2br></p>
             </div>
         </f:if>
         <div class="erlaeuterung">
@@ -649,14 +649,11 @@
     </div>
     <f:if condition="{ansuchen.reviewC1Status}==4">
         <div class="commentTr">
-            <p>{ansuchen.reviewC1CommentTr}</p>
+            <p><f:format.nl2br>{ansuchen.reviewC1CommentTr}</f:format.nl2br></p>
         </div>
     </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
-        <!--p class="hinweis">
-            Legende:<br /> I » diese Person ist für dieses Angebot verantwortlich <br /> II » an diese E-Mail-Adresse sollen Benachrichtigungen zum Prozess der Akkreditierung geschickt werden
-        </p-->
     </div>
     <f:if condition="{relations.angebotVerantwortliche}">
         <f:then>
@@ -711,7 +708,7 @@
     </div>
     <f:if condition="{ansuchen.reviewC2Status}==4">
         <div class="commentTr">
-            <p>{ansuchen.reviewC2CommentTr}</p>
+            <p><f:format.nl2br>{ansuchen.reviewC2CommentTr}</f:format.nl2br></p>
         </div>
     </f:if>
     <div class="erlaeuterung">
@@ -722,6 +719,9 @@
                 <f:if condition="{relations.trainerbabi}">
                     <f:then>
                         <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
+                        <f:for each="{realtions.trainerbabi}" as="t">
+                            t ööö 
+                        </f:for>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
                         </div>
@@ -737,7 +737,9 @@
             <f:else>
                 <f:if condition="{relations.trainerpsa}">
                     <f:then>
-                        <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa" />
+                        <!-- TEST trainer.ok -->
+
+                        <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa"/>
                         <f:if condition="{ansuchen.pruefbescheidDatei}">
                             <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
@@ -772,7 +774,7 @@
     
     <f:if condition="{ansuchen.reviewC3Status}==4">
         <div class="commentTr">
-            <p>{ansuchen.reviewC3CommentTr}</p>
+            <p><f:format.nl2br>{ansuchen.reviewC3CommentTr}</f:format.nl2br></p>
         </div>
     </f:if>
     <div class="erlaeuterung">
