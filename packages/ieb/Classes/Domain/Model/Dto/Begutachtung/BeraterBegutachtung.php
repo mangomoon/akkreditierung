@@ -13,5 +13,6 @@ class BeraterBegutachtung extends AbstractDomainObject
 
     public int $reviewC3Status = 0;
     public string $reviewC3CommentInternal = '';
+    public string $reviewC3CommentInternalStep = '';
     public string $reviewC3CommentTr = '';
 }

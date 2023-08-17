@@ -66,5 +66,31 @@ class TrainerRepository extends BaseRepository
         );
         return $query->execute();
     }
+    public function getInactiveBabi() {
 
+
+        $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('okbabi', false)
+            )
+        );
+        return $query->execute();
+    }
+
+    public function getInactivePSA() {
+
+
+        $query = $this->getQuery();
+        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->matching(
+            $query->logicalAnd (
+                $query->equals('archiviert', false),
+                $query->equals('okpsa', false)
+            )
+        );
+        return $query->execute();
+    }
 }

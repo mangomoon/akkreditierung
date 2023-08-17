@@ -51,7 +51,7 @@
                             </li>
                         </ul>
                     </div>
-                    <f:debug>{diff}</f:debug>
+
                     <f:render partial="Form/UploadListDiff" arguments="{
                         media:'{trainer.qualifikationBabiDatei}',
                         anmerkung:'{trainer.qualifikationBabi}',
@@ -381,7 +381,16 @@
                         </f:for>
                     </div>
                     <div>
-                        <f:form.textarea property="reviewC2BabiCommentInternal" id="comment1" class="" />
+                        <div class="komm-int">
+                            <f:for each="{reviewC2BabiCommentInternalData}" as="comment">
+                                <p>
+                                    <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                                </p>
+                            </f:for>
+                        </div>
+                        <div>
+                            <f:form.textarea property="reviewC2BabiCommentInternalStep" id="comment1-reviewC2BabiCommentInternal" class="" />
+                        </div>
                     </div>
                     <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
                         <f:form.textarea property="reviewC2BabiCommentTr" id="comment2-{property}" class="extern" />
@@ -413,7 +422,16 @@
                         </f:for>
                     </div>
                     <div>
-                        <f:form.textarea property="reviewC2PsaCommentInternal" id="comment1" class="" />
+                        <div class="komm-int">
+                            <f:for each="{reviewC2PsaCommentInternalData}" as="comment">
+                                <p>
+                                    <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                                </p>
+                            </f:for>
+                        </div>
+                        <div>
+                            <f:form.textarea property="reviewC2PsaCommentInternalStep" id="comment1-reviewC2PsaCommentInternal" class="" />
+                        </div>
                     </div>
                     <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
                         <f:form.textarea property="reviewC2PsaCommentTr" id="comment2-{property}" class="extern" />

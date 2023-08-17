@@ -177,6 +177,8 @@ class AnsuchenController extends BaseController
                 'trainer' => $this->trainerRepository->getAll(),
                 'trainerbabi' => $this->trainerRepository->getActiveBabi(),
                 'trainerpsa' => $this->trainerRepository->getActivePSA(),
+                'trainerbabiinactive' => $this->trainerRepository->getInactiveBabi(),
+                'trainerpsainactive' => $this->trainerRepository->getInactivePSA(),
                 'angebotVerantwortliche' => $this->angebotVerantwortlichRepository->getActive(),
                 'stammdaten' => $this->stammdatenRepository->getLatest(),
             ],

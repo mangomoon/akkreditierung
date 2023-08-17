@@ -2925,6 +2925,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->getConvertedJson($this->reviewC3CommentInternal);
     }
+    public function getReviewTotalCommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewTotalCommentInternal);
+    }
 
     /**
      * @param string $input

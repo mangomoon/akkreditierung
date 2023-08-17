@@ -148,6 +148,7 @@ class AnsuchenBegutachtungController extends BaseController
             $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
             $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
             $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
+            $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
         } catch (\JsonException $e) {
         }
 

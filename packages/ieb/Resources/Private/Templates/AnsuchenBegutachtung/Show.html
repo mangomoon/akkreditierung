@@ -940,7 +940,7 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="abstand-klein"></div>
-                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid, diff:diff.copy_trainer}" target="_blank">Begutachtung starten</f:link.action> 
+                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid}" target="_blank">Begutachtung starten</f:link.action> 
                                 <f:for each="{trainerorig}" as="tt">
                                     <f:if condition="{t.uid}=={tt.uid}">
                                         <div class="status-babi">
@@ -1098,7 +1098,19 @@
             </div>
             <label>
                 Allgemeiner Kommentar <i>intern</i>
-                <f:form.textarea property="reviewTotalCommentInternal" class="form-control"/>
+                
+                <div class="komm-int">
+                    <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
+                        <p>
+                            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                        </p>
+                    </f:for>
+                </div>
+                <div>
+                    <f:form.textarea property="reviewTotalCommentInternalStep" id="comment1-reviewTotalCommentInternal" class="" />
+                </div>
+                
+
             </label>
             <label>
                 Allgemeiner Text an den Träger

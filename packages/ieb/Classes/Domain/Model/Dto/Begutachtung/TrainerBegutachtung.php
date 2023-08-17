@@ -27,7 +27,9 @@ class TrainerBegutachtung extends AbstractDomainObject
     public bool $reviewC22Quali8 = false;
 
     public string $reviewC2BabiCommentInternal = '';
+    public string $reviewC2BabiCommentInternalStep = '';
     public string $reviewC2BabiCommentTr = '';
     public string $reviewC2PsaCommentInternal = '';
+    public string $reviewC2PsaCommentInternalStep = '';
     public string $reviewC2PsaCommentTr = '';
 }

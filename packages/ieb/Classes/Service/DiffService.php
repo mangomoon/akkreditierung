@@ -129,7 +129,15 @@ class DiffService
                 foreach ($items as $k => $item) {
                     if (isset($items[$k]['tstamp'])) {
                         unset($items[$k]['tstamp']);
-
+                    }
+                    if (isset($items[$k]['reviewC2BabiCommentInternalStep'])) {
+                        unset($items[$k]['reviewC2BabiCommentInternalStep']);
+                    }
+                    if (isset($items[$k]['reviewC2PsaCommentInternalStep'])) {
+                        unset($items[$k]['reviewC2PsaCommentInternalStep']);
+                    }
+                    if (isset($items[$k]['reviewC3CommentInternalStep'])) {
+                        unset($items[$k]['reviewC3CommentInternalStep']);
                     }
                 }
                 $row[$field] = $items;

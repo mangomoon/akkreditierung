@@ -3,7 +3,6 @@
 
 <f:section name="content">
 
-    <f:flashMessages />
     <f:form name="begutachtung" object="{begutachtung}" action="update" class="personenbegutachtung begutachtung" id="beraterbegutachtung">
         <f:form.hidden property="ansuchenId" />
         <f:form.hidden property="beraterId" id="beraterId"/>
@@ -113,16 +112,18 @@
                             nicht-ok
                         </label>
                     </div>
+
                     <div class="komm-int">
-                        <f:for each="{comments}" as="comment">
+                        <f:for each="{reviewC3CommentInternalData}" as="comment">
                             <p>
                                 <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
                             </p>
                         </f:for>
                     </div>
                     <div>
-                        <f:form.textarea property="reviewC3CommentInternal" id="comment1" class="" />
+                        <f:form.textarea property="reviewC3CommentInternalStep" id="comment1-reviewC3CommentInternal" class="" />
                     </div>
+
                     <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
                         <f:form.textarea property="reviewC3CommentTr" id="comment3-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
@@ -142,6 +143,7 @@
 
 
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
+
     </f:form>
 
     <script>oeffnenBeraterBegutachtung();</script>
