@@ -602,7 +602,11 @@ function reqleerLoeschen() {
             }
         });
 
-     // ########################################
+     // ######################################## FORM Modal schliessen
+
+     $('#schliessen').click(function() {
+        parent.$.fancybox.close();
+     });
 
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
