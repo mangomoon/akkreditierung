@@ -10,6 +10,7 @@
     <f:form action="update" class="tr" name="angebotVerantwortlich" object="{angebotVerantwortlich}" enctype="multipart/form-data">
         <f:render partial="AngebotVerantwortlich/FormFields" arguments="{angebotVerantwortlich:angebotVerantwortlich}" />
         <f:form.submit value="Speichern" class="knopf-s" />
+        <f:link.action class="knopf-s knopfersatz zurueck" action="index" >Zurück (ohne Speichern)</f:link.action> 
     </f:form>
 
     <script>

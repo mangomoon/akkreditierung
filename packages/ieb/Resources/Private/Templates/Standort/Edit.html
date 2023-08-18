@@ -12,6 +12,7 @@ your changes will be overwritten the next time you save the extension in the ext
     <f:form action="update" name="standort" object="{standort}">
         <f:render partial="Standort/FormFields" arguments="{standort:standort}" />
         <f:form.submit value="Speichern" class="knopf-s" />
+        <f:link.action class="knopf-s knopfersatz zurueck" action="index" >Zurück (ohne Speichern)</f:link.action> 
     </f:form>
 </f:section>
 

@@ -11,6 +11,7 @@
     <f:form action="create" class="tr" name="newBerater" object="{newBerater}" enctype="multipart/form-data">
         <f:render partial="Berater/FormFields" />
         <f:form.submit value="Speichern" class="knopf-s" />
+        <f:link.action class="knopf-s knopfersatz zurueck" action="index" >Zurück (ohne Speichern)</f:link.action> 
     </f:form>
     <script>reqleerLoeschen();</script>
 </f:section>
