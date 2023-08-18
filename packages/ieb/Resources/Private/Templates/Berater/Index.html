@@ -120,7 +120,7 @@
             <h2>ARCHIV</h2>
             <table class="tx_ieb standortliste">
                 <f:for each="{beraters}" as="berater">
-                    <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
+                    <f:variable name="relationUsages">{ieb:relationUsed(object: berater)}</f:variable>
                     <f:if condition="{berater.archiviert}">
                         <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
                             <td class="nachname">
