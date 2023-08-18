@@ -1,4 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:debug>{_all}</f:debug>
+
 
 <div class="formfields row">
     <div class="col-3">
@@ -591,7 +593,7 @@
                     metadaten:'{ansuchen.diversity.originalResource}',
                     media:ansuchen.diversity,}" />
             </div>
-            <div class="col-6">
+            <div class="col-6" style="padding-left: 12px;">
                 <label for="didaktikKommentar">Anmerkung zu allen drei Uploads</label>
                 <f:form.textarea property="didaktikKommentar" id="didaktikKommentar"></f:form.textarea>
             </div>
@@ -698,7 +700,7 @@
 
 </div>
 
-<!-- ############### BERATUNG ########### -->
+<!-- ############### TRAINING ########### -->
 
 <div id="c2" class="kriterium status-{ansuchen.reviewC2Status}">
     <h2>C.2 Training</h2>
@@ -719,9 +721,11 @@
                 <f:if condition="{relations.trainerbabi}">
                     <f:then>
                         <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
-                        <f:for each="{realtions.trainerbabi}" as="t">
-                            t ööö 
-                        </f:for>
+
+                        <div class="trcheckcheck">
+                            <f:form.select property="trainer" options="{relations.trainerbabiinactive}" optionLabelField="fullName" multiple="1" class="testa notok"/>
+                        </div>
+
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
                         </div>
@@ -737,14 +741,20 @@
             <f:else>
                 <f:if condition="{relations.trainerpsa}">
                     <f:then>
-                        <!-- TEST trainer.ok -->
+                        
 
                         <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa"/>
+
+                        
+                        <div class="trcheckcheck">
+                            <f:form.select property="trainer" options="{relations.trainerpsainactive}" optionLabelField="fullName" multiple="1" class="testa notok"/>
+                        </div>
+
                         <f:if condition="{ansuchen.pruefbescheidDatei}">
                             <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
-                            <f:form.submit value="Beratung: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
+                            <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
                         </div>
                     </f:then>
                     <f:else>
@@ -784,6 +794,11 @@
     <f:if condition="{relations.berateraktivundok}">
         <f:then>
             <f:form.select property="berater" options="{relations.berateraktivundok}" optionLabelField="fullName" multiple="1" class="testa" />
+
+            <div class="trcheckcheck">
+                <f:form.select property="berater" options="{relations.beraterinactive}" optionLabelField="fullName" multiple="1" class="testa notok"/>
+            </div>
+
             <div class="formzeile">
                 <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
             </div>
@@ -819,9 +834,12 @@
 
 <script>
     ansuchenfelder();
+    
     $('.testa').multiSelect({
         'noneText': '',
     });
+
+    trcheckboxcheck();
 </script>
 
 </html>

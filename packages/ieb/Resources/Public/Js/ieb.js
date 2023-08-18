@@ -279,6 +279,21 @@ function oeffnenTrainerBegutachtung() {
     }
 };
 
+    // ######################################## TR Ansuchen: Anzeigen ob Trainer ok: del unchecked
+function trcheckboxcheck() {
+
+    $('.trcheckcheck input').each(function(){
+        c = $(this).is(':checked');
+        if(!c) {
+            $(this).parent().hide();
+        } else {
+            $(this).parent().parent().parent().addClass('zeigen');
+        }
+    });
+}
+    
+
+
 function oeffnenBeraterBegutachtung() {
     a = $("#beraterbegutachtung input.c3:checked").val();
     if (a > 3) {
@@ -674,6 +689,17 @@ function reqleerLoeschen() {
         $(c, window.parent.document).addClass(cc);
         $(d, window.parent.document).addClass(dc);
 
+        if((ds == 4) || (cs == 4)) {
+            $('#okpsa').val(0);
+        } else {
+            $('#okpsa').val(1);
+        }
+        if((as == 4) || (bs == 4)) {
+            $('#okbabi').val(0);
+        } else {
+            $('#okbabi').val(1);
+        }
+
         // parent.$.fancybox.close();
 
     });
@@ -688,6 +714,10 @@ function reqleerLoeschen() {
      $(".reqselect").focus(function() {
          $(this).removeClass("req-leer");
      });
+
+
+
+
 
      // ######################################## Anmerkung aufklappen
 

@@ -137,6 +137,17 @@ label.inline {
     font-size: 0.9em;
 }
 
+.testa.notok + div div {
+    background: #F4C67E;
+}
+
+.trcheckcheck .multi-select-menu {
+    display: none;
+}
+.trcheckcheck .multi-select-menu.zeigen {
+    display: block;
+}
+
 h2, h1 {
     color: var(--f4);
 }
