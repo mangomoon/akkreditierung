@@ -79,23 +79,31 @@ class BeraterController extends BaseController
     public function updateAction(Berater $berater, array $fileDelete = [])
     {
         $this->check($berater);
-        $this->deleteFiles($fileDelete, $berater);
-        $this->beraterRepository->update($berater);
+        if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
+            $this->deleteFiles($fileDelete, $berater);
+            $this->beraterRepository->update($berater);
+        }
         $this->redirect('index');
+        
     }
 
     public function deleteAction(Berater $berater)
     {
         $this->check($berater);
-        $this->beraterRepository->remove($berater);
+        if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
+            $this->beraterRepository->remove($berater);
+        }
         $this->redirect('index');
     }
 
     public function archiveAction(Berater $berater)
     {
         $this->check($berater);
-        $berater->setArchiviert(true);
-        $this->beraterRepository->update($berater);
+        if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
+            $berater->setArchiviert(true);
+            $this->beraterRepository->update($berater);
+        }
+        
 
         $this->redirect('index');
     }
@@ -103,8 +111,11 @@ class BeraterController extends BaseController
     public function reviveAction(Berater $berater)
     {
         $this->check($berater);
-        $berater->setArchiviert(false);
-        $this->beraterRepository->update($berater);
+        if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
+            $berater->setArchiviert(false);
+            $this->beraterRepository->update($berater);
+        }
+        
 
         $this->redirect('index');
     }

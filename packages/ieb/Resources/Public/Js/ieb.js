@@ -289,6 +289,7 @@ function trcheckboxcheck() {
         } else {
             $(this).parent().parent().parent().addClass('zeigen');
         }
+        console.log(c);
     });
 }
     
