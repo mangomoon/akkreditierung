@@ -425,12 +425,13 @@
                                 diffanmerkung:'{diff.uebersicht_text}'
                             }" />
                         </div>
+                        ####################### <ieb:fal path="{diff.uebersicht_datei.previous}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal>
                     </div>
                     <div class="rechts col-5">
 
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
 
-                        <!-- B1 ist aktuell 2x in verwendung...siehe below: unten ist B14! -->
+                        
                     </div>
 
                 </div>
@@ -531,6 +532,10 @@
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
                                 anmerkung:'{ansuchen.pruefbescheid}',
+                                diff:'{diff.pruefbescheidDatei}',
+                                diffanmerkung:'{diff.pruefbescheid}',
+                                difftyp:'{difftyp}'
+                                
                             }" />
 
                         <div class="abstand-gross"></div>
@@ -839,8 +844,12 @@
 
                                             </ieb:fal>
                                         </f:for>
-                                        <f:for each="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei.previous}" as="m">
-                                            <div class="diff"><span class="vorher">gelöscht:</span> {diff.copy_verantwortliche.{p.uid}.lebenslaufDatei.previous.originalResource.originalFile.properties.name}</div>
+                                        <f:for each="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}" as="m">
+                                            
+                                            <f:if condition="{m.previous} && !{m.current}">
+                                                
+                                                <div class="diff"><span class="vorher">gelöscht:</span> <ieb:fal path="{m.previous.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></div>
+                                            </f:if>
                                         </f:for>
                                     </div>
                                 </div>
@@ -853,7 +862,7 @@
                             </f:else>
                         </f:if>
 
-                        <f:if condition="{diff.copy_verantwortliche.{p.uid}.previous}">
+                        <f:if condition="{diff.copy_verantwortliche.{p.uid}.nachname.previous}">
                             <div class="diff"><span class="vorher">vorher:</span> {diff.copy_verantwortliche.{p.uid}.vorname.previous} {diff.copy_verantwortliche.{p.uid}.nachname.previous}</div>
                         </f:if>
 
@@ -894,12 +903,18 @@
                                 Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         </div>
                         <f:if condition="{diff.copy_verantwortliche_mail}">
-                            <div class="diff">Mail-Adressat zuvor: 
+                            
                             <f:for each="{diff.copy_verantwortliche_mail}" as="a">
-                                {a.vorname.previous} {a.nachname.previous}
+                                <f:if condition="{a.uid.previous} && !{a.uid.privious}">
+                                    <div class="diff">Mail-Adressat zuvor: 
+                                        {a.vorname.previous} {a.nachname.previous}
+                                    </div>
+                                </f:if>
+                                
                             </f:for>
-                            </div>
+                            
                         </f:if>
+                    
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData}" />
