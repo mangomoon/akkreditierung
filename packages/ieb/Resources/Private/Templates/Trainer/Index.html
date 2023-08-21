@@ -65,7 +65,7 @@
                                 <tr class="istok">
                             </f:then>
                             <f:else>
-                                <tr class="unok">
+                                <tr class="istok">
                             </f:else>
                         </f:if>
 
@@ -75,11 +75,11 @@
                         <td class="vorname">
                             {trainer.vorname}
                         </td>
-                        <td>
+                        <td><f:if condition="{relationUsages}">
                             <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
                             <span class="knopfrund ansuchenliste titleview" title="Wird in folgenden Ansuchen eingesetzt:<br><f:for each='{relationUsages}' as='relationUsage'>
                                 {relationUsage.nummer} ({relationUsage.name})<br>
-                            </f:for>"></span>
+                            </f:for>"></span></f:if>
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
                         <!-- BaBi -->
@@ -173,54 +173,127 @@
                 </f:if>
             </f:for>
         </table>
+
+<!-- ARCHIV ########## -->
+
         <f:if condition="{archiviertexistiert}=='ja'">
             <div class="abstand-mittel"></div>
             <div class="archiv">
-                <h2>ARCHIV</h2>
+                <h2>&nbsp;&nbsp;ARCHIV</h2>
                 <table class="tx_ieb standortliste">
+                    <tr>
+                        <th class="nachname">
+                            &nbsp;
+                        <th class="vorname">
+                                &nbsp;
+                        </th>
+                        <th></th>
+                        <th>Archiviert am</th>
+                        <th>BaBi</th>
+                        <th>PSA</th>
+                        <th class="td-knopf" colspan="3">
+                           </th>
+                    </tr>
                     <f:for each="{trainers}" as="trainer">
                         <f:if condition="{trainer.archiviert}">
-                            <tr class="{f:if(condition:trainer.ok,then:'istok',else:'unok')}">
-                                <td class="nachname">
-                                    {trainer.nachname}
-                                </td>
-                                <td class="vorname">
-                                    {trainer.vorname}
-                                </td>
-                                <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                                <td class="">
-                                    <f:if condition="{trainer.okbabi}">
-                                        <f:then>
-                                            ja
-                                        </f:then>
-                                        <f:else>
-                                            nein
-                                        </f:else>
-                                    </f:if>
+                            <f:then>
+                        <f:if condition="{trainer.okbabi} || {trainer.okpsa}">
+                            <f:then>
+                                <tr class="istok">
+                            </f:then>
+                            <f:else>
+                                <tr class="istok">
+                            </f:else>
+                        </f:if>
 
-                                </td>
-                                <td class="">
-                                    <f:if condition="{trainer.okpsa}">
-                                        <f:then>
-                                            ja
-                                        </f:then>
-                                        <f:else>
-                                            nein
-                                        </f:else>
-                                    </f:if>
+                        <td class="nachname">
+                            {trainer.nachname} 
+                        </td>
+                        <td class="vorname">
+                            {trainer.vorname}
+                        </td>
+                        <td><!-- <f:if condition="{relationUsages}">
+                            <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
+                            <span class="knopfrund ansuchenliste titleview" title="Wird in folgenden Ansuchen eingesetzt:<br><f:for each='{relationUsages}' as='relationUsage'>
+                                {relationUsage.nummer} ({relationUsage.name})<br>
+                            </f:for>"></span></f:if> -->
+                        </td>
+                        <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                        <!-- BaBi -->
+                        <f:if condition="{trainer.verwendungBabi}">
+                            <f:then>
+                                <f:if condition="{trainer.okbabi}">
+                                    <f:then>
+                                        <td class="istok"><span class="titleview knopfrund ok" title="Angaben sind vollständig"></span></td>
+                                    </f:then>
+                                    <f:else>
+                                        <td class="istok">
+                                            <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC21BabiStatus}"></span></f:if>
+                                            <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC22BabiStatus}"></span></f:if>
+                                        </td>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <td></td>
+                            </f:else>
+                        </f:if>
+                        
 
-                                    <td class="td-knopf">
-                                        <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
-                                        </f:link.action>
-                                    </td>
-                                    <td class="td-knopf">
-                                        <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{trainer : trainer}">
-                                        </f:link.action>
-                                    </td>
-                                    <td class="td-knopf">
+                        <!-- PSA -->
+                        <f:if condition="{trainer.verwendungPsa}">
+                            <f:then>
+                                <f:if condition="{trainer.okpsa}">
+                                    <f:then>
+                                        <td class="istok">
+                                            <f:if condition="{trainer.reviewC21PsaStatus} > 0">
+                                                <f:then>
+                                                    <span class="knopfrund auflage-{trainer.reviewC21PsaStatus}"></span>
+                                                </f:then>
+                                                <f:else>
+                                                    <span class="knopfrund ok"></span>
+                                                </f:else>
+                                            </f:if>
+                                        </td>
+                                    </f:then>
+                                    <f:else>
+                                        <td class="istok">
+                                            <f:if condition="{trainer.reviewC21PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC21PsaStatus}" title="Begutachtung"></span></f:if>
+                                            <f:if condition="{trainer.reviewC22PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC22PsaStatus}" title="Begutachtung"></span></f:if>
+                                            <f:if condition="({trainer.reviewC21PsaStatus} < 3) && ({trainer.reviewC22PsaStatus} < 3)"><span class="titleview knopfrund nicht-ok"></span></f:if>
+                                        </td>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <td></td>
+                            </f:else>
+                        </f:if>
+                        
 
-                                    </td>
-                            </tr>
+                        <td class="td-knopf">
+                            <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
+                            </f:link.action>
+                        </td>
+                        <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: trainer)}</f:variable>
+                        <td class="td-knopf">
+                            <f:if condition="{relationUsagesInReview}">
+                                <f:then>
+
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="revive" title="Datensatz wiederherstellen" class="knopf-quadratisch revive" arguments="{trainer : trainer}">
+                                    </f:link.action>
+
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td class="td-knopf">
+                            
+
+                        </td>
+                        </tr>
+                    </f:then>
                         </f:if>
                     </f:for>
                 </table>

@@ -1147,7 +1147,8 @@ table.tx_ieb.standortliste td {
 
 .archiv {
     background: var(--f0b);
-    padding: 20px;
+    padding: 20px 0;
+    font-size: 0.9em;
 }
 
 .archiv h2 {
