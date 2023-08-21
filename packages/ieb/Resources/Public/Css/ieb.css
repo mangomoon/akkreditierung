@@ -683,8 +683,28 @@ textarea.req-leer {
     display: none;
 }
 
-
-
+span.knopfrund {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    vertical-align: middle;
+}
+span.knopfrund.ok {
+    background-image: url('../Img/rund_ok.svg');
+}
+span.knopfrund.nicht-ok {
+    background-image: url('../Img/rund_nicht-ok.svg');
+}
+span.knopfrund.ansuchenliste {
+    background-image: url('../Img/rund_kette.svg');
+}
+span.knopfrund.auflage-3 {
+    background-image: url('../Img/rund_achtung-3.svg');
+}
+span.knopfrund.auflage-4 {
+    background-image: url('../Img/rund_achtung-4.svg');
+}
 /* ANSUCHEN LISTE  */
 table.ansuchenliste {
     border: solid 1px var(--f3);

@@ -69,7 +69,8 @@ class TrainerController extends BaseController
         $this->check($trainer);
         $this->view->assignMultiple([
             'trainer' => $trainer,
-            'relationUsages' => $this->relationLockService->usedByAnsuchenInReview($trainer),
+            'relationUsagesInReview' => $this->relationLockService->usedByAnsuchenInReview($trainer),
+            'relationUsages' => $this->relationLockService->usedByAnsuchen($trainer),
         ]);
         return $this->htmlResponse();
     }

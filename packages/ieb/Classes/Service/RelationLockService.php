@@ -62,4 +62,29 @@ class RelationLockService
         return $rows;
     }
 
+    public function usedByAnsuchen(AbstractEntity $object): array
+    {
+        $class = get_class($object);
+        $configuration = $this->configuration[$class] ?? null;
+        if (!$configuration) {
+            throw new \UnexpectedValueException(sprintf('Relation "%s" is not configured', $class), 1686927696);
+        }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($configuration['table']);
+
+        $rows = $queryBuilder
+            ->select('mm.uid_foreign', 'mm.uid_local', 'a.*')
+            ->from($configuration['table'], 'r')
+            ->rightJoin('r', $configuration['mm'], 'mm', $queryBuilder->expr()->eq('r.uid', $queryBuilder->quoteIdentifier('mm.uid_foreign')))
+            ->rightJoin('mm', 'tx_ieb_domain_model_ansuchen', 'a', $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->quoteIdentifier('a.uid')))
+            ->where(
+                $queryBuilder->expr()->eq('r.uid', $queryBuilder->createNamedParameter($object->getUid(), \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('a.version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+            )
+            ->execute()
+            ->fetchAllAssociative();
+
+        return $rows;
+    }
+
 }

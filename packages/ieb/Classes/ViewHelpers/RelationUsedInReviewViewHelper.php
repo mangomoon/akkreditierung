@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
-class RelationUsedViewHelper extends AbstractViewHelper
+class RelationUsedInReviewViewHelper extends AbstractViewHelper
 {
     use CurrentUserTrait;
 
@@ -23,6 +23,6 @@ class RelationUsedViewHelper extends AbstractViewHelper
     public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
     {
         $relationLockService = GeneralUtility::makeInstance(RelationLockService::class);
-        return $relationLockService->usedByAnsuchen($arguments['object']);
+        return $relationLockService->usedByAnsuchenInReview($arguments['object']);
     }
 }
