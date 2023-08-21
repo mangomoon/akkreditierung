@@ -5,18 +5,21 @@ namespace GeorgRinger\Ieb\Service;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use Rogervila\ArrayDiffMultidimensional;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class DiffService
 {
 
+    protected FileRepository $fileRepository;
+
     public function __construct(
         protected readonly array $forcedOverlayCurrent = [],
         protected readonly array $forcedOverlayPrevious = []
     )
     {
-
+        $this->fileRepository = GeneralUtility::makeInstance(FileRepository::class);
     }
 
     public function generateDiff(int $ansuchenId, int $basedOn): array
@@ -34,7 +37,8 @@ class DiffService
 //        $previous = $this->getRaw(12);
 
         $modifiedOrAdded = ArrayDiffMultidimensional::compare($current, $previous);
-//        DebuggerUtility::var_dump($modifiedOrAdded);die;
+//        DebuggerUtility::var_dump($previous);
+//        DebuggerUtility::var_dump($current);die;
         foreach ($modifiedOrAdded as $field => $change) {
             if (is_scalar($change)) {
                 $final[$field]['previous'] = $previous[$field] ?? null;
@@ -144,11 +148,28 @@ class DiffService
             }
 
         }
-//DebuggerUtility::var_dump($row);
+
         // bundesland
         $bl = array_column(BundeslandEnum::cases(), 'name', 'value');
         $row['bundesland'] = $bl[$row['bundesland']] ?? 'error mit bundesland';
 
+        // files
+        foreach (['lernziele', 'lernstandserhebung', 'diversity', 'beratung_datei', 'pruefbescheid_datei', 'kooperation_datei', 'uebersicht_datei', 'zielgruppen_ansprache_datei'] as $fileField) {
+            $row[$fileField] = $this->getFilesOfRelation($fileField, $id);
+        }
+
         return $row;
+    }
+
+    protected function getFilesOfRelation(string $field, int $id): array
+    {
+        $result = [];
+        $fileObjects = $this->fileRepository->findByRelation('tx_ieb_domain_model_ansuchen', $field, $id);
+        foreach ($fileObjects as $object) {
+            $result[$object->getUid()] = [
+                'publicUrl' => $object->getPublicUrl(),
+            ];
+        }
+        return $result;
     }
 }
