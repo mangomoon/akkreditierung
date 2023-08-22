@@ -54,6 +54,7 @@ class AnsuchenController extends BaseController
     public function newAction(): ResponseInterface
     {
         $this->addRelationDataToView();
+        $this->view->assign('newAnsuchen', new Ansuchen());
         return $this->htmlResponse();
     }
 
