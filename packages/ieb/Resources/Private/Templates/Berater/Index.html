@@ -60,7 +60,7 @@
                     </th>
             </tr>
             <f:for each="{beraters}" as="berater">
-                <f:variable name="relationUsages">{ieb:relationUsed(object: berater)}</f:variable>
+                <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: berater)}</f:variable>
                 <f:if condition="!{berater.archiviert}">
                     <f:then>
 
@@ -95,7 +95,7 @@
                             <td class="td-knopf">
                                 <f:if condition="{relationUsages}">
                                     <f:then>
-                                        <div class="locked knopf-quadratisch" title="Wird verwendet in: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                        <div class="locked knopf-quadratisch" title="Wird verwendet in: <br><f:for each='{relationUsagesInReview}' as='relationUsage'>
                                             {relationUsage.nummer} ({relationUsage.name})<br>
                                         </f:for>"></div>
                                     </f:then>
