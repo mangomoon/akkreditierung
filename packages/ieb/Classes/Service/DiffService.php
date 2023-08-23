@@ -5,6 +5,7 @@ namespace GeorgRinger\Ieb\Service;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use Rogervila\ArrayDiffMultidimensional;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -164,11 +165,14 @@ class DiffService
     protected function getFilesOfRelation(string $field, int $id): array
     {
         $result = [];
-        $fileObjects = $this->fileRepository->findByRelation('tx_ieb_domain_model_ansuchen', $field, $id);
-        foreach ($fileObjects as $object) {
-            $result[$object->getUid()] = [
-                'publicUrl' => $object->getPublicUrl(),
-            ];
+        $files = $this->fileRepository->findByRelation('tx_ieb_domain_model_ansuchen', $field, $id);
+        foreach ($files as $reference) {
+            if ($reference->getOriginalFile()) {
+                /** @var FileReference $reference */
+                $result[$reference->getOriginalFile()->getUid()] = [
+                    'publicUrl' => $reference->getOriginalFile()->getPublicUrl(),
+                ];
+            }
         }
         return $result;
     }
