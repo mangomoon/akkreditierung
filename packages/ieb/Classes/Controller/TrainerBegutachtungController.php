@@ -8,6 +8,7 @@ use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository;
+use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
 
 
@@ -25,7 +26,7 @@ class TrainerBegutachtungController extends BaseController
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\TrainerRepository $trainerRepository;
 
-    public function showAction(Trainer $trainer, Ansuchen $ansuchen, Dto\Begutachtung\TrainerBegutachtung $begutachtung = null): ResponseInterface
+    public function showAction(Trainer $trainer, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\TrainerBegutachtung $begutachtung = null): ResponseInterface
     {
         $begutachtung = $begutachtung ?? new Dto\Begutachtung\TrainerBegutachtung();
         $begutachtung->trainerId = $trainer->getUid();
@@ -41,6 +42,7 @@ class TrainerBegutachtungController extends BaseController
             'trainer' => $trainer,
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
+            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId)
         ]);
         return $this->htmlResponse();
     }

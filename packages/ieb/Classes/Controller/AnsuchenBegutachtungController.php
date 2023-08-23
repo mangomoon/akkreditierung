@@ -48,13 +48,14 @@ class AnsuchenBegutachtungController extends BaseController
         };
         $begutachtung->setByAnsuchen($ansuchen, $stammdaten);
 
-
-        $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn());
+        $diffCompareId = $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn();
+        $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffCompareId);
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'possibleStatus' => $possibleStatus,
             'diffWithAlternativeId' => $diffWithAlternativeId,
+            'diffCompareId' => $diffCompareId,
             'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
             'diff' => $diffResult,
             'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
