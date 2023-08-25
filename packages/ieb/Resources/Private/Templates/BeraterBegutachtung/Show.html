@@ -2,7 +2,10 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <f:debug title="diff">{diff}</f:debug>
+    {diff.copy_berater.{berater.uid} -> f:variable(name: 'dt')} 
+    <f:if condition="{ansuchen.status}!=20">
+        <f:variable name="difftyp">1</f:variable>
+    </f:if>
     <f:form name="begutachtung" object="{begutachtung}" action="update" class="personenbegutachtung begutachtung" id="beraterbegutachtung">
         <f:form.hidden property="ansuchenId" />
         <f:form.hidden property="beraterId" id="beraterId"/>
@@ -51,10 +54,12 @@
                             Alle anderen einschlägigen Ausbildungen unterliegen einer individuellen Prüfung. Die Anforderungen sind im Programmplanungsdokument Kapitel 3.3.3. nachzulesen.
                         </p>
                     </div>
-                    <f:render partial="Form/UploadListDiff" arguments="{
+                    <f:render partial="Form/UploadListDiffTB" arguments="{
                         media:'{berater.qualifikationsnachweise}',
                         anmerkung:'{berater.qualifikationsnachweiseKommentar}',
-                        diff:'{diff.copy_berater.qualifikationsnachweise}'
+                        difftyp:'{difftyp}',
+                        diff:'{dt.qualifikationsnachweise}',
+                        diffanmerkung:'{dt.qualifikationsnachweiseKommentar}'
                     }" />
 
                 </div>
@@ -82,10 +87,12 @@
                         <div class="showinfobox" id="c-2-1-hilfe">Alle Berater/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
                         <p>Laden Sie einen aktuellen aussagekräftigen Lebenslauf (nicht älter als 6 Monate) hoch, in dem einschlägige Berufserfahrungen, Funktion, Qualifikationen und Aus- und Weiterbildungen angeführt sind.</p>
                     </div>
-                    <f:render partial="Form/UploadListDiff" arguments="{
+                    <f:render partial="Form/UploadListDiffTB" arguments="{
                         media:'{berater.lebenslauf}',
                         anmerkung:'{berater.lebenslaufKommentar}',
-                        diff:'{diff.copy_berater.lebenslauf}'
+                        difftyp:'{difftyp}',
+                        diff:'{dt.lebenslauf}',
+                        diffanmerkung:'{dt.lebenslaufKommentar}'
                     }" />
                 </div>
                 <div class="rechts col-5">

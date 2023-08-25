@@ -2,7 +2,9 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <f:debug title="diff">{diff}</f:debug>
+
+    {diff.copy_trainer.{trainer.uid} -> f:variable(name: 'dt')} 
+
     <f:if condition="{ansuchen.status}!=20">
         <f:variable name="difftyp">1</f:variable>
     </f:if>
@@ -52,11 +54,12 @@
                         </ul>
                     </div>
 
-                    <f:render partial="Form/UploadListDiff" arguments="{
+                    <f:render partial="Form/UploadListDiffTB" arguments="{
                         media:'{trainer.qualifikationBabiDatei}',
                         anmerkung:'{trainer.qualifikationBabi}',
                         difftyp:'{difftyp}',
-                        diff:'{diff.copy_trainer.trainer.qualifikationBabiDatei}',
+                        diff:'{dt.qualifikationBabiDatei}',
+                        diffanmerkung:'{dt.qualifikationBabi}'
                     }" />
 
                 </div>
@@ -106,11 +109,12 @@
                             HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
                         </p>
                     </div>
-                    <f:render partial="Form/UploadListDiff" arguments="{
+                    <f:render partial="Form/UploadListDiffTB" arguments="{
                         media:'{trainer.lebenslaufDatei}',
                         anmerkung:'{trainer.lebenslauf}',
                         difftyp:'{difftyp}',
-                        diff:'{diff.copy_trainer.lebenslaufDatei}'
+                        diff:'{dt.lebenslaufDatei}',
+                        diffanmerkung:'{dt.lebenslauf}'
                     }" />
                 </div>
                 <div class="rechts col-5">
@@ -189,12 +193,12 @@
                                     </li>
                                 </ul>
                             </div>
-        
-                            <f:render partial="Form/UploadListDiff" arguments="{
+                            <f:render partial="Form/UploadListDiffTB" arguments="{
                                 media:'{trainer.qualifikationPsaDatei}',
                                 anmerkung:'{trainer.qualifikationPsa}',
                                 difftyp:'{difftyp}',
-                                diff:'{diff.copy_trainer.qualifikationPsaDatei}'
+                                diff:'{dt.qualifikationPsaDatei}',
+                                diffanmerkung:'{dt.qualifikationPsa}'
                             }" />
                         </div>
                         <div class="rechts col-5">
@@ -326,12 +330,12 @@
                                     HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
                                 </p>
                             </div>
-                            <f:render partial="Form/UploadListDiff" arguments="{
+                            <f:render partial="Form/UploadListDiffTB" arguments="{
                                 media:'{trainer.lebenslaufDatei}',
                                 anmerkung:'{trainer.lebenslauf}',
                                 difftyp:'{difftyp}',
-                                diff:'{diff.copy_trainer.lebenslaufDatei}',
-
+                                diff:'{dt.lebenslaufDatei}',
+                                diffanmerkung:'{dt.lebenslauf}'
                             }" />
                         </div>
                         <div class="rechts col-5">

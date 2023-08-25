@@ -4,7 +4,6 @@
 
 
 <div class="upload">
-    
     <div class="uploadlist">
 
         <f:if condition="{media}">
@@ -20,7 +19,7 @@
                         <ieb:fal path="{m.originalResource.publicUrl}">
                         <f:if condition="{diff} && {difftyp}">
                             <f:for each="{diff}" as="file">
-                                <f:if condition="{file.publicUrl.current}=={m.originalResource.publicUrl}">
+                                <f:if condition="{file.current.publicUrl}=={m.originalResource.publicUrl}">
                                     <span class="vorher-knopf">neu</span>
                                 </f:if>
                         </f:for>
@@ -35,8 +34,8 @@
             </f:for>
             <f:if condition="{diff}  && {difftyp}">
                 <f:for each="{diff}" as="f">
-                        <f:if condition="{f.publicUrl.previous}">
-                            <div class="diff"><span class="vorher">gelöscht:</span> <ieb:fal path="{f.publicUrl.previous}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></div>
+                        <f:if condition="{f.previous.publicUrl}">
+                            <div class="diff"><span class="vorher">gelöscht:</span> <ieb:fal path="{f.previous.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></div>
                         </f:if>
                 </f:for>
             </f:if>
@@ -52,7 +51,7 @@
                 </f:if>
             </div>
         </f:if>
-        <f:if condition="{diffanmerkung} && {difftyp} && {diffanmerkung.previous}">
+        <f:if condition="{difftyp} && {diffanmerkung.previous}">
             <div class="diff"><span class="vorher">Anmerkung vorher:</span> {diffanmerkung.previous}</div>
         </f:if>
 

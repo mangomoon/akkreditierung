@@ -382,10 +382,10 @@ p.hinweisextra {
 }
 
 .anmerkungstext {
-    padding: 6px 3px;
-    margin-top: -6px;
+    padding: 6px 8px;
     background: #fdfaf0;
     font-size: 0.9em;
+    margin-top: 6px;
 }
 
 
