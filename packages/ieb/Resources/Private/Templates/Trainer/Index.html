@@ -58,6 +58,9 @@
                    </th>
             </tr>
             <f:for each="{trainers}" as="trainer">
+            <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
+            <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: trainer)}</f:variable>
+
                 <f:if condition="!{trainer.archiviert}">
                     <f:then>
                         <f:if condition="{trainer.okbabi} || {trainer.okpsa}">
@@ -76,8 +79,8 @@
                             {trainer.vorname}
                         </td>
                         <td><f:if condition="{relationUsages}">
-                            <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
-                            <span class="knopfrund ansuchenliste titleview" title="Wird in folgenden Ansuchen eingesetzt:<br><f:for each='{relationUsages}' as='relationUsage'>
+                            
+                            <span class="knopfrund ansuchenliste titleview" title="Kann nicht archiviert werden, wird in folgenden Ansuchen eingesetzt:<br><f:for each='{relationUsages}' as='relationUsage'>
                                 {relationUsage.nummer} ({relationUsage.name})<br>
                             </f:for>"></span></f:if>
                         </td>
@@ -87,10 +90,28 @@
                             <f:then>
                                 <f:if condition="{trainer.okbabi}">
                                     <f:then>
-                                        <td class="istok"><span class="titleview knopfrund ok" title="Angaben sind vollständig"></span></td>
+                                        <td class="istok">
+                                            <f:if condition="!{trainer.reviewC21BabiStatus} && !{trainer.reviewC22BabiStatus}">
+                                                <f:then>
+                                                    <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:if condition="{trainer.reviewC21BabiStatus}==1"><span class="titleview knopfrund ok" title="anerkannt und akkreditierbar für Qualifikationsnachweis"></span></f:if>
+                                                    <f:if condition="{trainer.reviewC22BabiStatus}==1"><span class="titleview knopfrund ok" title="anerkannt und akkreditierbar für Erfahrungsnachweis"></span></f:if>
+                                                </f:else>
+                                            </f:if>
+                                        </td>
                                     </f:then>
                                     <f:else>
                                         <td class="istok">
+                                            <f:switch expression="{trainer.reviewC21BabiStatus}">
+                                                <f:case value="3"><span class="titleview knopfrund auflage-{trainer.reviewC21BabiStatus}" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-{trainer.reviewC21BabiStatus}" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                            </f:switch>
+                                            <f:switch expression="{trainer.reviewC22BabiStatus}">
+                                                <f:case value="3"><span class="titleview knopfrund auflage-{trainer.reviewC22BabiStatus}" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-{trainer.reviewC22BabiStatus}" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                            </f:switch>
                                             <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC21BabiStatus}"></span></f:if>
                                             <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC22BabiStatus}"></span></f:if>
                                         </td>
@@ -106,24 +127,30 @@
                         <!-- PSA -->
                         <f:if condition="{trainer.verwendungPsa}">
                             <f:then>
-                                <f:if condition="{trainer.okpsa}">
+                                <f:if condition="{trainer.okbabi}">
                                     <f:then>
                                         <td class="istok">
-                                            <f:if condition="{trainer.reviewC21PsaStatus} > 0">
+                                            <f:if condition="!{trainer.reviewC21PsaStatus} && !{trainer.reviewC22PsaStatus}">
                                                 <f:then>
-                                                    <span class="knopfrund auflage-{trainer.reviewC21PsaStatus}"></span>
+                                                    <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
                                                 </f:then>
                                                 <f:else>
-                                                    <span class="knopfrund ok"></span>
+                                                    <f:if condition="{trainer.reviewC21PsaStatus}==1"><span class="titleview knopfrund ok" title="anerkannt und akkreditierbar für Qualifikationsnachweis"></span></f:if>
+                                                    <f:if condition="{trainer.reviewC22PsaStatus}==1"><span class="titleview knopfrund ok" title="anerkannt und akkreditierbar für Erfahrungsnachweis"></span></f:if>
                                                 </f:else>
                                             </f:if>
                                         </td>
                                     </f:then>
                                     <f:else>
                                         <td class="istok">
-                                            <f:if condition="{trainer.reviewC21PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC21PsaStatus}" title="Begutachtung"></span></f:if>
-                                            <f:if condition="{trainer.reviewC22PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC22PsaStatus}" title="Begutachtung"></span></f:if>
-                                            <f:if condition="({trainer.reviewC21PsaStatus} < 3) && ({trainer.reviewC22PsaStatus} < 3)"><span class="titleview knopfrund nicht-ok"></span></f:if>
+                                            <f:switch expression="{trainer.reviewC21PsaStatus}">
+                                                <f:case value="3"><span class="titleview knopfrund auflage-{trainer.reviewC21PsaStatus}" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-{trainer.reviewC21PsaStatus}" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                            </f:switch>
+                                            <f:switch expression="{trainer.reviewC22PsaStatus}">
+                                                <f:case value="3"><span class="titleview knopfrund auflage-{trainer.reviewC22PsaStatus}" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-{trainer.reviewC22PsaStatus}" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                            </f:switch>
                                         </td>
                                     </f:else>
                                 </f:if>
@@ -138,16 +165,17 @@
                             <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{trainer : trainer}">
                             </f:link.action>
                         </td>
-                        <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: trainer)}</f:variable>
+                        
                         <td class="td-knopf">
-                            <f:if condition="{relationUsagesInReview}">
+                            <f:if condition="{relationUsages}">
                                 <f:then>
-
+                                    <div class="locked-grey knopf-quadratisch" title="Wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                        {relationUsage.nummer} ({relationUsage.name})<br>
+                                    </f:for>"></div>
                                 </f:then>
                                 <f:else>
-                                    <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{trainer : trainer}">
-                                    </f:link.action>
-
+                                    <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
+                            </f:link.action>
                                 </f:else>
                             </f:if>
                         </td>
@@ -212,11 +240,7 @@
                         <td class="vorname">
                             {trainer.vorname}
                         </td>
-                        <!-- <td><f:if condition="{relationUsages}">
-                            <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
-                            <span class="knopfrund ansuchenliste titleview" title="Wird in folgenden Ansuchen eingesetzt:<br><f:for each='{relationUsages}' as='relationUsage'>
-                                {relationUsage.nummer} ({relationUsage.name})<br>
-                            </f:for>"></span></f:if> -->
+
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
                         <!-- BaBi -->

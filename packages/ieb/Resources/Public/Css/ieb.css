@@ -690,8 +690,15 @@ span.knopfrund {
     background-size: cover;
     vertical-align: middle;
 }
+span.knopfrund.ansuchenliste {
+    width: 24px;
+    height: 24px;
+}
 span.knopfrund.ok {
     background-image: url('../Img/rund_ok.svg');
+}
+span.knopfrund.ok-grey {
+    background-image: url('../Img/rund_ok-grey.svg');
 }
 span.knopfrund.nicht-ok {
     background-image: url('../Img/rund_nicht-ok.svg');
@@ -1029,6 +1036,11 @@ table.tx_ieb.trainer td {
 
 .td-knopf .knopf-quadratisch.locked {
     background-image: url('../Img/lock.svg');
+    background-size: 100%;
+}
+
+.td-knopf .knopf-quadratisch.locked-grey {
+    background-image: url('../Img/lock-grey.svg');
     background-size: 100%;
 }
 

@@ -71,7 +71,8 @@ class BeraterController extends BaseController
         $this->check($berater);
         $this->view->assignMultiple([
             'berater' => $berater,
-            'relationUsages' => $this->relationLockService->usedByAnsuchenInReview($berater),
+            'relationUsagesInReview' => $this->relationLockService->usedByAnsuchenInReview($berater),
+            'relationUsages' => $this->relationLockService->usedByAnsuchen($berater),
         ]);
         return $this->htmlResponse();
     }
