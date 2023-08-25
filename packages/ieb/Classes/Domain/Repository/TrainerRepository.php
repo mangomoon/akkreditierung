@@ -74,7 +74,10 @@ class TrainerRepository extends BaseRepository
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),
-                $query->equals('okbabi', false)
+                $query->logicalOr (
+                    $query->greaterThan('reviewC21BabiStatus', 2),
+                    $query->greaterThan('reviewC22BabiStatus', 2)
+                )
             )
         );
         return $query->execute();
@@ -88,7 +91,10 @@ class TrainerRepository extends BaseRepository
         $query->matching(
             $query->logicalOr (
                 $query->equals('archiviert', true),
-                $query->equals('okpsa', false)
+                $query->logicalOr (
+                    $query->greaterThan('reviewC21PsaStatus', 2),
+                    $query->greaterThan('reviewC22PsaStatus', 2)
+                )
             )
         );
         return $query->execute();

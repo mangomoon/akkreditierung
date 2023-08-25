@@ -66,6 +66,7 @@ rot: c3161c
   border-radius: 3px 3px 3px 0;
   padding: 3px 12px;
   font-size: 0.8em;
+  line-height: 140%;
 }
 #mangoTooltip.active {
   display: block;
@@ -705,6 +706,9 @@ span.knopfrund.nicht-ok {
 }
 span.knopfrund.ansuchenliste {
     background-image: url('../Img/rund_kette.svg');
+}
+span.knopfrund.auflage-1 {
+    background-image: url('../Img/rund_ok.svg');
 }
 span.knopfrund.auflage-3 {
     background-image: url('../Img/rund_achtung-3.svg');

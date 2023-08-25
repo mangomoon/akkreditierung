@@ -21,7 +21,7 @@
                         &nbsp;
                     </th>
                     <th>letzte Änderung</th>
-                    <th>vollständig</th>
+                    <th></th>
                     <th class="td-knopf">
 
                     </th>
@@ -32,6 +32,7 @@
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
 
                 <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: angebotVerantwortlich)}</f:variable>
+                <f:variable name="relationUsages">{ieb:relationUsed(object: angebotVerantwortlich)}</f:variable>
                 <f:if condition="!{angebotVerantwortlich.archiviert}">
                     <f:then>
                         <tr class="{f:if(condition:angebotVerantwortlich.ok,then:'istok',else:'unok')}">
@@ -45,17 +46,17 @@
                             <td class="">
                                 <f:if condition="{angebotVerantwortlich.ok}">
                                     <f:then>
-                                        ja
+                                        <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
                                     </f:then>
                                     <f:else>
-                                        nein
+                                        
                                     </f:else>
                                 </f:if>
                                 <f:if condition="{angebotVerantwortlich.reviewC1Babi}">
-                                    M
+                                    
                                 </f:if>
                                 <f:if condition="{angebotVerantwortlich.reviewC1Psa}">
-                                    P
+                                    
                                 </f:if>
                             </td>
                             <td class="td-knopf">
@@ -63,8 +64,17 @@
                                 </f:link.action>
                             </td>
                             <td class="td-knopf">
-                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{angebotVerantwortlich : angebotVerantwortlich}">
-                                </f:link.action>
+                                <f:if condition="{relationUsages}">
+                                <f:then>
+                                    <div class="locked-grey knopf-quadratisch" title="Wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                        {relationUsage.nummer} ({relationUsage.name})<br>
+                                    </f:for> und kann daher nicht archiviert werden"></div>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
+                            </f:link.action>
+                                </f:else>
+                            </f:if>
                             </td>
                             <td class="td-knopf">
                                 <f:if condition="{relationUsagesInreview}">
