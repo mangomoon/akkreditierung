@@ -17,10 +17,15 @@
         {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
         {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
 
+        <f:debug>{_all}</f:debug>
 
         <f:if condition="{ansuchen.status}!=20">
             <f:variable name="difftyp">1</f:variable>
         </f:if>
+        <f:if condition="{ansuchen.kopieVon} && {ansuchen.status} == 20">
+            <f:variable name="difftyp">2</f:variable>
+        </f:if>
+
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -30,7 +35,9 @@
             <div class="col">
                 <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
                 </p>
-                <p class="rechtsbuendig"><f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
+                <p class="rechtsbuendig"><f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /> <f:if condition="{ansuchen.kopieVon}"> | 
+                    <b>Kopie</b> von {ansuchen.kopieVon.nummer} ({ansuchen.kopieVon.name})
+                </f:if></p>
             </div>
         </div>
         <div class="abstand-gross"></div>
@@ -427,6 +434,14 @@
                     </div>
                     <div class="rechts col-5">
 
+                        <f:render partial="AnsuchenBegutachtung/CommentDiff" arguments="{
+                            reviewStatus:ansuchen.kopieVon.reviewB1Status, 
+                            reviewIntern: ansuchen.kopieVon.reviewB1CommentInternalData, 
+                            reviewTr:ansuchen.kopieVon.reviewB1CommentTr, 
+                            diff:difftyp}" />
+                        
+                        
+                        
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData}" />
 
                         

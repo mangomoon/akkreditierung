@@ -1617,3 +1617,14 @@ select#field_upcomingStatus option[value=100] {
     display: inline-block;
     line-height: 16px;
 }
+
+.comment-diff {
+    background: var(--f1);
+    padding: 8px;
+    margin-bottom: 8px;
+    font-size: 0.85em;
+}
+
+ul.typo3-messages li {
+    list-style: none;
+}

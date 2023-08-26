@@ -38,14 +38,14 @@
         </f:if>
 
         <f:if condition="{anmerkung}">
-            <div class="anmerkungstext">
+            <div class="anmerkungstext"><span class="label">Anmerkung:</span>
                 {anmerkung} <f:if condition="{diffanmerkung} && {difftyp} && ({diffanmerkung.previous} == '')">
                     <span class="vorher-knopf">neu</span> 
                 </f:if>
             </div>
         </f:if>
         <f:if condition="{diffanmerkung} && {difftyp} && {diffanmerkung.previous}">
-            <div class="diff"><span class="vorher">vorher:</span> {diffanmerkung.previous}</div>
+            <div class="diff"><span class="vorher">Anmerkung vorher:</span> {diffanmerkung.previous}</div>
         </f:if>
 
     </div>
