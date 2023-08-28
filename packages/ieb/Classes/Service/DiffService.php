@@ -48,7 +48,7 @@ class DiffService
                 foreach ($change as $id => $rel) {
                     if (is_array($rel)) {
                         foreach ($rel as $relField => $relChange) {
-                            if (is_string($relChange)) {
+                            if (is_scalar($relChange)) {
                                 $final[$field][$id][$relField]['previous'] = $previous[$field][$id][$relField] ?? null;
                                 $final[$field][$id][$relField]['current'] = $current[$field][$id][$relField] ?? null;
                             } elseif (is_array($relChange)) {
