@@ -195,6 +195,11 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_b23_comment_tr text NOT NULL DEFAULT '',
 	review_b23_status int(11) DEFAULT '0' NOT NULL,
 	upcoming_status int(11) DEFAULT '0' NOT NULL,
+	gutachter_locked_by int(11) NOT NULL DEFAULT '0',
+	notitzzettel text NOT NULL DEFAULT '',
+	review_oecert_frist date DEFAULT NULL,
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
+	trotzdem_abschicken text NOT NULL DEFAULT '',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -281,6 +286,7 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_psa_comment_tr text NOT NULL DEFAULT '',
 	review_c2_psa_comment_internal_step text NOT NULL DEFAULT '',
 	review_c2_babi_comment_internal_step text NOT NULL DEFAULT '',
+	review_frist date DEFAULT NULL,
 	locked_by int(11) NOT NULL DEFAULT '0'
 );
 
@@ -337,7 +343,10 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 CREATE TABLE fe_users (
 	name varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
-	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0'
+	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
+	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
+	ausschluss text NOT NULL DEFAULT '',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE tx_ieb_domain_model_kriterien (
@@ -353,3 +362,5 @@ CREATE TABLE tx_ieb_domain_model_textbausteine (
 	kriterium varchar(255) NOT NULL DEFAULT '',
 	baustein text NOT NULL DEFAULT ''
 );
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

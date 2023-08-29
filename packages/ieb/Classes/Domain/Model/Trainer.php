@@ -343,6 +343,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lockedBy = 0;
 
     /**
+     * reviewFrist
+     *
+     * @var \Date
+     */
+    protected $reviewFrist = null;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -1492,5 +1499,26 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Returns the reviewFrist
+     *
+     * @return \DateTime
+     */
+    public function getReviewFrist()
+    {
+        return $this->reviewFrist;
+    }
+
+    /**
+     * Sets the reviewFrist
+     *
+     * @param \DateTime $reviewFrist
+     * @return void
+     */
+    public function setReviewFrist(\DateTime $reviewFrist)
+    {
+        $this->reviewFrist = $reviewFrist;
     }
 }

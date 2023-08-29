@@ -288,6 +288,21 @@
 			<trans-unit id="upcoming_status.description" resname="upcoming_status.description">
 				<source>upcomingStatus</source>
 			</trans-unit>
+			<trans-unit id="gutachter_locked_by.description" resname="gutachter_locked_by.description">
+				<source>gutachterLockedBy</source>
+			</trans-unit>
+			<trans-unit id="notitzzettel.description" resname="notitzzettel.description">
+				<source>notitzzettel</source>
+			</trans-unit>
+			<trans-unit id="review_oecert_frist.description" resname="review_oecert_frist.description">
+				<source>reviewOecertFrist</source>
+			</trans-unit>
+			<trans-unit id="archiviert.description" resname="archiviert.description">
+				<source>archiviert</source>
+			</trans-unit>
+			<trans-unit id="trotzdem_abschicken.description" resname="trotzdem_abschicken.description">
+				<source>trotzdemAbschicken</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>
@@ -320,6 +335,12 @@
 			</trans-unit>
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
+			</trans-unit>
+			<trans-unit id="gutachter_eins.description" resname="gutachter_eins.description">
+				<source>gutachterEins</source>
+			</trans-unit>
+			<trans-unit id="gutachter_zwei.description" resname="gutachter_zwei.description">
+				<source>gutachterZwei</source>
 			</trans-unit>
 			<trans-unit id="kompetenzbereiche.description" resname="kompetenzbereiche.description">
 				<source>kompetenzbereiche</source>

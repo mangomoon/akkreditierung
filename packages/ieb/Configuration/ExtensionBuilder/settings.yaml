@@ -65,8 +65,9 @@ overwriteSettings:
 
   user_extension.svg: keep
   ext_localconf.php: keep
+  ext_tables.sql: merge
 #  ext_tables.php: merge
-#  ext_tables.sql: merge
+
 
 ## add declare strict types in php files
 declareStrictTypes: true

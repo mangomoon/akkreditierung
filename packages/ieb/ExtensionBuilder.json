@@ -4,7 +4,7 @@
             "config": {
                 "position": [
                     291,
-                    258.5
+                    258
                 ]
             },
             "name": "New Model Object",
@@ -393,7 +393,7 @@
             "config": {
                 "position": [
                     294,
-                    474.5
+                    474
                 ]
             },
             "name": "New Model Object",
@@ -601,7 +601,7 @@
             "config": {
                 "position": [
                     289,
-                    25.5
+                    25
                 ]
             },
             "name": "New Model Object",
@@ -786,7 +786,7 @@
             "config": {
                 "position": [
                     919,
-                    24.5
+                    24
                 ]
             },
             "name": "New Model Object",
@@ -1234,7 +1234,7 @@
             "config": {
                 "position": [
                     645,
-                    266.5
+                    266
                 ]
             },
             "name": "New Model Object",
@@ -2403,6 +2403,66 @@
                             "propertyName": "upcomingStatus",
                             "propertyType": "Select",
                             "uid": "1247645406017"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "gutachterLockedBy",
+                            "propertyType": "Integer",
+                            "uid": "356233587391"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "notitzzettel",
+                            "propertyType": "Text",
+                            "uid": "1151799552464"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewOecertFrist",
+                            "propertyType": "NativeDate",
+                            "uid": "1313994352698"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "175526479840"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "trotzdemAbschicken",
+                            "propertyType": "Text",
+                            "uid": "993335010015"
                         }
                     ]
                 },
@@ -2528,6 +2588,28 @@
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
                             "uid": "830501611820"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "gutachterEins",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "80046309597"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "gutachterZwei",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "602102808116"
                         }
                     ]
                 }
@@ -2537,7 +2619,7 @@
             "config": {
                 "position": [
                     28,
-                    49.5
+                    49
                 ]
             },
             "name": "New Model Object",
@@ -2701,7 +2783,7 @@
             "config": {
                 "position": [
                     35,
-                    476.5
+                    476
                 ]
             },
             "name": "New Model Object",
@@ -2898,7 +2980,7 @@
             "config": {
                 "position": [
                     30,
-                    266.5
+                    266
                 ]
             },
             "name": "New Model Object",
@@ -3452,6 +3534,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewFrist",
+                            "propertyType": "NativeDate",
+                            "uid": "1086866959005"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "400542981672"
@@ -3467,7 +3561,7 @@
             "config": {
                 "position": [
                     646,
-                    29.5
+                    29
                 ]
             },
             "name": "New Model Object",
@@ -3904,7 +3998,7 @@
             "config": {
                 "position": [
                     921,
-                    512.5
+                    512
                 ]
             },
             "name": "New Model Object",
@@ -4077,7 +4171,7 @@
             "config": {
                 "position": [
                     918,
-                    268.5
+                    268
                 ]
             },
             "name": "New Model Object",
@@ -4142,6 +4236,30 @@
                             "propertyName": "trAdmin",
                             "propertyType": "Boolean",
                             "uid": "539133319045"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "archiviert",
+                            "propertyType": "Boolean",
+                            "uid": "1146538242111"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ausschluss",
+                            "propertyType": "Text",
+                            "uid": "652783892370"
                         }
                     ]
                 },
@@ -4154,7 +4272,7 @@
             "config": {
                 "position": [
                     1194,
-                    24.5
+                    24
                 ]
             },
             "name": "New Model Object",
@@ -4267,7 +4385,7 @@
             "config": {
                 "position": [
                     1194,
-                    263.5
+                    263
                 ]
             },
             "name": "New Model Object",
@@ -4593,12 +4711,36 @@
                 "terminal": "SOURCES",
                 "uid": "481116737564"
             }
+        },
+        {
+            "src": {
+                "moduleId": 4,
+                "terminal": "relationWire_11",
+                "uid": "80046309597"
+            },
+            "tgt": {
+                "moduleId": 10,
+                "terminal": "SOURCES",
+                "uid": "270461327447"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 4,
+                "terminal": "relationWire_12",
+                "uid": "602102808116"
+            },
+            "tgt": {
+                "moduleId": 10,
+                "terminal": "SOURCES",
+                "uid": "270461327447"
+            }
         }
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-08-01 07:16",
+        "last_modified": "2023-08-29 08:43",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (4)"
+        "be_user": " (1)"
     }
 }

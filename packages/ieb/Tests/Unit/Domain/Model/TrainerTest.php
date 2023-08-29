@@ -879,6 +879,28 @@ class TrainerTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewFristReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getReviewFrist()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristForDateTimeSetsReviewFrist(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setReviewFrist($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFrist'));
+    }
+
+    /**
+     * @test
+     */
     public function getLockedByReturnsInitialValueForInt(): void
     {
         self::assertSame(

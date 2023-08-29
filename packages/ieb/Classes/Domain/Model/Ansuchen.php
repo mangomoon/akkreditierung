@@ -23,6 +23,11 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
+     * @var \DateTime
+     */
+    protected $tstamp = null;
+
+    /**
      * name
      *
      * @var string
@@ -563,6 +568,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $copyVerantwortliche = '';
 
     /**
+     * copyVerantwortlicheMail
+     *
+     * @var string
+     */
+    protected $copyVerantwortlicheMail = '';
+
+    /**
      * copyStandorte
      *
      * @var string
@@ -766,11 +778,53 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
-     * copyVerantwortlicheMail
+     * gutachterLockedBy
+     *
+     * @var int
+     */
+    protected $gutachterLockedBy = 0;
+
+    /**
+     * notitzzettel
      *
      * @var string
      */
-    protected $copyVerantwortlicheMail = '';
+    protected $notitzzettel = '';
+
+    /**
+     * reviewOecertFrist
+     *
+     * @var \DateTime
+     */
+    protected $reviewOecertFrist = null;
+
+    /**
+     * archiviert
+     *
+     * @var bool
+     */
+    protected $archiviert = false;
+
+    /**
+     * trotzdemAbschicken
+     *
+     * @var string
+     */
+    protected $trotzdemAbschicken = '';
+
+    /**
+     * gutachterEins
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     */
+    protected $gutachterEins = null;
+
+    /**
+     * gutachterZwei
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     */
+    protected $gutachterZwei = null;
 
     /**
      * __construct
@@ -800,6 +854,8 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainer = $this->trainer ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->berater = $this->berater ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->gutachterEins = $this->gutachterEins ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->gutachterZwei = $this->gutachterZwei ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -3375,10 +3431,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
 
-
-    /** @var \DateTime */
-    protected $tstamp;
-
     /**
      * @return \DateTime
      */
@@ -3427,5 +3479,206 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setUpcomingStatus(int $upcomingStatus)
     {
         $this->upcomingStatus = $upcomingStatus;
+    }
+
+    /**
+     * Returns the gutachterLockedBy
+     *
+     * @return int
+     */
+    public function getGutachterLockedBy()
+    {
+        return $this->gutachterLockedBy;
+    }
+
+    /**
+     * Sets the gutachterLockedBy
+     *
+     * @param int $gutachterLockedBy
+     * @return void
+     */
+    public function setGutachterLockedBy(int $gutachterLockedBy)
+    {
+        $this->gutachterLockedBy = $gutachterLockedBy;
+    }
+
+    /**
+     * Returns the notitzzettel
+     *
+     * @return string
+     */
+    public function getNotitzzettel()
+    {
+        return $this->notitzzettel;
+    }
+
+    /**
+     * Sets the notitzzettel
+     *
+     * @param string $notitzzettel
+     * @return void
+     */
+    public function setNotitzzettel(string $notitzzettel)
+    {
+        $this->notitzzettel = $notitzzettel;
+    }
+
+    /**
+     * Returns the reviewOecertFrist
+     *
+     * @return \DateTime
+     */
+    public function getReviewOecertFrist()
+    {
+        return $this->reviewOecertFrist;
+    }
+
+    /**
+     * Sets the reviewOecertFrist
+     *
+     * @param \DateTime $reviewOecertFrist
+     * @return void
+     */
+    public function setReviewOecertFrist(\DateTime $reviewOecertFrist)
+    {
+        $this->reviewOecertFrist = $reviewOecertFrist;
+    }
+
+    /**
+     * Returns the archiviert
+     *
+     * @return bool
+     */
+    public function getArchiviert()
+    {
+        return $this->archiviert;
+    }
+
+    /**
+     * Sets the archiviert
+     *
+     * @param bool $archiviert
+     * @return void
+     */
+    public function setArchiviert(bool $archiviert)
+    {
+        $this->archiviert = $archiviert;
+    }
+
+    /**
+     * Returns the boolean state of archiviert
+     *
+     * @return bool
+     */
+    public function isArchiviert()
+    {
+        return $this->archiviert;
+    }
+
+    /**
+     * Returns the trotzdemAbschicken
+     *
+     * @return string
+     */
+    public function getTrotzdemAbschicken()
+    {
+        return $this->trotzdemAbschicken;
+    }
+
+    /**
+     * Sets the trotzdemAbschicken
+     *
+     * @param string $trotzdemAbschicken
+     * @return void
+     */
+    public function setTrotzdemAbschicken(string $trotzdemAbschicken)
+    {
+        $this->trotzdemAbschicken = $trotzdemAbschicken;
+    }
+
+    /**
+     * Adds a User
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterEin
+     * @return void
+     */
+    public function addGutachterEin(\GeorgRinger\Ieb\Domain\Model\User $gutachterEin)
+    {
+        $this->gutachterEins->attach($gutachterEin);
+    }
+
+    /**
+     * Removes a User
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterEinToRemove The User to be removed
+     * @return void
+     */
+    public function removeGutachterEin(\GeorgRinger\Ieb\Domain\Model\User $gutachterEinToRemove)
+    {
+        $this->gutachterEins->detach($gutachterEinToRemove);
+    }
+
+    /**
+     * Returns the gutachterEins
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     */
+    public function getGutachterEins()
+    {
+        return $this->gutachterEins;
+    }
+
+    /**
+     * Sets the gutachterEins
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User> $gutachterEins
+     * @return void
+     */
+    public function setGutachterEins(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $gutachterEins)
+    {
+        $this->gutachterEins = $gutachterEins;
+    }
+
+    /**
+     * Adds a User
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterZwei
+     * @return void
+     */
+    public function addGutachterZwei(\GeorgRinger\Ieb\Domain\Model\User $gutachterZwei)
+    {
+        $this->gutachterZwei->attach($gutachterZwei);
+    }
+
+    /**
+     * Removes a User
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterZweiToRemove The User to be removed
+     * @return void
+     */
+    public function removeGutachterZwei(\GeorgRinger\Ieb\Domain\Model\User $gutachterZweiToRemove)
+    {
+        $this->gutachterZwei->detach($gutachterZweiToRemove);
+    }
+
+    /**
+     * Returns the gutachterZwei
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     */
+    public function getGutachterZwei()
+    {
+        return $this->gutachterZwei;
+    }
+
+    /**
+     * Sets the gutachterZwei
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User> $gutachterZwei
+     * @return void
+     */
+    public function setGutachterZwei(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $gutachterZwei)
+    {
+        $this->gutachterZwei = $gutachterZwei;
     }
 }

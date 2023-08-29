@@ -756,7 +756,17 @@ function reqleerLoeschen() {
      });
 
 
+     // ######################################## Sidebar
 
+     $('#seite-nach-oben').click(function() {
+        $('html, body').animate({scrollTop: "0px"}, 600);
+     });
+     $('#seite-nach-unten').click(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, 600);
+     });
+     $('#notitzzettel-oeffnen').click(function() {
+        $('#notitzzettel').toggle();
+     });
  });
 
  // JQUERY MULTISELECT ########################################

@@ -982,17 +982,18 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->reviewA2CommentInternalStep = $reviewA2CommentInternalStep;
     }
-
     public function getReviewA1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewA1CommentInternal);
     }
-
     public function getReviewA2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewA2CommentInternal);
     }
 
+    /**
+     * @param string $input
+     */
     protected function getConvertedJson(string $input)
     {
         return json_decode($input, true);

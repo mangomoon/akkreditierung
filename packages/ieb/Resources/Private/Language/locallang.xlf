@@ -1137,6 +1137,36 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.upcoming_status.description" resname="tx_ieb_domain_model_ansuchen.upcoming_status.description">
 				<source>Upcoming Status</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_locked_by" resname="tx_ieb_domain_model_ansuchen.gutachter_locked_by">
+				<source>Gutachter Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_locked_by.description" resname="tx_ieb_domain_model_ansuchen.gutachter_locked_by.description">
+				<source>Gutachter Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.notitzzettel" resname="tx_ieb_domain_model_ansuchen.notitzzettel">
+				<source>Notitzzettel</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.notitzzettel.description" resname="tx_ieb_domain_model_ansuchen.notitzzettel.description">
+				<source>Notitzzettel</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_oecert_frist" resname="tx_ieb_domain_model_ansuchen.review_oecert_frist">
+				<source>Review Oecert Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_oecert_frist.description" resname="tx_ieb_domain_model_ansuchen.review_oecert_frist.description">
+				<source>Review Oecert Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.archiviert" resname="tx_ieb_domain_model_ansuchen.archiviert">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.archiviert.description" resname="tx_ieb_domain_model_ansuchen.archiviert.description">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.trotzdem_abschicken" resname="tx_ieb_domain_model_ansuchen.trotzdem_abschicken">
+				<source>Trotzdem Abschicken</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.trotzdem_abschicken.description" resname="tx_ieb_domain_model_ansuchen.trotzdem_abschicken.description">
+				<source>Trotzdem Abschicken</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.stammdaten_static" resname="tx_ieb_domain_model_ansuchen.stammdaten_static">
 				<source>Stammdaten Static</source>
 			</trans-unit>
@@ -1202,6 +1232,18 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.berater.description" resname="tx_ieb_domain_model_ansuchen.berater.description">
 				<source>Berater</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_eins" resname="tx_ieb_domain_model_ansuchen.gutachter_eins">
+				<source>Gutachter Eins</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_eins.description" resname="tx_ieb_domain_model_ansuchen.gutachter_eins.description">
+				<source>Gutachter Eins</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_zwei" resname="tx_ieb_domain_model_ansuchen.gutachter_zwei">
+				<source>Gutachter Zwei</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.gutachter_zwei.description" resname="tx_ieb_domain_model_ansuchen.gutachter_zwei.description">
+				<source>Gutachter Zwei</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_standort" resname="tx_ieb_domain_model_standort">
 				<source>Standort</source>
@@ -1617,6 +1659,12 @@
 			<trans-unit id="tx_ieb_domain_model_trainer.review_c2_babi_comment_internal_step.description" resname="tx_ieb_domain_model_trainer.review_c2_babi_comment_internal_step.description">
 				<source>Review C2 Babi Comment Internal Step</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.review_frist" resname="tx_ieb_domain_model_trainer.review_frist">
+				<source>Review Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.review_frist.description" resname="tx_ieb_domain_model_trainer.review_frist.description">
+				<source>Review Frist</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.locked_by" resname="tx_ieb_domain_model_trainer.locked_by">
 				<source>Locked By</source>
 			</trans-unit>
@@ -1922,6 +1970,18 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_user.tr_admin.description" resname="tx_ieb_domain_model_user.tr_admin.description">
 				<source>Tr Admin</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_user.archiviert" resname="tx_ieb_domain_model_user.archiviert">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_user.archiviert.description" resname="tx_ieb_domain_model_user.archiviert.description">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_user.ausschluss" resname="tx_ieb_domain_model_user.ausschluss">
+				<source>Ausschluss</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_user.ausschluss.description" resname="tx_ieb_domain_model_user.ausschluss.description">
+				<source>Ausschluss</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien" resname="tx_ieb_domain_model_kriterien">
 				<source>Kriterien</source>

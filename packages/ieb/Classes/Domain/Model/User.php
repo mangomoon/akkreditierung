@@ -48,6 +48,20 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $trAdmin = false;
 
     /**
+     * archiviert
+     *
+     * @var bool
+     */
+    protected $archiviert = false;
+
+    /**
+     * ausschluss
+     *
+     * @var string
+     */
+    protected $ausschluss = '';
+
+    /**
      * @return string
      */
     public function getFirstName()
@@ -197,5 +211,57 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getFullname()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    /**
+     * Returns the archiviert
+     *
+     * @return bool
+     */
+    public function getArchiviert()
+    {
+        return $this->archiviert;
+    }
+
+    /**
+     * Sets the archiviert
+     *
+     * @param bool $archiviert
+     * @return void
+     */
+    public function setArchiviert(bool $archiviert)
+    {
+        $this->archiviert = $archiviert;
+    }
+
+    /**
+     * Returns the boolean state of archiviert
+     *
+     * @return bool
+     */
+    public function isArchiviert()
+    {
+        return $this->archiviert;
+    }
+
+    /**
+     * Returns the ausschluss
+     *
+     * @return string
+     */
+    public function getAusschluss()
+    {
+        return $this->ausschluss;
+    }
+
+    /**
+     * Sets the ausschluss
+     *
+     * @param string $ausschluss
+     * @return void
+     */
+    public function setAusschluss(string $ausschluss)
+    {
+        $this->ausschluss = $ausschluss;
     }
 }

@@ -94,4 +94,43 @@ class UserTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('trAdmin'));
     }
+
+    /**
+     * @test
+     */
+    public function getArchiviertReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getArchiviert());
+    }
+
+    /**
+     * @test
+     */
+    public function setArchiviertForBoolSetsArchiviert(): void
+    {
+        $this->subject->setArchiviert(true);
+
+        self::assertEquals(true, $this->subject->_get('archiviert'));
+    }
+
+    /**
+     * @test
+     */
+    public function getAusschlussReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getAusschluss()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setAusschlussForStringSetsAusschluss(): void
+    {
+        $this->subject->setAusschluss('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('ausschluss'));
+    }
 }
