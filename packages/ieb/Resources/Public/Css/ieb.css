@@ -1696,7 +1696,7 @@ ul.typo3-messages li {
 /* SIDEBAR */
 #sidebar {
     position: fixed;
-    top: 45%;
+    top: 41%;
     right: 10px;
     width: 50px;
 }
