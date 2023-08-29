@@ -318,7 +318,18 @@ function reqleerLoeschen() {
 
  $(document).ready(function() {
 
+    
+    // Toggle Code
+
+    $('#code-toggler').click(function(){
+        $('code').each(function() {
+            $(this).toggle();
+        });
+    });
+    
+    
     // Tooltip
+
 
     $('.knopf-quadratisch').hover(function(e) {
         e.preventDefault();

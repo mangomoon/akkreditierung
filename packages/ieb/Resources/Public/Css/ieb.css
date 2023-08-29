@@ -26,8 +26,17 @@ rot: c3161c
     border-spacing: 0;
 }
 
-
-
+/* Code Toggle */
+#code-toggler {
+    position: fixed;
+    left: 30px;
+    top: 60px;
+    width: 150px;
+    margin-top: 200px;
+}
+code {
+    display: none;
+}
 /* PRINT */
 
 @media print {
