@@ -216,7 +216,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the archiviert
      *
-     * @return bool
+     * @return bool $archiviert
      */
     public function getArchiviert()
     {
@@ -237,7 +237,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the boolean state of archiviert
      *
-     * @return bool
+     * @return bool $archiviert
      */
     public function isArchiviert()
     {

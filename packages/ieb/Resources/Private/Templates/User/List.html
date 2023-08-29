@@ -3,7 +3,6 @@
 
 
 <f:section name="content">
-
     <table class="tx_ieb">
         <tr>
             <th>Benutzername</th>
@@ -27,8 +26,10 @@
                         <f:if condition="{currentUser.tr_admin}">
                             <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
                         </f:if></td>
-                    <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
-                    </f:link.action></td>
+                    <td class="td-knopf">
+                        <f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
+                        </f:link.action>
+                    </td>
                 </tr>
             </f:then>
             <f:else>
@@ -47,7 +48,7 @@
             <h2>ARCHIV</h2>
             <table class="tx_ieb">
                 <f:for each="{users}" as="user">
-                    <f:if condition="!{user.archiviert}">
+                    <f:if condition="{user.archiviert}">
                         <tr>
                             <td>{user.username}</td>
                             <td>{user.firstname} <b>{user.lastname}</b></td>

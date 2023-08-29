@@ -85,6 +85,23 @@ class UserController extends BaseController
         }
     }
 
+    public function archiveAction(User $user): ResponseInterface
+    {
+        $this->validateUserCrud($user);
+        $user->setArchiviert(true);
+        $this->userRepository->update($user);
+        $this->userRepository->forcePersist();
+        $this->redirect('list');
+    }
+
+    public function reviveAction(User $user): ResponseInterface
+    {
+        $this->validateUserCrud($user);
+        $user->setArchiviert(false);
+        $this->userRepository->update($user);
+        $this->redirect('list');
+    }
+
     protected function sendMailToUserAfterInvitation(User $user): void
     {
         $assignedMailValues = [
@@ -116,21 +133,7 @@ class UserController extends BaseController
         );
     }
 
-    public function archiveAction(User $user): void
-    {
-        $this->validateUserCrud($user);
-        $user->setArchiviert(true);
-        $this->userRepository->update($user);
-        $this->redirect('list');
-    }
 
-    public function reviveAction(User $user): void
-    {
-        $this->validateUserCrud($user);
-        $user->setArchiviert(false);
-        $this->userRepository->update($user);
-        $this->redirect('list');
-    }
 
     public function injectUserRepository(UserRepository $userRepository): void
     {

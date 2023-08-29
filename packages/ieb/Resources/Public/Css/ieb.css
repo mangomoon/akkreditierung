@@ -27,6 +27,7 @@ rot: c3161c
 }
 
 
+
 /* PRINT */
 
 @media print {
@@ -957,7 +958,11 @@ table.tx_ieb th {
     font-weight: 400;
     font-size: 0.75em;
     text-align: left;
-    padding: 0 3px 6px 2px;
+    padding: 4px 3px 4px 2px;
+}
+
+ table.tx_ieb td:first-of-type, table.tx_ieb th:first-of-type {
+    padding-left: 8px;
 }
 
 .tx_ieb tr:nth-child(even) {
@@ -1163,13 +1168,16 @@ table.tx_ieb.standortliste td {
 
 .archiv {
     background: var(--f0b);
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 0.9em;
 }
-
+.archiv table.tx_ieb {
+    margin: 0;
+}
 .archiv h2 {
     margin: 0;
     padding: 0;
+    padding-left: 8px;
 }
 
 .light {
