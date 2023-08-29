@@ -1,0 +1,45 @@
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="comment-diff">
+    <f:if condition="{diff}==2">
+        <f:then>
+            <div class="row">
+                <div class="col">
+                    <h4>Begutachtung der Quelle</h4>
+                </div>
+                <div class="col">
+                    <f:switch expression="{reviewStatus}">
+                        <f:case value="1"><label class="knopf ok checked">OK</label></f:case>
+                        <f:case value="4"><label class="knopf nicht-ok checked">NICHT OK</label></f:case>
+                    </f:switch>
+                    
+                </div>
+            </div>
+            
+            <div>
+                <f:if condition="{reviewIntern}">
+                    <div class="komm-int">
+                    <label>Interne Kommentare:</label>
+                    <f:for each="{reviewIntern}" as="comment">
+                        <p>
+                            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                        </p>
+                    </f:for>
+                </div>
+                </f:if>
+                <f:if condition="{reviewTr}">
+                    <div class="komm-tr">
+                        <label>Kommentar an den Träger:</label>
+                        <p>{reviewTr}</p>
+                    </div>
+                </f:if>
+            </div>
+        </f:then>
+        <f:else>
+            <label>Eine Begutachtung der Quelle liegt noch nicht vor.</label>
+        </f:else>
+    </f:if>
+
+    
+</div>

@@ -1319,12 +1319,17 @@ table.ansuchenbegutachtung td.check {
 }
 
 .komm-int {
-    color: #fff;
+    color: var(--f5);
     font-size: 0.8em;
+}
+.komm-int p {
+    padding: 2px 0;
 }
 
 .komm-int span.name {
     text-transform: uppercase;
+    color: #fff;
+    padding-right: 8px;
 }
 
 .begutachtung-kriterium textarea {
@@ -1543,6 +1548,23 @@ span.checkbox.checked {
     background-repeat: no-repeat;
 }
 
+span.checkbox.diff {
+    border: 3px solid var(--beratung);
+    width:  24px;
+    height: 24px;   
+    margin-bottom: -2px;
+}
+
+span.diff-mark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--beratung);
+    margin-right: 12px;
+    margin-bottom: -2px;
+}
+
+
 .trainerqualifikationsbegutachtung {
     background: var(--f0b);
     padding-right: 0;
@@ -1618,12 +1640,39 @@ select#field_upcomingStatus option[value=100] {
     line-height: 16px;
 }
 
+
+/* Kommentar bei Vergleich von Kopien */
 .comment-diff {
     background: var(--f1);
     padding: 8px;
     margin-bottom: 8px;
-    font-size: 0.85em;
+    font-size: 1em;
 }
+.comment-diff h4 {
+    color: var(--f4);
+    font-size: 0.9em;
+}
+.begutachtung-kriterium .comment-diff label.knopf {
+    max-width: 100px;
+    cursor: default;
+    float: right;
+}
+.comment-diff .komm-int {
+    color: var(--f4);
+    margin-bottom: 12px;
+}
+.comment-diff label {
+    font-size: 12px;
+}
+.comment-diff p { 
+    margin: 0;
+    padding: 2px 0;
+}
+.comment-diff .komm-tr {
+    font-size: 12px;
+}
+
+
 
 ul.typo3-messages li {
     list-style: none;

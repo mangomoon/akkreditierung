@@ -103,6 +103,7 @@ class AnsuchenRepository extends BaseRepository
             'status' => AnsuchenStatus::NEU_IN_ARBEIT->value,
             'name' => 'NEU [Kopie von ' . $ansuchen->getName() . ']',
             'kopie_von' => $ansuchen->getUid(),
+            'version' => 0,
         ];
         $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
 
