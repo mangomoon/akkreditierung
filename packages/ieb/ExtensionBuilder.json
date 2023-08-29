@@ -2436,18 +2436,6 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "reviewOecertFrist",
-                            "propertyType": "NativeDate",
-                            "uid": "1313994352698"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
                             "propertyName": "archiviert",
                             "propertyType": "Boolean",
                             "uid": "175526479840"
@@ -3986,6 +3974,18 @@
                             "propertyName": "reviewA2CommentTr",
                             "propertyType": "Text",
                             "uid": "410316542207"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewOecertFrist",
+                            "propertyType": "NativeDate",
+                            "uid": "830496466888"
                         }
                     ]
                 },
@@ -4739,7 +4739,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-08-29 08:43",
+        "last_modified": "2023-08-29 10:51",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

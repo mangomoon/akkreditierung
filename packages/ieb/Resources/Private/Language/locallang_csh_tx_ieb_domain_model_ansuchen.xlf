@@ -294,9 +294,6 @@
 			<trans-unit id="notitzzettel.description" resname="notitzzettel.description">
 				<source>notitzzettel</source>
 			</trans-unit>
-			<trans-unit id="review_oecert_frist.description" resname="review_oecert_frist.description">
-				<source>reviewOecertFrist</source>
-			</trans-unit>
 			<trans-unit id="archiviert.description" resname="archiviert.description">
 				<source>archiviert</source>
 			</trans-unit>
@@ -341,6 +338,9 @@
 			</trans-unit>
 			<trans-unit id="gutachter_zwei.description" resname="gutachter_zwei.description">
 				<source>gutachterZwei</source>
+			</trans-unit>
+			<trans-unit id="review_oecert_frist.description" resname="review_oecert_frist.description">
+				<source>reviewOecertFrist</source>
 			</trans-unit>
 			<trans-unit id="kompetenzbereiche.description" resname="kompetenzbereiche.description">
 				<source>kompetenzbereiche</source>

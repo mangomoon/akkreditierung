@@ -257,6 +257,13 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewA2CommentTr = '';
 
     /**
+     * reviewOecertFrist
+     *
+     * @var \DateTime
+     */
+    protected $reviewOecertFrist = null;
+
+    /**
      * Returns the name
      *
      * @return string
@@ -997,5 +1004,26 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function getConvertedJson(string $input)
     {
         return json_decode($input, true);
+    }
+
+    /**
+     * Returns the reviewOecertFrist
+     *
+     * @return \DateTime
+     */
+    public function getReviewOecertFrist()
+    {
+        return $this->reviewOecertFrist;
+    }
+
+    /**
+     * Sets the reviewOecertFrist
+     *
+     * @param \DateTime $reviewOecertFrist
+     * @return void
+     */
+    public function setReviewOecertFrist(\DateTime $reviewOecertFrist)
+    {
+        $this->reviewOecertFrist = $reviewOecertFrist;
     }
 }

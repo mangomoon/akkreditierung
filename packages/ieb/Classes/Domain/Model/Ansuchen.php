@@ -792,13 +792,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $notitzzettel = '';
 
     /**
-     * reviewOecertFrist
-     *
-     * @var \DateTime
-     */
-    protected $reviewOecertFrist = null;
-
-    /**
      * archiviert
      *
      * @var bool
@@ -3521,27 +3514,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNotitzzettel(string $notitzzettel)
     {
         $this->notitzzettel = $notitzzettel;
-    }
-
-    /**
-     * Returns the reviewOecertFrist
-     *
-     * @return \DateTime
-     */
-    public function getReviewOecertFrist()
-    {
-        return $this->reviewOecertFrist;
-    }
-
-    /**
-     * Sets the reviewOecertFrist
-     *
-     * @param \DateTime $reviewOecertFrist
-     * @return void
-     */
-    public function setReviewOecertFrist(\DateTime $reviewOecertFrist)
-    {
-        $this->reviewOecertFrist = $reviewOecertFrist;
     }
 
     /**

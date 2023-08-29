@@ -2027,28 +2027,6 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getReviewOecertFristReturnsInitialValueForDateTime(): void
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getReviewOecertFrist()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setReviewOecertFristForDateTimeSetsReviewOecertFrist(): void
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setReviewOecertFrist($dateTimeFixture);
-
-        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewOecertFrist'));
-    }
-
-    /**
-     * @test
-     */
     public function getArchiviertReturnsInitialValueForBool(): void
     {
         self::assertFalse($this->subject->getArchiviert());

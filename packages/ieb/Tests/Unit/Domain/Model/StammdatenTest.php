@@ -724,4 +724,26 @@ class StammdatenTest extends UnitTestCase
 
         self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewA2CommentTr'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewOecertFristReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getReviewOecertFrist()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewOecertFristForDateTimeSetsReviewOecertFrist(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setReviewOecertFrist($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewOecertFrist'));
+    }
 }
