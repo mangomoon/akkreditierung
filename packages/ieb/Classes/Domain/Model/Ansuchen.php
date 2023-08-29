@@ -2826,6 +2826,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
+
     public function isEditableByTr()
     {
         return AnsuchenStatus::statusBearbeitbarDurchTrCheck($this->status);
@@ -3423,6 +3424,8 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
+
+
 
     /**
      * @return \DateTime

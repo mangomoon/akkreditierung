@@ -14,22 +14,58 @@
             <th></th>
         </tr>
         <f:for each="{users}" as="user">
-            <tr>
-                <td>{user.username}</td>
-                <td>{user.firstname} <b>{user.lastname}</b></td>
-                <td><a href="mailto:{user.email}">{user.email}</a></td>
-                <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
-                <!-- <td>{f:if(condition:user.disable,then:'deaktiviert',else:'aktiv')}</td> -->
-                <td class="td-knopf">
-                    <f:if condition="{currentUser.tr_admin}">
-                        <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
-                    </f:if></td>
-                <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
-                </f:link.action></td>
-            </tr>
+
+        <f:if condition="!{user.archiviert}">
+            <f:then>
+                <tr>
+                    <td>{user.username}</td>
+                    <td>{user.firstname} <b>{user.lastname}</b></td>
+                    <td><a href="mailto:{user.email}">{user.email}</a></td>
+                    <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
+    
+                    <td class="td-knopf">
+                        <f:if condition="{currentUser.tr_admin}">
+                            <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
+                        </f:if></td>
+                    <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
+                    </f:link.action></td>
+                </tr>
+            </f:then>
+            <f:else>
+                {f:variable(name: 'archiviertexistiert', value: 'ja')}
+            </f:else>
+        </f:if>
+            
         </f:for>
     </table>
 
+
+    <f:if condition="{archiviertexistiert}=='ja'">
+
+    <div class="abstand-mittel"></div>
+        <div class="archiv">
+            <h2>ARCHIV</h2>
+            <table class="tx_ieb">
+                <f:for each="{users}" as="user">
+                    <f:if condition="!{user.archiviert}">
+                        <tr>
+                            <td>{user.username}</td>
+                            <td>{user.firstname} <b>{user.lastname}</b></td>
+                            <td><a href="mailto:{user.email}">{user.email}</a></td>
+                            <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
+            
+                            <td class="td-knopf">
+                                <f:if condition="{currentUser.tr_admin}">
+                                    <f:link.action action="revive" title="Person reaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
+                                </f:if></td>
+                            <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
+                            </f:link.action></td>
+                        </tr>
+                    </f:if>
+                </f:for>
+            </table>
+        </div>
+    </f:if>
     <f:if condition="{currentUser.tr_admin}">
         <p><f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action> </p>
     </f:if>

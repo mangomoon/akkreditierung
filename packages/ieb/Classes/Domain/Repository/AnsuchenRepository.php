@@ -45,7 +45,6 @@ class AnsuchenRepository extends BaseRepository
             $query->equals('version_active', 1),
         ];
         $query->matching($query->logicalAnd($constraints));
-
         return $query->execute();
     }
 
@@ -57,7 +56,6 @@ class AnsuchenRepository extends BaseRepository
             $query->equals('version_active', 1),
         ];
         $query->matching($query->logicalAnd($constraints));
-
         return $query->execute();
     }
 

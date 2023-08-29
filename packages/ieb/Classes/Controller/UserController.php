@@ -73,7 +73,6 @@ class UserController extends BaseController
     public function updateAction(User $user): void
     {
         $this->validateUserCrud($user);
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/p/friendsoftypo3/extension-builder/master/en-us/User/Index.html', '', AbstractMessage::WARNING);
         $this->userRepository->update($user);
         $this->redirect('list');
     }
@@ -115,6 +114,22 @@ class UserController extends BaseController
             $user->getEmail(),
             $user->getFullName()
         );
+    }
+
+    public function archiveAction(User $user): void
+    {
+        $this->validateUserCrud($user);
+        $user->setArchiviert(true);
+        $this->userRepository->update($user);
+        $this->redirect('list');
+    }
+
+    public function reviveAction(User $user): void
+    {
+        $this->validateUserCrud($user);
+        $user->setArchiviert(false);
+        $this->userRepository->update($user);
+        $this->redirect('list');
     }
 
     public function injectUserRepository(UserRepository $userRepository): void

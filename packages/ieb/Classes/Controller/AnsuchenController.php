@@ -215,6 +215,24 @@ class AnsuchenController extends BaseController
         $this->redirect('list');
     }
 
+    public function archiveAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $ansuchen->setArchiviert(true);
+        $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
+        $this->redirect('list');
+    }
+
+    public function reviveAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $ansuchen->setArchiviert(false);
+        $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
+        $this->redirect('list');
+    }
+
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
     {

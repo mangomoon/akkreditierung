@@ -74,10 +74,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Ansuchen',
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive',
         ]
     );
 
@@ -102,10 +102,10 @@ defined('TYPO3') || die();
         'Ieb',
         'User',
         [
-            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
+            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, archive, revive',
         ],
         [
-            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
+            \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, archive, revive',
         ]
     );
 
