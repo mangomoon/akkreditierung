@@ -27,8 +27,7 @@
 <f:if condition="!{ansuchen.nummer}">
     <div class="kriterium">
         <div class="erlaeuterung ">
-            <p>Hier der wenn-Text für Fortsetzung von in PP3 begonnen Ansuchen. Braucht es einen Hilfebutton?</p>
-            <p class="hinweis">Bitte auf das korrekte Format achten: 3-XXXX-Y</p>
+            <p>Nur auszufüllen, wenn es sich um ein Bildungsangebot handelt, das derzeit durch den ESF-Call XXX finanziert wird! <br>Geben Sie bitte die Ansuchennummer aus der alten Akkreditierungsdatenbank (Format 3-X-XXX-1) hier ein</p>
         </div>
         <div class="formfields row">
             <div class="col-5">
@@ -240,7 +239,7 @@
     </table>
     <div class="abstand-gross"></div>
     <p>
-        <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" class="reqcheckbox" value="0" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
+        <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" class="reqcheckbox" value="1" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
     </p>
 
     <div class="formzeile">
@@ -384,6 +383,7 @@
             <div class="col-6" id="b-1-d-1">
                 <f:render partial="Form/Select" arguments="{property:'bundesland', additionalAttributes:'required', label:'Bundesland', options:settings.static.bundesland,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}"
                 />
+                
             </div>
             <div class="col-6" id="b-1-d-2">
                 <f:if condition="{relations.standorteaktiv}">
@@ -799,7 +799,7 @@
             </div>
 
             <div class="formzeile">
-                <f:link.page pageUid="13" class="formlink berater">Beratung: Daten bearbeiten</f:link.page>
+                <f:form.submit value="Beratung: Daten bearbeiten" name="saveAndBerater" class="formlink berater" />
             </div>
         </f:then>
         <f:else>
@@ -830,7 +830,9 @@
 
 <div id="sidebar">
     <div class="knopf-s" id="seite-nach-oben"></div>
-    <f:form.submit value="" name="save" class="knopf-s sidebar speichern" />
+    <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
+    <f:form.submit value="" name="saveAndIndex" class="knopf-s sidebar speichern-zurueck" title="Speichern und zurück zur Liste"/>
+    <f:link.action class="knopf-s sidebar zurueck" action="list" title="Zurück OHNE Speichern"></f:link.action> 
     <div class="knopf-s" id="seite-nach-unten"></div>
 </div>
 

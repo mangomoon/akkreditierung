@@ -25,6 +25,11 @@
                                         <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn}]</code>
                                     </td>
                                     <td class="td-knopf">
+                                        <f:if condition="{item.status} == 10">
+                                            <f:link.action action="delete" arguments="{ansuchen : item}" class="knopf-quadratisch delete" title="Ansuchen löschen"></f:link.action>
+                                        </f:if>
+                                    </td>
+                                    <td class="td-knopf">
                                         <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                                     </td>
                                     
@@ -45,7 +50,7 @@
                                             </f:if>
                                             </f:then>
                                             <f:else>
-                                                <td class="td-knopf">&nbsp;</td>
+                                                <td class="td-knopf"><div class="locked knopf-quadratisch" title="In Begutachtung"></div></td>
                                             </f:else>
                                         </f:if>
                                     </td>
@@ -53,9 +58,6 @@
                                         <f:link.action action="clone" arguments="{ansuchen : item}" class="knopf-quadratisch clone" title="Ansuchen kopieren"></f:link.action>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.status} == 10">
-                                            <f:link.action action="delete" arguments="{ansuchen : item}" class="knopf-quadratisch delete" title="Ansuchen löschen"></f:link.action>
-                                        </f:if>
                                         <f:if condition="{item.einReichbarDurchTr}">
                                             <f:link.action action="archive" arguments="{ansuchen : item}" class="knopf-quadratisch hide" title="Ansuchen archivieren"></f:link.action>
                                         </f:if>

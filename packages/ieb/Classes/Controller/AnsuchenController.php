@@ -72,7 +72,8 @@ class AnsuchenController extends BaseController
         $newAnsuchen->setNummer($this->ansuchenRepository->createAnsuchenNummer($newAnsuchen->getUid(), $newAnsuchen->getTyp()));
         $this->ansuchenRepository->update($newAnsuchen);
         $this->ansuchenRepository->forcePersist();
-        $this->redirect('list');
+        //$this->redirect('list');
+        return $this->redirectToDirectly();
     }
 
     /**
@@ -203,6 +204,8 @@ class AnsuchenController extends BaseController
         if (isset($arguments['saveAndStandorte'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirectToUri("/uebersicht-tr/standorte");
+        }if (isset($arguments['saveAndStandorteOhne'])) {
+            $this->redirectToUri("/uebersicht-tr/standorte");
         }
         if (isset($arguments['saveAndBerater'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
@@ -210,6 +213,25 @@ class AnsuchenController extends BaseController
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/uebersicht-tr/projektleitung");
+        }
+        $this->redirect('list');
+    }
+
+    protected function redirectToDirectly(): void
+    {
+        $arguments = $this->request->getArguments();
+        
+        if (isset($arguments['saveAndTrainer'])) {
+            $this->redirectToUri("/uebersicht-tr/training");
+        }
+        if (isset($arguments['saveAndStandorte'])) {
+            $this->redirectToUri("/uebersicht-tr/standorte");
+        }
+        if (isset($arguments['saveAndBerater'])) {
+            $this->redirectToUri("/uebersicht-tr/beratung");
+        }
+        if (isset($arguments['saveAndVerantwortliche'])) {
             $this->redirectToUri("/uebersicht-tr/projektleitung");
         }
         $this->redirect('list');

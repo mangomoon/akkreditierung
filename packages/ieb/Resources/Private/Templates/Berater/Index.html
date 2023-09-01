@@ -143,6 +143,23 @@
         <div class="archiv">
             <h2>ARCHIV</h2>
             <table class="tx_ieb standortliste">
+                <tr style="background: none;">
+                    <th class="nachname">
+                        &nbsp;
+                        </td>
+                        <th class="vorname">
+                            &nbsp;
+                        </th>
+                        <th>Archivierung</th>
+                        <th></th>
+                        <th class="td-knopf">
+    
+                        </th>
+                        <th class="td-knopf">
+    
+                        </th>
+                        <th></th>
+                </tr>
                 <f:for each="{beraters}" as="berater">
                     <f:variable name="relationUsages">{ieb:relationUsed(object: berater)}</f:variable>
                     <f:if condition="{berater.archiviert}">
@@ -155,15 +172,18 @@
                             </td>
                             <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
                             <td class="">
-                                <f:if condition="{berater.ok}">
-                                    <f:then>
-                                        ja
-                                    </f:then>
-                                    <f:else>
-                                        nein
-                                    </f:else>
-                                </f:if>
-
+                                <f:if condition="!{berater.reviewC3Status} && {berater.ok}">
+                                        <f:then>
+                                            <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
+                                        </f:then>
+                                        <f:else>
+                                            <f:switch expression="{berater.reviewC3Status}">
+                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt"></span></f:case>
+                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok"></span></f:case>
+                                            </f:switch>
+                                        </f:else>
+                                    </f:if>
                             </td>
                             <td class="td-knopf">
                                 <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">
