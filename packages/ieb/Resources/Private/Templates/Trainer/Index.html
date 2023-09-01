@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    
+    <f:debug>{_all}</f:debug>
     <f:if condition="{trainers -> f:count()} > 10">
         <div class="kriterium">
             <f:form action="index" object="{trainerSearch}" name="trainerSearch">
@@ -197,7 +197,6 @@
                         <th class="vorname">
                                 &nbsp;
                         </th>
-                        <th></th>
                         <th>Archiviert am</th>
                         <th>BaBi</th>
                         <th>PSA</th>
@@ -228,52 +227,59 @@
                         <!-- BaBi -->
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>
-                                <f:if condition="{trainer.okbabi}">
-                                    <f:then>
-                                        <td class="istok"><span class="titleview knopfrund ok" title="Angaben sind vollständig"></span></td>
-                                    </f:then>
-                                    <f:else>
-                                        <td class="istok">
-                                            <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC21BabiStatus}"></span></f:if>
-                                            <f:if condition="{trainer.reviewC21BabiStatus}"><span class="titleview knopfrund auflage-{trainer.reviewC22BabiStatus}"></span></f:if>
-                                        </td>
-                                    </f:else>
-                                </f:if>
+                                <td class="istok">
+                                <f:if condition="!{trainer.reviewC21BabiStatus} && !{trainer.reviewC22BabiStatus} && {trainer.okBabi}">
+                                        <f:then>
+                                            <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
+                                        </f:then>
+                                        <f:else>
+                                            <f:switch expression="{trainer.reviewC21BabiStatus}">
+                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                            </f:switch>
+                                            <f:switch expression="{trainer.reviewC22BabiStatus}">
+                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                            </f:switch>
+                                        </f:else>
+                                    </f:if>
+                                    
                             </f:then>
                             <f:else>
-                                <td></td>
+                                
                             </f:else>
+                            </td>
                         </f:if>
                         
 
                         <!-- PSA -->
                         <f:if condition="{trainer.verwendungPsa}">
                             <f:then>
-                                <f:if condition="{trainer.okpsa}">
-                                    <f:then>
-                                        <td class="istok">
-                                            <f:if condition="{trainer.reviewC21PsaStatus} > 0">
+                                <td class="istok">
+                                <f:if condition="!{trainer.reviewC21PsaStatus} && !{trainer.reviewC22PsaStatus} && {trainer.okPsa}">
                                                 <f:then>
-                                                    <span class="knopfrund auflage-{trainer.reviewC21PsaStatus}"></span>
+                                                    <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
                                                 </f:then>
                                                 <f:else>
-                                                    <span class="knopfrund ok"></span>
+                                                    <f:switch expression="{trainer.reviewC21PsaStatus}">
+                                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                                    </f:switch>
+                                                    <f:switch expression="{trainer.reviewC22PsaStatus}">
+                                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                                    </f:switch>
                                                 </f:else>
                                             </f:if>
-                                        </td>
-                                    </f:then>
-                                    <f:else>
-                                        <td class="istok">
-                                            <f:if condition="{trainer.reviewC21PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC21PsaStatus}" title="Begutachtung"></span></f:if>
-                                            <f:if condition="{trainer.reviewC22PsaStatus} > 2"><span class="titleview knopfrund auflage-{trainer.reviewC22PsaStatus}" title="Begutachtung"></span></f:if>
-                                            <f:if condition="({trainer.reviewC21PsaStatus} < 3) && ({trainer.reviewC22PsaStatus} < 3)"><span class="titleview knopfrund nicht-ok"></span></f:if>
-                                        </td>
-                                    </f:else>
-                                </f:if>
                             </f:then>
                             <f:else>
-                                <td></td>
+                                
                             </f:else>
+                        </td>
                         </f:if>
                         
 

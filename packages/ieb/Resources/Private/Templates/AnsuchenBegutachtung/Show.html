@@ -349,7 +349,7 @@
                         <div class="kriteriumteil">
                             <h3>B.1.2 Kompetenzbereiche</h3>
                             <div class="erlaeuterung {f:if condition:'{ansuchen.typ}==2', then:'notvisible'}">
-                                <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                                <p class="hinweis">Hinweis: Neben den Lernkompetenzen sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
                             </div>
                             <ul>
                                 <f:if condition="{ansuchen.typ}==1">
@@ -548,14 +548,14 @@
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <label>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ja', else:'nein')}</b>.</label>
+                        <label>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}',then:'ja', else:'nein')}</b>.</label>
+
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
                                 anmerkung:'{ansuchen.pruefbescheid}',
                                 diff:'{diff.pruefbescheid_datei}',
                                 diffanmerkung:'{diff.pruefbescheid}',
                                 difftyp:'{difftyp}'
-                                
                             }" />
 
                         <div class="abstand-gross"></div>
@@ -807,7 +807,7 @@
                             }" />
                             <div class="abstand-gross"></div>
                             <label>Kinderbetreuung</label>
-                            <f:if condition="ansuchen.kinderbetreuung">
+                            <f:if condition="{ansuchen.kinderbetreuung}">
                                 <p>
                                     Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
                                 </p>

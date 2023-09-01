@@ -285,7 +285,7 @@
 
         <f:if condition="({ansuchen.typ}==1) || {ansuchen.typ}==0)">
             <div class="erlaeuterung babi">
-            <p class="hinweis babi reqkomp">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+            <p class="hinweis babi reqkomp">Hinweis: Neben den Lernkompetenzen sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
         <div class="formfields row babi">
             <div class="col-10">
@@ -655,6 +655,7 @@
     </f:if>
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
+        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
     </div>
     <f:if condition="{relations.angebotVerantwortliche}">
         <f:then>
@@ -719,7 +720,8 @@
             <f:then>
                 <f:if condition="{relations.trainerbabi}">
                     <f:then>
-                        <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
+                        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
+                            <f:form.select property="trainer" options="{relations.trainerbabi}" optionLabelField="fullName" multiple="1" class="testa" />
 
                         <div class="trcheckcheck">
                             <f:form.select property="trainer" options="{relations.trainerbabiinactive}" optionLabelField="fullName" multiple="1" class="testa notok"/>
@@ -740,7 +742,7 @@
             <f:else>
                 <f:if condition="{relations.trainerpsa}">
                     <f:then>
-                        
+                        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
 
                         <f:form.select property="trainer" options="{relations.trainerpsa}" optionLabelField="fullName" multiple="1" class="testa"/>
 
@@ -792,6 +794,7 @@
     </div>
     <f:if condition="{relations.berateraktivundok}">
         <f:then>
+            <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <f:form.select property="berater" options="{relations.berateraktivundok}" optionLabelField="fullName" multiple="1" class="testa" />
 
             <div class="trcheckcheck">

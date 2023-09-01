@@ -1338,10 +1338,11 @@ table.ansuchenbegutachtung td.check {
 
 .komm-int {
     color: var(--f5);
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .komm-int p {
     padding: 2px 0;
+    text-transform: none;
 }
 
 .komm-int span.name {

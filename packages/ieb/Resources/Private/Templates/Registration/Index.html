@@ -28,6 +28,11 @@
 
                 <div class="row">
                     <div class="col">
+                        <f:render partial="Form/Input" arguments="{property: 'username',label: 'Benutzername', required:1}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <f:render partial="Form/Input" arguments="{property: 'password', type:'password', label: 'Passwort', required:1}" />
                     </div>
                     <div class="col">
