@@ -26,6 +26,8 @@ class StammdatenBegutachtungController extends BaseController
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\StammdatenRepository $stammdatenRepository;
+    protected Repository\TextbausteineRepository $textbausteineRepository;
+
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
     {
@@ -58,6 +60,7 @@ class StammdatenBegutachtungController extends BaseController
             'stammdaten' => $stammdaten,
             'begutachtung' => $begutachtung,
             'ansuchen' => $ansuchen,
+            'textbausteine' => $this->textbausteineRepository->getAll(),
         ]);
         return $this->htmlResponse();
     }
@@ -80,6 +83,11 @@ class StammdatenBegutachtungController extends BaseController
         $this->stammdatenRepository->update($stammdaten);
         $this->addFlashMessage('Begutachtung gespeichert');
         $this->redirect('show', null, null, ['stammdaten' => $stammdaten, 'ansuchen' => $ansuchen]);
+    }
+
+    public function injectTextbausteineRepository(Repository\TextbausteineRepository $repository): void
+    {
+        $this->textbausteineRepository = $repository;
     }
 
 }

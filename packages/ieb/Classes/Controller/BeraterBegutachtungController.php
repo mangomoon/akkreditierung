@@ -25,6 +25,8 @@ class BeraterBegutachtungController extends BaseController
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\BeraterRepository $beraterRepository;
+    protected Repository\TextbausteineRepository $textbausteineRepository;
+
 
     public function showAction(Berater $berater, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\BeraterBegutachtung $begutachtung = null): ResponseInterface
     {
@@ -43,6 +45,7 @@ class BeraterBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId),
+            'textbausteine' => $this->textbausteineRepository->getAll(),
         ]);
         return $this->htmlResponse();
     }
@@ -74,6 +77,11 @@ class BeraterBegutachtungController extends BaseController
     public function injectBeraterRepository(Repository\BeraterRepository $beraterRepository): void
     {
         $this->beraterRepository = $beraterRepository;
+    }
+
+    public function injectTextbausteineRepository(Repository\TextbausteineRepository $repository): void
+    {
+        $this->textbausteineRepository = $repository;
     }
 
 }

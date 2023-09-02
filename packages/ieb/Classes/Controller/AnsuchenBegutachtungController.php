@@ -29,7 +29,7 @@ class AnsuchenBegutachtungController extends BaseController
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\StammdatenRepository $stammdatenRepository;
     protected Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
-
+    protected Repository\TextbausteineRepository $textbausteineRepository;
 
     public function listAction(): ResponseInterface
     {
@@ -61,6 +61,7 @@ class AnsuchenBegutachtungController extends BaseController
             'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
 //            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE)),
             'stammdaten' => $stammdaten,
+            'textbausteine' => $this->textbausteineRepository->getAll(),
         ]);
         return $this->htmlResponse();
     }
@@ -202,4 +203,8 @@ class AnsuchenBegutachtungController extends BaseController
         $this->angebotVerantwortlichRepository = $repository;
     }
 
+    public function injectTextbausteineRepository(Repository\TextbausteineRepository $repository): void
+    {
+        $this->textbausteineRepository = $repository;
+    }
 }

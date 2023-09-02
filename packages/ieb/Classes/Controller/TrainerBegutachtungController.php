@@ -25,6 +25,7 @@ class TrainerBegutachtungController extends BaseController
 
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\TrainerRepository $trainerRepository;
+    protected Repository\TextbausteineRepository $textbausteineRepository;
 
     public function showAction(Trainer $trainer, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\TrainerBegutachtung $begutachtung = null): ResponseInterface
     {
@@ -42,6 +43,7 @@ class TrainerBegutachtungController extends BaseController
             'trainer' => $trainer,
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
+            'textbausteine' => $this->textbausteineRepository->getAll(),
             'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId)
         ]);
         return $this->htmlResponse();
@@ -74,6 +76,11 @@ class TrainerBegutachtungController extends BaseController
     public function injectTrainerRepository(Repository\TrainerRepository $trainerRepository): void
     {
         $this->trainerRepository = $trainerRepository;
+    }
+
+    public function injectTextbausteineRepository(Repository\TextbausteineRepository $repository): void
+    {
+        $this->textbausteineRepository = $repository;
     }
 
 }
