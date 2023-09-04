@@ -349,7 +349,7 @@ function reqleerLoeschen() {
         });
 
         $('.titleview').hover(function(e) {
-            e.preventDefault();
+                e.preventDefault();
                 var title = $(this).attr('title');
                 $('#mangoTooltip').html(title);
                 var offset = $(this).offset();
