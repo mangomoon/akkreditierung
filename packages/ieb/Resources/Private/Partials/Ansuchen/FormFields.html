@@ -708,7 +708,7 @@
     <div class="infobox" id="c-2-hilfe">
         <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
     </div>
-    <f:if condition="{ansuchen.reviewC2Status}==4">
+    <f:if condition="{ansuchen.reviewC2Status}>2">
         <div class="commentTr">
             <p><f:format.nl2br>{ansuchen.reviewC2CommentTr}</f:format.nl2br></p>
         </div>
@@ -720,22 +720,35 @@
             <f:then>
                 <f:if condition="{relations.trainerbabi}">
                     <f:then>
-                        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind. <span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></p>
+                        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
                         <div class="tb-liste">
+                            
                             <f:for each="{relations.trainerbabi}" as="t">
-                                <div class="tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>{t.fullname}&nbsp;&nbsp;
-                                    <f:switch expression="{t.reviewC21BabiStatus}">
-                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                                    </f:switch>
-                                    <f:switch expression="{t.reviewC22BabiStatus}">
-                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                                    </f:switch>
+                                <div class="tb-zeile tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                    <div class="a">{t.fullname}</div>
+                                    <div class="b">
+                                        <f:switch expression="{t.statusAfterReview}">
+                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Bearbeitung erforderlich"></span></f:case>
+                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Erforderliche Bearbeitung noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                        </f:switch>
+                                    </div>
+                                    <div class="c">
+                                        <f:switch expression="{t.reviewC21BabiStatus}">
+                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                        </f:switch>
+                                        <f:switch expression="{t.reviewC22BabiStatus}">
+                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                        </f:switch>
+                                    </div>
+                                    <div class="d">{t.reviewFrist -> f:format.date(format:'d.m.Y')}</div>
                                 </div>
                             </f:for>
+                            
                         </div>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
@@ -755,18 +768,23 @@
                         <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
 
                         <div class="tb-liste">
-                            <f:for each="{relations.trainerbabi}" as="t">
-                                <div class="tbs-<f:if condition='{t.reviewC21PsaStatus}>2 || {t.reviewC22PsaStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>{t.fullname}&nbsp;&nbsp;
-                                    <f:switch expression="{t.reviewC21PsaStatus}">
-                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                                    </f:switch>
-                                    <f:switch expression="{t.reviewC22PsaStatus}">
-                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                                    </f:switch>
+                            <f:for each="{relations.trainerpsa}" as="t">
+                                <div class="tb-zeile tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                    <div class="a">{t.fullname}</div>
+                                    <div class="b"></div>
+                                    <div class="c">
+                                        <f:switch expression="{t.reviewC21BabiStatus}">
+                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                        </f:switch>
+                                        <f:switch expression="{t.reviewC22BabiStatus}">
+                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                        </f:switch>
+                                    </div>
+                                    <div class="d">{t.reviewFrist -> f:format.date(format:'d.m.Y')}</div>
                                 </div>
                             </f:for>
                         </div>
@@ -817,17 +835,22 @@
             <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <div class="tb-liste">
                 <f:for each="{relations.berateraktivundok}" as="t">
-                    <div class="tbs-<f:if condition='{t.reviewC3Status}>2 || {t.reviewC32Status}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>{t.fullname}&nbsp;&nbsp;
-                        <f:switch expression="{t.reviewC3Status}">
-                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                        </f:switch>
-                        <f:switch expression="{t.reviewC32Status}">
-                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                        </f:switch>
+                    <div class="tb-zeile tbs-<f:if condition='{t.reviewC31Status}>2 || {t.reviewC32Status}>2'>bad</f:if>"><f:form.checkbox property="berater" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
+                        <div class="a">{t.fullname}</div>
+                        <div class="b"></div>
+                        <div class="c">
+                            <f:switch expression="{t.reviewC3Status}">
+                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                            </f:switch>
+                            <f:switch expression="{t.reviewC32Status}">
+                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                            </f:switch>
+                        </div>
+                        <div class="d">{t.reviewFrist -> f:format.date(format:'d.m.Y')}</div>
                     </div>
                 </f:for>
             </div>

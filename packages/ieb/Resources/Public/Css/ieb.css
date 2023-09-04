@@ -493,21 +493,36 @@ select {
     overflow: auto;
 }
 
-.multi-select-menu label, .tb-liste div {
+.multi-select-menu label, .tb-zeile {
     margin-bottom: 12px;
     text-transform: unset;
     font-size: 1em;
-    padding: 4px;
+    padding: 4px 4px 3px 4px ;
     background-color: var(--f0);
+}
+#b-1-d-2 .multi-select-menu label {
+    background: #fff;
 }
 .tb-liste div .knopfrund{
     width: 14px;
     height: 14px;
+    vertical-align: top;
+    margin-top: 1px;
 }
 .tb-liste div.tbs-bad {
-    background-color: #fcd49f;
-    
+    background-color: #ffe3c0;
 }
+
+.tb-zeile div{
+    display: inline-block;
+}
+.tb-zeile div.b, .tb-zeile div.c {
+    width: 40px;
+}
+.tb-zeile div.a {
+    width: 300px;
+}
+
 .multi-select-button {
     display: none;
 }

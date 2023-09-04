@@ -296,8 +296,25 @@ function trcheckboxcheck() {
 
 
 function oeffnenBeraterBegutachtung() {
+    var s = 1;
     a = $("#beraterbegutachtung input.c3:checked").val();
-    if (a > 3) {
+    b = $("#beraterbegutachtung input.c32:checked").val();
+    console.log(a,b,s);
+    if (a + b < 3) {
+        s = 1;
+    }
+    if ((a == 2) || (b == 2) ) {
+        s = 2;
+    }
+    if ((a == 3) || (b == 3) ) {
+        s = 3;
+    }
+    if ((a == 4) || (b == 4) ) {
+        s = 4;
+    }
+    if (s < 3) {
+        $('.komm-ext').hide();
+    } else {
         $('.komm-ext').show();
     }
 }
@@ -528,10 +545,10 @@ function reqleerLoeschen() {
      });
 
      // ######################################## Form Ansuchen Beraterhinzufügen
-     $('.beraterwahl').click(function() {
-         $('#verhueller').show();
-         $('#beraterwahl').show();
-     });
+    //  $('.beraterwahl').click(function() {
+    //      $('#verhueller').show();
+    //      $('#beraterwahl').show();
+    //  });
 
      // ######################################## Form Ansuchen Babi/PSA
 
@@ -622,6 +639,7 @@ function reqleerLoeschen() {
          $(this).find("input").prop('checked', true);
          
          oeffnenTrainerBegutachtung();
+         oeffnenBeraterBegutachtung();
 
          $('#summestatus label').removeClass('checked');
          //$(sr).addClass('checked');
