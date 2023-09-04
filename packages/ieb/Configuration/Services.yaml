@@ -12,3 +12,9 @@ services:
 
   GeorgRinger\Ieb\Service\CustomDataHandler:
     public: true
+
+  GeorgRinger\Ieb\Command\FristUeberwachungCommand:
+    tags:
+      - name: 'console.command'
+        command: 'ieb:fristUeberwachung'
+        description: 'Send mails for fristen'
