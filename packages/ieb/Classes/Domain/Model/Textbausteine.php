@@ -23,7 +23,7 @@ class Textbausteine extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * kriterium
      *
-     * @var string
+     * @var int
      */
     protected $kriterium = '';
 
@@ -33,27 +33,6 @@ class Textbausteine extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $baustein = '';
-
-    /**
-     * Returns the kriterium
-     *
-     * @return string
-     */
-    public function getKriterium()
-    {
-        return $this->kriterium;
-    }
-
-    /**
-     * Sets the kriterium
-     *
-     * @param string $kriterium
-     * @return void
-     */
-    public function setKriterium(string $kriterium)
-    {
-        $this->kriterium = $kriterium;
-    }
 
     /**
      * Returns the baustein
@@ -74,5 +53,26 @@ class Textbausteine extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBaustein(string $baustein)
     {
         $this->baustein = $baustein;
+    }
+
+    /**
+     * Returns the kriterium
+     *
+     * @return int kriterium
+     */
+    public function getKriterium()
+    {
+        return $this->kriterium;
+    }
+
+    /**
+     * Sets the kriterium
+     *
+     * @param string $kriterium
+     * @return void
+     */
+    public function setKriterium(string $kriterium)
+    {
+        $this->kriterium = $kriterium;
     }
 }

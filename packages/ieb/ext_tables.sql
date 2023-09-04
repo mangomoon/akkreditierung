@@ -147,7 +147,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_total_comment_internal_step text NOT NULL DEFAULT '',
 	review_total_comment_tr text NOT NULL DEFAULT '',
 	review_total_status int(11) DEFAULT '0' NOT NULL,
-	review_total_frist date DEFAULT NULL,
+	review_total_frist int(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	status int(11) DEFAULT '0' NOT NULL,
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
@@ -199,6 +199,12 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	notitzzettel text NOT NULL DEFAULT '',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	trotzdem_abschicken text NOT NULL DEFAULT '',
+	review_total_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_total_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_pruefbescheid int(11) NOT NULL DEFAULT '0',
+	review_frist_pruefbescheid_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_pruefbescheid_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	status_after_review int(11) NOT NULL DEFAULT '0',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -237,10 +243,12 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_c3_status int(11) DEFAULT '0' NOT NULL,
+	review_c32_status int(11) DEFAULT '0' NOT NULL,
 	review_c3_comment_internal text NOT NULL DEFAULT '',
 	review_c3_comment_internal_step text NOT NULL DEFAULT '',
 	review_c3_comment_tr text NOT NULL DEFAULT '',
-	locked_by int(11) NOT NULL DEFAULT '0'
+	locked_by int(11) NOT NULL DEFAULT '0',
+	status_after_review int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_trainer (
@@ -287,8 +295,11 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_psa_comment_tr text NOT NULL DEFAULT '',
 	review_c2_psa_comment_internal_step text NOT NULL DEFAULT '',
 	review_c2_babi_comment_internal_step text NOT NULL DEFAULT '',
-	review_frist date DEFAULT NULL,
-	locked_by int(11) NOT NULL DEFAULT '0'
+	review_frist int(11) NOT NULL DEFAULT '0',
+	locked_by int(11) NOT NULL DEFAULT '0',
+	review_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	status_after_review int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -325,7 +336,10 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	review_a2_comment_internal text NOT NULL DEFAULT '',
 	review_a2_comment_internal_step text NOT NULL DEFAULT '',
 	review_a2_comment_tr text NOT NULL DEFAULT '',
-	review_oecert_frist date DEFAULT NULL
+	review_oecert_frist int(11) NOT NULL DEFAULT '0',
+	review_oecert_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_oecert_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	status_after_review int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
@@ -347,21 +361,11 @@ CREATE TABLE fe_users (
 	email varchar(255) NOT NULL DEFAULT '',
 	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
-	ausschluss text NOT NULL DEFAULT '',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
-);
-
-CREATE TABLE tx_ieb_domain_model_kriterien (
-	chiffre varchar(255) NOT NULL DEFAULT '',
-	name varchar(255) NOT NULL DEFAULT '',
-	hinweis text,
-	pruefkriterien text,
-	hilfetext text,
-	ppd text
+	ausschluss text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_textbausteine (
-	kriterium varchar(255) NOT NULL DEFAULT '',
+	kriterium int(11) DEFAULT '0' NOT NULL,
 	baustein text NOT NULL DEFAULT ''
 );
 

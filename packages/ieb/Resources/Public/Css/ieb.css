@@ -1616,6 +1616,9 @@ select#field_upcomingStatus option[value=100] {
 .kriterium.status-4, table.ansuchenliste.status-4 {
     border: solid 3px var(--stammdaten);
 }
+.kriterium.status-3, table.ansuchenliste.status-3 {
+    border: solid 3px #7c549a;
+}
 .commentTr {
     border: solid 3px #fff;
     background-color: #feb14c;

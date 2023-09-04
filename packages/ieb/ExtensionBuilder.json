@@ -1234,7 +1234,7 @@
             "config": {
                 "position": [
                     645,
-                    266
+                    257
                 ]
             },
             "name": "New Model Object",
@@ -1837,7 +1837,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "reviewTotalFrist",
-                            "propertyType": "NativeDate",
+                            "propertyType": "Date",
                             "uid": "887437486453"
                         },
                         {
@@ -2451,6 +2451,78 @@
                             "propertyName": "trotzdemAbschicken",
                             "propertyType": "Text",
                             "uid": "993335010015"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewTotalFristMailSent14t",
+                            "propertyType": "Boolean",
+                            "uid": "1258220802882"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewTotalFristMailSent1t",
+                            "propertyType": "Boolean",
+                            "uid": "22089015443"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristPruefbescheid",
+                            "propertyType": "Date",
+                            "uid": "895079666194"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristPruefbescheidMailSent14t",
+                            "propertyType": "Boolean",
+                            "uid": "152381329227"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristPruefbescheidMailSent1t",
+                            "propertyType": "Boolean",
+                            "uid": "1409732206241"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReview",
+                            "propertyType": "Integer",
+                            "uid": "460939206197"
                         }
                     ]
                 },
@@ -2917,6 +2989,18 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
+                            "propertyName": "reviewC32Status",
+                            "propertyType": "Select",
+                            "uid": "589035997372"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
                             "propertyName": "reviewC3CommentInternal",
                             "propertyType": "Text",
                             "uid": "8747484814"
@@ -2956,6 +3040,18 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "777304711204"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReview",
+                            "propertyType": "Integer",
+                            "uid": "416186844490"
                         }
                     ]
                 },
@@ -3523,7 +3619,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "reviewFrist",
-                            "propertyType": "NativeDate",
+                            "propertyType": "Date",
                             "uid": "1086866959005"
                         },
                         {
@@ -3537,6 +3633,42 @@
                             "propertyName": "lockedBy",
                             "propertyType": "Integer",
                             "uid": "400542981672"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristMailSent14t",
+                            "propertyType": "Boolean",
+                            "uid": "1627979012360"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristMailSent1t",
+                            "propertyType": "Boolean",
+                            "uid": "1478876540513"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReview",
+                            "propertyType": "Integer",
+                            "uid": "77682498632"
                         }
                     ]
                 },
@@ -3984,8 +4116,44 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "reviewOecertFrist",
-                            "propertyType": "NativeDate",
+                            "propertyType": "Date",
                             "uid": "830496466888"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewOecertFristMailSent14t",
+                            "propertyType": "Boolean",
+                            "uid": "341741441996"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewOecertFristMailSent1t",
+                            "propertyType": "Boolean",
+                            "uid": "1334312918568"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReview",
+                            "propertyType": "Integer",
+                            "uid": "173689097040"
                         }
                     ]
                 },
@@ -4272,119 +4440,6 @@
             "config": {
                 "position": [
                     1194,
-                    24
-                ]
-            },
-            "name": "New Model Object",
-            "value": {
-                "actionGroup": {
-                    "_default0_index": true,
-                    "_default1_list": true,
-                    "_default2_show": true,
-                    "_default3_new_create": true,
-                    "_default4_edit_update": true,
-                    "_default5_delete": true,
-                    "customActions": []
-                },
-                "name": "Kriterien",
-                "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
-                    "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": true,
-                    "categorizable": false,
-                    "description": "",
-                    "mapToTable": "",
-                    "parentClass": "",
-                    "sorting": false,
-                    "type": "Entity",
-                    "uid": "989990172894"
-                },
-                "propertyGroup": {
-                    "properties": [
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "chiffre",
-                            "propertyType": "String",
-                            "uid": "55520010345"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "name",
-                            "propertyType": "String",
-                            "uid": "65596187415"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "hinweis",
-                            "propertyType": "RichText",
-                            "uid": "1208227894800"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "pruefkriterien",
-                            "propertyType": "RichText",
-                            "uid": "1281295986367"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "hilfetext",
-                            "propertyType": "RichText",
-                            "uid": "840114272897"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "ppd",
-                            "propertyType": "RichText",
-                            "uid": "1603754446092"
-                        }
-                    ]
-                },
-                "relationGroup": {
-                    "relations": []
-                }
-            }
-        },
-        {
-            "config": {
-                "position": [
-                    1194,
                     263
                 ]
             },
@@ -4424,7 +4479,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "kriterium",
-                            "propertyType": "String",
+                            "propertyType": "Select",
                             "uid": "1492933321407"
                         },
                         {
@@ -4739,7 +4794,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-08-29 10:51",
+        "last_modified": "2023-09-04 09:32",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

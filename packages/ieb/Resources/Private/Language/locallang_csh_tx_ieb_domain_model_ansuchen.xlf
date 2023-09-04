@@ -300,6 +300,24 @@
 			<trans-unit id="trotzdem_abschicken.description" resname="trotzdem_abschicken.description">
 				<source>trotzdemAbschicken</source>
 			</trans-unit>
+			<trans-unit id="review_total_frist_mail_sent14t.description" resname="review_total_frist_mail_sent14t.description">
+				<source>reviewTotalFristMailSent14t</source>
+			</trans-unit>
+			<trans-unit id="review_total_frist_mail_sent1t.description" resname="review_total_frist_mail_sent1t.description">
+				<source>reviewTotalFristMailSent1t</source>
+			</trans-unit>
+			<trans-unit id="review_frist_pruefbescheid.description" resname="review_frist_pruefbescheid.description">
+				<source>reviewFristPruefbescheid</source>
+			</trans-unit>
+			<trans-unit id="review_frist_pruefbescheid_mail_sent14t.description" resname="review_frist_pruefbescheid_mail_sent14t.description">
+				<source>reviewFristPruefbescheidMailSent14t</source>
+			</trans-unit>
+			<trans-unit id="review_frist_pruefbescheid_mail_sent1t.description" resname="review_frist_pruefbescheid_mail_sent1t.description">
+				<source>reviewFristPruefbescheidMailSent1t</source>
+			</trans-unit>
+			<trans-unit id="status_after_review.description" resname="status_after_review.description">
+				<source>statusAfterReview</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>

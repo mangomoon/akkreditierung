@@ -223,6 +223,27 @@ class BeraterTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewC32StatusReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC32Status()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC32StatusForIntSetsReviewC32Status(): void
+    {
+        $this->subject->setReviewC32Status(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC32Status'));
+    }
+
+    /**
+     * @test
+     */
     public function getReviewC3CommentInternalReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -302,5 +323,26 @@ class BeraterTest extends UnitTestCase
         $this->subject->setLockedBy(12);
 
         self::assertEquals(12, $this->subject->_get('lockedBy'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAfterReviewReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAfterReview()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAfterReviewForIntSetsStatusAfterReview(): void
+    {
+        $this->subject->setStatusAfterReview(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAfterReview'));
     }
 }

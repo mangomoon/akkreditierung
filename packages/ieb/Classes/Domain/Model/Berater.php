@@ -96,6 +96,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewC3Status = 0;
 
     /**
+     * reviewC32Status
+     *
+     * @var int
+     */
+    protected $reviewC32Status = 0;
+
+    /**
      * reviewC3CommentInternal
      *
      * @var string
@@ -122,6 +129,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $lockedBy = 0;
+
+    /**
+     * statusAfterReview
+     *
+     * @var int
+     */
+    protected $statusAfterReview = 0;
 
     /**
      * __construct
@@ -444,5 +458,47 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLockedBy(int $lockedBy)
     {
         $this->lockedBy = $lockedBy;
+    }
+
+    /**
+     * Returns the reviewC32Status
+     *
+     * @return int
+     */
+    public function getReviewC32Status()
+    {
+        return $this->reviewC32Status;
+    }
+
+    /**
+     * Sets the reviewC32Status
+     *
+     * @param int $reviewC32Status
+     * @return void
+     */
+    public function setReviewC32Status(int $reviewC32Status)
+    {
+        $this->reviewC32Status = $reviewC32Status;
+    }
+
+    /**
+     * Returns the statusAfterReview
+     *
+     * @return int
+     */
+    public function getStatusAfterReview()
+    {
+        return $this->statusAfterReview;
+    }
+
+    /**
+     * Sets the statusAfterReview
+     *
+     * @param int $statusAfterReview
+     * @return void
+     */
+    public function setStatusAfterReview(int $statusAfterReview)
+    {
+        $this->statusAfterReview = $statusAfterReview;
     }
 }

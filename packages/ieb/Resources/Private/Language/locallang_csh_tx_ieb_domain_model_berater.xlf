@@ -30,6 +30,9 @@
 			<trans-unit id="review_c3_status.description" resname="review_c3_status.description">
 				<source>reviewC3Status</source>
 			</trans-unit>
+			<trans-unit id="review_c32_status.description" resname="review_c32_status.description">
+				<source>reviewC32Status</source>
+			</trans-unit>
 			<trans-unit id="review_c3_comment_internal.description" resname="review_c3_comment_internal.description">
 				<source>reviewC3CommentInternal</source>
 			</trans-unit>
@@ -41,6 +44,9 @@
 			</trans-unit>
 			<trans-unit id="locked_by.description" resname="locked_by.description">
 				<source>lockedBy</source>
+			</trans-unit>
+			<trans-unit id="status_after_review.description" resname="status_after_review.description">
+				<source>statusAfterReview</source>
 			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>

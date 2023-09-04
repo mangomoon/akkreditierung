@@ -365,7 +365,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * reviewTotalFrist
      *
-     * @var \Date
+     * @var \DateTime
      */
     protected $reviewTotalFrist = null;
 
@@ -701,6 +701,76 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $upcomingStatus = 0;
 
     /**
+     * gutachterLockedBy
+     *
+     * @var int
+     */
+    protected $gutachterLockedBy = 0;
+
+    /**
+     * notitzzettel
+     *
+     * @var string
+     */
+    protected $notitzzettel = '';
+
+    /**
+     * archiviert
+     *
+     * @var bool
+     */
+    protected $archiviert = false;
+
+    /**
+     * trotzdemAbschicken
+     *
+     * @var string
+     */
+    protected $trotzdemAbschicken = '';
+
+    /**
+     * reviewTotalFristMailSent14t
+     *
+     * @var bool
+     */
+    protected $reviewTotalFristMailSent14t = false;
+
+    /**
+     * reviewTotalFristMailSent1t
+     *
+     * @var bool
+     */
+    protected $reviewTotalFristMailSent1t = false;
+
+    /**
+     * reviewFristPruefbescheid
+     *
+     * @var \DateTime
+     */
+    protected $reviewFristPruefbescheid = null;
+
+    /**
+     * reviewFristPruefbescheidMailSent14t
+     *
+     * @var bool
+     */
+    protected $reviewFristPruefbescheidMailSent14t = false;
+
+    /**
+     * reviewFristPruefbescheidMailSent1t
+     *
+     * @var bool
+     */
+    protected $reviewFristPruefbescheidMailSent1t = false;
+
+    /**
+     * statusAfterReview
+     *
+     * @var int
+     */
+    protected $statusAfterReview = 0;
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -776,34 +846,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\Berater>
      */
     protected $berater = null;
-
-    /**
-     * gutachterLockedBy
-     *
-     * @var int
-     */
-    protected $gutachterLockedBy = 0;
-
-    /**
-     * notitzzettel
-     *
-     * @var string
-     */
-    protected $notitzzettel = '';
-
-    /**
-     * archiviert
-     *
-     * @var bool
-     */
-    protected $archiviert = false;
-
-    /**
-     * trotzdemAbschicken
-     *
-     * @var string
-     */
-    protected $trotzdemAbschicken = '';
 
     /**
      * gutachterEins
@@ -2826,7 +2868,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
-
     public function isEditableByTr()
     {
         return AnsuchenStatus::statusBearbeitbarDurchTrCheck($this->status);
@@ -3425,8 +3466,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
     }
 
-
-
     /**
      * @return \DateTime
      */
@@ -3655,5 +3694,171 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setGutachterZwei(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $gutachterZwei)
     {
         $this->gutachterZwei = $gutachterZwei;
+    }
+
+    /**
+     * Returns the reviewTotalFristMailSent14t
+     *
+     * @return bool
+     */
+    public function getReviewTotalFristMailSent14t()
+    {
+        return $this->reviewTotalFristMailSent14t;
+    }
+
+    /**
+     * Sets the reviewTotalFristMailSent14t
+     *
+     * @param bool $reviewTotalFristMailSent14t
+     * @return void
+     */
+    public function setReviewTotalFristMailSent14t(bool $reviewTotalFristMailSent14t)
+    {
+        $this->reviewTotalFristMailSent14t = $reviewTotalFristMailSent14t;
+    }
+
+    /**
+     * Returns the boolean state of reviewTotalFristMailSent14t
+     *
+     * @return bool
+     */
+    public function isReviewTotalFristMailSent14t()
+    {
+        return $this->reviewTotalFristMailSent14t;
+    }
+
+    /**
+     * Returns the reviewTotalFristMailSent1t
+     *
+     * @return bool
+     */
+    public function getReviewTotalFristMailSent1t()
+    {
+        return $this->reviewTotalFristMailSent1t;
+    }
+
+    /**
+     * Sets the reviewTotalFristMailSent1t
+     *
+     * @param bool $reviewTotalFristMailSent1t
+     * @return void
+     */
+    public function setReviewTotalFristMailSent1t(bool $reviewTotalFristMailSent1t)
+    {
+        $this->reviewTotalFristMailSent1t = $reviewTotalFristMailSent1t;
+    }
+
+    /**
+     * Returns the boolean state of reviewTotalFristMailSent1t
+     *
+     * @return bool
+     */
+    public function isReviewTotalFristMailSent1t()
+    {
+        return $this->reviewTotalFristMailSent1t;
+    }
+
+    /**
+     * Returns the reviewFristPruefbescheid
+     *
+     * @return \DateTime
+     */
+    public function getReviewFristPruefbescheid()
+    {
+        return $this->reviewFristPruefbescheid;
+    }
+
+    /**
+     * Sets the reviewFristPruefbescheid
+     *
+     * @param \DateTime $reviewFristPruefbescheid
+     * @return void
+     */
+    public function setReviewFristPruefbescheid(\DateTime $reviewFristPruefbescheid)
+    {
+        $this->reviewFristPruefbescheid = $reviewFristPruefbescheid;
+    }
+
+    /**
+     * Returns the reviewFristPruefbescheidMailSent14t
+     *
+     * @return bool
+     */
+    public function getReviewFristPruefbescheidMailSent14t()
+    {
+        return $this->reviewFristPruefbescheidMailSent14t;
+    }
+
+    /**
+     * Sets the reviewFristPruefbescheidMailSent14t
+     *
+     * @param bool $reviewFristPruefbescheidMailSent14t
+     * @return void
+     */
+    public function setReviewFristPruefbescheidMailSent14t(bool $reviewFristPruefbescheidMailSent14t)
+    {
+        $this->reviewFristPruefbescheidMailSent14t = $reviewFristPruefbescheidMailSent14t;
+    }
+
+    /**
+     * Returns the boolean state of reviewFristPruefbescheidMailSent14t
+     *
+     * @return bool
+     */
+    public function isReviewFristPruefbescheidMailSent14t()
+    {
+        return $this->reviewFristPruefbescheidMailSent14t;
+    }
+
+    /**
+     * Returns the reviewFristPruefbescheidMailSent1t
+     *
+     * @return bool
+     */
+    public function getReviewFristPruefbescheidMailSent1t()
+    {
+        return $this->reviewFristPruefbescheidMailSent1t;
+    }
+
+    /**
+     * Sets the reviewFristPruefbescheidMailSent1t
+     *
+     * @param bool $reviewFristPruefbescheidMailSent1t
+     * @return void
+     */
+    public function setReviewFristPruefbescheidMailSent1t(bool $reviewFristPruefbescheidMailSent1t)
+    {
+        $this->reviewFristPruefbescheidMailSent1t = $reviewFristPruefbescheidMailSent1t;
+    }
+
+    /**
+     * Returns the boolean state of reviewFristPruefbescheidMailSent1t
+     *
+     * @return bool
+     */
+    public function isReviewFristPruefbescheidMailSent1t()
+    {
+        return $this->reviewFristPruefbescheidMailSent1t;
+    }
+
+    /**
+     * Returns the statusAfterReview
+     *
+     * @return int
+     */
+    public function getStatusAfterReview()
+    {
+        return $this->statusAfterReview;
+    }
+
+    /**
+     * Sets the statusAfterReview
+     *
+     * @param int $statusAfterReview
+     * @return void
+     */
+    public function setStatusAfterReview(int $statusAfterReview)
+    {
+        $this->statusAfterReview = $statusAfterReview;
     }
 }

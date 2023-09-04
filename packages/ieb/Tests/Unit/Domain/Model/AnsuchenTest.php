@@ -2066,6 +2066,121 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewTotalFristMailSent14tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewTotalFristMailSent14t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalFristMailSent14tForBoolSetsReviewTotalFristMailSent14t(): void
+    {
+        $this->subject->setReviewTotalFristMailSent14t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewTotalFristMailSent14t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewTotalFristMailSent1tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewTotalFristMailSent1t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalFristMailSent1tForBoolSetsReviewTotalFristMailSent1t(): void
+    {
+        $this->subject->setReviewTotalFristMailSent1t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewTotalFristMailSent1t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewFristPruefbescheidReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getReviewFristPruefbescheid()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristPruefbescheidForDateTimeSetsReviewFristPruefbescheid(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setReviewFristPruefbescheid($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFristPruefbescheid'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewFristPruefbescheidMailSent14tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewFristPruefbescheidMailSent14t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristPruefbescheidMailSent14tForBoolSetsReviewFristPruefbescheidMailSent14t(): void
+    {
+        $this->subject->setReviewFristPruefbescheidMailSent14t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewFristPruefbescheidMailSent14t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewFristPruefbescheidMailSent1tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewFristPruefbescheidMailSent1t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristPruefbescheidMailSent1tForBoolSetsReviewFristPruefbescheidMailSent1t(): void
+    {
+        $this->subject->setReviewFristPruefbescheidMailSent1t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewFristPruefbescheidMailSent1t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAfterReviewReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAfterReview()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAfterReviewForIntSetsStatusAfterReview(): void
+    {
+        $this->subject->setStatusAfterReview(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAfterReview'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

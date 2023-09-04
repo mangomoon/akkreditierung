@@ -746,4 +746,61 @@ class StammdatenTest extends UnitTestCase
 
         self::assertEquals($dateTimeFixture, $this->subject->_get('reviewOecertFrist'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewOecertFristMailSent14tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewOecertFristMailSent14t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewOecertFristMailSent14tForBoolSetsReviewOecertFristMailSent14t(): void
+    {
+        $this->subject->setReviewOecertFristMailSent14t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewOecertFristMailSent14t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewOecertFristMailSent1tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewOecertFristMailSent1t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewOecertFristMailSent1tForBoolSetsReviewOecertFristMailSent1t(): void
+    {
+        $this->subject->setReviewOecertFristMailSent1t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewOecertFristMailSent1t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAfterReviewReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAfterReview()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAfterReviewForIntSetsStatusAfterReview(): void
+    {
+        $this->subject->setStatusAfterReview(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAfterReview'));
+    }
 }

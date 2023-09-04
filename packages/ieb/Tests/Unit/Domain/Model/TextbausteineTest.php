@@ -38,10 +38,10 @@ class TextbausteineTest extends UnitTestCase
     /**
      * @test
      */
-    public function getKriteriumReturnsInitialValueForString(): void
+    public function getKriteriumReturnsInitialValueForInt(): void
     {
         self::assertSame(
-            '',
+            0,
             $this->subject->getKriterium()
         );
     }
@@ -49,11 +49,11 @@ class TextbausteineTest extends UnitTestCase
     /**
      * @test
      */
-    public function setKriteriumForStringSetsKriterium(): void
+    public function setKriteriumForIntSetsKriterium(): void
     {
-        $this->subject->setKriterium('Conceived at T3CON10');
+        $this->subject->setKriterium(12);
 
-        self::assertEquals('Conceived at T3CON10', $this->subject->_get('kriterium'));
+        self::assertEquals(12, $this->subject->_get('kriterium'));
     }
 
     /**

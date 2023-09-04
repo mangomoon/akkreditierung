@@ -105,6 +105,15 @@
 			<trans-unit id="review_oecert_frist.description" resname="review_oecert_frist.description">
 				<source>reviewOecertFrist</source>
 			</trans-unit>
+			<trans-unit id="review_oecert_frist_mail_sent14t.description" resname="review_oecert_frist_mail_sent14t.description">
+				<source>reviewOecertFristMailSent14t</source>
+			</trans-unit>
+			<trans-unit id="review_oecert_frist_mail_sent1t.description" resname="review_oecert_frist_mail_sent1t.description">
+				<source>reviewOecertFristMailSent1t</source>
+			</trans-unit>
+			<trans-unit id="status_after_review.description" resname="status_after_review.description">
+				<source>statusAfterReview</source>
+			</trans-unit>
 			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
 				<source>pruefbescheidDatei</source>
 			</trans-unit>

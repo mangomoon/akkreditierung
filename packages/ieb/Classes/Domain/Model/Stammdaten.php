@@ -264,6 +264,27 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewOecertFrist = null;
 
     /**
+     * reviewOecertFristMailSent14t
+     *
+     * @var bool
+     */
+    protected $reviewOecertFristMailSent14t = false;
+
+    /**
+     * reviewOecertFristMailSent1t
+     *
+     * @var bool
+     */
+    protected $reviewOecertFristMailSent1t = false;
+
+    /**
+     * statusAfterReview
+     *
+     * @var int
+     */
+    protected $statusAfterReview = 0;
+
+    /**
      * Returns the name
      *
      * @return string
@@ -1025,5 +1046,88 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewOecertFrist(\DateTime $reviewOecertFrist)
     {
         $this->reviewOecertFrist = $reviewOecertFrist;
+    }
+
+    /**
+     * Returns the reviewOecertFristMailSent14t
+     *
+     * @return bool
+     */
+    public function getReviewOecertFristMailSent14t()
+    {
+        return $this->reviewOecertFristMailSent14t;
+    }
+
+    /**
+     * Sets the reviewOecertFristMailSent14t
+     *
+     * @param bool $reviewOecertFristMailSent14t
+     * @return void
+     */
+    public function setReviewOecertFristMailSent14t(bool $reviewOecertFristMailSent14t)
+    {
+        $this->reviewOecertFristMailSent14t = $reviewOecertFristMailSent14t;
+    }
+
+    /**
+     * Returns the boolean state of reviewOecertFristMailSent14t
+     *
+     * @return bool
+     */
+    public function isReviewOecertFristMailSent14t()
+    {
+        return $this->reviewOecertFristMailSent14t;
+    }
+
+    /**
+     * Returns the reviewOecertFristMailSent1t
+     *
+     * @return bool
+     */
+    public function getReviewOecertFristMailSent1t()
+    {
+        return $this->reviewOecertFristMailSent1t;
+    }
+
+    /**
+     * Sets the reviewOecertFristMailSent1t
+     *
+     * @param bool $reviewOecertFristMailSent1t
+     * @return void
+     */
+    public function setReviewOecertFristMailSent1t(bool $reviewOecertFristMailSent1t)
+    {
+        $this->reviewOecertFristMailSent1t = $reviewOecertFristMailSent1t;
+    }
+
+    /**
+     * Returns the boolean state of reviewOecertFristMailSent1t
+     *
+     * @return bool
+     */
+    public function isReviewOecertFristMailSent1t()
+    {
+        return $this->reviewOecertFristMailSent1t;
+    }
+
+    /**
+     * Returns the statusAfterReview
+     *
+     * @return int
+     */
+    public function getStatusAfterReview()
+    {
+        return $this->statusAfterReview;
+    }
+
+    /**
+     * Sets the statusAfterReview
+     *
+     * @param int $statusAfterReview
+     * @return void
+     */
+    public function setStatusAfterReview(int $statusAfterReview)
+    {
+        $this->statusAfterReview = $statusAfterReview;
     }
 }
