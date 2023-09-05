@@ -70,7 +70,7 @@
                         <f:if condition="{trainer.statusAfterReviewPsa}==2 || {trainer.statusAfterReviewBabi}==2 || {trainer.statusAfterReviewPsa}==4 || {trainer.statusAfterReviewBabi}==4">
                             <tr class="muss-einreichen">
                         </f:if>
-                        <f:if condition="{trainer.statusAfterReviewPsa} < 2 || {trainer.statusAfterReviewBabi} < 2">
+                        <f:if condition="{trainer.statusAfterReviewPsa} < 2 && {trainer.statusAfterReviewBabi} < 2">
                             <tr class="istok">
                         </f:if>
                         <td class="nachname">

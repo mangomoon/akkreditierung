@@ -90,7 +90,7 @@
                             </td>
                             <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
                             <td>
-                                <f:switch expression="{berater.statusAfterReviewBabi}">
+                                <f:switch expression="{berater.statusAfterReview}">
                                     <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
                                     <f:case value="3"><span class="titleview knopfrund muss-edit" title="Basisbildung – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
                                     <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>

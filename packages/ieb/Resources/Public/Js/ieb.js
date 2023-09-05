@@ -271,7 +271,8 @@ function oeffnenTrainerBegutachtung() {
              $('.komm-ext-1').show();
              $('.komm-ext-2').show();
     }
-    
+    $("#sarBabi").val(0);
+    $("#sarPsa").val(0);
     // Wenn Status ok, dann sar = 1
          if((a<3) && (c<3)) {
             $("#sarBabi").val(1);
@@ -355,6 +356,16 @@ function setStatusAfterReview() {
     });
 }
 
+function qualifikationPsaSprache() {
+
+    if ($('#qualifikationPsa8').is(':checked')   ) {
+        $("#qualifikationPsaKommentar").show();
+        console.log('schlüpf');
+    } else {
+        $("#qualifikationPsaKommentar").hide();
+        console.log('schlapf');
+    }
+}
 
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -625,7 +636,17 @@ function setStatusAfterReview() {
          trainerfelder();
      });
 
+    // ######################################## FORM Trainer Sprache anhaken öffnet Feld "welche"
+     
+        $('#qualifikationPsa8').on( "change", function() {
+            
+            qualifikationPsaSprache(); 
+        } );
+
+
      // ######################################## FORM Trainer statusAfterReview setzen bei Edit durch TR
+     $("#sarPsa").val(0);
+     $("#sarBabi").val(0);
      $( ".i-psa input" ).on( "change", function() {
         $("#sarPsa").val(2);
         // console.log('blib');

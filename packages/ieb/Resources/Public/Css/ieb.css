@@ -626,6 +626,11 @@ input[type="submit"].knopf-s2 {
     font-size: 0.8em;
 }
 
+
+#qualifikationPsaKommentar {
+    display: none;
+}
+
 .knopf-s2 {
     padding: 9px 40px;
     background-color: var(--f3);
