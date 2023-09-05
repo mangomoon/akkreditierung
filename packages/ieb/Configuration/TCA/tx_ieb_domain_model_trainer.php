@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_trainer.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, verwendung_babi, verwendung_psa, lebenslauf, qualifikation_babi, lehr_befugnis, qualifikation_psa1, qualifikation_psa2, qualifikation_psa3, qualifikation_psa4, qualifikation_psa5, qualifikation_psa6, qualifikation_psa7, qualifikation_psa8, qualifikation_psa, qualifikation_psa_kommentar, anerkennung_pp3, lebenslauf_datei, qualifikation_babi_datei, lehr_befugnis_datei, qualifikation_psa_datei, okbabi, okpsa, archiviert, review_c21_babi_status, review_c21_psa_status, review_c22_babi_status, review_c22_psa_status, review_c22_quali1, review_c22_quali2, review_c22_quali3, review_c22_quali4, review_c22_quali5, review_c22_quali6, review_c22_quali7, review_c22_quali8, review_c2_babi_comment_internal, review_c2_babi_comment_tr, review_c2_psa_comment_internal, review_c2_psa_comment_tr, review_c2_psa_comment_internal_step, review_c2_babi_comment_internal_step, review_frist, locked_by, review_frist_mail_sent14t, review_frist_mail_sent1t, status_after_review, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, verwendung_babi, verwendung_psa, lebenslauf, qualifikation_babi, lehr_befugnis, qualifikation_psa1, qualifikation_psa2, qualifikation_psa3, qualifikation_psa4, qualifikation_psa5, qualifikation_psa6, qualifikation_psa7, qualifikation_psa8, qualifikation_psa, qualifikation_psa_kommentar, anerkennung_pp3, lebenslauf_datei, qualifikation_babi_datei, lehr_befugnis_datei, qualifikation_psa_datei, okbabi, okpsa, archiviert, review_c21_babi_status, review_c21_psa_status, review_c22_babi_status, review_c22_psa_status, review_c22_quali1, review_c22_quali2, review_c22_quali3, review_c22_quali4, review_c22_quali5, review_c22_quali6, review_c22_quali7, review_c22_quali8, review_c2_babi_comment_internal, review_c2_babi_comment_tr, review_c2_psa_comment_internal, review_c2_psa_comment_tr, review_c2_psa_comment_internal_step, review_c2_babi_comment_internal_step, review_frist, locked_by, review_frist_mail_sent14t, review_frist_mail_sent1t, status_after_review_babi, status_after_review_psa, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -908,10 +908,21 @@ return [
                 'default' => 0,
             ]
         ],
-        'status_after_review' => [
+        'status_after_review_babi' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review',
-            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review.description',
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review_babi',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review_babi.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
+            ]
+        ],
+        'status_after_review_psa' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review_psa',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_trainer.status_after_review_psa.description',
             'config' => [
                 'type' => 'input',
                 'size' => 4,

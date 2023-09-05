@@ -1,5 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
+
+
+
 <code>ANSUCHEN UID: {ansuchen.uid}</code>
 <div class="formfields row">
     <div class="col-3">
@@ -722,16 +725,20 @@
                     <f:then>
                         <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
                         <div class="tb-liste">
-                            
                             <f:for each="{relations.trainerbabi}" as="t">
+                                
                                 <div class="tb-zeile tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
-                                        <f:switch expression="{t.statusAfterReview}">
-                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Bearbeitung erforderlich"></span></f:case>
-                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Erforderliche Bearbeitung noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                                        </f:switch>
+                                        <f:for each="{ansuchen.trainer}" as="ttt">
+                                            <f:if condition="{t.uid}=={ttt.uid}">
+                                                <f:switch expression="{t.statusAfterReviewBabi}"> 
+                                                    <f:case value="1"><span class="titleview knopfrund muss-edit" title="Bearbeitung erforderlich"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund muss-einreichen" title="Erforderliche Bearbeitung noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                                </f:switch>
+                                            </f:if>
+                                        </f:for>
                                     </div>
                                     <div class="c">
                                         <f:switch expression="{t.reviewC21BabiStatus}">
@@ -769,16 +776,27 @@
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
-                                <div class="tb-zeile tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile tbs-<f:if condition='{t.statusAfterReviewPsa}==3'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                    
                                     <div class="a">{t.fullname}</div>
-                                    <div class="b"></div>
+                                    <div class="b">
+                                        <f:for each="{ansuchen.trainer}" as="ttt">
+                                            <f:if condition="{t.uid}=={ttt.uid}">
+                                                <f:switch expression="{t.statusAfterReviewPsa}">
+                                                    <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Noch nicht begutachtete Änderungen: muss eingereicht werden"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund muss-edit" title="Begutachtung negativ: Muss bearbeitet werden"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Noch nicht begutachtete Änderungen: muss eingereicht werden"></span></f:case>
+                                                </f:switch>
+                                            </f:if>
+                                        </f:for>
+                                    </div>    
                                     <div class="c">
-                                        <f:switch expression="{t.reviewC21BabiStatus}">
+                                        <f:switch expression="{t.reviewC21PsaStatus}">
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
                                             <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
                                         </f:switch>
-                                        <f:switch expression="{t.reviewC22BabiStatus}">
+                                        <f:switch expression="{t.reviewC22PsaStatus}">
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
                                             <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
@@ -837,7 +855,17 @@
                 <f:for each="{relations.berateraktivundok}" as="t">
                     <div class="tb-zeile tbs-<f:if condition='{t.reviewC31Status}>2 || {t.reviewC32Status}>2'>bad</f:if>"><f:form.checkbox property="berater" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
                         <div class="a">{t.fullname}</div>
-                        <div class="b"></div>
+                        <div class="b">
+                            <f:for each="{ansuchen.berater}" as="ttt">
+                                <f:if condition="{t.uid}=={ttt.uid}">
+                                    <f:switch expression="{t.statusAfterReviewPsa}">
+                                        <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Noch nicht begutachtete Änderungen: muss eingereicht werden"></span></f:case>
+                                        <f:case value="3"><span class="titleview knopfrund muss-edit" title="Begutachtung negativ: Muss bearbeitet werden"></span></f:case>
+                                        <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Noch nicht begutachtete Änderungen: muss eingereicht werden"></span></f:case>
+                                    </f:switch>
+                                </f:if>
+                            </f:for>
+                        </div>
                         <div class="c">
                             <f:switch expression="{t.reviewC3Status}">
                                 <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
@@ -881,7 +909,7 @@
 
 
     <f:form.hidden property="ok" id="ok" value="0" />
-
+    <f:form.hidden property="statusAfterReview" id="sar" value="" />
 
 </div>
 
@@ -901,7 +929,7 @@
     
     $('.testa').multiSelect();
 
-    trcheckboxcheck();
+    
 
 </script>
 

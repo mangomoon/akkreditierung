@@ -299,7 +299,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	locked_by int(11) NOT NULL DEFAULT '0',
 	review_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
-	status_after_review int(11) NOT NULL DEFAULT '0'
+	status_after_review_babi int(11) NOT NULL DEFAULT '0',
+	status_after_review_psa int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (

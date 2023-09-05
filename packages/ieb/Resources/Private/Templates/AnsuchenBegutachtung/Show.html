@@ -992,7 +992,6 @@
                     <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.fullName} 
-                            
                             <f:if condition="{difftyp}">
                                 {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
                             </f:if>
@@ -1215,6 +1214,8 @@
             <f:link.action class="knopf-s sidebar zurueck" action="list" title="Zurück OHNE Speichern"></f:link.action> 
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
+
+        <f:form.hidden property="statusAfterReview" id="sar" value="" />
         
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />

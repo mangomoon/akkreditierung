@@ -309,7 +309,7 @@
         
                         </div>
                     </div>
-                </div>
+
         
                 <div class="begutachtung-kriterium" id="c22p">
                     <div class="kriteriumtitel">
@@ -397,7 +397,7 @@
                             <f:form.textarea property="reviewC2BabiCommentInternalStep" id="comment1-reviewC2BabiCommentInternal" class="" />
                         </div>
                     </div>
-                    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+                    <div class="komm-ext-1">
                         <f:form.textarea property="reviewC2BabiCommentTr" id="comment2-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
@@ -438,7 +438,7 @@
                             <f:form.textarea property="reviewC2PsaCommentInternalStep" id="comment1-reviewC2PsaCommentInternal" class="" />
                         </div>
                     </div>
-                    <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+                    <div class="komm-ext-2">
                         <f:form.textarea property="reviewC2PsaCommentTr" id="comment2-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
@@ -454,20 +454,22 @@
     </f:else>
 </f:if>
 
-<f:form.hidden property="okbabi" id="okbabi" value="1" />
-<f:form.hidden property="okpsa" id="okpsa" value="1" />
+
+
 
 <div class="begutachtung-kriterium">
     <f:form.submit value="Speichern" name="save" class="knopf-s" />
     <div class="knopf-s knopfersatz" id="schliessen">schliessen</div>
 </div>
+
+<f:form.hidden property="statusAfterReviewBabi" id="sarBabi" value="" />
+<f:form.hidden property="statusAfterReviewPsa" id="sarPsa" value="" />
+
+
     </f:form>
 
     <script>oeffnenTrainerBegutachtung();</script>
 </f:section>
 
-<f:section name="comment">
-
-</f:section>
 
 </html>

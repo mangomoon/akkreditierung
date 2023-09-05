@@ -958,21 +958,42 @@ class TrainerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStatusAfterReviewReturnsInitialValueForInt(): void
+    public function getStatusAfterReviewBabiReturnsInitialValueForInt(): void
     {
         self::assertSame(
             0,
-            $this->subject->getStatusAfterReview()
+            $this->subject->getStatusAfterReviewBabi()
         );
     }
 
     /**
      * @test
      */
-    public function setStatusAfterReviewForIntSetsStatusAfterReview(): void
+    public function setStatusAfterReviewBabiForIntSetsStatusAfterReviewBabi(): void
     {
-        $this->subject->setStatusAfterReview(12);
+        $this->subject->setStatusAfterReviewBabi(12);
 
-        self::assertEquals(12, $this->subject->_get('statusAfterReview'));
+        self::assertEquals(12, $this->subject->_get('statusAfterReviewBabi'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAfterReviewPsaReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAfterReviewPsa()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAfterReviewPsaForIntSetsStatusAfterReviewPsa(): void
+    {
+        $this->subject->setStatusAfterReviewPsa(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAfterReviewPsa'));
     }
 }

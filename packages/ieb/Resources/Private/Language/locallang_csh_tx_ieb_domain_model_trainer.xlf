@@ -144,6 +144,12 @@
 			<trans-unit id="review_frist_mail_sent1t.description" resname="review_frist_mail_sent1t.description">
 				<source>reviewFristMailSent1t</source>
 			</trans-unit>
+			<trans-unit id="status_after_review_babi.description" resname="status_after_review_babi.description">
+				<source>statusAfterReviewBabi</source>
+			</trans-unit>
+			<trans-unit id="status_after_review_psa.description" resname="status_after_review_psa.description">
+				<source>statusAfterReviewPsa</source>
+			</trans-unit>
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>

@@ -53,6 +53,7 @@
                     <th>Info</th>
                     <th>letzte Änderung</th>
                     <th></th>
+                    <th></th>
                     <th class="td-knopf">
 
                     </th>
@@ -66,8 +67,13 @@
                 <f:if condition="!{berater.archiviert}">
                     <f:then>
 
-
-                        <tr class="{f:if(condition:berater.ok,then:'istok',else:'unok')}">
+                    <f:switch expression="{berater.statusAfterReview}">
+                        <f:case value="0"><tr class="istok"></f:case>
+                        <f:case value="1"><tr class="istok"></f:case>
+                        <f:case value="2"><tr class="muss-einreichen"></f:case>
+                        <f:case value="3"><tr class="muss-edit"></f:case>
+                        <f:case value="4"><tr class="muss-einreichen"></f:case>
+                    </f:switch>
                             <td class="nachname">
                                 {berater.nachname}
                             </td>
@@ -83,16 +89,28 @@
                                 </f:if>
                             </td>
                             <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
+                            <td>
+                                <f:switch expression="{berater.statusAfterReviewBabi}">
+                                    <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund muss-edit" title="Basisbildung – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                                </f:switch>
+                            </td>
                             <td class="">
-                                <f:if condition="!{berater.reviewC3Status} && {berater.ok}">
+                                <f:if condition="!{berater.reviewC3Status} && !{berater.reviewC32Status} && {berater.ok}">
                                         <f:then>
                                             <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
                                         </f:then>
                                         <f:else>
                                             <f:switch expression="{berater.reviewC3Status}">
-                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt"></span></f:case>
-                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage"></span></f:case>
-                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok"></span></f:case>
+                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                            </f:switch>
+                                            <f:switch expression="{berater.reviewC32Status}">
+                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
                                             </f:switch>
                                         </f:else>
                                     </f:if>

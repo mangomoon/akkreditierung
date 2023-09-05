@@ -3666,9 +3666,21 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "statusAfterReview",
+                            "propertyName": "statusAfterReviewBabi",
                             "propertyType": "Integer",
                             "uid": "77682498632"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReviewPsa",
+                            "propertyType": "Integer",
+                            "uid": "1628958879506"
                         }
                     ]
                 },
@@ -4794,7 +4806,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-09-04 09:32",
+        "last_modified": "2023-09-04 05:07",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

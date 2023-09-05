@@ -212,7 +212,6 @@
              var txt = "Anmerkung zum Upload";
              $(this).prev(".anmerkunglabel").removeClass("labelknopf");
              $(this).prev(".anmerkunglabel").html(txt);
-
              $(this).show();
          }
      });
@@ -243,63 +242,78 @@
 
 function oeffnenTrainerBegutachtung() {
     var s = 1;
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
     a = $("#trainerbegutachtung input.c21b:checked").val();
     b = $("#trainerbegutachtung input.c21p:checked").val();
     c = $("#trainerbegutachtung input.c22b:checked").val();
     d = $("#trainerbegutachtung input.c22p:checked").val();
-    $("#trainerbegutachtung input.c22p").show();
+    var a = 0;
+    var c = 0;
     if (a + b + c + d < 5) {
              s = 1;
-         }
-         if ((a == 2) || (b == 2) || (c == 2) || (d == 2)) {
+    }
+    if ((a == 2) || (b == 2) || (c == 2) || (d == 2)) {
              s = 2;
-         }
-         if ((a == 3) || (b == 3) || (c == 3) || (d == 3)) {
+    }
+    if ((a == 3) || (b == 3) || (c == 3) || (d == 3)) {
              s = 3;
-         }
-         if ((a == 4) || (b == 4) || (c == 4) || (d == 4)) {
+    }
+    if ((a == 4) || (b == 4) || (c == 4) || (d == 4)) {
              s = 4;
+    }
+    if (s < 3) {
+             $('.komm-ext-1').hide();
+             $('.komm-ext-2').hide();
+    } else {
+             $('.komm-ext-1').show();
+             $('.komm-ext-2').show();
+    }
+    
+    // Wenn Status ok, dann sar = 1
+         if((a<3) && (c<3)) {
+            $("#sarBabi").val(1);
+         } else if (a+c==0) {
+            $("#sarBabi").val(0);
          }
-         if (s < 3) {
-             $('.komm-ext').hide();
-         } else {
-             $('.komm-ext').show();
+         else {
+            $("#sarBabi").val(3);
          }
-         console.log(a,b,c,d);
+         if((b<3) && (d<3)) {
+            $("#sarPsa").val(1);
+         } else if (b+d==0) {
+            $("#sarPsa").val(0);
+         }
+         else {
+            $("#sarPsa").val(3);
+         }
+
+    // console.log("a: "+ a + " | b: " + b +  " | c: " + c + " | d: " + d + " | s: " + s);
 
     var t = 0;
     $('.trainerqualifikationsbegutachtung input').each (function() {
         if($(this).prop('checked')){
             t++;
-            //console.log(t);
         }
     });
     if(t == 8){
         $('#checkall').addClass('checked');
     }
+
+
+
 };
 
-    // ######################################## TR Ansuchen: Anzeigen ob Trainer ok: del unchecked
-function trcheckboxcheck() {
-
-    $('.trcheckcheck input').each(function(){
-        c = $(this).is(':checked');
-        if(!c) {
-            $(this).parent().hide();
-        } else {
-            $(this).parent().parent().parent().addClass('zeigen');
-        }
-        console.log(c);
-    });
-}
-    
+  
 
 
 function oeffnenBeraterBegutachtung() {
     var s = 1;
     a = $("#beraterbegutachtung input.c3:checked").val();
     b = $("#beraterbegutachtung input.c32:checked").val();
-    console.log(a,b,s);
+    // console.log(a,b,s);
     if (a + b < 3) {
         s = 1;
     }
@@ -325,6 +339,22 @@ function reqleerLoeschen() {
         $(this).removeClass('req-leer');
     });
 }
+
+// AnsuchenBegutachtung, etc. Set StatusAfterReview
+
+function setStatusAfterReview() {
+    b = 1;
+    $('.ansuchen .knopf input').each(function() {
+        a = $(this).val();
+        if($(this).is(':checked')) {
+            if(a>2) {
+                b = 3;
+            } 
+            $('#sar').val(b);
+        } 
+    });
+}
+
 
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -595,6 +625,23 @@ function reqleerLoeschen() {
          trainerfelder();
      });
 
+     // ######################################## FORM Trainer statusAfterReview setzen bei Edit durch TR
+     $( ".i-psa input" ).on( "change", function() {
+        $("#sarPsa").val(2);
+        // console.log('blib');
+      } );
+      $( ".i-babi input" ).on( "change", function() {
+        $("#sarBabi").val(2);
+        // console.log('blub');
+      } );
+
+
+     // ######################################## überall statusAfterReview setzen bei Edit durch TR
+     $( ".sar input" ).on( "change", function() {
+        $("#sar").val(2);
+        console.log('blub');
+      } );
+
      // ######################################## FORM Begutachtung
 
      $('.ansuchen .knopf input').click(function() {
@@ -612,6 +659,8 @@ function reqleerLoeschen() {
         } else {
             $(this).parent().parent().parent().find('.komm-ext').hide();
         }
+
+        setStatusAfterReview();
 
      });
 

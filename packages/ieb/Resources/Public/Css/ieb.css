@@ -509,6 +509,11 @@ select {
     vertical-align: top;
     margin-top: 1px;
 }
+.tb-liste div .knopfrund.muss-edit{
+    width: 18px;
+    height: 18px;
+    margin-top: 0;
+}
 .tb-liste div.tbs-bad {
     background-color: #ffe3c0;
 }
@@ -751,6 +756,14 @@ span.knopfrund.auflage-3 {
 }
 span.knopfrund.auflage-4 {
     background-image: url('../Img/rund_achtung-4.svg');
+}
+span.knopfrund.muss-edit {
+    background-image: url('../Img/muss-edit.svg');
+    background-image: url('../Img/dot.svg');
+}
+span.knopfrund.muss-einreichen {
+    /* background-image: url('../Img/muss-einreichen.svg'); */
+    background-image: url('../Img/dot-gelb.svg');
 }
 /* ANSUCHEN LISTE  */
 table.ansuchenliste {
@@ -1008,11 +1021,19 @@ table.tx_ieb th {
     background: var(--f0b);
 }
 
-.tx_ieb tr.unok:nth-child(even) {
+.tx_ieb tr.muss-edit:nth-child(even) {
+    background: #f3e1c4;
+}
+
+.tx_ieb tr.muss-edit:nth-child(odd) {
+    background: #f3cd91;
+}
+
+.tx_ieb tr.muss-einreichen:nth-child(even) {
     background: var(--fg0);
 }
 
-.tx_ieb tr.unok:nth-child(odd) {
+.tx_ieb tr.muss-einreichen:nth-child(odd) {
     background: var(--fg1);
 }
 
@@ -1092,7 +1113,7 @@ table.tx_ieb.trainer td {
     background-image: url('../Img/lock_invers.svg');
     background-size: 100%;
 }
-.td-knopf .knopf-quadratisch.locked-to-unluck:hover {
+.td-knopf .knopf-quadratisch.locked-to-unlock:hover {
     background-image: url('../Img/unlock_invers.svg');
     background-size: 100%;
 }
@@ -1449,7 +1470,9 @@ table.ansuchenbegutachtung td.check {
 }
 
 .begutachtung-kriterium .komm-ext,
-.textbausteine {
+.textbausteine,
+.komm-ext-1, 
+.komm-ext-2 {
     display: none;
 }
 

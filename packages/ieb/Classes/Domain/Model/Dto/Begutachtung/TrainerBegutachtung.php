@@ -35,4 +35,7 @@ class TrainerBegutachtung extends AbstractDomainObject
     public string $reviewC2PsaCommentInternal = '';
     public string $reviewC2PsaCommentInternalStep = '';
     public string $reviewC2PsaCommentTr = '';
+
+    public int $statusAfterReviewBabi = 0;
+    public int $statusAfterReviewPsa = 0;
 }

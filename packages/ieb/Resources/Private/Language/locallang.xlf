@@ -1725,11 +1725,17 @@
 			<trans-unit id="tx_ieb_domain_model_trainer.review_frist_mail_sent1t.description" resname="tx_ieb_domain_model_trainer.review_frist_mail_sent1t.description">
 				<source>Review Frist Mail Sent1t</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review" resname="tx_ieb_domain_model_trainer.status_after_review">
-				<source>Status After Review</source>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review_babi" resname="tx_ieb_domain_model_trainer.status_after_review_babi">
+				<source>Status After Review Babi</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review.description" resname="tx_ieb_domain_model_trainer.status_after_review.description">
-				<source>Status After Review</source>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review_babi.description" resname="tx_ieb_domain_model_trainer.status_after_review_babi.description">
+				<source>Status After Review Babi</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review_psa" resname="tx_ieb_domain_model_trainer.status_after_review_psa">
+				<source>Status After Review Psa</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review_psa.description" resname="tx_ieb_domain_model_trainer.status_after_review_psa.description">
+				<source>Status After Review Psa</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>
@@ -2084,6 +2090,12 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_textbausteine.baustein.description" resname="tx_ieb_domain_model_textbausteine.baustein.description">
 				<source>Baustein</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review" resname="tx_ieb_domain_model_trainer.status_after_review">
+				<source>Status After Review</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review.description" resname="tx_ieb_domain_model_trainer.status_after_review.description">
+				<source>Status After Review</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_kriterien" resname="tx_ieb_domain_model_kriterien">
 				<source>Kriterien</source>

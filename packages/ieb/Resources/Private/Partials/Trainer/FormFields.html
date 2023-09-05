@@ -1,6 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
-<div class="kriterium">
+<div class="kriterium i-psa i-babi">
     <div class="formfields row">
         <div class="col-6">
             <label for="vorname" class="reqlabel">Vorname</label>
@@ -47,7 +47,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium status-{trainer.reviewC21BabiStatus}" id="c-2-1-babi">
+<div class="kriterium i-babi status-{trainer.reviewC21BabiStatus}" id="c-2-1-babi">
     <h3>C.2.1 Qualifikationsnachweis Basisbildung</h3>
     <div class="info"></div>
     <div class="infobox" id="c-2-a-2-hilfe">Alle Trainer/innen, die die Qualifikationsanforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 18 Monaten.</div>
@@ -78,7 +78,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 </div>
 
 
-<div class="kriterium  status-{trainer.reviewC21PsaStatus}" id="c-2-1-psa">
+<div class="kriterium  i-psa status-{trainer.reviewC21PsaStatus}" id="c-2-1-psa">
 
     <div class="kriteriumteil">
         <h3>C.2.1 PSA Qualifikationsnachweise Pflichtschulabschluss</h3>
@@ -167,7 +167,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
 
 
 
-<div class="kriterium <f:if condition='{trainer.reviewC22BabiStatus} > {trainer.reviewC22PsaStatus}'>
+<div class="kriterium i-psa i-babi <f:if condition='{trainer.reviewC22BabiStatus} > {trainer.reviewC22PsaStatus}'>
     <f:then>
         status-{trainer.reviewC22BabiStatus}
     </f:then>
@@ -194,12 +194,15 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                 label:'Erfahrungsnachweis',
                 anmerkung:'lebenslauf',
                 metadaten:'{trainer.lebenslaufDatei.originalResource}',
-                media:trainer.lebenslaufDatei}" />
+                media:trainer.lebenslaufDatei
+            }" />
 
     
 </div>
 
 <f:form.hidden property="okbabi" id="okbabi" value="0" />
 <f:form.hidden property="okpsa" id="okpsa" value="0" />
+<f:form.hidden property="statusAfterReviewBabi" id="sarBabi" value="" />
+<f:form.hidden property="statusAfterReviewPsa" id="sarPsa" value="" />
 
 </html>

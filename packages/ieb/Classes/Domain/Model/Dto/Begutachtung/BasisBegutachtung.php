@@ -70,6 +70,8 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $stammdatenReviewA2CommentInternalStep = '';
     public string $stammdatenReviewA2CommentTr = '';
 
+    public int $statusAfterReview = 0;
+
     private const FIELDS = [
         'reviewTotalCommentInternalStep', 'reviewTotalCommentTr',
         'reviewB1CommentInternalStep', 'reviewB1CommentTr', 'reviewB1Status',

@@ -364,11 +364,18 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewFristMailSent1t = false;
 
     /**
-     * statusAfterReview
+     * statusAfterReviewBabi
      *
      * @var int
      */
-    protected $statusAfterReview = 0;
+    protected $statusAfterReviewBabi = 0;
+
+    /**
+     * statusAfterReviewPsa
+     *
+     * @var int
+     */
+    protected $statusAfterReviewPsa = 0;
 
     /**
      * Returns the nachname
@@ -1606,23 +1613,44 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the statusAfterReview
+     * Returns the statusAfterReviewBabi
      *
-     * @return int
+     * @return int statusAfterReviewBabi
      */
-    public function getStatusAfterReview()
+    public function getStatusAfterReviewBabi()
     {
-        return $this->statusAfterReview;
+        return $this->statusAfterReviewBabi;
     }
 
     /**
-     * Sets the statusAfterReview
+     * Sets the statusAfterReviewBabi
      *
-     * @param int $statusAfterReview
+     * @param int $statusAfterReviewBabi
      * @return void
      */
-    public function setStatusAfterReview(int $statusAfterReview)
+    public function setStatusAfterReviewBabi(int $statusAfterReviewBabi)
     {
-        $this->statusAfterReview = $statusAfterReview;
+        $this->statusAfterReviewBabi = $statusAfterReviewBabi;
+    }
+
+    /**
+     * Returns the statusAfterReviewPsa
+     *
+     * @return int
+     */
+    public function getStatusAfterReviewPsa()
+    {
+        return $this->statusAfterReviewPsa;
+    }
+
+    /**
+     * Sets the statusAfterReviewPsa
+     *
+     * @param int $statusAfterReviewPsa
+     * @return void
+     */
+    public function setStatusAfterReviewPsa(int $statusAfterReviewPsa)
+    {
+        $this->statusAfterReviewPsa = $statusAfterReviewPsa;
     }
 }

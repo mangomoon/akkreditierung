@@ -52,6 +52,7 @@
                 </th>
                 <th>Info</th>
                 <th>letzte Änderung</th>
+                <th></th>
                 <th>BaBi</th>
                 <th>PSA</th>
                 <th class="td-knopf" colspan="3">
@@ -60,20 +61,20 @@
             <f:for each="{trainers}" as="trainer">
             <f:variable name="relationUsages">{ieb:relationUsed(object: trainer)}</f:variable>
             <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: trainer)}</f:variable>
-
                 <f:if condition="!{trainer.archiviert}">
                     <f:then>
-                        <f:if condition="{trainer.okbabi} || {trainer.okpsa}">
-                            <f:then>
-                                <tr class="istok">
-                            </f:then>
-                            <f:else>
-                                <tr class="istok">
-                            </f:else>
-                        </f:if>
 
+                        <f:if condition="{trainer.statusAfterReviewPsa}==3 || {trainer.statusAfterReviewBabi}==3">
+                            <tr class="muss-edit">
+                        </f:if>
+                        <f:if condition="{trainer.statusAfterReviewPsa}==2 || {trainer.statusAfterReviewBabi}==2 || {trainer.statusAfterReviewPsa}==4 || {trainer.statusAfterReviewBabi}==4">
+                            <tr class="muss-einreichen">
+                        </f:if>
+                        <f:if condition="{trainer.statusAfterReviewPsa} < 2 || {trainer.statusAfterReviewBabi} < 2">
+                            <tr class="istok">
+                        </f:if>
                         <td class="nachname">
-                            {trainer.nachname} 
+                            {trainer.nachname}
                         </td>
                         <td class="vorname">
                             {trainer.vorname}
@@ -86,6 +87,18 @@
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
                         <!-- BaBi -->
+                        <td>
+                        <f:switch expression="{trainer.statusAfterReviewBabi}">
+                            <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                            <f:case value="3"><span class="titleview knopfrund muss-edit" title="Basisbildung – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
+                            <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                        </f:switch>
+                        <f:switch expression="{trainer.statusAfterReviewPsa}">
+                            <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Pflichtschulsabschluss – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                            <f:case value="3"><span class="titleview knopfrund muss-edit" title="Pflichtschulsabschluss – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
+                            <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Pflichtschulsabschluss – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
+                        </f:switch>
+                        </td>
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>
                                 <td class="istok">

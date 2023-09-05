@@ -17,4 +17,6 @@ class StammdatenBegutachtung extends AbstractDomainObject
     public string $reviewA2CommentInternal = '';
     public string $reviewA2CommentInternalStep = '';
     public string $reviewA2CommentTr = '';
+
+    // public int $statusAfterReview = 0;
 }
