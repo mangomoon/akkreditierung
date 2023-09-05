@@ -138,11 +138,59 @@ class DiffService
                     if (isset($items[$k]['reviewC2BabiCommentInternalStep'])) {
                         unset($items[$k]['reviewC2BabiCommentInternalStep']);
                     }
+                    if (isset($items[$k]['reviewC2BabiCommentInternal'])) {
+                        unset($items[$k]['reviewC2BabiCommentInternal']);
+                    }
                     if (isset($items[$k]['reviewC2PsaCommentInternalStep'])) {
                         unset($items[$k]['reviewC2PsaCommentInternalStep']);
                     }
+                    if (isset($items[$k]['reviewC2PsaCommentInternal'])) {
+                        unset($items[$k]['reviewC2PsaCommentInternal']);
+                    }
+                    if (isset($items[$k]['reviewC2BabiCommentTr'])) {
+                        unset($items[$k]['reviewC2BabiCommentTr']);
+                    }
+                    if (isset($items[$k]['reviewC2PsaCommentTr'])) {
+                        unset($items[$k]['reviewC2PsaCommentTr']);
+                    }
+                    if (isset($items[$k]['reviewC21PsaStatus'])) {
+                        unset($items[$k]['reviewC21PsaStatus']);
+                    }
+                    if (isset($items[$k]['reviewC22PsaStatus'])) {
+                        unset($items[$k]['reviewC22PsaStatus']);
+                    }
+                    if (isset($items[$k]['reviewC21BabiStatus'])) {
+                        unset($items[$k]['reviewC21BabiStatus']);
+                    }
+                    if (isset($items[$k]['reviewC22BabiStatus'])) {
+                        unset($items[$k]['reviewC22BabiStatus']);
+                    }
+                    if (isset($items[$k]['reviewFristMailSent14t'])) {
+                        unset($items[$k]['reviewFristMailSent14t']);
+                    }
+                    if (isset($items[$k]['reviewFristMailSent1t'])) {
+                        unset($items[$k]['reviewFristMailSent1t']);
+                    }
+                    if (isset($items[$k]['statusAfterReviewBabi'])) {
+                        unset($items[$k]['statusAfterReviewBabi']);
+                    }
+                    if (isset($items[$k]['statusAfterReviewPsa'])) {
+                        unset($items[$k]['statusAfterReviewPsa']);
+                    }
                     if (isset($items[$k]['reviewC3CommentInternalStep'])) {
                         unset($items[$k]['reviewC3CommentInternalStep']);
+                    }
+                    if (isset($items[$k]['reviewC3CommentInternal'])) {
+                        unset($items[$k]['reviewC3CommentInternal']);
+                    }
+                    if (isset($items[$k]['reviewC3CommentTr'])) {
+                        unset($items[$k]['reviewC3CommentTr']);
+                    }
+                    if (isset($items[$k]['reviewC3Status'])) {
+                        unset($items[$k]['reviewC3Status']);
+                    }
+                    if (isset($items[$k]['reviewC32Status'])) {
+                        unset($items[$k]['reviewC32Status']);
                     }
                 }
                 $row[$field] = $items;
