@@ -53,7 +53,6 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $reviewC3CommentInternalStep = '';
     public string $reviewC3CommentTr = '';
     public int $reviewC3Status = 0;
-    // public int $reviewC32Status = 0;
     public int $upcomingStatus = 0;
     public int $status = 0;
     public string $reviewTotalCommentInternalStep = '';
@@ -69,6 +68,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $stammdatenReviewA2CommentInternal = '';
     public string $stammdatenReviewA2CommentInternalStep = '';
     public string $stammdatenReviewA2CommentTr = '';
+    public int $stammdatenStatusAfterReview = 0;
 
     public int $statusAfterReview = 0;
 
@@ -89,6 +89,7 @@ class BasisBegutachtung extends AbstractDomainObject
     private const FIELDS_STAMMDATEN = [
         'stammdatenReviewA1Status', 'stammdatenReviewA1CommentInternal', 'stammdatenReviewA1CommentInternalStep', 'stammdatenReviewA1CommentTr',
         'stammdatenReviewA2Status', 'stammdatenReviewA2CommentInternal', 'stammdatenReviewA2CommentInternalStep', 'stammdatenReviewA2CommentTr',
+        'stammdatenStatusAfterReview',
     ];
 
     public function setByAnsuchen(Ansuchen $ansuchen, Stammdaten $stammdaten): void
@@ -100,7 +101,11 @@ class BasisBegutachtung extends AbstractDomainObject
         $this->status = $ansuchen->getStatus();
 
         foreach (self::FIELDS_STAMMDATEN as $field) {
-            $realFieldName = str_replace('stammdatenR', 'r', $field);
+            if($field == "stammdatenStatusAfterReview") {
+                $realFieldName = "statusAfterReview";
+            } else {
+                $realFieldName = str_replace('stammdatenR', 'r', $field);
+            }
             $getter = 'get' . ucfirst($realFieldName);
             $this->$field = $stammdaten->$getter();
         }
@@ -117,7 +122,11 @@ class BasisBegutachtung extends AbstractDomainObject
     public function copyToStammdaten(Stammdaten $stammdaten, Ansuchen $ansuchen): void
     {
         foreach (self::FIELDS_STAMMDATEN as $field) {
-            $realFieldName = str_replace('stammdatenR', 'r', $field);
+            if($field == "stammdatenStatusAfterReview") {
+                $realFieldName = "statusAfterReview";
+            } else {
+                $realFieldName = str_replace('stammdatenR', 'r', $field);
+            }
             $setter = 'set' . ucfirst($realFieldName);
             $stammdaten->$setter($this->$field);
         }
