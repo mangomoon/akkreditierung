@@ -1,0 +1,21 @@
+<f:layout name="SystemEmail"/>
+<f:section name="Subject">Fristenüberwachung</f:section>
+<f:section name="Title">Folgende Datensätze sind offen</f:section>
+<f:section name="Main">
+    <p>
+        Hallo xyz,<br>
+        folgende Datensätze sind offen:
+    </p>
+    <p>
+        <f:if condition="{records.ansuchen}">
+            <h3>Ansuchen</h3>
+            <f:for each="{records.ansuchen}" key="type" as="items">
+                <h4>Typ {type}</h4>
+
+                <f:for each="{items}" as="item">
+                    {item.name} [{item.uid}]<br>
+                </f:for>
+            </f:for>
+        </f:if>
+    </p>
+</f:section>
