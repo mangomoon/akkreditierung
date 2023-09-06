@@ -66,37 +66,4 @@ class TrainerRepository extends BaseRepository
         );
         return $query->execute();
     }
-    public function getInactiveBabi() {
-
-
-        $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
-        $query->matching(
-            $query->logicalAnd (
-                $query->equals('archiviert', false),
-                $query->logicalOr (
-                    $query->greaterThan('reviewC21BabiStatus', 2),
-                    $query->greaterThan('reviewC22BabiStatus', 2)
-                )
-            )
-        );
-        return $query->execute();
-    }
-
-    public function getInactivePSA() {
-
-
-        $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
-        $query->matching(
-            $query->logicalOr (
-                $query->equals('archiviert', true),
-                $query->logicalOr (
-                    $query->greaterThan('reviewC21PsaStatus', 2),
-                    $query->greaterThan('reviewC22PsaStatus', 2)
-                )
-            )
-        );
-        return $query->execute();
-    }
 }

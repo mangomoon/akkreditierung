@@ -17,14 +17,16 @@
     Hinweis: Bis Ende der 3. PP (Ende 2023) anerkannte Berater/innen bleiben anerkannt. <br>Für bereits IEB anerkannte Berater/innen sind keine neuen Unterlagen erforderlich.<br>&nbsp;<br>&nbsp;
 </p>
 
-<div class="kriterium  status-{trainer.reviewC3Status}" id="c-3">
-
-    <div class="kriteriumteil" id="c-3-1">
-        <f:if condition="{stammdaten.reviewC3Status}==4">
+<f:if condition="{berater.reviewC3Status}>2">
             <div class="commentTr">
-                <p><f:format.nl2br>{stammdaten.reviewC3CommentTr}</f:format.nl2br></p>
+                <label>Kommentar der IEB:</label>
+                <p><f:format.nl2br>{berater.reviewC3CommentTr}</f:format.nl2br></p>
             </div>
+            <div class="abstand-mittel"></div>
         </f:if>
+
+    <div class="kriterium status-{berater.reviewC3Status}" id="c-3-1">
+        
 
         <h3>C.3.1 Qualifikationsnachweise Beratung</h3>
         <div class="info"></div>
@@ -63,7 +65,7 @@
 
     </div>
 
-    <div class="kriteriumteil" id="c-3-2">
+    <div class="kriterium status-{berater.reviewC32Status}" id="c-3-2">
         <h3>C.3.2 Erfahrungsnachweis</h3>
         <div class="info"></div>
         <div class="infobox" id="c-2-1-hilfe">Alle Berater/innen, die die Anforderungen nicht erfüllen, bekommen eine Auflage mit einer Frist von 6 Monaten.</div>
@@ -84,6 +86,6 @@
         <f:form.hidden property="ok" id="ok" value="0" />
         <f:form.hidden property="statusAfterReview" id="sar" value="" />
     </div>
-</div>
+
 
 </html>

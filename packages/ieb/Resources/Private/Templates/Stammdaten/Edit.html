@@ -11,6 +11,7 @@
     <f:form action="update" class="tr sar" name="stammdaten" object="{stammdaten}" pluginName="Stamm">
         <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
         <f:form.submit value="Speichern" />
+        <f:link.action class="knopf-s knopfersatz zurueck" action="index"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
     </f:form>
 </f:section>
 

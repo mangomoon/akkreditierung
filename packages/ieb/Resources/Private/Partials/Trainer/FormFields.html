@@ -13,13 +13,14 @@
     </div>
 </div>
 
-            <f:if condition="({trainer.reviewC21BabiStatus}==4) || ({trainer.reviewC22BabiStatus}==4)">
+            <f:if condition="({trainer.reviewC21BabiStatus}==4 || {trainer.reviewC22BabiStatus}==4) && {trainer.reviewC2BabiCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
                     <p><f:format.nl2br>{trainer.reviewC2BabiCommentTr}</f:format.nl2br></p>
                 </div>
             </f:if>
-            <f:if condition="({trainer.reviewC21PsaStatus}==4) || ({trainer.reviewC22PsaStatus}==4)">
+            <div class="abstand-mittel"></div>
+            <f:if condition="({trainer.reviewC21PsaStatus}==4 || {trainer.reviewC22PsaStatus}==4) && {trainer.reviewC2PsaCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
                     <p><f:format.nl2br>{trainer.reviewC2PsaCommentTr}</f:format.nl2br></p>

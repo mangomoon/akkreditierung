@@ -613,6 +613,9 @@ input[type="submit"].knopf-s:hover, .knopfersatz.knopf-s:hover {
     background-color: var(--f2);
     filter: none;
 }
+.knopfersatz.knopf-s.zurueck {
+    background-color: var(--f1);
+}
 .knopfersatz.knopf-s.zurueck:hover {
     background-color: var(--standorte);
     filter: none;

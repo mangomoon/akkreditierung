@@ -1215,11 +1215,11 @@
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
 
-        <f:form.hidden property="statusAfterReview" id="sar" value="" />
+        <f:form.hidden property="statusAfterReview" id="sar" value="0" />
         
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
-        <f:link.action class="knopf-s knopfersatz zurueck" action="list" >Zurück (ohne Speichern)</f:link.action> 
+        <f:link.action class="knopf-s knopfersatz zurueck" action="list"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
     
     
     </f:form>
