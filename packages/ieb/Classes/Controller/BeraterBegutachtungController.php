@@ -45,7 +45,7 @@ class BeraterBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId),
-            'textbausteine' => $this->textbausteineRepository->getAll(),
+            'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
         ]);
         return $this->htmlResponse();
     }

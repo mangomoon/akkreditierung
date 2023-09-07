@@ -60,7 +60,7 @@ class StammdatenBegutachtungController extends BaseController
             'stammdaten' => $stammdaten,
             'begutachtung' => $begutachtung,
             'ansuchen' => $ansuchen,
-            'textbausteine' => $this->textbausteineRepository->getAll(),
+            'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
         ]);
         return $this->htmlResponse();
     }

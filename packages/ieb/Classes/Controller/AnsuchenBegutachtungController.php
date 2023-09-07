@@ -61,7 +61,7 @@ class AnsuchenBegutachtungController extends BaseController
             'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
 //            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE)),
             'stammdaten' => $stammdaten,
-            'textbausteine' => $this->textbausteineRepository->getAll(),
+            'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
         ]);
         return $this->htmlResponse();
     }

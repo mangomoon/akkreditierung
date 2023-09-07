@@ -379,3 +379,7 @@ CREATE TABLE tx_ieb_domain_model_textbausteine (
 );
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+CREATE TABLE tx_ieb_domain_model_textbausteine (
+   kriterium varchar(10) NOT NULL DEFAULT ''
+);
