@@ -25,8 +25,8 @@
     <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
     <div class="knopf textbausteinoeffner">Textbausteine</div>
     <div class="textbausteine">
-        <div class="textbaustein">Lorem ipsum dolet</div>
-        <div class="textbaustein">Und so weiter!</div>
-        <div class="textbaustein">Und so fort ...</div>
+        <f:for each="{tb}" as="baustein">
+            <div class="textbaustein">{baustein}</div>
+        </f:for>
     </div>
 </div>

@@ -48,11 +48,20 @@ $GLOBALS['TCA']['tx_ieb_domain_model_stammdaten']['columns']['rechtsform']['conf
 $GLOBALS['TCA']['tx_ieb_domain_model_textbausteine']['columns']['kriterium']['config']['items'] = [
     ['', 0],
 
-    ['A', '--div--'],
-    ['A1', 'a1'],
-    ['A2', 'a2'],
-    ['B', '--div--'],
-    ['B11', 'b11'],
+    ['A.1. Stammdaten', 1],
+    ['A.2. Qualität des Anbieters', 2],
+    ['B.1. Eckdaten zum Angebot', 3],
+    ['B.1.4 Standorte', 4],
+    ['B.2.1 Ansprache und Erreichung der Zielgruppe', 5],
+    ['B.2.2 Didaktisch-methodisches Vorgehen', 6],
+    ['B.2.3 Beratung, Coaching und Begleitung', 7],
+    ['C.1. Projektleitung', 8],
+    ['C.2. Training (allgemein)', 9],
+    ['C.2.Trainer:in: Basisbildung', 10],
+    ['C.2.Trainer:in: PSA', 11],
+    ['C.3. Beratung (allgemein)', 12],
+    ['C.3. Berater:in', 13],
+    ['Allgemeiner Kommentar', 14]
 ];
 
 foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
