@@ -13,7 +13,7 @@
 
 
         <table class="tx_ieb angebotVerantwortlich">
-            <tr style="background: none;">
+            <tr>
                 <th class="nachname">
                     &nbsp;
                     </td>
@@ -28,6 +28,7 @@
                     <th class="td-knopf">
 
                     </th>
+                    <th></th>
             </tr>
             <f:for each="{angebotVerantwortliches}" as="angebotVerantwortlich">
 
@@ -98,6 +99,11 @@
             </f:for>
         </table>
 
+
+
+        <div class="formzeile">
+            <f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action>
+        </div>
         <div class="abstand-mittel"></div>
         <f:if condition="{archiviertexistiert}=='ja'">
             <div class="archiv">
@@ -143,9 +149,7 @@
         </f:if>
     </f:if>
 
-    <div class="formzeile">
-        <f:link.action action="new" class="formlink angebotssteuernde">Neue Person anlegen</f:link.action>
-    </div>
+
 </f:section>
 
 </html>

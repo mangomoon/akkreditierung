@@ -1383,11 +1383,31 @@ table.ansuchenbegutachtung td.labeltext {
 
 table.ansuchenbegutachtung td.daten {
     font-size: 0.93em;
+    background: #fdfaf0;
+    padding-left: 4px;
 }
 
 table.ansuchenbegutachtung td.check {
     font-size: 0.85em;
     font-weight: 600;
+}
+
+span.check-ja {
+    display: inline-block;
+    background-image: url(../Img/hakerl_gruen.svg);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    padding: 0 4px 0 24px;
+    /* background-color: #fdfaf0; */
+}
+span.check-nein {
+    display: inline-block;
+    background-image: url(../Img/close-solo.svg);
+    background-size: 21px;
+    background-repeat: no-repeat;
+    padding: 0 4px 0 24px;
+    /* background-color: #fdfaf0; */
+    background-position-y: 2px;
 }
 
 .komm-int {
@@ -1407,6 +1427,11 @@ table.ansuchenbegutachtung td.check {
 
 .begutachtung-kriterium textarea {
     width: 100%;
+}
+
+label.komm-intern, label.komm-extern {
+    color: var(--f4);
+    margin:0;
 }
 
 .begutachtung-kriterium .knopf {
@@ -1502,6 +1527,14 @@ table.ansuchenbegutachtung td.check {
     background: var(--f0a);
     padding: 4px;
     margin-bottom: 12px;
+}
+
+.frist {
+    margin-bottom: 24px;
+}
+.frist input {
+    width: 180px;
+    padding: 4px;
 }
 
 .textbaustein {

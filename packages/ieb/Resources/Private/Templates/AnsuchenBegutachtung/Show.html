@@ -249,7 +249,7 @@
                             <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
                             <f:if condition="{stammdaten.qmsTyp}=1">
                                 <f:then>
-                                    <p>Die Organisation verfügt über Ö-Cert.</p>
+                                    <p>Die Organisation verfügt über ein Ö-Cert: <span class="check-ja">ja</span></p>
 
                                     <f:render partial="Form/UploadListDiffRel" arguments="{
                                         media:'{stammdaten.qmsZertifikatDatei}',
@@ -265,7 +265,7 @@
                                     </div>
                                 </f:then>
                                 <f:else>
-                                    <p>Die Organisation verfügt über kein Ö-Cert.</p>
+                                    <p>Die Organisation verfügt über ein Ö-Cert: <span class="check-nein">nein</span></p>
                                     <div class="erlaeuterung">
                                         <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
                                         </p>
@@ -298,7 +298,7 @@
                                     verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
                                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
 
-                                <p class="erklaerung"> Wir bestätigen, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen.
+                                <p class="erklaerung"> Wir bestätigen, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                                     &nbsp;
                                 </p>
                             </div>
@@ -311,7 +311,7 @@
                                 diffanmerkung:'{diff.copy_stammdaten.qualitaetPersonal}'
                             }" />
 
-
+                            <p>Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.: {f:if(condition: '{ansuchen.erklaerungTeilA}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -477,9 +477,8 @@
                             <p class="hinweis">Hinweis: Wird ein Bildungsangebot von einem Träger in mehreren Bundesländern durchgeführt, ist für jedes Bundesland ein eigenes Akkreditierungsansuchen zu stellen.</p>
                             <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert
-                                implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
-                            </p>
+                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                                {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </div>
 
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
@@ -548,7 +547,7 @@
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <label>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}',then:'ja', else:'nein')}</b>.</label>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: {f:if(condition: '{ansuchen.pruefbescheidCheck}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
 
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
@@ -694,10 +693,10 @@
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
 
-                        <f:if condition="{ansuchen.fernlehre}">
-                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
+                        
+                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                             <div class="abstand-mittel"></div>
-                        </f:if>
+                        
 
                         <label>Zielgruppengerechter Lernprozess</label>
                         <f:render partial="Form/UploadListDiff" arguments="{
@@ -725,7 +724,7 @@
 
 
                             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
-                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
+                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird: {f:if(condition: '{ansuchen.erklaerungTeilB}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </div>
                         <label>Kompetenzerhebung</label>
                         <f:render partial="Form/UploadListDiff" arguments="{
@@ -807,11 +806,9 @@
                             }" />
                             <div class="abstand-gross"></div>
                             <label>Kinderbetreuung</label>
-                            <f:if condition="{ansuchen.kinderbetreuung}">
                                 <p>
-                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
+                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                                 </p>
-                            </f:if>
                         </div>
                     </div>
 
@@ -1022,9 +1019,10 @@
                         <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
                     </f:if>
                 </f:for>
-
+                
                 <div class="row">
                     <div class="links col-7">
+                        <p>Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde: {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="c-2-hilfe">
                                 <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
@@ -1137,20 +1135,17 @@
             <div class="begutachtung-kriterium" id="k1">
                 <div class="row">
 
-                    <div class="col erlaeuterung" style="background:#DADBCF;margin-top:0;">
-                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
-                            Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
+                    <div class="col" style="background:#DADBCF;margin-top:0;">
+                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes. Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
-                            für allfällige Kontrollen aufzubewahren.
-                        </p>
+
                         <f:if condition="{ansuchen.typ}=2">
-                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
-                                und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
+                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
                         </f:if>
-                        <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
+
+                        <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.
+                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                     </div>
 
@@ -1177,7 +1172,7 @@
                 <div class="komm-int">
                     <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
                         <p>
-                            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
                         </p>
                     </f:for>
                 </div>
@@ -1191,13 +1186,12 @@
                 Allgemeiner Text an den Träger
                 <f:form.textarea property="reviewTotalCommentTr" class="form-control"/>
             </label>
-            <label>Frist
 
-            </label>
+                <!-- <f:render partial="Form/Input" arguments="{property:'reviewTotalFrist', label:'Frist', type:'date', class:'frist'}" /> -->
+
 
             <label>
-                <f:render partial="Form/Select" arguments="{property:'upcomingStatus', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}"
-                    />
+                <f:render partial="Form/Select" arguments="{property:'upcomingStatus', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
             </label>
         </div>
 

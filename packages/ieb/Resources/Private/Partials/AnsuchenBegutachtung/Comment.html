@@ -5,11 +5,12 @@
 <div class="komm-int">
     <f:for each="{comments}" as="comment">
         <p>
-            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
         </p>
     </f:for>
 </div>
 <div>
+    <label class="komm-intern">intern</label>
     <f:form.textarea property="{property}CommentInternalStep" id="comment1-{property}" class="" />
 </div>
 <div class="ansuchen knoepfe">
@@ -20,6 +21,7 @@
     <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" />nicht-ok</label>
 </div>
 <div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+    <label class="komm-extern">Info an Träger</label>
     <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
     <div class="knopf textbausteinoeffner">Textbausteine</div>
     <div class="textbausteine">
