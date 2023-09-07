@@ -2181,6 +2181,106 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getEndeReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getEnde()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setEndeForDateTimeSetsEnde(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setEnde($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('ende'));
+    }
+
+    /**
+     * @test
+     */
+    public function getFinanziertReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getFinanziert());
+    }
+
+    /**
+     * @test
+     */
+    public function setFinanziertForBoolSetsFinanziert(): void
+    {
+        $this->subject->setFinanziert(true);
+
+        self::assertEquals(true, $this->subject->_get('finanziert'));
+    }
+
+    /**
+     * @test
+     */
+    public function getPruefbescheidCheckReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getPruefbescheidCheck());
+    }
+
+    /**
+     * @test
+     */
+    public function setPruefbescheidCheckForBoolSetsPruefbescheidCheck(): void
+    {
+        $this->subject->setPruefbescheidCheck(true);
+
+        self::assertEquals(true, $this->subject->_get('pruefbescheidCheck'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAgEinsReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAgEins()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAgEinsForIntSetsStatusAgEins(): void
+    {
+        $this->subject->setStatusAgEins(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAgEins'));
+    }
+
+    /**
+     * @test
+     */
+    public function getStatusAgZweiReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAgZwei()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAgZweiForIntSetsStatusAgZwei(): void
+    {
+        $this->subject->setStatusAgZwei(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAgZwei'));
+    }
+
+    /**
+     * @test
+     */
     public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
     {
         self::assertEquals(

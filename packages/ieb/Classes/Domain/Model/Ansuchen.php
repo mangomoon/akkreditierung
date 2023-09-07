@@ -771,6 +771,41 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $statusAfterReview = 0;
 
     /**
+     * ende
+     *
+     * @var \DateTime
+     */
+    protected $ende = null;
+
+    /**
+     * finanziert
+     *
+     * @var bool
+     */
+    protected $finanziert = false;
+
+    /**
+     * pruefbescheidCheck
+     *
+     * @var bool
+     */
+    protected $pruefbescheidCheck = false;
+
+    /**
+     * statusAgEins
+     *
+     * @var int
+     */
+    protected $statusAgEins = 0;
+
+    /**
+     * statusAgZwei
+     *
+     * @var int
+     */
+    protected $statusAgZwei = 0;
+
+    /**
      * stammdatenStatic
      *
      * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
@@ -3860,5 +3895,130 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatusAfterReview(int $statusAfterReview)
     {
         $this->statusAfterReview = $statusAfterReview;
+    }
+
+    /**
+     * Returns the ende
+     *
+     * @return \DateTime
+     */
+    public function getEnde()
+    {
+        return $this->ende;
+    }
+
+    /**
+     * Sets the ende
+     *
+     * @param \DateTime $ende
+     * @return void
+     */
+    public function setEnde(\DateTime $ende)
+    {
+        $this->ende = $ende;
+    }
+
+    /**
+     * Returns the finanziert
+     *
+     * @return bool
+     */
+    public function getFinanziert()
+    {
+        return $this->finanziert;
+    }
+
+    /**
+     * Sets the finanziert
+     *
+     * @param bool $finanziert
+     * @return void
+     */
+    public function setFinanziert(bool $finanziert)
+    {
+        $this->finanziert = $finanziert;
+    }
+
+    /**
+     * Returns the boolean state of finanziert
+     *
+     * @return bool
+     */
+    public function isFinanziert()
+    {
+        return $this->finanziert;
+    }
+
+    /**
+     * Returns the pruefbescheidCheck
+     *
+     * @return bool
+     */
+    public function getPruefbescheidCheck()
+    {
+        return $this->pruefbescheidCheck;
+    }
+
+    /**
+     * Sets the pruefbescheidCheck
+     *
+     * @param bool $pruefbescheidCheck
+     * @return void
+     */
+    public function setPruefbescheidCheck(bool $pruefbescheidCheck)
+    {
+        $this->pruefbescheidCheck = $pruefbescheidCheck;
+    }
+
+    /**
+     * Returns the boolean state of pruefbescheidCheck
+     *
+     * @return bool
+     */
+    public function isPruefbescheidCheck()
+    {
+        return $this->pruefbescheidCheck;
+    }
+
+    /**
+     * Returns the statusAgEins
+     *
+     * @return int
+     */
+    public function getStatusAgEins()
+    {
+        return $this->statusAgEins;
+    }
+
+    /**
+     * Sets the statusAgEins
+     *
+     * @param int $statusAgEins
+     * @return void
+     */
+    public function setStatusAgEins(int $statusAgEins)
+    {
+        $this->statusAgEins = $statusAgEins;
+    }
+
+    /**
+     * Returns the statusAgZwei
+     *
+     * @return int
+     */
+    public function getStatusAgZwei()
+    {
+        return $this->statusAgZwei;
+    }
+
+    /**
+     * Sets the statusAgZwei
+     *
+     * @param int $statusAgZwei
+     * @return void
+     */
+    public function setStatusAgZwei(int $statusAgZwei)
+    {
+        $this->statusAgZwei = $statusAgZwei;
     }
 }

@@ -345,4 +345,62 @@ class BeraterTest extends UnitTestCase
 
         self::assertEquals(12, $this->subject->_get('statusAfterReview'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewFristReturnsInitialValueForDateTime(): void
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getReviewFrist()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristForDateTimeSetsReviewFrist(): void
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setReviewFrist($dateTimeFixture);
+
+        self::assertEquals($dateTimeFixture, $this->subject->_get('reviewFrist'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewFristMailSent14tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewFristMailSent14t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristMailSent14tForBoolSetsReviewFristMailSent14t(): void
+    {
+        $this->subject->setReviewFristMailSent14t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewFristMailSent14t'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewFristMailSent1tReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewFristMailSent1t());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewFristMailSent1tForBoolSetsReviewFristMailSent1t(): void
+    {
+        $this->subject->setReviewFristMailSent1t(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewFristMailSent1t'));
+    }
 }

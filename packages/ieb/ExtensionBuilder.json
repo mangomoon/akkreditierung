@@ -2523,6 +2523,66 @@
                             "propertyName": "statusAfterReview",
                             "propertyType": "Integer",
                             "uid": "460939206197"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "ende",
+                            "propertyType": "Date",
+                            "uid": "1672466630760"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "finanziert",
+                            "propertyType": "Boolean",
+                            "uid": "504002939084"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "pruefbescheidCheck",
+                            "propertyType": "Boolean",
+                            "uid": "574925727279"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAgEins",
+                            "propertyType": "Select",
+                            "uid": "459309321604"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAgZwei",
+                            "propertyType": "Select",
+                            "uid": "1006054226825"
                         }
                     ]
                 },
@@ -3052,6 +3112,42 @@
                             "propertyName": "statusAfterReview",
                             "propertyType": "Integer",
                             "uid": "416186844490"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFrist",
+                            "propertyType": "Date",
+                            "uid": "359632267378"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristMailSent14t",
+                            "propertyType": "Boolean",
+                            "uid": "1210672149367"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewFristMailSent1t",
+                            "propertyType": "Boolean",
+                            "uid": "1265741698064"
                         }
                     ]
                 },
@@ -4806,7 +4902,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-09-04 05:07",
+        "last_modified": "2023-09-07 01:59",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

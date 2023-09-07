@@ -14,7 +14,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_comment_internal_step, review_b1_comment_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_internal_step, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_internal_step, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_internal_step, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_internal_step, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, kompetenz_text1, erklaerung_teil_a, erklaerung_teil_b, erklaerungd5, copy_stammdaten, copy_trainer, copy_berater, copy_verantwortliche, copy_verantwortliche_mail, copy_standorte, review_b14_comment_internal, review_b14_comment_internal_step, review_b14_comment_tr, review_b14_status, review_b15_comment_internal, review_b15_comment_internal_step, review_b15_comment_tr, review_b15_status, review_b22_comment_internal, review_b22_comment_internal_step, review_b22_comment_tr, review_b22_status, review_b23_comment_internal, review_b23_comment_internal_step, review_b23_comment_tr, review_b23_status, upcoming_status, gutachter_locked_by, notitzzettel, archiviert, trotzdem_abschicken, review_total_frist_mail_sent14t, review_total_frist_mail_sent1t, review_frist_pruefbescheid, review_frist_pruefbescheid_mail_sent14t, review_frist_pruefbescheid_mail_sent1t, status_after_review, stammdaten_static, standorte_static, verantwortliche, verantwortliche_mail, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, gutachter_eins, gutachter_zwei, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
+        '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_comment_internal_step, review_b1_comment_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_internal_step, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_internal_step, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_internal_step, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_internal_step, review_total_comment_tr, review_total_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, kompetenz_text1, erklaerung_teil_a, erklaerung_teil_b, erklaerungd5, copy_stammdaten, copy_trainer, copy_berater, copy_verantwortliche, copy_verantwortliche_mail, copy_standorte, review_b14_comment_internal, review_b14_comment_internal_step, review_b14_comment_tr, review_b14_status, review_b15_comment_internal, review_b15_comment_internal_step, review_b15_comment_tr, review_b15_status, review_b22_comment_internal, review_b22_comment_internal_step, review_b22_comment_tr, review_b22_status, review_b23_comment_internal, review_b23_comment_internal_step, review_b23_comment_tr, review_b23_status, upcoming_status, gutachter_locked_by, notitzzettel, archiviert, trotzdem_abschicken, review_total_frist_mail_sent14t, review_total_frist_mail_sent1t, review_frist_pruefbescheid, review_frist_pruefbescheid_mail_sent14t, review_frist_pruefbescheid_mail_sent1t, status_after_review, ende, finanziert, pruefbescheid_check, status_ag_eins, status_ag_zwei, stammdaten_static, standorte_static, verantwortliche, verantwortliche_mail, trainer_static, berater_static, kopie_von, stammdaten, standorte, trainer, berater, gutachter_eins, gutachter_zwei, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
     ],
     'columns' => [
         'hidden' => [
@@ -1792,6 +1792,80 @@ return [
                 'eval' => 'int',
                 'default' => 0
             ]
+        ],
+        'ende' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.ende',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.ende.description',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 7,
+                'eval' => 'date',
+                'default' => time()
+            ],
+        ],
+        'finanziert' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.finanziert',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.finanziert.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'pruefbescheid_check' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_check',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_check.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'status_ag_eins' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.status_ag_eins',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.status_ag_eins.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['-- Label --', 0],
+                ],
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
+            ],
+        ],
+        'status_ag_zwei' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.status_ag_zwei',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.status_ag_zwei.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['-- Label --', 0],
+                ],
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
+            ],
         ],
         'stammdaten_static' => [
             'exclude' => true,

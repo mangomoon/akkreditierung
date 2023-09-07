@@ -138,6 +138,27 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $statusAfterReview = 0;
 
     /**
+     * reviewFrist
+     *
+     * @var \DateTime
+     */
+    protected $reviewFrist = null;
+
+    /**
+     * reviewFristMailSent14t
+     *
+     * @var bool
+     */
+    protected $reviewFristMailSent14t = false;
+
+    /**
+     * reviewFristMailSent1t
+     *
+     * @var bool
+     */
+    protected $reviewFristMailSent1t = false;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -500,5 +521,88 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatusAfterReview(int $statusAfterReview)
     {
         $this->statusAfterReview = $statusAfterReview;
+    }
+
+    /**
+     * Returns the reviewFrist
+     *
+     * @return \DateTime
+     */
+    public function getReviewFrist()
+    {
+        return $this->reviewFrist;
+    }
+
+    /**
+     * Sets the reviewFrist
+     *
+     * @param \DateTime $reviewFrist
+     * @return void
+     */
+    public function setReviewFrist(\DateTime $reviewFrist)
+    {
+        $this->reviewFrist = $reviewFrist;
+    }
+
+    /**
+     * Returns the reviewFristMailSent14t
+     *
+     * @return bool
+     */
+    public function getReviewFristMailSent14t()
+    {
+        return $this->reviewFristMailSent14t;
+    }
+
+    /**
+     * Sets the reviewFristMailSent14t
+     *
+     * @param bool $reviewFristMailSent14t
+     * @return void
+     */
+    public function setReviewFristMailSent14t(bool $reviewFristMailSent14t)
+    {
+        $this->reviewFristMailSent14t = $reviewFristMailSent14t;
+    }
+
+    /**
+     * Returns the boolean state of reviewFristMailSent14t
+     *
+     * @return bool
+     */
+    public function isReviewFristMailSent14t()
+    {
+        return $this->reviewFristMailSent14t;
+    }
+
+    /**
+     * Returns the reviewFristMailSent1t
+     *
+     * @return bool
+     */
+    public function getReviewFristMailSent1t()
+    {
+        return $this->reviewFristMailSent1t;
+    }
+
+    /**
+     * Sets the reviewFristMailSent1t
+     *
+     * @param bool $reviewFristMailSent1t
+     * @return void
+     */
+    public function setReviewFristMailSent1t(bool $reviewFristMailSent1t)
+    {
+        $this->reviewFristMailSent1t = $reviewFristMailSent1t;
+    }
+
+    /**
+     * Returns the boolean state of reviewFristMailSent1t
+     *
+     * @return bool
+     */
+    public function isReviewFristMailSent1t()
+    {
+        return $this->reviewFristMailSent1t;
     }
 }

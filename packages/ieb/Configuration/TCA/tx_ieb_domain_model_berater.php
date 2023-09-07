@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c32_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, locked_by, status_after_review, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c32_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, locked_by, status_after_review, review_frist, review_frist_mail_sent14t, review_frist_mail_sent1t, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -334,6 +334,50 @@ return [
                 'size' => 4,
                 'eval' => 'int',
                 'default' => 0
+            ]
+        ],
+        'review_frist' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist.description',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 7,
+                'eval' => 'date',
+                'default' => time()
+            ],
+        ],
+        'review_frist_mail_sent14t' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist_mail_sent14t',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist_mail_sent14t.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'review_frist_mail_sent1t' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist_mail_sent1t',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.review_frist_mail_sent1t.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+                'default' => 0,
             ]
         ],
     

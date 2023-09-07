@@ -48,6 +48,15 @@
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>
+			<trans-unit id="review_frist.description" resname="review_frist.description">
+				<source>reviewFrist</source>
+			</trans-unit>
+			<trans-unit id="review_frist_mail_sent14t.description" resname="review_frist_mail_sent14t.description">
+				<source>reviewFristMailSent14t</source>
+			</trans-unit>
+			<trans-unit id="review_frist_mail_sent1t.description" resname="review_frist_mail_sent1t.description">
+				<source>reviewFristMailSent1t</source>
+			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>

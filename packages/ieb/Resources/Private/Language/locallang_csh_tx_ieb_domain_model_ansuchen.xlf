@@ -318,6 +318,21 @@
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>
+			<trans-unit id="ende.description" resname="ende.description">
+				<source>ende</source>
+			</trans-unit>
+			<trans-unit id="finanziert.description" resname="finanziert.description">
+				<source>finanziert</source>
+			</trans-unit>
+			<trans-unit id="pruefbescheid_check.description" resname="pruefbescheid_check.description">
+				<source>pruefbescheidCheck</source>
+			</trans-unit>
+			<trans-unit id="status_ag_eins.description" resname="status_ag_eins.description">
+				<source>statusAgEins</source>
+			</trans-unit>
+			<trans-unit id="status_ag_zwei.description" resname="status_ag_zwei.description">
+				<source>statusAgZwei</source>
+			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
 			</trans-unit>
