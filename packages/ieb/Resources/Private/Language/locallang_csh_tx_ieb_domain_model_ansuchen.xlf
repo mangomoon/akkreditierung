@@ -366,6 +366,12 @@
 			<trans-unit id="berater.description" resname="berater.description">
 				<source>berater</source>
 			</trans-unit>
+			<trans-unit id="gutachter1.description" resname="gutachter1.description">
+				<source>gutachter1</source>
+			</trans-unit>
+			<trans-unit id="gutachter2.description" resname="gutachter2.description">
+				<source>gutachter2</source>
+			</trans-unit>
 			<trans-unit id="gutachter_eins.description" resname="gutachter_eins.description">
 				<source>gutachterEins</source>
 			</trans-unit>

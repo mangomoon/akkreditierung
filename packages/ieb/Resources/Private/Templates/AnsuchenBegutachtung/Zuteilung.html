@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Zuteilung von "{ansuchen.name}"</h1>
+
+    <f:form action="zuteilungPersist" object="{zuteilung}" name="zuteilung">
+        <f:form.hidden property="ansuchenId" />
+        <div>
+            <strong>Gutachter 1</strong>
+            <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
+                           optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
+        </div>
+
+        <div>
+            <strong>Gutachter 2</strong>
+            <f:form.select property="gutachter2" options="{alleGutachter}" optionLabelField="nameForSelect"
+                           optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
+        </div>
+
+        <f:form.submit value="Absenden"/>
+    </f:form>
+
+</f:section>
+</html>

@@ -883,18 +883,18 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $berater = null;
 
     /**
-     * gutachterEins
+     * gutachter1
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     * @var \GeorgRinger\Ieb\Domain\Model\User
      */
-    protected $gutachterEins = null;
+    protected $gutachter1 = null;
 
     /**
-     * gutachterZwei
+     * gutachter2
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
+     * @var \GeorgRinger\Ieb\Domain\Model\User
      */
-    protected $gutachterZwei = null;
+    protected $gutachter2 = null;
 
     /**
      * __construct
@@ -924,8 +924,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainer = $this->trainer ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->berater = $this->berater ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->gutachterEins = $this->gutachterEins ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->gutachterZwei = $this->gutachterZwei ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -3646,92 +3644,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a User
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterEin
-     * @return void
-     */
-    public function addGutachterEin(\GeorgRinger\Ieb\Domain\Model\User $gutachterEin)
-    {
-        $this->gutachterEins->attach($gutachterEin);
-    }
-
-    /**
-     * Removes a User
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterEinToRemove The User to be removed
-     * @return void
-     */
-    public function removeGutachterEin(\GeorgRinger\Ieb\Domain\Model\User $gutachterEinToRemove)
-    {
-        $this->gutachterEins->detach($gutachterEinToRemove);
-    }
-
-    /**
-     * Returns the gutachterEins
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
-     */
-    public function getGutachterEins()
-    {
-        return $this->gutachterEins;
-    }
-
-    /**
-     * Sets the gutachterEins
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User> $gutachterEins
-     * @return void
-     */
-    public function setGutachterEins(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $gutachterEins)
-    {
-        $this->gutachterEins = $gutachterEins;
-    }
-
-    /**
-     * Adds a User
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterZwei
-     * @return void
-     */
-    public function addGutachterZwei(\GeorgRinger\Ieb\Domain\Model\User $gutachterZwei)
-    {
-        $this->gutachterZwei->attach($gutachterZwei);
-    }
-
-    /**
-     * Removes a User
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachterZweiToRemove The User to be removed
-     * @return void
-     */
-    public function removeGutachterZwei(\GeorgRinger\Ieb\Domain\Model\User $gutachterZweiToRemove)
-    {
-        $this->gutachterZwei->detach($gutachterZweiToRemove);
-    }
-
-    /**
-     * Returns the gutachterZwei
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User>
-     */
-    public function getGutachterZwei()
-    {
-        return $this->gutachterZwei;
-    }
-
-    /**
-     * Sets the gutachterZwei
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\User> $gutachterZwei
-     * @return void
-     */
-    public function setGutachterZwei(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $gutachterZwei)
-    {
-        $this->gutachterZwei = $gutachterZwei;
-    }
-
-    /**
      * Returns the reviewTotalFristMailSent14t
      *
      * @return bool
@@ -4020,5 +3932,47 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatusAgZwei(int $statusAgZwei)
     {
         $this->statusAgZwei = $statusAgZwei;
+    }
+
+    /**
+     * Returns the gutachter1
+     *
+     * @return \GeorgRinger\Ieb\Domain\Model\User
+     */
+    public function getGutachter1()
+    {
+        return $this->gutachter1;
+    }
+
+    /**
+     * Sets the gutachter1
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachter1
+     * @return void
+     */
+    public function setGutachter1(\GeorgRinger\Ieb\Domain\Model\User $gutachter1)
+    {
+        $this->gutachter1 = $gutachter1;
+    }
+
+    /**
+     * Returns the gutachter2
+     *
+     * @return \GeorgRinger\Ieb\Domain\Model\User
+     */
+    public function getGutachter2()
+    {
+        return $this->gutachter2;
+    }
+
+    /**
+     * Sets the gutachter2
+     *
+     * @param \GeorgRinger\Ieb\Domain\Model\User $gutachter2
+     * @return void
+     */
+    public function setGutachter2(\GeorgRinger\Ieb\Domain\Model\User $gutachter2)
+    {
+        $this->gutachter2 = $gutachter2;
     }
 }

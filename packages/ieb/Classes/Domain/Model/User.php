@@ -208,6 +208,7 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->usergroup = $usergroup;
     }
+
     public function getFullname()
     {
         return $this->firstName . ' ' . $this->lastName;
@@ -263,5 +264,10 @@ class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setAusschluss(string $ausschluss)
     {
         $this->ausschluss = $ausschluss;
+    }
+
+    public function getNameForSelect(): string
+    {
+        return sprintf('%s %s (%s) [%s]', $this->firstName, $this->lastName, $this->username, $this->uid);
     }
 }

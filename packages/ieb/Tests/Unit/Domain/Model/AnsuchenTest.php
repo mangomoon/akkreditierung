@@ -2819,118 +2819,44 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getGutachterEinsReturnsInitialValueForUser(): void
+    public function getGutachter1ReturnsInitialValueForUser(): void
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getGutachterEins()
+            null,
+            $this->subject->getGutachter1()
         );
     }
 
     /**
      * @test
      */
-    public function setGutachterEinsForObjectStorageContainingUserSetsGutachterEins(): void
+    public function setGutachter1ForUserSetsGutachter1(): void
     {
-        $gutachterEin = new \GeorgRinger\Ieb\Domain\Model\User();
-        $objectStorageHoldingExactlyOneGutachterEins = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneGutachterEins->attach($gutachterEin);
-        $this->subject->setGutachterEins($objectStorageHoldingExactlyOneGutachterEins);
+        $gutachter1Fixture = new \GeorgRinger\Ieb\Domain\Model\User();
+        $this->subject->setGutachter1($gutachter1Fixture);
 
-        self::assertEquals($objectStorageHoldingExactlyOneGutachterEins, $this->subject->_get('gutachterEins'));
+        self::assertEquals($gutachter1Fixture, $this->subject->_get('gutachter1'));
     }
 
     /**
      * @test
      */
-    public function addGutachterEinToObjectStorageHoldingGutachterEins(): void
+    public function getGutachter2ReturnsInitialValueForUser(): void
     {
-        $gutachterEin = new \GeorgRinger\Ieb\Domain\Model\User();
-        $gutachterEinsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $gutachterEinsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($gutachterEin));
-        $this->subject->_set('gutachterEins', $gutachterEinsObjectStorageMock);
-
-        $this->subject->addGutachterEin($gutachterEin);
-    }
-
-    /**
-     * @test
-     */
-    public function removeGutachterEinFromObjectStorageHoldingGutachterEins(): void
-    {
-        $gutachterEin = new \GeorgRinger\Ieb\Domain\Model\User();
-        $gutachterEinsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $gutachterEinsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($gutachterEin));
-        $this->subject->_set('gutachterEins', $gutachterEinsObjectStorageMock);
-
-        $this->subject->removeGutachterEin($gutachterEin);
-    }
-
-    /**
-     * @test
-     */
-    public function getGutachterZweiReturnsInitialValueForUser(): void
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getGutachterZwei()
+            null,
+            $this->subject->getGutachter2()
         );
     }
 
     /**
      * @test
      */
-    public function setGutachterZweiForObjectStorageContainingUserSetsGutachterZwei(): void
+    public function setGutachter2ForUserSetsGutachter2(): void
     {
-        $gutachterZwei = new \GeorgRinger\Ieb\Domain\Model\User();
-        $objectStorageHoldingExactlyOneGutachterZwei = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneGutachterZwei->attach($gutachterZwei);
-        $this->subject->setGutachterZwei($objectStorageHoldingExactlyOneGutachterZwei);
+        $gutachter2Fixture = new \GeorgRinger\Ieb\Domain\Model\User();
+        $this->subject->setGutachter2($gutachter2Fixture);
 
-        self::assertEquals($objectStorageHoldingExactlyOneGutachterZwei, $this->subject->_get('gutachterZwei'));
-    }
-
-    /**
-     * @test
-     */
-    public function addGutachterZweiToObjectStorageHoldingGutachterZwei(): void
-    {
-        $gutachterZwei = new \GeorgRinger\Ieb\Domain\Model\User();
-        $gutachterZweiObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $gutachterZweiObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($gutachterZwei));
-        $this->subject->_set('gutachterZwei', $gutachterZweiObjectStorageMock);
-
-        $this->subject->addGutachterZwei($gutachterZwei);
-    }
-
-    /**
-     * @test
-     */
-    public function removeGutachterZweiFromObjectStorageHoldingGutachterZwei(): void
-    {
-        $gutachterZwei = new \GeorgRinger\Ieb\Domain\Model\User();
-        $gutachterZweiObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $gutachterZweiObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($gutachterZwei));
-        $this->subject->_set('gutachterZwei', $gutachterZweiObjectStorageMock);
-
-        $this->subject->removeGutachterZwei($gutachterZwei);
+        self::assertEquals($gutachter2Fixture, $this->subject->_get('gutachter2'));
     }
 }

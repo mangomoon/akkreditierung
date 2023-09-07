@@ -32,4 +32,16 @@ class UserRepository extends BaseRepository
 
         return $query->execute();
     }
+
+    public function getAllGutachter(): QueryResultInterface
+    {
+        $query = $this->getEmptyQuery();
+        $query->matching(
+            $query->logicalAnd(
+                $query->like('username', 'gutachter_%'),
+            )
+        );
+        return $query->execute();
+    }
 }
+

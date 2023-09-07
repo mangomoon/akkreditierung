@@ -57,6 +57,9 @@
                             <f:if condition="{item.upcomingStatus}>0">
                                <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
                             </f:if>
+
+                            <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="zuteilung" class="knopf-quadratisch einreichen">Zuteilung</f:link.action>
+
                         </td>
                     </tr>
             </table>

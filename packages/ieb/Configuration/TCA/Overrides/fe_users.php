@@ -31,6 +31,15 @@ $columns = [
         ],
     ],
 
+    'ausschluss' => [
+        'label' => '???',
+        'config' => [
+            'type' => 'text',
+
+            'default' => '',
+        ],
+    ],
+
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $columns);

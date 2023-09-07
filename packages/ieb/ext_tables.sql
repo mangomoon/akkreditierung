@@ -221,8 +221,8 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	trainer int(11) unsigned NOT NULL DEFAULT '0',
 	berater int(11) unsigned NOT NULL DEFAULT '0',
-	gutachter_eins int(11) unsigned NOT NULL DEFAULT '0',
-	gutachter_zwei int(11) unsigned NOT NULL DEFAULT '0'
+    gutachter1 int(11) unsigned DEFAULT '0',
+    gutachter2 int(11) unsigned DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_standort (

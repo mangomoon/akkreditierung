@@ -2714,8 +2714,8 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "gutachterEins",
-                            "relationType": "manyToMany",
+                            "relationName": "gutachter1",
+                            "relationType": "zeroToOne",
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
                             "uid": "80046309597"
@@ -2725,8 +2725,8 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "gutachterZwei",
-                            "relationType": "manyToMany",
+                            "relationName": "gutachter2",
+                            "relationType": "zeroToOne",
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
                             "uid": "602102808116"
@@ -4902,8 +4902,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-09-07 01:59",
+        "last_modified": "2023-09-07 07:33",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (1)"
+        "be_user": " (4)"
     }
 }

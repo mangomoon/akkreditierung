@@ -14,7 +14,6 @@ use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
  *
@@ -30,6 +29,7 @@ class AnsuchenBegutachtungController extends BaseController
     protected Repository\StammdatenRepository $stammdatenRepository;
     protected Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
     protected Repository\TextbausteineRepository $textbausteineRepository;
+    protected Repository\UserRepository $userRepository;
 
     public function listAction(): ResponseInterface
     {
@@ -59,7 +59,6 @@ class AnsuchenBegutachtungController extends BaseController
             'versions' => $this->ansuchenRepository->getAllPreviousVersions($ansuchen->getUid()),
             'diff' => $diffResult,
             'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
-//            'diffAsJson' => sprintf('<script>var ansuchenDiff = %s;</script>', json_encode($diffResult, JSON_UNESCAPED_UNICODE)),
             'stammdaten' => $stammdaten,
             'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
         ]);
@@ -109,6 +108,43 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());
+    }
+
+    public function zuteilungAction(Ansuchen $ansuchen)
+    {
+        $zuteilung = new Dto\Zuteilung();
+        $zuteilung->setGutachter1($ansuchen->getGutachter1() ? $ansuchen->getGutachter1()->getUid() : 0);
+        $zuteilung->setGutachter2($ansuchen->getGutachter2() ? $ansuchen->getGutachter2()->getUid() : 0);
+        $zuteilung->setAnsuchenId($ansuchen->getUid());
+        $this->view->assignMultiple([
+            'ansuchen' => $ansuchen,
+            'zuteilung' => $zuteilung,
+            'alleGutachter' => $this->userRepository->getAllGutachter(),
+        ]);
+    }
+
+    public function zuteilungPersistAction(Dto\Zuteilung $zuteilung)
+    {
+
+        /** @var Ansuchen $ansuchen */
+        $ansuchen = $this->ansuchenRepository->findByIdentifier($zuteilung->getAnsuchenId());
+        /** @var Ansuchen $ansuchen */
+        $ansuchen = $this->ansuchenRepository->findByIdentifier($zuteilung->getAnsuchenId());
+        if ($zuteilung->getGutachter1()) {
+            $gutachter1 = $this->userRepository->findByIdentifier($zuteilung->getGutachter1());
+            if ($gutachter1) {
+                $ansuchen->setGutachter1($gutachter1);
+            }
+        }
+        if ($zuteilung->getGutachter2()) {
+            $gutachter2 = $this->userRepository->findByIdentifier($zuteilung->getGutachter2());
+            if ($gutachter2) {
+                $ansuchen->setGutachter2($gutachter2);
+            }
+        }
+        $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
+        $this->redirect('list');
     }
 
     protected function redirectTo(int $recordId): void
@@ -206,5 +242,10 @@ class AnsuchenBegutachtungController extends BaseController
     public function injectTextbausteineRepository(Repository\TextbausteineRepository $repository): void
     {
         $this->textbausteineRepository = $repository;
+    }
+
+    public function injectUserRepository(Repository\UserRepository $repository): void
+    {
+        $this->userRepository = $repository;
     }
 }
