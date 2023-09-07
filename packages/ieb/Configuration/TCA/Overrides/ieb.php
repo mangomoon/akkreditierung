@@ -45,6 +45,16 @@ $GLOBALS['TCA']['tx_ieb_domain_model_stammdaten']['columns']['rechtsform']['conf
     ['Sonstige', 130],
 ];
 
+$GLOBALS['TCA']['tx_ieb_domain_model_textbausteine']['columns']['kriterium']['config']['items'] = [
+    ['', 0],
+
+    ['A', '--div--'],
+    ['A1', 'a1'],
+    ['A2', 'a2'],
+    ['B', '--div--'],
+    ['B11', 'b11'],
+];
+
 foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
     $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['readOnly'] = true;
     $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['renderType'] = 'json';

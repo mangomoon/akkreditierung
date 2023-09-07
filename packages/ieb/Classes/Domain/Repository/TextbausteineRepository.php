@@ -18,11 +18,14 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 class TextbausteineRepository extends BaseRepository
 {
 
-    /**
-     * Really all without pid
-     */
-    public function getAll(): QueryResultInterface
+    public function getGroupedItems(): array
     {
-        return $this->getEmptyQuery()->execute();
+        $groupedItems = [];
+        $all = $this->getEmptyQuery()->execute(true);
+        foreach ($all as $item) {
+            $groupedItems[$item['kriterium']][$item['uid']] = $item['baustein'];
+        }
+
+        return $groupedItems;
     }
 }

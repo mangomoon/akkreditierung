@@ -43,7 +43,7 @@ class TrainerBegutachtungController extends BaseController
             'trainer' => $trainer,
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
-            'textbausteine' => $this->textbausteineRepository->getAll(),
+            'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
             'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId)
         ]);
         return $this->htmlResponse();
