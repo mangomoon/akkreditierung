@@ -48,20 +48,20 @@ $GLOBALS['TCA']['tx_ieb_domain_model_stammdaten']['columns']['rechtsform']['conf
 $GLOBALS['TCA']['tx_ieb_domain_model_textbausteine']['columns']['kriterium']['config']['items'] = [
     ['', 0],
 
-    ['A.1. Stammdaten', 1],
-    ['A.2. Qualität des Anbieters', 2],
-    ['B.1. Eckdaten zum Angebot', 3],
-    ['B.1.4 Standorte', 4],
-    ['B.2.1 Ansprache und Erreichung der Zielgruppe', 5],
-    ['B.2.2 Didaktisch-methodisches Vorgehen', 6],
-    ['B.2.3 Beratung, Coaching und Begleitung', 7],
-    ['C.1. Projektleitung', 8],
-    ['C.2. Training (allgemein)', 9],
-    ['C.2.Trainer:in: Basisbildung', 10],
-    ['C.2.Trainer:in: PSA', 11],
-    ['C.3. Beratung (allgemein)', 12],
-    ['C.3. Berater:in', 13],
-    ['Allgemeiner Kommentar', 14]
+    ['A.1. Stammdaten', 'a1'],
+    ['A.2. Qualität des Anbieters', 'a2'],
+    ['B.1. Eckdaten zum Angebot', 'b1'],
+    ['B.1.4 Standorte', 'b14'],
+    ['B.2.1 Ansprache und Erreichung der Zielgruppe', 'b21'],
+    ['B.2.2 Didaktisch-methodisches Vorgehen', 'b22'],
+    ['B.2.3 Beratung, Coaching und Begleitung', 'b23'],
+    ['C.1. Projektleitung', 'c1'],
+    ['C.2. Training (allgemein)', 'c2'],
+    ['C.2.Trainer:in: Basisbildung', 'c2tb'],
+    ['C.2.Trainer:in: PSA', 'c2tp'],
+    ['C.3. Beratung (allgemein)', 'c3'],
+    ['C.3. Berater:in', 'c3b'],
+    ['Allgemeiner Kommentar', 'allg']
 ];
 
 foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
