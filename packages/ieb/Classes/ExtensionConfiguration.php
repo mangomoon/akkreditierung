@@ -8,6 +8,7 @@ class ExtensionConfiguration
     protected int $userIdForDatahandler = 1;
     protected int $usergroupEingeladenInaktiv = 3;
     protected int $usergroupAktiv = 1;
+    protected int $usergroupAg = 99;
     protected int $pageRegistration = 15;
 
 
@@ -31,13 +32,14 @@ class ExtensionConfiguration
         return $this->usergroupAktiv;
     }
 
-    /**
-     * @return int
-     */
     public function getPageRegistration(): int
     {
         return $this->pageRegistration;
     }
 
+    public function getUsergroupAg(): int
+    {
+        return $this->usergroupAg;
+    }
 
 }
