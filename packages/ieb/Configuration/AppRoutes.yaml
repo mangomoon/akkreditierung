@@ -1,0 +1,7 @@
+myApp:
+    prefix: /api/v1
+    routes:
+        - name: application
+          path: /monitoring-export
+          defaults:
+              handler: GeorgRinger\Ieb\Controller\Api\MonitoringExportApi

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a306ee819782e8fb4e2d4f4fc73c010a",
+    "content-hash": "fa91e0c08b8399e32c8a41442f3beaed",
     "packages": [
         {
             "name": "b13/bolt",
@@ -2858,6 +2858,45 @@
                 "source": "https://github.com/rogervila/array-diff-multidimensional/tree/2.1.0"
             },
             "time": "2021-10-28T08:07:19+00:00"
+        },
+        {
+            "name": "sinso/app-routes",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sinso/app_routes.git",
+                "reference": "4467a8513be30003aa4089a7aaccbec33bdd9275"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sinso/app_routes/zipball/4467a8513be30003aa4089a7aaccbec33bdd9275",
+                "reference": "4467a8513be30003aa4089a7aaccbec33bdd9275",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^10.4 || ^11.0 || ^12.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "app_routes"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sinso\\AppRoutes\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "description": "Easy way to route rest-like URLs to your code",
+            "support": {
+                "issues": "https://github.com/sinso/app_routes/issues",
+                "source": "https://github.com/sinso/app_routes/tree/1.4.1"
+            },
+            "time": "2023-06-28T09:18:15+00:00"
         },
         {
             "name": "symfony/cache",

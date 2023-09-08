@@ -121,4 +121,20 @@ enum AnsuchenStatus: int
             self::BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG->value,
         ];
     }
+
+    /**
+     * @return int[]
+     */
+    public static function statusForMonitoringExport(): array
+    {
+        return [
+            self::NACHBESSERUNGSAUFTRAG->value, // todo to be removed!
+            self::IN_ARBEIT->value, // todo to be removed!
+            self::NEU_IN_ARBEIT->value,// todo to be removed!
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::AKKREDITIERUNG_ENTZOGEN->value,
+            self::NICHT_AKKREDITERT->value,
+        ];
+    }
 }
