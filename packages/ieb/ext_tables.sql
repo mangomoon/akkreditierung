@@ -206,10 +206,13 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_frist_pruefbescheid_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
 	status_after_review int(11) NOT NULL DEFAULT '0',
 	ende int(11) NOT NULL DEFAULT '0',
-	finanziert smallint(1) unsigned NOT NULL DEFAULT '0',
 	pruefbescheid_check smallint(1) unsigned NOT NULL DEFAULT '0',
 	status_ag_eins int(11) DEFAULT '0' NOT NULL,
 	status_ag_zwei int(11) DEFAULT '0' NOT NULL,
+	review_verrechnung_check1 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_verrechnung_check2 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_verrechnung1 text NOT NULL DEFAULT '',
+	review_verrechnung2 text NOT NULL DEFAULT '',
 	stammdaten_static int(11) unsigned DEFAULT '0',
 	standorte_static int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
@@ -221,8 +224,8 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	standorte int(11) unsigned NOT NULL DEFAULT '0',
 	trainer int(11) unsigned NOT NULL DEFAULT '0',
 	berater int(11) unsigned NOT NULL DEFAULT '0',
-    gutachter1 int(11) unsigned DEFAULT '0',
-    gutachter2 int(11) unsigned DEFAULT '0'
+	gutachter1 int(11) unsigned DEFAULT '0',
+	gutachter2 int(11) unsigned DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_standort (

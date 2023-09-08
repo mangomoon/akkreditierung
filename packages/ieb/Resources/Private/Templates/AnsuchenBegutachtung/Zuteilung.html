@@ -3,24 +3,42 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>Zuteilung von "{ansuchen.name}"</h1>
+    <div class="begutachtung-kopf">
+        <h2>Gutachterzuteilung von {ansuchen.name}&nbsp; <span class="nr">{ansuchen.nummer}</span></h2>
+    </div>
+    
 
-    <f:form action="zuteilungPersist" object="{zuteilung}" name="zuteilung">
-        <f:form.hidden property="ansuchenId" />
-        <div>
-            <strong>Gutachter 1</strong>
-            <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
-                           optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
+    
+        <div class="abstand-mittel"></div>
+
+        <f:form action="zuteilungPersist" object="{zuteilung}" name="zuteilung">
+            <f:form.hidden property="ansuchenId" />
+
+            <div class="kriterium">
+            <div class="kriteriumteil">
+                <h4>Gutachter 1</h4>
+                <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
+                            optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
+                <p>
+                    <f:form.checkbox property="reviewVerrechnungCheck1" id="reviewVerrechnungCheck1" value="1" /> verrechnungsrelevante Zuteilung
+                </p>
+                <f:form.textarea property="reviewVerrechnung1" id="reviewVerrechnung1"></f:form.textarea>
+            </div>
+
+            <div class="kriteriumteil">
+                <h4>Gutachter 2</h4>
+                <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
+                            optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
+                <p>
+                    <f:form.checkbox property="reviewVerrechnungCheck2" id="reviewVerrechnungCheck2" value="1" /> verrechnungsrelevante Zuteilung
+                </p>
+                <f:form.textarea property="reviewVerrechnung2" id="reviewVerrechnung2"></f:form.textarea>
+            </div>
         </div>
+            <f:form.submit value="Speichern und schliessen" class="knopf-s"/>
+            <f:link.action class="knopf-s knopfersatz zurueck" action="list"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
+        </f:form>
 
-        <div>
-            <strong>Gutachter 2</strong>
-            <f:form.select property="gutachter2" options="{alleGutachter}" optionLabelField="nameForSelect"
-                           optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
-        </div>
-
-        <f:form.submit value="Absenden"/>
-    </f:form>
-
+    
 </f:section>
 </html>

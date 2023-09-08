@@ -2544,18 +2544,6 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
-                            "propertyName": "finanziert",
-                            "propertyType": "Boolean",
-                            "uid": "504002939084"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsNullable": false,
-                            "propertyIsRequired": false,
                             "propertyName": "pruefbescheidCheck",
                             "propertyType": "Boolean",
                             "uid": "574925727279"
@@ -2583,6 +2571,54 @@
                             "propertyName": "statusAgZwei",
                             "propertyType": "Select",
                             "uid": "1006054226825"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewVerrechnungCheck1",
+                            "propertyType": "Boolean",
+                            "uid": "243865673004"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewVerrechnungCheck2",
+                            "propertyType": "Boolean",
+                            "uid": "1302098017204"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewVerrechnung1",
+                            "propertyType": "Text",
+                            "uid": "1131111891045"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "reviewVerrechnung2",
+                            "propertyType": "Text",
+                            "uid": "823830791534"
                         }
                     ]
                 },
@@ -4902,8 +4938,8 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-09-07 07:33",
+        "last_modified": "2023-09-08 11:15",
         "extension_builder_version": "v11.0.10",
-        "be_user": " (4)"
+        "be_user": " (1)"
     }
 }

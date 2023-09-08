@@ -2203,24 +2203,6 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getFinanziertReturnsInitialValueForBool(): void
-    {
-        self::assertFalse($this->subject->getFinanziert());
-    }
-
-    /**
-     * @test
-     */
-    public function setFinanziertForBoolSetsFinanziert(): void
-    {
-        $this->subject->setFinanziert(true);
-
-        self::assertEquals(true, $this->subject->_get('finanziert'));
-    }
-
-    /**
-     * @test
-     */
     public function getPruefbescheidCheckReturnsInitialValueForBool(): void
     {
         self::assertFalse($this->subject->getPruefbescheidCheck());
@@ -2276,6 +2258,84 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->setStatusAgZwei(12);
 
         self::assertEquals(12, $this->subject->_get('statusAgZwei'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewVerrechnungCheck1ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewVerrechnungCheck1());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewVerrechnungCheck1ForBoolSetsReviewVerrechnungCheck1(): void
+    {
+        $this->subject->setReviewVerrechnungCheck1(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewVerrechnungCheck1'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewVerrechnungCheck2ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getReviewVerrechnungCheck2());
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewVerrechnungCheck2ForBoolSetsReviewVerrechnungCheck2(): void
+    {
+        $this->subject->setReviewVerrechnungCheck2(true);
+
+        self::assertEquals(true, $this->subject->_get('reviewVerrechnungCheck2'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewVerrechnung1ReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewVerrechnung1()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewVerrechnung1ForStringSetsReviewVerrechnung1(): void
+    {
+        $this->subject->setReviewVerrechnung1('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewVerrechnung1'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewVerrechnung2ReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewVerrechnung2()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewVerrechnung2ForStringSetsReviewVerrechnung2(): void
+    {
+        $this->subject->setReviewVerrechnung2('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewVerrechnung2'));
     }
 
     /**

@@ -321,9 +321,6 @@
 			<trans-unit id="ende.description" resname="ende.description">
 				<source>ende</source>
 			</trans-unit>
-			<trans-unit id="finanziert.description" resname="finanziert.description">
-				<source>finanziert</source>
-			</trans-unit>
 			<trans-unit id="pruefbescheid_check.description" resname="pruefbescheid_check.description">
 				<source>pruefbescheidCheck</source>
 			</trans-unit>
@@ -332,6 +329,18 @@
 			</trans-unit>
 			<trans-unit id="status_ag_zwei.description" resname="status_ag_zwei.description">
 				<source>statusAgZwei</source>
+			</trans-unit>
+			<trans-unit id="review_verrechnung_check1.description" resname="review_verrechnung_check1.description">
+				<source>reviewVerrechnungCheck1</source>
+			</trans-unit>
+			<trans-unit id="review_verrechnung_check2.description" resname="review_verrechnung_check2.description">
+				<source>reviewVerrechnungCheck2</source>
+			</trans-unit>
+			<trans-unit id="review_verrechnung1.description" resname="review_verrechnung1.description">
+				<source>reviewVerrechnung1</source>
+			</trans-unit>
+			<trans-unit id="review_verrechnung2.description" resname="review_verrechnung2.description">
+				<source>reviewVerrechnung2</source>
 			</trans-unit>
 			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
 				<source>stammdatenStatic</source>
@@ -371,6 +380,9 @@
 			</trans-unit>
 			<trans-unit id="gutachter2.description" resname="gutachter2.description">
 				<source>gutachter2</source>
+			</trans-unit>
+			<trans-unit id="finanziert.description" resname="finanziert.description">
+				<source>finanziert</source>
 			</trans-unit>
 			<trans-unit id="gutachter_eins.description" resname="gutachter_eins.description">
 				<source>gutachterEins</source>

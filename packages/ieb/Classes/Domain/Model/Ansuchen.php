@@ -778,13 +778,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $ende = null;
 
     /**
-     * finanziert
-     *
-     * @var bool
-     */
-    protected $finanziert = false;
-
-    /**
      * pruefbescheidCheck
      *
      * @var bool
@@ -895,6 +888,34 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \GeorgRinger\Ieb\Domain\Model\User
      */
     protected $gutachter2 = null;
+
+    /**
+     * reviewVerrechnungCheck1
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck1 = false;
+
+    /**
+     * reviewVerrechnungCheck2
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck2 = false;
+
+    /**
+     * reviewVerrechnung1
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung1 = '';
+
+    /**
+     * reviewVerrechnung2
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung2 = '';
 
     /**
      * __construct
@@ -3831,37 +3852,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the finanziert
-     *
-     * @return bool
-     */
-    public function getFinanziert()
-    {
-        return $this->finanziert;
-    }
-
-    /**
-     * Sets the finanziert
-     *
-     * @param bool $finanziert
-     * @return void
-     */
-    public function setFinanziert(bool $finanziert)
-    {
-        $this->finanziert = $finanziert;
-    }
-
-    /**
-     * Returns the boolean state of finanziert
-     *
-     * @return bool
-     */
-    public function isFinanziert()
-    {
-        return $this->finanziert;
-    }
-
-    /**
      * Returns the pruefbescheidCheck
      *
      * @return bool
@@ -3974,5 +3964,109 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setGutachter2(\GeorgRinger\Ieb\Domain\Model\User $gutachter2)
     {
         $this->gutachter2 = $gutachter2;
+    }
+
+    /**
+     * Returns the reviewVerrechnungCheck1
+     *
+     * @return bool
+     */
+    public function getReviewVerrechnungCheck1()
+    {
+        return $this->reviewVerrechnungCheck1;
+    }
+
+    /**
+     * Sets the reviewVerrechnungCheck1
+     *
+     * @param bool $reviewVerrechnungCheck1
+     * @return void
+     */
+    public function setReviewVerrechnungCheck1(bool $reviewVerrechnungCheck1)
+    {
+        $this->reviewVerrechnungCheck1 = $reviewVerrechnungCheck1;
+    }
+
+    /**
+     * Returns the boolean state of reviewVerrechnungCheck1
+     *
+     * @return bool
+     */
+    public function isReviewVerrechnungCheck1()
+    {
+        return $this->reviewVerrechnungCheck1;
+    }
+
+    /**
+     * Returns the reviewVerrechnungCheck2
+     *
+     * @return bool
+     */
+    public function getReviewVerrechnungCheck2()
+    {
+        return $this->reviewVerrechnungCheck2;
+    }
+
+    /**
+     * Sets the reviewVerrechnungCheck2
+     *
+     * @param bool $reviewVerrechnungCheck2
+     * @return void
+     */
+    public function setReviewVerrechnungCheck2(bool $reviewVerrechnungCheck2)
+    {
+        $this->reviewVerrechnungCheck2 = $reviewVerrechnungCheck2;
+    }
+
+    /**
+     * Returns the boolean state of reviewVerrechnungCheck2
+     *
+     * @return bool
+     */
+    public function isReviewVerrechnungCheck2()
+    {
+        return $this->reviewVerrechnungCheck2;
+    }
+
+    /**
+     * Returns the reviewVerrechnung1
+     *
+     * @return string
+     */
+    public function getReviewVerrechnung1()
+    {
+        return $this->reviewVerrechnung1;
+    }
+
+    /**
+     * Sets the reviewVerrechnung1
+     *
+     * @param string $reviewVerrechnung1
+     * @return void
+     */
+    public function setReviewVerrechnung1(string $reviewVerrechnung1)
+    {
+        $this->reviewVerrechnung1 = $reviewVerrechnung1;
+    }
+
+    /**
+     * Returns the reviewVerrechnung2
+     *
+     * @return string
+     */
+    public function getReviewVerrechnung2()
+    {
+        return $this->reviewVerrechnung2;
+    }
+
+    /**
+     * Sets the reviewVerrechnung2
+     *
+     * @param string $reviewVerrechnung2
+     * @return void
+     */
+    public function setReviewVerrechnung2(string $reviewVerrechnung2)
+    {
+        $this->reviewVerrechnung2 = $reviewVerrechnung2;
     }
 }
