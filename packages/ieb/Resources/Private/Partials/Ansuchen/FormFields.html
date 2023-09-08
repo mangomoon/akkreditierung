@@ -811,12 +811,12 @@
                             <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
-                            <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer" />
+                            <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>
                         </div>
                     </f:then>
                     <f:else>
                         <div class="formzeile">
-                            Sie müssen zuerst &nbsp; <f:form.submit value="Trainer:innen für den Bereich Pflichtschulsabschluss anlegen" name="saveAndTrainer" class="formlink trainer" />
+                            Sie müssen zuerst &nbsp; <f:form.submit value="Trainer:innen für den Bereich Pflichtschulsabschluss anlegen" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>
                         </div>
                     </f:else>
                 </f:if>
@@ -884,11 +884,11 @@
             </div>
 
             <div class="formzeile">
-                <f:form.submit value="Beratung: Daten bearbeiten" name="saveAndBerater" class="formlink berater" />
+                <f:form.submit value="Beratung: Daten bearbeiten" name="saveAndBerater" class="formlink berater titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Beratungspersonals. Das Ansuchen wird gespeichert." />
             </div>
         </f:then>
         <f:else>
-            Sie müssen zuerst &nbsp; <f:form.submit value="Berater:innen anlegen" name="saveAndBerater" class="formlink berater" />
+            Sie müssen zuerst &nbsp; <f:form.submit value="Berater:innen anlegen" name="saveAndBerater" class="formlink berater titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Beratungspersonals. Das Ansuchen wird gespeichert." />
         </f:else>
     </f:if>    
 </div>

@@ -1003,17 +1003,22 @@
                                 <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid,ansuchenCompareId:diffCompareId}" target="_blank">Begutachtung starten</f:link.action>
                                 <f:for each="{trainerorig}" as="tt">
                                     <f:if condition="{t.uid}=={tt.uid}">
-                                        <div class="status-babi">
-                                            <span class="titleview person-statuskugel-a person-statuskugel status-{tt.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
-                                            <span class="titleview person-statuskugel-b person-statuskugel status-{tt.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
-                                        </div>
-                                        <div class="status-psa">
-                                            <span class="titleview person-statuskugel-c person-statuskugel status-{tt.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
-                                            <span class="titleview person-statuskugel-d person-statuskugel status-{tt.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
-                                        </div>
+                                        <f:if condition="{ansuchen.typ}==1">
+                                            <f:then>
+                                                <div class="status-babi">
+                                                    <span class="titleview person-statuskugel-a person-statuskugel status-{tt.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                                    <span class="titleview person-statuskugel-b person-statuskugel status-{tt.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                                </div>
+                                            </f:then>
+                                            <f:else>
+                                                <div class="status-psa">
+                                                    <span class="titleview person-statuskugel-c person-statuskugel status-{tt.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
+                                                    <span class="titleview person-statuskugel-d person-statuskugel status-{tt.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
+                                                </div>
+                                            </f:else>
+                                        </f:if>
                                     </f:if>
                                 </f:for>
-                            <!--p>{t.reviewC2BabiCommentInternal}</p-->
                         </div>
                     </div>
                 </f:for>

@@ -92,11 +92,28 @@ body {
     font-weight: 600;
 }
 
+hr.hell {
+    border:0;
+    border-top: dotted 2px var(--f1);
+    margin: 8px 0;
+}
+
+hr.dunkel {
+    border:0;
+    border-top: dotted 2px var(--f3);
+    margin: 8px 0;
+}
+
 .klein {
     font-size: 0.8em;
     color: var(--f4);
 }
-
+.hell {
+    color: var(--f0);
+}
+.dunkel {
+    color: var(--f4);
+}
 .inline {
     display: inline-block;
 }
@@ -1586,8 +1603,8 @@ label.komm-intern, label.komm-extern {
     vertical-align: top;
 }
 .status-babi, .status-psa {
-    display: inline;
-    width: auto;
+    float: right;
+    padding-right: 30px;
 }
 .bereich-1 .status-babi .person-statuskugel,.bereich-2 .status-psa .person-statuskugel, .berater.person-statuskugel{
     border: solid 2px #fff;
@@ -1618,6 +1635,17 @@ span.person-statuskugel.status-3 {
 }
 .begutachtung-kriterium.status-2 {
     border: solid 3px var(--standorte);
+}
+
+.begutachtungsinfo {
+    background: var(--f3);
+    margin-bottom: 36px;
+    padding: 8px;
+}
+.begutachtungsinfo .person-statuskugel {
+    margin: 0 12px 12px 0;
+    border: solid 2px #fff;
+    float: left;
 }
 
 /* Schlusskommentar */
