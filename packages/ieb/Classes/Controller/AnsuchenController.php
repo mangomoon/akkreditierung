@@ -92,7 +92,7 @@ class AnsuchenController extends BaseController
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $stammdaten,
-            'diff' => $diffResult
+            'diff' => $diffResult,
         ]);
         $this->addRelationDataToView();
         return $this->htmlResponse();
@@ -202,7 +202,8 @@ class AnsuchenController extends BaseController
         if (isset($arguments['saveAndStandorte'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirectToUri("/uebersicht-tr/standorte");
-        }if (isset($arguments['saveAndStandorteOhne'])) {
+        }
+        if (isset($arguments['saveAndStandorteOhne'])) {
             $this->redirectToUri("/uebersicht-tr/standorte");
         }
         if (isset($arguments['saveAndBerater'])) {
@@ -219,7 +220,7 @@ class AnsuchenController extends BaseController
     protected function redirectToDirectly(): void
     {
         $arguments = $this->request->getArguments();
-        
+
         if (isset($arguments['saveAndTrainer'])) {
             $this->redirectToUri("/uebersicht-tr/training");
         }
@@ -251,6 +252,14 @@ class AnsuchenController extends BaseController
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');
+    }
+
+    public function certificateDownloadAction(Ansuchen $ansuchen)
+    {
+        $this->view->assignMultiple([
+            'ansuchen' => $ansuchen,
+            'stammdaten' => $this->stammdatenRepository->getLatest(),
+        ]);
     }
 
 

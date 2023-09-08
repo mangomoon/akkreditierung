@@ -1,0 +1,20 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<pdf:document sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
+    <pdf:page importPage="1" margin="{top: 60, right: 20, bottom: 40, left: 20}">
+        <pdf:html autoHyphenation="1">
+            <p style="text-align: center;font-size: 12pt;line-height: 26pt">
+                Dem Ansuchen des Bildungsträgers "{stammdaten.name}"<br>
+                auf Akkreditierung des Angebots<br>
+                {ansuchen.name}, <br>
+                Nr. {ansuchen.nummer}, für den Programmbereich Basisbildung<br>
+                wird aufgrund der Behandlung des Ansuchens durch die Akkreditierungsgruppe stattgegeben.<br>
+                Die Akkreditierung erfolgt für den Zeitraum von 31.12.2011 bis 25.02.2012.
+            </p>
+        </pdf:html>
+    </pdf:page>
+</pdf:document>
+
+</html>

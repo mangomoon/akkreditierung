@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "735ec788058c6936d8720624378fb649",
+    "content-hash": "a306ee819782e8fb4e2d4f4fc73c010a",
     "packages": [
         {
             "name": "b13/bolt",
@@ -228,6 +228,89 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.8"
             },
             "time": "2022-12-07T17:46:57+00:00"
+        },
+        {
+            "name": "bithost-gmbh/pdfviewhelpers",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bithost-gmbh/pdfviewhelpers.git",
+                "reference": "65c36214012731884320716a4d7f1062858943bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bithost-gmbh/pdfviewhelpers/zipball/65c36214012731884320716a4d7f1062858943bc",
+                "reference": "65c36214012731884320716a4d7f1062858943bc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "typo3/cms-core": "^9.5 || ^10.4 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/pdfviewhelpers": "self.version"
+            },
+            "require-dev": {
+                "nimut/testing-framework": "^4.0 || ^5.0 || ^6.0",
+                "php-coveralls/php-coveralls": "^2.1",
+                "smalot/pdfparser": "^0.12.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "pdfviewhelpers",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bithost\\Pdfviewhelpers\\": "Classes"
+                },
+                "classmap": [
+                    "Resources/Private/PHP/tcpdf/",
+                    "Resources/Private/PHP/fpdi/src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Markus Mächler",
+                    "email": "markus.maechler@bithost.ch"
+                },
+                {
+                    "name": "Esteban Gehring",
+                    "email": "esteban.gehring@bithost.ch"
+                }
+            ],
+            "description": "This is a TYPO3 CMS extension that provides various Fluid ViewHelpers to generate PDF documents.",
+            "homepage": "https://github.com/bithost-gmbh/pdfviewhelpers",
+            "keywords": [
+                "TCPDF",
+                "ViewHelpers",
+                "fluid",
+                "fpdi",
+                "generation",
+                "generator",
+                "pdf"
+            ],
+            "support": {
+                "issues": "https://github.com/bithost-gmbh/pdfviewhelpers/issues",
+                "source": "https://github.com/bithost-gmbh/pdfviewhelpers/tree/v2.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGTVWHW8TP8Q4",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-01-15T13:53:41+00:00"
         },
         {
             "name": "christian-riesen/base32",

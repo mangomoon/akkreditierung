@@ -798,19 +798,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $statusAgZwei = 0;
 
-    /**
-     * stammdatenStatic
-     *
-     * @var \GeorgRinger\Ieb\Domain\Model\StaticStammdaten
-     */
-    protected $stammdatenStatic = null;
 
-    /**
-     * standorteStatic
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort>
-     */
-    protected $standorteStatic = null;
 
     /**
      * verantwortliche
@@ -825,20 +813,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich>
      */
     protected $verantwortlicheMail = null;
-
-    /**
-     * trainerStatic
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer>
-     */
-    protected $trainerStatic = null;
-
-    /**
-     * beraterStatic
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater>
-     */
-    protected $beraterStatic = null;
 
     /**
      * kopieVon
@@ -937,11 +911,8 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function initializeObject()
     {
-        $this->standorteStatic = $this->standorteStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->verantwortliche = $this->verantwortliche ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->verantwortlicheMail = $this->verantwortlicheMail ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->trainerStatic = $this->trainerStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->beraterStatic = $this->beraterStatic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->standorte = $this->standorte ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->trainer = $this->trainer ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->berater = $this->berater ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

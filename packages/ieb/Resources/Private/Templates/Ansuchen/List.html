@@ -66,6 +66,8 @@
                                         <f:if condition="{item.einReichbarDurchTr}">
                                             <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
                                         </f:if>
+                                        <f:link.action action="certificateDownload" arguments="{ansuchen : item}" class="knopf-quadratisch " title="Zertifikat"></f:link.action>
+
                                     </td>
                                 </tr>
                             </table>
@@ -106,7 +108,7 @@
                                     <td class="td-knopf">
                                         <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                                     </td>
-                                    
+
                                         
                                     </td>
                                     <td class="td-knopf">

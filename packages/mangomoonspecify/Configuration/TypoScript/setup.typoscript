@@ -47,3 +47,5 @@ plugin.tx_felogin_login {
     }
   }
 }
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pdfviewhelpers/Configuration/TypoScript/setup.txt">

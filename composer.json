@@ -13,6 +13,7 @@
         "b13/bolt": "^2.2",
         "b13/container": "^1.4",
         "b13/menus": "^0.3.0",
+        "bithost-gmbh/pdfviewhelpers": "^2.5",
         "drlenux/array-smart-diff": "^1.0",
         "georgringer/ieb": "@dev",
         "georgringer/news": "^10",
