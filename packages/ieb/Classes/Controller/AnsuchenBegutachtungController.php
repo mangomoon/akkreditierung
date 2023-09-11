@@ -116,6 +116,10 @@ class AnsuchenBegutachtungController extends BaseController
         $zuteilung->setGutachter1($ansuchen->getGutachter1() ? $ansuchen->getGutachter1()->getUid() : 0);
         $zuteilung->setGutachter2($ansuchen->getGutachter2() ? $ansuchen->getGutachter2()->getUid() : 0);
         $zuteilung->setAnsuchenId($ansuchen->getUid());
+        $zuteilung->setReviewVerrechnungCheck1($ansuchen->getReviewVerrechnungCheck1());
+        $zuteilung->setReviewVerrechnungCheck2($ansuchen->getReviewVerrechnungCheck2());
+        $zuteilung->setReviewVerrechnung1($ansuchen->getReviewVerrechnung1());
+        $zuteilung->setReviewVerrechnung2($ansuchen->getReviewVerrechnung2());
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'zuteilung' => $zuteilung,
@@ -142,6 +146,10 @@ class AnsuchenBegutachtungController extends BaseController
                 $ansuchen->setGutachter2($gutachter2);
             }
         }
+        $ansuchen->setReviewVerrechnungCheck1($zuteilung->getReviewVerrechnungCheck1());
+        $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
+        $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
+        $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');

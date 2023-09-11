@@ -20,9 +20,11 @@
                 <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
                             optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
                 <p>
+                    <label for="reviewVerrechnungCheck1">
                     <f:form.checkbox property="reviewVerrechnungCheck1" id="reviewVerrechnungCheck1" value="1" /> verrechnungsrelevante Zuteilung
+                    </label>
                 </p>
-                <f:form.textarea property="reviewVerrechnung1" id="reviewVerrechnung1"></f:form.textarea>
+                <f:form.textarea property="reviewVerrechnung1" id="reviewVerrechnung1" />
             </div>
 
             <div class="kriteriumteil">
@@ -30,9 +32,11 @@
                 <f:form.select property="gutachter2" options="{alleGutachter}" optionLabelField="nameForSelect"
                             optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
                 <p>
+                    <label for="reviewVerrechnungCheck2">
                     <f:form.checkbox property="reviewVerrechnungCheck2" id="reviewVerrechnungCheck2" value="1" /> verrechnungsrelevante Zuteilung
+                    </label>
                 </p>
-                <f:form.textarea property="reviewVerrechnung2" id="reviewVerrechnung2"></f:form.textarea>
+                <f:form.textarea property="reviewVerrechnung2" id="reviewVerrechnung2" />
             </div>
         </div>
             <f:form.submit value="Speichern und schliessen" class="knopf-s"/>
