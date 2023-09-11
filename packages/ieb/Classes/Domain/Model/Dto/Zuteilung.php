@@ -14,32 +14,16 @@ class Zuteilung
     /** @var int */
     protected int $ansuchenId = 0;
 
-    /**
-     * reviewVerrechnungCheck1
-     *
-     * @var bool
-     */
+    /** @var bool */
     protected $reviewVerrechnungCheck1 = false;
 
-    /**
-     * reviewVerrechnungCheck2
-     *
-     * @var bool
-     */
+    /** @var bool */
     protected $reviewVerrechnungCheck2 = false;
 
-    /**
-     * reviewVerrechnung1
-     *
-     * @var string
-     */
+    /** @var string */
     protected $reviewVerrechnung1 = '';
 
-    /**
-     * reviewVerrechnung2
-     *
-     * @var string
-     */
+    /** @var string */
     protected $reviewVerrechnung2 = '';
 
 
