@@ -23,6 +23,7 @@ enum AnsuchenStatus: int
     case AKKREDITIERT_MIT_AUFLAGEN_MUSS_NOCH_AKKREDITIERT_WERDEN = 142;
     case EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG = 150;
     case BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG = 160;
+    case ZURUECK_AN_TR = 200;
     case NICHT_AKKREDITERT = 800;
     case AKKREDITIERUNG_ENTZOGEN = 810;
 
@@ -65,6 +66,7 @@ enum AnsuchenStatus: int
             self::AKKREDITIERT->value,
             self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
             self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::ZURUECK_AN_TR->value,
         ];
     }
 
@@ -94,6 +96,7 @@ enum AnsuchenStatus: int
     {
         return [
             self::NACHBESSERUNGSAUFTRAG->value,
+            self::ZURUECK_AN_TR->value,
             self::AKKREDITIERT_MIT_AUFLAGEN->value,
             self::AKKREDITIERT->value,
             self::AKKREDITIERUNG_AUSGESETZT->value,

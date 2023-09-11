@@ -22,7 +22,7 @@
         {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
 
 
-<f:debug>{_all}</f:debug>
+
         <f:if condition="{ansuchen.status}!=20">
             <f:variable name="difftyp">1</f:variable>
         </f:if>
@@ -1171,6 +1171,24 @@
                     SCHLUSSKOMMENTAR
                 </div>
             </div>
+
+            <div class="abstand-gross"></div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label>Status Vorschlag Begutachtung 1
+                            <f:render partial="Form/Select" arguments="{property:'statusAgEins', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label>Status Vorschlag Begutachtung 1
+                            <f:render partial="Form/Select" arguments="{property:'statusAgZwei', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
+                        </label>
+                    </div>
+                </div>
+
+
             <f:render partial="AnsuchenBegutachtung/CommentDiff" arguments="{
                 reviewStatus:ansuchen.kopieVon.reviewTotalStatus, 
                 reviewIntern: ansuchen.kopieVon.reviewTotalCommentInternalData, 

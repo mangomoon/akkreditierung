@@ -2388,6 +2388,9 @@
 			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.160">
 				<source>Begutachtung nach Einreichung zur Nachakkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
+			<trans-unit id="ansuchen.status.200" resname="ansuchen.status.200">
+				<source>Zurück an Träger</source>
+			</trans-unit>
 			<trans-unit id="ansuchen.status.800" resname="ansuchen.status.800">
 				<source>nicht akkreditiert</source>
 			</trans-unit>

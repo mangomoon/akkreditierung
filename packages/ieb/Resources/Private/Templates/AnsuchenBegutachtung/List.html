@@ -17,8 +17,13 @@
             </tr>
             <tr>
                 <td class="ansuchenliste_ansuchennr">
-                    {item.nummer}
-                        </td>
+                    {item.nummer}<br>
+                    <f:if condition="{item.status} == 20">
+                        <div class="infoicon ersteinreichung">ersteinreichung</div>
+                    </f:if>
+
+                    
+                </td>
                         <td>
                             <span class="ansuchenliste_ansuchenname">{item.name}</span>
                             <br>

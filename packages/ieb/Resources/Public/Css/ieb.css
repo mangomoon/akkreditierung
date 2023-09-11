@@ -800,7 +800,7 @@ table.ansuchenliste td{
     padding: 8px;
 }
 .ansuchenliste_ansuchennr {
-    width: 118px;
+    width: 152px;
     font-size: 1.4em;
     font-weight: 600;
     line-height: 16px;
@@ -1416,6 +1416,22 @@ table.ansuchenbegutachtung td.check {
     font-size: 0.85em;
     font-weight: 600;
 }
+
+/* INFO ICON  ###########  */
+
+.infoicon {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 10px;
+}
+.infoicon.ersteinreichung {
+    background-color: var(--angebotsverantwortliche);
+    padding: 2px;
+    text-align: center;
+}
+
+
 
 span.check-ja {
     display: inline-block;
