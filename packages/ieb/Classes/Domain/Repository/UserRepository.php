@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 
+use GeorgRinger\Ieb\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
@@ -35,11 +37,11 @@ class UserRepository extends BaseRepository
 
     public function getAllGutachter(): QueryResultInterface
     {
+        $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $query = $this->getEmptyQuery();
         $query->matching(
             $query->logicalAnd(
-                // $query->like('username', 'gutachter_%'),
-                $query->like('usergroup', '99'),
+                $query->like('usergroup', $extensionConfiguration->getUsergroupAg()),
             )
         );
         return $query->execute();
