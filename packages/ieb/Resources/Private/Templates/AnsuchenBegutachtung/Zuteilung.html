@@ -8,7 +8,7 @@
     </div>
     
 
-    
+    <f:debug>{_all}</f:debug>
         <div class="abstand-mittel"></div>
 
         <f:form action="zuteilungPersist" object="{zuteilung}" name="zuteilung">
@@ -27,7 +27,7 @@
 
             <div class="kriteriumteil">
                 <h4>Gutachter 2</h4>
-                <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
+                <f:form.select property="gutachter2" options="{alleGutachter}" optionLabelField="nameForSelect"
                             optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
                 <p>
                     <f:form.checkbox property="reviewVerrechnungCheck2" id="reviewVerrechnungCheck2" value="1" /> verrechnungsrelevante Zuteilung

@@ -14,6 +14,35 @@ class Zuteilung
     /** @var int */
     protected int $ansuchenId = 0;
 
+    /**
+     * reviewVerrechnungCheck1
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck1 = false;
+
+    /**
+     * reviewVerrechnungCheck2
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck2 = false;
+
+    /**
+     * reviewVerrechnung1
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung1 = '';
+
+    /**
+     * reviewVerrechnung2
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung2 = '';
+
+
     public function getGutachter1(): int
     {
         return $this->gutachter1;
@@ -47,6 +76,57 @@ class Zuteilung
     public function anyGutachterSet(): bool
     {
         return $this->gutachter1 > 0 || $this->gutachter2 > 0;
+    }
+
+
+    public function getReviewVerrechnungCheck1()
+    {
+        return $this->reviewVerrechnungCheck1;
+    }
+
+    public function setReviewVerrechnungCheck1(bool $reviewVerrechnungCheck1)
+    {
+        $this->reviewVerrechnungCheck1 = $reviewVerrechnungCheck1;
+    }
+
+    public function isReviewVerrechnungCheck1()
+    {
+        return $this->reviewVerrechnungCheck1;
+    }
+
+    public function getReviewVerrechnungCheck2()
+    {
+        return $this->reviewVerrechnungCheck2;
+    }
+
+    public function setReviewVerrechnungCheck2(bool $reviewVerrechnungCheck2)
+    {
+        $this->reviewVerrechnungCheck2 = $reviewVerrechnungCheck2;
+    }
+
+    public function isReviewVerrechnungCheck2()
+    {
+        return $this->reviewVerrechnungCheck2;
+    }
+
+    public function getReviewVerrechnung1()
+    {
+        return $this->reviewVerrechnung1;
+    }
+
+    public function setReviewVerrechnung1(string $reviewVerrechnung1)
+    {
+        $this->reviewVerrechnung1 = $reviewVerrechnung1;
+    }
+
+    public function getReviewVerrechnung2()
+    {
+        return $this->reviewVerrechnung2;
+    }
+
+    public function setReviewVerrechnung2(string $reviewVerrechnung2)
+    {
+        $this->reviewVerrechnung2 = $reviewVerrechnung2;
     }
 
 }

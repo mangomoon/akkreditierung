@@ -38,7 +38,8 @@ class UserRepository extends BaseRepository
         $query = $this->getEmptyQuery();
         $query->matching(
             $query->logicalAnd(
-                $query->like('username', 'gutachter_%'),
+                // $query->like('username', 'gutachter_%'),
+                $query->like('usergroup', '99'),
             )
         );
         return $query->execute();
