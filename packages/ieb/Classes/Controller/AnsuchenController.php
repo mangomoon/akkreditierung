@@ -125,6 +125,9 @@ class AnsuchenController extends BaseController
                 case 80:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
                     break;
+                case 100:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    break;
                 case 140:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;

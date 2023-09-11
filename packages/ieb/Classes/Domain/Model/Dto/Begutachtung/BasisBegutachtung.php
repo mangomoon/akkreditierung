@@ -71,6 +71,8 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $stammdatenStatusAfterReview = 0;
 
     public int $statusAfterReview = 0;
+    public int $statusAgEins = 0;
+    public int $statusAgZwei = 0;
 
     private const FIELDS = [
         'reviewTotalCommentInternalStep', 'reviewTotalCommentTr',
@@ -83,7 +85,7 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewC1CommentInternalStep', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
         'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 
-        'reviewC3Status', 'notitzzettel'
+        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei'
     ];
 
     private const FIELDS_STAMMDATEN = [
