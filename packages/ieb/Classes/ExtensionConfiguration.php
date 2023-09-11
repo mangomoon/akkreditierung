@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb;
 
+use Cassandra\Date;
+
 class ExtensionConfiguration
 {
 
@@ -11,6 +13,11 @@ class ExtensionConfiguration
     protected int $usergroupAktiv = 1;
     protected int $usergroupAg = 99;
     protected int $pageRegistration = 15;
+    protected \DateTime $ansuchenEnde;
+
+    public function __construct() {
+        $this->ansuchenEnde = new \DateTime('2027-12-31');
+    }
 
 
     public function getUserIdForDatahandler(): int
@@ -41,6 +48,11 @@ class ExtensionConfiguration
     public function getUsergroupAg(): int
     {
         return $this->usergroupAg;
+    }
+
+    public function getAnsuchenEnde(): \DateTime
+    {
+        return $this->ansuchenEnde;
     }
 
 }

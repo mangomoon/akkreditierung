@@ -262,6 +262,7 @@ class AnsuchenController extends BaseController
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $this->stammdatenRepository->getLatest(),
+            'extensionConfiguration' => $this->extensionConfiguration,
         ]);
     }
 
