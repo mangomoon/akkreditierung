@@ -52,6 +52,7 @@ $GLOBALS['TCA']['tx_ieb_domain_model_textbausteine']['columns']['kriterium']['co
     ['A.2. Qualität des Anbieters', 'a2'],
     ['B.1. Eckdaten zum Angebot', 'b1'],
     ['B.1.4 Standorte', 'b14'],
+    ['B.1.5 Prüfbescheid, Kooperation', 'b15'],
     ['B.2.1 Ansprache und Erreichung der Zielgruppe', 'b21'],
     ['B.2.2 Didaktisch-methodisches Vorgehen', 'b22'],
     ['B.2.3 Beratung, Coaching und Begleitung', 'b23'],

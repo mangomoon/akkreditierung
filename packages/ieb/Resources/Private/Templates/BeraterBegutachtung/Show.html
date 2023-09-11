@@ -157,9 +157,9 @@
                         <f:form.textarea property="reviewC3CommentTr" id="comment3-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
-                            <div class="textbaustein">Lorem ipsum dolet</div>
-                            <div class="textbaustein">Und so weiter!</div>
-                            <div class="textbaustein">Und so fort ...</div>
+                            <f:for each="{textbausteine.c3b}" as="baustein">
+                                <div class="textbaustein">{baustein}</div>
+                            </f:for>
                         </div>
                     </div>
 

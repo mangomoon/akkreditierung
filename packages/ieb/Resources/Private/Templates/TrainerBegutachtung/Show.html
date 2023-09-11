@@ -494,9 +494,9 @@
                         <f:form.textarea property="reviewC2BabiCommentTr" id="comment2-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
-                            <div class="textbaustein">Lorem ipsum dolet</div>
-                            <div class="textbaustein">Und so weiter!</div>
-                            <div class="textbaustein">Und so fort ...</div>
+                            <f:for each="{textbausteine.c2tb}" as="baustein">
+                                <div class="textbaustein">{baustein}</div>
+                            </f:for>
                         </div>
                     </div>
 
@@ -535,9 +535,9 @@
                         <f:form.textarea property="reviewC2PsaCommentTr" id="comment2-{property}" class="extern" />
                         <div class="knopf textbausteinoeffner">Textbausteine</div>
                         <div class="textbausteine">
-                            <div class="textbaustein">Lorem ipsum dolet</div>
-                            <div class="textbaustein">Und so weiter!</div>
-                            <div class="textbaustein">Und so fort ...</div>
+                            <f:for each="{textbausteine.c2tp}" as="baustein">
+                                <div class="textbaustein">{baustein}</div>
+                            </f:for>
                         </div>
                     </div>
 
