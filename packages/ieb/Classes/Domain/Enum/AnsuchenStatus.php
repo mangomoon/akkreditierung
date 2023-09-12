@@ -52,6 +52,11 @@ enum AnsuchenStatus: int
         ];
     }
 
+    public static function statusSichtbarDurchAkkreditierungsGruppe(): array
+    {
+        return self::statusSichtbarDurchGs();
+    }
+
     /**
      * Alle Status, von Anträgen, die für TR bearbeitbar sind
      *

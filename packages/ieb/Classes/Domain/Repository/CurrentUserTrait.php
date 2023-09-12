@@ -29,6 +29,14 @@ trait CurrentUserTrait
         return (int)self::getCurrentUserField('pid');
     }
 
+    /**
+     * @return int[]
+     */
+    public static function getCurrentUserGroups(): array
+    {
+        return GeneralUtility::intExplode(',', self::getCurrentUserField('usergroup'), true);
+    }
+
     public static function getCurrentUserId(): int
     {
         return (int)self::getCurrentUserField('uid');

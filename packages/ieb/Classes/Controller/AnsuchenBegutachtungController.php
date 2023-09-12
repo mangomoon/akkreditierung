@@ -33,7 +33,11 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForBegutachtung());
+        if (in_array($this->extensionConfiguration->getUsergroupAg(), self::getCurrentUserGroups(), true)) {
+            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForAkkreditierungsGruppe(self::getCurrentUserId()));
+        } else {
+            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForGs());
+        }
         return $this->htmlResponse();
     }
 
@@ -200,7 +204,7 @@ class AnsuchenBegutachtungController extends BaseController
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         $ansuchen->setUpcomingStatus(0);
-        
+
         if ($ansuchen->getAkkreditierungDatum() === null) {
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
