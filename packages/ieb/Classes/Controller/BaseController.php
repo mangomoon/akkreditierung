@@ -20,6 +20,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -127,6 +128,26 @@ class BaseController extends ActionController
 //            );
     }
 
+    /**
+     * @param $argumentName
+     */
+    protected function setTypeConverterConfigurationForDate(string $argumentName, string $property): void
+    {
+        if (!isset($this->arguments[$argumentName])) {
+            return;
+        }
+        /** @var PropertyMappingConfiguration $mappingConfiguration */
+        $mappingConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+        $mappingConfiguration
+            ->forProperty($property)
+            ->setTypeConverterOption(
+                DateTimeConverter::class,
+                DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                'd.m.Y'
+            );
+
+    }
+
     public function setTitleTag($title): void
     {
         GeneralUtility::makeInstance(IebTitleProvider::class)->setTitle($title);
@@ -138,7 +159,7 @@ class BaseController extends ActionController
         return $label ?: $fallback;
     }
 
-    protected function getPropertiesOfBegutachtung($object):array
+    protected function getPropertiesOfBegutachtung($object): array
     {
         $properties = ObjectAccess::getGettableProperties($object);
         foreach (['stammdatenId', 'ansuchenId', 'trainerId', 'beraterId', 'pid', 'uid'] as $property) {

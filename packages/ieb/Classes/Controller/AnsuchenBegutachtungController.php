@@ -240,6 +240,11 @@ class AnsuchenBegutachtungController extends BaseController
         $object->$setterStep('');
     }
 
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewTotalFrist');
+    }
+
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
     {
         $this->ansuchenRepository = $ansuchenRepository;
