@@ -55,8 +55,15 @@
 
                         </td>
                         <td class="td-knopf">
+                            <f:if condition="{item.gutachter1}">
+                                <f:then>
+                                    <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="Zuteilung bearbeiten" class="knopf-quadratisch zuteilung-edit"></f:link.action>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="Zuteilung" class="knopf-quadratisch zuteilung"></f:link.action>
+                                </f:else>
+                            </f:if>
                             
-                            <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="Zuteilung" class="knopf-quadratisch zuteilung"></f:link.action>
                             
                         </td>
                         <td class="td-knopf">
