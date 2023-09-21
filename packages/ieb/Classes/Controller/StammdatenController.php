@@ -65,7 +65,7 @@ class StammdatenController extends BaseController
         } else {
             $this->view->assignMultiple([
                 'exists' => true,
-                'usedInAnsuchen' => $this->ansuchenRepository->getAllForBegutachtung(),
+                'usedInAnsuchen' => $this->ansuchenRepository->getAllForGs(),
             ]);
         }
         $this->view->assignMultiple([

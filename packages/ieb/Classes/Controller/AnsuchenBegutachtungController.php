@@ -33,7 +33,11 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForBegutachtung());
+        if (in_array($this->extensionConfiguration->getUsergroupAg(), self::getCurrentUserGroups(), true)) {
+            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForAkkreditierungsGruppe(self::getCurrentUserId()));
+        } else {
+            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForGs());
+        }
         return $this->htmlResponse();
     }
 
@@ -200,7 +204,7 @@ class AnsuchenBegutachtungController extends BaseController
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         $ansuchen->setUpcomingStatus(0);
-        
+
         if ($ansuchen->getAkkreditierungDatum() === null) {
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
@@ -234,6 +238,11 @@ class AnsuchenBegutachtungController extends BaseController
         $setterStep = 'set' . ucfirst($fieldName) . 'Step';
         $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
         $object->$setterStep('');
+    }
+
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewTotalFrist');
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository)
