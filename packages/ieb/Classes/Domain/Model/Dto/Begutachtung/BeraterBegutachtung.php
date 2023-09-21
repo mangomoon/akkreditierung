@@ -10,7 +10,8 @@ class BeraterBegutachtung extends AbstractDomainObject
 
     public int $ansuchenId = 0;
     public int $beraterId = 0;
-
+    /** @var \DateTime */
+    public $reviewFrist = null;
     public int $reviewC3Status = 0;
     public int $reviewC32Status = 0;
     public string $reviewC3CommentInternal = '';

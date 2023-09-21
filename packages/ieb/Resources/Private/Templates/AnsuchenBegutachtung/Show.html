@@ -321,6 +321,11 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
+                        <f:if condition="{stammdaten.qmsTyp}=1">
+                            <label>Das ö-Cert läuft ab am
+                                <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:stammdatenReviewOecertFrist}" />
+                            </label>
+                        </f:if>
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2}" />
                     </div>
 
@@ -602,6 +607,11 @@
         </div>
 
         </f:if>
+        
+        <label>Prüfbescheid gilt bis:
+            <f:render partial="Form/Input" arguments="{property:'reviewFristPruefbescheid',isDate:1,value:ansuchen.reviewFristPruefbescheid}" />
+        </label>
+
         <h2>B.2 Pädagogische und didaktische Konzeption</h2>
 
 
@@ -1221,7 +1231,7 @@
                 <f:form.textarea property="reviewTotalCommentTr" class="form-control"/>
             </label>
 
-                <!-- <f:render partial="Form/Input" arguments="{property:'reviewTotalFrist', label:'Frist', type:'date', class:'frist'}" /> -->
+
 
 
             <label>

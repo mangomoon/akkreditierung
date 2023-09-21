@@ -83,4 +83,9 @@ class TrainerBegutachtungController extends BaseController
         $this->textbausteineRepository = $repository;
     }
 
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewFrist');
+    }
+
 }

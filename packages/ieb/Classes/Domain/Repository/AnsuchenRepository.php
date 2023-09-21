@@ -143,6 +143,7 @@ class AnsuchenRepository extends BaseRepository
             'review_total_comment_tr' => '',
             'review_total_status' => '',
             'review_total_frist' => '',
+            'review_frist_pruefbescheid' => '',
             'review_b14_comment_internal'  => '',
             'review_b14_comment_internal_step'  => '',
             'review_b14_comment_tr'  => '',

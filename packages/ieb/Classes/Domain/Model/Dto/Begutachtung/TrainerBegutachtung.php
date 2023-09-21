@@ -11,6 +11,8 @@ class TrainerBegutachtung extends AbstractDomainObject
     public int $ansuchenId = 0;
     public int $trainerId = 0;
 
+    /** @var \DateTime */
+    public $reviewFrist = null;
 
     public int $reviewC21BabiStatus = 0;
     public int $reviewC21PsaStatus = 0;
