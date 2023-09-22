@@ -76,7 +76,6 @@ class AnsuchenBegutachtungController extends BaseController
     {
         $this->view->assign('ansuchen', $ansuchen);
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
-        $begutachtung->reviewTotalFrist = '';
         return $this->htmlResponse();
     }
 

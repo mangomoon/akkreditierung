@@ -594,6 +594,11 @@
 
                     </div>
                     <div class="rechts col-5">
+                        <f:if condition="{ansuchen.pruefbescheidDatei}">
+                            <label>Prüfbescheid gilt bis:
+                                <f:render partial="Form/Input" arguments="{property:'reviewFristPruefbescheid',isDate:1,value:ansuchen.reviewFristPruefbescheid}" />
+                            </label>
+                        </f:if>
                         <f:render partial="AnsuchenBegutachtung/CommentDiff" arguments="{
                             reviewStatus:ansuchen.kopieVon.reviewB15Status, 
                             reviewIntern: ansuchen.kopieVon.reviewB15CommentInternalData, 
@@ -608,10 +613,7 @@
 
         </f:if>
         
-        <label>Prüfbescheid gilt bis:
-            <f:render partial="Form/Input" arguments="{property:'reviewFristPruefbescheid',isDate:1,value:ansuchen.reviewFristPruefbescheid}" />
-        </label>
-
+        
         <h2>B.2 Pädagogische und didaktische Konzeption</h2>
 
 
