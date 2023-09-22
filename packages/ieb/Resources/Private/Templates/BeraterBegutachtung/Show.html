@@ -18,6 +18,10 @@
         <p>Programmbereich des Ansuchens: <strong>{f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</strong>
         </p>
 
+        <label>Frist
+            <f:render partial="Form/Input" arguments="{property:'reviewFrist',isDate:1,value:berater.reviewFrist}" />
+        </label>
+
 
         <div class="begutachtung-kriterium" id="c31">
             <div class="kriteriumtitel">

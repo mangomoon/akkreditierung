@@ -323,7 +323,7 @@
                     <div class="rechts col-5">
                         <f:if condition="{stammdaten.qmsTyp}=1">
                             <label>Das ö-Cert läuft ab am
-                                <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:stammdatenReviewOecertFrist}" />
+                                <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:begutachtung.stammdatenReviewOecertFrist}" />
                             </label>
                         </f:if>
                         <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2}" />
