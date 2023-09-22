@@ -160,6 +160,10 @@ class AnsuchenRepository extends BaseRepository
             'review_b23_comment_internal_step'  => '',
             'review_b23_comment_tr'  => '',
             'review_b23_status' => '',
+            'erklaerungd1' => '',
+            'erklaerungd2' => '',
+            'erklaerungd3' => '',
+            'erklaerungd5' => '',
         ];
         $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
 
