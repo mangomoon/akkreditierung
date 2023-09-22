@@ -52,7 +52,7 @@
                 </th>
                 <th>Info</th>
                 <th>letzte Änderung</th>
-                <th></th>
+                <!-- <th></th> -->
                 <th>BaBi</th>
                 <th>PSA</th>
                 <th class="td-knopf" colspan="3">
@@ -64,7 +64,7 @@
                 <f:if condition="!{trainer.archiviert}">
                     <f:then>
 
-                        <f:if condition="{trainer.statusAfterReviewPsa}==3 || {trainer.statusAfterReviewBabi}==3">
+                        <!-- <f:if condition="{trainer.statusAfterReviewPsa}==3 || {trainer.statusAfterReviewBabi}==3">
                             <tr class="muss-edit">
                         </f:if>
                         <f:if condition="{trainer.statusAfterReviewPsa}==2 || {trainer.statusAfterReviewBabi}==2 || {trainer.statusAfterReviewPsa}==4 || {trainer.statusAfterReviewBabi}==4">
@@ -72,7 +72,8 @@
                         </f:if>
                         <f:if condition="{trainer.statusAfterReviewPsa} < 2 && {trainer.statusAfterReviewBabi} < 2">
                             <tr class="istok">
-                        </f:if>
+                        </f:if> -->
+                        <tr class="istok">
                         <td class="nachname">
                             {trainer.nachname}
                         </td>
@@ -86,7 +87,7 @@
                             </f:for>"></span></f:if>
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <!-- BaBi -->
+                        <!--  
                         <td>
                         <f:switch expression="{trainer.statusAfterReviewBabi}">
                             <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
@@ -99,6 +100,7 @@
                             <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Pflichtschulsabschluss – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
                         </f:switch>
                         </td>
+                        -->
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>
                                 <td class="istok">

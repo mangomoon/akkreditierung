@@ -42,7 +42,7 @@
 
      $('#ok').attr('value', allesda);
 
-     //console.log("allesda = " + allesda);
+     console.log("allesda = " + allesda);
  };
 
  // Vailidierung TRAINER
@@ -234,7 +234,7 @@
 
 // Standort Dings ...
  function submitten() {
-    $('.tr-standort').submit();
+    $('form').submit();
  };
 
 
@@ -384,7 +384,9 @@ function qualifikationPsaSprache() {
             $(this).toggle();
         });
     });
-    
+    $('#validieren-test').click(function(){
+        validieren();
+    });
     
     // Tooltip
 
@@ -488,7 +490,7 @@ function qualifikationPsaSprache() {
 
 
 
-     $("#submitstart").click(function() {
+     $("#submitstartstandort").click(function() {
 
         validieren();
          if (allesda == 1) {
@@ -496,6 +498,19 @@ function qualifikationPsaSprache() {
             $(".close").html('Zurück zum Formular');
             $(".close").css('width','220px');
             modal.showModal();
+         }
+     });
+
+     $("#submitstartperson").click(function() {
+        var vn = $('#nachname').val().length;
+        var nn = $('#vorname').val().length;
+        if ((vn == 0) || (nn == 0)) {
+            $('.modalcontent').html('<p>Bitte geben Sie einen vollständigen Namen an!</p>');
+            $(".close").html('Zurück zum Formular');
+            $(".close").css('width','220px');
+            modal.showModal();
+         } else {
+            submitten();
          }
      });
 

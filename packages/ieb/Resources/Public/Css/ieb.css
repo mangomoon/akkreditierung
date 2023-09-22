@@ -27,13 +27,14 @@ rot: c3161c
 }
 
 /* Code Toggle */
-#code-toggler {
+.testknopf {
     position: fixed;
     left: 30px;
     top: 60px;
     width: 150px;
     margin-top: 200px;
 }
+
 code {
     display: none;
 }
@@ -614,6 +615,7 @@ input[type="submit"].knopf-s, .knopfersatz.knopf-s{
     color: #fff;
     filter: drop-shadow(2px 2px 2px var(--f2));
     font-size: 0.9em;
+    margin-right: 12px;
 }
 .knopfersatz.knopf-s{
     border-radius: 4px;

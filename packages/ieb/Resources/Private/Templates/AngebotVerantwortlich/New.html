@@ -9,9 +9,12 @@
 
     <f:form action="create" class="tr" name="newAngebotVerantwortlich" object="{newAngebotVerantwortlich}" enctype="multipart/form-data">
         <f:render partial="AngebotVerantwortlich/FormFields" />
-        <f:form.submit value="Speichern" class="knopf-s" />
+        <div class="knopfersatz knopf-s" id="submitstartperson">Speichern</div>
         <f:link.action class="knopf-s knopfersatz zurueck" action="index" >Zurück (ohne Speichern)</f:link.action> 
     </f:form>
+    <script>
+        validieren();
+    </script>
 </f:section>
 
 </html>
