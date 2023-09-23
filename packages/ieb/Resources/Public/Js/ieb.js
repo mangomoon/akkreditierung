@@ -360,10 +360,10 @@ function qualifikationPsaSprache() {
 
     if ($('#qualifikationPsa8').is(':checked')   ) {
         $("#qualifikationPsaKommentar").show();
-        console.log('schlüpf');
+        // console.log('schlüpf');
     } else {
         $("#qualifikationPsaKommentar").hide();
-        console.log('schlapf');
+        // console.log('schlapf');
     }
 }
 

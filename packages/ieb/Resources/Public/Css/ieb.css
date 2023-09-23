@@ -255,6 +255,7 @@ span.pseudoknopf.mail {
     width: 94px;
     float: right;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .kriteriumteil .info {

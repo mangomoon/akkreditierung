@@ -727,7 +727,7 @@
                         <div class="tb-liste">
                             <f:for each="{relations.trainerbabi}" as="t">
                                 
-                                <div class="tb-zeile tbs-<f:if condition='{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
@@ -776,7 +776,7 @@
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
-                                <div class="tb-zeile tbs-<f:if condition='{t.statusAfterReviewPsa}==3'>bad</f:if>"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile "><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
