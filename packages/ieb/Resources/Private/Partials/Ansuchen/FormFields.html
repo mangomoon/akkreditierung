@@ -295,15 +295,15 @@
                 <p>
                     <label for="kompetenza"><input type="checkbox" checked="checked" disabled="disabled" id="kompetenza" /> Lernkompetenzen (Autonomes Lernen, Lernen lernen)</label></p>
                 <p>
-                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" class="reqkomp" /> Deutsch als Erstsprache bzw. überwiegende Sprache</label></p>
+                    <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" /> Deutsch als Erstsprache bzw. überwiegende Sprache</label></p>
                 <p>
-                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" class="reqkomp" /> Deutsch als Zweitsprache</label></p>
+                    <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" /> Deutsch als Zweitsprache</label></p>
                 <p>
-                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" class="reqkomp" /> Mathematische Kompetenzen</label></p>
+                    <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" /> Mathematische Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" class="reqkomp" /> Digitale Kompetenzen</label></p>
+                    <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" /> Digitale Kompetenzen</label></p>
                 <p>
-                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" class="reqkomp" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
+                    <label for="kompetenz5"><f:form.checkbox property="kompetenz5" id="kompetenz5" value="1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" /> Grundlegende Kompetenzen in einer weiteren Sprache: Welche?</label>
                     <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
                 </p>
             </div>
@@ -324,14 +324,14 @@
                             <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
                         <p>Wahlmodule:</p>
                         <p>
-                            <label for="kompetenz1"><f:form.checkbox property="kompetenz1" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
+                            <label for="kompetenz1"><f:form.checkbox property="kompetenz1" class="{f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
                         <p>
-                            <label for="kompetenz2"><f:form.checkbox property="kompetenz2" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
+                            <label for="kompetenz2"><f:form.checkbox property="kompetenz2" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
                         <p>
-                            <label for="kompetenz3"><f:form.checkbox property="kompetenz3" id="kompetenz3" value="1" /> Natur und Technik</label></p>
+                            <label for="kompetenz3"><f:form.checkbox property="kompetenz3" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz3" value="1" /> Natur und Technik</label></p>
                         <p>
-                            <label for="kompetenz4"><f:form.checkbox property="kompetenz4" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
-                            <f:form.textfield property="kompetenzText1" id="kompetenzText1" />
+                            <label for="kompetenz4"><f:form.checkbox property="kompetenz4" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
+                            <f:form.textfield property="kompetenzText1" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenzText1" />
                         </p>
                     </div>
                 </div>
@@ -351,7 +351,8 @@
             label:'Tabellarische Übersicht',
             anmerkung:'uebersichtText',
             metadaten:'{ansuchen.uebersichtDatei.originalResource}',
-            media:ansuchen.uebersichtDatei
+            media:ansuchen.uebersichtDatei,
+            status:ansuchen.reviewB1Status
         }" />
     </div>
 
@@ -378,7 +379,7 @@
 
                 <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert
                     sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
-                    <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="reqcheckbox" />
+                    <f:form.checkbox property="standortErklaerung" id="standortErklaerung" value="1" class="reqcheckbox  {f:if(condition:'{ansuchen.reviewB14Status}>2', then:'status-negativ')}" />
                 </p>
             </div>
         </div>
@@ -391,7 +392,7 @@
             <div class="col-6" id="b-1-d-2">
                 <f:if condition="{relations.standorteaktiv}">
                     <f:then>
-                        <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa" id="testa" />
+                        <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa {f:if(condition:'{ansuchen.reviewB14Status}>2', then:'status-negativ')}" id="testa" />
                             <div class="formzeile">
                                 <f:form.submit value="Standorte: Daten bearbeiten" name="saveAndStandorte" class="formlink standorte" />
                             </div>
@@ -436,7 +437,8 @@
                 label:'Prüfbescheid (pdf)',
                 anmerkung:'pruefbescheid',
                 metadaten:'{ansuchen.pruefbescheidDatei.originalResource}',
-                media:ansuchen.pruefbescheidDatei}" />
+                media:ansuchen.pruefbescheidDatei,
+                status:ansuchen.reviewB15Status}" />
         </div>
 
         <div class="formfields row">
@@ -456,7 +458,8 @@
                     label:'Upload',
                     anmerkung:'kooperation',
                     metadaten:'{ansuchen.kooperationDatei.originalResource}',
-                    media:ansuchen.kooperationDatei}" />
+                    media:ansuchen.kooperationDatei,
+                    status:ansuchen.reviewB15Status}" />
 
             </div>
         </div>
@@ -488,7 +491,8 @@
             label:'Upload Zielgruppe',
             anmerkung:'zielgruppenAnsprache',
             metadaten:'{ansuchen.zielgruppenAnspracheDatei.originalResource}',
-            media:ansuchen.zielgruppenAnspracheDatei}" />
+            media:ansuchen.zielgruppenAnspracheDatei,
+            status:ansuchen.reviewB2Status}" />
     </div>
 </div>
 <div class="kriterium status-{ansuchen.reviewB22Status}">
@@ -540,7 +544,8 @@
                     req:'reqfile',
                     label:'Upload Aufbau und Inhalte',
                     metadaten:'{ansuchen.lernziele.originalResource}',
-                    media:ansuchen.lernziele,}" />
+                    media:ansuchen.lernziele,
+                    status:ansuchen.reviewB2Status}" />
 
 
 
@@ -574,7 +579,8 @@
                     req:'reqfile',
                     label:'Upload Kompetenzerhebung',
                     metadaten:'{ansuchen.lernstandserhebung.originalResource}',
-                    media:ansuchen.lernstandserhebung,}" />
+                    media:ansuchen.lernstandserhebung,
+                    status:ansuchen.reviewB2Status}" />
             </div>
         </div>
     </div>
@@ -593,11 +599,12 @@
                     req:'reqfile',
                     label:'Upload Diversity',
                     metadaten:'{ansuchen.diversity.originalResource}',
-                    media:ansuchen.diversity,}" />
+                    media:ansuchen.diversity,
+                    status:reviewB2Status}" />
             </div>
             <div class="col-6" style="padding-left: 12px;">
                 <label for="didaktikKommentar">Anmerkung zu allen drei Uploads</label>
-                <f:form.textarea property="didaktikKommentar" id="didaktikKommentar"></f:form.textarea>
+                <f:form.textarea property="didaktikKommentar" class="{f:if(condition:'{ansuchen.reviewB2Status}>2', then:'status-negativ')}" id="didaktikKommentar"></f:form.textarea>
             </div>
         </div>
     </div>
@@ -630,14 +637,15 @@
             label:'Upload Beratungsangebot',
             metadaten:'{ansuchen.beratungDatei.originalResource}',
             media:ansuchen.beratungDatei,
-            anmerkung:'beratungText'}" />
+            anmerkung:'beratungText',
+            status:ansuchen.reviewB23Status}" />
 
     </div>
 
     <div class="kriteriumteil">
         <h4>Kinderbetreuung</h4>
         <div class="col">
-            <f:form.checkbox property="kinderbetreuung" value="1" class="inline" /> Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
+            <f:form.checkbox property="kinderbetreuung" value="1" class="inline {f:if(condition:'{ansuchen.reviewB23Status}>2', then:'status-negativ')}" /> Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
         </div>
         <p>&nbsp;</p>
     </div>
@@ -677,10 +685,10 @@
                 <f:for each="{relations.angebotVerantwortliche}" as="angebotverantwortlich">
                     <tr>
                         <td class="spalte-1">
-                            <f:form.checkbox class="angebotssteuerungsperson" property="verantwortliche" value="{angebotverantwortlich.uid}" />
+                            <f:form.checkbox class="angebotssteuerungsperson {f:if(condition:'{ansuchen.reviewC1Status}>2', then:'status-negativ')}" property="verantwortliche" value="{angebotverantwortlich.uid}" />
                         </td>
                         <td class="spalte-2">
-                            <f:form.checkbox property="verantwortlicheMail" value="{angebotverantwortlich.uid}" />
+                            <f:form.checkbox property="verantwortlicheMail" class="{f:if(condition:'{ansuchen.reviewC1Status}>2', then:'status-negativ')}" value="{angebotverantwortlich.uid}" />
                         </td>
                         <td>&nbsp;&nbsp;
                             {angebotverantwortlich.vorname} {angebotverantwortlich.nachname}
@@ -727,7 +735,7 @@
                         <div class="tb-liste">
                             <f:for each="{relations.trainerbabi}" as="t">
                                 
-                                <div class="tb-zeile"><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile"><f:form.checkbox property="trainer" class="status-{t.statusAfterReviewBabi} {f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
@@ -776,7 +784,7 @@
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
-                                <div class="tb-zeile "><f:form.checkbox property="trainer" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile "><f:form.checkbox property="trainer" class="status-{t.statusAfterReviewPsa} {f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
@@ -808,7 +816,7 @@
                         </div>
 
                         <f:if condition="{ansuchen.pruefbescheidDatei}">
-                            <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                            <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchebn.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>
@@ -853,7 +861,7 @@
             <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <div class="tb-liste">
                 <f:for each="{relations.berateraktivundok}" as="t">
-                    <div class="tb-zeile tbs-<f:if condition='{t.reviewC31Status}>2 || {t.reviewC32Status}>2'>bad</f:if>"><f:form.checkbox property="berater" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
+                    <div class="tb-zeile tbs-<f:if condition='{t.reviewC31Status}>2 || {t.reviewC32Status}>2'>bad</f:if>"><f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
                         <div class="a">{t.fullname}</div>
                         <div class="b">
                             <f:for each="{ansuchen.berater}" as="ttt">

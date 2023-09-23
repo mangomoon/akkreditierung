@@ -75,7 +75,8 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         label:'Qualifikationsnachweis',
         anmerkung:'qualifikationBabi',
         metadaten:'{trainer.qualifikationBabiDatei.originalResource}',
-        media:trainer.qualifikationBabiDatei}" />
+        media:trainer.qualifikationBabiDatei,
+        status:trainer.reviewC21BabiStatus}" />
 </div>
 
 
@@ -130,7 +131,8 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
             label:'Nachweise(e)',
             anmerkung:'qualifikationPsa',
             metadaten:'{trainer.qualifikationPsaDatei.originalResource}',
-            media:trainer.qualifikationPsaDatei}" />
+            media:trainer.qualifikationPsaDatei,
+            status:trainer.reviewC21PsaStatus}" />
     </div>
     <div class="kriteriumteil">
         <!--<div class="info"></div>
@@ -142,22 +144,22 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         <div class="formfields row">
             <div class="col">
                 <p>
-                    <f:form.checkbox property="qualifikationPsa1" id="qualifikationPsa1" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
+                    <f:form.checkbox property="qualifikationPsa1" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa1" value="1" /> Deutsch – Kommunikation und Gesellschaft</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa2" id="qualifikationPsa2" value="1" /> Englisch – Globalität und Transkulturalität</p>
+                    <f:form.checkbox property="qualifikationPsa2" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa2" value="1" /> Englisch – Globalität und Transkulturalität</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa3" id="qualifikationPsa3" value="1" /> Mathematik</p>
+                    <f:form.checkbox property="qualifikationPsa3" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa3" value="1" /> Mathematik</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa4" id="qualifikationPsa4" value="1" /> Berufsorientierung</p>
+                    <f:form.checkbox property="qualifikationPsa4" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa4" value="1" /> Berufsorientierung</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa5" id="qualifikationPsa5" value="1" /> Kreativität und Gestaltung</p>
+                    <f:form.checkbox property="qualifikationPsa5" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa5" value="1" /> Kreativität und Gestaltung</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa6" id="qualifikationPsa6" value="1" /> Gesundheit und Soziales</p>
+                    <f:form.checkbox property="qualifikationPsa6" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa6" value="1" /> Gesundheit und Soziales</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa7" id="qualifikationPsa7" value="1" /> Natur und Technik</p>
+                    <f:form.checkbox property="qualifikationPsa7" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa7" value="1" /> Natur und Technik</p>
                 <p>
-                    <f:form.checkbox property="qualifikationPsa8" id="qualifikationPsa8" value="1" /> Weitere Sprachen: Welche?
-                    <f:form.textfield property="qualifikationPsaKommentar" id="qualifikationPsaKommentar" />
+                    <f:form.checkbox property="qualifikationPsa8" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsa8" value="1" /> Weitere Sprachen: Welche?
+                    <f:form.textfield property="qualifikationPsaKommentar" class="{f:if(condition:'{trainer.reviewC21PsaStatus}>2', then:'status-negativ')}" id="qualifikationPsaKommentar" />
                 </p>
             </div>
 
@@ -207,7 +209,8 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                         label:'Erfahrungsnachweis',
                         anmerkung:'lebenslauf',
                         metadaten:'{trainer.lebenslaufDatei.originalResource}',
-                        media:trainer.lebenslaufDatei
+                        media:trainer.lebenslaufDatei,
+                        status:trainer.reviewC22PsaStatus
                     }" />
                 </f:else>
             </f:if>

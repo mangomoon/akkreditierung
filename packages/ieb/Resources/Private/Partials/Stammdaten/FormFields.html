@@ -22,7 +22,7 @@
             <div class="formfields row">
                 <div class="col-6">
                     <label for="name" class="reqlabel">Vereins-/Firmenname</label>
-                    <f:form.textfield property="name" id="name" class="req" />
+                    <f:form.textfield property="name" id="name" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
                 </div>
                 <div class="col-6">
                     <f:render partial="Form/Select" arguments="{property:'rechtsform', req:'reqlabel', label:'Rechtsform', options:settings.static.rechtsform,prependOption:1,prependOptionValue:'0', prependOptionLabel:'', sortByOptionLabel:1, class:'reqselect'}" />
@@ -33,7 +33,8 @@
                         req:'reqfile', 
                         label:'Vereinsregisterauszug/Firmenbuchauszug',
                         metadaten=stammdaten.nachweis.originalResource,
-                        media:stammdaten.nachweis}" />
+                        media:stammdaten.nachweis,
+                        status:stammdaten.reviewA1Status}" />
                 </div>
 
             </div>
@@ -63,22 +64,22 @@
                 <div class="row">
                     <div class="col-2" style="margin-left:20px;">
                         <label for="plz" class="reqlabel">PLZ</label>
-                        <f:form.textfield property="plz" id="plz" class="req" />
+                        <f:form.textfield property="plz" id="plz" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
                     </div>
                     <div class="col-9">
                         <label for="ort" class="reqlabel">ORT</label>
-                        <f:form.textfield property="ort" id="ort" class="req" />
+                        <f:form.textfield property="ort" id="ort" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
                     </div>
 
                 </div>
             </div>
             <div class="col-6">
                 <label for="email" class="reqlabel">E-Mail</label>
-                <f:form.textfield property="email" id="email" class="req" />
+                <f:form.textfield property="email" id="email" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
                 <label for="telefon" class="reqlabel">Telefon</label>
-                <f:form.textfield property="telefon" id="telefon" class="req" />
+                <f:form.textfield property="telefon" id="telefon" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
                 <label for="website" class="reqlabel">Website</label>
-                <f:form.textfield property="website" id="website" class="req" />
+                <f:form.textfield property="website" id="website" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
             </div>
         </div>
     </div>
@@ -111,7 +112,8 @@
                 label:'Leitbild',
                 anmerkung:'leitbild',
                 metadaten:'{stammdaten.leitbildDatei.originalResource}',
-                media:stammdaten.leitbildDatei}" />
+                media:stammdaten.leitbildDatei,
+                status:stammdaten.reviewA2Status}" />
 
 
         </div>
@@ -140,7 +142,8 @@
                     label:'Ö-Cert (PDF)',
                     anmerkung:'qmsZertifikat',
                     metadaten:'{stammdaten.qmsZertifikatDatei.originalResource}',
-                    media:stammdaten.qmsZertifikatDatei}" />
+                    media:stammdaten.qmsZertifikatDatei,
+                    status:stammdaten.reviewA2Status}" />
                 </f:then>
                 <f:else>
                     <f:render partial="Form/UploadMultiple" arguments="{
@@ -150,7 +153,8 @@
                     label:'Ö-Cert (PDF)',
                     anmerkung:'qmsZertifikat',
                     metadaten:'{stammdaten.qmsZertifikatDatei.originalResource}',
-                    media:stammdaten.qmsZertifikatDatei}" />
+                    media:stammdaten.qmsZertifikatDatei,
+                    status:stammdaten.reviewA2Status}" />
                 </f:else>
             </f:if>
 
@@ -178,7 +182,8 @@
                     label:'Qualitätssicherung',
                     anmerkung:'qualitaetSicherung',
                     metadaten:'{stammdaten.qualitaetSicherungDatei.originalResource}',
-                    media:stammdaten.qualitaetSicherungDatei}" />
+                    media:stammdaten.qualitaetSicherungDatei,
+                    status:stammdaten.reviewA2Status}" />
                 </f:then>
                 <f:else>
                     <f:render partial="Form/UploadMultiple" arguments="{
@@ -188,7 +193,8 @@
                         label:'Qualitätssicherung',
                         anmerkung:'qualitaetSicherung',
                         metadaten:'{stammdaten.qualitaetSicherungDatei.originalResource}',
-                        media:stammdaten.qualitaetSicherungDatei}" />
+                        media:stammdaten.qualitaetSicherungDatei,
+                        status:stammdaten.reviewA2Status}" />
                 </f:else>
             </f:if>
         </div>
@@ -218,7 +224,8 @@
         label:'Qualitätssicherung',
         anmerkung:'qualitaetPersonal',
         metadaten:'{stammdaten.qualitaetPersonalDatei.originalResource}',
-        media:stammdaten.qualitaetPersonalDatei}" />
+        media:stammdaten.qualitaetPersonalDatei,
+        status:stammdaten.reviewA2Status}" />
 
     <f:form.hidden property="ok" id="ok" value="0" />
     <f:form.hidden property="statusAfterReview" id="sar" value="0" />

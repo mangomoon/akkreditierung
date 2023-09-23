@@ -49,6 +49,12 @@
  function validierentr() {
      okbabi = 0;
      okpsa = 0;
+     trbabi = 0;
+     trpsa = 0;
+     qb = 0;
+     lb = 0;
+     qp = 0;
+     ll = 0;
      validieren();
 
 
@@ -385,7 +391,9 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
-        validieren();
+        // validieren();
+        // setStatusAfterReview();
+        // console.log();
     });
     
     // Tooltip
@@ -663,19 +671,31 @@ function qualifikationPsaSprache() {
      $("#sarPsa").val(0);
      $("#sarBabi").val(0);
      $( ".i-psa input" ).on( "change", function() {
-        $("#sarPsa").val(2);
-        // console.log('blib');
+        sp = 2;
+        if ($(this).hasClass('status-negativ')) {
+            sp = 3;
+        }
+        $("#sarPsa").val(sp);
       } );
       $( ".i-babi input" ).on( "change", function() {
-        $("#sarBabi").val(2);
-        // console.log('blub');
+        sb = 2;
+        if ($(this).hasClass('status-negativ')) {
+            sb = 3;
+        }
+        $("#sarBabi").val(sb);
       } );
 
 
-     // ######################################## überall statusAfterReview setzen bei Edit durch TR
+     // ######################################## überall statusAfterReview setzen bei Edit 
+    //   wenn Änderung vorgenommen wird: s = 2
+    //   wenn Änderung an einem Input, das zu einem negativen Status gehört, vorgenommen wird: s = 3
+
      $( ".sar input" ).on( "change", function() {
-        $("#sar").val(2);
-        console.log('blub');
+        s = 2;
+        if ($(this).hasClass('status-negativ')) {
+            s = 3;
+        }
+        $("#sar").val(s);
       } );
 
      // ######################################## FORM Begutachtung
