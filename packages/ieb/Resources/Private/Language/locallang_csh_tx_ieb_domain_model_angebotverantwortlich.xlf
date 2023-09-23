@@ -36,6 +36,9 @@
 			<trans-unit id="review_c1_psa.description" resname="review_c1_psa.description">
 				<source>reviewC1Psa</source>
 			</trans-unit>
+			<trans-unit id="status_after_review.description" resname="status_after_review.description">
+				<source>statusAfterReview</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

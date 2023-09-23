@@ -4471,6 +4471,18 @@
                             "propertyName": "reviewC1Psa",
                             "propertyType": "Boolean",
                             "uid": "515883681661"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "statusAfterReview",
+                            "propertyType": "Integer",
+                            "uid": "1537751233926"
                         }
                     ]
                 },
@@ -4938,7 +4950,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-09-08 11:15",
+        "last_modified": "2023-09-23 02:30",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

@@ -365,7 +365,8 @@ CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_c1_babi smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_c1_psa smallint(1) unsigned NOT NULL DEFAULT '0'
+	review_c1_psa smallint(1) unsigned NOT NULL DEFAULT '0',
+	status_after_review int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE fe_users (

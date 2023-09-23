@@ -104,6 +104,13 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     protected $reviewC1Psa = false;
 
     /**
+     * statusAfterReview
+     *
+     * @var int
+     */
+    protected $statusAfterReview = 0;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -382,5 +389,26 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     public function isReviewC1Psa()
     {
         return $this->reviewC1Psa;
+    }
+
+    /**
+     * Returns the statusAfterReview
+     *
+     * @return int
+     */
+    public function getStatusAfterReview()
+    {
+        return $this->statusAfterReview;
+    }
+
+    /**
+     * Sets the statusAfterReview
+     *
+     * @param int $statusAfterReview
+     * @return void
+     */
+    public function setStatusAfterReview(int $statusAfterReview)
+    {
+        $this->statusAfterReview = $statusAfterReview;
     }
 }

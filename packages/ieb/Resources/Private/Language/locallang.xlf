@@ -2103,6 +2103,12 @@
 			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.review_c1_psa.description" resname="tx_ieb_domain_model_angebotverantwortlich.review_c1_psa.description">
 				<source>Review C1 Psa</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.status_after_review" resname="tx_ieb_domain_model_angebotverantwortlich.status_after_review">
+				<source>Status After Review</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_angebotverantwortlich.status_after_review.description" resname="tx_ieb_domain_model_angebotverantwortlich.status_after_review.description">
+				<source>Status After Review</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_user" resname="tx_ieb_domain_model_user">
 				<source>User</source>
 			</trans-unit>

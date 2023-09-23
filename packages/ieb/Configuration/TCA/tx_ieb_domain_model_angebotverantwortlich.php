@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_angebotverantwortlich.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, email, telefon, verantwortlich, lebenslauf_datei, lebenslauf, ok, archiviert, review_c1_babi, review_c1_psa, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, email, telefon, verantwortlich, lebenslauf_datei, lebenslauf, ok, archiviert, review_c1_babi, review_c1_psa, status_after_review, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -251,6 +251,17 @@ return [
                     ]
                 ],
                 'default' => 0,
+            ]
+        ],
+        'status_after_review' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.status_after_review',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.status_after_review.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
             ]
         ],
     

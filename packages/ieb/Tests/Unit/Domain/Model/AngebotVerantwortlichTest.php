@@ -251,4 +251,25 @@ class AngebotVerantwortlichTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('reviewC1Psa'));
     }
+
+    /**
+     * @test
+     */
+    public function getStatusAfterReviewReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getStatusAfterReview()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStatusAfterReviewForIntSetsStatusAfterReview(): void
+    {
+        $this->subject->setStatusAfterReview(12);
+
+        self::assertEquals(12, $this->subject->_get('statusAfterReview'));
+    }
 }
