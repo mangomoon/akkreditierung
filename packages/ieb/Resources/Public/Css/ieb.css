@@ -339,6 +339,7 @@ ul.hinweis {
 p.hinweis.warnung {
     padding: 3px;
     background: #fceaa1;
+    margin: 6px 0;
 }
 
 p.hinweisextra {
@@ -832,6 +833,11 @@ table.ansuchenliste td{
     line-height: 16px;
     color: var(--f3);
 }
+.ansuchenliste_ansuchennr p {
+    margin:0;
+    padding:0;
+    line-height: 100%;
+}
 .ansuchenliste_ansuchenname {
     font-size: 1.4em;
     font-weight: 600;
@@ -976,6 +982,10 @@ table.ansuchenliste td.check {
 
 .formlink.angebotssteuernde:hover {
     background-color: #97a136;
+}
+
+.projektleitungmail {
+    margin-left: 10px;
 }
 
 .formzeile {

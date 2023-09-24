@@ -163,12 +163,19 @@
     } else {
         $('#kontakpersonen').hide();
     }
-    console.log('Kontakpersonen: '+p);
+    // console.log('Kontakpersonen: '+p);
 
     // console.log("allesda am Schluss: " + allesda);
 
 
     validieren();
+
+    if ($('#stammdatencheck').hasClass('ok-0')) {
+        allesda = 0;
+        $('#stammdatencheck').show();
+    } else {
+        $('#stammdatencheck').hide();
+    };
 
 
      $('#ok').attr('value', allesda);

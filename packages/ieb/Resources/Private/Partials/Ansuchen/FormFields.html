@@ -245,6 +245,13 @@
         <f:form.checkbox property="erklaerungTeilA" id="erklaerungTeilA" class="reqcheckbox" value="1" /> Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.
     </p>
 
+
+    <f:if condition="{relations.stammdaten.statusAfterReview} == 1">
+        <p class="hinweis warnung">Negative Begutachtung der Stammdaten/Angaben zur Organisation, aber Änderungen noch nicht erfolgt!"></p>
+    </f:if>
+
+    <p id="stammdatencheck" class="ok-{relations.stammdaten.ok} hinweis warnung">Angaben zu Stammdaten/Organisation fehlen!</p>
+
     <div class="formzeile">
         <f:link.page pageUid="10" class="formlink stammdaten">Organisation: Daten bearbeiten</f:link.page>
     </div>
@@ -667,7 +674,7 @@
     <div class="erlaeuterung">
         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
         <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
-        <p class="hinweis warnung notvisible" id="kontakpersonen">Bitte wählen Sie <b>mindestens eine, maximal zwei</b> Personen als Kontakperson!</p>
+        <p class="hinweis warnung notvisible" id="kontakpersonen">Bitte wählen Sie <b>mindestens eine, maximal zwei</b> Personen als Kontakperson unter dem Reiter &nbsp;<f:image src="EXT:ieb/Resources/Public/Img/Email_gruen.svg" class="icon-small" alt="Email" /> !</p>
     </div>
     <f:if condition="{relations.angebotVerantwortliche}">
         <f:then>

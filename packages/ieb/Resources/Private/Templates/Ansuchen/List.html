@@ -16,7 +16,8 @@
                             <table class="ansuchenliste">
                                 <tr>
                                     <td class="ansuchenliste_ansuchennr">
-                                        {item.nummer}
+                                        <p>{item.nummer}</p>
+                                        <p><f:render partial="Ansuchen/ListInfo" arguments="{ansuchen:item}" /></p>
                                     </td>
                                     <td>
                                         <span class="ansuchenliste_ansuchenname">{item.name}</span>
@@ -66,7 +67,7 @@
                                         <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.einReichbarDurchTr}">
+                                        <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
                                             <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
                                         </f:if>
                                         
