@@ -2395,7 +2395,10 @@
 				<source>Begutachtung nach Einreichung zur Nachakkreditierung oder Auflagenerfüllung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.200" resname="ansuchen.status.200">
-				<source>Zurück an Träger</source>
+				<source>akkreditiert – Bearbeitungsauftrag</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status.220" resname="ansuchen.status.220">
+				<source>akkreditiert mit Auflagen – Bearbeitungsauftrag</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.800" resname="ansuchen.status.800">
 				<source>nicht akkreditiert</source>

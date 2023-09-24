@@ -1232,6 +1232,12 @@
                 Allgemeiner Text an den Träger
                 <f:form.textarea property="reviewTotalCommentTr" class="form-control"/>
             </label>
+            <div class="knopf textbausteinoeffner">Textbausteine</div>
+            <div class="textbausteine">
+                <f:for each="{textbausteine.allg}" as="baustein">
+                    <div class="textbaustein">{baustein}</div>
+                </f:for>
+            </div>
 
 
 
