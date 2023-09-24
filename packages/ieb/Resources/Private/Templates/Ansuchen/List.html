@@ -71,7 +71,7 @@
                                             <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
                                         </f:if>
                                         <f:if condition="{item.einReichbarDurchTr} && !{item.ok}">
-                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
+                                            <f:link.action action="einreichen_warnung" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
                                         </f:if>
                                     </td>
                                 </tr>

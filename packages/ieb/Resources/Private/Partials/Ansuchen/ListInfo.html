@@ -1,0 +1,71 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+    {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+    {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+    {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+
+    <f:comment>
+    <f:for each="{trainer}" as="t">
+        <f:if condition="{ansuchen.typ}==1">
+            <f:then>
+                <f:if condition="{t.statusAfterReviewBabi} = 1">
+                    <f:variable name="tstatus">1</f:variable>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:if condition="{t.statusAfterReviewPsa} = 1">
+                    <f:variable name="tstatus">1</f:variable>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:for>
+    
+    <f:for each="{berater}" as="b">
+        <f:if condition="{b.statusAfterReview} = 1">
+            <f:variable name="bstatus">1</f:variable>
+        </f:if>
+    </f:for>
+    </f:comment>
+    
+    <f:if condition="{stammdaten.statusAfterReview} > 0">
+        <f:then>
+            <f:switch expression="{stammdaten.statusAfterReview}">
+                <f:case value="1"><span class="titleview knopfrund sar-1" title="Negative Begutachtung der Stammdaten/Angaben zur Organisation, aber Änderungen noch nicht erfolgt!"></span></f:case>
+                <f:case value="2"><span class="titleview knopfrund sar-2" title="Änderungen an den Stammdaten/Angaben zur Organisation wurden vorgenommen, noch nicht begutachtet: Neueinreichung erforderlich."></span></f:case>
+                <f:case value="3"><span class="titleview knopfrund sar-3" title="Änderung an den Stammdaten/Angaben zur Organisation nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
+            </f:switch>
+        </f:then>
+        <f:else>
+            <f:if condition="{stammdaten.ok}">
+                <f:then>
+                    <span class="titleview knopfrund ok-grey" title="Stammdaten/Angaben zur Organisation sind vollständig"></span>
+                </f:then>
+                <f:else>
+                    <span class="titleview knopfrund auflage-4" title="Stammdaten/Angaben zur Organisation sind unvollständig!"></span>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{tstatus}==1">
+        <span class="titleview knopfrund auflage-4" title="Negative Begutachtung im Bereich Training, aber Änderungen noch nicht erfolgt!"></span>
+    </f:if>
+
+    <f:if condition="{bstatus}==1">
+        <span class="titleview knopfrund auflage-4" title="Negative Begutachtung im Bereich Beratung, aber Änderungen noch nicht erfolgt!"></span>
+    </f:if>
+
+    <f:if condition="{ansuchen.status} < 20">
+        <f:then>
+            <span class="titleview knopfrund sar-0" title="Noch nicht begutachtet: Einreichung erforderlich."></span>
+        </f:then>
+        <f:else>
+            <f:switch expression="{ansuchen.statusAfterReview}">
+                <f:case value="0"><span class="knopfrund sar-0" title=""></span></f:case>
+                <f:case value="1"><span class="titleview knopfrund sar-1" title="Negative Begutachtung, aber Änderungen noch nicht erfolgt!"></span></f:case>
+                <f:case value="2"><span class="titleview knopfrund sar-2" title="Änderungen wurden vorgenommen, noch nicht begutachtet: Neueinreichung erforderlich."></span></f:case>
+                <f:case value="3"><span class="titleview knopfrund sar-3" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
+            </f:switch>
+        </f:else>
+    </f:if>
+     
+</html>

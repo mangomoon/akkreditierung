@@ -360,6 +360,7 @@ function oeffnenBeraterBegutachtung() {
     }
     if (s < 3) {
         $('.komm-ext').hide();
+        $('')
     } else {
         $('.komm-ext').show();
     }
@@ -376,6 +377,7 @@ function reqleerLoeschen() {
 
 function setStatusAfterReview() {
     b = 1;
+    sar = 0;
     $('.ansuchen .knopf input').each(function() {
         a = $(this).val();
         if($(this).is(':checked')) {
@@ -383,6 +385,7 @@ function setStatusAfterReview() {
                 b = 3;
             } 
             $('#sar').val(b);
+            
         } 
     });
 }

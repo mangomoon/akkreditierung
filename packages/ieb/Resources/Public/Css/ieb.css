@@ -1186,6 +1186,10 @@ table.tx_ieb.trainer td {
     background-image: url('../Img/einreichen.svg');
     background-size: 100%;
 }
+.td-knopf .knopf-quadratisch.einreichen_warnung {
+    background-image: url('../Img/einreichen_warnung.svg');
+    background-size: 100%;
+}
 .td-knopf .knopf-quadratisch.zuteilung {
     background-image: url('../Img/zuteilung.svg');
     background-size: 100%;
