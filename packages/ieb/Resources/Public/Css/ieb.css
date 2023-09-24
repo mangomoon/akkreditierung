@@ -336,6 +336,11 @@ ul.hinweis {
     color: var(--f4);
 }
 
+p.hinweis.warnung {
+    padding: 3px;
+    background: #fceaa1;
+}
+
 p.hinweisextra {
     font-size: 0.9em;
     font-weight: 700;

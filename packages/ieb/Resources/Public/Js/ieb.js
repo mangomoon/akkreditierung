@@ -7,21 +7,21 @@
          if ($(this).val().length == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+            //  console.log($(this).attr('id'));
          }
      });
      $('.reqcheckbox').each(function() {
          if (!$(this).is(':checked')) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+            //  console.log($(this).attr('id'));
          }
      });
      $('.reqtext').each(function() {
          if ($(this).text() == '') {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+            //  console.log($(this).attr('id'));
          }
      });
 
@@ -29,20 +29,20 @@
          if ($(this).val() == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             console.log($(this).attr('id'));
+            //  console.log($(this).attr('id'));
          }
      });
 
      $('.reqfile').each(function() {
          if ($(this).is('.req-leer')) {
              allesda = 0;
-             console.log("FILE: " + $(this).attr('id'));
+            //  console.log("FILE: " + $(this).attr('id'));
          }
      });
 
      $('#ok').attr('value', allesda);
 
-     console.log("allesda = " + allesda);
+    //  console.log("allesda = " + allesda);
  };
 
  // Vailidierung TRAINER
@@ -145,14 +145,27 @@
      }
 
 
-
-     console.log("allesda ohne Multiselect: " + allesda);
      $('span.multi-select-button').each(function() {
          if ($(this).html() == '') {
              $(this).parent().addClass('reqleer');
          }
      });
-    console.log("allesda am Schluss: " + allesda);
+
+    //  Projektleitung
+    p = 0;
+    $('.projektleitungmail').each(function(){
+        if ($(this).is(':checked')) {
+            p++;
+        }
+    });
+    if((p==0) || (p >2)) {
+        $('#kontakpersonen').show();
+    } else {
+        $('#kontakpersonen').hide();
+    }
+    console.log('Kontakpersonen: '+p);
+
+    // console.log("allesda am Schluss: " + allesda);
 
 
     validieren();
