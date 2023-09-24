@@ -507,7 +507,7 @@ select {
     background: #fff;
     padding: 10px 10px 2px 10px;
     border: 1px solid var(--f3);
-    max-width: 50%;
+    max-width: 70%;
     max-height: 300px;
     overflow: auto;
 }
@@ -528,11 +528,7 @@ select {
     vertical-align: top;
     margin-top: 1px;
 }
-.tb-liste div .knopfrund.muss-edit{
-    width: 18px;
-    height: 18px;
-    margin-top: 0;
-}
+
 .tb-liste div.tbs-bad {
     background-color: #ffe3c0;
 }
@@ -785,14 +781,36 @@ span.knopfrund.auflage-3 {
 span.knopfrund.auflage-4 {
     background-image: url('../Img/rund_achtung-4.svg');
 }
-span.knopfrund.muss-edit {
-    background-image: url('../Img/muss-edit.svg');
-    background-image: url('../Img/dot.svg');
+
+span.knopfrund.sar-0 {
+    background-image: url('../Img/dot-gruen.svg');
+    opacity: 0.2;
 }
-span.knopfrund.muss-einreichen {
-    /* background-image: url('../Img/muss-einreichen.svg'); */
+span.knopfrund.sar-1 {
+    background-image: url('../Img/dot-rot.svg');
+}
+span.knopfrund.sar-2 {
     background-image: url('../Img/dot-gelb.svg');
 }
+span.knopfrund.sar-3 {
+    background-image: url('../Img/dot-orange.svg');
+}
+
+.tb-liste .d {
+    width: 270px;
+    text-align: right;
+}
+
+.tb-liste .d span {
+    font-size: 0.8em;
+    border: 1px solid var(--f1);
+    border-radius: 2px;
+    padding: 1px 6px;
+    margin-top: 0px;
+    vertical-align: top;
+    display: inline-block;
+}
+
 /* ANSUCHEN LISTE  */
 table.ansuchenliste {
     border: solid 1px var(--f3);

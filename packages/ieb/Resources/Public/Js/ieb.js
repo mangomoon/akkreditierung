@@ -7,21 +7,21 @@
          if ($(this).val().length == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             //console.log($(this).attr('id'));
+             console.log($(this).attr('id'));
          }
      });
      $('.reqcheckbox').each(function() {
          if (!$(this).is(':checked')) {
              $(this).addClass('req-leer');
              allesda = 0;
-             //console.log($(this).attr('id'));
+             console.log($(this).attr('id'));
          }
      });
      $('.reqtext').each(function() {
          if ($(this).text() == '') {
              $(this).addClass('req-leer');
              allesda = 0;
-             //console.log($(this).attr('id'));
+             console.log($(this).attr('id'));
          }
      });
 
@@ -29,14 +29,14 @@
          if ($(this).val() == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-             //console.log($(this).attr('id'));
+             console.log($(this).attr('id'));
          }
      });
 
      $('.reqfile').each(function() {
          if ($(this).is('.req-leer')) {
              allesda = 0;
-             //console.log("FILE: " + $(this).attr('id'));
+             console.log("FILE: " + $(this).attr('id'));
          }
      });
 
@@ -95,7 +95,7 @@
          $(this).html("Daten fehlen!");
          allesda = 0;
      });
-     //console.log("Stammdaten: " + allesda);
+    //  console.log("Stammdaten: " + allesda);
      bb = 0;
      if ($('#bildungsbereich').hasClass('bb-1')) {
          bb = 1;
@@ -116,8 +116,9 @@
      }
 
 
-     validieren();
-     //console.log("allesda ohne bb: " + allesda);
+     
+
+     console.log("allesda ohne bb: " + allesda);
 
      var komp = 0;
      if ($('#kompetenz1').is(':checked')) {
@@ -145,13 +146,17 @@
 
 
 
-     //console.log("allesda ohne Multiselect: " + allesda);
+     console.log("allesda ohne Multiselect: " + allesda);
      $('span.multi-select-button').each(function() {
          if ($(this).html() == '') {
              $(this).parent().addClass('reqleer');
          }
      });
-//     console.log("allesda am Schluss: " + allesda);
+    console.log("allesda am Schluss: " + allesda);
+
+
+    validieren();
+
 
      $('#ok').attr('value', allesda);
  }
@@ -391,7 +396,7 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
-        // validieren();
+        validierenansuchen();
         // setStatusAfterReview();
         // console.log();
     });

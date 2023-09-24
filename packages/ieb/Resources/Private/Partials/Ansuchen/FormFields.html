@@ -735,7 +735,7 @@
                         <div class="tb-liste">
                             <f:for each="{relations.trainerbabi}" as="t">
                                 
-                                <div class="tb-zeile"><f:form.checkbox property="trainer" class="status-{t.statusAfterReviewBabi} {f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile status-{t.statusAfterReviewBabi} "><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">{t.fullname}</div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
@@ -784,9 +784,24 @@
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
-                                <div class="tb-zeile "><f:form.checkbox property="trainer" class="status-{t.statusAfterReviewPsa} {f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
+                                <div class="tb-zeile status-{t.statusAfterReviewPsa}"><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
-                                    <div class="a">{t.fullname}</div>
+                                    <div class="a">
+                                        <f:if condition="!{t.reviewC21PsaStatus} && !{t.reviewC22PsaStatus}">
+                                            <f:then>
+                                                <span class="titleview knopfrund sar-2" title="Noch nicht begutachtet: Einreichung erforderlich."></span>
+                                            </f:then>
+                                            <f:else>
+                                                <f:switch expression="{t.statusAfterReviewPsa}">
+                                                    <f:case value="0"><span class="knopfrund sar-0" title=""></span></f:case>
+                                                    <f:case value="1"><span class="titleview knopfrund sar-1" title="Negative Begutachtung, aber Änderungen noch nicht erfolgt!"></span></f:case>
+                                                    <f:case value="2"><span class="titleview knopfrund sar-2" title="Änderungen wurden vorgenommen, noch nicht begutachtet: Neueinreichung erforderlich."></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund sar-3" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
+                                                </f:switch>
+                                            </f:else>
+                                        </f:if>
+                                        
+                                        {t.fullname} <code><br>StatusAfterReview: {t.statusAfterReviewBabi}</code></div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
                                             <f:if condition="{t.uid}=={ttt.uid}">
@@ -810,7 +825,10 @@
                                             <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
                                         </f:switch>
                                     </div>
-                                    <div class="d">{t.reviewFrist -> f:format.date(format:'d.m.Y')}</div>
+                                    <div class="d">
+                                        <f:if condition="{t.reviewC2PsaCommentTr}">
+                                            <span class="titleview" title="{t.reviewC2PsaCommentTr}">Frist:&nbsp;{t.reviewFrist -> f:format.date(format:'d.m.Y')}</span>
+                                        </f:if></div>
                                 </div>
                             </f:for>
                         </div>
