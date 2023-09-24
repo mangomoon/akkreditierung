@@ -984,6 +984,22 @@
 
 </div>
 
+<!-- ############### TROTZDEM EINREICHEN ########### -->
+<f:if condition="({ansuchen.ok} == 0) || ({relations.stammdaten.ok} == 0)">
+    <div class="kriterium warnung">
+    <h2>Ansuchen unvollständig – Trotzdem einreichen</h2>
+    <p>Die automatische Überprüfung hat ergeben, dass die Angaben im Ansuchen oder zur Organisation unvollständig sind.</p>
+    <f:if condition="({ansuchen.statusAfterReview} == 1) || ({relations.statusAfterReview.ok} == 1)">
+        <p>Die automatische Überprüfung hat ergeben, dass Angaben im Ansuchen oder zur Organsiation zwar negativ beurteilt wurden, aber dazu noch keine Änderungen vorgenommen wurden.</p>
+    </f:if>
+    <p>Wenn sie das Ansuchen trotzdem einreichen wollen, begründen Sie das bitte im folgenden Textfeld:</p>
+    <f:form.textarea property="{trotzdemAbschicken}" id="trotzdem_abschicken"></f:form.textarea>
+</div>
+</f:if>
+
+
+
+
 <div id="sidebar">
     <div class="knopf-s" id="seite-nach-oben"></div>
     <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
