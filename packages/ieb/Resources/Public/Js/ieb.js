@@ -525,6 +525,27 @@ function qualifikationPsaSprache() {
     //  Submit Standorte mit Frage 
 
 
+    // LISTE ANSUCHEN SORTIEREN #################################
+
+    $('.sortierbutton').click(function(){
+
+        $('.sortierbutton').each(function() {
+            $(this).removeClass('aktiv');
+        });
+        
+        $(this).addClass('aktiv');
+        c = $(this).attr('id');
+        console.log(c);
+        $('.ansuchenlistenitem').sort(function(a, b) {
+
+            return $(a).data(c) > $(b).data(c);
+
+          }).appendTo('#ansuchenlistencontainer');
+
+    });
+
+
+
 
      $("#submitstartstandort").click(function() {
 

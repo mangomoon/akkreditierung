@@ -651,6 +651,27 @@ input[type="submit"].knopf-s2 {
     font-size: 0.8em;
 }
 
+/* Ansuchenliste Sortieren */
+#sort {
+    margin: 12px 0 24px 0;
+}
+.sortierbutton{
+    padding: 4px 26px;
+    border: solid 1px var(--f4);
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 12px;
+    width: 100px;
+    text-align: center;
+}
+.sortierbutton:hover, .sortierbutton.aktiv {
+    background-color: #fff;
+}
+
+
+
 
 #qualifikationPsaKommentar {
     display: none;

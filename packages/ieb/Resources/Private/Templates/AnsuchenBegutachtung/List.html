@@ -4,10 +4,14 @@
 <f:section name="content">
 
 
-
+        <div id="sort">
+            <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="pid" class="sortierbutton">Organisation</div>
+        </div>
     
         <f:for each="{ansuchen}" as="item">
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+
+            <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-pid="{item.pid}" >
             <table class="ansuchenliste">
         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
             <tr>
@@ -76,6 +80,7 @@
                         </td>
                     </tr>
             </table>
+        </div>
         </f:for>
     
 </f:section>

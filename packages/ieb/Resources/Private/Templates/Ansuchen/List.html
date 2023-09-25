@@ -6,13 +6,22 @@
 
     <f:flashMessages/>
 
+    <div id="sort">
+        <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
+    </div>
+
+    <div id="ansuchenlistencontainer">
     <f:if condition="{ansuchen}">
         <f:then>
             <f:for each="{ansuchen}" as="item">
                 <f:if condition="!{item.archiviert}">
                     <f:then>
                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
-                        <div>
+
+
+                        <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-date="{item.akkreditierungsdatum}" >
+
+
                             <table class="ansuchenliste">
                                 <tr>
                                     <td class="ansuchenliste_ansuchennr">
@@ -88,7 +97,9 @@
             <div><p class="erlaeuterung">Legen Sie hier ein neues Ansuchen an. <br>Um Trainer:innen, Berater:innen, Standorte und Projektleitung dem Ansuchen hinzufügen zu können müssen Sie diese zuerst anlegen. Auch die Angaben zu Ihrer Organisation müssen vor dem Einreichen unter "Organisation" gemacht werden.</p></div>
         </f:else>
     </f:if>
-
+    </div>
+    
+    
     <div class="formzeile">
         <f:link.action action="new" class="formlink ansuchen">Neues Ansuchen anlegen</f:link.action>
     </div>
