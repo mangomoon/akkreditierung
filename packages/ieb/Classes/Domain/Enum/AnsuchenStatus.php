@@ -5,6 +5,7 @@ namespace GeorgRinger\Ieb\Domain\Enum;
 
 enum AnsuchenStatus: int
 {
+    case NEU = 0;
     case NEU_IN_ARBEIT = 10;
     case EINGEREICHT_ERSTEINREICHUNG = 20;
     case IN_ARBEIT = 30;

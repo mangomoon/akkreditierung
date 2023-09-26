@@ -1,0 +1,13 @@
+<f:layout name="SystemEmail"/>
+<f:section name="Subject">Einreichung {ansuchen.name}</f:section>
+<f:section name="Title">Das Ansuchen "{ansuchen.name}" wurde eingereicht!</f:section>
+<f:section name="Main">
+    <p>
+        Hallo,<br>
+        das Ansuchen "{ansuchen.name}" wurde von Benutzer "{user.username}" eingereicht!
+    </p>
+    <p>
+        <strong>Voriger Status: </strong><f:translate extensionName="ieb" key="ansuchen.status.{previousStatus}" /><br>
+        <strong>Neuer Status: </strong><f:translate extensionName="ieb" key="ansuchen.status.{newStatus}" /><br>
+    </p>
+</f:section>

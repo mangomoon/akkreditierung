@@ -52,7 +52,7 @@ class FristUeberwachungService
                 'pid' => $pid,
             ];
             $this->mailService
-                ->send($variables, 'Checks/FristenUeberwachung', 'dummy@example.com', 'Jone Doe ' . $pid);
+                ->sendSingle($variables, 'Checks/FristenUeberwachung', 'dummy@example.com', 'Jone Doe ' . $pid);
 
         }
     }
