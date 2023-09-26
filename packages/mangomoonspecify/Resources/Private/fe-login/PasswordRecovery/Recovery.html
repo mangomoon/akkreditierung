@@ -1,7 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<h3>
-    <f:render partial="RenderLabelOrMessage" arguments="{key: 'forgot_header'}"/>
-</h3>
+<h2>
+    Passwort zurücksetzen
+</h2>
 <p>
     <f:render partial="RenderLabelOrMessage" arguments="{key: 'forgot_reset_message'}"/>
 </p>
@@ -10,24 +10,22 @@
 
 <f:form action="recovery" method="post">
     <fieldset>
-        <legend>
-            <f:render partial="RenderLabelOrMessage" arguments="{key: 'reset_password'}"/>
-        </legend>
+        <p>&nbsp;</p>
         <div>
             <label>
-                <f:translate key="enter_your_data"/>
+                Username oder e-mail-adresse
                 <f:form.textfield name="userIdentifier"/>
             </label>
         </div>
         <div>
-            <f:form.submit value="{f:translate(key: 'reset_password')}"/>
+            <f:form.submit class="knopfersetz knopf-s" value="Abschicken"/>
         </div>
     </fieldset>
 </f:form>
 
 <p>
     <f:link.action action="login" controller="Login">
-        <f:translate key="forgot_header_backToLogin"/>
+        Zurück zur Login-Seite
     </f:link.action>
 </p>
 </html>

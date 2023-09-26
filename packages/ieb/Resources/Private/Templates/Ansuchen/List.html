@@ -5,7 +5,9 @@
 
 
     <f:flashMessages/>
-
+    <div class="formzeile">
+        <f:link.action action="new" class="formlink ansuchen">Neues Ansuchen anlegen</f:link.action>
+    </div>
     <div id="sort">
         <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
     </div>
@@ -19,7 +21,7 @@
                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
 
 
-                        <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-date="{item.akkreditierungsdatum}" >
+                        <div class="ansuchenlistenitem" data-name="{item.name}" data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungDatum}</f:format.date>">
 
 
                             <table class="ansuchenliste">
@@ -100,9 +102,7 @@
     </div>
     
     
-    <div class="formzeile">
-        <f:link.action action="new" class="formlink ansuchen">Neues Ansuchen anlegen</f:link.action>
-    </div>
+
 
 
 

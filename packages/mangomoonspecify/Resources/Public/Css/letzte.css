@@ -100,8 +100,29 @@
 }
 
 
-
-
+#passwordRecovery.knopfersatz.knopf-s, span.knopf a {
+  margin: 30px 0 20px 10px;
+  background-color: var(--f2);
+  display: block;
+  width: 320px;
+  border: none;
+  color: #fff;
+  filter: drop-shadow(2px 2px 2px var(--f2));
+  font-size: 0.9em;
+  text-align: center;
+  text-transform: uppercase;
+  
+}
+span.knopf a {
+  padding: 8px 20px 8px 20px;
+}
+#passwordRecovery.knopfersatz.knopf-s:hover, span.knopf a:hover {
+  background-color: var(--f3);
+  filter: none;
+}
+.frame-type-felogin_login label {
+  width: 300px;
+}
 
 
 .ce-border img {

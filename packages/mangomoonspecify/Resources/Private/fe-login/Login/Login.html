@@ -27,8 +27,8 @@
 </f:if>
 
 <f:if condition="{settings.showForgotPassword}">
-    <f:link.action action="recovery" controller="PasswordRecovery">
-        <f:render partial="RenderLabelOrMessage" arguments="{key: 'forgot_header'}"/>
+    <f:link.action action="recovery" id="passwordRecovery" class="knopfersatz knopf-s" controller="PasswordRecovery">
+        Passwort zurücksetzen
     </f:link.action>
 </f:if>
 

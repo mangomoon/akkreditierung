@@ -21,7 +21,9 @@
                 <label><strong>{f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}</strong></label>
             </div>
             <div class="col">
-                <label><strong>{f:if(condition:'{ansuchen.pruefbescheidDatei}', then:'Prüfbescheid liegt vor', else:'Kein Prüfbescheid')}</strong></label>
+                <f:if condition="{ansuchen.typ}==2">
+                    <label><strong>{f:if(condition:'{ansuchen.pruefbescheidDatei}', then:'Prüfbescheid liegt vor', else:'Kein Prüfbescheid')}</strong></label>
+                </f:if>
             </div>
         </div>
         <div class="abstand-mittel"></div>

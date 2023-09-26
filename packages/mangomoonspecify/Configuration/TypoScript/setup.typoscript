@@ -10,6 +10,8 @@ plugin.tx_ieb._CSS_DEFAULT_STYLE >
 
 page.includeCSS {
     name = EXT:ieb/Resources/Public/Css/ieb.css
+    ieb_print = EXT:ieb/Resources/Public/Css/ieb_print.css
+    ieb_print.media = print
 }
 page.includeJS {
     name = EXT:ieb/Resources/Public/Js/ieb.js

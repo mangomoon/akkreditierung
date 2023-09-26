@@ -1,0 +1,49 @@
+@media print {
+    @page {
+        margin: 15mm;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+    .kriterium {
+        break-inside: avoid;
+    }
+    #top,
+    #kopfcontainer,
+    .subnavigation {
+        display: none;
+    }
+    .oecert.oecert-1,
+    .oecert.oecert-2,
+    #c-2-1,
+    #c-2-a-2,
+    #c-2-b,
+    #c-2-2 {
+        display: block;
+    }
+    .testknopf, .infoknopf, .knopf-quadratisch, .rechts, .col-6.rechts, .col-5.rechts {
+        display: none;
+    }
+    .links, .col, .links.col-7, .links.col-6, .col-7, .col-6, .row {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+    }
+    .begutachtung-kriterium {
+        break-inside: avoid;
+    }
+    body {
+        font-size: 11pt;
+    }
+    h2 {
+        font-size: 16pt;
+        font-weight: 500;
+        margin-bottom: 4mm;
+    }
+    h3 {
+        font-size: 14pt;
+        font-weight: 500;
+        margin-bottom: 3mm;
+    }
+}

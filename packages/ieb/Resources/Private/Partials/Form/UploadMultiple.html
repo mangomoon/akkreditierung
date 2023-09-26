@@ -2,6 +2,20 @@
 
 <div class="upload {req} {f:if(condition:'{media}', then: 'ok', else:'req-leer' )} upload-{id}">
     
+    
+    <div class="formfields row" id="{id}">
+        <div class="col-6">
+            <label class="{f:if(condition: '{req}==reqfile', then: 'reqlabel', else: 'n' )}">{label}</label>
+            <ieb:form.uploadMultiple property="{property}" id="{property}" class="uploadfileinput titleview <f:if condition='({status}>2)'>status-negativ</f:if>" title="Um mehrere Dateien upzuloaden, können Sie im aufgehenden Fenster mehrere Dateien mit Strg + Klick (Windows) bzw. Ctrl + Klick (Mac) auswählen!"/>
+        </div>
+        <div class="col-6">
+            <f:if condition="{anmerkung}">
+                <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>
+                <f:form.textarea property="{anmerkung}" id="{anmerkung}" class="anmerkung"></f:form.textarea>
+            </f:if>
+        </div>
+
+    </div>
     <div class="uploadlist">
 
         <f:if condition="{media}">
@@ -17,19 +31,7 @@
             </f:for>
         </f:if>
     </div>
-    <div class="formfields row" id="{id}">
-        <div class="col-6">
-            <label class="{f:if(condition: '{req}==reqfile', then: 'reqlabel', else: 'n' )}">{label}</label>
-            <ieb:form.uploadMultiple property="{property}" id="{property}" class="uploadfileinput titleview <f:if condition='({status}>2)'>status-negativ</f:if>" title="Um mehrere Dateien upzuloaden, können Sie im aufgehenden Fenster mehrere Dateien mit Strg + Klick (Windows) bzw. Ctrl + Klick (Mac) auswählen!"/>
-        </div>
-        <div class="col-6">
-            <f:if condition="{anmerkung}">
-                <label for="{anmerkung}" class="labelknopf anmerkunglabel">Ich will eine Anmerkung machen</label>
-                <f:form.textarea property="{anmerkung}" id="{anmerkung}" class="anmerkung"></f:form.textarea>
-            </f:if>
-        </div>
-
-    </div>
+    <div class="abstand-mittel"></div>
 </div>
 
 </html>
