@@ -539,8 +539,9 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewFrist
      * @return void
      */
-    public function setReviewFrist(\DateTime $reviewFrist)
+    public function setReviewFrist(?\DateTime $reviewFrist)
     {
+        $reviewFrist = $reviewFrist === null ? 0 : $reviewFrist;
         $this->reviewFrist = $reviewFrist;
     }
 

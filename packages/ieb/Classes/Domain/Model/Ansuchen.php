@@ -1049,8 +1049,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $akkreditierungDatum
      * @return void
      */
-    public function setAkkreditierungDatum(\DateTime $akkreditierungDatum)
+    public function setAkkreditierungDatum(?\DateTime $akkreditierungDatum)
     {
+        $akkreditierungDatum = $akkreditierungDatum === null ? 0 : $akkreditierungDatum;
         $this->akkreditierungDatum = $akkreditierungDatum;
     }
 
@@ -1070,8 +1071,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $einreichDatum
      * @return void
      */
-    public function setEinreichDatum(\DateTime $einreichDatum)
+    public function setEinreichDatum(?\DateTime $einreichDatum)
     {
+        $einreichDatum = $einreichDatum === null ? 0 : $einreichDatum;
         $this->einreichDatum = $einreichDatum;
     }
 
@@ -1112,8 +1114,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $akkreditierungEntscheidungDatum
      * @return void
      */
-    public function setAkkreditierungEntscheidungDatum(\DateTime $akkreditierungEntscheidungDatum)
+    public function setAkkreditierungEntscheidungDatum(?\DateTime $akkreditierungEntscheidungDatum)
     {
+        $akkreditierungEntscheidungDatum = $akkreditierungEntscheidungDatum === null ? 0 : $akkreditierungEntscheidungDatum;
         $this->akkreditierungEntscheidungDatum = $akkreditierungEntscheidungDatum;
     }
 
@@ -1847,8 +1850,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewTotalFrist
      * @return void
      */
-    public function setReviewTotalFrist(\DateTime $reviewTotalFrist)
+    public function setReviewTotalFrist(?\DateTime $reviewTotalFrist)
     {
+        $reviewTotalFrist = $reviewTotalFrist === null ? 0 : $reviewTotalFrist;
         $this->reviewTotalFrist = $reviewTotalFrist;
     }
 
@@ -3713,8 +3717,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewFristPruefbescheid
      * @return void
      */
-    public function setReviewFristPruefbescheid(\DateTime $reviewFristPruefbescheid)
+    public function setReviewFristPruefbescheid(?\DateTime $reviewFristPruefbescheid)
     {
+        $reviewFristPruefbescheid = $reviewFristPruefbescheid === null ? 0 : $reviewFristPruefbescheid;
         $this->reviewFristPruefbescheid = $reviewFristPruefbescheid;
     }
 
@@ -3817,7 +3822,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $ende
      * @return void
      */
-    public function setEnde(\DateTime $ende)
+    public function setEnde(?\DateTime $ende)
     {
         $this->ende = $ende;
     }

@@ -639,7 +639,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $zertifikatBis
      * @return void
      */
-    public function setZertifikatBis(\DateTime $zertifikatBis)
+    public function setZertifikatBis(?\DateTime $zertifikatBis)
     {
         $this->zertifikatBis = $zertifikatBis;
     }
@@ -817,7 +817,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $pruefbescheidBis
      * @return void
      */
-    public function setPruefbescheidBis(\DateTime $pruefbescheidBis)
+    public function setPruefbescheidBis(?\DateTime $pruefbescheidBis)
     {
         $this->pruefbescheidBis = $pruefbescheidBis;
     }
@@ -922,7 +922,7 @@ class StaticStammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewFrist
      * @return void
      */
-    public function setReviewFrist(\DateTime $reviewFrist)
+    public function setReviewFrist(?\DateTime $reviewFrist)
     {
         $this->reviewFrist = $reviewFrist;
     }
