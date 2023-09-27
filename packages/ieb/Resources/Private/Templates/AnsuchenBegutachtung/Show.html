@@ -166,7 +166,7 @@
                                 Adresse und Kontakt:
                             </td>
                             <td class="daten">
-                                <f:format.ml2br>{stammdaten.strasse}</f:format.ml2br><br />{stammdaten.plz} {stammdaten.ort}
+                                <f:format.nl2br>{stammdaten.strasse}</f:format.nl2br><br />{stammdaten.plz} {stammdaten.ort}
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.strasse}', status='{ansuchen.status}'}" />
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.plz}', status='{ansuchen.status}'}" />
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.ort}', status='{ansuchen.status}'}" />

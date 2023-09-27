@@ -51,18 +51,23 @@ class StammdatenController extends BaseController
     {
         $this->check($stammdaten);
         $this->deleteFiles($fileDelete, $stammdaten);
+        $stammdaten->setLockedBy(0);
         $this->stammdatenRepository->update($stammdaten);
-        $this->addFlashMessage('Wurde erfolgreich gespeichert');
-        $this->redirect('index');
+        
+        $this->redirectToUri('/uebersicht-tr/ansuchen/');
     }
 
     public function indexAction(): ResponseInterface
     {
         $stammdaten = $this->stammdatenRepository->getLatest();
+        $used = $stammdaten->getLockedBy();
         if (!$stammdaten) {
             $stammdaten = new Stammdaten();
             $this->view->assign('exists', false);
         } else {
+            if ($used == 0) {
+                $this->stammdatenRepository->setLockedAndPersist($stammdaten);
+            }
             $pid = $stammdaten->getPid();
             $this->view->assignMultiple([
                 'exists' => true,

@@ -38,6 +38,7 @@ class AnsuchenController extends BaseController
         $this->view->assign('ansuchen', $ansuchen);
         $stammdaten = $this->stammdatenRepository->getLatest();
         $this->view->assign('stammdaten', $stammdaten);
+        
         return $this->htmlResponse();
     }
 

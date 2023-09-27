@@ -5,17 +5,19 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
-
+<f:debug>{_all}</f:debug>
     <f:render partial="FormErrors" />
     <f:if condition="{exists}">
         <f:then>
-            <f:if condition="{usedInAnsuchen}">
+
+            <f:if condition="{usedInAnsuchen} || {stammdaten.lockedBy}!={currentUser.uid}">
+                
                 <f:then>
                     <div id="stammdaten-show">
                         <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
                     </div>
                 </f:then>
+
                 <f:else>
                     <f:form action="update" name="stammdaten" object="{stammdaten}" class="formStammdaten editStammdaten" enctype="multipart/form-data">
                         <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
