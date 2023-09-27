@@ -5,7 +5,6 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
     <f:if condition="{beraters -> f:count()} > 10">
         <div class="kriterium">
             <f:form action="index" id="suche" object="{beraterSearch}" name="beraterSearch">
@@ -123,30 +122,34 @@
                             </td>
                             <td class="td-knopf">
                                 <f:if condition="{relationUsages}">
-                                    <f:then>
-                                        <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                    <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
                                             {relationUsage.nummer} ({relationUsage.name})<br>
                                         </f:for>"></div>
-                                    </f:then>
-                                    <f:else>
-                                        <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}">
-                                </f:link.action>
-                                    </f:else>
                                 </f:if>
+                                <f:if condition="{berater.lockedBy}">
+                                    <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird gerade von XYZ bearbeitet."></div>
+                                </f:if>
+                                <f:if condition="{berater.lockedBy}==0 && !{relationUsages}">
+                                    <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
+                                </f:if>
+                                   
                                 
                             </td>
                             <td class="td-knopf">
-                                <f:if condition="{relationUsagesInReview}">
-                                    <f:then>
-                                        <div class="locked knopf-quadratisch" title="In Begutachtung – Ansuchen: <br><f:for each='{relationUsagesInReview}' as='relationUsage'>
+                                <f:if condition="{relationUsages}">
+                                    <div class="locked knopf-quadratisch" title="In Begutachtung – Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
                                             {relationUsage.nummer} ({relationUsage.name})<br>
                                         </f:for>"></div>
-                                    </f:then>
-                                    <f:else>
-                                        <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}">
-                                        </f:link.action>
-                                    </f:else>
                                 </f:if>
+                                <f:if condition="{berater.lockedBy}">
+                                    <f:link.action action="unlock"  arguments="{berater : berater}" class="locked-to-unlock knopf-quadratisch" title="Kann nicht bearbeite werden, wird gerade von XYZ {berater.lockedBy} bearbeitet. <br>Klicken zum <b>Entsperren</b>"></f:link.action>
+                                </f:if>
+                                <f:if condition="{berater.lockedBy}==0 && !{relationUsages}">
+                                    <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}"></f:link.action>
+                                </f:if>
+
+
+                                
                             </td>
                         </tr>
                     </f:then>

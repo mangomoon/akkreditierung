@@ -432,7 +432,7 @@ function qualifikationPsaSprache() {
             var title = $(this).attr('title');
             $('#mangoTooltip').html(title);
             var offset = $(this).offset();
-            $('#mangoTooltip').css({ 'top':offset.top-20, 'left':offset.left+16 });     
+            $('#mangoTooltip').css({ 'top':offset.top-20, 'left':offset.left+20 });     
             $('#mangoTooltip').addClass('active');
             $(this).attr('title', '');
             $(this).attr('alt', title);

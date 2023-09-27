@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\Dto\BeraterSearch;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\BeraterRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -69,6 +70,7 @@ class BeraterController extends BaseController
     public function editAction(Berater $berater): ResponseInterface
     {
         $this->check($berater);
+        $this->beraterRepository->setLockedAndPersist($berater);
         $this->view->assignMultiple([
             'berater' => $berater,
             'relationUsagesInReview' => $this->relationLockService->usedByAnsuchenInReview($berater),
@@ -80,6 +82,7 @@ class BeraterController extends BaseController
     public function updateAction(Berater $berater, array $fileDelete = [])
     {
         $this->check($berater);
+        $berater->setLockedBy(0);
         if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
             $this->deleteFiles($fileDelete, $berater);
             $this->beraterRepository->update($berater);
@@ -106,6 +109,14 @@ class BeraterController extends BaseController
         }
         
 
+        $this->redirect('index');
+    }
+
+    public function unlockAction(Berater $berater)
+    {
+        $this->check($berater);
+        $berater->setLockedBy(0);
+        $this->beraterRepository->update($berater);
         $this->redirect('index');
     }
 

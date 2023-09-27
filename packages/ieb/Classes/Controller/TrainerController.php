@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
 use Psr\Http\Message\ResponseInterface;
 
@@ -67,6 +68,7 @@ class TrainerController extends BaseController
     public function editAction(Trainer $trainer): ResponseInterface
     {
         $this->check($trainer);
+        $this->trainerRepository->setLockedAndPersist($trainer);
         $this->view->assignMultiple([
             'trainer' => $trainer,
             'relationUsagesInReview' => $this->relationLockService->usedByAnsuchenInReview($trainer),
@@ -78,6 +80,7 @@ class TrainerController extends BaseController
     public function updateAction(Trainer $trainer, array $fileDelete = [])
     {
         $this->check($trainer);
+        $trainer->setLockedBy(0);
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
             $this->deleteFiles($fileDelete, $trainer);
             $this->trainerRepository->update($trainer);
@@ -91,6 +94,14 @@ class TrainerController extends BaseController
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
             $this->trainerRepository->remove($trainer);
         }
+        $this->redirect('index');
+    }
+
+    public function unlockAction(Trainer $trainer)
+    {
+        $this->check($trainer);
+        $trainer->setLockedBy(0);
+        $this->trainerRepository->update($trainer);
         $this->redirect('index');
     }
 

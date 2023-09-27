@@ -30,10 +30,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Trainer',
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ],
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ]
     );
 
@@ -41,10 +41,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Berater',
         [
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ],
         [
-            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive',
+            \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ]
     );
 
