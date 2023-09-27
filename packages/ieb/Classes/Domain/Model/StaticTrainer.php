@@ -730,7 +730,7 @@ class StaticTrainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewFrist
      * @return void
      */
-    public function setReviewFrist(\DateTime $reviewFrist)
+    public function setReviewFrist(?\DateTime $reviewFrist)
     {
         $this->reviewFrist = $reviewFrist;
     }

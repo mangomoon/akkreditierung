@@ -411,4 +411,9 @@ class AngebotVerantwortlich extends \TYPO3\CMS\Extbase\DomainObject\AbstractEnti
     {
         $this->statusAfterReview = $statusAfterReview;
     }
+
+    public function getFullName()
+    {
+        return $this->vorname . ' ' . $this->nachname;
+    }
 }

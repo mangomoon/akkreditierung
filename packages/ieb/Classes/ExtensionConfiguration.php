@@ -14,6 +14,7 @@ class ExtensionConfiguration
     protected int $usergroupAg = 99;
     protected int $pageRegistration = 15;
     protected \DateTime $ansuchenEnde;
+    protected string $emailAddressGs = 'office@initiative-erwachsenenbildung.at';
 
     public function __construct() {
         $this->ansuchenEnde = new \DateTime('2027-12-31');
@@ -53,6 +54,11 @@ class ExtensionConfiguration
     public function getAnsuchenEnde(): \DateTime
     {
         return $this->ansuchenEnde;
+    }
+
+    public function getEmailAddressGs(): string
+    {
+        return $this->emailAddressGs;
     }
 
 }

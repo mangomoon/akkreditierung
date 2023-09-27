@@ -327,7 +327,7 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewFrist
      * @return void
      */
-    public function setReviewFrist(\DateTime $reviewFrist)
+    public function setReviewFrist(?\DateTime $reviewFrist)
     {
         $this->reviewFrist = $reviewFrist;
     }
@@ -391,7 +391,7 @@ class StaticBerater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $lockedBy
      * @return void
      */
-    public function setLockedBy(\DateTime $lockedBy)
+    public function setLockedBy(?\DateTime $lockedBy)
     {
         $this->lockedBy = $lockedBy;
     }

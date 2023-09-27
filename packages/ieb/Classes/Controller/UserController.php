@@ -125,7 +125,7 @@ class UserController extends BaseController
             'page' => $this->configurationManager->getContentObject()->data,
         ];
         $mailService = GeneralUtility::makeInstance(MailService::class);
-        $mailService->send(
+        $mailService->sendSingle(
             $assignedMailValues,
             'User/AcceptInvitation',
             $user->getEmail(),

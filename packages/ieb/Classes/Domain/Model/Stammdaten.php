@@ -375,7 +375,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getPlz()
     {
-        return (int) $this->plz;
+        return (int)$this->plz;
     }
 
     /**
@@ -386,7 +386,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setPlz($plz)
     {
-        $this->plz = (int) $plz;
+        $this->plz = (int)$plz;
     }
 
     /**
@@ -594,8 +594,9 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $zertifikatBis
      * @return void
      */
-    public function setZertifikatBis(\DateTime $zertifikatBis)
+    public function setZertifikatBis(?\DateTime $zertifikatBis)
     {
+        $zertifikatBis = $zertifikatBis === null ? 0 : $zertifikatBis;
         $this->zertifikatBis = $zertifikatBis;
     }
 
@@ -807,6 +808,7 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->ok;
     }
+
     public function getAddressFilled()
     {
         return $this->getStrasse() && $this->getPlz() && $this->getOrt();
@@ -1010,10 +1012,12 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->reviewA2CommentInternalStep = $reviewA2CommentInternalStep;
     }
+
     public function getReviewA1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewA1CommentInternal);
     }
+
     public function getReviewA2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewA2CommentInternal);
@@ -1043,8 +1047,9 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $reviewOecertFrist
      * @return void
      */
-    public function setReviewOecertFrist(\DateTime $reviewOecertFrist)
+    public function setReviewOecertFrist(?\DateTime $reviewOecertFrist)
     {
+        $reviewOecertFrist = $reviewOecertFrist === null ? 0 : $reviewOecertFrist;
         $this->reviewOecertFrist = $reviewOecertFrist;
     }
 

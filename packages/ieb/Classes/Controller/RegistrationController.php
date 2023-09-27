@@ -135,7 +135,7 @@ class RegistrationController extends ActionController
             'page' => $this->configurationManager->getContentObject()->data,
         ];
         $mailService = GeneralUtility::makeInstance(MailService::class);
-        $mailService->send(
+        $mailService->sendSingle(
             $assignedMailValues,
             'Registration/ConfirmMail',
             $registrationForm->email,

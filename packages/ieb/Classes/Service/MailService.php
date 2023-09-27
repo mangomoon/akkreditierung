@@ -12,13 +12,27 @@ use TYPO3\CMS\Core\Utility\MailUtility;
 class MailService
 {
 
-    public function send(array $assignedValues, string $templateName, string $recipientEmail, string $recipientName): void
+    public function sendSingle(array $assignedValues, string $templateName, string $recipientEmail, string $recipientName): void
     {
         $mailMessage = GeneralUtility::makeInstance(FluidEmail::class);
         $mailMessage->to(new Address($recipientEmail, $recipientName));
         $mailMessage->from(new Address(MailUtility::getSystemFromAddress(), MailUtility::getSystemFromName()));
         $mailMessage->format(FluidEmail::FORMAT_HTML);
-        
+
+        $mailMessage->assignMultiple($assignedValues);
+        $mailMessage->setTemplate($templateName);
+        GeneralUtility::makeInstance(Mailer::class)->send($mailMessage);
+    }
+
+    public function send(string $templateName, array $recipients, array $assignedValues = []): void
+    {
+        $mailMessage = GeneralUtility::makeInstance(FluidEmail::class);
+        foreach ($recipients as $mail => $name) {
+            $mailMessage->addTo(new Address($mail, $name));
+        }
+        $mailMessage->from(new Address(MailUtility::getSystemFromAddress(), MailUtility::getSystemFromName()));
+        $mailMessage->format(FluidEmail::FORMAT_HTML);
+
         $mailMessage->assignMultiple($assignedValues);
         $mailMessage->setTemplate($templateName);
         GeneralUtility::makeInstance(Mailer::class)->send($mailMessage);

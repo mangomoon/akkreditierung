@@ -9,13 +9,9 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\StaticStammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
+use GeorgRinger\Ieb\Event;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -118,6 +114,7 @@ class AnsuchenController extends BaseController
             $this->ansuchenRepository->update($newAnsuchen);
         } else {
             $ansuchen->setEinreichDatum(new \DateTime());
+            $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
@@ -132,6 +129,7 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
             }
+            $this->eventDispatcher->dispatch(new Event\AnsuchenEinreichenEvent($previousStatus, $ansuchen, self::getCurrentUser()));
             $this->ansuchenRepository->updateJsonRelations($ansuchen, $this->stammdatenRepository->getLatest());
             $this->ansuchenRepository->update($ansuchen);
         }

@@ -13,8 +13,18 @@ services:
   GeorgRinger\Ieb\Service\CustomDataHandler:
     public: true
 
+  GeorgRinger\Ieb\Service\MailService:
+    public: true
+
   GeorgRinger\Ieb\Command\FristUeberwachungCommand:
     tags:
       - name: 'console.command'
         command: 'ieb:fristUeberwachung'
         description: 'Send mails for fristen'
+
+  # Events
+  GeorgRinger\Ieb\EventListener\AnsuchenEinreichenListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-ieb/ansuchen-einreichen'
+        event: GeorgRinger\Ieb\Event\AnsuchenEinreichenEvent
