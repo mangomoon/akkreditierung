@@ -166,7 +166,7 @@
                                 Adresse und Kontakt:
                             </td>
                             <td class="daten">
-                                {stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
+                                <f:format.ml2br>{stammdaten.strasse}</f:format.ml2br><br />{stammdaten.plz} {stammdaten.ort}
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.strasse}', status='{ansuchen.status}'}" />
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.plz}', status='{ansuchen.status}'}" />
                                 <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.ort}', status='{ansuchen.status}'}" />
@@ -511,7 +511,7 @@
 
                         <p>Standorte:</p>
                             <f:for each="{standorte}" as="standort">
-                                <div class="standort">{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> 
+                                <div class="standort">{standort.name} <br><span class="standortdetails"><f:format.nl2br>{standort.adresse}</f:format.nl2br><br>{standort.plz} {standort.ort}</span> 
 
                                     <f:if condition="{difftyp} && {diff.copy_standorte}">
                                         <f:for each="{diff.copy_standorte}" as="p">

@@ -11,6 +11,7 @@
             <th>Admin</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         <f:for each="{users}" as="user">
 
@@ -20,8 +21,17 @@
                     <td>{user.username}</td>
                     <td>{user.firstname} <b>{user.lastname}</b></td>
                     <td><a href="mailto:{user.email}">{user.email}</a></td>
-                    <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
-    
+                    <td>{f:if(condition:user.trAdmin,then:'<span class="titleview knopfrund ok-grey" title="Admin"></span>',else:'')}</td>
+                    <td>
+                        <f:if condition="{user.usergroup}==3">
+                            <f:then>
+                                <span class="titleview knopfrund sar-2" title="{user.fullname} muss ihren/seinen Account erst einrichten."></span>
+                            </f:then>
+                            <f:else>
+                                <span class="titleview knopfrund ok-grey" title="aktiv"></span>
+                            </f:else>
+                        </f:if>
+                    </td>
                     <td class="td-knopf">
                         <f:if condition="{currentUser.tr_admin}">
                             <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>

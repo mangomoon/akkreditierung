@@ -1,8 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
-    {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+    
     {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
     {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
-
+    
     <f:comment>
     <f:for each="{trainer}" as="t">
         <f:if condition="{ansuchen.typ}==1">
@@ -45,7 +45,6 @@
             </f:if>
         </f:else>
     </f:if>
-
     <f:if condition="{tstatus}==1">
         <span class="titleview knopfrund auflage-4" title="Negative Begutachtung im Bereich Training, aber Änderungen noch nicht erfolgt!"></span>
     </f:if>

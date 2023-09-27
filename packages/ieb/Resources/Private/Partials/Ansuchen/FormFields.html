@@ -113,7 +113,7 @@
                 Adresse und Kontakt:
             </td>
             <td class="check {f:if(condition:'!{relations.stammdaten.addressFilled}',then:'fehlt')}">
-                {relations.stammdaten.strasse}<br />{relations.stammdaten.plz} {relations.stammdaten.ort}
+                <f:format.nl2br>{relations.stammdaten.strasse}</f:format.nl2br><br />{relations.stammdaten.plz} {relations.stammdaten.ort}
             </td>
         </tr>
         <tr>
@@ -250,10 +250,12 @@
         <p class="hinweis warnung">Negative Begutachtung der Stammdaten/Angaben zur Organisation, aber Änderungen noch nicht erfolgt!"></p>
     </f:if>
 
-    <p id="stammdatencheck" class="ok-{relations.stammdaten.ok} hinweis warnung">Angaben zu Stammdaten/Organisation fehlen!</p>
+    <f:if condition="!{relations.stammdaten.ok}">
+        <p id="stammdatencheck" class="ok-{relations.stammdaten.ok} hinweis warnung">Angaben zu Stammdaten/Organisation fehlen!</p>
+    </f:if>
 
     <div class="formzeile">
-        <f:link.page pageUid="10" class="formlink stammdaten">Organisation: Daten bearbeiten</f:link.page>
+        <f:form.submit value="Organisation: Daten bearbeiten" name="saveAndStammdaten" class="formlink stammdaten titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung der Stammdaten/Organsiation. Das Ansuchen wird gespeichert."/>
     </div>
 </div>
 
@@ -761,7 +763,7 @@
                                             </f:else>
                                         </f:if>
                                         
-                                        {t.fullname}</div>
+                                        {t.fullname} <code><br>uid: {t.uid} | StatusAfterReview: {t.statusAfterReviewBabi}</code></div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
                                             <f:if condition="{t.uid}=={ttt.uid}">
@@ -830,7 +832,7 @@
                                             </f:else>
                                         </f:if>
                                         
-                                        {t.fullname} <code><br>StatusAfterReview: {t.statusAfterReviewBabi}</code></div>
+                                        {t.fullname} <code><br>uid: {t.uid} | StatusAfterReview: {t.statusAfterReviewBabi}</code></div>
                                     <div class="b">
                                         <f:for each="{ansuchen.trainer}" as="ttt">
                                             <f:if condition="{t.uid}=={ttt.uid}">

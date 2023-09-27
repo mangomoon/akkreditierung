@@ -157,11 +157,11 @@
             </f:for>
         </table>
     </f:if>
-
-    <div class="formzeile">
-        <f:link.action action="new" class="formlink berater">Neue Person anlegen</f:link.action>
-    </div>
-
+    <f:if condition="{beraters -> f:count()} > 6">
+        <div class="formzeile">
+            <f:link.action action="new" class="formlink berater">Neue Person anlegen</f:link.action>
+        </div>
+    </f:if>
 
     <f:if condition="{archiviertexistiert}=='ja'">
         <div class="abstand-mittel"></div>

@@ -7,31 +7,67 @@
 
     <f:render partial="FormErrors" />
 
-    <div style="padding:10px;margin:10px">
-        <strong>Daten</strong><br>
-        <ul>
-            <li>Name: {potentialUser.fullName}</li>
-            <li>Email: {potentialUser.email}</li>
-        </ul>
-    </div>
-
     <h2>Registrierung</h2>
+
+    Für: {potentialUser.fullName} ({potentialUser.email})
+    <div class="abstand-mittel"></div>
 
     <f:form action="acceptInvitationSuccess" name="registrationInvitation" object="{registrationInvitation}">
         <f:form.hidden property="userId" />
         <f:form.hidden property="userHash" />
         <fieldset>
-            <legend>Zugangsdaten</legend>
+            <legend></legend>
             <f:render partial="Form/Input" arguments="{property: 'password', type:'password', label: 'Passwort', required:1}" />
             <f:render partial="Form/Input" arguments="{property: 'passwordRepeat', type:'password', label: 'Passwort wiederholen', required:1}" />
         </fieldset>
 
-        <fieldset>
-            <legend>Privacy</legend>
-            <f:render partial="Form/Checkbox" arguments="{property: 'dsgvo', label: 'Dsgvo', additional:{required:1}}" />
-        </fieldset>
 
-        <f:form.submit value="Absenden" />
+        <div class="kriterium klein">
+            <h2>Einwilligung</h2>
+            <p>zur Verarbeitung von personenbezogenen Daten gemäß Art. 7 DSGVO</p>
+            <div class="erlaeuterung">
+                
+
+                <p>Ich willige ein, dass folgende personenbezogenen Daten:</p>
+
+                <p><i>Vor- und Nachname, Name der Institution, Funktion, Adresse der Institution, Telefonnummer, Fax-Nummer und Email-Adresse, Website der Institution</i></p>
+
+                <p>für den Zweck bzw. die Zwecke:</p>
+                <ul>
+                    <li>Registrierung und User-Verwaltung in der Akkreditierungsdatenbank auf akkreditierung.initiative-erwachsenenbildung.at für das Einreichen von Bildungsansuchen zur Akkreditierung im Rahmen der Initiative Erwachsenenbildung</li>
+                    <li>Automatisierte Email-Kommunikation im Zuge des Akkreditierungsprozesses</li>
+                    <li>Aufnahme in den Email-Verteiler (geschlossener AdressatInnenkreis) der Geschäftsstelle Initiative Erwachsenenbildung für regelmäßige Aussendungen betreffend die Initiative Erwachsenenbildung und Informationen aus der Abteilung Erwachsenenbildung des BMBWF</li>
+                    <li>Statistische Auswertungen über Anzahl der registrierten User (kein Personenbezug)</li>
+                </ul>
+                    
+                <p>Ihre Daten werden von uns nicht für andere Zwecke verwendet.</p>
+                
+
+                <p>durch:</p>
+
+                <p><b>Verantwortlich:</b> Bundesministerium für Bildung, Wissenschaft und Forschung</p>
+
+                <p><b>Auftragsverarbeitung:</b>	mangomoon KG, Michael Shorny (Wartung, Support, Datensicherheit)</p>
+
+                <p>Bearbeitet wird die Datenbank von der Geschäftsstelle der Initiative Erwachsenenbildung (Kulturkontakt Austria) auf Grundlage der „Art. 15a B-VG zwischen dem Bund und den Ländern über die Förderung von Bildungsmaßnahmen im Bereich Basisbildung sowie von Bildungsmaßnahmen zum Nachholen des Pflichtschulabschlusses für die Jahre 2018 bis 2021“ gespeichert und verarbeitet werden dürfen.
+                </p>
+                
+
+                <p><b>Widerrufsmöglichkeit:</b></p>
+
+                <p>Gemäß Art. 7 Abs. 3 DSGVO können Sie Ihre Einwilligung jederzeit widerrufen per Email an office@initiative-erwachsenenbildung.at oder per Post an Geschäftsstelle Initiative Erwachsenenbildung (Kulturkontakt Austria), Universitätsstraße 5, 1010 Wien.<br>
+                Durch den Widerruf ist ab dem Widerrufszeitpunkt eine Verarbeitung Ihrer personenbezogenen Daten nicht mehr zulässig. Bitte beachten Sie aber, dass allfällige Verarbeitungen Ihrer personenbezogenen Daten aufgrund anderer Bedingungen als der Einwilligung, wenn diese dem Art. 6 DSGVO entsprechen (z.B. aufgrund einer gesetzlichen Grundlage), auch weiterhin erfolgen können.</p>
+                    <p>&nbsp;</p>
+
+                    <p style="display: inline;">
+                        <f:form.checkbox value="1" property="dsgvo" class=""  id="dsgvo" />Ich gebe die Einwilligung zur oben genannten Datenverarbeitung.</p>
+                    <p>&nbsp;</p>
+
+            </div>
+        </div>
+
+
+        <f:form.submit class="knopf-s" value="Registrierung abschließen" />
     </f:form>
 </f:section>
 </html>

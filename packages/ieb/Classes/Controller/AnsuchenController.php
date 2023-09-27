@@ -36,6 +36,8 @@ class AnsuchenController extends BaseController
         //$ansuchen = $this->ansuchenRepository->getAllEditableForTr();
         $ansuchen = $this->ansuchenRepository->getAll();
         $this->view->assign('ansuchen', $ansuchen);
+        $stammdaten = $this->stammdatenRepository->getLatest();
+        $this->view->assign('stammdaten', $stammdaten);
         return $this->htmlResponse();
     }
 
@@ -230,6 +232,9 @@ class AnsuchenController extends BaseController
         }
         if (isset($arguments['saveAndBerater'])) {
             $this->redirectToUri("/uebersicht-tr/beratung");
+        }
+        if (isset($arguments['saveAndStammdaten'])) {
+            $this->redirectToUri("/uebersicht-tr/organisation");
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
             $this->redirectToUri("/uebersicht-tr/projektleitung");

@@ -12,7 +12,7 @@ class ExtensionConfiguration
     protected int $usergroupEingeladenInaktiv = 3;
     protected int $usergroupAktiv = 1;
     protected int $usergroupAg = 99;
-    protected int $pageRegistration = 15;
+    protected int $pageRegistration = 22;
     protected \DateTime $ansuchenEnde;
     protected string $emailAddressGs = 'office@initiative-erwachsenenbildung.at';
 
