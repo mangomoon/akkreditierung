@@ -63,9 +63,10 @@ class StammdatenController extends BaseController
             $stammdaten = new Stammdaten();
             $this->view->assign('exists', false);
         } else {
+            $pid = $stammdaten->getPid();
             $this->view->assignMultiple([
                 'exists' => true,
-                'usedInAnsuchen' => $this->ansuchenRepository->getAllForGs(),
+                'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
             ]);
         }
         $this->view->assignMultiple([

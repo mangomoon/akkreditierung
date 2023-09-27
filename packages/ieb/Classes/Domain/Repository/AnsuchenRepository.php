@@ -94,6 +94,19 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
+    public function getAllUsedByGs(int $pid)
+    {
+        $query = $this->getEmptyQuery();
+        $constraints = [
+            $query->in('status', AnsuchenStatus::statusSichtbarDurchGs()),
+            $query->equals('version_active', 1),
+            $query->equals('pid', $pid),
+        ];
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
     public function getAllForAkkreditierungsGruppe(int $userId)
     {
         $query = $this->getEmptyQuery();
