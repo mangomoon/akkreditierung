@@ -206,7 +206,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_frist_pruefbescheid_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
 	status_after_review int(11) NOT NULL DEFAULT '0',
 	ende int(11) NOT NULL DEFAULT '0',
-	pruefbescheid_check smallint(1) unsigned NOT NULL DEFAULT '0',
+	pruefbescheid_check int(11) DEFAULT '0' NOT NULL,
 	status_ag_eins int(11) DEFAULT '0' NOT NULL,
 	status_ag_zwei int(11) DEFAULT '0' NOT NULL,
 	review_verrechnung_check1 smallint(1) unsigned NOT NULL DEFAULT '0',

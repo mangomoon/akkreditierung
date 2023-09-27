@@ -22,7 +22,7 @@
     #c-2-2 {
         display: block;
     }
-    .testknopf, .infoknopf, .knopf-quadratisch, .rechts, .col-6.rechts, .col-5.rechts {
+    .testknopf, .infoknopf, .knopf-quadratisch, .rechts, .col-6.rechts, .col-5.rechts, #sidebar {
         display: none;
     }
     .links, .col, .links.col-7, .links.col-6, .col-7, .col-6, .row {

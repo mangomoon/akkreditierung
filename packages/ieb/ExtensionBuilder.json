@@ -2545,7 +2545,7 @@
                             "propertyIsNullable": false,
                             "propertyIsRequired": false,
                             "propertyName": "pruefbescheidCheck",
-                            "propertyType": "Boolean",
+                            "propertyType": "Select",
                             "uid": "574925727279"
                         },
                         {

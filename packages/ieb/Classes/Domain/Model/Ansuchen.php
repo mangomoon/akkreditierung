@@ -780,9 +780,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * pruefbescheidCheck
      *
-     * @var bool
+     * @var int
      */
-    protected $pruefbescheidCheck = false;
+    protected $pruefbescheidCheck = 0;
 
     /**
      * statusAgEins
@@ -3825,7 +3825,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the pruefbescheidCheck
      *
-     * @return bool
+     * @return int 
      */
     public function getPruefbescheidCheck()
     {
@@ -3835,22 +3835,12 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the pruefbescheidCheck
      *
-     * @param bool $pruefbescheidCheck
+     * @param int $pruefbescheidCheck
      * @return void
      */
-    public function setPruefbescheidCheck(bool $pruefbescheidCheck)
+    public function setPruefbescheidCheck(int $pruefbescheidCheck)
     {
         $this->pruefbescheidCheck = $pruefbescheidCheck;
-    }
-
-    /**
-     * Returns the boolean state of pruefbescheidCheck
-     *
-     * @return bool
-     */
-    public function isPruefbescheidCheck()
-    {
-        return $this->pruefbescheidCheck;
     }
 
     /**

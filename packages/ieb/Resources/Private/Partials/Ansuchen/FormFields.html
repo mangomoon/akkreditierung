@@ -3,7 +3,7 @@
 
 
 
-<code>ANSUCHEN UID: {ansuchen.uid}</code>
+<code>ANSUCHEN UID: {ansuchen.uid}  STATUS: {ansuchen.status}</code>
 <div class="formfields row">
     <div class="col-3">
         <label for="name">Ansuchennummer:</label>
@@ -426,9 +426,11 @@
         <div class="info"></div>
         <div class="infobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
         <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
-            <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'checked')}">ja</knopf>
-            <knopf class="inline pruefjanein nein">nein</knopf>
+            <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'checked')}">ja</knopf>
+            <knopf class="inline pruefjanein nein {f:if(condition:'{ansuchen.pruefbescheidCheck}==2',then:'checked')}">nein</knopf>
         </p>
+        <f:form.hidden property="pruefbescheidCheck" id="pruefbescheidCheck"  value="{ansuchen.pruefbescheidCheck}"/>
+
         <f:if condition="{ansuchen.reviewB15Status}==4">
             <div class="commentTr">
                 <p><f:format.nl2br>{ansuchen.reviewB15CommentTr}</f:format.nl2br></p>
@@ -436,7 +438,7 @@
         </f:if>
 
 
-        <div class="japruef {f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ischecked')}">
+        <div class="japruef {f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'ischecked')}">
 
             <f:render partial="Form/UploadMultiple" arguments="{
                 property:'pruefbescheidDatei', 

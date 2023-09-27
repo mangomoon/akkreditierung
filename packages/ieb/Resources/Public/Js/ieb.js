@@ -618,12 +618,14 @@ function qualifikationPsaSprache() {
              $("#koopschuledatei").hide();
          } else {
              $("#koopschuledatei").show();
+             
          }
      });
      // ######################################## Form Ansuchen Prüfbescheid
 
      $('.pruefjanein').click(function() {
          if ($(this).hasClass('ja')) {
+            $('#pruefbescheidCheck').val(1);
              $('.nein').removeClass('checked');
              $(this).addClass("checked");
              $('.neinpruef').each(function() {
@@ -634,6 +636,7 @@ function qualifikationPsaSprache() {
              });
          };
          if ($(this).hasClass('nein')) {
+            $('#pruefbescheidCheck').val(2);
              $('.ja').removeClass('checked');
              $(this).addClass("checked");
              $('.neinpruef').each(function() {

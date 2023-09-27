@@ -1810,15 +1810,14 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_check',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_check.description',
             'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
+                'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                    ]
+                    ['-- Label --', 0],
                 ],
-                'default' => 0,
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
             ]
         ],
         'status_ag_eins' => [
