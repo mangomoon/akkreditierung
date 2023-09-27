@@ -39,6 +39,7 @@ class RegistrationRepository
         $userData = [
             'pid' => $pageId,
             'disable' => 1,
+            'usergroup' => 1,
             'username' => $form->email,
             'password' => $this->generatePasswordHash($form->password),
             'email' => $form->email,
@@ -46,6 +47,7 @@ class RegistrationRepository
             'first_name' => $form->vorname,
             'last_name' => $form->nachname,
             'tr_admin' => 1,
+            'ausschluss' => '',
         ];
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $queryBuilder->insert('fe_users')->values($userData)->execute();

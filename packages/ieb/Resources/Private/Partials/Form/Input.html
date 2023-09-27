@@ -8,7 +8,6 @@
             <f:then>
                 <f:form.textfield
                     property="{property}"
-                    
                     class="form-control"
                     id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
                     additionalAttributes="{additional}"
@@ -18,7 +17,15 @@
                 />
             </f:then>
             <f:else>
-
+                <f:form.textfield
+                    property="{property}"
+                    required="{settings}"
+                    class="form-control"
+                    id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}"
+                    additionalAttributes="{additional}"
+                    data="{data}"
+                    type="{f:if(condition: '{type}', then: '{type}', else:'text')}"
+                />
             </f:else>
         </f:if>
 

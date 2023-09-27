@@ -10,10 +10,10 @@ class RegistrationForm extends AbstractDomainObject
 
     public string $nachname = '';
     public string $vorname = '';
+    public string $username = '';
     public string $password = '';
     public string $passwordRepeat = '';
     public string $email = '';
-
     public string $trName = '';
     public string $trStrasse = '';
     public string $trPlz = '';
@@ -21,6 +21,8 @@ class RegistrationForm extends AbstractDomainObject
     public string $trTel = '';
     public string $trEmail = '';
     public string $trWww = '';
+
+    public string $ausschluss = '';
 
     public bool $dsgvo = false;
 
