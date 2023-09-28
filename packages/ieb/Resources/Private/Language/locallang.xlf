@@ -2187,48 +2187,7 @@
 			<trans-unit id="tx_ieb_domain_model_trainer.status_after_review.description" resname="tx_ieb_domain_model_trainer.status_after_review.description">
 				<source>Status After Review</source>
 			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien" resname="tx_ieb_domain_model_kriterien">
-				<source>Kriterien</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.description" resname="tx_ieb_domain_model_kriterien.description">
-				<source>Kriterien</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.chiffre" resname="tx_ieb_domain_model_kriterien.chiffre">
-				<source>Chiffre</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.chiffre.description" resname="tx_ieb_domain_model_kriterien.chiffre.description">
-				<source>Chiffre</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.name" resname="tx_ieb_domain_model_kriterien.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.name.description" resname="tx_ieb_domain_model_kriterien.name.description">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.hinweis" resname="tx_ieb_domain_model_kriterien.hinweis">
-				<source>Hinweis</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.hinweis.description" resname="tx_ieb_domain_model_kriterien.hinweis.description">
-				<source>Hinweis</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.pruefkriterien" resname="tx_ieb_domain_model_kriterien.pruefkriterien">
-				<source>Pruefkriterien</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.pruefkriterien.description" resname="tx_ieb_domain_model_kriterien.pruefkriterien.description">
-				<source>Pruefkriterien</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.hilfetext" resname="tx_ieb_domain_model_kriterien.hilfetext">
-				<source>Hilfetext</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.hilfetext.description" resname="tx_ieb_domain_model_kriterien.hilfetext.description">
-				<source>Hilfetext</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.ppd" resname="tx_ieb_domain_model_kriterien.ppd">
-				<source>Ppd</source>
-			</trans-unit>
-			<trans-unit id="tx_ieb_domain_model_kriterien.ppd.description" resname="tx_ieb_domain_model_kriterien.ppd.description">
-				<source>Ppd</source>
-			</trans-unit>
+			
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_oecert_frist" resname="tx_ieb_domain_model_ansuchen.review_oecert_frist">
 				<source>Review Oecert Frist</source>
 			</trans-unit>

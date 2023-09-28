@@ -187,9 +187,9 @@
 
                         </td>
                         <td class="td-knopf">
-                            <f:if condition="{relationUsages}">
+                            <f:if condition="{relationUsagesInReview}">
                                 <f:then>
-                                    <div class="locked knopf-quadratisch" title="In Begutachtung – Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                    <div class="locked knopf-quadratisch" title="In Begutachtung – Ansuchen: <br><f:for each='{relationUsagesInReview}' as='relationUsage'>
                                                 {relationUsage.nummer} ({relationUsage.name})<br></f:for>">
                                     </div>
                                 </f:then>
