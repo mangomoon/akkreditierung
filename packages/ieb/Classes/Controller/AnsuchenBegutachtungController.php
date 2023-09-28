@@ -12,6 +12,7 @@ use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
+use GeorgRinger\Ieb\Event;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
@@ -123,6 +124,7 @@ class AnsuchenBegutachtungController extends BaseController
         $zuteilung->setReviewVerrechnungCheck2($ansuchen->getReviewVerrechnungCheck2());
         $zuteilung->setReviewVerrechnung1($ansuchen->getReviewVerrechnung1());
         $zuteilung->setReviewVerrechnung2($ansuchen->getReviewVerrechnung2());
+        $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen));
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'zuteilung' => $zuteilung,
@@ -214,6 +216,8 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
+
+        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen));
         $this->redirect('list');
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }

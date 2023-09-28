@@ -28,3 +28,15 @@ services:
       - name: event.listener
         identifier: 'ext-ieb/ansuchen-einreichen'
         event: GeorgRinger\Ieb\Event\AnsuchenEinreichenEvent
+
+  GeorgRinger\Ieb\EventListener\AnsuchenBegutachtungFinalizeListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-ieb/ansuchen-begutachtung-finalize'
+        event: GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeEvent
+
+  GeorgRinger\Ieb\EventListener\AnsuchenZuteilungListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-ieb/ansuchen-zuteilung'
+        event: GeorgRinger\Ieb\Event\AnsuchenZuteilungEvent

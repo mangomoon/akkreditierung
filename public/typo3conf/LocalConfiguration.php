@@ -113,6 +113,9 @@ return [
         'templateRootPaths' => [
             770 => 'EXT:ieb/Resources/Private/Templates/Mail/',
         ],
+        'partialRootPaths' => [
+            100 => 'EXT:ieb/Resources/Private/Partials/Mail/',
+        ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailhog sendmail test@example.org --smtp-addr 127.0.0.1:1025',
         'transport_smtp_encrypt' => '',

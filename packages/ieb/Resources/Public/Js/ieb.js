@@ -534,16 +534,15 @@ function qualifikationPsaSprache() {
         $('.sortierbutton').each(function() {
             $(this).removeClass('aktiv');
         });
-        
         $(this).addClass('aktiv');
+
         c = $(this).attr('id');
         console.log(c);
         $('.ansuchenlistenitem').sort(function(a, b) {
 
-            return $(a).data(c) > $(b).data(c);
+            return $(a).data(c) > $(b).data(c) ? 1 : -1;
 
           }).appendTo('#ansuchenlistencontainer');
-
     });
 
 

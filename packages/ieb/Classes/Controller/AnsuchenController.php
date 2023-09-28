@@ -117,6 +117,7 @@ class AnsuchenController extends BaseController
             $this->ansuchenRepository->update($newAnsuchen);
         } else {
             $ansuchen->setEinreichDatum(new \DateTime());
+            $ansuchen->setStatusAfterReview(0);
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 10:
