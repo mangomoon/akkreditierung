@@ -848,7 +848,24 @@ table.ansuchenliste td.ansuchenliste_tr {
     font-size: 1em;
     padding: 0 8px;
 }
-
+table.ansuchenliste td.ansuchenliste_tr.infofeld {
+    padding: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+table.ansuchenliste td.ansuchenliste_tr.ersteinreichung {
+    background-color: var(--angebotsverantwortliche);
+}
+table.ansuchenliste td.ansuchenliste_tr.vorzuteilung {
+    background-color: var(--beratung);
+}
+table.ansuchenliste td.ansuchenliste_tr.nachzuteilung {
+    background-color: #13466d;
+}
+table.ansuchenliste td.ansuchenliste_tr.agentscheid {
+    background-color: var(--training);
+}
 
 /* ANSUCHEN NEW/EDIT */
 
@@ -1461,11 +1478,7 @@ table.ansuchenbegutachtung td.check {
     color: #fff;
     margin-top: 10px;
 }
-.infoicon.ersteinreichung {
-    background-color: var(--angebotsverantwortliche);
-    padding: 2px;
-    text-align: center;
-}
+
 
 
 
