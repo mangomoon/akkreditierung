@@ -148,4 +148,9 @@ class RegistrationController extends ActionController
         $this->userRepository = $userRepository;
     }
 
+    protected function addErrorFlashMessage()
+    {
+    }
+
+
 }
