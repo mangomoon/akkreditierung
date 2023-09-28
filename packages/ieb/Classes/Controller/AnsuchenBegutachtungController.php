@@ -169,9 +169,7 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('show', null, null, ['ansuchen' => $recordId]);
         }
         if (isset($arguments['saveAndIndex'])) {
-            
-            // $ansuchen->setLockedBy(0);
-            // $this->ansuchenRepository->update($ansuchen);
+            $this->ansuchenRepository->removeLockByUser($recordId);
 
             $this->redirect('list');
         }
