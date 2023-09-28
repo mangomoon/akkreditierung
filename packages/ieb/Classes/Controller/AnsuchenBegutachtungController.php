@@ -35,7 +35,8 @@ class AnsuchenBegutachtungController extends BaseController
     public function listAction(): ResponseInterface
     {
         if (in_array($this->extensionConfiguration->getUsergroupAg(), self::getCurrentUserGroups(), true)) {
-            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForAkkreditierungsGruppe(self::getCurrentUserId()));
+            // $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForAkkreditierungsGruppe(self::getCurrentUserId()));
+            $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForAkkreditierungsGruppe());
         } else {
             $this->view->assign('ansuchen', $this->ansuchenRepository->getAllForGs());
         }
@@ -47,6 +48,7 @@ class AnsuchenBegutachtungController extends BaseController
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
+        $this->ansuchenRepository->setLockedAndPersist($ansuchen);
         $possibleStatus = [];
         foreach (AnsuchenStatus::statusSetzbarDurchGs() as $status) {
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
@@ -167,6 +169,10 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('show', null, null, ['ansuchen' => $recordId]);
         }
         if (isset($arguments['saveAndIndex'])) {
+            
+            // $ansuchen->setLockedBy(0);
+            // $this->ansuchenRepository->update($ansuchen);
+
             $this->redirect('list');
         }
         $this->redirect('list');

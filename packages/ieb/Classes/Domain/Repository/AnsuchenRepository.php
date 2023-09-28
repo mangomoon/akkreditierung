@@ -107,16 +107,17 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
-    public function getAllForAkkreditierungsGruppe(int $userId)
+    public function getAllForAkkreditierungsGruppe()
     {
         $query = $this->getEmptyQuery();
         $constraints = [
             $query->in('status', AnsuchenStatus::statusSichtbarDurchGs()),
             $query->equals('version_active', 1),
-            $query->logicalOr(
-                $query->equals('gutachter1', $userId),
-                $query->equals('gutachter2', $userId),
-            )
+            $query->greaterThan('gutachter1', 0),
+            // $query->logicalOr(
+            //     $query->equals('gutachter1', $userId),
+            //     $query->equals('gutachter2', $userId),
+            // )
         ];
         $query->matching($query->logicalAnd($constraints));
 

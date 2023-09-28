@@ -13,7 +13,8 @@
 
             <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-pid="{item.pid}" >
             <table class="ansuchenliste">
-        <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
+
+            <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
             <tr>
                 <td colspan="2" class="ansuchenliste_tr">
                     <span class="fett">{stammdaten.name}</span> — {stammdaten.markenname}
@@ -46,22 +47,29 @@
                             <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                         </td>
                         <td class="td-knopf">
-                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
-                            <f:if condition="{ansuchen.editableByTr}">
+                            
+                            
+                            <!-- <f:if condition="{ansuchen.editableByTr}"></f:if> WIESO??-->
+                            <f:comment>
+                                UserGroup AG = 99
+                                UserGroup GS = 2
+                            </f:comment>
                                 <f:if condition="{lockInformation.editableByCurrentUser}">
                                     <f:then>
-                                        &middot;
-                                        <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit"></f:link.action>
+                                        <f:if condition="({currentUser.usergroup}==99) && ({item.gutachter1}=={currentUser.uid} || {item.gutachter2}=={currentUser.uid})">
+                                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen begutachten"></f:link.action>
+                                        </f:if>
+                                        <f:if condition="({currentUser.usergroup}==2)">
+                                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen begutachten"></f:link.action>
+                                        </f:if>
                                     </f:then>
                                     <f:else>
-                                        [bearbeiten gesperrt <code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                                        <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
                                     </f:else>
                                 </f:if>
                                 <f:if condition="{lockInformation.isLockedByCurrentUser}">
-                                    &middot;
-                                    <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                                    
                                 </f:if>
-                            </f:if>
                         </td>
                         <td class="td-knopf">
 

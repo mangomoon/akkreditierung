@@ -118,6 +118,7 @@ class AnsuchenController extends BaseController
         } else {
             $ansuchen->setEinreichDatum(new \DateTime());
             $ansuchen->setStatusAfterReview(0);
+            $ansuchen->setLockedBy(0);
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 10:
