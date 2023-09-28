@@ -192,3 +192,10 @@ span.knopf a {
 
   border-radius: 3px;
 }
+
+.login-warnung {
+  margin-left: 20px;
+  border: solid 1px #48686f;
+  background: #ede9de;
+  padding: 20px;
+}

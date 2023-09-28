@@ -63,7 +63,7 @@
             <f:for each="{beraters}" as="berater">
                 <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: berater)}</f:variable>
                 <f:variable name="relationUsages">{ieb:relationUsed(object: berater)}</f:variable>
-                <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
+                <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: berater.lockedBy)}</f:variable>
                 
                 <f:if condition="!{berater.archiviert}">
                     <f:then>
@@ -129,7 +129,7 @@
                                         </f:for>"></div>
                                 </f:if>
                                 <f:if condition="{berater.lockedBy}">
-                                    <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird gerade von {lockInformation.lockedBy.fullname} bearbeitet."></div>
+                                    <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird gerade von {lockInformation.lockedBy.name} bearbeitet."></div>
                                 </f:if>
                                 <f:if condition="{berater.lockedBy}==0 && !{relationUsages}">
                                     <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
@@ -139,17 +139,22 @@
                             </td>
                             <td class="td-knopf">
                                 <f:if condition="{relationUsages}">
+                                <f:then>
                                     <div class="locked knopf-quadratisch" title="In Begutachtung – Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
-                                            {relationUsage.nummer} ({relationUsage.name})<br>
-                                        </f:for>"></div>
-                                </f:if>
-                                <f:if condition="{berater.lockedBy}">
-                                    <f:link.action action="unlock"  arguments="{berater : berater}" class="locked-to-unlock knopf-quadratisch" title="Kann nicht bearbeite werden, wird gerade von XYZ {berater.lockedBy} bearbeitet. <br>Klicken zum <b>Entsperren</b>"></f:link.action>
-                                </f:if>
-                                <f:if condition="{berater.lockedBy}==0 && !{relationUsages}">
-                                    <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}"></f:link.action>
-                                </f:if>
-
+                                                {relationUsage.nummer} ({relationUsage.name})<br></f:for>">
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{berater.lockedBy}==0 ||  {berater.lockedBy}=={currentUser.uid}">
+                                        <f:then>
+                                            <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}"></f:link.action>
+                                        </f:then>
+                                        <f:else>
+                                            <f:link.action action="unlock" class="locked-to-unlock knopf-quadratisch" title="Kann nicht bearbeitet werden, wird gerade von {lockInformation.lockedBy.name} bearbeitet. <br>Klicken zum <b>Entsperren</b>"></f:link.action>
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                               </f:if>
 
                                 
                             </td>

@@ -42,7 +42,7 @@
 
      $('#ok').attr('value', allesda);
 
-    //  console.log("allesda = " + allesda);
+     console.log("allesda = " + allesda);
  };
 
  // Vailidierung TRAINER
@@ -86,6 +86,8 @@
          okpsa = 1;
          $('#okpsa').attr('value', 1);
      }
+
+     console.log('okBabi '+ okbabi + 'okPsa' + okpsa);
 
  }
 
@@ -419,7 +421,7 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
-        validierenansuchen();
+        validierentr();
         // setStatusAfterReview();
         // console.log();
     });

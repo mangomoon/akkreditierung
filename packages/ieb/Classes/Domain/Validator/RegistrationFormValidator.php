@@ -24,6 +24,9 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
      */
     public function isValid($registrationForm)
     {
+        if (strlen($registrationForm->password) < 6) {
+            $this->addErrorForProperty('password', 'Das Passwort muss mindestens 6 Zeichen lang sein', 1620000003);
+        }
         if ($registrationForm->password !== $registrationForm->passwordRepeat) {
             $this->addErrorForProperty('passwordRepeat', 'Die Passwörter stimmen nicht überein', 1620000001);
         }
