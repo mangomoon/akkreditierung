@@ -15,19 +15,19 @@
         </f:if>
 
         <f:if condition="{ansuchen.status}==82">
-            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach einem Nachbesserungsauftrag eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p><f:translate key="ansuchen.status.{previousStatus}" default="Status {item.status} unbekannt" />{previousStatus.value}
+            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach einem Nachbesserungsauftrag eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
         <f:if condition="{ansuchen.status}==100">
-            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p><f:translate key="ansuchen.status.{previousStatus}" default="Status {item.status} unbekannt" />{previousStatus.value}
+            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
         <f:if condition="{ansuchen.status}==140">
-            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert mit Auflage" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p><f:translate key="ansuchen.status.{previousStatus}" default="Status {item.status} unbekannt" />{previousStatus.value}
+            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert mit Auflage" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
         <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
-            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach einem Nachbesserungsauftrag eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p><f:translate key="ansuchen.status.{previousStatus}" default="Status {item.status} unbekannt" />{previousStatus.value}
+            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach einem Nachbesserungsauftrag eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
 

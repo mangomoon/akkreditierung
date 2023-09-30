@@ -120,6 +120,15 @@ label.inline {
     text-align: right;
 }
 
+.error {
+    padding: 12px;
+    background: #fceaa1;
+    margin: 20px 0;
+    border: 1px solid var(--f3);
+}
+input.f3-form-error {
+    background: #fceaa1;
+}
 .kriterium {
     position: relative;
     border: solid 1px var(--f3);
