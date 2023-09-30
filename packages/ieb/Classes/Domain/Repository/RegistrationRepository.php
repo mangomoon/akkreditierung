@@ -23,10 +23,12 @@ class RegistrationRepository
         $this->extensionConfiguration = new ExtensionConfiguration();
     }
 
-    public function createFromRegistrationForm(RegistrationForm $form)
+    public function createFromRegistrationForm(RegistrationForm $form): int
     {
         // create
         $pageData = [
+            'crdate' => time(),
+            'tstamp' => time(),
             'pid' => $this->extensionConfiguration::getParentUserPid(),
             'hidden' => 1,
             'doktype' => PageRepository::DOKTYPE_SYSFOLDER,
@@ -38,6 +40,8 @@ class RegistrationRepository
         // create fe_user
         $userData = [
             'pid' => $pageId,
+            'crdate' => time(),
+            'tstamp' => time(),
             'disable' => 1,
             'usergroup' => 1,
             'username' => $form->email,
@@ -49,10 +53,31 @@ class RegistrationRepository
             'tr_admin' => 1,
             'ausschluss' => '',
         ];
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
-        $queryBuilder->insert('fe_users')->values($userData)->execute();
+        $newUserId = $this->insertToTable('fe_users', $userData);
 
-        return $pageId;
+        // create stammdaten
+        $stammdatenData = [
+            'pid' => $pageId,
+            'tstamp' => time(),
+            'crdate' => time(),
+            'name' => $form->trName,
+            'strasse' => $form->trStrasse,
+            'plz' => $form->trPlz,
+            'ort' => $form->trOrt,
+            'email' => $form->trEmail,
+            'telefon' => $form->trTel,
+            'website' => $form->trWww,
+            'qms_zertifikat' => '',
+            'review_a1_comment_internal' => '',
+            'review_a2_comment_internal' => '',
+            'review_a1_comment_tr' => '',
+            'review_a2_comment_tr' => '',
+            'review_a1_comment_internal_step' => '',
+            'review_a2_comment_internal_step' => '',
+        ];
+        $this->insertToTable('tx_ieb_domain_model_stammdaten', $stammdatenData);
+
+        return $newUserId;
     }
 
     public function updateUserFromInvitation(RegistrationInvitation $form): void
@@ -63,6 +88,15 @@ class RegistrationRepository
         ];
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
         $connection->update('fe_users', $userData, ['uid' => $form->userId]);
+    }
+
+    public function enableUser(int $userId): void
+    {
+        $userData = [
+            'disable' => 0,
+        ];
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
+        $connection->update('fe_users', $userData, ['uid' => $userId]);
     }
 
     public function getPageRowById(int $pageId)

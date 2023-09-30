@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 
+use GeorgRinger\Ieb\Domain\Model\User;
 use GeorgRinger\Ieb\ExtensionConfiguration;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -45,6 +48,18 @@ class UserRepository extends BaseRepository
             )
         );
         return $query->execute();
+    }
+
+    public function getRawHiddenUserById(int $id): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+        return (array)$queryBuilder->select('*')
+            ->from('fe_users')
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($id, \PDO::PARAM_INT))
+            )->execute()->fetchAssociative();
+
     }
 }
 

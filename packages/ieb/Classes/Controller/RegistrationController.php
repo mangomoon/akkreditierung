@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\Dto;
+use GeorgRinger\Ieb\Domain\Model\User;
 use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
 use GeorgRinger\Ieb\Domain\Repository\UserRepository;
 use GeorgRinger\Ieb\Service\HashService;
@@ -15,6 +16,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -41,9 +43,6 @@ class RegistrationController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @Extbase\IgnoreValidation("newBlog")
-     */
     public function registrationFormAction(Dto\RegistrationForm $registrationForm = null)
     {
         $this->view->assignMultiple([
@@ -57,19 +56,25 @@ class RegistrationController extends ActionController
      */
     public function registrationSuccessAction(Dto\RegistrationForm $registrationForm)
     {
-        $newPageId = $this->registrationRepository->createFromRegistrationForm($registrationForm);
-        $this->sendMailToUser($registrationForm, $newPageId);
+        $newUserId = $this->registrationRepository->createFromRegistrationForm($registrationForm);
+        $this->sendMailToUser($registrationForm, $newUserId);
 
         $this->view->assign('registrationForm', $registrationForm);
         return $this->htmlResponse();
     }
 
-    public function doubleOptInAction(int $pageId, string $pageHash): ResponseInterface
+    public function doubleOptInAction(int $userId, string $pageHash): ResponseInterface
     {
-        if (!HashService::validate((string)$pageId, $pageHash)) {
+        if (!HashService::validate((string)$userId, $pageHash)) {
             $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
             return $this->htmlResponse();
         }
+        $user = $this->userRepository->getRawHiddenUserById($userId);
+        if (!$user) {
+            $this->addFlashMessage('User nicht gefunden', '', AbstractMessage::ERROR);
+            return $this->htmlResponse();
+        }
+        $pageId = $user['pid'];
         $row = $this->registrationRepository->getPageRowById($pageId);
         if (!$row) {
             $this->addFlashMessage('Bildungsträger nicht gefunden', '', AbstractMessage::ERROR);
@@ -80,8 +85,10 @@ class RegistrationController extends ActionController
             return $this->htmlResponse();
         }
         $this->registrationRepository->activatePage($pageId);
+        $this->registrationRepository->enableUser($userId);
 
         $this->addFlashMessage('Die Registrierung war erfolgreich', '', AbstractMessage::OK);
+        $this->view->assign('success', true);
         return $this->htmlResponse();
     }
 
@@ -117,7 +124,7 @@ class RegistrationController extends ActionController
         return $this->htmlResponse();
     }
 
-    protected function sendMailToUser(Dto\RegistrationForm $registrationForm, int $newPageId): void
+    protected function sendMailToUser(Dto\RegistrationForm $registrationForm, int $newUserId): void
     {
         $assignedMailValues = [
             'registration' => $registrationForm,
@@ -127,8 +134,8 @@ class RegistrationController extends ActionController
                 ->uriFor(
                     'doubleOptIn',
                     [
-                        'pageId' => $newPageId,
-                        'pageHash' => HashService::generate((string)$newPageId),
+                        'userId' => $newUserId,
+                        'pageHash' => HashService::generate((string)$newUserId),
                     ]
                 ),
 

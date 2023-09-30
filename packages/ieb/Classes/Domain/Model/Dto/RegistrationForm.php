@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Model\Dto;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 class RegistrationForm extends AbstractDomainObject
 {
@@ -16,7 +17,7 @@ class RegistrationForm extends AbstractDomainObject
     public string $email = '';
     public string $trName = '';
     public string $trStrasse = '';
-    public string $trPlz = '';
+    public int $trPlz = 0;
     public string $trOrt = '';
     public string $trTel = '';
     public string $trEmail = '';
@@ -24,10 +25,26 @@ class RegistrationForm extends AbstractDomainObject
 
     public string $ausschluss = '';
 
-    public bool $dsgvo = false;
+    /**
+     * @var bool
+     * @Extbase\Validate("TYPO3\CMS\Extbase\Validation\Validator\NotEmptyValidator")
+     */
+    protected bool $dsgvo = false;
 
     public function getFullName(): string
     {
         return $this->vorname . ' ' . $this->nachname;
     }
+
+    public function isDsgvo(): bool
+    {
+        return $this->dsgvo;
+    }
+
+    public function setDsgvo(bool $dsgvo): void
+    {
+        $this->dsgvo = $dsgvo;
+    }
+
+
 }

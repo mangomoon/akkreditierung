@@ -1,9 +1,20 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 
 <f:section name="content">
     <h2>Willkommen bei der Initiative Erwachsenenbildung!</h2>
-    <p>Sie können sich nun <a href="/start">HIER EINLOGGEN.</a></p>
+
+    <f:if condition="{success}">
+        <f:then>
+            <p>Sie können sich nun <a href="/start">HIER EINLOGGEN.</a></p>
+
+        </f:then>
+        <f:else>
+            Es hat leider nicht geklappt
+            todo
+        </f:else>
+    </f:if>
+    <f:flashMessages/>
 </f:section>
 </html>

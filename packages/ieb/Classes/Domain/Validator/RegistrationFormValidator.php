@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Domain\Validator;
 use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationForm;
 use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -29,6 +30,9 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
         }
         if ($registrationForm->password !== $registrationForm->passwordRepeat) {
             $this->addErrorForProperty('passwordRepeat', 'Die Passwörter stimmen nicht überein', 1620000001);
+        }
+        if (!$registrationForm->isDsgvo()) {
+            $this->addErrorForProperty('dsgvo', 'Bitte akzeptieren Sie die Datenschutzerklärung', 1620000004);
         }
 
         $this->validateIfTrExists($registrationForm->trName);
