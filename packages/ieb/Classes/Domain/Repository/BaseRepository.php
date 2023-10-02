@@ -94,9 +94,23 @@ class BaseRepository extends Repository
         $this->persistenceManager->persistAll();
     }
 
+    public function setGutachterLockedAndPersist(AbstractEntity $item)
+    {
+        $item->setGutachterLockedBy(self::getCurrentUserId());
+        $this->update($item);
+        $this->persistenceManager->persistAll();
+    }
+
     public function setUnlockedAndPersist(AbstractEntity $item)
     {
         $item->setLockedBy(0);
+        $this->update($item);
+        $this->persistenceManager->persistAll();
+    }
+
+    public function setUnGutachterLockedAndPersist(AbstractEntity $item)
+    {
+        $item->setGutachterLockedBy(0);
         $this->update($item);
         $this->persistenceManager->persistAll();
     }

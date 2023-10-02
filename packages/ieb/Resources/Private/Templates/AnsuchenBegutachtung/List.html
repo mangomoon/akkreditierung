@@ -14,14 +14,14 @@
             <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-pid="{item.pid}" >
             <table class="ansuchenliste">
 
-            <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
+            <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>
             <f:variable name="gutachter1">{item.gutachter1}</f:variable>
             <f:variable name="gutachter2">{item.gutachter2}</f:variable>
             <tr>
                 <td colspan="2" class="ansuchenliste_tr">
                     <span class="fett">{stammdaten.name}</span> — {stammdaten.markenname}
                 </td>
-                    <f:if condition="{currentUser.usergroup}==2">
+                    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                         <f:if condition="({item.status} == 20) && !{item.gutachter1}">
                             <td colspan="5" class="ansuchenliste_tr infofeld ersteinreichung">ersteinreichung</td>
                         </f:if>
@@ -35,7 +35,7 @@
                             <td colspan="5" class="ansuchenliste_tr infofeld agentscheid">Plenum</td>
                         </f:if>
                     </f:if>
-                    <f:if condition="{currentUser.usergroup}==99">
+                    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
                         <f:if condition="({currentUser.uid}=={gutachter1.uid}) || ({currentUser.uid}=={gutachter2.uid}) ">
                             <f:then>
                                 <td colspan="5" class="ansuchenliste_tr infofeld ersteinreichung">meine begutachtung
@@ -64,6 +64,7 @@
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                             <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn}]</code>
                             <code>[currentUser:{currentUser.uid} | group: {currentUser.usergroup} | Gutachter 1/2: {gutachter1.uid}/{gutachter2.uid}]</code>
+                            <code>gutachterLockedBy: {item.gutachterLockedBy}</code>
                         </td>
                         <td class="td-knopf">
                             <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
@@ -77,25 +78,45 @@
                                 UserGroup GS = 2
                             </f:comment>
 
-                                <f:if condition="{lockInformation.editableByCurrentUser}">
+
+                                <f:if condition="{lockInformation.lockedBy}">
                                     <f:then>
-                                        <f:if condition="({currentUser.usergroup}==99) && ({gutachter1.uid}=={currentUser.uid} || {gutachter2.uid}=={currentUser.uid})">
-                                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen begutachten"></f:link.action>
-                                        </f:if>
-                                        <f:if condition="({currentUser.usergroup}==2)">
-                                            <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen begutachten"></f:link.action>
+                                        <f:if condition="(({gutachter1.uid}=={currentUser.uid}) || ({gutachter2.uid}=={currentUser.uid}) || ({currentUser.usergroup}=={extensionConfiguration.usergroupGs}))">
+                                            <f:then>
+                                                <f:link.action action="unlock" arguments="{ansuchen : item}" class="knopf-quadratisch locked-to-unlock" title="gesperrt von {lockInformation.lockedBy.name}<br>Klicken zum <b>Entsperren</b>"></f:link.action>
+                                            </f:then>
+                                            <f:else>
+                                                
+                                            </f:else>
                                         </f:if>
                                     </f:then>
                                     <f:else>
-                                        <f:link.action action="unlock" arguments="{ansuchen : item}" class="knopf-quadratisch locked-to-unlock" title="gesperrt von {lockInformation.lockedBy.name}<br>Klicken zum <b>Entsperren</b>"></f:link.action>
+                                        <f:if condition="(({gutachter1.uid}=={currentUser.uid}) || ({gutachter2.uid}=={currentUser.uid}) || ({currentUser.usergroup}=={extensionConfiguration.usergroupGs}))">
+                                            <f:then>
+                                                <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
+                                            </f:then>
+                                            <f:else>
+                                                
+                                            </f:else>
+                                        </f:if>
                                     </f:else>
                                 </f:if>
-                                <f:if condition="{lockInformation.isLockedByCurrentUser}">
-                                    
-                                </f:if>
+                            
+
                         </td>
                         <td class="td-knopf">
-
+                                <f:if condition="({gutachter1.uid}=={currentUser.uid}) && ({item.statusAgEins} > 0)">
+                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgEins}" title="Begutachtung durch mich erfolgt (<f:translate key="ansuchen.status.{item.statusAgEins}" default="Status {item.status} unbekannt" />)"></span>
+                                </f:if>
+                                <f:if condition="({gutachter2.uid}=={currentUser.uid}) && ({item.statusAgZwei} > 0)">
+                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgZwei}" title="Begutachtung durch mich erfolgt (<f:translate key="ansuchen.status.{item.statusAgZwei}" default="Status {item.status} unbekannt" />)"></span>
+                                </f:if>
+                                <f:if condition="({gutachter1.uid}=={currentUser.uid}) && ({item.statusAgZwei} > 0)">
+                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgZwei}" title="Begutachtung durch {gutachter2.firstName} {gutachter2.LastName} erfolgt (<f:translate key="ansuchen.status.{item.statusAgZwei}" default="Status {item.status} unbekannt" />)"></span>
+                                </f:if>
+                                <f:if condition="({gutachter2.uid}=={currentUser.uid}) && ({item.statusAgEins} > 0)">
+                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgEins}" title="Begutachtung durch {gutachter1.firstName} {gutachter1.lastName} erfolgt (<f:translate key="ansuchen.status.{item.statusAgEins}" default="Status {item.status} unbekannt" />)"></span>
+                                </f:if>
                         </td>
                         <td class="td-knopf">
                             <f:if condition="{currentUser.usergroup}!=99">
@@ -113,9 +134,6 @@
                             <f:if condition="{item.upcomingStatus}>0">
                                <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
                             </f:if>
-
-                            
-
                         </td>
                     </tr>
             </table>

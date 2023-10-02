@@ -278,6 +278,13 @@ class AnsuchenRepository extends BaseRepository
         );
     }
 
+    public function removeGutachterLockByUser(int $ansuchenId): void
+    {
+        $this->getConnection()->update('tx_ieb_domain_model_ansuchen',
+            ['gutachter_locked_by' => 0], ['uid' => $ansuchenId]
+        );
+    }
+
     protected function convertObjectToArray(array $item)
     {
         foreach ($item as $key => $value) {

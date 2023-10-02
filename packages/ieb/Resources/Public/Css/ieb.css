@@ -1684,6 +1684,10 @@ label.komm-intern, label.komm-extern {
     margin-left: 24px;
     vertical-align: top;
 }
+.ansuchenliste .person-statuskugel {
+    margin-left:0;
+}
+
 .status-babi, .status-psa {
     float: right;
     padding-right: 30px;
@@ -1705,6 +1709,19 @@ span.person-statuskugel.status-3 {
     background-color: #7c549a;
 }
 .person-statuskugel.status-4 {
+    background-color: var(--ansuchen);
+}
+
+.person-statuskugel.status-80, .person-statuskugel.status-200, .person-statuskugel.status-220 {
+    background-color: var(--standorte);
+}
+.person-statuskugel.status-100 {
+    background-color: var(--training);
+}
+.person-statuskugel.status-140 {
+    background-color: var(--angebotsverantwortliche);
+}
+.person-statuskugel.status-800 {
     background-color: var(--ansuchen);
 }
 

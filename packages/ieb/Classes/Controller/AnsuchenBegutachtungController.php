@@ -43,12 +43,12 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
+    public function editAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
-        $this->ansuchenRepository->setLockedAndPersist($ansuchen);
+        $this->ansuchenRepository->setGutachterLockedAndPersist($ansuchen);
         $possibleStatus = [];
         foreach (AnsuchenStatus::statusSetzbarDurchGs() as $status) {
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
@@ -75,7 +75,7 @@ class AnsuchenBegutachtungController extends BaseController
     /**
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
      */
-    public function editAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
+    public function showAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
         $this->view->assign('ansuchen', $ansuchen);
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
@@ -157,7 +157,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
         $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
-        $ansuchen->setLockedBy(0);
+        $this->ansuchenRepository->setUnGutachterLockedAndPersist($ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');
@@ -167,13 +167,19 @@ class AnsuchenBegutachtungController extends BaseController
     {
         $arguments = $this->request->getArguments();
         if (isset($arguments['save']) && $recordId > 0) {
-            $this->redirect('show', null, null, ['ansuchen' => $recordId]);
+            $this->redirect('edit', null, null, ['ansuchen' => $recordId]);
         }
         if (isset($arguments['saveAndIndex'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
 
             $this->redirect('list');
         }
+        $this->redirect('list');
+    }
+
+    public function unlockAction(Ansuchen $ansuchen): void
+    {
+        $this->ansuchenRepository->removeGutachterLockByUser($ansuchen->getUid());
         $this->redirect('list');
     }
 
