@@ -148,4 +148,20 @@ enum AnsuchenStatus: int
             self::NICHT_AKKREDITERT->value,
         ];
     }
+
+    /**
+     * @return int[]
+     */
+    public static function statusForFristMails(): array
+    {
+        return [
+            self::NACHBESSERUNGSAUFTRAG->value, // todo to be removed!
+            self::IN_ARBEIT->value, // todo to be removed!
+            self::NEU_IN_ARBEIT->value,// todo to be removed!
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::AKKREDITIERUNG_ENTZOGEN->value,
+            self::NICHT_AKKREDITERT->value,
+        ];
+    }
 }
