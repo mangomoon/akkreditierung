@@ -175,9 +175,9 @@ class FristUeberwachungService
             $isRelation = $row['relationUid'] ?? false;
 
             if (!$row[$t14Field] && $row[$fristField] - (86400 * 14) > $GLOBALS['EXEC_TIME']) {
-                $this->records[$row['pid']][$row['uid']][$type]['t14'][] = $row;
+                $this->records[$row['uid']][$type]['t14'][] = $row;
             } else {
-                $this->records[$row['pid']][$row['uid']][$type]['t1'][] = $row;
+                $this->records[$row['uid']][$type]['t1'][] = $row;
             }
             $this->idLists[$configuration['table']][] = $row['uid'];
         }
