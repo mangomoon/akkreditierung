@@ -51,6 +51,7 @@ class BaseController extends ActionController
     {
         $view->assignMultiple([
             'currentUser' => self::getCurrentUser(),
+            'extensionConfiguration' => $this->extensionConfiguration,
         ]);
     }
 
