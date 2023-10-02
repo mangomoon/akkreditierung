@@ -157,6 +157,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
         $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
+        $ansuchen->setLockedBy(0);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');

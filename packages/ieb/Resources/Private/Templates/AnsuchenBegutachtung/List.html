@@ -15,21 +15,42 @@
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
+            <f:variable name="gutachter1">{item.gutachter1}</f:variable>
+            <f:variable name="gutachter2">{item.gutachter2}</f:variable>
             <tr>
                 <td colspan="2" class="ansuchenliste_tr">
                     <span class="fett">{stammdaten.name}</span> — {stammdaten.markenname}
                 </td>
-                <f:if condition="({item.status} == 20) && !{item.gutachter1}">
-                        <td colspan="5" class="ansuchenliste_tr infofeld ersteinreichung">ersteinreichung</td>
+                    <f:if condition="{currentUser.usergroup}==2">
+                        <f:if condition="({item.status} == 20) && !{item.gutachter1}">
+                            <td colspan="5" class="ansuchenliste_tr infofeld ersteinreichung">ersteinreichung</td>
+                        </f:if>
+                        <f:if condition="({item.status} > 20) && !{item.gutachter1}">
+                            <td colspan="5" class="ansuchenliste_tr infofeld vorzuteilung">Zuteilung nicht erfolgt</td>
+                        </f:if>
+                        <f:if condition="{item.gutachter1} && !{item.statusAgEins}">
+                            <td colspan="5" class="ansuchenliste_tr infofeld nachzuteilung">In Begutachtung durch AG</td>
+                        </f:if>
+                        <f:if condition="({item.gutachter1} && {item.statusAgEins} && !{item.gutachter2}) || ({item.gutachter2} && {item.statusAgEins} && {item.statusAgZwei})">
+                            <td colspan="5" class="ansuchenliste_tr infofeld agentscheid">Plenum</td>
+                        </f:if>
                     </f:if>
-                    <f:if condition="({item.status} > 20) && !{item.gutachter1}">
-                        <td colspan="5" class="ansuchenliste_tr infofeld vorzuteilung">Zuteilung nicht erfolgt</td>
-                    </f:if>
-                    <f:if condition="{item.gutachter1} && !{item.statusAgEins}">
-                        <td colspan="5" class="ansuchenliste_tr infofeld nachzuteilung">In Begutachtung durch AG</td>
-                    </f:if>
-                    <f:if condition="({item.gutachter1} && {item.statusAgEins} && !{item.gutachter2}) || ({item.gutachter2} && {item.statusAgEins} && {item.statusAgZwei})">
-                        <td colspan="5" class="ansuchenliste_tr infofeld agentscheid">Plenum</td>
+                    <f:if condition="{currentUser.usergroup}==99">
+                        <f:if condition="({currentUser.uid}=={gutachter1.uid}) || ({currentUser.uid}=={gutachter2.uid}) ">
+                            <f:then>
+                                <td colspan="5" class="ansuchenliste_tr infofeld ersteinreichung">meine begutachtung
+                                    <f:if condition="(({currentUser.uid}=={gutachter1.uid}) && {item.gutachter2})">
+                                        <br>mit {gutachter2.firstName} {gutachter2.LastName}
+                                    </f:if>
+                                    <f:if condition="{currentUser.uid}=={gutachter2.uid}">
+                                        <br>mit {gutachter1.firstName} {gutachter1.LastName}
+                                    </f:if>
+                                </td>
+                            </f:then>
+                            <f:else>
+                                <td colspan="5" class="ansuchenliste_tr infofeld nachzuteilung">in Begutachtung</td>
+                            </f:else>
+                        </f:if>    
                     </f:if>
             </tr>
             <tr>
@@ -42,6 +63,7 @@
                             <br>
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                             <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn}]</code>
+                            <code>[currentUser:{currentUser.uid} | group: {currentUser.usergroup} | Gutachter 1/2: {gutachter1.uid}/{gutachter2.uid}]</code>
                         </td>
                         <td class="td-knopf">
                             <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
@@ -54,9 +76,10 @@
                                 UserGroup AG = 99
                                 UserGroup GS = 2
                             </f:comment>
+
                                 <f:if condition="{lockInformation.editableByCurrentUser}">
                                     <f:then>
-                                        <f:if condition="({currentUser.usergroup}==99) && ({item.gutachter1}=={currentUser.uid} || {item.gutachter2}=={currentUser.uid})">
+                                        <f:if condition="({currentUser.usergroup}==99) && ({gutachter1.uid}=={currentUser.uid} || {gutachter2.uid}=={currentUser.uid})">
                                             <f:link.action action="show" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen begutachten"></f:link.action>
                                         </f:if>
                                         <f:if condition="({currentUser.usergroup}==2)">
@@ -64,7 +87,7 @@
                                         </f:if>
                                     </f:then>
                                     <f:else>
-                                        <f:link.action action="unlock" arguments="{ansuchen : item}">Freigeben</f:link.action>
+                                        <f:link.action action="unlock" arguments="{ansuchen : item}" class="knopf-quadratisch locked-to-unlock" title="gesperrt von {lockInformation.lockedBy.name}<br>Klicken zum <b>Entsperren</b>"></f:link.action>
                                     </f:else>
                                 </f:if>
                                 <f:if condition="{lockInformation.isLockedByCurrentUser}">

@@ -32,7 +32,7 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
             $this->addErrorForProperty('passwordRepeat', 'Die Passwörter stimmen nicht überein', 1620000001);
         }
         if (!$registrationForm->isDsgvo()) {
-            $this->addErrorForProperty('dsgvo', 'Bitte akzeptieren Sie die Datenschutzerklärung', 1620000004);
+            $this->addErrorForProperty('dsgvo', 'Bitte stimmen Sie der Datenschutzerklärung zu', 1620000004);
         }
 
         $this->validateIfTrExists($registrationForm->trName);
