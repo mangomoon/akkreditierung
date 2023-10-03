@@ -509,11 +509,8 @@ function qualifikationPsaSprache() {
      });
 
      // CHECKER
-     $('.sitename').click(function() {
+     $("form.tra").submit(function() {
          validierenansuchen();
-         //console.log($('#name').val());
-         // console.log("VAR: qb: [" + qb + "] lb: [" + lb + "] qp: [" + qp + "] ll: [" + ll + "]" + okbabi + "---" + okpsa);
-         // console.log("BaBi: [" + okbabi + "] OOO PSA: [" + okpsa + "]");
      });
 
      $("form.tr").submit(function() {

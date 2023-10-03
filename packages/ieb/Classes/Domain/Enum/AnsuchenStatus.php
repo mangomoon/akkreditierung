@@ -164,4 +164,23 @@ enum AnsuchenStatus: int
             self::NICHT_AKKREDITERT->value,
         ];
     }
+
+     /**
+     * @return int[]
+     */
+    public static function statusForCertificate(): array
+    {
+        return [
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::AKKREDITIERUNG_ENTZOGEN->value,
+            self::AKKREDITIERT_MUSS_NACHAKKREDITIERT_WERDEN->value,
+            self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
+            self::ZURUECK_AN_TR_AKKREDITIERT->value,
+            self::ZURUECK_AN_TR_AUFLAGE->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN_MUSS_NOCH_AKKREDITIERT_WERDEN->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
+            self::BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG->value
+        ];
+    }
 }

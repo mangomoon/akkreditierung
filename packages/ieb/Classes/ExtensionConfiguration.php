@@ -7,11 +7,10 @@ use Cassandra\Date;
 
 class ExtensionConfiguration
 {
-
     protected int $userIdForDatahandler = 1;
     protected int $usergroupEingeladenInaktiv = 3;
     protected int $usergroupAktiv = 1;
-    protected int $usergroupAg = 99;
+    protected int $usergroupAg = 3;
     protected int $usergroupGs = 2;
     protected int $pageRegistration = 22;
     protected \DateTime $ansuchenEnde;
