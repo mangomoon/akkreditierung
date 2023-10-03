@@ -45,7 +45,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     /**
      * @var string
      */
-    protected $defaultUploadFolder = '1:/user_upload/';
+    protected $defaultUploadFolder = '1:/content/';
 
     /**
      * @var array<string>

@@ -19,6 +19,7 @@ use TYPO3\CMS\Extbase\Property\Exception\TypeConverterException;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface;
 use TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class UploadedFileReferenceConverter
@@ -46,7 +47,7 @@ class UploadedFileReferencesConverter extends AbstractTypeConverter
     /**
      * @var string
      */
-    protected $defaultUploadFolder = '1:/user_upload/';
+    protected $defaultUploadFolder = '1:/content/';
 
     /**
      * @var array<string>
@@ -196,7 +197,7 @@ class UploadedFileReferencesConverter extends AbstractTypeConverter
             }
         }
 
-        $uploadFolderId = $configuration->getConfigurationValue(UploadedFileReferencesConverter::class, self::CONFIGURATION_UPLOAD_FOLDER) ?: $this->defaultUploadFolder;
+        $uploadFolderId = $configuration->getConfigurationValue(UploadedFileReferenceConverter::class, self::CONFIGURATION_UPLOAD_FOLDER) ?: $this->defaultUploadFolder;
         if (class_exists(DuplicationBehavior::class)) {
             $defaultConflictMode = \TYPO3\CMS\Core\Resource\DuplicationBehavior::RENAME;
         } else {
