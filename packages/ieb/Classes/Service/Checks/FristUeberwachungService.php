@@ -12,11 +12,11 @@ class FristUeberwachungService
 {
 
     private array $configuration = [
-        'ansuchen_pruefbescheid' => [
+        'ansuchen_total' => [
             'table' => 'tx_ieb_domain_model_ansuchen',
-            'frist' => 'review_frist_pruefbescheid',
-            't1' => 'review_frist_pruefbescheid_mail_sent1t',
-            't14' => 'review_frist_pruefbescheid_mail_sent14t',
+            'frist' => 'review_total_frist',
+            't1' => 'review_total_frist_mail_sent1t',
+            't14' => 'review_total_frist_mail_sent14t',
         ],
         'ansuchen_pruefbescheid' => [
             'table' => 'tx_ieb_domain_model_ansuchen',
@@ -37,6 +37,12 @@ class FristUeberwachungService
             't1' => 'review_frist_mail_sent1t',
             't14' => 'review_frist_mail_sent14t',
             'join' => 'tx_ieb_ansuchen_trainer_mm',
+        ],
+        'stammdaten' => [
+            'table' => 'tx_ieb_domain_model_stammdaten',
+            'frist' => 'review_oecert_frist',
+            't1' => 'review_oecert_frist_mail_sent1t',
+            't14' => 'review_oecert_frist_mail_sent14t',
         ],
     ];
     protected array $idLists = [];
@@ -70,6 +76,8 @@ class FristUeberwachungService
                 $this->getAnsuchenDirect($k);
             } elseif ($k === 'berater' || $k === 'trainer') {
                 $this->getFromJoin($k);
+            } elseif ($k === 'stammdaten') {
+                $this->getFromStammdaten($k);
             }
         }
     }
@@ -110,6 +118,58 @@ class FristUeberwachungService
         $this->addToRecords($rows, $configuration, $type);
     }
 
+    private function getFromStammdaten(string $type): void
+    {
+        $configuration = $this->configuration[$type];
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($configuration['table']);
+        $maxIdRows = $queryBuilder
+            ->select('pid')
+            ->addSelectLiteral('max(uid) as uid')
+            ->from($configuration['table'])
+            ->groupBy('pid')
+            ->execute()
+            ->fetchAllAssociative();
+        if (empty($maxIdRows)) {
+            return;
+        }
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($configuration['table']);
+        $where = $this->getConstraint($queryBuilder, $configuration, false);
+        $where[] = $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter(array_column($maxIdRows, 'uid'), Connection::PARAM_INT_ARRAY));
+
+        $stammdatenRowsWithFrist = $queryBuilder
+            ->select(...['pid', $configuration['frist'], $configuration['t1'], $configuration['t14']])
+            ->addSelectLiteral('uid as stammdatenUid')
+            ->from($configuration['table'])
+            ->where(...$where)
+            ->execute()
+            ->fetchAllAssociative();
+        $stammdatenRowsWithFristByPid = [];
+        foreach ($stammdatenRowsWithFrist as $item) {
+            $stammdatenRowsWithFristByPid[$item['pid']] = $item;
+        }
+        print_r($stammdatenRowsWithFristByPid);
+
+        // now fetch all ansuchen which match with those pids
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+        $ansuchenRows = $queryBuilder
+            ->select(...['uid', 'pid', 'version_active', 'status'])
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(...[
+                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForFristMails(), Connection::PARAM_INT_ARRAY)),
+                $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
+                $queryBuilder->expr()->in('pid', $queryBuilder->createNamedParameter(array_column($stammdatenRowsWithFrist, 'pid'), Connection::PARAM_INT_ARRAY)),
+            ])
+            ->execute()
+            ->fetchAllAssociative();
+        foreach($ansuchenRows as &$row) {
+            $row[$configuration['frist']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['frist']];
+            $row[$configuration['t1']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t1']];
+            $row[$configuration['t14']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t14']];
+        }
+        $this->addToRecords($ansuchenRows, $configuration, $type);
+    }
+
     private function getFromJoin(string $type): void
     {
         $configuration = $this->configuration[$type];
@@ -145,12 +205,10 @@ class FristUeberwachungService
      * @param mixed $configuration
      * @return array
      */
-    protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, mixed $configuration): array
+    protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, array $configuration, bool $addAnsuchenConstraint = true): array
     {
         $now = $GLOBALS['EXEC_TIME'];
         $where = [
-            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
-            $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForFristMails(), Connection::PARAM_INT_ARRAY)),
             $queryBuilder->expr()->gt($configuration['frist'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
             $queryBuilder->expr()->orX(
                 $queryBuilder->expr()->andX(
@@ -163,6 +221,12 @@ class FristUeberwachungService
                 ),
             ),
         ];
+
+        if ($addAnsuchenConstraint) {
+            $where[] = $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT));
+            $where[] = $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForFristMails(), Connection::PARAM_INT_ARRAY));
+
+        }
 
         return $where;
     }
