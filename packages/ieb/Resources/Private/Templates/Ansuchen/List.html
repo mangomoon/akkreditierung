@@ -9,7 +9,7 @@
     
     <f:if condition="{ansuchen}">
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
         </div>
     </f:if>
     
@@ -22,7 +22,12 @@
                     <f:then>
                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
 
-                        <div class="ansuchenlistenitem" data-name="{item.name}" data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungDatum}</f:format.date>">
+
+
+                        
+
+
+                        <div class="ansuchenlistenitem" data-name="{item.name}" data-nummer="{item.nummer}"  data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungDatum}</f:format.date>">
 
 
                             <table class="ansuchenliste">
@@ -137,7 +142,7 @@
                                         
                                     </td>
                                     <td class="td-knopf">
-                                        <f:link.action action="revive" arguments="{ansuchen : item}" class="knopf-quadratisch revive" title="Ansuchen archivieren"></f:link.action>
+                                        <f:link.action action="revive" arguments="{ansuchen : item}" class="knopf-quadratisch revive" title="Ansuchen wieder herstellen"></f:link.action>
                                     </td>
                                     <td class="td-knopf">
                                     </td>

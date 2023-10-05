@@ -126,7 +126,7 @@ class AnsuchenBegutachtungController extends BaseController
         $zuteilung->setReviewVerrechnungCheck2($ansuchen->getReviewVerrechnungCheck2());
         $zuteilung->setReviewVerrechnung1($ansuchen->getReviewVerrechnung1());
         $zuteilung->setReviewVerrechnung2($ansuchen->getReviewVerrechnung2());
-        $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen));
+        
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'zuteilung' => $zuteilung,
@@ -158,6 +158,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
         $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
         $this->ansuchenRepository->setUnGutachterLockedAndPersist($ansuchen);
+        $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen));
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');

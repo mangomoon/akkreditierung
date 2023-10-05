@@ -100,7 +100,8 @@ class AnsuchenController extends BaseController
     public function einreichenAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
-        $this->addFlashMessage('Das Ansuchen wurde eingereicht');
+        $ansuchennummer = $ansuchen->getNummer();
+        $this->addFlashMessage('Das Ansuchen ' .$ansuchennummer .' wurde eingereicht');
         $newSnapShotIfVersionChangedByTr = false;
         if ($newSnapShotIfVersionChangedByTr) {
             $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());

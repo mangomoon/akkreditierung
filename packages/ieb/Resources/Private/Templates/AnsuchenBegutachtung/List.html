@@ -5,13 +5,13 @@
 <f:debug>{_all}</f:debug>
 
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="pid" class="sortierbutton">Organisation</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div id="nummer" class="sortierbutton">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="pid" class="sortierbutton">Organisation</div>
         </div>
         <div id="ansuchenlistencontainer">
         <f:for each="{ansuchen}" as="item">
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
 
-            <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-status="{item.status}" data-pid="{item.pid}" >
+            <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>
