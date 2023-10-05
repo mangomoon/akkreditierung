@@ -99,7 +99,7 @@ class BaseController extends ActionController
                 FileReference::class
             );
 
-        $uploadFolder = '1:/content/' . self::currentSysFolderPageName() . '/';
+        $uploadFolder = '1:/content/' . self::currentSysFolderPageIdentifier() . '/';
         // if folder does not exist
         $path = Environment::getPublicPath() . '/fileadmin/' . str_replace('1:/', '', $uploadFolder);
         if (!is_dir($path)) {
