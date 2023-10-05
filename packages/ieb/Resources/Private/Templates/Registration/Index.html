@@ -52,32 +52,6 @@
 
                 <f:render partial="Form/Input" arguments="{property: 'trName', label: 'Rechtsgültiger Vereins- bzw. Firmenname', required:1}" />
 
-                <div class="row">
-                    <div class="col">
-                         <f:render partial="Form/Input" arguments="{property: 'trStrasse', label: 'Anschrift', required:1}" />
-                    </div>
-                </div>
-               
-                <div class="row">
-                    <div class="col-2" style="margin-right:34px;">
-                        <f:render partial="Form/Input" arguments="{property: 'trPlz', label: 'PLZ', required:1, type:'number',additional:{min:1000,max:9999}}" />
-                    </div>
-                    <div class="col-9">
-                        <f:render partial="Form/Input" arguments="{property: 'trOrt', label: 'Ort', required:1}" />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <f:render partial="Form/Input" arguments="{property: 'trEmail', label: 'E-Mail', required:0}" />
-                    </div>
-                    <div class="col">
-                        <f:render partial="Form/Input" arguments="{property: 'trTel', label: 'Telelefon', required:0}" />
-                    </div>
-                </div>
-                
-
-                <f:render partial="Form/Input" arguments="{property: 'trWww', label: 'Website', required:0}" />
 
             </div>
         </div>

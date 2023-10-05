@@ -16,12 +16,6 @@ class RegistrationForm extends AbstractDomainObject
     public string $passwordRepeat = '';
     public string $email = '';
     public string $trName = '';
-    public string $trStrasse = '';
-    public int $trPlz = 0;
-    public string $trOrt = '';
-    public string $trTel = '';
-    public string $trEmail = '';
-    public string $trWww = '';
 
     public string $ausschluss = '';
 
