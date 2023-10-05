@@ -44,7 +44,7 @@ class RegistrationRepository
             'tstamp' => time(),
             'disable' => 1,
             'usergroup' => 1,
-            'username' => $form->email,
+            'username' => $form->username,
             'password' => $this->generatePasswordHash($form->password),
             'email' => $form->email,
             'name' => $form->getFullName(),

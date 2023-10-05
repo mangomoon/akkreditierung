@@ -47,37 +47,15 @@
 
         <div class="kriterium">
             <div class="kriteriumteil">
-                <h2>Angaben zu Ihrer Organisation</h2>
-                <div class="erläaeuterung"><p class="Hinweis:">Hinweis: Diese Angaben können zu einem späteren Zeitpunkt geändert und ergänzt werden.</p></div>
+                <h2>Zu Ihrer Organisation</h2>
+
+                <div class="erläaeuterung"><p class="Hinweis:">Hinweis: Diese Angaben können zu einem späteren Zeitpunkt geändert werden.</p></div>
 
                 <f:render partial="Form/Input" arguments="{property: 'trName', label: 'Rechtsgültiger Vereins- bzw. Firmenname', required:1}" />
 
-                <div class="row">
-                    <div class="col">
-                         <f:render partial="Form/Input" arguments="{property: 'trStrasse', label: 'Anschrift', required:1}" />
-                    </div>
-                </div>
-               
-                <div class="row">
-                    <div class="col-2" style="margin-right:34px;">
-                        <f:render partial="Form/Input" arguments="{property: 'trPlz', label: 'PLZ', required:1, type:'number',additional:{min:1000,max:9999}}" />
-                    </div>
-                    <div class="col-9">
-                        <f:render partial="Form/Input" arguments="{property: 'trOrt', label: 'Ort', required:1}" />
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <f:render partial="Form/Input" arguments="{property: 'trEmail', label: 'E-Mail', required:0}" />
-                    </div>
-                    <div class="col">
-                        <f:render partial="Form/Input" arguments="{property: 'trTel', label: 'Telelefon', required:0}" />
-                    </div>
-                </div>
+                <f:render partial="Form/Input" arguments="{property: 'trMarkenname', label: 'Markenbezeichnung', required:0}" />
                 
-
-                <f:render partial="Form/Input" arguments="{property: 'trWww', label: 'Website', required:0}" />
 
             </div>
         </div>
