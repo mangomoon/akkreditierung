@@ -498,9 +498,8 @@
                                     <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                                 </div>
     
-                                <f:if condition="{ansuchen.fernlehre}">
-                                    <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
-                                </f:if>
+                                <p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                                <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
 
                                     <f:render partial="Ansuchen/UploadList" arguments="{
                                         field = 'ansuchen.lernziele'
