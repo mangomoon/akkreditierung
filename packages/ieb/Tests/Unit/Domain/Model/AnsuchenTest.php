@@ -2203,19 +2203,22 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPruefbescheidCheckReturnsInitialValueForBool(): void
+    public function getPruefbescheidCheckReturnsInitialValueForInt(): void
     {
-        self::assertFalse($this->subject->getPruefbescheidCheck());
+        self::assertSame(
+            0,
+            $this->subject->getPruefbescheidCheck()
+        );
     }
 
     /**
      * @test
      */
-    public function setPruefbescheidCheckForBoolSetsPruefbescheidCheck(): void
+    public function setPruefbescheidCheckForIntSetsPruefbescheidCheck(): void
     {
-        $this->subject->setPruefbescheidCheck(true);
+        $this->subject->setPruefbescheidCheck(12);
 
-        self::assertEquals(true, $this->subject->_get('pruefbescheidCheck'));
+        self::assertEquals(12, $this->subject->_get('pruefbescheidCheck'));
     }
 
     /**
@@ -2341,82 +2344,37 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStammdatenStaticReturnsInitialValueForStaticStammdaten(): void
+    public function getEinzelunterrichtReturnsInitialValueForBool(): void
     {
-        self::assertEquals(
-            null,
-            $this->subject->getStammdatenStatic()
-        );
+        self::assertFalse($this->subject->getEinzelunterricht());
     }
 
     /**
      * @test
      */
-    public function setStammdatenStaticForStaticStammdatenSetsStammdatenStatic(): void
+    public function setEinzelunterrichtForBoolSetsEinzelunterricht(): void
     {
-        $stammdatenStaticFixture = new \GeorgRinger\Ieb\Domain\Model\StaticStammdaten();
-        $this->subject->setStammdatenStatic($stammdatenStaticFixture);
+        $this->subject->setEinzelunterricht(true);
 
-        self::assertEquals($stammdatenStaticFixture, $this->subject->_get('stammdatenStatic'));
+        self::assertEquals(true, $this->subject->_get('einzelunterricht'));
     }
 
     /**
      * @test
      */
-    public function getStandorteStaticReturnsInitialValueForStaticStandort(): void
+    public function getPp3ReturnsInitialValueForBool(): void
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getStandorteStatic()
-        );
+        self::assertFalse($this->subject->getPp3());
     }
 
     /**
      * @test
      */
-    public function setStandorteStaticForObjectStorageContainingStaticStandortSetsStandorteStatic(): void
+    public function setPp3ForBoolSetsPp3(): void
     {
-        $standorteStatic = new \GeorgRinger\Ieb\Domain\Model\StaticStandort();
-        $objectStorageHoldingExactlyOneStandorteStatic = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneStandorteStatic->attach($standorteStatic);
-        $this->subject->setStandorteStatic($objectStorageHoldingExactlyOneStandorteStatic);
+        $this->subject->setPp3(true);
 
-        self::assertEquals($objectStorageHoldingExactlyOneStandorteStatic, $this->subject->_get('standorteStatic'));
-    }
-
-    /**
-     * @test
-     */
-    public function addStandorteStaticToObjectStorageHoldingStandorteStatic(): void
-    {
-        $standorteStatic = new \GeorgRinger\Ieb\Domain\Model\StaticStandort();
-        $standorteStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteStaticObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($standorteStatic));
-        $this->subject->_set('standorteStatic', $standorteStaticObjectStorageMock);
-
-        $this->subject->addStandorteStatic($standorteStatic);
-    }
-
-    /**
-     * @test
-     */
-    public function removeStandorteStaticFromObjectStorageHoldingStandorteStatic(): void
-    {
-        $standorteStatic = new \GeorgRinger\Ieb\Domain\Model\StaticStandort();
-        $standorteStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $standorteStaticObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($standorteStatic));
-        $this->subject->_set('standorteStatic', $standorteStaticObjectStorageMock);
-
-        $this->subject->removeStandorteStatic($standorteStatic);
+        self::assertEquals(true, $this->subject->_get('pp3'));
     }
 
     /**
@@ -2535,124 +2493,6 @@ class AnsuchenTest extends UnitTestCase
         $this->subject->_set('verantwortlicheMail', $verantwortlicheMailObjectStorageMock);
 
         $this->subject->removeVerantwortlicheMail($verantwortlicheMail);
-    }
-
-    /**
-     * @test
-     */
-    public function getTrainerStaticReturnsInitialValueForStaticTrainer(): void
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getTrainerStatic()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTrainerStaticForObjectStorageContainingStaticTrainerSetsTrainerStatic(): void
-    {
-        $trainerStatic = new \GeorgRinger\Ieb\Domain\Model\StaticTrainer();
-        $objectStorageHoldingExactlyOneTrainerStatic = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneTrainerStatic->attach($trainerStatic);
-        $this->subject->setTrainerStatic($objectStorageHoldingExactlyOneTrainerStatic);
-
-        self::assertEquals($objectStorageHoldingExactlyOneTrainerStatic, $this->subject->_get('trainerStatic'));
-    }
-
-    /**
-     * @test
-     */
-    public function addTrainerStaticToObjectStorageHoldingTrainerStatic(): void
-    {
-        $trainerStatic = new \GeorgRinger\Ieb\Domain\Model\StaticTrainer();
-        $trainerStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $trainerStaticObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($trainerStatic));
-        $this->subject->_set('trainerStatic', $trainerStaticObjectStorageMock);
-
-        $this->subject->addTrainerStatic($trainerStatic);
-    }
-
-    /**
-     * @test
-     */
-    public function removeTrainerStaticFromObjectStorageHoldingTrainerStatic(): void
-    {
-        $trainerStatic = new \GeorgRinger\Ieb\Domain\Model\StaticTrainer();
-        $trainerStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $trainerStaticObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($trainerStatic));
-        $this->subject->_set('trainerStatic', $trainerStaticObjectStorageMock);
-
-        $this->subject->removeTrainerStatic($trainerStatic);
-    }
-
-    /**
-     * @test
-     */
-    public function getBeraterStaticReturnsInitialValueForStaticBerater(): void
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getBeraterStatic()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBeraterStaticForObjectStorageContainingStaticBeraterSetsBeraterStatic(): void
-    {
-        $beraterStatic = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
-        $objectStorageHoldingExactlyOneBeraterStatic = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneBeraterStatic->attach($beraterStatic);
-        $this->subject->setBeraterStatic($objectStorageHoldingExactlyOneBeraterStatic);
-
-        self::assertEquals($objectStorageHoldingExactlyOneBeraterStatic, $this->subject->_get('beraterStatic'));
-    }
-
-    /**
-     * @test
-     */
-    public function addBeraterStaticToObjectStorageHoldingBeraterStatic(): void
-    {
-        $beraterStatic = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
-        $beraterStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $beraterStaticObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($beraterStatic));
-        $this->subject->_set('beraterStatic', $beraterStaticObjectStorageMock);
-
-        $this->subject->addBeraterStatic($beraterStatic);
-    }
-
-    /**
-     * @test
-     */
-    public function removeBeraterStaticFromObjectStorageHoldingBeraterStatic(): void
-    {
-        $beraterStatic = new \GeorgRinger\Ieb\Domain\Model\StaticBerater();
-        $beraterStaticObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->onlyMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $beraterStaticObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($beraterStatic));
-        $this->subject->_set('beraterStatic', $beraterStaticObjectStorageMock);
-
-        $this->subject->removeBeraterStatic($beraterStatic);
     }
 
     /**

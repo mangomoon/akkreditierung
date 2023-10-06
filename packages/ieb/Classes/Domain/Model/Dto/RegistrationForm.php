@@ -16,6 +16,7 @@ class RegistrationForm extends AbstractDomainObject
     public string $passwordRepeat = '';
     public string $email = '';
     public string $trName = '';
+<<<<<<< HEAD
     public string $trMarkenname = '';
     public string $trStrasse = '';
     public int $trPlz = 0;
@@ -23,6 +24,8 @@ class RegistrationForm extends AbstractDomainObject
     public string $trTel = '';
     public string $trEmail = '';
     public string $trWww = '';
+=======
+>>>>>>> 7966dd13da8567db95e6163fb7c75c35d55d1c25
 
     public string $ausschluss = '';
 

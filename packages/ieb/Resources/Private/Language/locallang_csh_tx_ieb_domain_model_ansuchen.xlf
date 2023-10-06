@@ -342,23 +342,17 @@
 			<trans-unit id="review_verrechnung2.description" resname="review_verrechnung2.description">
 				<source>reviewVerrechnung2</source>
 			</trans-unit>
-			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
-				<source>stammdatenStatic</source>
+			<trans-unit id="einzelunterricht.description" resname="einzelunterricht.description">
+				<source>einzelunterricht</source>
 			</trans-unit>
-			<trans-unit id="standorte_static.description" resname="standorte_static.description">
-				<source>standorteStatic</source>
+			<trans-unit id="pp3.description" resname="pp3.description">
+				<source>pp3</source>
 			</trans-unit>
 			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
 				<source>verantwortliche</source>
 			</trans-unit>
 			<trans-unit id="verantwortliche_mail.description" resname="verantwortliche_mail.description">
 				<source>verantwortlicheMail</source>
-			</trans-unit>
-			<trans-unit id="trainer_static.description" resname="trainer_static.description">
-				<source>trainerStatic</source>
-			</trans-unit>
-			<trans-unit id="berater_static.description" resname="berater_static.description">
-				<source>beraterStatic</source>
 			</trans-unit>
 			<trans-unit id="kopie_von.description" resname="kopie_von.description">
 				<source>kopieVon</source>
@@ -380,6 +374,18 @@
 			</trans-unit>
 			<trans-unit id="gutachter2.description" resname="gutachter2.description">
 				<source>gutachter2</source>
+			</trans-unit>
+			<trans-unit id="stammdaten_static.description" resname="stammdaten_static.description">
+				<source>stammdatenStatic</source>
+			</trans-unit>
+			<trans-unit id="standorte_static.description" resname="standorte_static.description">
+				<source>standorteStatic</source>
+			</trans-unit>
+			<trans-unit id="trainer_static.description" resname="trainer_static.description">
+				<source>trainerStatic</source>
+			</trans-unit>
+			<trans-unit id="berater_static.description" resname="berater_static.description">
+				<source>beraterStatic</source>
 			</trans-unit>
 			<trans-unit id="finanziert.description" resname="finanziert.description">
 				<source>finanziert</source>

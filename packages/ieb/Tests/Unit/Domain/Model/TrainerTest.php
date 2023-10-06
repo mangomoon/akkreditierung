@@ -996,4 +996,22 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals(12, $this->subject->_get('statusAfterReviewPsa'));
     }
+
+    /**
+     * @test
+     */
+    public function getPp3ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getPp3());
+    }
+
+    /**
+     * @test
+     */
+    public function setPp3ForBoolSetsPp3(): void
+    {
+        $this->subject->setPp3(true);
+
+        self::assertEquals(true, $this->subject->_get('pp3'));
+    }
 }

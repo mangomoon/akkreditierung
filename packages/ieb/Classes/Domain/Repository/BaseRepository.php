@@ -119,31 +119,4 @@ class BaseRepository extends Repository
     {
         $this->persistenceManager->persistAll();
     }
-
-    public function duplicateToStaticVersion(AbstractEntity $entity): AbstractEntity
-    {
-        switch (get_class($entity)) {
-            case Model\Stammdaten::class:
-                /** @var Model\Stammdaten $entity */
-                $target = new Model\StaticStammdaten();
-                $fields = ['name', 'nachweis', 'rechtsform', 'strasse', 'plz', 'ort'];
-                break;
-            default:
-                throw new \RuntimeException(sprintf('Class "%s" is not configured to be duplicatable', get_class($entity)));
-        }
-
-        foreach ($fields as $field) {
-            $getter = 'get' . ucfirst($field);
-            $setter = 'set' . ucfirst($field);
-            $value = $entity->$getter();
-            if ($value !== null) {
-                $target->$setter($value);
-            }
-        }
-
-        $target->setPid($entity->getPid());
-        $target->setBasedOn($entity);
-
-        return $target;
-    }
 }

@@ -150,6 +150,9 @@
 			<trans-unit id="status_after_review_psa.description" resname="status_after_review_psa.description">
 				<source>statusAfterReviewPsa</source>
 			</trans-unit>
+			<trans-unit id="pp3.description" resname="pp3.description">
+				<source>pp3</source>
+			</trans-unit>
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>

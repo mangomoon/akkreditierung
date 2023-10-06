@@ -403,4 +403,22 @@ class BeraterTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('reviewFristMailSent1t'));
     }
+
+    /**
+     * @test
+     */
+    public function getPp3ReturnsInitialValueForBool(): void
+    {
+        self::assertFalse($this->subject->getPp3());
+    }
+
+    /**
+     * @test
+     */
+    public function setPp3ForBoolSetsPp3(): void
+    {
+        $this->subject->setPp3(true);
+
+        self::assertEquals(true, $this->subject->_get('pp3'));
+    }
 }

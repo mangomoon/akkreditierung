@@ -798,7 +798,33 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $statusAgZwei = 0;
 
+    /**
+     * reviewVerrechnungCheck1
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck1 = false;
 
+    /**
+     * reviewVerrechnungCheck2
+     *
+     * @var bool
+     */
+    protected $reviewVerrechnungCheck2 = false;
+
+    /**
+     * reviewVerrechnung1
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung1 = '';
+
+    /**
+     * reviewVerrechnung2
+     *
+     * @var string
+     */
+    protected $reviewVerrechnung2 = '';
 
     /**
      * verantwortliche
@@ -864,32 +890,18 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $gutachter2 = null;
 
     /**
-     * reviewVerrechnungCheck1
+     * einzelunterricht
      *
      * @var bool
      */
-    protected $reviewVerrechnungCheck1 = false;
+    protected $einzelunterricht = false;
 
     /**
-     * reviewVerrechnungCheck2
+     * pp3
      *
      * @var bool
      */
-    protected $reviewVerrechnungCheck2 = false;
-
-    /**
-     * reviewVerrechnung1
-     *
-     * @var string
-     */
-    protected $reviewVerrechnung1 = '';
-
-    /**
-     * reviewVerrechnung2
-     *
-     * @var string
-     */
-    protected $reviewVerrechnung2 = '';
+    protected $pp3 = false;
 
     /**
      * __construct
@@ -1046,7 +1058,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the akkreditierungDatum
      *
-     * @param \DateTime $akkreditierungDatum
+     * @param ?\DateTime $akkreditierungDatum
      * @return void
      */
     public function setAkkreditierungDatum(?\DateTime $akkreditierungDatum)
@@ -1068,7 +1080,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the einreichDatum
      *
-     * @param \DateTime $einreichDatum
+     * @param ?\DateTime $einreichDatum
      * @return void
      */
     public function setEinreichDatum(?\DateTime $einreichDatum)
@@ -1111,7 +1123,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the akkreditierungEntscheidungDatum
      *
-     * @param \DateTime $akkreditierungEntscheidungDatum
+     * @param ?\DateTime $akkreditierungEntscheidungDatum
      * @return void
      */
     public function setAkkreditierungEntscheidungDatum(?\DateTime $akkreditierungEntscheidungDatum)
@@ -1847,7 +1859,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the reviewTotalFrist
      *
-     * @param \DateTime $reviewTotalFrist
+     * @param ?\DateTime $reviewTotalFrist
      * @return void
      */
     public function setReviewTotalFrist(?\DateTime $reviewTotalFrist)
@@ -1917,156 +1929,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatus(int $status)
     {
         $this->status = $status;
-    }
-
-    /**
-     * Returns the stammdatenStatic
-     *
-     * @return \GeorgRinger\Ieb\Domain\Model\StaticStammdaten stammdatenStatic
-     */
-    public function getStammdatenStatic()
-    {
-        return $this->stammdatenStatic;
-    }
-
-    /**
-     * Sets the stammdatenStatic
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdatenStatic
-     * @return void
-     */
-    public function setStammdatenStatic(\GeorgRinger\Ieb\Domain\Model\StaticStammdaten $stammdatenStatic)
-    {
-        $this->stammdatenStatic = $stammdatenStatic;
-    }
-
-    /**
-     * Adds a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStatic
-     * @return void
-     */
-    public function addStandorteStatic(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStatic)
-    {
-        $this->standorteStatic->attach($standorteStatic);
-    }
-
-    /**
-     * Removes a Standort
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStaticToRemove The StaticStandort to be removed
-     * @return void
-     */
-    public function removeStandorteStatic(\GeorgRinger\Ieb\Domain\Model\StaticStandort $standorteStaticToRemove)
-    {
-        $this->standorteStatic->detach($standorteStaticToRemove);
-    }
-
-    /**
-     * Returns the standorteStatic
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> standorteStatic
-     */
-    public function getStandorteStatic()
-    {
-        return $this->standorteStatic;
-    }
-
-    /**
-     * Sets the standorteStatic
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticStandort> $standorteStatic
-     * @return void
-     */
-    public function setStandorteStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $standorteStatic)
-    {
-        $this->standorteStatic = $standorteStatic;
-    }
-
-    /**
-     * Adds a Trainer
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStatic
-     * @return void
-     */
-    public function addTrainerStatic(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStatic)
-    {
-        $this->trainerStatic->attach($trainerStatic);
-    }
-
-    /**
-     * Removes a Trainer
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStaticToRemove The StaticTrainer to be removed
-     * @return void
-     */
-    public function removeTrainerStatic(\GeorgRinger\Ieb\Domain\Model\StaticTrainer $trainerStaticToRemove)
-    {
-        $this->trainerStatic->detach($trainerStaticToRemove);
-    }
-
-    /**
-     * Returns the trainerStatic
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> trainerStatic
-     */
-    public function getTrainerStatic()
-    {
-        return $this->trainerStatic;
-    }
-
-    /**
-     * Sets the trainerStatic
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticTrainer> $trainerStatic
-     * @return void
-     */
-    public function setTrainerStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $trainerStatic)
-    {
-        $this->trainerStatic = $trainerStatic;
-    }
-
-    /**
-     * Adds a Berater
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStatic
-     * @return void
-     */
-    public function addBeraterStatic(\GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStatic)
-    {
-        $this->beraterStatic->attach($beraterStatic);
-    }
-
-    /**
-     * Removes a Berater
-     *
-     * @param \GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStaticToRemove The StaticBerater to be removed
-     * @return void
-     */
-    public function removeBeraterStatic(\GeorgRinger\Ieb\Domain\Model\StaticBerater $beraterStaticToRemove)
-    {
-        $this->beraterStatic->detach($beraterStaticToRemove);
-    }
-
-    /**
-     * Returns the beraterStatic
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> beraterStatic
-     */
-    public function getBeraterStatic()
-    {
-        return $this->beraterStatic;
-    }
-
-    /**
-     * Sets the beraterStatic
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\Ieb\Domain\Model\StaticBerater> $beraterStatic
-     * @return void
-     */
-    public function setBeraterStatic(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $beraterStatic)
-    {
-        $this->beraterStatic = $beraterStatic;
     }
 
     /**
@@ -3714,7 +3576,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the reviewFristPruefbescheid
      *
-     * @param \DateTime $reviewFristPruefbescheid
+     * @param ?\DateTime $reviewFristPruefbescheid
      * @return void
      */
     public function setReviewFristPruefbescheid(?\DateTime $reviewFristPruefbescheid)
@@ -3819,7 +3681,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the ende
      *
-     * @param \DateTime $ende
+     * @param ?\DateTime $ende
      * @return void
      */
     public function setEnde(?\DateTime $ende)
@@ -3830,7 +3692,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the pruefbescheidCheck
      *
-     * @return int 
+     * @return int
      */
     public function getPruefbescheidCheck()
     {
@@ -4034,5 +3896,67 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewVerrechnung2(string $reviewVerrechnung2)
     {
         $this->reviewVerrechnung2 = $reviewVerrechnung2;
+    }
+
+    /**
+     * Returns the einzelunterricht
+     *
+     * @return bool
+     */
+    public function getEinzelunterricht()
+    {
+        return $this->einzelunterricht;
+    }
+
+    /**
+     * Sets the einzelunterricht
+     *
+     * @param bool $einzelunterricht
+     * @return void
+     */
+    public function setEinzelunterricht(bool $einzelunterricht)
+    {
+        $this->einzelunterricht = $einzelunterricht;
+    }
+
+    /**
+     * Returns the boolean state of einzelunterricht
+     *
+     * @return bool
+     */
+    public function isEinzelunterricht()
+    {
+        return $this->einzelunterricht;
+    }
+
+    /**
+     * Returns the pp3
+     *
+     * @return bool
+     */
+    public function getPp3()
+    {
+        return $this->pp3;
+    }
+
+    /**
+     * Sets the pp3
+     *
+     * @param bool $pp3
+     * @return void
+     */
+    public function setPp3(bool $pp3)
+    {
+        $this->pp3 = $pp3;
+    }
+
+    /**
+     * Returns the boolean state of pp3
+     *
+     * @return bool
+     */
+    public function isPp3()
+    {
+        return $this->pp3;
     }
 }

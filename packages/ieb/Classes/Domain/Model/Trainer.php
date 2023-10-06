@@ -378,6 +378,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $statusAfterReviewPsa = 0;
 
     /**
+     * pp3
+     *
+     * @var bool
+     */
+    protected $pp3 = false;
+
+    /**
      * Returns the nachname
      *
      * @return string
@@ -1542,7 +1549,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the reviewFrist
      *
-     * @param \DateTime $reviewFrist
+     * @param ?\DateTime $reviewFrist
      * @return void
      */
     public function setReviewFrist(?\DateTime $reviewFrist)
@@ -1653,5 +1660,36 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatusAfterReviewPsa(int $statusAfterReviewPsa)
     {
         $this->statusAfterReviewPsa = $statusAfterReviewPsa;
+    }
+
+    /**
+     * Returns the pp3
+     *
+     * @return bool
+     */
+    public function getPp3()
+    {
+        return $this->pp3;
+    }
+
+    /**
+     * Sets the pp3
+     *
+     * @param bool $pp3
+     * @return void
+     */
+    public function setPp3(bool $pp3)
+    {
+        $this->pp3 = $pp3;
+    }
+
+    /**
+     * Returns the boolean state of pp3
+     *
+     * @return bool
+     */
+    public function isPp3()
+    {
+        return $this->pp3;
     }
 }

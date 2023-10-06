@@ -12,7 +12,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'baustein',
+        'searchFields' => 'kriterium,baustein',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_textbausteine.gif'
     ],
     'types' => [
@@ -69,15 +69,12 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_textbausteine.kriterium',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_textbausteine.kriterium.description',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['-- Label --', 0],
-                ],
-                'size' => 1,
-                'maxitems' => 1,
-                'eval' => ''
-            ],
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
         ],
         'baustein' => [
             'exclude' => true,

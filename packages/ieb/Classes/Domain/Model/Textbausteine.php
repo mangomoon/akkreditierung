@@ -23,7 +23,7 @@ class Textbausteine extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * kriterium
      *
-     * @var int
+     * @var string
      */
     protected $kriterium = '';
 
@@ -58,7 +58,7 @@ class Textbausteine extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the kriterium
      *
-     * @return int kriterium
+     * @return string kriterium
      */
     public function getKriterium()
     {

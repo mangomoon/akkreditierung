@@ -1,0 +1,72 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Berater:
+          List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for Berater</h1>
+
+    <f:flashMessages />
+
+    <table class="tx_ieb">
+        <tr>
+            <th><f:translate key="tx_ieb_domain_model_berater.nachname" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.vorname" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.lebenslauf" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.qualifikationsnachweise" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.lebenslauf_kommentar" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.qualifikationsnachweise_kommentar" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.ok" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.archiviert" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_c3_status" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_c32_status" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_c3_comment_internal" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_c3_comment_internal_step" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_c3_comment_tr" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.locked_by" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.status_after_review" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_frist" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_frist_mail_sent14t" /></th>
+            <th><f:translate key="tx_ieb_domain_model_berater.review_frist_mail_sent1t" /></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <f:for each="{beraters}" as="berater">
+            <tr>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.nachname}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.vorname}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.lebenslauf.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.qualifikationsnachweise.originalResource.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.lebenslaufKommentar}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.qualifikationsnachweiseKommentar}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.ok}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.archiviert}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewC3Status}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewC32Status}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewC3CommentInternal}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewC3CommentInternalStep}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewC3CommentTr}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.lockedBy}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.statusAfterReview}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewFrist -> f:format.date()}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewFristMailSent14t}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{berater : berater}">{berater.reviewFristMailSent1t}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{berater : berater}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{berater : berater}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Berater</f:link.action>
+</f:section>
+</html>

@@ -57,6 +57,9 @@
 			<trans-unit id="review_frist_mail_sent1t.description" resname="review_frist_mail_sent1t.description">
 				<source>reviewFristMailSent1t</source>
 			</trans-unit>
+			<trans-unit id="pp3.description" resname="pp3.description">
+				<source>pp3</source>
+			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>
