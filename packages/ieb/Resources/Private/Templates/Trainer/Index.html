@@ -65,6 +65,7 @@
 
                 <f:if condition="!{trainer.archiviert}">
                     <f:then>
+                        <f:debug>{trainer}</f:debug>
 
                         <!-- <f:if condition="{trainer.statusAfterReviewPsa}==3 || {trainer.statusAfterReviewBabi}==3">
                             <tr class="muss-edit">
@@ -78,7 +79,7 @@
                         <tr class="istok">
                         <td class="nachname">
                             {trainer.nachname}
-                            <code>uid: {trainer.uid} | okBabi: {trainer.okBabi} | okPsa: {trainer.okPsa}</code>
+                            <code>uid: {trainer.uid} | okBabi: {trainer.okBabi} | okPsa: {trainer.okPsa} </code>
                         </td>
                         <td class="vorname">
                             {trainer.vorname}

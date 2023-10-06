@@ -47,7 +47,8 @@ class TrainerRepository extends BaseRepository
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),
-                $query->equals('okbabi', true)
+                $query->equals('okbabi', true),
+                $query->equals('verwendungBabi', true)
             )
         );
         return $query->execute();
@@ -61,7 +62,8 @@ class TrainerRepository extends BaseRepository
         $query->matching(
             $query->logicalAnd (
                 $query->equals('archiviert', false),
-                $query->equals('okpsa', true)
+                $query->equals('okpsa', true),
+                $query->equals('verwendungPsa', true)
             )
         );
         return $query->execute();

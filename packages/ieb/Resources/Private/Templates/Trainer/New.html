@@ -16,7 +16,17 @@ your changes will be overwritten the next time you save the extension in the ext
     </f:form>
     <script>
         qualifikationPsaSprache();
-        reqleerLoeschen();
+        $(document).ready(function() {
+            $("input#qualifikationBabiDatei").on("change", function(e) {
+                $('div.upload-qualifikationBabiDatei').removeClass('req-leer'); 
+            });
+            $("input#qualifikationPsaDatei").on("change", function(e) {
+                $('div.upload-qualifikationPsaDatei').removeClass('req-leer'); 
+            });
+            $("input#lebenslaufDatei").on("change", function(e) {
+                $('div.upload-lebenslaufDatei').removeClass('req-leer'); 
+            });
+        });
     </script>
 </f:section>
 

@@ -54,6 +54,7 @@
      qb = 0;
      qp = 0;
      ll = 0;
+
      validieren();
     
 
@@ -63,18 +64,24 @@
      if ($('#verwendungPsa').is(':checked')) {
          trpsa = 1;
      };
-    //  if ($('div.upload-qualifikationBabiDatei').hasClass('.reqfile')) {
-    //      qb = 1;
-    //  };
-    //  if (!$('div.upload-qualifikationPsaDatei').hasClass('.reqfile')) {
-    //      qp = 1;
-    //  };
-    //  if (!$('div.upload-lebenslaufDatei').hasClass('.reqfile')) {
-    //      ll = 1;
-    //  };
-    var $input= ('#qualifikationPsaDatei').get(0).files.length;
-    if ($qpf > 0) {
-        qp = 1;
+
+     if (!$('div.upload-qualifikationBabiDatei').hasClass('req-file')) {
+         qb = 1;
+     };
+     if (!$('div.upload-qualifikationPsaDatei').hasClass('req-file')) {
+         qp = 1;
+     };
+     if (!$('div.upload-lebenslaufDatei').hasClass('req-file')) {
+         ll = 1;
+     };
+     if ($('div.upload-qualifikationBabiDatei').hasClass('req-leer')) {
+        qb = 0;
+    };
+    if ($('div.upload-qualifikationPsaDatei').hasClass('req-leer')) {
+        qp = 0;
+    };
+    if ($('div.upload-lebenslaufDatei').hasClass('req-leer')) {
+        ll = 0;
     };
 
 
@@ -422,6 +429,7 @@ function qualifikationPsaSprache() {
     });
     $('#validieren-test').click(function(){
         validierentr();
+        // validieren();
         // setStatusAfterReview();
         // console.log();
     });
@@ -475,23 +483,7 @@ function qualifikationPsaSprache() {
          $(this).parent().parent().parent().removeClass('reqfile');
      });
 
-     qb = 0;
-     var qp = 0;
-     ll = 0;
-     $("#qualifikationBabiDatei").on("change", function(e) {
-        qb = 1;
-        $(this).parent().parent().parent().addClass('ok'); 
-     });
-     $("#qualifikationPsaDatei").on("change", function(e) {
-        qp = 1;
-     });
-     $("#lebenslaufDatei").on("change", function(e) {
-         if ($(this).val() !== " ") {
-             ll = 1;
-         } else {
-             return false;
-         };
-     });
+
 
      // CHECKER
      $("form.tra").submit(function() {
