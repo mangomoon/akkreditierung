@@ -189,8 +189,6 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
         HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
     </p>
 
-            <f:if condition="verwendungBabi">
-                <f:then>
                     <f:render partial="Form/UploadMultiple" arguments="{
                         property:'lebenslaufDatei', 
                         id:'lebenslaufDatei', 
@@ -200,20 +198,7 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
                         metadaten:'{trainer.lebenslaufDatei.originalResource}',
                         media:trainer.lebenslaufDatei
                     }" />
-                </f:then>
-                <f:else>
-                    <f:render partial="Form/UploadMultiple" arguments="{
-                        property:'lebenslaufDatei', 
-                        id:'lebenslaufDatei', 
-                        req:'', 
-                        label:'Erfahrungsnachweis',
-                        anmerkung:'lebenslauf',
-                        metadaten:'{trainer.lebenslaufDatei.originalResource}',
-                        media:trainer.lebenslaufDatei,
-                        status:trainer.reviewC22PsaStatus
-                    }" />
-                </f:else>
-            </f:if>
+
             
 
     

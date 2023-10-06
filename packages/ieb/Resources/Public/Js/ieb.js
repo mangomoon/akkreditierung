@@ -52,11 +52,10 @@
      trbabi = 0;
      trpsa = 0;
      qb = 0;
-     lb = 0;
      qp = 0;
      ll = 0;
      validieren();
-
+    
 
      if ($('#verwendungBabi').is(':checked')) {
          trbabi = 1;
@@ -64,30 +63,31 @@
      if ($('#verwendungPsa').is(':checked')) {
          trpsa = 1;
      };
-     if ($('.upload-qualifikationBabiDatei').is('.ok')) {
-         qb = 1;
-     };
-     if ($('.upload-lehrBefugnisDatei').is('.ok')) {
-         lb = 1;
-     };
-     if ($('.upload-qualifikationPsaDatei').is('.ok')) {
-         qp = 1;
-     };
-     if ($('.upload-lebenslaufDatei').is('.ok')) {
-         ll = 1;
-     };
+    //  if ($('div.upload-qualifikationBabiDatei').hasClass('.reqfile')) {
+    //      qb = 1;
+    //  };
+    //  if (!$('div.upload-qualifikationPsaDatei').hasClass('.reqfile')) {
+    //      qp = 1;
+    //  };
+    //  if (!$('div.upload-lebenslaufDatei').hasClass('.reqfile')) {
+    //      ll = 1;
+    //  };
+    var $input= ('#qualifikationPsaDatei').get(0).files.length;
+    if ($qpf > 0) {
+        qp = 1;
+    };
 
 
-     if (((trbabi == 1) && (qb == 1) && (ll == 1)) || ((trbabi == 1) && (qb == 1) && (lb == 1))) {
+     if ((trbabi == 1) && (qb == 1) && (ll == 1)) {
          okbabi = 1;
          $('#okbabi').attr('value', 1);
      }
-     if (((trpsa == 1) && (qp == 1)) || ((trpsa == 1) && (lb == 1))) {
+     if ((trpsa == 1) && (qp == 1)) {
          okpsa = 1;
          $('#okpsa').attr('value', 1);
      }
 
-     console.log('okBabi '+ okbabi + 'okPsa' + okpsa);
+     console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
 
  }
 
@@ -205,11 +205,11 @@
      if (babi == 1) {
          $('#c-2-1-babi').show();
          $('#c-2-2').show();
-         $('.upload-lebenslaufDatei').addClass('reqfile');
+        //  $('.upload-lebenslaufDatei').addClass('reqfile');
      }
      if (babi == 0) {
          $('#c-2-1-babi').hide();
-         $('.upload-lebenslaufDatei').removeClass('reqfile');
+        //  $('.upload-lebenslaufDatei').removeClass('reqfile');
      }
      if (psa == 1) {
          $('#c-2-1-psa').show();
@@ -475,30 +475,15 @@ function qualifikationPsaSprache() {
          $(this).parent().parent().parent().removeClass('reqfile');
      });
 
-     lb = 0;
      qb = 0;
-     qp = 0;
+     var qp = 0;
      ll = 0;
      $("#qualifikationBabiDatei").on("change", function(e) {
-         if ($(this).val() !== " ") {
-             qb = 1;
-         } else {
-             return false;
-         };
-     });
-     $("#lehrBefugnisDatei").on("change", function(e) {
-         if ($(this).val() !== " ") {
-             lb = 1;
-         } else {
-             return false;
-         };
+        qb = 1;
+        $(this).parent().parent().parent().addClass('ok'); 
      });
      $("#qualifikationPsaDatei").on("change", function(e) {
-         if ($(this).val() !== " ") {
-             qp = 1;
-         } else {
-             return false;
-         };
+        qp = 1;
      });
      $("#lebenslaufDatei").on("change", function(e) {
          if ($(this).val() !== " ") {
