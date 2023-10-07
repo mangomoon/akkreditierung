@@ -28,7 +28,7 @@ class ExtensionConfiguration
 
     public static function getParentUserPid(): int
     {
-        return 14;
+        return 4;
     }
 
     public function getUsergroupEingeladenInaktiv(): int
