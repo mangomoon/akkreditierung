@@ -106,7 +106,7 @@ class AnsuchenBegutachtungController extends BaseController
             }
         }
         $this->angebotVerantwortlichRepository->forcePersist();
-        $this->addFlashMessage('Ansuchen wurde ergänzt');
+        //$this->addFlashMessage('Ansuchen wurde ergänzt');
 
         // if status changes, no need to stay in record show
         if ($begutachtung->status > 0) {
@@ -201,7 +201,6 @@ class AnsuchenBegutachtungController extends BaseController
         try {
             $this->addNewComment($stammdaten, 'reviewA1CommentInternal');
             $this->addNewComment($stammdaten, 'reviewA2CommentInternal');
-
             $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
             $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
             $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
@@ -213,6 +212,10 @@ class AnsuchenBegutachtungController extends BaseController
             $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
             $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
         } catch (\JsonException $e) {
+        }
+
+        if($ansuchen->getUpcomingStatus() == 820) {
+            $ansuchen->setArchiviert() === 1;
         }
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
@@ -230,6 +233,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
 
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen));
+        
         $this->redirect('list');
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
