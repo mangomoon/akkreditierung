@@ -54,7 +54,7 @@ class StammdatenController extends BaseController
         $stammdaten->setLockedBy(0);
         $this->stammdatenRepository->update($stammdaten);
         
-        $this->redirectToUri('/uebersicht-tr/ansuchen/');
+        $this->redirectToUri('/?id=14');
     }
 
     public function indexAction(): ResponseInterface
