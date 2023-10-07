@@ -1,6 +1,8 @@
 /* FARBEN 
 
-rot: c3161c
+rot:    #c3161c
+orange: #ED9E21
+gelb:   #EDC509
 
 
 */
@@ -786,6 +788,12 @@ span.knopfrund.ansuchenliste {
 }
 span.knopfrund.auflage-1 {
     background-image: url('../Img/rund_ok.svg');
+}
+span.knopfrund.achtung-gelb {
+    background-image: url('../Img/rund_achtung-gelb.svg');
+}
+span.knopfrund.achtung-orange {
+    background-image: url('../Img/rund_achtung-orange.svg');
 }
 span.knopfrund.auflage-3 {
     background-image: url('../Img/rund_achtung-3.svg');
@@ -1681,7 +1689,7 @@ label.komm-intern, label.komm-extern {
     border-bottom: 2px dotted #fff;
 }
 
-.person-statuskugel {
+.person-statuskugel{
     display: inline-block;
     width: 18px;
     height: 18px;

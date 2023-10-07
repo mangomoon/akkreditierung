@@ -46,7 +46,15 @@
             </f:then>
             
             <f:else>
-                <span class="titleview knopfrund ok-grey" title="Ansuchen: Angaben sind vollständig"></span>
+                <f:if condition="{ansuchen.ok}">
+                    <f:then>
+                        <span class="titleview knopfrund ok-grey" title="Ansuchen: Angaben sind vollständig"></span>
+                    </f:then>
+                    <f:else>
+                        <span class="titleview knopfrund achtung-gelb" title="Ansuchen: Angaben sind unvollständig"></span>
+                    </f:else>
+                </f:if>
+                
             </f:else>
         </f:if>
 

@@ -69,23 +69,23 @@
                 <div class="rechts col-5">
                     <div class="knoepfe teilstatus">
                         <label class="knopf nan c22" for="{property}Status-0">
-                            <f:form.radio property="reviewC3Status" id="{property}Status-0" value="0"  class="c3"/>
+                            <f:form.radio property="reviewC3Status" id="{property}Status-0" value="0"  class="c3i"/>
                             nan
                         </label>
                         <label class="knopf ok c22 {f:if(condition:'{begutachtung.reviewC3Status}==1', then:'checked')}" for="{property}Status-1">
-                            <f:form.radio property="reviewC3Status" id="{property}Status-1" value="1" class="c3"/>
+                            <f:form.radio property="reviewC3Status" id="{property}Status-1" value="1" class="c3i"/>
                             ok
                         </label>
                         <label class="knopf zweit c22 {f:if(condition:'{begutachtung.reviewC3Status}==2', then:'checked')}" for="{property}Status-2">
-                            <f:form.radio property="reviewC3Status" id="{property}Status-2" value="2"  class="c3"/>
+                            <f:form.radio property="reviewC3Status" id="{property}Status-2" value="2"  class="c3i"/>
                             fraglich
                         </label>
                         <label class="knopf auflage c22 {f:if(condition:'{begutachtung.reviewC3Status}==3', then:'checked')}" for="{property}Status-3">
-                            <f:form.radio property="reviewC3Status" id="{property}Status-3" value="3"  class="c3"/>
+                            <f:form.radio property="reviewC3Status" id="{property}Status-3" value="3"  class="c3i"/>
                             Auflage
                         </label>
                         <label class="knopf nicht-ok c22 {f:if(condition:'{begutachtung.reviewC3Status}==4', then:'checked')}" for="{property}Status-4">
-                            <f:form.radio property="reviewC3Status" id="{property}Status-4" value="4"  class="c3"/>
+                            <f:form.radio property="reviewC3Status" id="{property}Status-4" value="4"  class="c3i"/>
                             nicht-ok
                         </label>
                     </div>
@@ -121,23 +121,23 @@
 
                     <div class="knoepfe teilstatus">
                         <label class="knopf nan c32" for="{property}Status-0">
-                            <f:form.radio property="reviewC32Status" id="{property}Status-0" value="0"  class="c32"/>
+                            <f:form.radio property="reviewC32Status" id="{property}Status-0" value="0"  class="c32i"/>
                             nan
                         </label>
                         <label class="knopf ok c32 {f:if(condition:'{begutachtung.reviewC32Status}==1', then:'checked')}" for="{property}Status-1">
-                            <f:form.radio property="reviewC32Status" id="{property}Status-1" value="1" class="c32"/>
+                            <f:form.radio property="reviewC32Status" id="{property}Status-1" value="1" class="c32i"/>
                             ok
                         </label>
                         <label class="knopf zweit c32 {f:if(condition:'{begutachtung.reviewC32Status}==2', then:'checked')}" for="{property}Status-2">
-                            <f:form.radio property="reviewC32Status" id="{property}Status-2" value="2"  class="c32"/>
+                            <f:form.radio property="reviewC32Status" id="{property}Status-2" value="2"  class="c32i"/>
                             fraglich
                         </label>
                         <label class="knopf auflage c32 {f:if(condition:'{begutachtung.reviewC32Status}==3', then:'checked')}" for="{property}Status-3">
-                            <f:form.radio property="reviewC32Status" id="{property}Status-3" value="3"  class="c32"/>
+                            <f:form.radio property="reviewC32Status" id="{property}Status-3" value="3"  class="c32i"/>
                             Auflage
                         </label>
                         <label class="knopf nicht-ok c32 {f:if(condition:'{begutachtung.reviewC32Status}==4', then:'checked')}" for="{property}Status-4">
-                            <f:form.radio property="reviewC32Status" id="{property}Status-4" value="4"  class="c32"/>
+                            <f:form.radio property="reviewC32Status" id="{property}Status-4" value="4"  class="c32i"/>
                             nicht-ok
                         </label>
                     </div>
@@ -177,7 +177,7 @@
 
     <div class="begutachtung-kriterium">
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
-        <div class="knopf-s knopfersatz" id="schliessen">schliessen</div>
+        <div class="knopf-s knopfersatz" id="schliessen">Abbrechen</div>
     </div>
         
     </f:form>

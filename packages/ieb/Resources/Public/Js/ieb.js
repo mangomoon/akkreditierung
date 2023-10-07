@@ -100,6 +100,8 @@
 
  function validierenansuchen() {
      allesda = 1;
+
+     validieren();
      $('.fehlt').each(function() {
          $(this).html("Daten fehlen!");
          allesda = 0;
@@ -169,6 +171,7 @@
     });
     if((p==0) || (p >2)) {
         $('#kontakpersonen').show();
+        allesda = 0;
     } else {
         $('#kontakpersonen').hide();
     }
@@ -177,7 +180,7 @@
     // console.log("allesda am Schluss: " + allesda);
 
 
-    validieren();
+   
 
     if ($('#stammdatencheck').hasClass('ok-0')) {
         allesda = 0;
@@ -694,6 +697,9 @@ function qualifikationPsaSprache() {
         } );
 
 
+
+
+
      // ######################################## FORM Trainer statusAfterReview setzen bei Edit durch TR
      $("#sarPsa").val(0);
      $("#sarBabi").val(0);
@@ -805,6 +811,17 @@ function qualifikationPsaSprache() {
         parent.$.fancybox.close();
      });
 
+    // ######################################## SUBMIT UND (!) FORM Modal schliessen
+
+     $('#submit-t').on('submit', function () {
+        console.log("VOR success!");
+        $.post('tx_ieb_ansuchenbegutachtung[save]', $(this).serialize(), function(data) {
+            console.log("success!");
+          $('#positionForm').closest(".ui-dialog-content").dialog("close");
+        }, "html");
+        return false;
+      });
+
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
 
@@ -812,16 +829,28 @@ function qualifikationPsaSprache() {
      $("#beraterbegutachtung").submit(function() {
         
         var t = $('#beraterId').val();
-        var s = $("#beraterbegutachtung input.c3:checked").val();
-        var c = 'status-'+s;
-        var b = '#berater-'+ t +' .person-statuskugel';
+        var s1 = $("#beraterbegutachtung input.c3i:checked").val();
+        var s2 = $("#beraterbegutachtung input.c32i:checked").val();
+        var c1 = 'status-'+s1;
+        var c2 = 'status-'+s2;
+        var a = '#berater-'+ t +' .person-statuskugel-a';
+        var b = '#berater-'+ t +' .person-statuskugel-b';
         
+        $(a, window.parent.document).removeClass('status-0');
+        $(a, window.parent.document).removeClass('status-1');
+        $(a, window.parent.document).removeClass('status-2');
+        $(a, window.parent.document).removeClass('status-3');
+        $(a, window.parent.document).removeClass('status-4');
+        $(a, window.parent.document).addClass(c1);
         $(b, window.parent.document).removeClass('status-0');
         $(b, window.parent.document).removeClass('status-1');
         $(b, window.parent.document).removeClass('status-2');
         $(b, window.parent.document).removeClass('status-3');
         $(b, window.parent.document).removeClass('status-4');
-        $(b, window.parent.document).addClass(c);
+        $(b, window.parent.document).addClass(c2);
+        
+        parent.$.fancybox.close();
+
     });
 
     $("#trainerbegutachtung").submit(function() {
@@ -882,7 +911,7 @@ function qualifikationPsaSprache() {
             $('#okbabi').val(1);
         }
 
-        // parent.$.fancybox.close();
+        parent.$.fancybox.close();
 
     });
 

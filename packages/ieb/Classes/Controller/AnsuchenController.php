@@ -199,22 +199,22 @@ class AnsuchenController extends BaseController
         }
         if (isset($arguments['saveAndTrainer'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/uebersicht-tr/training");
+            $this->redirectToUri("/?id=12");
         }
         if (isset($arguments['saveAndStandorte'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/uebersicht-tr/standorte");
+            $this->redirectToUri("/?id=11");
         }
         if (isset($arguments['saveAndStandorteOhne'])) {
-            $this->redirectToUri("/uebersicht-tr/standorte");
+            $this->redirectToUri("/?id=11");
         }
         if (isset($arguments['saveAndBerater'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/uebersicht-tr/beratung");
+            $this->redirectToUri("/?id=13");
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/uebersicht-tr/projektleitung");
+            $this->redirectToUri("/?id=18");
         }
         $this->redirect('list');
     }
@@ -224,19 +224,19 @@ class AnsuchenController extends BaseController
         $arguments = $this->request->getArguments();
 
         if (isset($arguments['saveAndTrainer'])) {
-            $this->redirectToUri("/uebersicht-tr/training");
+            $this->redirectToUri("/?id=12");
         }
         if (isset($arguments['saveAndStandorte'])) {
-            $this->redirectToUri("/uebersicht-tr/standorte");
+            $this->redirectToUri("/?id=11");
         }
         if (isset($arguments['saveAndBerater'])) {
-            $this->redirectToUri("/uebersicht-tr/beratung");
+            $this->redirectToUri("/?id=13");
         }
         if (isset($arguments['saveAndStammdaten'])) {
-            $this->redirectToUri("/uebersicht-tr/organisation");
+            $this->redirectToUri("/?id=10");
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
-            $this->redirectToUri("/uebersicht-tr/projektleitung");
+            $this->redirectToUri("/?id=18");
         }
         $this->redirect('list');
     }
