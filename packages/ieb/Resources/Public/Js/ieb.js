@@ -760,7 +760,10 @@ function qualifikationPsaSprache() {
 
      $('.infoknopf').click(function() {
          $(this).toggleClass('checked');
-         $(this).parent().parent().parent().parent().find('.erlaeuterung').toggle();
+        //  $(this).parent().parent().parent().parent().find('.erlaeuterung').toggle();
+        $(this).parent().parent().parent().parent().find('.erlaeuterung').each(function() {
+            $(this).toggle();
+        })
      });
      // ########################################
 

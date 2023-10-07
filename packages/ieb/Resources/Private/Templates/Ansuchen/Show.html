@@ -23,262 +23,10 @@
 </div>
 <div class="abstand-gross"></div>
 
-<!-- A1 ####################################  -->
 
-<div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
-    <div class="col">
-    <div class="kriteriumtitel">
-        <div class="row">
-            <div class="col-6">
-                <h2>A.1 Stammdaten</h2>
-            </div>
-            <div class="col-6 right">
-                <div class="infoknopf"></div>
-            </div>
-        </div>
+<!-- Stammdaten -->
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
 
-    </div>
-    <div class="row">
-        <div class="links col-7">
-            <div class="erlaeuterung">
-                <p>Geben Sie den rechtsgültigen Vereins- bzw. Firmennamen und die Rechtsform gemäß Vereinsregister/Firmenbuch an und laden Sie einen aktuellen Vereinsregister-/Firmenbuchauszug (nicht älter als 6 Monate) hoch. <br> Geben Sie die Kontaktdaten
-                    der einreichenden Organisation an.</p>
-                <p class="hinweis">
-                    <span class="worthinweis">Hinweis:</span> Die Kursstandorte sind später einzutragen. Hier sind ausschließlich die Kontaktdaten der einreichenden Organisation anzugeben.
-                </p>
-            </div>
-            <table class="ansuchenbegutachtung">
-                <tr>
-                    <td class="chiffre">
-                        &nbsp;
-                    </td>
-                    <td class="labeltext">
-                        Rechtsgültiger Vereins- bzw. Firmenname
-                    </td>
-                    <td class="daten">
-                        {stammdaten.name}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-                        &nbsp;
-                    </td>
-                    <td class="labeltext">
-                        Markenname bzw. Organisationseinheit:
-                    </td>
-                    <td class="daten">
-                        {stammdaten.markenname}
-
-                    </td>
-                </tr>
-                <tr class="linie">
-                    <td colspan="3"></td>
-                    <!-- ------------------------------ -->
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        Rechts-/Organisationsform:
-                    </td>
-                    <td class="daten">
-                        <ieb:arrayValue array="{settings.static.rechtsform}" key="{stammdaten.rechtsform}" fallback="fehlt" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        tätig seit:
-                    </td>
-                    <td class="daten">
-                        {stammdaten.seit} 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        Nachweis:
-                    </td>
-
-                    <td class="daten">
-                        
-                        <f:render partial="Form/UploadList" arguments="{
-                            media:'{stammdaten.nachweis}',
-                            anmerkung:'',
-                        }" />
-
-                    </td>
-                </tr>
-                <tr class="linie">
-                    <td colspan="3"></td>
-                    <!-- ------------------------------ -->
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        Adresse und Kontakt:
-                    </td>
-                    <td class="daten">
-                        {stammdaten.strasse}<br />{stammdaten.plz} {stammdaten.ort}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        E-Mail:
-                    </td>
-                    <td class="daten">
-                        <a href="mailto:{stammdaten.email}">{stammdaten.email}</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-                        &nbsp;
-                    </td>
-                    <td class="labeltext">
-                        Telefon:
-                    </td>
-                    <td class="daten">
-                        {stammdaten.telefon}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="chiffre">
-
-                    </td>
-                    <td class="labeltext">
-                        Website:
-                    </td>
-                    <td class="daten">
-                        <f:if condition="{stammdaten.website}">
-                            <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
-                        </f:if>
-                    </td>
-                </tr>
-            </table>
-            <div class="abstand-mittel"></div>
-        </div>
-        <div class="rechts col-5">
-            <!-- alte Kommentare hier? -->
-        </div>
-    
-    </div>
-    </div>
-</div>
-
-        <!-- A.2 Stammdaten #################################################### -->
-
-        <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA2Status}" id="kA2">
-            <div class="col">
-                            <div class="kriteriumtitel">
-                <div class="row">
-                    <div class="col-6">
-                        <h2>A.2. QUALITÄT DES ANBIETERS</h2>
-                    </div>
-                    <div class="col-6 right">
-                        <div class="infoknopf"></div>
-                    </div>
-                </div>
-
-            </div>
-
-                <div class="row">
-                    <div class="links col-7">
-                        <div class="kriteriumteil">
-                            <h3>A.2.1 Leitbild</h3>
-                            <div class="erlaeuterung">
-                                <div class="showinfobox" id="b-2-c-hilfe">
-                                    <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
-                                    <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-                                    <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
-                                        Prozentsatz des Online-Angebots (maximal 30%)</p>
-                                </div>
-                                <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
-                            </div>
-                            <f:render partial="Form/UploadList" arguments="{
-                                media:'{stammdaten.leitbildDatei}',
-                                anmerkung:'{stammdaten.leitbild}',
-                            }" />
-
-
-                            
-                        </div>
-                        <div class="kriteriumteil">
-                            <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
-                            <f:if condition="{stammdaten.qmsTyp}=1">
-                                <f:then>
-                                    <p>Die Organisation verfügt über Ö-Cert.</p>
-
-                                    <f:render partial="Form/UploadList" arguments="{
-                                        media:'{stammdaten.qmsZertifikatDatei}',
-                                        anmerkung:'{stammdaten.qmsZertifikat}',
-                                    }" />
-
-
-                                    <div class="erlaeuterung">
-                                        <p class="hinweis"><span class="worthinweis">Hinweis:</span> Stellen Sie sicher, dass stets ein aktuelles Ö-Cert hochgeladen ist.</p>
-                                    </div>
-                                </f:then>
-                                <f:else>
-                                    <p>Die Organisation verfügt über kein Ö-Cert.</p>
-                                    <div class="erlaeuterung">
-                                        <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
-                                        </p>
-                                        <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet
-                                            wird. Denken Sie dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
-                                        <p><span class="halbstark">Anforderungen an die Infrastruktur:</span> Nennen Sie die Kriterien, nach denen Sie Ihre Räumlichkeiten auswählen/gestalten, um ein erwachsenengerechtes Lernen zu ermöglichen (Räumlichkeiten,
-                                            Größe, Lage, Erreichbarkeit, technische Ausstattung, Barrierefreiheit).</p>
-                                        <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
-                                    </div>
-                                    <f:render partial="Form/UploadList" arguments="{
-                                        media:'{stammdaten.qualitaetSicherungDatei}',
-                                        anmerkung:'{stammdaten.qualitaetsSicherung}',
-                                    }" />
-
-                                </f:else>
-                            </f:if>
-
-                        </div>
-                        <div class="kriteriumteil">
-                            <h3>A.2.3 Qualitätssicherung Personal</h3>
-                            <div class="erlaeuterung">
-                                <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
-                                    geregelt sind.</p>
-                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Angebotssteuerung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
-                                    Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
-                                <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung
-                                    verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
-                                <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
-
-                                <p class="erklaerung"> Ich bestätige, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen:
-                                    &nbsp;
-                                </p>
-                            </div>
-
-                            <f:render partial="Form/UploadList" arguments="{
-                                media:'{stammdaten.qualitaetPersonalDatei}',
-                                anmerkung:'{stammdaten.qualitaetPersonal}',
-                            }" />
-
-
-                        </div>
-                    </div>
-                    <div class="rechts col-5">
-                        
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
 
         <!-- B.1. Eckdaten zum Angebot #################################################### -->
@@ -380,10 +128,10 @@
                             <p class="hinweis">Hinweis: Wird ein Bildungsangebot von einem Träger in mehreren Bundesländern durchgeführt, ist für jedes Bundesland ein eigenes Akkreditierungsansuchen zu stellen.</p>
                             <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert
-                                implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
-                            </p>
+                           
                         </div>
+
+                        
 
                         <p>Bundesland: <b>{settings.static.bundesland.{ansuchen.bundesland}}</b>                            
                             </p>
@@ -394,6 +142,10 @@
                                 <div class="standort">{standort.name} <br><span class="standortdetails">{standort.adresse}<br>{standort.plz} {standort.ort}</span> </div>
                                 
                             </f:for>
+
+                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                            </p>
+                            <div class="abstand-gross"></div>
                         
                     </div>
                     <div class="rechts col-5">
@@ -535,7 +287,8 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.</div>
+                            <div class="showinfobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.<br>
+                                Es muss für die Teilnehmenden ersichtlich sein, dass die Kurse für sie kostenlos sind.</div>
                             <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird auf diese eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen
                                 Sie dar, wie Sie Ihre Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie zusätzlich einen Folder, eine Kurs-Einladung, ein Plakat o.ä.
                                 hoch.
@@ -580,8 +333,7 @@
                             <div class="infobox" id="b-2-c-hilfe">
                                 <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
                                 <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-                                <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
-                                    Prozentsatz des Online-Angebots (maximal 30%)</p>
+                                <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots (maximal 30%)</p>
                             </div>
                             <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
                             <ul>
@@ -603,9 +355,11 @@
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
 
-                        <f:if condition="{ansuchen.fernlehre}">
-                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
-                        </f:if>
+                        <p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+
+                        <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                        
+                        <div class="abstand-mittel"></div>
 
                         <p><i>Zielgruppengerechter Lernprozess</i></p>
                         <f:render partial="Form/UploadList" arguments="{
@@ -633,6 +387,11 @@
                             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
                             <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
                         </div>
+                        <f:if condition="{ansuchen.typ}==2">
+                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird: {f:if(condition: '{ansuchen.erklaerungTeilB}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            <div class="abstand-mittel"></div>
+                        </f:if>
+                        
                         <p><i>Kompetenzerhebung</i></p>
                         <f:render partial="Form/UploadList" arguments="{
                             media:'{ansuchen.lernstandserhebung}'
@@ -649,8 +408,11 @@
                             media:'{ansuchen.diversity}'
                         }" />
 
-                        <p><i>Kommentar zu allen drei Uploads:</i></p>
-                        <p>{ansuchen.didaktikKommentar}</p>
+                        <f:if condition="{ansuchen.didaktikKommentar}">
+                            <label>Kommentar zu allen drei Uploads:</label>
+                            <p>{ansuchen.didaktikKommentar}</p>
+                        </f:if>
+                        
 
                     </div>
                     </div>
@@ -684,8 +446,8 @@
                             <div class="showinfobox" id="b-2-d-hilfe">
                                 <p>Das Beratungskonzept lässt auf ein professionelles und zielgruppenadäquates Verständnis von Beratung und Begleitung schließen.</p>
                             </div>
-                            <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle
-                                externer sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
+                            <p>Stellen Sie Ihr Beratungsangebot inhaltlich, organisatorisch und methodisch (siehe Programmplanungsdokument Kapitel 3.2.2.) sowie die Möglichkeiten der Inanspruchnahme (nach Vereinbarung, zu fixen Sprechzeiten etc.) dar. Im Falle externer sozialpädagogischer Beratung und/oder Übergangsberatung ist ein Kooperationsnachweis hochzuladen.</p>
+                            <p>Stellen Sie dar, wie sichergestellt wird, dass pro Standort ein/e anerkannte Berater/in eingesetzt wird.</p>
                             <p class="hinweis">Hinweis: Beschreibung max. 2 Seiten</p>
                         </div>
 
@@ -693,12 +455,9 @@
                             media:'{ansuchen.beratungDatei}',
                             anmerkung:'{ansuchen.beratung}'
                         }" />
-                        <h4>Kinderbetreuung</h4>
-                        <f:if condition="ansuchen.kinderbetreuung">
-                            <p>
-                                Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.
-                            </p>
-                        </f:if>
+                        <div class="abstand-mittel"></div>
+                        <label>Kinderbetreuung</label>
+                        <p>Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                     </div>
                 </div>
                 <div class="rechts col-5">
@@ -726,7 +485,17 @@
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="links col-7">
+                    <div class="erlaeuterung">
+                        <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
+                        <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
+                    </div>
+                </div>
+                <div class="rechts col-5">
+                    
+                </div>
+            </div>
             <f:for each="{verantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
@@ -747,20 +516,8 @@
                 </div>
             </f:for>
 
+            <div class="row bg-f0">&nbsp;</div>
 
-                <div class="row">
-                    <div class="links col-7">
-                        <div class="erlaeuterung">
-                            <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
-                            <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale
-                                Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
-                        </div>
-                    </div>
-                    <div class="rechts col-5">
-                        
-                    </div>
-
-                </div>
             </div>
         </div>
 
@@ -780,7 +537,17 @@
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="links col-7">
+                    <div class="erlaeuterung">
+                        <div class="showinfobox" id="c-2-hilfe">
+                            <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
+                            <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rechts col-5"></div>
+            </div>
                 <f:for each="{trainer}" as="t">
                     <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7 td-knopf">
@@ -791,21 +558,9 @@
                         </div>
                     </div>
                 </f:for>
-                        
+                
+                <div class="row bg-f0">&nbsp;</div> 
 
-                <div class="row">
-                    <div class="links col-7">
-                        <div class="erlaeuterung">
-                            <div class="showinfobox" id="c-2-hilfe">
-                                <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rechts col-5">
-                        
-                    </div>
-
-                </div>
             </div>
         </div>
 
@@ -826,7 +581,22 @@
                         </div>
         
                     </div>
-        
+                    <div class="row">
+                        <div class="links col-7">
+                            <div class="kriteriumteil">
+                                <div class="erlaeuterung">
+                                    <div class="showinfobox" id="c-3-hilfe">
+                                        <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
+                                        <p class="hinweis">
+                                            Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rechts col-5">
+                        </div>
+                    </div>
                     <f:for each="{berater}" as="t">
                         <div class="row person" id="berater-{t.uid}">
                             <div class="links col-7 td-knopf">
@@ -840,19 +610,8 @@
                     </f:for>
         
                     
-                        <div class="row">
-                            <div class="links col-7">
-                                <div class="kriteriumteil">
-                                    <div class="erlaeuterung">
-                                        <div class="showinfobox" id="c-3-hilfe">
-                                            <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rechts col-5">
-                            </div>
-                        </div>
+
+                    <div class="row bg-f0">&nbsp;</div>
                     </div>
                 </div>
 
@@ -875,20 +634,17 @@
             <div class="begutachtung-kriterium" id="k1">
                 <div class="row">
 
-                    <div class="col erlaeuterung" style="background:#DADBCF;margin-top:0;">
-                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener
-                            Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren.
+                    <div class="col" style="background:#DADBCF;margin-top:0;">
+                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16 UE/Jahr bzw. 64 UE/Programmperiode. Die Vereinbarungen sind von der Institution
-                            für allfällige Kontrollen aufzubewahren.
+                        <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16  für allfällige Kontrollen aufzubewahren: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                         <f:if condition="{ansuchen.typ}=2">
-                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen
-                                und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
+                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </f:if>
-                        <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben.
+                        <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden.
+                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                     </div>
 

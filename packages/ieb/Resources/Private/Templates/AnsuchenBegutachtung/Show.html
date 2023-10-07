@@ -499,8 +499,7 @@
                             <p class="hinweis">Hinweis: Wird ein Bildungsangebot von einem Träger in mehreren Bundesländern durchgeführt, ist für jedes Bundesland ein eigenes Akkreditierungsansuchen zu stellen.</p>
                             <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
-                                {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            
                         </div>
 
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
@@ -530,6 +529,9 @@
                                         </f:if>
                                 </f:for>
                             </f:if>
+
+                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                                {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                     </div>
                     <div class="rechts col-5">
 
@@ -646,7 +648,8 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.</div>
+                            <div class="showinfobox" id="b-2-a-hilfe">Auf Transparenz und eine zielgruppenadäquate Ansprache (bzgl. Niederschwelligkeit, Mehrsprachigkeit, Erreichbarkeit, u.a.) ist zu achten.<br>
+                            Es muss für die Teilnehmenden ersichtlich sein, dass die Kurse für sie kostenlos sind.</div>
                             <p>Welche besonderen Bedarfe hat Ihre (angestrebte) Zielgruppe und wie wird auf diese eingegangen (organisatorisch, zeitlich, örtlich)? Beschreiben Sie, welche Maßnahmen gesetzt werden, um die Zielgruppe zu erreichen und stellen
                                 Sie dar, wie Sie Ihre Angebote bewerben. Geben Sie auch an, wie Sie in der Region vernetzt sind und nennen Sie exemplarisch Kooperationspartner.<br> Laden Sie zusätzlich einen Folder, eine Kurs-Einladung, ein Plakat o.ä.
                                 hoch.
@@ -699,8 +702,7 @@
                             <div class="infobox" id="b-2-c-hilfe">
                                 <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
                                 <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-                                <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
-                                    Prozentsatz des Online-Angebots (maximal 30%)</p>
+                                <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots (maximal 30%)</p>
                             </div>
                             <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
                             <ul>
@@ -724,6 +726,7 @@
 
                             <p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                             <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+
                             <div class="abstand-mittel"></div>
                         
 
@@ -753,8 +756,12 @@
 
 
                             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
-                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird: {f:if(condition: '{ansuchen.erklaerungTeilB}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            
                         </div>
+                        <f:if condition="{ansuchen.typ}==2">
+                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird: {f:if(condition: '{ansuchen.erklaerungTeilB}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            <div class="abstand-mittel"></div>
+                        </f:if>
                         <label>Kompetenzerhebung</label>
                         <f:render partial="Form/UploadListDiff" arguments="{
                             media:'{ansuchen.lernstandserhebung}',
@@ -833,10 +840,9 @@
                                 diff:'{diff.beratungDatei}',
                                 diffanmerkung:'{diff.beratung_text}'
                             }" />
-                            <div class="abstand-gross"></div>
+                            <div class="abstand-mittel"></div>
                             <label>Kinderbetreuung</label>
-                                <p>
-                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                            <p>Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                                 </p>
                         </div>
                     </div>
@@ -1064,6 +1070,7 @@
                             <div class="showinfobox" id="c-2-hilfe">
                                 <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
                             </div>
+                            <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -1177,7 +1184,7 @@
                         </p>
 
                         <f:if condition="{ansuchen.typ}=2">
-                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
+                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </f:if>
 
                         <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}

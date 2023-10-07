@@ -78,6 +78,9 @@ hr.dunkel {
     margin: 8px 0;
 }
 
+.bg-f0 {
+    background: var(--f0b);
+}
 .klein {
     font-size: 0.8em;
     color: var(--f4);
