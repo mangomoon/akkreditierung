@@ -375,22 +375,6 @@ function reqleerLoeschen() {
     });
 }
 
-// AnsuchenBegutachtung, etc. Set StatusAfterReview
-
-function setStatusAfterReview() {
-    b = 1;
-    sar = 0;
-    $('.ansuchen .knopf input').each(function() {
-        a = $(this).val();
-        if($(this).is(':checked')) {
-            if(a>2) {
-                b = 3;
-            } 
-            $('#sar').val(b);
-            
-        } 
-    });
-}
 
 function qualifikationPsaSprache() {
 
@@ -721,8 +705,6 @@ function qualifikationPsaSprache() {
             $(this).parent().parent().parent().find('.komm-ext').hide();
         }
 
-        setStatusAfterReview();
-
      });
 
      $('.textbausteinoeffner').click(function() {
@@ -797,6 +779,49 @@ function qualifikationPsaSprache() {
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
 
+     $("#ansuchenbegutachtung").submit(function(e) {
+
+        sar = 0;
+        b = 0;
+        c = 0;
+        x = 0;
+        z= 0;
+        sarst = 0;
+        $('.sartest').each(function() {
+            if ($(this).is(':checked') && !$(this).hasClass('f-stammdatenReviewA1') && !$(this).hasClass('f-stammdatenReviewA2')) {
+                a = $(this).val();
+                if (a ==1) {
+                    x++;
+                } else if (a==4) {
+                    b = 3;
+                } 
+            } else if ($(this).is(':checked') && ($(this).hasClass('f-stammdatenReviewA1') || $(this).hasClass('f-stammdatenReviewA2'))) {
+                
+                y = $(this).val();
+
+                if (y ==1) {
+                    z++;
+                } else if (y==4) {
+                    c = 3;
+                }
+            }
+        });
+        if (x == 9) {
+            b = 1;
+        }
+        if (z == 2) {
+            c = 1;
+        }
+        //console.log("b: " +b + " c: " + c);
+
+        $('#sar').val(b);
+        $('#sar-stammdaten').val(c);
+
+
+
+
+        //e.preventDefault(); // Achtung!
+     });
 
      $("#beraterbegutachtung").submit(function() {
         

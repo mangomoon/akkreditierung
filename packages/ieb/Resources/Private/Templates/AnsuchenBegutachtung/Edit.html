@@ -11,7 +11,7 @@
     {diffAsJson -> f:format.raw()}
     <f:render partial="FormErrors" />
     <div class="abstand-gross"></div>
-    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}">
+    <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}" id="ansuchenbegutachtung">
         {stammdaten -> f:variable(name: 'stammdatenorig')} 
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
         {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
@@ -1303,6 +1303,7 @@
         </div>
 
         <f:form.hidden property="statusAfterReview" id="sar" value="0" />
+        <f:form.hidden property="stammdatenStatusAfterReview" id="sar-stammdaten" value="0" />
         
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
@@ -1318,19 +1319,5 @@
 </f:section>
 
 
-
-<f:section name="comment">
-
-</f:section>
-
-<f:section name="singleFile">
-    <ieb:fal path="{path}">
-        <f:if condition="{file}">
-            ext: {file.extension}<br>
-            size: {f:format.bytes(value:file.size)}<br>
-            <f:image image="{file}" width="100c" height="100c" />
-        </f:if>
-    </ieb:fal>
-</f:section>
 
 </html>
