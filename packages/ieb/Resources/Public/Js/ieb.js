@@ -314,25 +314,6 @@ function oeffnenTrainerBegutachtung() {
              $('.komm-ext-1').show();
              $('.komm-ext-2').show();
     }
-    $("#sarBabi").val(0);
-    $("#sarPsa").val(0);
-    // Wenn Status ok, dann sar = 1
-         if((a<3) && (c<3)) {
-            $("#sarBabi").val(1);
-         } else if (a+c==0) {
-            $("#sarBabi").val(0);
-         }
-         else {
-            $("#sarBabi").val(3);
-         }
-         if((b<3) && (d<3)) {
-            $("#sarPsa").val(1);
-         } else if (b+d==0) {
-            $("#sarPsa").val(0);
-         }
-         else {
-            $("#sarPsa").val(3);
-         }
 
     // console.log("a: "+ a + " | b: " + b +  " | c: " + c + " | d: " + d + " | s: " + s);
 
@@ -376,6 +357,15 @@ function oeffnenBeraterBegutachtung() {
     } else {
         $('.komm-ext').show();
     }
+
+    a = parseInt(a);
+    b = parseInt(b);
+    if (a + b == 2) {
+        $('#sar').val(1);
+    } else if ((a > 2) || (b > 2)) {
+        $('#sar').val(3);
+    }
+
 }
 
 // Löschen der Validierung für Uploads bei ACTION=new
@@ -700,24 +690,6 @@ function qualifikationPsaSprache() {
 
 
 
-     // ######################################## FORM Trainer statusAfterReview setzen bei Edit durch TR
-     $("#sarPsa").val(0);
-     $("#sarBabi").val(0);
-     $( ".i-psa input" ).on( "change", function() {
-        sp = 2;
-        if ($(this).hasClass('status-negativ')) {
-            sp = 3;
-        }
-        $("#sarPsa").val(sp);
-      } );
-      $( ".i-babi input" ).on( "change", function() {
-        sb = 2;
-        if ($(this).hasClass('status-negativ')) {
-            sb = 3;
-        }
-        $("#sarBabi").val(sb);
-      } );
-
 
      // ######################################## überall statusAfterReview setzen bei Edit 
     //   wenn Änderung vorgenommen wird: s = 2
@@ -868,6 +840,7 @@ function qualifikationPsaSprache() {
         var b = '#trainer-'+ t +' .person-statuskugel-b';
         var c = '#trainer-'+ t +' .person-statuskugel-c';
         var d = '#trainer-'+ t +' .person-statuskugel-d';
+        // Bildungsbereich:
         var at = $('#at').html();
         
         if (at == 1) {
@@ -910,6 +883,43 @@ function qualifikationPsaSprache() {
         } else {
             $('#okbabi').val(1);
         }
+
+        // ############### SAR
+
+        if (at == 1) {
+            //mb = $('#sarBabi').val();
+            nb = 0;
+            as = parseInt(as);
+            bs = parseInt(bs);
+            if (as + bs == 2) {
+                //nb = 1,
+                $('#sarBabi').val(1);
+            } else if ((bs > 2) || (as > 2)) {
+                //nb = 2;
+                $('#sarBabi').val(3);
+            }  
+        }
+
+
+        if (at == 2) {
+            //mp = $('#sarPsa').val();
+            np = 0;
+            cs = parseInt(cs);
+            ds = parseInt(ds);
+            if (cs + ds == 2) {
+                //np = 1;
+                $('#sarPsa').val(1);
+            } else if ((cs > 2) || (ds > 2)) {
+                //np = 2;
+                $('#sarPsa').val(3);
+            }
+            //console.log("np: " + np)
+            //console.log("cs: " +cs+" ds: "+ds);
+        }
+
+
+
+        // ############### SAR Ende
 
         parent.$.fancybox.close();
 

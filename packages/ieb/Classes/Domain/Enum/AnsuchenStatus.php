@@ -168,7 +168,7 @@ enum AnsuchenStatus: int
      /**
      * @return int[]
      */
-    public static function statusForCertificate(): array
+    public static function statusAkkreditiert(): array
     {
         return [
             self::AKKREDITIERT->value,
