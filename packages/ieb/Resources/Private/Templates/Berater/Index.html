@@ -104,19 +104,25 @@
                                             <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
                                         </f:then>
                                         <f:else>
-                                            <f:switch expression="{berater.reviewC3Status}">
-                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                                            </f:switch>
-                                            <f:switch expression="{berater.reviewC32Status}">
-                                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                                            </f:switch>
+                                            <f:if condition="!{relationUsagesInReview}">
+                                                <f:then>
+                                                    <f:switch expression="{berater.reviewC3Status}">
+                                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                                    </f:switch>
+                                                    <f:switch expression="{berater.reviewC32Status}">
+                                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                                    </f:switch>
+                                                </f:then>
+                                                <f:else>
+                                                    <span class="titleview knopfrund in-begutachtung" title="In Begutachtung"></span>
+                                                </f:else>
+                                            </f:if>
                                         </f:else>
                                     </f:if>
-
                             </td>
                             <td class="td-knopf">
                                 <f:link.action action="show" title="Datensatz anzeigen" class="knopf-quadratisch show" arguments="{berater : berater}">

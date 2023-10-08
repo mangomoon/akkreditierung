@@ -129,6 +129,12 @@ class AnsuchenController extends BaseController
                 case 140:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
+                case 200:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    break;
+                case 220:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    break;
             }
             $this->eventDispatcher->dispatch(new Event\AnsuchenEinreichenEvent($previousStatus, $ansuchen, self::getCurrentUser()));
             $this->ansuchenRepository->updateJsonRelations($ansuchen, $this->stammdatenRepository->getLatest());

@@ -358,14 +358,6 @@ function oeffnenBeraterBegutachtung() {
         $('.komm-ext').show();
     }
 
-    a = parseInt(a);
-    b = parseInt(b);
-    if (a + b == 2) {
-        $('#sar').val(1);
-    } else if ((a > 2) || (b > 2)) {
-        $('#sar').val(3);
-    }
-
 }
 
 // Löschen der Validierung für Uploads bei ACTION=new
@@ -467,13 +459,47 @@ function qualifikationPsaSprache() {
          validierenansuchen();
      });
 
-     $("form.tr").submit(function() {
+     // on SUBMIT Berater/Ansuchen
+     $("form.tr").submit(function(e) {
          validieren();
+        saralt = $('#sar').val();
+        sar= 0;
+         $('input').each(function() {
+
+            if($(this).hasClass('geaendert')) {
+                switch (saralt) {
+                    case 0: 
+                        sar = 0
+                    case 1:
+                        sar = 2
+                    case 3:
+                        sar = 4
+                }
+                if (($(this).hasClass('status-negativ')) && (saralt == 3)) {
+                    sar = 5;
+                }
+            }
+
+         });
+
+
+        $('#sar').val(sar);
+        
+
+        //console.log("saralt: " + saralt + " sar: " + sar);
+
+
+
+
+        //e.preventDefault();
      });
+
+
 
      $("form.trtrainer").submit(function() {
          validierentr();
      });
+
 
     //  Submit Standorte mit Frage 
 
@@ -510,6 +536,7 @@ function qualifikationPsaSprache() {
          }
      });
 
+     // nur bei NEW in T/B
      $("#submitstartperson").click(function() {
         var vn = $('#nachname').val().length;
         var nn = $('#vorname').val().length;
@@ -523,6 +550,7 @@ function qualifikationPsaSprache() {
          }
      });
 
+     // nur bei NEW Ansuchen
      $("form.transuchenneu").submit(function(event) {
          if (($('#typ').val() == 0) || ($('#name').val() == '')) {
 
@@ -675,17 +703,18 @@ function qualifikationPsaSprache() {
 
 
 
-     // ######################################## überall statusAfterReview setzen bei Edit 
-    //   wenn Änderung vorgenommen wird: s = 2
-    //   wenn Änderung an einem Input, das zu einem negativen Status gehört, vorgenommen wird: s = 3
+    // ######################################## überall statusAfterReview setzen bei Edit 
+    //   wenn sar = 0 -> s = 0
+    //   wenn sar = 1 -> s = 2
+    //   wenn Änderung an einem Input, das zu einem negativen Status gehört, vorgenommen wird: 
+    //   wenn s = 3 -> s = 5 
+    //   wenn andere Änderung wenn s = 3 -> s = 4
+    //   
 
-     $( ".sar input" ).on( "change", function() {
-        s = 2;
-        if ($(this).hasClass('status-negativ')) {
-            s = 3;
-        }
-        $("#sar").val(s);
+     $( "input" ).on( "change", function() {
+        $(this).addClass('geaendert');
       } );
+
 
      // ######################################## FORM Begutachtung
 
@@ -846,7 +875,16 @@ function qualifikationPsaSprache() {
         $(b, window.parent.document).removeClass('status-4');
         $(b, window.parent.document).addClass(c2);
         
-        parent.$.fancybox.close();
+
+        s1 = parseInt(s1);
+        s2 = parseInt(s2);
+        if (s1 + s2 == 2) {
+            $('#sar').val(1);
+        } else if ((s1 > 2) || (s2 > 2)) {
+            $('#sar').val(3);
+        }  
+        console.log(s1,s2);
+        //parent.$.fancybox.close();
 
     });
 

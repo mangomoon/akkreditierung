@@ -29,14 +29,6 @@ enum AnsuchenStatus: int
     case AKKREDITIERUNG_ENTZOGEN = 810;
     case AKKREDITIERUNG_AUSGESETZT = 820;
 
-    public static function visibleForAg(int $value): bool
-    {
-        return in_array($value, [
-            self::NEU_IN_ARBEIT->value,
-            self::EINGEREICHT_ERSTEINREICHUNG->value,
-            self::NACHBESSERUNGSAUFTRAG->value,
-        ], true);
-    }
 
     /**
      * Alle Status, von Anträgen, die für die GS sichtbar sind

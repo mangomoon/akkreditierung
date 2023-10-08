@@ -801,7 +801,11 @@ span.knopfrund.auflage-3 {
 span.knopfrund.auflage-4 {
     background-image: url('../Img/rund_achtung-4.svg');
 }
-
+span.knopfrund.in-begutachtung {
+    background-image: none;
+    border-radius: 12px;
+    border: 3px solid var(--f3);
+}
 span.knopfrund.sar-0 {
     background-image: url('../Img/dot-gruen.svg');
     opacity: 0.2;
