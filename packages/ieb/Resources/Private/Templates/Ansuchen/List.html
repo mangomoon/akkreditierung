@@ -40,6 +40,7 @@
                                         <span class="ansuchenliste_ansuchenname">{item.name}</span>
                                         <br>
                                         <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                                        <f:render partial="Ansuchen/ListFrist" arguments="{ansuchen:item, stammdaten:stammdaten}" />
                                         <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status} | sar: {item.statusAfterReview}]</code>
                                     </td>
                                     <td class="td-knopf">

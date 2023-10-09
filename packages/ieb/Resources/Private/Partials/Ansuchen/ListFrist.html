@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+    
+    {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+    {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+    
+    <f:variable name="frist">2114327468</f:variable>
+
+    
+
+    <f:for each="{trainer}" as="t">
+        <f:if condition="{t.reviewFrist}">
+            <f:if condition="{f:format.date(date: '{t.reviewFrist.date}', format: 'U')} < {frist}">
+                <f:variable name="frist">{t.reviewFrist.date}</f:variable>
+                <f:variable name="fristtyp"> (Training)</f:variable>
+            </f:if>
+        </f:if>
+    </f:for>
+    <f:for each="{berater}" as="t">
+        <f:if condition="{t.reviewFrist}">
+            <f:if condition="{f:format.date(date: '{t.reviewFrist.date}', format: 'U')} < {frist}">
+                <f:variable name="frist">{t.reviewFrist.date}</f:variable>
+                <f:variable name="fristtyp"> (Beratung)</f:variable>
+            </f:if>
+        </f:if>
+    </f:for>
+    <f:if condition="{ansuchen.reviewTotalFrist}">
+        <f:if condition="{f:format.date(date: '{ansuchen.reviewTotalFrist.date}', format: 'U')} < {frist}">
+            <f:variable name="frist">{ansuchen.reviewTotalFrist.date}</f:variable>
+            <f:variable name="fristtyp"> (Allgemeine Frist)</f:variable>
+        </f:if>
+    </f:if>
+    <f:if condition="{ansuchen.reviewFristPruefbescheid}">
+        <f:if condition="{f:format.date(date: '{ansuchen.reviewFristPruefbescheid.date}', format: 'U')} < {frist}">
+            <f:variable name="frist">{ansuchen.reviewFristPruefbescheid.date}</f:variable>
+            <f:variable name="fristtyp"> (Prüfbescheid)</f:variable>
+        </f:if>
+    </f:if>
+    <f:comment>
+    <f:if condition="{stammdaten.reviewOecertFrist}">
+        <f:if condition="{f:format.date(date: '{stammdaten.reviewOecertFrist}.date', format: 'U')}{stammdaten.reviewOecertFrist} < {frist}">
+            <f:variable name="frist">{stammdaten.reviewOecertFrist.date}</f:variable>
+            <f:variable name="fristtyp"> (Ö-Cert)</f:variable>
+        </f:if>
+    </f:if>
+    </f:comment>
+    <f:if condition="{frist} != 2114327468"><span class="frist titleview" title="Nächste Frist {fristtyp}"><f:format.date format="d.m.Y">{frist}</f:format.date></span></f:if>
+</html>
