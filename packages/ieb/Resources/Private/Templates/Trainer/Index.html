@@ -52,7 +52,7 @@
                 </th>
                 <th>Info</th>
                 <th>letzte Änderung</th>
-                <!-- <th></th> -->
+                <th>Frist</th>
                 <th>BaBi</th>
                 <th>PSA</th>
                 <th class="td-knopf" colspan="3">
@@ -91,20 +91,12 @@
                             </f:for>"></span></f:if>
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                        <!--  
+
                         <td>
-                        <f:switch expression="{trainer.statusAfterReviewBabi}">
-                            <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                            <f:case value="3"><span class="titleview knopfrund muss-edit" title="Basisbildung – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
-                            <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                        </f:switch>
-                        <f:switch expression="{trainer.statusAfterReviewPsa}">
-                            <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Pflichtschulsabschluss – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                            <f:case value="3"><span class="titleview knopfrund muss-edit" title="Pflichtschulsabschluss – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
-                            <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Pflichtschulsabschluss – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                        </f:switch>
+                            <f:if condition="!{relationUsagesInReview} && {trainer.reviewFrist}">
+                                <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date>
+                            </f:if>
                         </td>
-                        -->
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>
                                 <td class="istok">

@@ -13,10 +13,13 @@
     </div>
 </div>
 
-            <f:if condition="({trainer.reviewC21BabiStatus}==4 || {trainer.reviewC22BabiStatus}==4) && {trainer.reviewC2BabiCommentTr}">
+            <f:if condition="({trainer.reviewC21BabiStatus}>2 || {trainer.reviewC22BabiStatus}>2) && {trainer.reviewC2BabiCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Basisbildung</label>
                     <p><f:format.nl2br>{trainer.reviewC2BabiCommentTr}</f:format.nl2br></p>
+                    <f:if condition="{trainer.reviewFrist}">
+                        <p>FRIST: <b><f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></p></b>
+                    </f:if>
                 </div>
             </f:if>
             <div class="abstand-mittel"></div>

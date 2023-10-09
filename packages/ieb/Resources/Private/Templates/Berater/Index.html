@@ -52,7 +52,7 @@
                     <th>Info</th>
                     <th>letzte Änderung</th>
 
-                    <th></th>
+                    <th>Frist</th>
                     <th class="td-knopf">
 
                     </th>
@@ -67,14 +67,6 @@
                 
                 <f:if condition="!{berater.archiviert}">
                     <f:then>
-
-                    <!-- <f:switch expression="{berater.statusAfterReview}">
-                        <f:case value="0"><tr class="istok"></f:case>
-                        <f:case value="1"><tr class="istok"></f:case>
-                        <f:case value="2"><tr class="muss-einreichen"></f:case>
-                        <f:case value="3"><tr class="muss-edit"></f:case>
-                        <f:case value="4"><tr class="muss-einreichen"></f:case>
-                    </f:switch> -->
                     <tr class="istok">
                             <td class="nachname">
                                 {berater.nachname}
@@ -91,14 +83,12 @@
                                 </f:if>
                             </td>
                             <td>{berater.tstamp -> f:format.date(format:'d.m.Y')}</td>
-                            <!-- <td>
-                                <f:switch expression="{berater.statusAfterReview}">
-                                    <f:case value="2"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                                    <f:case value="3"><span class="titleview knopfrund muss-edit" title="Basisbildung – Negative Begutachtung: Bearbeitung erforderlich"></span></f:case>
-                                    <f:case value="4"><span class="titleview knopfrund muss-einreichen" title="Basisbildung – Bearbeitet, noch nicht begutachtet: Ansuchen bitte einreichen!"></span></f:case>
-                                </f:switch>
-                            </td> -->
-                            <td class="">
+                            <td>
+                                <f:if condition="!{relationUsagesInReview} && {berater.reviewFrist}">
+                                    <f:format.date format="d.m.Y">{berater.reviewFrist}</f:format.date>
+                                </f:if>
+                            </td>
+                            <td style="min-width: 80px;">
                                 <f:if condition="!{berater.reviewC3Status} && !{berater.reviewC32Status} && {berater.ok}">
                                         <f:then>
                                             <span class="titleview knopfrund ok-grey" title="Angaben sind vollständig"></span>
