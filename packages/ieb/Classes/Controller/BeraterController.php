@@ -7,9 +7,8 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\Dto\BeraterSearch;
-use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
-use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\BeraterRepository;
+use GeorgRinger\Ieb\Event\BeraterArchiveEvent;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -106,6 +105,7 @@ class BeraterController extends BaseController
         if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
             $berater->setArchiviert(true);
             $this->beraterRepository->update($berater);
+            $this->eventDispatcher->dispatch(new BeraterArchiveEvent($berater));
         }
         
 

@@ -7,8 +7,8 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
-use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
+use GeorgRinger\Ieb\Event\TrainerArchiveEvent;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -111,6 +111,7 @@ class TrainerController extends BaseController
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
             $trainer->setArchiviert(true);
             $this->trainerRepository->update($trainer);
+            $this->eventDispatcher->dispatch(new TrainerArchiveEvent($trainer));
         }
         $this->redirect('index');
     }
