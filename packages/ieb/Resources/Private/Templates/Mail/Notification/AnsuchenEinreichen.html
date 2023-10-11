@@ -3,7 +3,8 @@
 
 
 
-    <f:section name="Subject">Das Ansuchen {ansuchen.nummer} – {ansuchen.name} wurde eingereicht</f:section>
+    <f:section name="Subject">Das Ansuchen {ansuchen.nummer} – {ansuchen.name} wurde <f:if condition="{ansuchen.status}>70"> erneut </f:if>eingereicht</f:section>
+    
     <f:section name="Title">Das Ansuchen {ansuchen.nummer} – {ansuchen.name} wurde eingereicht</f:section>
 
 
@@ -22,7 +23,7 @@
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
-        <f:if condition="{ansuchen.status}==140">
+        <f:if condition="{ansuchen.status}==150">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} nach "Akkreditiert mit Auflage" eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 

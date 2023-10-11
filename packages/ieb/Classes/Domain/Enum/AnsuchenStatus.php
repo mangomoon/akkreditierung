@@ -22,7 +22,7 @@ enum AnsuchenStatus: int
     case AKKREDITIERT_MIT_AUFLAGEN = 140;
     case AKKREDITIERT_MIT_AUFLAGEN_MUSS_NOCH_AKKREDITIERT_WERDEN = 142;
     case EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG = 150;
-    case BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG = 160;
+    case EINGEREICHT_ZUR_NACHAKKREDITIERUNG = 160;
     case ZURUECK_AN_TR_AKKREDITIERT = 200;
     case ZURUECK_AN_TR_AUFLAGE = 220;
     case NICHT_AKKREDITERT = 800;
@@ -43,6 +43,7 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_ZUR_BEGUTACHTUNG_2->value,
             self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
             self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value,
         ];
     }
 
@@ -67,6 +68,8 @@ enum AnsuchenStatus: int
             self::ZURUECK_AN_TR_AUFLAGE->value,
             self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
             self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::ZURUECK_AN_TR_AKKREDITIERT->value,
+            self::ZURUECK_AN_TR_AUFLAGE->value,
         ];
     }
 
@@ -84,11 +87,13 @@ enum AnsuchenStatus: int
             self::AKKREDITIERT->value,
             self::AKKREDITIERT_IN_ARBEIT_ZUR_NACHAKKREDITIERUNG->value,
             self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::ZURUECK_AN_TR_AKKREDITIERT->value,
+            self::ZURUECK_AN_TR_AUFLAGE->value,
         ], true);
     }
 
     /**
-     * Alle Status, von Anträgen, die für die GS sichtbar sind
+     * Alle Status, von Anträgen, die für die GS gesetzt werden können
      *
      * @return array<int>
      */
@@ -121,7 +126,7 @@ enum AnsuchenStatus: int
             self::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
             self::BEGUTACHTUNG_NACH_EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value,
             self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
-            self::BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value,
         ];
     }
 
@@ -172,7 +177,7 @@ enum AnsuchenStatus: int
             self::ZURUECK_AN_TR_AUFLAGE->value,
             self::AKKREDITIERT_MIT_AUFLAGEN_MUSS_NOCH_AKKREDITIERT_WERDEN->value,
             self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
-            self::BEGUTACHTUNG_NACH_EINREICHUNG_NACH_AKKREDITIERUNG->value
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value
         ];
     }
      /**

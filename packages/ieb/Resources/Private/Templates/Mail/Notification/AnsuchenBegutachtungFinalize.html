@@ -3,14 +3,7 @@
 
 
 
-    <f:section name="Subject">
-        <f:if condition="{ansuchen.status}<50">Nachbesserungen für {ansuchen.nummer} – {ansuchen.name}</f:if>
-        <f:if condition="{ansuchen.status}==100">Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if>
-        <f:if condition="{ansuchen.status}==140">Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name} mit Auflagen</f:if>
-        <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">Das Ansuchen {ansuchen.nummer} – {ansuchen.name} wurde zurückgestellt, bitte überarbeiten Sie Ihr Ansuchen.</f:if>
-        <f:if condition="{ansuchen.status}==800">Keine Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if>
-        <f:if condition="{ansuchen.status}==810">Entzug der Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if>
-    </f:section>
+    <f:section name="Subject"><f:if condition="{ansuchen.status}<50">Nachbesserungen für {ansuchen.nummer} – {ansuchen.name}</f:if><f:if condition="{ansuchen.status}==80">Nachbesserung zum Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if><f:if condition="{ansuchen.status}==100">Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if><f:if condition="{ansuchen.status}==140">Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name} mit Auflagen</f:if><f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">Das Ansuchen {ansuchen.nummer} – {ansuchen.name} wurde zurückgestellt, bitte überarbeiten Sie Ihr Ansuchen.</f:if><f:if condition="{ansuchen.status}==800">Keine Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if><f:if condition="{ansuchen.status}==810">Entzug der Akkreditierung des Ansuchens {ansuchen.nummer} – {ansuchen.name}</f:if></f:section>
     <f:section name="Title">Das Ansuchen {ansuchen.nummer} – {ansuchen.name}</f:section>
 
 
@@ -20,6 +13,13 @@
 
 
         <f:if condition="{ansuchen.status}<50">
+
+            <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
+            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+        
+        </f:if>
+
+        <f:if condition="{ansuchen.status}==80">
 
             <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
@@ -39,7 +39,7 @@
             <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungsdatum -> f:format.date(format:'d.m.Y')} bis 31.12.2027. </p>
             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.action action="certificateDownload" arguments="{ansuchen : ansuchen}" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie HIER herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
         </f:if>
 
         <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
