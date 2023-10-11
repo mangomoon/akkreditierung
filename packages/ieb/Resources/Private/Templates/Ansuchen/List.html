@@ -36,14 +36,154 @@
                                         <p>{item.nummer}</p>
                                         <p>
                                             <f:if condition="{item.editableByTr}">
-                                                <!-- ### INFO ###--><f:render partial="Ansuchen/ListInfo" arguments="{ansuchen:item, stammdaten:stammdaten}" /></p>
+                                                <!-- #################################################   LISTINFO   ############################################## -->
+
+    {item.copyTrainerData -> f:variable(name: 'trainer')}
+    {item.copyBeraterData -> f:variable(name: 'berater')} 
+    
+    <f:variable name="tsarBabi">0</f:variable>
+    <f:variable name="tsarPsa">0</f:variable>
+    <f:variable name="bsar">0</f:variable>
+
+    <f:for each="{trainer}" as="t">
+        <f:if condition="{item.typ}==1">
+            <f:then>
+                <f:if condition="{t.statusAfterReviewBabi} > {tsarBabi}">
+                    <f:variable name="tsarBabi">{t.statusAfterReviewBabi}</f:variable>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:if condition="{t.statusAfterReviewPsa} > {tsarPsa}">
+                    <f:variable name="tsarPsa">{t.statusAfterReviewBabi}</f:variable>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:for>
+    
+    <f:for each="{berater}" as="b">
+        <f:if condition="{b.statusAfterReview} > {bsar}">
+            <f:variable name="bsar">{b.statusAfterReview}</f:variable>
+        </f:if>
+    </f:for>
+
+    <code>
+        <f:for each="{item.trainer}" as="t">
+            <f:format.date format="d.m.Y">{t.reviewFrist}</f:format.date>
+        </f:for>
+        <f:format.date format="d.m.Y">{item.reviewTotalFrist}</f:format.date>
+    </code>
+
+    <!-- ANSUCHEN -->
+    <f:if condition="{item.ok} && ({item.statusAfterReview}==0)">
+        <span class="titleview knopfrund ok-grey" title="ANSUCHEN: Angaben sind vollständig"></span>
+    </f:if>
+    <f:if condition="!{item.ok} && ({item.statusAfterReview}==0)">
+        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben sind unvollständig"></span>
+    </f:if>
+    <f:if condition="{item.statusAfterReview}==1">
+        <span class="titleview knopfrund auflage-1" title="ANSUCHEN: Begutachtung positiv"></span>
+    </f:if>
+    <f:if condition="{item.statusAfterReview}==2">
+        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+    </f:if>
+    <f:if condition="{item.statusAfterReview}==3">
+        <span class="titleview knopfrund achtung-orange" title="ANSUCHEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
+    </f:if>
+    <f:if condition="{item.statusAfterReview}>3">
+        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
+    </f:if>
+
+
+    <!-- STAMMDATEN -->
+    <f:if condition="{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
+        <span class="titleview knopfrund ok-grey" title="STAMMDATEN: Angaben sind vollständig"></span>
+    </f:if>
+    <f:if condition="!{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
+        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben sind unvollständig"></span>
+    </f:if>
+    <f:if condition="{stammdaten.statusAfterReview}==1">
+        <span class="titleview knopfrund auflage-1" title="STAMMDATEN: Begutachtung positiv"></span>
+    </f:if>
+    <f:if condition="{stammdaten.statusAfterReview}==2">
+        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+    </f:if>
+    <f:if condition="{stammdaten.statusAfterReview}==3">
+        <span class="titleview knopfrund achtung-orange" title="STAMMDATEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
+    </f:if>
+    <f:if condition="{stammdaten.statusAfterReview}>3">
+        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
+    </f:if> 
+
+    <!-- TRAINING -->
+    <f:if condition="{item.typ}==1">
+        <f:then>
+            <f:if condition="{tsarBabi}==0">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen nicht begutachtet. Einreichung erforderlich."></span>
+            </f:if>
+            <f:if condition="{tsarBabi}==1">
+                <span class="titleview knopfrund auflage-1" title="TRAINING: Begutachtung positiv"></span>
+            </f:if>
+            <f:if condition="{tsarBabi}==2">
+                <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+            </f:if>
+            <f:if condition="{tsarBabi}==3">
+                <span class="titleview knopfrund achtung-orange" title="TRAINING: Negative Begutachtung(en). Bearbeitung erforderlich: <br><f:for each='{ansuchen.trainer}' as='t'>
+                    {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
+                </f:for>"></span>
+            </f:if>
+            <f:if condition="{tsarBabi}>3">
+                <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeit. Neueinreichung ist erforderlich"></span>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{tsarPsa}==0">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen nicht begutachtet. Einreichung erforderlich."></span>
+            </f:if>
+            <f:if condition="{tsarPsa}==1">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Begutachtung positiv"></span>
+            </f:if>
+            <f:if condition="{tsarPsa}==2">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+            </f:if>
+            <f:if condition="{tsarPsa}==3">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Negative Begutachtung(en). Bearbeitung erforderlich: <br><f:for each='{ansuchen.trainer}' as='t'>
+                    {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
+                </f:for>"></span>
+            </f:if>
+            <f:if condition="{tsarPsa}>3">
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
+            </f:if>
+        </f:else>
+    </f:if>
+
+
+    <!-- BERATUNG -->
+        <f:if condition="{bsar}==0">
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Personen nicht begutachtet. Einreichung erforderlich."></span>
+        </f:if>
+        <f:if condition="{bsar}==1">
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Begutachtung positiv"></span>
+        </f:if>
+        <f:if condition="{bsar}==2">
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+        </f:if>
+        <f:if condition="{bsar}==3">
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Negative Begutachtung(en). Bearbeitung erforderlich: <br><f:for each='{ansuchen.trainer}' as='t'>
+                {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
+            </f:for>"></span>
+        </f:if>
+        <f:if condition="{bsar}>3">
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
+        </f:if>    
+     
+<!-- #################################################   LISTINFO   Ende ############################################## -->
                                             </f:if>
                                     </td>
                                     <td>
-                                        <span class="ansuchenliste_ansuchenname">{item.name}</span>
+                                        <span class="ansuchenliste_ansuchenname">{item.name}</span> ### {tsarBabi}
                                         <br>
                                         <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
-                                        <f:render partial="Ansuchen/ListFrist" arguments="{ansuchen:item, stammdaten:stammdaten}" />
+                                        <f:if condition="{item.editableByTr}"><f:render partial="Ansuchen/ListFrist" arguments="{ansuchen:item, stammdaten:stammdaten}" /></f:if>
                                         <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status} | sar: {item.statusAfterReview}]</code>
                                     </td>
                                     <td class="td-knopf">
@@ -90,12 +230,36 @@
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
-                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
+
+                                        <f:if condition="{item.typ}==1">
+                                            <f:then>
+                                                <f:if condition="{item.einReichbarDurchTr} && (!{item.ok} || {bsar} == 3 || {stammdaten.statusAfterReview}==3 || {tsarBabi}==3 || {ansuchen.statusAfterReview}==3)">
+                                                    <f:then>
+                                                        <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
+                                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
+                                                        </f:if>
+                                                    </f:else>
+                                                    
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{item.einReichbarDurchTr} && (!{item.ok} || {bsar} == 4 || {stammdaten.statusAfterReview}==4 |||| {tsarPsa}==3 || {ansuchen.statusAfterReview}==3)">
+                                                    <f:then>
+                                                        <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
+                                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
+                                                        </f:if>
+                                                    </f:else>
+                                                    
+                                                </f:if>
+                                            </f:else>
                                         </f:if>
-                                        <f:if condition="{item.einReichbarDurchTr} && !{item.ok}">
-                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
-                                        </f:if>
+                                        
                                     </td>
                                 </tr>
                             </table>

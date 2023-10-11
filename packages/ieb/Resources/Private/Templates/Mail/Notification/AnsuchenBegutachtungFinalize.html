@@ -74,10 +74,9 @@
 
         <f:if condition="{ansuchen.status}==140">
             <p>&nbsp;</p>
-            <h4>Die Auflagen im Einzelnen</h4>
-            <p>{ansuchen.reviewB1CommentTr}{ansuchen.reviewB2CommentTr}{ansuchen.reviewC1CommentTr}{ansuchen.reviewC2CommentTr}{ansuchen.}{ansuchen.}{ansuchen.}{ansuchen.}{ansuchen.}{ansuchen.}</p>
-            und so weiter ...!!!
-
+            <p><b>Die Auflagen im Einzelnen</b></p>
+            <p>&nbsp;</p>
+            <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
         </f:if>
 
         </f:section>

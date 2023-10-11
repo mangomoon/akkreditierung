@@ -1,5 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
     
+<!-- #################################################   LISTINFO   ############################################## -->
+
     {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
     {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
     
@@ -113,7 +115,7 @@
                 </f:for>"></span>
             </f:if>
             <f:if condition="{tsarPsa}>3">
-                <span class="titleview knopfrund ok-grey" title="TRAINING: Angaben bearbeit. Neueinreichung ist erforderlich"></span>
+                <span class="titleview knopfrund ok-grey" title="TRAINING: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
             </f:if>
         </f:else>
     </f:if>
@@ -135,7 +137,9 @@
             </f:for>"></span>
         </f:if>
         <f:if condition="{bsar}>3">
-            <span class="titleview knopfrund ok-grey" title="BERATUNG: Angaben bearbeit. Neueinreichung ist erforderlich"></span>
+            <span class="titleview knopfrund ok-grey" title="BERATUNG: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
         </f:if>    
      
+<!-- #################################################   LISTINFO   Ende ############################################## -->
+
 </html>

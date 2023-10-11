@@ -888,7 +888,7 @@ function qualifikationPsaSprache() {
 
     });
 
-    $("#trainerbegutachtung").submit(function() {
+    $("#trainerbegutachtung").submit(function(e) {
         
         var t = $('#trainerId').val();
         var as = $("#trainerbegutachtung input.c21b:checked").val();
@@ -980,8 +980,8 @@ function qualifikationPsaSprache() {
             //console.log("cs: " +cs+" ds: "+ds);
         }
 
-
-
+        //console.log(as,bs);
+        //e.preventDefault(); // Achtung!
         // ############### SAR Ende
 
         parent.$.fancybox.close();
