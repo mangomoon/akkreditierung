@@ -40,3 +40,18 @@ services:
       - name: event.listener
         identifier: 'ext-ieb/ansuchen-zuteilung'
         event: GeorgRinger\Ieb\Event\AnsuchenZuteilungEvent
+
+  GeorgRinger\Ieb\EventListener\ArchiveActionListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-ieb/archive-angebotverantwortlicher'
+        event: GeorgRinger\Ieb\Event\AngebotVerantwortlichArchiveEvent
+        method: 'archiveAngebotVerantwortlich'
+      - name: event.listener
+        identifier: 'ext-ieb/archive-berater'
+        event: GeorgRinger\Ieb\Event\BeraterArchiveEvent
+        method: 'archiveBerater'
+      - name: event.listener
+        identifier: 'ext-ieb/archive-trainer'
+        event: GeorgRinger\Ieb\Event\TrainerArchiveEvent
+        method: 'archiveTrainer'

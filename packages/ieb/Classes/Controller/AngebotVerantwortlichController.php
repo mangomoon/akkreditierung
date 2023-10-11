@@ -6,10 +6,9 @@ namespace GeorgRinger\Ieb\Controller;
 
 
 use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
-use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository;
+use GeorgRinger\Ieb\Event\AngebotVerantwortlichArchiveEvent;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -135,6 +134,7 @@ class AngebotVerantwortlichController extends BaseController
         $this->check($angebotVerantwortlich);
         $angebotVerantwortlich->setArchiviert(true);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
+        $this->eventDispatcher->dispatch(new AngebotVerantwortlichArchiveEvent($angebotVerantwortlich));
 
         $this->redirect('index');
     }
