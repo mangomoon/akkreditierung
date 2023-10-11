@@ -55,7 +55,7 @@ final class ArchiveActionListener
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
 
         $rows = $queryBuilder
-            ->select('uid', 'name', 'status')
+            ->select('uid', 'name', 'status','status_after_review')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
                 $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, \PDO::PARAM_INT)),
