@@ -94,7 +94,9 @@
          $('#okpsa').attr('value', 1);
      }
 
-     console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+     //console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+
+
 
  }
 
@@ -498,6 +500,44 @@ function qualifikationPsaSprache() {
 
      $("form.trtrainer").submit(function() {
          validierentr();
+         sarBabialt = $('#sarBabi').val();
+         sarPsaalt = $('#sarPsa').val();
+        sarBabi= 0;
+        sarPsa= 0;
+         $('input').each(function() {
+
+            if(($('qualifikationBabiDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
+                switch (sarBabialt) {
+                    case 0: 
+                        sarBabi = 0
+                    case 1:
+                        sarBabi = 2
+                    case 3:
+                        sarBabi = 4
+                }
+                if (($(this).hasClass('status-negativ')) && (sarBabialt == 3)) {
+                    sarBabi = 5;
+                }
+            }
+            if(($('qualifikationPsaDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
+                switch (sarPsaalt) {
+                    case 0: 
+                        sarPsa = 0
+                    case 1:
+                        sarPsa = 2
+                    case 3:
+                        sarPsa = 4
+                }
+                if (($(this).hasClass('status-negativ')) && (sarPsaalt == 3)) {
+                    sarPsa = 5;
+                }
+            }
+         });
+
+
+        $('#sarBabi').val(sarBabi);
+        $('#sarPsa').val(sarPsa);
+
      });
 
 

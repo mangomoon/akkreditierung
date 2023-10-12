@@ -17,6 +17,7 @@
         "drlenux/array-smart-diff": "^1.0",
         "georgringer/ieb": "@dev",
         "georgringer/news": "^10",
+        "mehrwert/phpmyadmin": "^6",
         "helhum/typo3-console": "^8.0",
         "mangomoon/mangomoon": "dev-main",
         "mangomoon/mangomoonspecify": "@dev",

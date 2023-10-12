@@ -115,6 +115,12 @@
     </f:if> 
 
     <!-- TRAINING -->
+    <f:if condition="!{item.trainer}">
+        <f:then>
+            <span class="titleview knopfrund achtung-gelb" title="TRAINING: Noch keine Personen hinzugefügt"></span>
+        </f:then>
+        <f:else>
+
     <f:if condition="{item.typ}==1">
         <f:then>
             <f:if condition="{tsarBabi}==0">
@@ -155,9 +161,17 @@
             </f:if>
         </f:else>
     </f:if>
-
+</f:else>
+</f:if>
 
     <!-- BERATUNG -->
+
+    <f:if condition="!{item.berater}">
+        <f:then>
+            <span class="titleview knopfrund achtung-gelb" title="BERATUNG: Noch keine Personen hinzugefügt"></span>
+        </f:then>
+        <f:else>
+
         <f:if condition="{bsar}==0">
             <span class="titleview knopfrund ok-grey" title="BERATUNG: Personen nicht begutachtet. Einreichung erforderlich."></span>
         </f:if>
@@ -175,6 +189,9 @@
         <f:if condition="{bsar}>3">
             <span class="titleview knopfrund ok-grey" title="BERATUNG: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
         </f:if>    
+        </f:else>
+        </f:if>
+
      
 <!-- #################################################   LISTINFO   Ende ############################################## -->
                                             </f:if>
@@ -246,7 +263,7 @@
                                                 </f:if>
                                             </f:then>
                                             <f:else>
-                                                <f:if condition="{item.einReichbarDurchTr} && (!{item.ok} || {bsar} == 4 || {stammdaten.statusAfterReview}==4 |||| {tsarPsa}==3 || {ansuchen.statusAfterReview}==3)">
+                                                <f:if condition="{item.einReichbarDurchTr} && (!{item.ok} || {bsar} == 3 || {stammdaten.statusAfterReview}==4 |||| {tsarPsa}==3 || {ansuchen.statusAfterReview}==3)">
                                                     <f:then>
                                                         <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
                                                     </f:then>
