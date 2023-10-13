@@ -4,6 +4,15 @@
     <span class="main-menu-btn-icon"></span> Menü Sichtbarkeit wechseln
   </label>
     <ul id="main-menu" class="sm sm-simple">
+        <f:security.ifAuthenticated>
+            <f:then>
+                <li class="level-1"><f:link.page pageUid="9" id="topnavilogin">Logout</f:link.page></li>
+              </f:then>
+            <f:else>
+                <li class="level-1"><f:link.page pageUid="9" id="topnavilogin">Login</f:link.page></li>
+            </f:else>
+        </f:security.ifAuthenticated>
+
         <f:for each="{mainnavigation}" as="mainnavigationItem">
             <li id="linkto-{mainnavigationItem.data.uid}" class="level-1 {f:if(condition: mainnavigationItem.active, then:'current')}">
                 <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">

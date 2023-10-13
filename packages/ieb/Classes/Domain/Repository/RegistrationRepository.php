@@ -77,6 +77,7 @@ class RegistrationRepository
     public function updateUserFromInvitation(RegistrationInvitation $form): void
     {
         $userData = [
+            'username' => $form->username,
             'usergroup' => $this->extensionConfiguration->getUsergroupAktiv(),
             'password' => $this->generatePasswordHash($form->password),
         ];

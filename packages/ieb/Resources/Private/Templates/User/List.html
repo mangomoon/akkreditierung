@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 
-<f:section name="content">
+<f:section name="content"><f:debug>{_all}</f:debug>
     <table class="tx_ieb">
         <tr>
             <th>Benutzername</th>
@@ -37,8 +37,12 @@
                             <f:link.action action="archive" title="Person deaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
                         </f:if></td>
                     <td class="td-knopf">
-                        <f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
-                        </f:link.action>
+                        <f:if condition="{currentUser.tr_admin}">
+                            <f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}"></f:link.action>
+                        </f:if>
+                        <!--<f:if condition="{currentUser.uid}=={user.uid}">
+                            <f:link.action action="edit" title="Angaben bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}"></f:link.action>
+                        </f:if>-->
                     </td>
                 </tr>
             </f:then>

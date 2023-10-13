@@ -12,6 +12,7 @@
     <f:form action="update" name="user" object="{user}" >
     <f:render partial="User/FormFields" arguments="{user:user}" />
     <f:form.submit class="knopf-s" value="Speichern" />
+    <f:link.action class="knopf-s knopfersatz zurueck" action="list"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action>
     </f:form>
 </f:section>
 </html>

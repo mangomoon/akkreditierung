@@ -17,6 +17,7 @@
         <f:form.hidden property="userHash" />
         <fieldset>
             <legend></legend>
+            <f:render partial="Form/Input" arguments="{property: 'username', label: 'Benutzername', required:1}" />
             <f:render partial="Form/Input" arguments="{property: 'password', type:'password', label: 'Passwort', required:1}" />
             <f:render partial="Form/Input" arguments="{property: 'passwordRepeat', type:'password', label: 'Passwort wiederholen', required:1}" />
         </fieldset>

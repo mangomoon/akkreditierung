@@ -510,7 +510,7 @@ a.footernavi:hover {
 a.subnaviitem {
     padding: 12px;
     text-decoration: none;
-    background-color: #555555;
+    background-color: #d4d8ce;
     text-align: center;
     color: #fff;
     flex-grow: 1;

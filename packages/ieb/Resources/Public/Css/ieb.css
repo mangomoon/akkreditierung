@@ -1941,6 +1941,7 @@ select#field_upcomingStatus option[value=100] {
 ul.typo3-messages {
     background: var(--f0a);
     padding: 12px;
+    margin: 20px 0;
 }
 ul.typo3-messages li {
     list-style: none;

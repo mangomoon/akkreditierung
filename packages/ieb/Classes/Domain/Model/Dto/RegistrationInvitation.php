@@ -11,6 +11,7 @@ class RegistrationInvitation extends AbstractDomainObject
     public int $userId = 0;
     public string $userHash = '';
     public string $password = '';
+    public string $username = '';
     public string $passwordRepeat = '';
     public bool $dsgvo = false;
 

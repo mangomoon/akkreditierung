@@ -9,7 +9,8 @@
 
     <f:form action="create" name="newUser" object="{newUser}">
     <f:render partial="User/FormFields" />
-    <f:form.submit value="Person anlegen" class="formlink angebotssteuernde"/> &nbsp;&nbsp;Die Person erhält ein E-Mail mit einem Link zur Freischaltung.
+    <f:form.submit value="Person anlegen" class="knopf-s"/> &nbsp;&nbsp;Die Person erhält ein E-Mail mit einem Link zur Freischaltung. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <f:link.action class="knopf-s knopfersatz zurueck" action="list"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action>
     </f:form>
 </f:section>
 </html>
