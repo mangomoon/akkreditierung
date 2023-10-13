@@ -21,6 +21,11 @@ services:
       - name: 'console.command'
         command: 'ieb:fristUeberwachung'
         description: 'Send mails for fristen'
+  GeorgRinger\Ieb\Command\ImportCommand:
+    tags:
+      - name: 'console.command'
+        command: 'ieb:import'
+        description: 'Import data from old system'
 
   # Events
   GeorgRinger\Ieb\EventListener\AnsuchenEinreichenListener:

@@ -144,7 +144,7 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	lebenslauf int(11) unsigned DEFAULT '0',
 	qualifikationsnachweise int(11) unsigned DEFAULT '0',
 	lebenslauf_kommentar varchar(255) NOT NULL DEFAULT '',
-	qualifikationsnachweise_kommentar varchar(255) NOT NULL DEFAULT '',
+	qualifikationsnachweise_kommentar text NOT NULL DEFAULT '',
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	review_c3_status int(11) DEFAULT '0' NOT NULL,
@@ -225,7 +225,7 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	website varchar(255) NOT NULL DEFAULT '',
 	email varchar(255) NOT NULL DEFAULT '',
 	telefon varchar(255) NOT NULL DEFAULT '',
-	leitbild varchar(255) NOT NULL DEFAULT '',
+	leitbild text NOT NULL DEFAULT '',
 	leitbild_datei int(11) unsigned DEFAULT '0',
 	qms_zertifikat_datei int(11) unsigned DEFAULT '0',
 	qms_zertifikat text NOT NULL DEFAULT '',
@@ -283,3 +283,25 @@ CREATE TABLE tx_ieb_domain_model_textbausteine (
 );
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+CREATE TABLE fe_users (
+  import int(11) unsigned NOT NULL DEFAULT '0'
+);
+CREATE TABLE tx_ieb_domain_model_trainer (
+  import int(11) unsigned NOT NULL DEFAULT '0'
+);
+CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
+  import int(11) unsigned NOT NULL DEFAULT '0'
+);
+CREATE TABLE tx_ieb_domain_model_berater (
+  import int(11) unsigned NOT NULL DEFAULT '0'
+);
+CREATE TABLE tx_ieb_domain_model_stammdaten (
+  import int(11) unsigned NOT NULL DEFAULT '0'
+);
+CREATE TABLE sys_file (
+ import varchar(255) NOT NULL DEFAULT ''
+);
+CREATE TABLE sys_file_reference (
+  import varchar(255) NOT NULL DEFAULT ''
+);
