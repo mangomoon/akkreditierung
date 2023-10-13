@@ -59,7 +59,7 @@
                     
                 </td>
                         <td>
-                            <span class="ansuchenliste_ansuchenname">{item.name}</span>
+                            <span class="ansuchenliste_ansuchenname">{item.name}</span>{f:if(condition:'{item.pruefbescheidCheck}==1', then:'<span class="knopfrund pruefbescheid titleview" title="mit Prüfbescheid"></span>')}
                             <br>
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                             <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status}]</code>

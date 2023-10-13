@@ -61,20 +61,29 @@
         <div class="archiv">
             <h2>ARCHIV</h2>
             <table class="tx_ieb">
+                <tr>
+                    <th>Benutzername</th>
+                    <th><f:translate key="tx_ieb_domain_model_user.name" /></th>
+                    <th><f:translate key="tx_ieb_domain_model_user.email" /></th>
+                    <th>Admin</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
                 <f:for each="{users}" as="user">
                     <f:if condition="{user.archiviert}">
                         <tr>
                             <td>{user.username}</td>
                             <td>{user.firstname} <b>{user.lastname}</b></td>
                             <td><a href="mailto:{user.email}">{user.email}</a></td>
-                            <td>{f:if(condition:user.trAdmin,then:'ja',else:'nein')}</td>
+                            <td>{f:if(condition:user.trAdmin,then:'<span class="titleview knopfrund ok-grey" title="Admin"></span>',else:'')}</td>
             
                             <td class="td-knopf">
                                 <f:if condition="{currentUser.tr_admin}">
-                                    <f:link.action action="revive" title="Person reaktivieren" class="knopf-quadratisch hide" arguments="{user : user}"></f:link.action>
+                                    <f:link.action action="revive" title="Person reaktivieren" class="knopf-quadratisch revive" arguments="{user : user}"></f:link.action>
                                 </f:if></td>
-                            <td class="td-knopf"><f:link.action action="edit" title="Person bearbeiten" class="knopf-quadratisch edit" arguments="{user : user}">
-                            </f:link.action></td>
+                            <td class="td-knopf"></td>
+                            <td></td>
                         </tr>
                     </f:if>
                 </f:for>

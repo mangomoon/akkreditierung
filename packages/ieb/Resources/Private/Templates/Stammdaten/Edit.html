@@ -2,7 +2,6 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Edit Stammdaten</h1>
 
     <f:flashMessages />
 
@@ -10,7 +9,8 @@
 
     <f:form action="update" class="tr sar" name="stammdaten" object="{stammdaten}" pluginName="Stamm">
         <f:render partial="Stammdaten/FormFields" arguments="{stammdaten:stammdaten}" />
-        <f:form.submit value="Speichern" />
+        <f:form.submit value="Speichern" name="save" class="knopf-s"/>
+        <f:form.submit value="Speichern & Zurück" name="saveAndAnsuchen" class="knopf-s"/>
         <f:link.action class="knopf-s knopfersatz zurueck" action="index"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
     </f:form>
 </f:section>

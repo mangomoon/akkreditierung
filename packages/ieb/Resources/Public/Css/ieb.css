@@ -806,6 +806,15 @@ span.knopfrund.in-begutachtung {
     border-radius: 12px;
     border: 3px solid var(--f3);
 }
+span.knopfrund.pruefbescheid {
+    width: 12px;
+    height:12px;
+    background-image: none;
+    border-radius: 6px;
+    background-color:#a052ac;
+    vertical-align:super;
+    margin-left: 3px;
+}
 span.knopfrund.sar-0 {
     background-image: url('../Img/dot-gruen.svg');
     opacity: 0.2;
@@ -1047,9 +1056,10 @@ table.ansuchenliste td.check {
 p.erklaerung {
     font-size: 0.9em;
     /* font-weight: 600; */
-    background-color: #fff;
+    background-color: #fdfaf0;
     padding: 8px;
     color: var(--f3);
+    margin: 16px 0;
 }
 
 table.angebotssteuerung {

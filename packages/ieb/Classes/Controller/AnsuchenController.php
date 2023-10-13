@@ -68,6 +68,7 @@ class AnsuchenController extends BaseController
         $this->ansuchenRepository->forcePersist();
         //$this->redirect('list');
         return $this->redirectToDirectly();
+        //return $this->redirectTo($ansuchen->getUid());
     }
 
     /**

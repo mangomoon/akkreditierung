@@ -264,7 +264,7 @@
                         </div>
                         <div class="kriteriumteil">
                             <h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
-                            <f:if condition="{stammdaten.qmsTyp}=1">
+                            <f:if condition="{stammdaten.qmsTyp}==1">
                                 <f:then>
                                     <p>Die Organisation verfügt über ein Ö-Cert: <span class="check-ja">ja</span></p>
 
@@ -315,9 +315,7 @@
                                     verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
                                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
 
-                                <p class="erklaerung"> Wir bestätigen, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
-                                    &nbsp;
-                                </p>
+                                
                             </div>
 
                             <f:render partial="Form/UploadListDiffRel" arguments="{
@@ -327,8 +325,11 @@
                                 diff:'{diff.copy_stammdaten.qualitaetPersonalDatei}'
                                 diffanmerkung:'{diff.copy_stammdaten.qualitaetPersonal}'
                             }" />
-
-                            <p>Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.: {f:if(condition: '{ansuchen.erklaerungTeilA}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            
+                            <p class="erklaerung"> Wir bestätigen, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                                &nbsp;
+                            </p>
+                            <p class="erklaerung">Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.: {f:if(condition: '{ansuchen.erklaerungTeilA}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -499,7 +500,7 @@
                             <p class="hinweis">Hinweis: Wird ein Bildungsangebot von einem Träger in mehreren Bundesländern durchgeführt, ist für jedes Bundesland ein eigenes Akkreditierungsansuchen zu stellen.</p>
                             <p>Geben Sie die Standorte an, an denen das eingereichte Ansuchen durchgeführt wird.</p>
 
-                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert/QMS vorhanden – die unter A.2.2 angegeben Q-Standards der Einrichtung eingehalten werden: &nbsp;
+                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert vorhanden – die unter A.2.2 angegeben Qualitätsstandards der Einrichtung eingehalten werden: &nbsp;
                                 {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         </div>
 
@@ -721,8 +722,8 @@
 
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
-
-                            <p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                        <f:if condition="{ansuchen.typ}==1"><p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p></f:if>
+                            
                             <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                             <div class="abstand-mittel"></div>
                         

@@ -54,7 +54,8 @@ class StammdatenController extends BaseController
         $stammdaten->setLockedBy(0);
         $this->stammdatenRepository->update($stammdaten);
         
-        $this->redirectToUri('/?id=14');
+        //$this->redirectToUri('/?id=14');
+        return $this->redirectTo($stammdaten->getUid());
     }
 
     public function indexAction(): ResponseInterface
@@ -80,6 +81,18 @@ class StammdatenController extends BaseController
         return $this->htmlResponse();
     }
 
+
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+
+        if (isset($arguments['saveAndAnsuchen'])) {
+            $this->redirectToUri("/?id=14");
+        }
+        if (isset($arguments['save'])) {
+            $this->redirect('index', null, null, ['stammdaten' => $recordId]);
+        }
+    }
 
     public function initializeCreateAction()
     {

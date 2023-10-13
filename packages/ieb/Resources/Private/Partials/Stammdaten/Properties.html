@@ -190,9 +190,9 @@
 					</div>
 					<div class="kriteriumteil">
 						<h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
-						<f:if condition="{stammdaten.qmsTyp}=1">
+						<f:if condition="{stammdaten.qmsTyp}==1">
 							<f:then>
-								<p>Die Organisation verfügt über Ö-Cert.</p>
+								<p>Die Organisation verfügt über ein Ö-Cert: <span class="check-ja">ja</span></p>
 	
 								<f:render partial="Form/UploadList" arguments="{
 									media:'{stammdaten.qmsZertifikatDatei}',
@@ -205,7 +205,7 @@
 								</div>
 							</f:then>
 							<f:else>
-								<p>Die Organisation verfügt über kein Ö-Cert.</p>
+								<p>Die Organisation verfügt über ein Ö-Cert: <span class="check-nein">nein</span></p>
 								<div class="erlaeuterung">
 									<p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
 									</p>
