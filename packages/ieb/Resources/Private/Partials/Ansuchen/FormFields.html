@@ -388,7 +388,7 @@
             <div class="col-6" id="b-1-d-2">
                 <f:if condition="{relations.standorteaktiv}">
                     <f:then>
-                        <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa {f:if(condition:'{ansuchen.reviewB14Status}>2', then:'status-negativ')}" id="testa" />
+                        <f:form.select property="standorte" options="{relations.standorteaktiv}" optionLabelField="name" multiple="1" class="testa reqselect {f:if(condition:'{ansuchen.reviewB14Status}>2', then:'status-negativ')}" id="testa" />
                             <div class="formzeile">
                                 <f:form.submit value="Standorte: Daten bearbeiten" name="saveAndStandorte" class="formlink standorte" />
                             </div>

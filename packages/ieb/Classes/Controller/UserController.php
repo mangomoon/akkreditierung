@@ -48,7 +48,7 @@ class UserController extends BaseController
 
     public function createAction(User $newUser): void
     {
-        $newUser->setUsername($newUser->getEmail());
+        $newUser->setUsername($newUser->getUsername());
         $newUser->setUsergroup((string)$this->extensionConfiguration->getUsergroupEingeladenInaktiv());
         $this->addFlashMessage('User wurde eingeladen und Email zur Einladung verschickt', '', AbstractMessage::INFO);
         $this->userRepository->add($newUser);

@@ -197,7 +197,7 @@
                                             </f:if>
                                     </td>
                                     <td>
-                                        <span class="ansuchenliste_ansuchenname">{item.name}</span> ### {tsarBabi}
+                                        <span class="ansuchenliste_ansuchenname">{item.name}</span>
                                         <br>
                                         <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                                         <f:if condition="{item.editableByTr}"><f:render partial="Ansuchen/ListFrist" arguments="{ansuchen:item, stammdaten:stammdaten}" /></f:if>
@@ -220,13 +220,10 @@
                                                             <f:link.action action="edit" arguments="{ansuchen : item}" class="knopf-quadratisch edit" title="Ansuchen bearbeiten"></f:link.action>
                                                         </f:then>
                                                         <f:else>
-                                                            <f:link.action action="unlock" class="knopf-quadratisch locked-to-unlock" arguments="{ansuchen : item}" title="gesperrt von {lockInformation.lockedBy.name}<br>Klicken zum <b>Entsperren</b>"></f:link.action><code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
+                                                            <f:link.action action="unlock" class="knopf-quadratisch locked-to-unlock" arguments="{ansuchen : item}" title="gesperrt von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name}<br>Klicken zum <b>Entsperren</b>"></f:link.action><code>[{lockInformation.lockedBy.username}, {lockInformation.lockedBy.uid}]]
                                                         </f:else>
                                                     </f:if>
                                                 </td>
-                                            <f:if condition="{lockInformation.isLockedByCurrentUser}">
-                                                <!-- braucht es das? -->
-                                            </f:if>
                                             </f:then>
                                             <f:else>
                                                 <td class="td-knopf"><div class="locked knopf-quadratisch" title="In Begutachtung"></div></td>

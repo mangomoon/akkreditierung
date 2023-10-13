@@ -1,12 +1,12 @@
 <div class="">
-    <label for="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" class="col-form-label {req}">
+    <label for="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" class="col-form-label {req} {f:if(condition: '{class}==reqselect', then: 'reqlabel')}">
         {label}
     </label>
     
     <div class="">
         <f:if condition="{prependOption}">
             <f:then>
-                <f:form.select options="{options}" property="{property}" class="form-control {class}" id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" additionalAttributes="{additional}" multiple="{multiple}" data="{data}" optionLabelField="{optionLabelField}"
+                <f:form.select options="{options}" property="{property}" class="form-control {class} " id="{f:if(condition: '{id}', then: '{id}', else: 'field_{property}' )}" additionalAttributes="{additional}" multiple="{multiple}" data="{data}" optionLabelField="{optionLabelField}"
                     prependOptionValue="{prependOptionValue}" prependOptionLabel="{prependOptionLabel}" sortByOptionLabel="{sortByOptionLabel}" />
             </f:then>
             <f:else>
