@@ -128,6 +128,10 @@ class AnsuchenController extends BaseController
             $ansuchen->setEinreichDatum(new \DateTime());
             $ansuchen->setStatusAfterReview(0);
             $ansuchen->setLockedBy(0);
+            foreach(['reviewB1CommentTr', 'reviewB2CommentTr', 'reviewC1CommentTr', 'reviewC2CommentTr', 'reviewC3CommentTr', 'reviewTotalCommentTr'] as $field) {
+                $setter = 'set' .ucfirst($field);
+                $ansuchen->$setter();
+            }
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 10:
