@@ -8,20 +8,20 @@ class Import
     public function run()
     {
         $response = [];
-//        $feUserImport = new FeUserImport();
-//        $response['User'] = $feUserImport->run();;
-//
-//        $trainerImport = new TrainerImport();
-//        $response['Trainer'] = $trainerImport->run();
+        $feUserImport = new FeUserImport();
+        $response['User'] = $feUserImport->run();;
 
-//        $beraterImport = new BeraterImport();
-//        $response['Berater'] = $beraterImport->run();
+        $trainerImport = new TrainerImport();
+        $response['Trainer'] = $trainerImport->run();
 
-//        $verantwortlichImport = new AngebotsVerantwortlichImport();
-//        $response['Angebotsveranwortlich'] = $verantwortlichImport->run();
+        $beraterImport = new BeraterImport();
+        $response['Berater'] = $beraterImport->run();
 
-//        $stammdaten = new StammdatenImport();
-//        $response['Stammdaten'] = $stammdaten->run();
+        $verantwortlichImport = new AngebotsVerantwortlichImport();
+        $response['Angebotsveranwortlich'] = $verantwortlichImport->run();
+
+        $stammdaten = new StammdatenImport();
+        $response['Stammdaten'] = $stammdaten->run();
 
         $ansuchenImport = new AnsuchenImport();
         $response['Ansuchen'] = $ansuchenImport->run();
