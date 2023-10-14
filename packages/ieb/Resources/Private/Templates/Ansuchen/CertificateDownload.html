@@ -4,16 +4,18 @@
         data-namespace-typo3-fluid="true">
 <pdf:document sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
     <pdf:page importPage="1" margin="{top: 60, right: 20, bottom: 40, left: 20}">
+        <pdf:text fontFamily="opensans">Das ist der Test, wie das mit Schrift ist</pdf:text>
         <pdf:html autoHyphenation="1">
-            <p style="text-align: center;font-size: 12pt;line-height: 26pt">
-                Dem Ansuchen des Bildungsträgers "{stammdaten.name}"<br>
+            
+            <p style="text-align: center;font-family:'Raleway', sans-serif;font-size: 12pt;line-height: 26pt">
+                Dem Ansuchen des Bildungsträgers <i>{stammdaten.name}</i>i><br>
                 auf Akkreditierung des Angebots<br>
-                {ansuchen.name}, <br>
-                Nr. {ansuchen.nummer}, für den Programmbereich Basisbildung<br>
+                {ansuchen.name},<br>
+                Nr. {ansuchen.nummer}, für den Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}<br>
                 wird aufgrund der Behandlung des Ansuchens durch die Akkreditierungsgruppe stattgegeben.<br>
-                Die Akkreditierung erfolgt für den Zeitraum von 31.12.2011 bis 25.02.2012.
+                Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis {extensionConfiguration.ansuchenEnde -> f:format.date(format:'d.m.Y')}.
 
-                <br><br>Ansuchenende: {extensionConfiguration.ansuchenEnde -> f:format.date(format:'d.m.Y')}
+                <br><br>
             </p>
         </pdf:html>
     </pdf:page>

@@ -52,7 +52,7 @@
             </div>
             <div class="col-6">
                 <label for="seit" class="reqlabel">tätig seit</label>
-                <f:form.textfield property="seit" id="seit" class="req" />
+                <f:form.textfield property="seit" id="seit" class="req {f:if(condition:'{stammdaten.reviewA1Status}>2', then:'status-negativ')}" />
             </div>
         </div>
 
@@ -227,7 +227,7 @@
         status:stammdaten.reviewA2Status}" />
 
     <f:form.hidden property="ok" id="ok" value="0" />
-    <f:form.hidden property="statusAfterReview" id="sar" value="0" />
+    <f:form.hidden property="statusAfterReview" id="sar" value="{stammdaten.statusAfterReview}" />
 </div>
 </div>
 

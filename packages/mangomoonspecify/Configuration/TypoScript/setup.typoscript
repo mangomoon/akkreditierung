@@ -51,3 +51,19 @@ plugin.tx_felogin_login {
 }
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:pdfviewhelpers/Configuration/TypoScript/setup.txt">
+plugin.tx_pdfviewhelpers.settings {
+        config {
+                class = Bithost\Pdfviewhelpers\Model\BasePDF
+                jpgQuality = 100
+                fonts {
+                        subset = 0
+                        addTTFFont {
+                                opensans {
+                                        path = EXT:ieb/Resources/Public/Fonts/OpenSans.ttf
+                                        #path = EXT:pdfviewhelpers/Resources/Public/Examples/FullFeatureShowCase/OpenSans.ttf
+                                }
+                        }
+                }
+        }
+}
+module.tx_pdfviewhelpers < plugin.tx_pdfviewhelpers

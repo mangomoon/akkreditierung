@@ -195,6 +195,8 @@
      $('#ok').attr('value', allesda);
  }
 
+
+
  // Feldermanagement Form Trainer Edit ###############################
 
  function trainerfelder() {
@@ -283,7 +285,7 @@
  };
 
 
-// Trainer Begutachtung: öffnen der nicht-ok-Kommentarfelder und Check all ... ##########################
+// Trainer Begutachtung: öffnen der nicht-ok-Kommentarfelder und Check all Kompetenzen... ##########################
 
 function oeffnenTrainerBegutachtung() {
     var s = 1;
@@ -328,13 +330,10 @@ function oeffnenTrainerBegutachtung() {
     if(t == 8){
         $('#checkall').addClass('checked');
     }
-
-
-
 };
 
   
-
+// Berater Begutachtung: öffnen der nicht-ok-Kommentarfelder
 
 function oeffnenBeraterBegutachtung() {
     var s = 1;
@@ -359,10 +358,10 @@ function oeffnenBeraterBegutachtung() {
     } else {
         $('.komm-ext').show();
     }
-
 }
 
 // Löschen der Validierung für Uploads bei ACTION=new
+
 function reqleerLoeschen() {
     $('.upload').each(function() {
         $(this).removeClass('req-leer');
@@ -374,12 +373,12 @@ function qualifikationPsaSprache() {
 
     if ($('#qualifikationPsa8').is(':checked')   ) {
         $("#qualifikationPsaKommentar").show();
-        // console.log('schlüpf');
     } else {
         $("#qualifikationPsaKommentar").hide();
-        // console.log('schlapf');
     }
 }
+
+
 
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
  // +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //// +++++++++++++++++++++++++++++++++++++ ready ++++++++++++++++++++++++++++++ //
@@ -399,15 +398,103 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
-        validierentr();
+        validieren();
         // validieren();
         // setStatusAfterReview();
-        // console.log();
+        
     });
     
-    // Tooltip
+
+// on SUBMIT Berater/Ansuchen/Stammdaten ##########################
+
+     $("form.tr").submit(function(e) {
+        validieren();
+       saralt = $('#sar').val();
+       sar= 0;
+       if (saralt == 3) {
+            sar = 3;
+        } else if (saralt == 4) {
+            sar = 4;
+        } else if (saralt == 5) {
+            sar = 5;
+        } 
+        $('input').each(function() {
+            
+           if($(this).hasClass('geaendert')) {
+                if(saralt == 0) {
+                    sar = 0;
+                } else if (saralt == 1) {
+                    sar = 2;
+                } else if (saralt == 3) {
+                    sar = 4;
+                } else if (saralt == 4 && sar < 5) {
+                    sar = 4;
+                } else if (saralt == 5) {
+                    sar = 5;
+                } 
+                if (($(this).hasClass('status-negativ')) && (saralt > 2)) {
+                   sar = 5;
+                }
+           }
+
+        });
+
+       $('#sar').val(sar);
+       
+
+       //console.log("saralt: " + saralt + " sar: " + sar);
 
 
+       //e.preventDefault();
+    });
+
+
+// Form SUBMIT Trainer ####################################
+
+    $("form.trtrainer").submit(function() {
+        validierentr();
+        sarBabialt = $('#sarBabi').val();
+        sarPsaalt = $('#sarPsa').val();
+       sarBabi= 0;
+       sarPsa= 0;
+        $('input').each(function() {
+
+           if(($('qualifikationBabiDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
+               switch (sarBabialt) {
+                   case 0: 
+                       sarBabi = 0
+                   case 1:
+                       sarBabi = 2
+                   case 3:
+                       sarBabi = 4
+               }
+               if (($(this).hasClass('status-negativ')) && (sarBabialt == 3)) {
+                   sarBabi = 5;
+               }
+           }
+           if(($('qualifikationPsaDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
+               switch (sarPsaalt) {
+                   case 0: 
+                       sarPsa = 0
+                   case 1:
+                       sarPsa = 2
+                   case 3:
+                       sarPsa = 4
+               }
+               if (($(this).hasClass('status-negativ')) && (sarPsaalt == 3)) {
+                   sarPsa = 5;
+               }
+           }
+        });
+
+
+       $('#sarBabi').val(sarBabi);
+       $('#sarPsa').val(sarPsa);
+
+    });
+
+
+    // Tooltip ###############################
     $('.knopf-quadratisch').hover(function(e) {
         e.preventDefault();
             var title = $(this).attr('title');
@@ -461,87 +548,10 @@ function qualifikationPsaSprache() {
          validierenansuchen();
      });
 
-     // on SUBMIT Berater/Ansuchen
-     $("form.tr").submit(function(e) {
-         validieren();
-        saralt = $('#sar').val();
-        sar= 0;
-         $('input').each(function() {
-
-            if($(this).hasClass('geaendert')) {
-                switch (saralt) {
-                    case 0: 
-                        sar = 0
-                    case 1:
-                        sar = 2
-                    case 3:
-                        sar = 4
-                }
-                if (($(this).hasClass('status-negativ')) && (saralt == 3)) {
-                    sar = 5;
-                }
-            }
-
-         });
-
-
-        $('#sar').val(sar);
-        
-
-        //console.log("saralt: " + saralt + " sar: " + sar);
 
 
 
 
-        //e.preventDefault();
-     });
-
-
-
-     $("form.trtrainer").submit(function() {
-         validierentr();
-         sarBabialt = $('#sarBabi').val();
-         sarPsaalt = $('#sarPsa').val();
-        sarBabi= 0;
-        sarPsa= 0;
-         $('input').each(function() {
-
-            if(($('qualifikationBabiDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
-                switch (sarBabialt) {
-                    case 0: 
-                        sarBabi = 0
-                    case 1:
-                        sarBabi = 2
-                    case 3:
-                        sarBabi = 4
-                }
-                if (($(this).hasClass('status-negativ')) && (sarBabialt == 3)) {
-                    sarBabi = 5;
-                }
-            }
-            if(($('qualifikationPsaDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
-                switch (sarPsaalt) {
-                    case 0: 
-                        sarPsa = 0
-                    case 1:
-                        sarPsa = 2
-                    case 3:
-                        sarPsa = 4
-                }
-                if (($(this).hasClass('status-negativ')) && (sarPsaalt == 3)) {
-                    sarPsa = 5;
-                }
-            }
-         });
-
-
-        $('#sarBabi').val(sarBabi);
-        $('#sarPsa').val(sarPsa);
-
-     });
-
-
-    //  Submit Standorte mit Frage 
 
 
     // LISTE ANSUCHEN SORTIEREN #################################
@@ -856,9 +866,17 @@ function qualifikationPsaSprache() {
         x = 0;
         z= 0;
         sarst = 0;
+        
+        if ($('#typ').hasClass('typ-1')) {
+            typ = 1;
+        } else {
+            typ = 2;
+        }
+
         $('.sartest').each(function() {
             if ($(this).is(':checked') && !$(this).hasClass('f-stammdatenReviewA1') && !$(this).hasClass('f-stammdatenReviewA2')) {
                 a = $(this).val();
+                console.log(a);
                 if (a ==1) {
                     x++;
                 } else if (a==4) {
@@ -875,13 +893,21 @@ function qualifikationPsaSprache() {
                 }
             }
         });
-        if (x == 9) {
-            b = 1;
+
+        if (typ == 1) {
+            if (x == 8) {
+                b = 1;
+            }
+        } else if (typ == 2) {
+            if (x == 9) {
+                b = 1;
+            }
         }
+
         if (z == 2) {
             c = 1;
         }
-        //console.log("b: " +b + " c: " + c);
+        //console.log("b: " +b + " x: " + x + " typ " + typ);
 
         $('#sar').val(b);
         $('#sar-stammdaten').val(c);
@@ -1038,8 +1064,6 @@ function qualifikationPsaSprache() {
      $(".reqselect").focus(function() {
          $(this).removeClass("req-leer");
      });
-
-
 
 
 

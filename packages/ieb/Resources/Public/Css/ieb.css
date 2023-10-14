@@ -60,6 +60,10 @@ code {
   display: block;
 }
 
+.titleview {
+    cursor: pointer;
+}
+
 body {
     background-color: #f1ede4;
 }

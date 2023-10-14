@@ -3,14 +3,14 @@
 
 <f:section name="content">
 
-<!--    <f:for each="{textbausteine.a1}" as="baustein">-->
-<!--        <p>{baustein}</p>-->
-<!--    </f:for>-->
 
     <f:flashMessages />
     {diffAsJson -> f:format.raw()}
+
     <f:render partial="FormErrors" />
+
     <div class="abstand-gross"></div>
+
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}" id="ansuchenbegutachtung">
         {stammdaten -> f:variable(name: 'stammdatenorig')} 
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
@@ -38,7 +38,7 @@
                 <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
             </div>
             <div class="col">
-                <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
+                <p id="typ" class=" typ typ-{ansuchen.typ}"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
                 </p>
                 <p class="rechtsbuendig"><f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /> <f:if condition="{ansuchen.kopieVon}"> | 
                     <b>Kopie</b> von {ansuchen.kopieVon.nummer} ({ansuchen.kopieVon.name})
@@ -396,7 +396,7 @@
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz5} == 1">
                                             <li>Grundlegende Kompetenzen in einer weiteren Sprache: {ansuchen.kompetenzText1}
-                                            <f:if condition="{diff.kompeten51.current}"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <f:if condition="{diff.kompetenz5.current}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{diff.kompetenz1.previous}"><li class="diff">gelöscht: Deutsch als Erstsprache</li></f:if>
                                         <f:if condition="{diff.kompetenz2.previous}"><li class="diff">gelöscht: Deutsch als Zweitsprache</li></f:if>
@@ -858,7 +858,6 @@
 
         <!-- C.1 Projektleitung #################################################### -->
 
-
         <div class="begutachtung-kriterium row status-{ansuchen.reviewC1Status}" id="kC1">
             <div class="col">
             <div class="kriteriumtitel">
@@ -885,6 +884,8 @@
                                 <span class="pseudoknopf mail"></span>
                             </f:if>
                         </f:for>
+
+
 
 
                         <div class="abstand-klein"></div>
@@ -1078,7 +1079,7 @@
 
                 </div>
             </div>
-        </div>
+        </div>      
 
 
         <!-- C.3 Beratung #################################################### -->
@@ -1250,10 +1251,11 @@
                 reviewTr:ansuchen.kopieVon.reviewTotalCommentTr, 
                 diff:difftyp}" />
             <label>
+
                 Allgemeiner Kommentar <i>intern</i>
                 
                 <div class="komm-int">
-                    <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
+                    <f:for each="{ansuchen.kopieVon.reviewTotalCommentInternalData}" as="comment">
                         <p>
                             <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
                         </p>
@@ -1270,12 +1272,12 @@
                 <f:form.textarea property="reviewTotalCommentTr" class="form-control extern"/>
             </label>
             <div class="knopf textbausteinoeffner">Textbausteine</div>
+
             <div class="textbausteine">
                 <f:for each="{textbausteine.allg}" as="baustein">
                     <div class="textbaustein">{baustein}</div>
                 </f:for>
             </div>
-
 
 
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
@@ -1303,6 +1305,7 @@
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
 
+        
         <f:form.hidden property="statusAfterReview" id="sar" value="0" />
         <f:form.hidden property="stammdatenStatusAfterReview" id="sar-stammdaten" value="0" />
         
