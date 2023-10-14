@@ -53,6 +53,11 @@ class AbstractImport
             ->executeStatement();
     }
 
+    public function truncateNewTable(string $table): void
+    {
+        $this->newConnection->truncate($table);
+    }
+
     public function getAllFromOldTable(string $table): array
     {
         $queryBuilder = $this->oldConnection->createQueryBuilder();
@@ -76,6 +81,7 @@ class AbstractImport
             'pid' => 4,
             'tstamp' => time(),
             'crdate' => time(),
+            'doktype' => 254,
         ]);
         $this->pidList[$uid] = $this->newConnection->lastInsertId('pages');
 

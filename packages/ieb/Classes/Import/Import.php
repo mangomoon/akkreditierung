@@ -9,20 +9,23 @@ class Import
     {
         $response = [];
 //        $feUserImport = new FeUserImport();
-//        $response['User import'] = $feUserImport->run();;
+//        $response['User'] = $feUserImport->run();;
 //
 //        $trainerImport = new TrainerImport();
-//        $response['Trainer Import'] = $trainerImport->run();
+//        $response['Trainer'] = $trainerImport->run();
 
 //        $beraterImport = new BeraterImport();
-//        $response['Berater Import'] = $beraterImport->run();
+//        $response['Berater'] = $beraterImport->run();
 
-        $verantwortlichImport = new AngebotsVerantwortlichImport();
-        $response['Angebotsveranwortlich'] = $verantwortlichImport->run();
-
+//        $verantwortlichImport = new AngebotsVerantwortlichImport();
+//        $response['Angebotsveranwortlich'] = $verantwortlichImport->run();
 
 //        $stammdaten = new StammdatenImport();
-//        $response['Stammdaten Import'] = $stammdaten->run();
+//        $response['Stammdaten'] = $stammdaten->run();
+
+        $ansuchenImport = new AnsuchenImport();
+        $response['Ansuchen'] = $ansuchenImport->run();
+
         return $response;
     }
 

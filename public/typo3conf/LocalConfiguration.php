@@ -48,6 +48,10 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'fe_passwordless' => [
+            'allowedContexts' => 'Development/Ddev',
+            'password' => 'ieb',
+        ],
         'news' => [
             'advancedMediaPreview' => '1',
             'archiveDate' => 'date',
@@ -67,6 +71,12 @@ return [
             'slugBehaviour' => 'unique',
             'storageUidImporter' => '1',
             'tagPid' => '1',
+        ],
+        'phpmyadmin' => [
+            'allowedIps' => '',
+            'hideOtherDBs' => '0',
+            'uploadDir' => 'uploads/tx_phpmyadmin',
+            'useDevIpMask' => '0',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
@@ -110,11 +120,11 @@ return [
     'MAIL' => [
         'defaultMailFromAddress' => 'noreply@ieb.at',
         'defaultMailFromName' => 'IEB',
-        'templateRootPaths' => [
-            770 => 'EXT:ieb/Resources/Private/Templates/Mail/',
-        ],
         'partialRootPaths' => [
             100 => 'EXT:ieb/Resources/Private/Partials/Mail/',
+        ],
+        'templateRootPaths' => [
+            770 => 'EXT:ieb/Resources/Private/Templates/Mail/',
         ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailhog sendmail test@example.org --smtp-addr 127.0.0.1:1025',
