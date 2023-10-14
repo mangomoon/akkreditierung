@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfac4dc2e99d5b6537237b890e497b21",
+    "content-hash": "27c8d170cdc6e7d8d5e50904fbc3b6ff",
     "packages": [
         {
             "name": "b13/bolt",
@@ -2354,6 +2354,75 @@
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.2"
             },
             "time": "2023-09-26T12:28:12+00:00"
+        },
+        {
+            "name": "plan2net/sierrha",
+            "version": "0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/plan2net/sierrha.git",
+                "reference": "a85aedb3cbd285abdf040db1df72b5105508aedf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/plan2net/sierrha/zipball/a85aedb3cbd285abdf040db1df72b5105508aedf",
+                "reference": "a85aedb3cbd285abdf040db1df72b5105508aedf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.1",
+                "typo3/cms-backend": "^9.5 || ^10.4 || ^11.5",
+                "typo3/cms-frontend": "^9.5 || ^10.4 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/sierrha": "self.version"
+            },
+            "require-dev": {
+                "typo3/testing-framework": "^4.0 || ^6.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "sierrha"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Plan2net\\Sierrha\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "plan2net GmbH",
+                    "email": "office@plan2.net",
+                    "homepage": "https://www.plan2.net"
+                },
+                {
+                    "name": "Martin Kutschker",
+                    "role": "developer"
+                }
+            ],
+            "description": "404 'not found' and 403 'forbidden' error handlers. The 404 handler shows custom content for missing pages but not resources like CSS or JS. The 403 handler redirects to a login URL on unauthorized access.",
+            "keywords": [
+                "error handler",
+                "error page",
+                "extension",
+                "http error forbidden",
+                "http error not found",
+                "http status 403",
+                "http status 404",
+                "site configuration",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/plan2net/sierrha/issues",
+                "source": "https://github.com/plan2net/sierrha/"
+            },
+            "time": "2022-07-11T12:02:22+00:00"
         },
         {
             "name": "psr/cache",

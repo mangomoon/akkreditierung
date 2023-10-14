@@ -8,6 +8,13 @@ errorHandling:
     errorCode: 404
     errorHandler: Page
     errorContentSource: 't3://page?uid=3'
+  -
+    errorCode: 403
+    errorHandler: PHP
+    errorPhpClassFQCN: Plan2net\Sierrha\Error\StatusForbiddenHandler
+    tx_sierrha_loginPage: 't3://page?uid=9'
+    tx_sierrha_loginUrlParameter: 'return_url=###URL###'
+    tx_sierrha_noPermissionsContentSource: ''
 languages:
   -
     title: Deutsch

@@ -16,6 +16,7 @@ trait CurrentUserTrait
         $userAspect = GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user');
         $userId = (int)$userAspect->get('id');
         if ($userId === 0) {
+            return [];
             throw new \UnexpectedValueException('No user logged in');
         }
         if ($userId === PHP_INT_MAX) {

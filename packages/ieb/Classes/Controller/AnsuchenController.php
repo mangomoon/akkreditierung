@@ -280,6 +280,7 @@ class AnsuchenController extends BaseController
 
     public function certificateDownloadAction(Ansuchen $ansuchen)
     {
+        $this->check($ansuchen);
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $this->stammdatenRepository->getLatest(),
