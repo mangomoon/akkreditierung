@@ -528,7 +528,7 @@
                     
                     
                     <div class="komm-int">
-                        <f:for each="{comments}" as="comment">
+                        <f:for each="{reviewC2BabiCommentInternalData}" as="comment">
                             <p>
                                 <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
                             </p>

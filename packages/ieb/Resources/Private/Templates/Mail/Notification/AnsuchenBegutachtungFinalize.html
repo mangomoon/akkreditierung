@@ -31,7 +31,7 @@
             <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2027. </p>
             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie HIER herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie  <f:link.action pageUid="14" action="certificateDownload" extensionName="ieb" controller="Ansuchen"  target="_blank" arguments="{ansuchen : ansuchen}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
         </f:if>
         
         <f:if condition="{ansuchen.status}==140">
