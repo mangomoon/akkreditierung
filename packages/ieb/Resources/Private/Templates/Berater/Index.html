@@ -120,23 +120,29 @@
                             </td>
                             <td class="td-knopf">
 
-                                <f:if condition="{berater.lockedBy}==0 || {berater.lockedBy}=={currentUser.uid}">
-                                    <f:then>
-                                        <f:if condition="{relationUsages}">
-                                            <f:then>
-                                                <f:link.action action="archive" title="Datensatz archivieren. <br><b>ACHTUNG</b>: wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'> {relationUsage.nummer} ({relationUsage.name})<br></f:for> und wird automatisch aus diesem(n) Ansuchen entfernt." class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
-                                            </f:then>
-                                            <f:else>
-                                                <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
-                                            </f:else> 
-                                        </f:if>
-                                        
-                                    </f:then>
-                                    <f:else>
-                                        <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird gerade von {lockInformation.lockedBy.name} bearbeitet."></div>
-                                    </f:else>
-                                </f:if>
-
+                                <f:if condition="{relationUsagesInReview}">
+                                <f:then>
+                                    <div class="locked-grey knopf-quadratisch" title="In Begutachtung und kann daher nicht archiviert werden."></div>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{berater.lockedBy}==0 ||  {berater.lockedBy}=={currentUser.uid} || !{relationUsagesInReview}">
+                                        <f:then>
+                                            <f:if condition="{relationUsages}">
+                                                <f:then>
+                                                    <f:link.action action="archive" title="Datensatz archivieren. <br><b>ACHTUNG</b>: wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                                        {relationUsage.nummer} ({relationUsage.name})<br></f:for> und wird automatisch aus diesem(n) Ansuchen entfernt." class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+                                                    <div class="locked-grey knopf-quadratisch" title="Kann nicht archiviert werden, wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} bearbeitet."></div>
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
 
                                 
                                    

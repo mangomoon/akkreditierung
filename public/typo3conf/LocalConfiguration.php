@@ -72,15 +72,13 @@ return [
             'storageUidImporter' => '1',
             'tagPid' => '1',
         ],
-        'phpmyadmin' => [
-            'allowedIps' => '',
-            'hideOtherDBs' => '0',
-            'uploadDir' => 'uploads/tx_phpmyadmin',
-            'useDevIpMask' => '0',
-        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
+        ],
+        'sierrha' => [
+            'debugMode' => '0',
+            'resourceExtensionRegexp' => 'css|eot|gif|ico|jpe?g|js(?:on)|png|svg|ttf|webp|woff2?|xml',
         ],
     ],
     'FE' => [

@@ -20,7 +20,6 @@
         "helhum/typo3-console": "^8.0",
         "mangomoon/mangomoon": "dev-main",
         "mangomoon/mangomoonspecify": "@dev",
-        "mehrwert/phpmyadmin": "^6",
         "plan2net/sierrha": "^0.4.2",
         "rogervila/array-diff-multidimensional": "^2.1",
         "sinso/app-routes": "^1.4",
