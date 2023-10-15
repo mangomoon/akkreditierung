@@ -411,7 +411,9 @@ function qualifikationPsaSprache() {
         validieren();
        saralt = $('#sar').val();
        sar= 0;
-       if (saralt == 3) {
+       if (saralt == 1) {
+            sar = 1;
+        } else if (saralt == 3) {
             sar = 3;
         } else if (saralt == 4) {
             sar = 4;
@@ -426,7 +428,7 @@ function qualifikationPsaSprache() {
                 } else if (saralt == 1) {
                     sar = 2;
                 } else if (saralt == 3) {
-                    sar = 4;
+                    sar = 5;
                 } else if (saralt == 4 && sar < 5) {
                     sar = 4;
                 } else if (saralt == 5) {
@@ -451,39 +453,63 @@ function qualifikationPsaSprache() {
 
 // Form SUBMIT Trainer ####################################
 
-    $("form.trtrainer").submit(function() {
+    $("form.trtrainer").submit(function(e) {
         validierentr();
         sarBabialt = $('#sarBabi').val();
         sarPsaalt = $('#sarPsa').val();
        sarBabi= 0;
        sarPsa= 0;
+       if (sarBabialt == 1) {
+        sarBabi = 1;
+        } else if (sarBabialt == 3) {
+            sarBabi = 3;
+        } else if (sarBabialt == 4) {
+            sarBabi = 4;
+        } else if (sarBabialt == 5) {
+            sarBabi = 5;
+        } 
+        if (sarPsaalt == 1) {
+            sarPsa = 1;
+        } else if (sarPsaalt == 3) {
+            sarPsa = 3;
+        } else if (sarPsaalt == 4) {
+            sarPsa = 4;
+        } else if (sarPsaalt == 5) {
+            sarPsa = 5;
+        } 
         $('input').each(function() {
 
-           if(($('qualifikationBabiDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
-               switch (sarBabialt) {
-                   case 0: 
-                       sarBabi = 0
-                   case 1:
-                       sarBabi = 2
-                   case 3:
-                       sarBabi = 4
-               }
-               if (($(this).hasClass('status-negativ')) && (sarBabialt == 3)) {
-                   sarBabi = 5;
-               }
+           if(($('input#qualifikationBabiDatei').hasClass('geaendert')) || ($('input#lebenslaufDatei').hasClass('geaendert'))) {
+                if(sarBabialt == 0) {
+                    sarBabi = 0;
+                } else if (sarBabialt == 1) {
+                    sarBabi = 2;
+                } else if (sarBabialt == 3) {
+                    sarBabi = 5;
+                } else if (sarBabialt == 4 && sarBabi < 5) {
+                    sarBabi = 4;
+                } else if (sarBabialt == 5) {
+                    sarBabi = 5;
+                } 
+                if (($(this).hasClass('status-negativ')) && (sarBabialt > 2)) {
+                    sarBabi = 5;
+                }
            }
-           if(($('qualifikationPsaDatei').hasClass('geaendert')) || ($('lebenslaufDatei').hasClass('geaendert'))) {
-               switch (sarPsaalt) {
-                   case 0: 
-                       sarPsa = 0
-                   case 1:
-                       sarPsa = 2
-                   case 3:
-                       sarPsa = 4
-               }
-               if (($(this).hasClass('status-negativ')) && (sarPsaalt == 3)) {
-                   sarPsa = 5;
-               }
+           if(($('input#qualifikationPsaDatei').hasClass('geaendert')) || ($('input#lebenslaufDatei').hasClass('geaendert'))) {
+                if(sarPsaalt == 0) {
+                    sarPsa = 0;
+                } else if (sarPsaalt == 1) {
+                    sarPsa = 2;
+                } else if (sarPsaalt == 3) {
+                    sarPsa = 5;
+                } else if (sarPsaalt == 4 && sarPsa < 5) {
+                    sarPsa = 4;
+                } else if (sarPsaalt == 5) {
+                    sarPsa = 5;
+                } 
+                if (($(this).hasClass('status-negativ')) && (sarPsaalt > 2)) {
+                    sarPsa = 5;
+                }
            }
         });
 
@@ -491,6 +517,8 @@ function qualifikationPsaSprache() {
        $('#sarBabi').val(sarBabi);
        $('#sarPsa').val(sarPsa);
 
+       //console.log("sarBabialt: " +sarBabialt + " | sarBabi: " +sarBabi + " | sarPsaalt: " +sarPsaalt + " | sarPsa: " +sarPsa);
+       //e.preventDefault();
     });
 
 

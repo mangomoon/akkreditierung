@@ -874,7 +874,7 @@
             <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <div class="tb-liste">
                 <f:for each="{relations.berateraktivundok}" as="t">
-                    <div class="tb-zeile">
+                    <div class="tb-zeile">{t.statusAfterReview}
                         <f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
                         <div class="a">
                             <f:switch expression="{t.statusAfterReview}">
@@ -935,8 +935,7 @@
     </p>
 
 
-    <f:form.hidden property="ok" id="ok" value="0" />
-    <f:form.hidden property="statusAfterReview" id="sar" value="0" />
+    
 
 </div>
 
@@ -954,7 +953,8 @@
 </f:if>
 
 
-
+<f:form.hidden property="ok" id="ok" value="0" />
+<f:form.hidden property="statusAfterReview" id="sar" value="{ansuchen.statusAfterReview}" />
 
 <div id="sidebar">
     <div class="knopf-s" id="seite-nach-oben"></div>
