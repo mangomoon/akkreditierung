@@ -31,7 +31,7 @@ class StammdatenImport extends AbstractImport
             unset($insert[$field]);
         }
 
-        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['nachweis_upload' => 'nachweis', 'leitbild_datei_upload' => 'leitbild', 'qms_zertifikat_datei_upload' => 'qms_zertifikat', 'qualitaet_sicherung_datei_upload' => 'qualitaet_sicherung', 'qualitaet_personal_datei_upload' => 'qualitaet_personal']);
+        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['nachweis_upload' => 'nachweis', 'leitbild_datei_upload' => 'leitbild_datei', 'qms_zertifikat_datei_upload' => 'qms_zertifikat_datei', 'qualitaet_sicherung_datei_upload' => 'qualitaet_sicherung_datei', 'qualitaet_personal_datei_upload' => 'qualitaet_personal_datei']);
 
         $this->newConnection->insert('tx_ieb_domain_model_stammdaten', $insert);
     }

@@ -29,7 +29,7 @@ class TrainerImport extends AbstractImport
             unset($insert[$field]);
         }
 
-        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['lebenslauf_upload' => 'lebenslauf', 'qualifikation_babi_datei_upload' => 'qualifikation_babi', 'qualifikation_psa_datei_upload' => 'qualifikation_psa']);
+        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['lebenslauf_upload' => 'lebenslauf_upload', 'qualifikation_babi_datei_upload' => 'qualifikation_babi_datei', 'qualifikation_psa_datei_upload' => 'qualifikation_psa_datei']);
 
 
         $this->newConnection->insert('tx_ieb_domain_model_trainer', $insert);
