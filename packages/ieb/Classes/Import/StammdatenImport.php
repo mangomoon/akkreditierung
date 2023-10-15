@@ -27,7 +27,7 @@ class StammdatenImport extends AbstractImport
         $insert['import'] = $old['uid'];
         $insert['pid'] = $this->getPageIdFromTraegerUid($old['fe_user_traeger']);
 
-        foreach (['fe_user_traeger'] as $field) {
+        foreach (['fe_user_traeger','nachweis_upload','leitbild_datei_upload','qms_zertifikat_datei_upload','qualitaet_sicherung_datei_upload','qualitaet_personal_datei_upload'] as $field) {
             unset($insert[$field]);
         }
 
