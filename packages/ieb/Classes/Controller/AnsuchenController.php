@@ -153,9 +153,11 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
             }
-            $this->eventDispatcher->dispatch(new Event\AnsuchenEinreichenEvent($previousStatus, $ansuchen, self::getCurrentUser()));
-            $this->ansuchenRepository->updateJsonRelations($ansuchen, $this->stammdatenRepository->getLatest());
+            $stammdaten = $this->stammdatenRepository->getLatest();
+            $this->ansuchenRepository->updateJsonRelations($ansuchen, $stammdaten);
             $this->ansuchenRepository->update($ansuchen);
+            $this->ansuchenRepository->forcePersist();
+            $this->eventDispatcher->dispatch(new Event\AnsuchenEinreichenEvent($previousStatus, $ansuchen, $stammdaten, self::getCurrentUser()));
         }
         $this->redirect('list');
         return $this->htmlResponse();
