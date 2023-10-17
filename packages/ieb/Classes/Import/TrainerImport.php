@@ -25,11 +25,11 @@ class TrainerImport extends AbstractImport
         $insert['import'] = $old['uid'];
         $insert['pid'] = $this->getPageIdFromTraegerUid($old['fe_user_traeger']);
 
-        foreach (['fe_user_traeger', 'lebenslauf_upload', 'qualifikation_babi_datei_upload', 'qualifikation_psa_datei_upload'] as $field) {
+        foreach (['fe_user_traeger', 'lebenslauf_upload', 'qualifikation_babi_datei_upload', 'qualifikation_psa_datei_upload','trainer_uid'] as $field) {
             unset($insert[$field]);
         }
 
-        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['lebenslauf_upload' => 'lebenslauf_upload', 'qualifikation_babi_datei_upload' => 'qualifikation_babi_datei', 'qualifikation_psa_datei_upload' => 'qualifikation_psa_datei']);
+        $insert = $this->addFiles($old, $insert, 'tx_ieb_domain_model_stammdaten', ['lebenslauf_upload' => 'lebenslauf_datei', 'qualifikation_babi_datei_upload' => 'qualifikation_babi_datei', 'qualifikation_psa_datei_upload' => 'qualifikation_psa_datei']);
 
 
         $this->newConnection->insert('tx_ieb_domain_model_trainer', $insert);

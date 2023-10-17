@@ -533,11 +533,16 @@ select {
 .tb-zeile div{
     display: inline-block;
 }
-.tb-zeile div.b, .tb-zeile div.c {
+
+.tb-zeile div.a {
+    width: 480px;
+}
+.tb-zeile div.c {
     width: 40px;
 }
-.tb-zeile div.a {
-    width: 300px;
+.tb-liste .d {
+    width: 12px;
+    text-align: right;
 }
 
 .multi-select-button {
@@ -815,7 +820,7 @@ span.knopfrund.pruefbescheid {
     height:12px;
     background-image: none;
     border-radius: 6px;
-    background-color:#a052ac;
+    background-color:#dd7abb;
     vertical-align:super;
     margin-left: 3px;
 }
@@ -833,10 +838,7 @@ span.knopfrund.sar-3 {
     background-image: url('../Img/dot-orange.svg');
 }
 
-.tb-liste .d {
-    width: 270px;
-    text-align: right;
-}
+
 
 .tb-liste .d span {
     font-size: 0.8em;
@@ -1110,6 +1112,10 @@ table.angebotssteuerung {
     background: var(--f0b);
 }
 
+#stammdaten-show p.hinweis {
+    font-size: 1.1em; 
+    font-weight: 500;
+}
 /* TABELLE  */
 
 table.tx_ieb {

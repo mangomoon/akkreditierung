@@ -725,7 +725,7 @@
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
 
-                        <f:if condition="{ansuchen.typ}==1"><p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p></f:if>
+                        <f:if condition="{ansuchen.typ}==1"><p>Einzelunterricht zum Lerneinstieg in der Basisbildung wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p></f:if>
                             <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
 
                             <div class="abstand-mittel"></div>

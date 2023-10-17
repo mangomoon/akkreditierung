@@ -3,7 +3,7 @@
 
 
 
-<code>ANSUCHEN UID: {ansuchen.uid}  STATUS: {ansuchen.status}</code>
+<code>ANSUCHEN UID: {ansuchen.uid}  STATUS: {ansuchen.status}  PID:{ansuchen.pid}</code>
 <div class="formfields row">
     <div class="col-3">
         <label for="name">Ansuchennummer:</label>
@@ -528,7 +528,7 @@
 
         <div class="formfields row babi">
             <div class="col">
-                <f:form.checkbox property="einzelunterricht" value="1" class="inline" /> Es wird Einzelunterricht zum Lerneinstieg angeboten.
+                <f:form.checkbox property="einzelunterricht" value="1" class="inline" /> Einzelunterricht zum Lerneinstieg in der Basisbildung wird angeboten.
             </div>
         </div>
         
@@ -738,18 +738,15 @@
                             <f:for each="{relations.trainerbabi}" as="t">
                                 <div class="tb-zeile status-{t.statusAfterReviewBabi} "><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">
-                                        <f:switch expression="{t.statusAfterReview}">
+                                        <f:switch expression="{t.statusAfterReviewBabi}">
                                             <f:case value="0"><span class="knopfrund ok-grey" title="Noch ohne Begutachtung. Einreichung erfoderlich"></span></f:case>
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung positiv"></span></f:case>
                                             <f:case value="2"><span class="titleview knopfrund achtung-gelb" title="Änderungen wurden vorgenommen, noch nicht begutachtet: Neueinreichung erforderlich."></span></f:case>
                                             <f:case value="3"><span class="titleview knopfrund achtung-orange" title="Negative Begutachtung oder Auflage(n), aber Änderungen noch nicht erfolgt!"></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                                        </f:switch>
+                                        </f:switch>&nbsp;&nbsp;
                                         {t.fullname} 
-                                    </div>
-                                    <div class="b">
-                                        {t.reviewC21BabiStatus}
                                     </div>
                                     <div class="c">
                                         <f:switch expression="{t.reviewC21BabiStatus}">
@@ -803,10 +800,7 @@
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
                                         </f:switch>
                                         {t.fullname} 
-                                    </div>
-                                    <div class="b">
-                                        
-                                    </div>    
+                                    </div>  
                                     <div class="c">
                                         <f:switch expression="{t.reviewC21PsaStatus}">
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
@@ -874,7 +868,7 @@
             <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <div class="tb-liste">
                 <f:for each="{relations.berateraktivundok}" as="t">
-                    <div class="tb-zeile">{t.statusAfterReview}
+                    <div class="tb-zeile">
                         <f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
                         <div class="a">
                             <f:switch expression="{t.statusAfterReview}">
@@ -887,9 +881,7 @@
                             </f:switch>
                             {t.fullname}
                         </div>
-                        <div class="b">
-                            
-                        </div>
+
                         <div class="c">
                             <f:switch expression="{t.reviewC3Status}">
                                 <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>

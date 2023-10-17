@@ -292,6 +292,7 @@ class AnsuchenController extends BaseController
             'stammdaten' => $this->stammdatenRepository->getLatest(),
             'extensionConfiguration' => $this->extensionConfiguration,
         ]);
+        $this->addRelationDataToView();
     }
 
 

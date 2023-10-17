@@ -3,21 +3,202 @@
         xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
         data-namespace-typo3-fluid="true">
 <pdf:document sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
-    <pdf:page importPage="1" margin="{top: 60, right: 20, bottom: 40, left: 20}">
-        <pdf:text fontFamily="opensans">Das ist der Test, wie das mit Schrift ist</pdf:text>
+    <pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">
+        
+<f:if condition="{ansuchen.pp3}">
+    <!-- SONDERANSUCHEN-->
+<f:then>
+    <pdf:html autoHyphenation="1">
+        <style>
+            p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
+        </style>
+        <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">SONDERSONDER!</p>
+        <p>Bitte um Inhalte!</p>
+    </pdf:html>
+</f:then>
+<f:else>
+
+ <f:if condition="{ansuchen.status}<200">
+    <!-- ANSUCHEN mit 100 oder 140 -->
+    <f:then>
+
+    
+
         <pdf:html autoHyphenation="1">
-            
-            <p style="text-align: center;font-family:'Raleway', sans-serif;font-size: 12pt;line-height: 26pt">
-                Dem Ansuchen des Bildungsträgers <i>{stammdaten.name}</i>i><br>
+            <style>
+                p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
+            </style>
+
+            <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">AKKREDITIERUNGSBESTÄTIGUNG</p>
+
+            <p style="text-align: center;line-height: 26pt">&nbsp;<br>
+                Dem Ansuchen des Bildungsträgers <br>{stammdaten.name}<br>
                 auf Akkreditierung des Angebots<br>
-                {ansuchen.name},<br>
-                Nr. {ansuchen.nummer}, für den Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}<br>
-                wird aufgrund der Behandlung des Ansuchens durch die Akkreditierungsgruppe stattgegeben.<br>
+                Nr. {ansuchen.nummer}, {ansuchen.name},<br>
+                für den Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}<br>
+                wird aufgrund der Behandlung des Ansuchens durch die Akkreditierungsgruppe 
+                <f:if condition="{ansuchen.status}==100">
+                    <f:then>
+                        stattgegeben.<br>
+                    </f:then>
+                    <f:else>
+                        <br>unter den umseitig angeführten Auflagen stattgegeben.<br>
+                    </f:else>
+                </f:if>
                 Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis {extensionConfiguration.ansuchenEnde -> f:format.date(format:'d.m.Y')}.
 
-                <br><br>
+                <br>
             </p>
+            <p style="font-size:8.5pt;">Das akkreditierte Bildungsangebot wird auf www.initiative-erwachsenenbildung.at veröffentlicht.</p>
+            <p style="font-size:8.5pt;">Diese Bestätigung ist dem Förderansuchen beizulegen.</p>
+            <p style="font-size:8.5pt;">Ergeben sich innerhalb dieses Zeitraums wesentliche Änderungen des akkreditierten Programms (siehe Beiblatt), so ist die Geschäftsstelle davon umgehend in Kenntnis zu setzen.</p>
+            <p style="font-size:8.5pt;">Im Zuge der Akkreditierung wurde die Kostenstruktur im Sinne der Bandbreite des Normkostenmodells anhand folgender Parameter überprüft: Kursdauer, Gruppengröße, geplante Kosten/UE (Basisbildung), geplante Kosten/TeilnehmerIn (Pflichtschulabschluss). Die Förderhöhe ist nicht Gegenstand der Akkreditierung.</p>
+            <p style="font-size:8.5pt;">Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den auf der folgenden Seite genannten Standorten.</p>
         </pdf:html>
+        <pdf:text fontFamily="opensans"
+                  fontSize="10"
+                  padding="{top: 5, right: 0, bottom: 0, left: 80}">
+            Geschäftsstelle
+            Initiative Erwachsenenbildung
+            im Auftrag der Akkreditierungsgruppe
+
+            Wien, am {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')}
+        </pdf:text>
+            
+            
+            <pdf:html>
+                <style>
+                    p {font-family: "opensans", sans-serif;font-size:10pt;}
+                    h2 {font-family: "opensans", sans-serif;font-size:13pt;}
+                    div {margin:0;padding:0;}
+                </style>
+            <h2 style="page-break-before: always;">Standorte</h2>
+            <p>Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den im Folgenden genannten Standorten:<br><br></p>
+            <f:for each="{relations.standorte}" as="standort">
+                <p>{standort.name} <br>{standort.adresse}<br>{standort.plz} {standort.ort}<br><br></p>
+            </f:for>
+
+            <f:if condition="{ansuchen.fernlehre} || {ansuchen.kinderbetreuung} || {ansuchen.einzelunterricht}">
+                <h2>Weitere Angebote</h2>
+            </f:if>
+            <f:if condition="{ansuchen.kinderbetreuung}">
+                <p>Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten.</p>
+            </f:if>
+            <f:if condition="{ansuchen.fernlehre}">
+                <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %).</p>
+            </f:if>
+            <f:if condition="{ansuchen.einzelunterricht}">
+                <p>Einzelunterricht zum Lerneinstieg in der Basisbildung wird angeboten.</p>
+            </f:if>
+
+
+            <f:if condition="{ansuchen.status}==140">
+                <h2 style="page-break-before: always;">Die Auflagen im Einzelnen</h2>
+                <p>Auflagen für die Akkreditierung des Angebots Brückenkurs zum Einstieg in den Pflichtschulabschluss, des Bildungsträgers {stammdaten.name} vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</p>
+                
+               
+                <f:if condition="{stammdaten.reviewA1CommentTr}">
+                    <p>A.1 Stammdaten<br>
+                        {stammdaten.reviewA1CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{stammdaten.reviewA2CommentTr}">
+                    <p>A.2 Qualität des Anbieters<br>
+                        {stammdaten.reviewA2CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB1CommentTr}">
+                    <p>B.1.3 Tabellarische Übersicht und Kosten(satz)<br>
+                        {ansuchen.reviewB1CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB14CommentTr}">
+                    <p>B.1.4 Standorte<br>
+                        {ansuchen.reviewB14CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB15CommentTr}">
+                    <p>B.1.5 Abnahme von Prüfungen<br>
+                        {ansuchen.reviewB15CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB2CommentTr}">
+                    <p>B.2.1 Ansprache und Erreichung der Zielgruppe<br>
+                        {ansuchen.reviewB2CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB22CommentTr}">
+                    <p>B.2.2 Didaktisch-methodisches Vorgehen<br>
+                        {ansuchen.reviewB22CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewB23CommentTr}">
+                    <p>B.2.3 Beratung, Coaching und Begleitung<br>
+                        {ansuchen.reviewB23CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewC1CommentTr}">
+                    <p>C.1 Projektleitung<br>
+                        {ansuchen.reviewC1CommentTr}
+                    </p>
+                </f:if>
+                <f:if condition="{ansuchen.reviewC2CommentTr}">
+                    <p>C.2 Training (allgemein)<br>
+                        {ansuchen.reviewC2CommentTr}
+                    </p>
+                </f:if>
+                <f:for each="{relations.trainer}" as="p">
+                    <f:if condition="{ansuchen.typ}==1">
+                        <f:then>
+                            <f:if condition="{p.reviewC2BabiCommentTr}">
+                                <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2BabiCommentTr}</p>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{p.reviewC2PsaCommentTr}">
+                                <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2PsaCommentTr}</p>
+                                </div>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:for>
+                <f:if condition="{ansuchen.reviewC3CommentTr}">
+                    <p>C.3 Beratung (allgemein)<br>
+                        {ansuchen.reviewC3CommentTr}
+                    </p>
+                </f:if>
+                <f:for each="{relations.berater}" as="p">
+                    <f:if condition="{p.reviewC3CommentTr}">
+                        <p style="page-break-inside: avoid;">Berater/in: {p.vorname} {p.nachname}<br>{p.reviewC3CommentTr}</p>
+                    </f:if>
+                </f:for>
+                <f:if condition="{ansuchen.reviewTotalCommentTr}">
+                    <p>Allgemeine Anmerkung<br>
+                        {ansuchen.reviewTotalCommentTr}
+                    </p>
+                </f:if>
+            </f:if>
+
+
+            <h2 style="page-break-before: always;">Hinweise</h2>
+
+            <p>Ergeben sich innerhalb des Akkreditierungszeitraums wesentliche Änderungen des akkreditierten Bildungsangebots, so sind diese umgehend zur Nachakkreditierung einzureichen, wenn</p>
+            <p>a) mehr als 30% der TrainerInnen und/oder BeraterInnen nicht mehr mit den bei der ersten Akkreditierung des Ansuchens angegebenen Personen ident sind. In diesem Fall ist die aktualisierte Auflistung sämtlicher TrainerInnen bzw. BeraterInnen samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</p>
+            <p>b) die/der Angebotsverantwortliche wechselt. In diesem Fall sind die Angaben zur neuen verantwortlichen Person samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</p>
+            <p>c) wesentliche Änderungen des Angebots vorgenommen werden (Anzahl der Unterrichtseinheiten gesamt oder einzelner Module, Inhalte, Methoden u.ä.). In diesem Fall sind die Angaben zum veränderten Angebot bzw. die Neukonzeption zur Nachakkreditierung einzureichen, wobei die Änderungen deutlich kenntlich zu machen sind.</p>
+            <p>d) befristete Nachweise ablaufen (Ö-Cert, Bescheid zur Prüfungsberechtigung, u.a.). In diesem Fall sind die aktualisierten Nachweise vor dem Ablauftermin der im Ansuchen angegebenen Nachweise zur Nachakkreditierung einzureichen.</p>
+            
+            </pdf:html>
+            </f:then>
+            <!-- ENDE AKKREDITIERTE ANSUCHEN-->
+
+            <!-- BEGINN NICHT AKKTEDITIERT -->
+            <f:else>
+                
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if> 
     </pdf:page>
 </pdf:document>
 
