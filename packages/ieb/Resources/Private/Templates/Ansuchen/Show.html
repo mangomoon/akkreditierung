@@ -10,7 +10,7 @@
     {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
 
     <div id="ansuchen-show">
-
+        <f:debug>{_all}</f:debug>
 <div class="begutachtung-kopf row">
     <div class="col">
         <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
@@ -25,7 +25,7 @@
 
 
 <!-- Stammdaten -->
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten}" />
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:relations.stammdaten}" />
 
 
 
@@ -52,6 +52,8 @@
 
                             {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
                         </div>
+
+                        <f:if condition="!{ansuchen.pp3}">
                         <div class="kriteriumteil">
                             <h3>B.1.2 Kompetenzbereiche</h3>
                             <div class="erlaeuterung {f:if condition:'{ansuchen.typ}==2', then:'notvisible'}">
@@ -93,11 +95,12 @@
                                 anmerkung:'{ansuchen.uebersicht}',
                             }" />
                         </div>
+                    </f:if>
                     </div>
                     <div class="rechts col-5">
 
                     </div>
-
+                
                 </div>
 
         </div>
@@ -156,60 +159,7 @@
             </div>
         </div>
 
-        <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
-
-        <div class="begutachtung-kriterium psa row status-{ansuchen.reviewB15Status}" id="kB15">
-            <div class="col">
-            <div class="kriteriumtitel">
-                <div class="row">
-                    <div class="col-6">
-                        <h3>B.1.5 Abnahme von Prüfungen</h3>
-                    </div>
-                    <div class="col-6 right">
-                        <div class="infoknopf"></div>
-                    </div>
-                </div>
-
-            </div>
-
-                <div class="row">
-                    <div class="links col-7">
-                        <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
-                        </div>
-                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ja', else:'nein')}</b>.</p>
-                            <f:render partial="Form/UploadList" arguments="{
-                                media:'{ansuchen.pruefbescheidDatei}',
-                                anmerkung:'{ansuchen.pruefbescheid}',
-                            }" />
-
-                        <h4>Kooperierende Einrichtung</h4>
-                        <div class="erlaeuterung">
-                            <p class="hinweis"><span class="worthinweis">Hinweis:</span> Sollte die kooperierende Schule noch nicht feststehen, dann ist eine Bestätigung der Bildungsdirektion vorzulegen, dass eine Prüfungsschule zugeteilt wird.</p>&nbsp;<br>
-                        </div>
-                        <f:if condition="{ansuchen.pruefbescheidDatei}">
-                            <f:then>
-                                <p>Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert.</p>
-                            </f:then>
-                            <f:else>
-                                <p>Geben Sie die Kontaktdaten der Schule(n) an, mit der Ihre Einrichtung kooperiert und legen Sie eine Bestätigung der kooperierenden Schule(n) oder eine Absichtserklärung für die Zusammenarbeit durch die Schule vor. </p>
-                            </f:else>
-                        </f:if>
-
-                        <f:render partial="Form/UploadList" arguments="{
-                            media:'{ansuchen.kooperationDatei}',
-                            anmerkung:'{ansuchen.kooperation}',
-                        }" />
-
-
-                    </div>
-                    <div class="rechts col-5">
-                        
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        <f:if condition="!{ansuchen.pp3}"> 
 
         <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
 
@@ -467,7 +417,7 @@
             </div>
             </div>
         </div>
-
+        </f:if>
 
         <!-- C.1 Projektleitung #################################################### -->
 
@@ -496,7 +446,7 @@
                     
                 </div>
             </div>
-            <f:for each="{verantwortliche}" as="p">
+            <f:for each="{relations.angebotVerantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
                         {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
@@ -548,7 +498,7 @@
                 </div>
                 <div class="rechts col-5"></div>
             </div>
-                <f:for each="{trainer}" as="t">
+                <f:for each="{relations.trainer}" as="t">
                     <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7 td-knopf">
                             {t.fullName} &nbsp;&nbsp;<f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
@@ -597,7 +547,7 @@
                         <div class="rechts col-5">
                         </div>
                     </div>
-                    <f:for each="{berater}" as="t">
+                    <f:for each="{relations.berater}" as="t">
                         <div class="row person" id="berater-{t.uid}">
                             <div class="links col-7 td-knopf">
                                 {t.fullName}  &nbsp;&nbsp;<f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>

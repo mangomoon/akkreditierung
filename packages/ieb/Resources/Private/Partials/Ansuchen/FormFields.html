@@ -232,7 +232,7 @@
     </p>
 
 
-    <f:if condition="{relations.stammdaten.statusAfterReview} == 1">
+    <f:if condition="{relations.stammdaten.statusAfterReview} == 3">
         <p class="hinweis warnung">Negative Begutachtung der Stammdaten/Angaben zur Organisation, aber Änderungen noch nicht erfolgt!"</p>
     </f:if>
 
@@ -244,6 +244,16 @@
         <f:form.submit value="Organisation: Daten bearbeiten" name="saveAndStammdaten" class="formlink stammdaten titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung der Stammdaten/Organsiation. Das Ansuchen wird gespeichert."/>
     </div>
 </div>
+
+<!-- ################# SONDERANSUCHEN ################# -->
+
+<f:if condition="{ansuchen.pp3}">
+<f:then>
+
+</f:then>
+<f:else>
+
+
 
 <!-- ############### B.1 ########### -->
 
@@ -353,6 +363,9 @@
     </div>
 
 </div>
+</f:else>
+</f:if>
+
 
 <!-- ############### B.1.4 Standorte ########### -->
 <div class="kriterium  status-{ansuchen.reviewB14Status}">
@@ -404,6 +417,9 @@
     </div>
 
 </div>
+
+<f:if condition="!{ansuchen.pp3}">
+
 
 <!-- ############### B.1.5 Prüfung und Kooperation ########### -->
 
@@ -651,7 +667,7 @@
         <p>&nbsp;</p>
     </div>
 </div>
-
+</f:if>
 <!-- ############### Projektsteuerung ########### -->
 
 <div class="kriterium status-{ansuchen.reviewC1Status}">
@@ -944,8 +960,16 @@
 </div>
 </f:if>
 
+<f:if condition="{ansuchen.pp3}">
+    <f:then>
+        <f:form.hidden property="ok" id="okpp3" value="1" />
+    </f:then>
+    <f:else>
+        <f:form.hidden property="ok" id="ok" value="0" />
+    </f:else>
+</f:if>
 
-<f:form.hidden property="ok" id="ok" value="0" />
+
 <f:form.hidden property="statusAfterReview" id="sar" value="{ansuchen.statusAfterReview}" />
 
 <div id="sidebar">
