@@ -41,13 +41,26 @@ final class ArchiveActionListener
             return 0;
         }
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
-        return $queryBuilder
+        $affectedRows = $queryBuilder
             ->delete($table)
             ->where(
                 $queryBuilder->expr()->in('uid_local', $queryBuilder->createNamedParameter($ansuchenIds, Connection::PARAM_INT_ARRAY)),
                 $queryBuilder->expr()->in('uid_foreign', $queryBuilder->createNamedParameter($relationId, Connection::PARAM_INT))
             )
             ->executeStatement();
+
+        if ($affectedRows > 0) {
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+            $queryBuilder->update('tx_ieb_domain_model_ansuchen')
+                ->where(
+                    $queryBuilder->expr()->eq('status_after_review', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
+                    $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($ansuchenIds, Connection::PARAM_INT_ARRAY))
+                )
+                ->set('status_after_review', 2)
+                ->execute();
+        }
+
+        return $affectedRows;
     }
 
     protected function getAllAnsuchenIds(int $pid): array
@@ -55,7 +68,7 @@ final class ArchiveActionListener
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
 
         $rows = $queryBuilder
-            ->select('uid', 'name', 'status','status_after_review')
+            ->select('uid', 'name', 'status', 'status_after_review')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
                 $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, \PDO::PARAM_INT)),
