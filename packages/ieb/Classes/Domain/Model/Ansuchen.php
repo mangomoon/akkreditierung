@@ -2712,6 +2712,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
+
     public function getTitleTag()
     {
         return sprintf('%s [%s]', $this->name, $this->nummer);
@@ -2759,6 +2760,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->verantwortlicheMail = $verantwortlicheMail;
     }
+
     public function isEditableByTr()
     {
         return AnsuchenStatus::statusBearbeitbarDurchTrCheck($this->status);
@@ -2847,66 +2849,82 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->copyStandorte = $copyStandorte;
     }
+
     public function getCopyStammdatenData()
     {
         return $this->getConvertedJson($this->copyStammdaten);
     }
+
     public function getCopyStandorteData()
     {
         return $this->getConvertedJson($this->copyStandorte);
     }
+
     public function getCopyTrainerData()
     {
         return $this->getConvertedJson($this->copyTrainer);
     }
+
     public function getCopyBeraterData()
     {
         return $this->getConvertedJson($this->copyBerater);
     }
+
     public function getCopyVerantwortlicheData()
     {
         return $this->getConvertedJson($this->copyVerantwortliche);
     }
+
     public function getCopyVerantwortlicheMailData()
     {
         return $this->getConvertedJson($this->copyVerantwortlicheMail);
     }
+
     public function getReviewB1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB1CommentInternal);
     }
+
     public function getReviewB14CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB14CommentInternal);
     }
+
     public function getReviewB15CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB15CommentInternal);
     }
+
     public function getReviewB22CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB22CommentInternal);
     }
+
     public function getReviewB23CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB23CommentInternal);
     }
+
     public function getReviewB2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewB2CommentInternal);
     }
+
     public function getReviewC1CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC1CommentInternal);
     }
+
     public function getReviewC2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC2CommentInternal);
     }
+
     public function getReviewC3CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC3CommentInternal);
     }
+
     public function getReviewTotalCommentInternalData()
     {
         return $this->getConvertedJson($this->reviewTotalCommentInternal);
@@ -2915,9 +2933,15 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $input
      */
-    protected function getConvertedJson(string $input)
+    protected function getConvertedJson(string $input): array
     {
-        return json_decode($input, true);
+        $final = [];
+        foreach ((array)json_decode($input, true) as $item) {
+            if (is_array($item)) {
+                $final[] = $item;
+            }
+        }
+        return $final;
     }
 
     /**
@@ -3352,6 +3376,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->reviewB23CommentInternalStep = $reviewB23CommentInternalStep;
     }
+
     public function isEinReichbarDurchTr()
     {
         return in_array($this->status, AnsuchenStatus::statusBearbeitbarDurchTr(), true);
