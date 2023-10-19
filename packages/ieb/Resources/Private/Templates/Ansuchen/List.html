@@ -84,7 +84,10 @@
     <f:if condition="{item.statusAfterReview}==3">
         <span class="titleview knopfrund achtung-orange" title="ANSUCHEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
     </f:if>
-    <f:if condition="{item.statusAfterReview}>3">
+    <f:if condition="{item.statusAfterReview}==4">
+        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+    </f:if>
+    <f:if condition="{item.statusAfterReview}==5">
         <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
     </f:if>
 
@@ -105,7 +108,10 @@
     <f:if condition="{stammdaten.statusAfterReview}==3">
         <span class="titleview knopfrund achtung-orange" title="STAMMDATEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
     </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}>3">
+    <f:if condition="{stammdaten.statusAfterReview}==4">
+        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+    </f:if>
+    <f:if condition="{stammdaten.statusAfterReview}==5">
         <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
     </f:if> 
 
@@ -131,8 +137,11 @@
                             {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
                         </f:for>"></span>
                     </f:if>
-                    <f:if condition="{tsarBabi}>3">
-                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeit. Neueinreichung ist erforderlich"></span>
+                    <f:if condition="{tsarBabi}==4">
+                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeit. Neueinreichung ist möglicherweiese erforderlich"></span>
+                    </f:if>
+                    <f:if condition="{tsarBabi}==5">
+                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben nach negativer Begutachtung bearbeit. Neueinreichung ist erforderlich"></span>
                     </f:if>
                 </f:then>
                 <f:else>
@@ -150,8 +159,11 @@
                             {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
                         </f:for>"></span>
                     </f:if>
-                    <f:if condition="{tsarPsa}>3">
-                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeitet. Neueinreichung ist erforderlich"></span>
+                    <f:if condition="{tsarPsa}==4">
+                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+                    </f:if>
+                    <f:if condition="{tsarPsa}==5">
+                        <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben nach negativer Begutachtung bearbeitet. Neueinreichung ist erforderlich"></span>
                     </f:if>
                 </f:else>
             </f:if>

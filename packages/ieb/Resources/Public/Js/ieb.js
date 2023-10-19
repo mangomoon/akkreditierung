@@ -1,6 +1,6 @@
  // Validierung
  function validieren() {
-     console.log("--------- Bericht: -----------");
+     
      
      allesda = 1;
 
@@ -95,7 +95,7 @@
          $('#okpsa').attr('value', 1);
      }
 
-     console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+     //console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
 
 
 
@@ -107,7 +107,7 @@
      validieren();
      $('.fehlt').each(function() {
          $(this).html("Daten fehlen!");
-         allesda = 0;
+         //allesda = 0;
      });
     //  console.log("Stammdaten: " + allesda);
      bb = 0;
@@ -401,6 +401,7 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
+        console.log("--------- Bericht: -----------");
         // validieren();
         validierenansuchen();
         // setStatusAfterReview();
@@ -411,8 +412,11 @@ function qualifikationPsaSprache() {
 // on SUBMIT Berater/Ansuchen/Stammdaten ##########################
 
      $("form.tr").submit(function(e) {
-        validierentr();
+        validieren();
+        if($(this).hasClass('tra')) {
 
+            validierenansuchen();
+        }
        saralt = $('#sar').val();
        sar= 0;
        if (saralt == 1) {
@@ -432,7 +436,7 @@ function qualifikationPsaSprache() {
                 } else if (saralt == 1) {
                     sar = 2;
                 } else if (saralt == 3) {
-                    sar = 5;
+                    sar = 4;
                 } else if (saralt == 4 && sar < 5) {
                     sar = 4;
                 } else if (saralt == 5) {
@@ -447,11 +451,11 @@ function qualifikationPsaSprache() {
 
        $('#sar').val(sar);
        
+    //    console.log("--------- Bericht: -----------");
+    //    console.log("saralt: " + saralt + " sar: " + sar);
 
-       //console.log("saralt: " + saralt + " sar: " + sar);
 
-
-       //e.preventDefault();
+    //    e.preventDefault();
     });
 
 
