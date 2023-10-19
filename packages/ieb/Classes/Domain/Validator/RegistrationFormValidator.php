@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Domain\Validator;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationForm;
 use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -34,8 +35,24 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
         if (!$registrationForm->isDsgvo()) {
             $this->addErrorForProperty('dsgvo', 'Bitte stimmen Sie der Datenschutzerklärung zu', 1620000004);
         }
+        if (!$this->usernameIsUnique($registrationForm->username)) {
+            $this->addErrorForProperty('username', 'Der Benutzername ist bereits vergeben', 1620000005);
+        }
 
         $this->validateIfTrExists($registrationForm->trName);
+    }
+
+    protected function usernameIsUnique(string $username): bool
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $count = $queryBuilder
+            ->select('uid')
+            ->from('fe_users')
+            ->where(
+                $queryBuilder->expr()->eq('username', $queryBuilder->createNamedParameter($username))
+            )->execute()->fetchAllAssociative();
+
+        return count($count) === 0;
     }
 
     protected function validateIfTrExists(string $name): void

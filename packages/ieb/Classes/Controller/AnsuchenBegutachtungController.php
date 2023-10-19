@@ -213,7 +213,6 @@ class AnsuchenBegutachtungController extends BaseController
             $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
         } catch (\JsonException $e) {
         }
-
         if($ansuchen->getUpcomingStatus() == 820) {
             $ansuchen->setArchiviert() === 1;
         }

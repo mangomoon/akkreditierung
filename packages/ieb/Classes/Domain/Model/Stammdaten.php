@@ -1026,9 +1026,15 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $input
      */
-    protected function getConvertedJson(string $input)
+    protected function getConvertedJson(string $input): array
     {
-        return json_decode($input, true);
+        $final = [];
+        foreach ((array)json_decode($input, true) as $item) {
+            if (is_array($item)) {
+                $final[] = $item;
+            }
+        }
+        return $final;
     }
 
     /**
