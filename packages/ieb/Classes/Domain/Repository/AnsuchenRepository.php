@@ -132,6 +132,7 @@ class AnsuchenRepository extends BaseRepository
             'name' => 'NEU [Kopie von ' . $ansuchen->getName() . ']',
             'kopie_von' => $ansuchen->getUid(),
             'version' => 0,
+            'ok' => 0,
             'review_b1_comment_internal' => '',
             'review_b1_comment_internal_step' => '',
             'review_b1_comment_tr' => '',

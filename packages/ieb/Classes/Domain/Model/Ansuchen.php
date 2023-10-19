@@ -2852,7 +2852,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     public function getCopyStammdatenData()
     {
-        return $this->getConvertedJson($this->copyStammdaten);
+        return $this->getConvertedJsonSimple($this->copyStammdaten);
     }
 
     public function getCopyStandorteData()
@@ -2942,6 +2942,14 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             }
         }
         return $final;
+    }
+
+    /**
+     * @param string $input
+     */
+    protected function getConvertedJsonSimple(string $input)
+    {
+        return json_decode($input, true);
     }
 
     /**

@@ -329,13 +329,13 @@
                             <label for="kompetenzf"><input type="checkbox" checked="checked" disabled="disabled"id="kompetenze"/> Berufsorientierung</label></p>
                         <p>Wahlmodule:</p>
                         <p>
-                            <label for="kompetenz1"><f:form.checkbox property="kompetenz1" class="{f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
+                            <label for="kompetenz1"><f:form.checkbox property="kompetenz1" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz1" value="1" /> Kreativität und Gestaltung</label></p>
                         <p>
-                            <label for="kompetenz2"><f:form.checkbox property="kompetenz2" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
+                            <label for="kompetenz2"><f:form.checkbox property="kompetenz2" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz2" value="1" /> Gesundheit und Soziales</label></p>
                         <p>
-                            <label for="kompetenz3"><f:form.checkbox property="kompetenz3" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz3" value="1" /> Natur und Technik</label></p>
+                            <label for="kompetenz3"><f:form.checkbox property="kompetenz3" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz3" value="1" /> Natur und Technik</label></p>
                         <p>
-                            <label for="kompetenz4"><f:form.checkbox property="kompetenz4" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
+                            <label for="kompetenz4"><f:form.checkbox property="kompetenz4" class="reqkomp {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenz4" value="1" /> Weitere Sprachen: Welche?</label>
                             <f:form.textfield property="kompetenzText1" class=" {f:if(condition:'{ansuchen.reviewB1Status}>2', then:'status-negativ')}" id="kompetenzText1" />
                         </p>
                     </div>
@@ -753,7 +753,7 @@
                         <div class="tb-liste">
                             <f:for each="{relations.trainerbabi}" as="t">
                                 <div class="tb-zeile status-{t.statusAfterReviewBabi} "><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
-                                    <div class="a">
+                                    <div class="a"><!--
                                         <f:switch expression="{t.statusAfterReviewBabi}">
                                             <f:case value="0"><span class="knopfrund ok-grey" title="Noch ohne Begutachtung. Einreichung erfoderlich"></span></f:case>
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung positiv"></span></f:case>
@@ -761,7 +761,7 @@
                                             <f:case value="3"><span class="titleview knopfrund achtung-orange" title="Negative Begutachtung oder Auflage(n), aber Änderungen noch nicht erfolgt!"></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                                        </f:switch>&nbsp;&nbsp;
+                                        </f:switch>&nbsp;&nbsp;-->
                                         {t.fullname} 
                                     </div>
                                     <div class="c">
@@ -806,7 +806,7 @@
                             <f:for each="{relations.trainerpsa}" as="t">
                                 <div class="tb-zeile status-{t.statusAfterReviewPsa}"><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
-                                    <div class="a">
+                                    <div class="a"><!--
                                         <f:switch expression="{t.statusAfterReviewPsa}">
                                             <f:case value="0"><span class="knopfrund ok-grey" title="Noch ohne Begutachtung. Einreichung erfoderlich"></span></f:case>
                                             <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung positiv"></span></f:case>
@@ -814,7 +814,7 @@
                                             <f:case value="3"><span class="titleview knopfrund achtung-orange" title="Negative Begutachtung oder Auflage(n), aber Änderungen noch nicht erfolgt!"></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
                                             <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                                        </f:switch>
+                                        </f:switch>&nbsp;&nbsp;-->
                                         {t.fullname} 
                                     </div>  
                                     <div class="c">
@@ -886,7 +886,7 @@
                 <f:for each="{relations.berateraktivundok}" as="t">
                     <div class="tb-zeile">
                         <f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
-                        <div class="a">
+                        <div class="a"><!--
                             <f:switch expression="{t.statusAfterReview}">
                                 <f:case value="0"><span class="knopfrund ok-grey" title="Noch ohne Begutachtung. Einreichung erfoderlich"></span></f:case>
                                 <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung positiv"></span></f:case>
@@ -894,7 +894,7 @@
                                 <f:case value="3"><span class="titleview knopfrund achtung-orange" title="Negative Begutachtung oder Auflage(n), aber Änderungen noch nicht erfolgt!"></span></f:case>
                                 <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
                                 <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                            </f:switch>
+                            </f:switch>&nbsp;&nbsp;-->
                             {t.fullname}
                         </div>
 

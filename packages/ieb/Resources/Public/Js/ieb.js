@@ -1,27 +1,28 @@
  // Validierung
  function validieren() {
-
+     console.log("--------- Bericht: -----------");
+     
      allesda = 1;
 
      $('.req').each(function() {
          if ($(this).val().length == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-            //  console.log($(this).attr('id'));
+              console.log("Input: " + $(this).attr('id'));
          }
      });
      $('.reqcheckbox').each(function() {
          if (!$(this).is(':checked')) {
              $(this).addClass('req-leer');
              allesda = 0;
-            //  console.log($(this).attr('id'));
+              console.log("Check: " + $(this).attr('id'));
          }
      });
      $('.reqtext').each(function() {
          if ($(this).text() == '') {
              $(this).addClass('req-leer');
              allesda = 0;
-            //  console.log($(this).attr('id'));
+              console.log("Textarea: " + $(this).attr('id'));
          }
      });
 
@@ -29,14 +30,14 @@
          if ($(this).val() == 0) {
              $(this).addClass('req-leer');
              allesda = 0;
-            //  console.log($(this).attr('id'));
+              console.log("Select: " + $(this).attr('id'));
          }
      });
 
      $('.reqfile').each(function() {
          if ($(this).is('.req-leer')) {
              allesda = 0;
-            //  console.log("FILE: " + $(this).attr('id'));
+            console.log("File: " + $(this).attr('class'));
          }
      });
 
@@ -55,7 +56,7 @@
      qp = 0;
      ll = 0;
 
-     validieren();
+    //  validieren();
     
 
      if ($('#verwendungBabi').is(':checked')) {
@@ -94,7 +95,7 @@
          $('#okpsa').attr('value', 1);
      }
 
-     //console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+     console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
 
 
 
@@ -131,7 +132,7 @@
 
      
 
-     console.log("allesda ohne bb: " + allesda);
+    //  console.log("allesda ohne bb: " + allesda);
 
      var komp = 0;
      if ($('#kompetenz1').is(':checked')) {
@@ -156,6 +157,8 @@
              $(this).addClass('req-leer');
          })
      }
+     console.log("vor komp: allesda: " + allesda);
+     console.log("komp: " + komp);
 
 
      $('span.multi-select-button').each(function() {
@@ -398,8 +401,8 @@ function qualifikationPsaSprache() {
         });
     });
     $('#validieren-test').click(function(){
-        validieren();
         // validieren();
+        validierenansuchen();
         // setStatusAfterReview();
         
     });
@@ -408,7 +411,8 @@ function qualifikationPsaSprache() {
 // on SUBMIT Berater/Ansuchen/Stammdaten ##########################
 
      $("form.tr").submit(function(e) {
-        validieren();
+        validierentr();
+
        saralt = $('#sar').val();
        sar= 0;
        if (saralt == 1) {
@@ -485,7 +489,7 @@ function qualifikationPsaSprache() {
                 } else if (sarBabialt == 1) {
                     sarBabi = 2;
                 } else if (sarBabialt == 3) {
-                    sarBabi = 5;
+                    sarBabi = 4;
                 } else if (sarBabialt == 4 && sarBabi < 5) {
                     sarBabi = 4;
                 } else if (sarBabialt == 5) {
@@ -501,7 +505,7 @@ function qualifikationPsaSprache() {
                 } else if (sarPsaalt == 1) {
                     sarPsa = 2;
                 } else if (sarPsaalt == 3) {
-                    sarPsa = 5;
+                    sarPsa = 4;
                 } else if (sarPsaalt == 4 && sarPsa < 5) {
                     sarPsa = 4;
                 } else if (sarPsaalt == 5) {
@@ -517,8 +521,8 @@ function qualifikationPsaSprache() {
        $('#sarBabi').val(sarBabi);
        $('#sarPsa').val(sarPsa);
 
-       //console.log("sarBabialt: " +sarBabialt + " | sarBabi: " +sarBabi + " | sarPsaalt: " +sarPsaalt + " | sarPsa: " +sarPsa);
-       //e.preventDefault();
+    //    console.log("sarBabialt: " +sarBabialt + " | sarBabi: " +sarBabi + " | sarPsaalt: " +sarPsaalt + " | sarPsa: " +sarPsa);
+    //    e.preventDefault();
     });
 
 

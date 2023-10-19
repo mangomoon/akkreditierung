@@ -9,6 +9,7 @@
         </div>
         <div id="ansuchenlistencontainer">
         <f:for each="{ansuchen}" as="item">
+
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
 
             <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
@@ -19,7 +20,15 @@
             <f:variable name="gutachter2">{item.gutachter2}</f:variable>
             <tr>
                 <td colspan="2" class="ansuchenliste_tr">
-                    <span class="fett">{stammdaten.name}</span> — {stammdaten.markenname}
+                    <f:if condition="{stammdaten.markenname}">
+                        <f:then>
+                            <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                        </f:then>
+                        <f:else>
+                            <span class="fett">{stammdaten.name}</span>
+                        </f:else>
+                    </f:if>
+                    
                 </td>
                     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                         <f:if condition="({item.status} == 20) && !{item.gutachter1}">

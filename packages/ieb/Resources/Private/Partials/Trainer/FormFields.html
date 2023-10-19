@@ -191,16 +191,33 @@ Der Trainer/die Trainerin soll in Bildungsangeboten aus folgenden <strong>Progra
     <p class="hinweisextra" id="hinweisextra-c-2-1">
         HINWEIS: Für Trainer/innen in Ansuchen mit Prüfbescheid sind keine Unterlagen einzureichen.
     </p>
-
-                    <f:render partial="Form/UploadMultiple" arguments="{
-                        property:'lebenslaufDatei', 
-                        id:'lebenslaufDatei', 
-                        req:'reqfile', 
-                        label:'Erfahrungsnachweis',
-                        anmerkung:'lebenslauf',
-                        metadaten:'{trainer.lebenslaufDatei.originalResource}',
-                        media:trainer.lebenslaufDatei
-                    }" />
+    <f:if condition="{trainer.reviewC22PsaStatus}>2 || {status:trainer.reviewC22BabiStatus}>2">
+        <f:then>
+            <f:render partial="Form/UploadMultiple" arguments="{
+                property:'lebenslaufDatei', 
+                id:'lebenslaufDatei', 
+                req:'reqfile', 
+                label:'Erfahrungsnachweis',
+                anmerkung:'lebenslauf',
+                metadaten:'{trainer.lebenslaufDatei.originalResource}',
+                media:trainer.lebenslaufDatei,
+                status:3
+            }" />
+        </f:then>
+        <f:else>
+            <f:render partial="Form/UploadMultiple" arguments="{
+                property:'lebenslaufDatei', 
+                id:'lebenslaufDatei', 
+                req:'reqfile', 
+                label:'Erfahrungsnachweis',
+                anmerkung:'lebenslauf',
+                metadaten:'{trainer.lebenslaufDatei.originalResource}',
+                media:trainer.lebenslaufDatei,
+                status:1
+            }" />
+        </f:else>
+    </f:if>
+                    
 
             
 
