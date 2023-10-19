@@ -73,7 +73,7 @@ final class ArchiveActionListener
             ->where(
                 $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, \PDO::PARAM_INT)),
                 $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusAkkreditiertBeiTr(), \PDO::PARAM_INT))
+                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusAkkreditiertBeiTr(), Connection::PARAM_INT_ARRAY))
             )
             ->execute()
             ->fetchAllAssociative();

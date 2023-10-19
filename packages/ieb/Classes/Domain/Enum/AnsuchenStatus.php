@@ -186,6 +186,8 @@ enum AnsuchenStatus: int
     public static function statusAkkreditiertBeiTr(): array
     {
         return [
+            self::NEU->value,
+            self::NEU_IN_ARBEIT->value,
             self::AKKREDITIERT->value,
             self::AKKREDITIERT_MIT_AUFLAGEN->value,
             self::AKKREDITIERUNG_ENTZOGEN->value,
