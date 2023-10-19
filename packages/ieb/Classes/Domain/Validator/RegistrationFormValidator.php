@@ -7,8 +7,8 @@ namespace GeorgRinger\Ieb\Domain\Validator;
 use GeorgRinger\Ieb\Domain\Model\Dto\RegistrationForm;
 use GeorgRinger\Ieb\Domain\Repository\RegistrationRepository;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -45,6 +45,9 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
     protected function usernameIsUnique(string $username): bool
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $queryBuilder->getRestrictions()
+            ->removeAll()
+            ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
         $count = $queryBuilder
             ->select('uid')
             ->from('fe_users')
