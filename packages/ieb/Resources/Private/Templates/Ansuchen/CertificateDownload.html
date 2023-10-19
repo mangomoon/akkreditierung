@@ -5,25 +5,44 @@
 <pdf:document sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
     <pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">
         
-<f:if condition="{ansuchen.pp3}">
-    <!-- SONDERANSUCHEN-->
-<f:then>
-    <pdf:html autoHyphenation="1">
-        <style>
-            p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
-        </style>
-        <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">SONDERSONDER!</p>
-        <p>Bitte um Inhalte!</p>
-    </pdf:html>
-</f:then>
-<f:else>
 
  <f:if condition="{ansuchen.status}<200">
     <!-- ANSUCHEN mit 100 oder 140 -->
     <f:then>
 
     
+    <f:if condition="{ansuchen.pp3}">
+        <f:then>
+            <pdf:html autoHyphenation="1">
+                <style>
+                    p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
+                </style>
+    
+                <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">ANHANG ZUR AKKREDITIERUNGSBESTÄTIGUNG</p>
+    
+                <p style="text-align: center;line-height: 26pt">&nbsp;<br>
+                    Dieses Dokument ergänzt die Akkreditierungsbestätigung vom {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} <br>
+                    für das Bildungsangebot {ansuchen.nummer}, {ansuchen.name} <br>
+                    für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls <br>
+                    „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1–BMBWF01).<br><br><br></p>
 
+                    
+    
+                    <br>
+                </p>
+                <p style="font-size:8.5pt;">Ergeben sich innerhalb des Durchführungszeitraums Änderungen des akkreditierten Programms (Standorte, Personal), so ist die Geschäftsstelle davon umgehend in Kenntnis zu setzen und das Ansuchen zur Nachakkreditierung einzureichen.<br><br><br><br><br><br><br><br><br><br></p>
+            </pdf:html>
+            <pdf:text fontFamily="opensans"
+                      fontSize="10"
+                      padding="{top: 5, right: 0, bottom: 0, left: 80}">
+                Geschäftsstelle
+                Initiative Erwachsenenbildung
+                im Auftrag der Akkreditierungsgruppe
+    
+                Wien, am {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')}
+            </pdf:text>
+        </f:then>
+        <f:else>
         <pdf:html autoHyphenation="1">
             <style>
                 p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
@@ -52,7 +71,7 @@
             <p style="font-size:8.5pt;">Das akkreditierte Bildungsangebot wird auf www.initiative-erwachsenenbildung.at veröffentlicht.</p>
             <p style="font-size:8.5pt;">Diese Bestätigung ist dem Förderansuchen beizulegen.</p>
             <p style="font-size:8.5pt;">Ergeben sich innerhalb dieses Zeitraums wesentliche Änderungen des akkreditierten Programms (siehe Beiblatt), so ist die Geschäftsstelle davon umgehend in Kenntnis zu setzen.</p>
-            <p style="font-size:8.5pt;">Im Zuge der Akkreditierung wurde die Kostenstruktur im Sinne der Bandbreite des Normkostenmodells anhand folgender Parameter überprüft: Kursdauer, Gruppengröße, geplante Kosten/UE (Basisbildung), geplante Kosten/TeilnehmerIn (Pflichtschulabschluss). Die Förderhöhe ist nicht Gegenstand der Akkreditierung.</p>
+            <p style="font-size:8.5pt;">Die Förderhöhe ist nicht Gegenstand der Akkreditierung.</p>
             <p style="font-size:8.5pt;">Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den auf der folgenden Seite genannten Standorten.</p>
         </pdf:html>
         <pdf:text fontFamily="opensans"
@@ -64,16 +83,17 @@
 
             Wien, am {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')}
         </pdf:text>
-            
+    </f:else>
+            </f:if>
             
             <pdf:html>
                 <style>
-                    p {font-family: "opensans", sans-serif;font-size:10pt;}
+                    p,li {font-family: "opensans", sans-serif;font-size:10pt;}
                     h2 {font-family: "opensans", sans-serif;font-size:13pt;}
                     div {margin:0;padding:0;}
                 </style>
             <h2 style="page-break-before: always;">Standorte</h2>
-            <p>Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den im Folgenden genannten Standorten:<br><br></p>
+            <p>Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den im Folgenden <br>genannten Standorten:<br><br></p>
             <f:for each="{relations.standorte}" as="standort">
                 <p>{standort.name} <br>{standort.adresse}<br>{standort.plz} {standort.ort}<br><br></p>
             </f:for>
@@ -93,7 +113,7 @@
 
 
             <f:if condition="{ansuchen.status}==140">
-                <h2 style="page-break-before: always;">Die Auflagen im Einzelnen</h2>
+                <h2 style="page-break-before: always;">Folgende Auflagen bestehen für das Bildungsangebot</h2>
                 <p>Auflagen für die Akkreditierung des Angebots Brückenkurs zum Einstieg in den Pflichtschulabschluss, des Bildungsträgers {stammdaten.name} vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</p>
                 
                
@@ -182,12 +202,18 @@
 
             <h2 style="page-break-before: always;">Hinweise</h2>
 
-            <p>Ergeben sich innerhalb des Akkreditierungszeitraums wesentliche Änderungen des akkreditierten Bildungsangebots, so sind diese umgehend zur Nachakkreditierung einzureichen, wenn</p>
-            <p>a) mehr als 30% der TrainerInnen und/oder BeraterInnen nicht mehr mit den bei der ersten Akkreditierung des Ansuchens angegebenen Personen ident sind. In diesem Fall ist die aktualisierte Auflistung sämtlicher TrainerInnen bzw. BeraterInnen samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</p>
-            <p>b) die/der Angebotsverantwortliche wechselt. In diesem Fall sind die Angaben zur neuen verantwortlichen Person samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</p>
-            <p>c) wesentliche Änderungen des Angebots vorgenommen werden (Anzahl der Unterrichtseinheiten gesamt oder einzelner Module, Inhalte, Methoden u.ä.). In diesem Fall sind die Angaben zum veränderten Angebot bzw. die Neukonzeption zur Nachakkreditierung einzureichen, wobei die Änderungen deutlich kenntlich zu machen sind.</p>
-            <p>d) befristete Nachweise ablaufen (Ö-Cert, Bescheid zur Prüfungsberechtigung, u.a.). In diesem Fall sind die aktualisierten Nachweise vor dem Ablauftermin der im Ansuchen angegebenen Nachweise zur Nachakkreditierung einzureichen.</p>
-            
+            <p>Ergeben sich innerhalb des Akkreditierungszeitraums wesentliche Änderungen des akkreditierten Bildungsangebots, so sind diese umgehend zur Nachakkreditierung einzureichen, wenn:</p>
+            <ul>
+                <li>mehr als 30% der Trainer/innen und/oder Berater/innen nicht mehr mit den bei der ersten Akkreditierung des Ansuchens angegebenen Personen ident sind. In diesem Fall ist die aktualisierte Auflistung sämtlicher Trainer/innen bzw. Berater/innen samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</li>
+
+                <li>projektleitende Person(en) wechseln. In diesem Fall sind die Angaben zur neuen verantwortlichen Person samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</li>
+
+                <li>wesentliche Änderungen des Angebots vorgenommen werden (Anzahl der Unterrichtseinheiten gesamt oder einzelner Module, Inhalte, Methoden u.ä.). In diesem Fall sind die Angaben zum veränderten Angebot bzw. die Neukonzeption zur Nachakkreditierung einzureichen, wobei die Änderungen deutlich kenntlich zu machen sind.</li>
+
+                <li>befristete Nachweise ablaufen (Ö-Cert, Bescheid zur Prüfungsberechtigung, u.a.). In diesem Fall sind die aktualisierten Nachweise vor dem Ablauftermin der im Ansuchen angegebenen Nachweise zur Nachakkreditierung einzureichen.</li>
+
+                <li>Auflagen erfüllt werden.</li>
+            </ul>
             </pdf:html>
             </f:then>
             <!-- ENDE AKKREDITIERTE ANSUCHEN-->
@@ -197,8 +223,7 @@
                 
             </f:else>
         </f:if>
-    </f:else>
-</f:if> 
+
     </pdf:page>
 </pdf:document>
 

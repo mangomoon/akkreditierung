@@ -219,12 +219,13 @@ class AnsuchenBegutachtungController extends BaseController
         }
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
-        $ansuchen->setUpcomingStatus(0);
-
-        if ($ansuchen->getAkkreditierungDatum() === null) {
+        
+        if (($ansuchen->getAkkreditierungDatum() === null) && ($ansuchen->getUpcomingStatus() > 80)) {
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
-
+        
+        $ansuchen->setUpcomingStatus(0);
+        $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
 

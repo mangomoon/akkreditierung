@@ -222,6 +222,10 @@ class AnsuchenController extends BaseController
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirect('list');
         }
+        if (isset($arguments['saveAndStammdaten'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirectToUri("/?id=10");
+        }
         if (isset($arguments['saveAndTrainer'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirectToUri("/?id=12");

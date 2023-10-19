@@ -23,8 +23,8 @@ class Import
         // $stammdaten = new StammdatenImport();
         // $response['Stammdaten'] = $stammdaten->run();
 
-        // $ansuchenImport = new AnsuchenImport();
-        // $response['Ansuchen'] = $ansuchenImport->run();
+        $ansuchenImport = new AnsuchenImport();
+        $response['Ansuchen'] = $ansuchenImport->run();
 
         return $response;
     }

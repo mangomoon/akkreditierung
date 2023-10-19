@@ -62,6 +62,7 @@ class RegistrationRepository
             'crdate' => time(),
             'name' => $form->trName,
             'qms_zertifikat' => '',
+            'leitbild' => '',
             'review_a1_comment_internal' => '',
             'review_a2_comment_internal' => '',
             'review_a1_comment_tr' => '',

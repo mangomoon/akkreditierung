@@ -19,7 +19,7 @@ final class AnsuchenZuteilungListener
     public function __invoke(AnsuchenZuteilungEvent $event)
     {
         $ansuchen = $event->ansuchen;
-        $mails = AnsuchenUtility::getMailVeranwortliche($ansuchen);
+        //$mails = AnsuchenUtility::getMailVeranwortliche($ansuchen);
         $gsEmail = (new ExtensionConfiguration())->getEmailAddressGs();
         if ($gsEmail) {
             $mails[$gsEmail] = '';
