@@ -451,6 +451,8 @@ function qualifikationPsaSprache() {
 
        $('#sar').val(sar);
        
+
+
     //    console.log("--------- Bericht: -----------");
     //    console.log("saralt: " + saralt + " sar: " + sar);
 
@@ -948,6 +950,7 @@ function qualifikationPsaSprache() {
         $('#sar').val(b);
         $('#sar-stammdaten').val(c);
 
+        
 
 
 

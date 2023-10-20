@@ -12,7 +12,7 @@
         <p>Sehr geehrte Damen und Herren!</p>
 
         <f:if condition="{ansuchen.status}==20">
-            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} eingereicht. Nach erfolgter formaler Prüfung erfolgt eine weitere Benachrichtigung per Mail. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
+            <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} eingereicht. Der Status des Ansuchens kann in der Übersicht der Akkreditierungen beobachtet werden. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
         <f:if condition="{ansuchen.status}==82">

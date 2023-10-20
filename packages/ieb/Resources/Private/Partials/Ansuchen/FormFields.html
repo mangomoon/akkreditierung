@@ -800,10 +800,19 @@
             <f:else>
                 <f:if condition="{relations.trainerpsa}">
                     <f:then>
+                        <f:if condition="{ansuchen.pruefbescheidCheck}">
+                            <f:then>
+                                <p class="hinweis">Es werden Personen gelistet, für die die Verwendung in PSA-Ansuchen angeklickt wurde.</p>
+                            </f:then>
+                            <f:else>
+                                <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
+                            </f:else>
+                        </f:if>
                         <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
+
                                 <div class="tb-zeile status-{t.statusAfterReviewPsa}"><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
                                     <div class="a"><!--
@@ -835,11 +844,12 @@
                                         </f:if>
                                     </div>
                                 </div>
+
                             </f:for>
                         </div>
 
                         <f:if condition="{ansuchen.pruefbescheidDatei}">
-                            <p><label for="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchebn.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchebn.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>

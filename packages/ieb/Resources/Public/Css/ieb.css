@@ -384,6 +384,9 @@ p.hinweisextra {
     background-image: url("../Img/extension/jpg.svg");
 }
 
+table.stammdaten .filelist-item a {
+    background-size: 13px;
+}
 
 .filedelete {
     margin-top: -2px;
@@ -932,10 +935,11 @@ span.ansuchennr {
     display: inline;
 }
 
-#erklaerungen-D label {
+#erklaerungen-D label,label.erklaerungd2  {
     text-transform: unset;
     font-size: 0.9em;
 }
+
 
 
 /* DL */
@@ -1557,7 +1561,7 @@ span.check-nein {
 
 .komm-int {
     color: var(--f5);
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 .komm-int p {
     padding: 2px 0;
@@ -1568,6 +1572,7 @@ span.check-nein {
     text-transform: uppercase;
     color: #fff;
     padding-right: 8px;
+    font-size: 0.9em;
 }
 
 .begutachtung-kriterium textarea {
