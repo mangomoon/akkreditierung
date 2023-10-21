@@ -1,15 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Controller;
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
+use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
-use GeorgRinger\Ieb\Service\RelationLockService;
 use League\Csv;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ReportingController extends ActionController
@@ -46,6 +48,44 @@ class ReportingController extends ActionController
             $this->csvResponse($csvContent, 'no-request.csv');
         }
         $this->view->assign('items', $items);
+        return $this->htmlResponse();
+    }
+
+    public function filterAction(ReportingFilter $reportingFilter = null): ResponseInterface
+    {
+        $items = [];
+        if (is_null($reportingFilter)) {
+            $reportingFilter = new ReportingFilter();
+        }
+
+        if (!$this->isPartOfGs()) {
+            $reportingFilter->trPid = self::getCurrentUserPid();
+        }
+
+        if ($reportingFilter->submitted) {
+            $items = $this->reportingRepository->getByFilter($reportingFilter);
+
+            if ($reportingFilter->csv && !empty($items)) {
+                $fields = [
+                    'name' => 'Name',
+                    'nummer' => 'Nummer',
+                ];
+                $csvContent = $this->generateCsv($items, $fields);
+                $this->csvResponse($csvContent, 'ansuchen.csv');
+            }
+        }
+
+        $this->view->assignMultiple([
+            'items' => $items,
+            'reportingFilter' => $reportingFilter,
+            'userIsPartOfGs' => $this->isPartOfGs(),
+            'filter' => [
+                'bundesland' => array_column(BundeslandEnum::cases(), 'name', 'value'),
+                'status' => array_column(AnsuchenStatus::cases(), 'name', 'value'),
+                'tr' => $this->reportingRepository->getAllTraegerNames(),
+            ],
+        ]);
+
         return $this->htmlResponse();
     }
 
