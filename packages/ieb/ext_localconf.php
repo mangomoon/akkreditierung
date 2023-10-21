@@ -6,11 +6,11 @@ defined('TYPO3') || die();
         'Ieb',
         'Default',
         [
-            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'list, show, new, create, edit, update, delete',
+//            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'list, show, new, create, edit, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list, show',
         ],
         [
-            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
+//            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list,show',
         ]
     );
@@ -128,6 +128,17 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn,acceptInvitation, acceptInvitationSuccess',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'Reporting',
+        [
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest',
         ]
     );
 

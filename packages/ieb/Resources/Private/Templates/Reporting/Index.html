@@ -1,0 +1,22 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Reporting</h1>
+
+    <ul>
+        <f:if condition="{userIsPartOfGs}">
+            <li>
+                <f:link.action action="noRequest">TR ohne Ansuchen</f:link.action>
+            </li>
+        </f:if>
+        <li>
+            <f:link.action action="filter">Filter</f:link.action>
+        </li>
+    </ul>
+</f:section>
+
+</html>
