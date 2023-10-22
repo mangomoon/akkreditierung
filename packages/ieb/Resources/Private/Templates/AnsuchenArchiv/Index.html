@@ -1,0 +1,81 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Ansuchen Archiv</h1>
+
+
+    <f:form method="get" action="index" name="filter" object="{filter}">
+        <f:form.hidden property="submitted" value="1"/>
+
+
+        <f:if condition="{userIsPartOfGs}">
+            <div>
+                <label for="trPid">
+                    Träger
+                    <f:form.select property="trPid" id="trPid" options="{filter.tr}"
+                                   prependOptionValue="0" prependOptionLabel=""/>
+                </label>
+            </div>
+        </f:if>
+        <f:form.submit value="Filtern"/>
+    </f:form>
+    <f:if condition="{filter.submitted}">
+        <f:if condition="{items}">
+            <f:then>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Nummer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:for each="{pagination.paginator.paginatedItems}" as="item">
+                        <tr>
+                            <td>{item.name}</td>
+                            <td>{item.nummer}</td>
+                        </tr>
+                        <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
+                            <f:if condition="{oldVersions}"> <tr>
+                                <td colspan="2">
+
+                                <details>
+                                    <summary>Vorige Versionen ({oldVersions -> f:count()})</summary>
+
+                                    <table>
+                                        <tr>
+                                            <th>uid</th>
+                                            <th>datum</th>
+                                            <th>status</th>
+                                        </tr>
+                                        <f:for each="{oldVersions}" as="oldVersion">
+                                            <tr>
+                                                <td>{oldVersion.uid}</td>
+                                                <td>{oldVersion.einreich_datum}</td>
+                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /></td>
+                                            </tr>
+                                        </f:for>
+                                    </table>
+                                </details>
+                                </td>
+                            </tr>
+                            </f:if>
+                        </ieb:ansuchenOldVersionLoader>
+                    </f:for>
+                    </tbody>
+                </table>
+                <f:render partial="Pagination" arguments="{pagination: pagination.pagination, pages: pagination.pages, paginator: pagination.paginator}" />
+
+            </f:then>
+            <f:else>
+                <div>Keine Ansuchen passen auf die Filter</div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
+
+</html>

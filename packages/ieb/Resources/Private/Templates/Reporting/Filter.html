@@ -1,0 +1,71 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Filter</h1>
+    <f:form action="filter" name="reportingFilter" object="{reportingFilter}">
+        <f:form.hidden property="submitted" value="1"/>
+
+        <div>
+            <label for="asCsv">
+                CSV
+                <f:form.checkbox property="csv" id="asCsv" value="1"/>
+            </label>
+        </div>
+
+        <div>
+            <label for="bundesland">
+                Bundesland
+                <f:form.select property="bundesland" id="bundesland" options="{filter.bundesland}"
+                               prependOptionValue="0" prependOptionLabel=""/>
+            </label>
+        </div>
+        <div>
+            <label for="status">
+                Status
+                <f:form.select property="status" id="status" options="{filter.status}"
+                               prependOptionValue="-99" prependOptionLabel=""/>
+            </label>
+        </div>
+        <f:if condition="{userIsPartOfGs}">
+            <div>
+                <label for="trPid">
+                    Träger
+                    <f:form.select property="trPid" id="trPid" options="{filter.tr}"
+                                   prependOptionValue="0" prependOptionLabel=""/>
+                </label>
+            </div>
+        </f:if>
+        <f:form.submit value="Filtern"/>
+    </f:form>
+    <f:if condition="{reportingFilter.submitted}">
+        <f:if condition="{items}">
+            <f:then>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Nummer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:for each="{items}" as="item">
+                        <tr>
+                            <td>{item.name}</td>
+                            <td>{item.nummer}</td>
+                        </tr>
+                    </f:for>
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>
+                <div>Keine Ansuchen passen auf die Filter</div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
+
+</html>

@@ -1,0 +1,133 @@
+<?php
+declare(strict_types=1);
+
+namespace GeorgRinger\Ieb\Controller;
+
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
+use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
+use GeorgRinger\Ieb\ExtensionConfiguration;
+use League\Csv;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
+class ReportingController extends ActionController
+{
+    use CurrentUserTrait;
+
+    private ReportingRepository $reportingRepository;
+    protected ExtensionConfiguration $extensionConfiguration;
+
+    public function indexAction(): ResponseInterface
+    {
+        $this->view->assignMultiple([
+            'userIsPartOfGs' => $this->isPartOfGs(),
+        ]);
+        return $this->htmlResponse();
+    }
+
+    public function noRequestAction(bool $csv = false): ResponseInterface
+    {
+        if (!$this->isPartOfGs()) {
+            $this->addFlashMessage('Sie haben keine Berechtigung für diese Aktion.', '', AbstractMessage::ERROR);
+            return $this->redirect('index');
+        }
+        $items = $this->reportingRepository->getTrWithNoAnsuchen();
+
+        if ($csv && !empty($items)) {
+            $fields = [
+                'name' => 'Name',
+                'strasse' => 'Strasse',
+                'plz' => 'PLZ',
+                'ort' => 'Ort',
+            ];
+            $csvContent = $this->generateCsv($items, $fields);
+            $this->csvResponse($csvContent, 'no-request.csv');
+        }
+        $this->view->assign('items', $items);
+        return $this->htmlResponse();
+    }
+
+    public function filterAction(ReportingFilter $reportingFilter = null): ResponseInterface
+    {
+        $items = [];
+        if (is_null($reportingFilter)) {
+            $reportingFilter = new ReportingFilter();
+        }
+
+        if (!$this->isPartOfGs()) {
+            $reportingFilter->trPid = self::getCurrentUserPid();
+        }
+
+        if ($reportingFilter->submitted) {
+            $items = $this->reportingRepository->getByFilter($reportingFilter);
+
+            if ($reportingFilter->csv && !empty($items)) {
+                $fields = [
+                    'name' => 'Name',
+                    'nummer' => 'Nummer',
+                ];
+                $csvContent = $this->generateCsv($items, $fields);
+                $this->csvResponse($csvContent, 'ansuchen.csv');
+            }
+        }
+
+        $this->view->assignMultiple([
+            'items' => $items,
+            'reportingFilter' => $reportingFilter,
+            'userIsPartOfGs' => $this->isPartOfGs(),
+            'filter' => [
+                'bundesland' => array_column(BundeslandEnum::cases(), 'name', 'value'),
+                'status' => array_column(AnsuchenStatus::cases(), 'name', 'value'),
+                'tr' => $this->reportingRepository->getAllTraegerNames(),
+            ],
+        ]);
+
+        return $this->htmlResponse();
+    }
+
+    protected function csvResponse(string $result, string $filename)
+    {
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Type: text/csv');
+        header('Content-Length: ' . strlen($result));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: no-cache');
+        echo $result;
+        exit;
+    }
+
+    protected function generateCsv(array $rows, array $fieldlist): string
+    {
+        $csv = Csv\Writer::createFromString();
+        $csv->insertOne(array_values($fieldlist));
+
+        $allowedKeys = array_keys($fieldlist);
+        foreach ($rows as $row) {
+            $limitedSet = array_intersect_key($row, array_flip($allowedKeys));
+            $csv->insertOne($limitedSet);
+        }
+
+        return $csv->toString();
+    }
+
+    private function isPartOfGs(): bool
+    {
+        return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);
+    }
+
+
+    public function initializeAction()
+    {
+        $this->extensionConfiguration = new ExtensionConfiguration();
+    }
+
+    public function injectReportingRepository(ReportingRepository $reportingRepository): void
+    {
+        $this->reportingRepository = $reportingRepository;
+    }
+}

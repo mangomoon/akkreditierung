@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af7ea537b5608b4f3c9e53a3d2b7df21",
+    "content-hash": "3842bcc1e480399fb48f00ee54c767e2",
     "packages": [
         {
             "name": "b13/bolt",
@@ -1144,7 +1144,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ieb",
-                "reference": "8fe1b1c900e0c0588e57d6f9390257d018eb70b1"
+                "reference": "ed78102387a909e7cdfb421113ac1727cf1b1cf1"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -1826,6 +1826,90 @@
             "time": "2023-05-31T08:11:22+00:00"
         },
         {
+            "name": "league/csv",
+            "version": "9.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "9d2e0265c5d90f5dd601bc65ff717e05cec19b47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/9d2e0265c5d90f5dd601bc65ff717e05cec19b47",
+                "reference": "9d2e0265c5d90f5dd601bc65ff717e05cec19b47",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "friendsofphp/php-cs-fixer": "^v3.4.0",
+                "phpstan/phpstan": "^1.3.0",
+                "phpstan/phpstan-phpunit": "^1.0.0",
+                "phpstan/phpstan-strict-rules": "^1.1.0",
+                "phpunit/phpunit": "^9.5.11"
+            },
+            "suggest": {
+                "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CSV data manipulation made easy in PHP",
+            "homepage": "https://csv.thephpleague.com",
+            "keywords": [
+                "convert",
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "transform",
+                "write"
+            ],
+            "support": {
+                "docs": "https://csv.thephpleague.com",
+                "issues": "https://github.com/thephpleague/csv/issues",
+                "rss": "https://github.com/thephpleague/csv/releases.atom",
+                "source": "https://github.com/thephpleague/csv"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-04T00:13:07+00:00"
+        },
+        {
             "name": "lolli42/finediff",
             "version": "1.0.2",
             "source": {
@@ -1896,7 +1980,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoon",
-                "reference": "6c85c3b52304ef33687f573416f94eebd9e2fe1c"
+                "reference": "43846426e736b693376cef32882506579c32a282"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -1933,7 +2017,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoonspecify",
-                "reference": "652a3542d1f7aefbd1dcbc4d602cd0a37f96f1d8"
+                "reference": "f846705a13b88d5547376903782dc1d5b884106c"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -10958,5 +11042,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
