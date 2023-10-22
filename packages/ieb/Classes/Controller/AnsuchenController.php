@@ -255,6 +255,10 @@ class AnsuchenController extends BaseController
             $this->ansuchenRepository->removeLockByUser($recordId);
             $this->redirectToUri("/?id=18");
         }
+        if (isset($arguments['saveAndEinreichen'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            $this->redirect('einreichen', null, null, ['ansuchen' => $recordId]);
+        }
         $this->redirect('list');
     }
 
