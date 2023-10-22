@@ -830,7 +830,7 @@ function qualifikationPsaSprache() {
          
      });
      $('.textbaustein').click(function() {
-         var t = $(this).text();
+         var t = $(this).text() + " ";
          var u = $(this).parent().parent().find('.extern').val();
          $(this).parent().parent().find('.extern').val(u + t);
      });

@@ -213,6 +213,10 @@ span.pseudoknopf.mail {
     margin-left: 12px;
 }
 
+
+span.pflicht {
+    font-size: 1.5em;
+}
 /* LOGIN ######################## */
 
 .frame-type-felogin_login input[type="text"],.frame-type-felogin_login input[type="password"] {
@@ -1116,7 +1120,7 @@ table.angebotssteuerung {
     background: var(--f0b);
 }
 
-#stammdaten-show p.hinweis {
+#stammdaten-show p.hinweis.spezial {
     font-size: 1.1em; 
     font-weight: 500;
 }

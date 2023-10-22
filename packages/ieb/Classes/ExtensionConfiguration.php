@@ -17,7 +17,7 @@ class ExtensionConfiguration
     protected string $emailAddressGs = 'office@initiative-erwachsenenbildung.at';
 
     public function __construct() {
-        $this->ansuchenEnde = new \DateTime('2027-12-31');
+        $this->ansuchenEnde = new \DateTime('2028-12-31');
     }
 
 

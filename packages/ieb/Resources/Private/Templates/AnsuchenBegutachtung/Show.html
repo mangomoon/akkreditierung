@@ -244,12 +244,10 @@
                             <h3>A.2.1 Leitbild</h3>
                             <div class="erlaeuterung">
                                 <div class="showinfobox" id="b-2-c-hilfe">
-                                    <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
-                                    <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
-                                    <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen,
-                                        Prozentsatz des Online-Angebots (maximal 30%)</p>
+                                    <p>Das Leitbild weist einen Erwachsenenbildungsbezug aus. <br>Das Leitbild muss nicht öffentlich zugänglich sein.</p>
                                 </div>
-                                <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+                                <p>Ein Leitbild ist hochzuladen, ein Statut ist kein Ersatz.</p>
+                                <p class="hinweis">HINWEIS: Versehen Sie das Leitbild mit Datum/Version, um die Aktualität des Leitbilds sicherzustellen.</p>
                             </div>
                             <f:render partial="Form/UploadListDiffRel" arguments="{
                                 media:'{stammdaten.leitbildDatei}',
@@ -444,7 +442,7 @@
 
                         </div>
                         <div class="kriteriumteil">
-                            <h3>B.1.3 Tabellarische Übersicht und Kosten(satz)</h3>
+                            <h3>B.1.3 Tabellarische Übersicht und Kostensatz</h3>
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.uebersichtDatei}',
                                 anmerkung:'{ansuchen.uebersichtText}',
@@ -508,7 +506,8 @@
                             
                             </p>
                             
-
+                        <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert vorhanden – die unter A.2.2 angegeben Qualitätsstandards der Einrichtung eingehalten werden: &nbsp;
+                                {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         <p>Standorte:</p>
                             <f:for each="{standorte}" as="standort">
                                 <div class="standort">{standort.name} <br><span class="standortdetails"><f:format.nl2br>{standort.adresse}</f:format.nl2br><br>{standort.plz} {standort.ort}</span> 
@@ -531,8 +530,7 @@
                                 </f:for>
                             </f:if>
 
-                            <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert vorhanden – die unter A.2.2 angegeben Qualitätsstandards der Einrichtung eingehalten werden: &nbsp;
-                                {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            
                     </div>
                     <div class="rechts col-5">
 
@@ -700,7 +698,7 @@
                 <div class="links col-7">
                     <div class="kriteriumteil">
                         <div class="erlaeuterung">
-                            <div class="infobox" id="b-2-c-hilfe">
+                            <div class="showinfobox" id="b-2-c-hilfe">
                                 <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
                                 <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
                                 <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots (maximal 30%)</p>
@@ -742,11 +740,12 @@
 
                     <div class="kriteriumteil">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-2-c-x-hilfe">
-                                <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
-                            </div>
-                            <f:if condition="{ansuchen.typ}=1">
+                            
+                            <f:if condition="{ansuchen.typ}==1">
                                 <f:then>
+                                    <div class="showinfobox" id="b-2-c-x-hilfe">
+                                        <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
+                                    </div>
                                     <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
                                     </p>
                                 </f:then>
@@ -1071,7 +1070,7 @@
                             <div class="showinfobox" id="c-2-hilfe">
                                 <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
                             </div>
-                            <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
+                            <p class="hinweis">Hinweis: Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -1146,6 +1145,9 @@
                                 <div class="showinfobox" id="c-3-hilfe">
                                     <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
                                 </div>
+                                <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
+                                <p class="hinweis">Hinweis: Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird. Dies ist unter B.2.3. darzustellen.</p>
+                                <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
                             </div>
                         </div>
                     </div>

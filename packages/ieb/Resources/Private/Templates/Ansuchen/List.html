@@ -269,7 +269,10 @@
                                             <f:else>
                                                 <f:if condition="{item.einReichbarDurchTr} && (!{item.ok} || {bsar} == 3 || {stammdaten.statusAfterReview}==3 || {tsarPsa}==3 || {ansuchen.statusAfterReview}==3)">
                                                     <f:then>
-                                                        <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
+                                                        <!--<f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen_warnung" title="Ansuchen unvollständig. Wenn Sie das Ansuchen dennoch einreichen wollen, füllen Sie bitte dazu <b>davor</b> das Textfeld <i>'Trotzdem einreichen'</i> am Ende des Ansuchenformulars aus!"></f:link.action>
+
+                                                        <f:link.action class="knopf-quadratisch einreichen_warnung" pageUid="20" data="{fancybox:'fb-t-{item.uid}',type:'iframe',preload:'false'}" action="trotzdem" controller="ansuchen" arguments="{ansuchen:item}" target="_blank">s</f:link.action> -->
+                                                        <f:link.action class="knopf-quadratisch einreichen_warnung" title="Angaben unzureichend – Ansuchen trotzdem abschicken" action="trotzdem" arguments="{ansuchen:item}" ></f:link.action>
                                                     </f:then>
                                                     <f:else>
                                                         <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
@@ -346,7 +349,9 @@
         </div>
     </f:if>
 
+<script>
 
+</script>
 
 </f:section>
 </html>

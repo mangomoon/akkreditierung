@@ -93,6 +93,16 @@ class AnsuchenController extends BaseController
         return $this->htmlResponse();
     }
 
+    /**
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
+     */
+    public function trotzdemAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $this->view->assign('ansuchen', $ansuchen);
+        return $this->htmlResponse();
+    }
+
     public function einreichenAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
