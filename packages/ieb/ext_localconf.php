@@ -83,6 +83,17 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
+        'AnsuchenArchiv',
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenArchivController::class => 'index',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\AnsuchenArchivController::class => 'index',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
         'AnsuchenBegutachtung',
         [
             \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update,finalizeStatus,zuteilung,zuteilungPersist,unlock',

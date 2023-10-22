@@ -10,15 +10,17 @@ use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Seo\IebTitleProvider;
 use GeorgRinger\Ieb\Service\RelationLockService;
-use GeorgRinger\News\Seo\NewsTitleProvider;
+use GeorgRinger\News\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
@@ -201,4 +203,19 @@ class BaseController extends ActionController
             }
         }
     }
+
+    protected function getPaginator(QueryResultInterface|array $items, int $itemsPerPage = 20): ArrayPaginator|QueryResultPaginator
+    {
+        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+
+        if (is_array($items)) {
+            $paginator = new ArrayPaginator($items, $currentPage, $itemsPerPage);
+        } elseif ($items instanceof QueryResultInterface) {
+            $paginator = new QueryResultPaginator($items, $currentPage, $itemsPerPage);
+        } else {
+            throw new \RuntimeException(sprintf('Only array and query result interface allowed for pagination, given "%s"', get_class($items)), 1611168593);
+        }
+        return $paginator;
+    }
+
 }
