@@ -2,7 +2,11 @@
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
         xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
         data-namespace-typo3-fluid="true">
-<pdf:document sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
+<pdf:document 
+    title="{ansuchen.nummer} {ansuchen.akkreditierungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
+    outputPath = ".pdf"
+    sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
+
     <pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">
         
 
@@ -51,7 +55,15 @@
             <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">AKKREDITIERUNGSBESTÄTIGUNG</p>
 
             <p style="text-align: center;line-height: 26pt">&nbsp;<br>
-                Dem Ansuchen des Bildungsträgers <br>{stammdaten.name}<br>
+                Dem Ansuchen des Bildungsträgers <br>
+                <f:if condition="{stammdaten.markenname}">
+                    <f:then>
+                        {stammdaten.markenname} ({stammdaten.name})
+                    </f:then>
+                    <f:else>
+                        {stammdaten.name}
+                    </f:else>
+                </f:if><br>
                 auf Akkreditierung des Angebots<br>
                 Nr. {ansuchen.nummer}, {ansuchen.name},<br>
                 für den Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}<br>

@@ -170,19 +170,19 @@
                                 </f:then>
                                 <f:else>
                                     
-                                    <f:switch expression="{ansuchen.status}">
+                                    <f:switch expression="{item.status}">
 
                                         <f:case value="20">
-                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 40}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 40}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
                                         <f:case value="82">
-                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 84}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 84}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
                                         <f:case value="150">
-                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 155}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 155}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
                                         <f:case value="160">
-                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 170}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 170}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
 
                                     </f:switch>
