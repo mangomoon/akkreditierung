@@ -865,6 +865,7 @@ table.ansuchenliste {
 }
 table.ansuchenliste td{
     padding: 8px;
+    vertical-align: top;
 }
 .ansuchenliste_ansuchennr {
     width: 152px;
@@ -922,6 +923,13 @@ table.ansuchenliste td.ansuchenliste_tr.nachzuteilung {
 }
 table.ansuchenliste td.ansuchenliste_tr.agentscheid {
     background-color: var(--training);
+}
+
+
+/* ANSUCHENLISTE ARCHIV */
+
+.acchiv span.ansuchenliste_ansuchennr {
+    font-size: 0.9em;
 }
 
 /* ANSUCHEN NEW/EDIT */

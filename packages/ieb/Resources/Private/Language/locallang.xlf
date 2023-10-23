@@ -1777,7 +1777,7 @@
 				<source>in Arbeit</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.40" resname="ansuchen.status.40">
-				<source>eingereicht zur Begutachtung</source>
+				<source>Begutachtet nach Ersteinreichung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.42" resname="ansuchen.status.42">
 				<source>eingereicht zur Begutachtung</source>
@@ -1795,7 +1795,7 @@
 				<source>eingereicht nach Nachbesserungsauftrag</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.84" resname="ansuchen.status.84">
-				<source>Begutachtung nach eingereicht nach Nachbesserungauftrag</source>
+				<source>Begutachtet nach eingereicht nach Nachbesserungauftrag</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.100" resname="ansuchen.status.100">
 				<source>Akkreditiert</source>

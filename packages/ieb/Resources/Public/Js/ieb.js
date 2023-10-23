@@ -822,6 +822,15 @@ function qualifikationPsaSprache() {
             $(this).parent().parent().parent().find('.komm-ext').hide();
         }
 
+        if ($(this).parent().hasClass('ok')) {
+            neu=" ";
+            t = $(this).parent().parent().parent().find('.extern').val();
+            i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
+            neu = i + " \nText an Träger:\n" + t;
+            $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
+            $(this).parent().parent().parent().find('.extern').text('');
+            console.log(neu);
+        }
      });
 
      $('.textbausteinoeffner').click(function() {

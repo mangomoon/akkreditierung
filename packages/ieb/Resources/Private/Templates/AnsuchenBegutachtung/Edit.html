@@ -34,7 +34,16 @@
 
         <div class="begutachtung-kopf row">
             <div class="col">
-                <p class="name">{stammdaten.name}: </p>
+                <p class="name">
+                    <f:if condition="{stammdaten.markenname}">
+                        <f:then>
+                            {stammdaten.markenname}
+                        </f:then>
+                        <f:else>
+                            {stammdaten.name}
+                        </f:else>
+                    </f:if>
+                </p>
                 <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
             </div>
             <div class="col">

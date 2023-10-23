@@ -117,6 +117,9 @@ class AnsuchenController extends BaseController
                 case 10:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
+                case 30:
+                    $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    break;
                 case 80:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
                     break;
@@ -146,6 +149,9 @@ class AnsuchenController extends BaseController
             switch ($ansuchen->getStatus()) {
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    break;
+                case 30:
+                    $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 80:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);

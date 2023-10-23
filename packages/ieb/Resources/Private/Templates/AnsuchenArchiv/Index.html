@@ -5,7 +5,7 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>Ansuchen Archiv</h1>
+    <h1>ARCHIV</h1>
 
 
     <f:form method="get" action="index" name="filter" object="{filter}">
@@ -23,53 +23,75 @@
         </f:if>
         <f:form.submit value="Filtern"/>
     </f:form>
+
+
+
+
     <f:if condition="{filter.submitted}">
         <f:if condition="{items}">
             <f:then>
                 <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Nummer</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     <f:for each="{pagination.paginator.paginatedItems}" as="item">
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.nummer}</td>
-                        </tr>
-                        <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
-                            <f:if condition="{oldVersions}"> <tr>
-                                <td colspan="2">
+                        {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
 
-                                <details>
-                                    <summary>Vorige Versionen ({oldVersions -> f:count()})</summary>
 
-                                    <table>
-                                        <tr>
-                                            <th>uid</th>
-                                            <th>datum</th>
-                                            <th>status</th>
-                                        </tr>
-                                        <f:for each="{oldVersions}" as="oldVersion">
+                        <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
+                            <table class="ansuchenliste archiv">
+                                <tr>
+                                    <td colspan="2" class="ansuchenliste_tr">
+                                        Name des Organisation
+                                        <f:if condition="{stammdaten.markenname}">
+                                            <f:then>
+                                                <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                            </f:then>
+                                            <f:else>
+                                                <span class="fett">{stammdaten.name}</span>
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ansuchenliste_ansuchennr">
+                                        {item.nummer}
+                                    </td>
+                                    <td>
+                                        <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
+                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                                    </td>
+                                    <td class="td-knopf">
+                                        <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                    </td>
+                                </tr>
+                            </table>
+                            <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
+                                <f:if condition="{oldVersions}">
+                                    <details>
+                                        <summary>Vorige Versionen ({oldVersions -> f:count()})</summary>
+    
+                                        <table>
                                             <tr>
-                                                <td>{oldVersion.uid}</td>
-                                                <td>{oldVersion.einreich_datum}</td>
-                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /></td>
+                                                <th>uid</th>
+                                                <th>datum</th>
+                                                <th>status</th>
                                             </tr>
-                                        </f:for>
-                                    </table>
-                                </details>
-                                </td>
-                            </tr>
-                            </f:if>
-                        </ieb:ansuchenOldVersionLoader>
+                                            <f:for each="{oldVersions}" as="oldVersion">
+                                                <tr>
+                                                    <td>{oldVersion.uid}</td>
+                                                    <td>{oldVersion.einreich_datum}</td>
+                                                    <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /></td>
+                                                </tr>
+                                            </f:for>
+                                        </table>
+                                    </details>
+                                </f:if>
+                            </ieb:ansuchenOldVersionLoader>
+                        </div>
                     </f:for>
-                    </tbody>
-                </table>
                 <f:render partial="Pagination" arguments="{pagination: pagination.pagination, pages: pagination.pages, paginator: pagination.paginator}" />
-
             </f:then>
             <f:else>
                 <div>Keine Ansuchen passen auf die Filter</div>
