@@ -46,7 +46,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_total_comment_internal_step text NOT NULL DEFAULT '',
 	review_total_comment_tr text NOT NULL DEFAULT '',
 	review_total_status int(11) DEFAULT '0' NOT NULL,
-	review_total_frist int(11) NOT NULL DEFAULT '0',
+	review_total_frist int(13) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
 	status int(11) DEFAULT '0' NOT NULL,
 	ok smallint(1) unsigned NOT NULL DEFAULT '0',

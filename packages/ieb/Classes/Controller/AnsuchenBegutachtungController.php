@@ -82,6 +82,18 @@ class AnsuchenBegutachtungController extends BaseController
         return $this->htmlResponse();
     }
 
+    /**
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
+     */
+    public function begutachtungsSchlussAction(Ansuchen $ansuchen, int $gutachtervorschlag = 0): ResponseInterface
+    {          
+        $ansuchen->setStatus($gutachtervorschlag);
+        $this->ansuchenRepository->update($ansuchen);
+        $this->ansuchenRepository->forcePersist();
+        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungsSchlussEvent($ansuchen));
+        $this->redirect('list');
+    }
+
     public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung, array $verantwortliche = []): void
     {
         $begutachtung->verantwortliche = $verantwortliche;

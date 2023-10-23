@@ -96,13 +96,13 @@ defined('TYPO3') || die();
         'Ieb',
         'AnsuchenBegutachtung',
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update,finalizeStatus,zuteilung,zuteilungPersist,unlock',
+            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update,finalizeStatus,zuteilung,zuteilungPersist,unlock,begutachtungsSchluss',
             \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list,show,edit,update,unlock',
             \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update,unlock',
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list,show,edit,update',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update,finalizeStatus,zuteilung,zuteilungPersist,unlock',
+            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update,finalizeStatus,zuteilung,zuteilungPersist,unlock,begutachtungsSchluss',
             \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list, show,edit, updat2,unlock',
             \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update,unlock',
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list, show,edit, update',
