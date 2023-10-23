@@ -40,6 +40,12 @@ services:
         identifier: 'ext-ieb/ansuchen-begutachtung-finalize'
         event: GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeEvent
 
+  GeorgRinger\Ieb\EventListener\AnsuchenBegutachtungsSchlussListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-ieb/ansuchen-begutachtungs-schluss'
+        event: GeorgRinger\Ieb\Event\AnsuchenBegutachtungsSchlussEvent
+
   GeorgRinger\Ieb\EventListener\AnsuchenZuteilungListener:
     tags:
       - name: event.listener

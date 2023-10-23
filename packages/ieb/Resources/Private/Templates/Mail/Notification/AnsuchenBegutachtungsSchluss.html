@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="SystemEmail"/>
+
+
+
+    <f:section name="Subject">Begutachtungsschluss durch AG von Ansuchen {ansuchen.nummer} </f:section>
+    <f:section name="Title">Begutachtungsschluss durch AG von Ansuchen {ansuchen.nummer}</f:section>
+
+
+    <f:section name="Main">
+        <p>Liebe Geschäftsstelle,</p>
+        <p>Die Akkreditierungsgruppe hat die Begutachtung des Ansuchen Nr. {ansuchen.nummer} ({ansuchen.name}) abgeschlossen.</p>
+
+
+
+
+  
+
+
+
+
+
+
+        <f:render partial="Notification/Fuss" />
+
+
+</f:section>
+</html>

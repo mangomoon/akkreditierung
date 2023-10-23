@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <div class="kriterium">
+        <div class="kriteriumteil">
+            <h3>Ansuchen Nr. {ansuchen.nummer} abschicken trotz durch automatische Überprüfung vermuteter Mängel</h3>
+
+            <f:form action="update" class="" name="ansuchen" object="{ansuchen}" enctype="multipart/form-data">
+                <label for>Bitte geben Sie an, warum Sie das Ansuschen trotzdem abschicken wollen:</label>
+
+                <f:form.textarea property="trotzdemAbschicken" id="trotzdemabschicken" class=""></f:form.textarea>
+
+                <f:form.submit value="Trotdem abschicken" name="saveAndEinreichen" class="knopf-s" />
+            </f:form>
+
+        </div>
+        &nbsp;
+    </div>
+</f:section>
+
+</html>
