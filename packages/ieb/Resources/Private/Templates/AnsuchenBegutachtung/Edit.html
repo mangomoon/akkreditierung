@@ -1230,6 +1230,7 @@
                                     <label>Status Vorschlag {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}
                                         <f:render partial="Form/Select" arguments="{property:'statusAgEins', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
                                     </label>
+                                    <f:form.hidden property="statusAgZwei" id="sar" value="{ansuchen.statusAgZwei}" />
                                 </f:then>
                                 <f:else>
                                     <label>Status Vorschlag {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}</label>
@@ -1247,10 +1248,11 @@
                                     <label>Status Vorschlag {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}
                                         <f:render partial="Form/Select" arguments="{property:'statusAgZwei', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
                                     </label>
+                                    <f:form.hidden property="statusAgEins" id="sar" value="{ansuchen.statusAgEins}" />
                                 </f:then>
                                 <f:else>
                                     <label>Status Vorschlag {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}</label>
-                                    <f:translate key="ansuchen.status.{ansuchen.statusAgEins}" default="Status noch nicht vergeben" />
+                                    <f:translate key="ansuchen.status.{ansuchen.statusAgZwei}" default="Status noch nicht vergeben" />
                                 </f:else>
                             </f:if>
                         </f:if>

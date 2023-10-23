@@ -1765,7 +1765,7 @@
 				<source>Koopertion</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.0" resname="ansuchen.status.0">
-				<source>unbearbeitet</source>
+				<source>Status noch nicht vergeben</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.10" resname="ansuchen.status.10">
 				<source>Neu in Arbeit</source>

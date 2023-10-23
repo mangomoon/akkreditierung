@@ -44,6 +44,7 @@
                             <td colspan="5" class="ansuchenliste_tr infofeld agentscheid">Plenum</td>
                         </f:if>
                     </f:if>
+                    <!-- AG ################### -->
                     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
                         <f:if condition="({currentUser.uid}=={gutachter1.uid}) || ({currentUser.uid}=={gutachter2.uid}) ">
                             <f:then>
@@ -108,20 +109,48 @@
                             
 
                         </td>
+
+
                         <td class="td-knopf">
-                                <f:if condition="({gutachter1.uid}=={currentUser.uid}) && ({item.statusAgEins} > 0)">
-                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgEins}" title="Begutachtung durch mich erfolgt (<f:translate key="ansuchen.status.{item.statusAgEins}" default="Status {item.status} unbekannt" />)"></span>
+                            <f:if condition="{gutachter1.uid}=={currentUser.uid}">
+                                <f:if condition="{gutachter2.uid}">
+                                    <f:then>
+                                        <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
+                                            <span class="titleview knopfrund achtung-gelb " title="Begutachtung durch mich erfolgt, die von {gutachter2.firstName} {gutachter2.LastName} steht noch aus."></span>
+                                        </f:if>
+                                        <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
+                                            <span class="titleview knopfrund achtung-orange " title="Begutachtung durch {gutachter2.firstName} {gutachter2.LastName} erfolgt, meine steht noch aus."></span>
+                                        </f:if>
+                                        <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
+                                            <span class="titleview knopfrund auflage-1 " title="Begutachtung erfolgt, bitte Begutachtung abschließen."></span>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:if condition="({item.statusAgEins} == 0)">
+                                            <f:then>
+                                                <span class="titleview knopfrund achtung-gelb " title="Begutachtung steht noch aus."></span>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="titleview knopfrund auflage-1 " title="Begutachtung erfolgt, bitte Begutachtungs abschließen."></span>
+                                            </f:else>
+                                        </f:if>
+                                    </f:else>
                                 </f:if>
-                                <f:if condition="({gutachter2.uid}=={currentUser.uid}) && ({item.statusAgZwei} > 0)">
-                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgZwei}" title="Begutachtung durch mich erfolgt (<f:translate key="ansuchen.status.{item.statusAgZwei}" default="Status {item.status} unbekannt" />)"></span>
-                                </f:if>
-                                <f:if condition="({gutachter1.uid}=={currentUser.uid}) && ({item.statusAgZwei} > 0)">
-                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgZwei}" title="Begutachtung durch {gutachter2.firstName} {gutachter2.LastName} erfolgt (<f:translate key="ansuchen.status.{item.statusAgZwei}" default="Status {item.status} unbekannt" />)"></span>
-                                </f:if>
-                                <f:if condition="({gutachter2.uid}=={currentUser.uid}) && ({item.statusAgEins} > 0)">
-                                    <span class="titleview person-statuskugel-a person-statuskugel status-{item.statusAgEins}" title="Begutachtung durch {gutachter1.firstName} {gutachter1.lastName} erfolgt (<f:translate key="ansuchen.status.{item.statusAgEins}" default="Status {item.status} unbekannt" />)"></span>
-                                </f:if>
+                            </f:if>
+                            <f:if condition="{gutachter2.uid}=={currentUser.uid}">
+                                    <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
+                                        <span class="titleview knopfrund achtung-gelb " title="Begutachtung durch mich erfolgt, die von {gutachter1.firstName} {gutachter1.LastName} steht noch aus."></span>
+                                    </f:if>
+                                    <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
+                                        <span class="titleview knopfrund achtung-orange " title="Begutachtung durch {gutachter1.firstName} {gutachter1.LastName} erfolgt, meine steht noch aus."></span>
+                                    </f:if>
+                                    <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
+                                        <span class="titleview knopfrund auflage-1 " title="Begutachtung erfolgt, bitte Begutachtung abschließen."></span>
+                                    </f:if>    
+                            </f:if>
                         </td>
+
+
                         <td class="td-knopf">
                             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                                 <f:if condition="{item.gutachter1}">
@@ -140,12 +169,21 @@
                                     <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
                                 </f:then>
                                 <f:else>
-                                    <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 84}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
-                                    <f:switch expression="{relations.stammdaten.qmsTyp}">
+                                    
+                                    <f:switch expression="{ansuchen.status}">
 
-                                    <f:case value="40">
-                                        <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
-                                    </f:case>
+                                        <f:case value="20">
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 40}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                        </f:case>
+                                        <f:case value="82">
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 84}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                        </f:case>
+                                        <f:case value="150">
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 155}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                        </f:case>
+                                        <f:case value="160">
+                                            <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 170}" title="Begutachtung abschließen" class="knopf-quadratisch einreichen"></f:link.action>
+                                        </f:case>
 
                                     </f:switch>
                                     
