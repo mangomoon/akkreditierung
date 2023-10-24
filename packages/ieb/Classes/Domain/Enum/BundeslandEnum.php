@@ -8,9 +8,10 @@ enum BundeslandEnum: int
     case Kärnten = 2;
     case Niederösterreich = 3;
     case Oberösterreich = 4;
-    case Steiermark = 5;
-    case Tirol = 6;
-    case Vorarlberg = 7;
-    case Wien = 8;
+    case Salzburg = 5;
+    case Steiermark = 6;
+    case Tirol = 7;
+    case Vorarlberg = 8;
+    case Wien = 9;
 
 }
