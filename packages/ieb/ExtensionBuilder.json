@@ -1946,6 +1946,18 @@
                             "propertyName": "pp3",
                             "propertyType": "Boolean",
                             "uid": "288447004207"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "gutachterLockedBy",
+                            "propertyType": "Integer",
+                            "uid": "1245653209389"
                         }
                     ]
                 },
@@ -2587,6 +2599,18 @@
                             "propertyName": "pp3",
                             "propertyType": "Boolean",
                             "uid": "1565938650042"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "gutachterLockedBy",
+                            "propertyType": "Integer",
+                            "uid": "1019143899187"
                         }
                     ]
                 },
@@ -3604,7 +3628,7 @@
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-10-06 08:48",
+        "last_modified": "2023-10-24 03:42",
         "extension_builder_version": "v11.0.10",
         "be_user": " (1)"
     }

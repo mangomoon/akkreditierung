@@ -60,6 +60,9 @@
 			<trans-unit id="pp3.description" resname="pp3.description">
 				<source>pp3</source>
 			</trans-unit>
+			<trans-unit id="gutachter_locked_by.description" resname="gutachter_locked_by.description">
+				<source>gutachterLockedBy</source>
+			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>

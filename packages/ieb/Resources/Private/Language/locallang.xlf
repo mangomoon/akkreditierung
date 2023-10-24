@@ -939,6 +939,12 @@
 			<trans-unit id="tx_ieb_domain_model_berater.pp3.description" resname="tx_ieb_domain_model_berater.pp3.description">
 				<source>Pp3</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.gutachter_locked_by" resname="tx_ieb_domain_model_berater.gutachter_locked_by">
+				<source>Gutachter Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_berater.gutachter_locked_by.description" resname="tx_ieb_domain_model_berater.gutachter_locked_by.description">
+				<source>Gutachter Locked By</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer" resname="tx_ieb_domain_model_trainer">
 				<source>Trainer</source>
 			</trans-unit>
@@ -1244,6 +1250,12 @@
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_trainer.pp3.description" resname="tx_ieb_domain_model_trainer.pp3.description">
 				<source>Pp3</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.gutachter_locked_by" resname="tx_ieb_domain_model_trainer.gutachter_locked_by">
+				<source>Gutachter Locked By</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_trainer.gutachter_locked_by.description" resname="tx_ieb_domain_model_trainer.gutachter_locked_by.description">
+				<source>Gutachter Locked By</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_stammdaten" resname="tx_ieb_domain_model_stammdaten">
 				<source>Stammdaten</source>
@@ -1795,15 +1807,9 @@
 				<source>Akkreditiert mit Auflagen</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.150">
-				<source>eingereicht zur Nachakkreditierung</source>
-			</trans-unit>
-			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.155">
 				<source>Begutachtet nach Nachakkreditierung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.160">
-				<source>eingereicht zur Nachakkreditierung</source>
-			</trans-unit>
-			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.170">
 				<source>Begutachtet nach Nachakkreditierung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.200" resname="ansuchen.status.200">
@@ -1814,9 +1820,6 @@
 			</trans-unit>
 			<trans-unit id="ansuchen.status.800" resname="ansuchen.status.800">
 				<source>nicht akkreditiert</source>
-			</trans-unit>
-			<trans-unit id="ansuchen.status.810" resname="ansuchen.status.810">
-				<source>Akkreditierung entzogen</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.810" resname="ansuchen.status.810">
 				<source>Akkreditierung ausgesetzt</source>

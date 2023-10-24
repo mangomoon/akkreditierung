@@ -1014,4 +1014,25 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals(true, $this->subject->_get('pp3'));
     }
+
+    /**
+     * @test
+     */
+    public function getGutachterLockedByReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getGutachterLockedBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setGutachterLockedByForIntSetsGutachterLockedBy(): void
+    {
+        $this->subject->setGutachterLockedBy(12);
+
+        self::assertEquals(12, $this->subject->_get('gutachterLockedBy'));
+    }
 }

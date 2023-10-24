@@ -16,7 +16,7 @@ return [
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c32_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, locked_by, status_after_review, review_frist, review_frist_mail_sent14t, review_frist_mail_sent1t, pp3, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c32_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, locked_by, status_after_review, review_frist, review_frist_mail_sent14t, review_frist_mail_sent1t, pp3, gutachter_locked_by, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -394,6 +394,17 @@ return [
                     ]
                 ],
                 'default' => 0,
+            ]
+        ],
+        'gutachter_locked_by' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.gutachter_locked_by',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.gutachter_locked_by.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int',
+                'default' => 0
             ]
         ],
     

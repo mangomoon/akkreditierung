@@ -166,6 +166,13 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $pp3 = false;
 
     /**
+     * gutachterLockedBy
+     *
+     * @var int
+     */
+    protected $gutachterLockedBy = 0;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -643,5 +650,26 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isPp3()
     {
         return $this->pp3;
+    }
+
+    /**
+     * Returns the gutachterLockedBy
+     *
+     * @return int
+     */
+    public function getGutachterLockedBy()
+    {
+        return $this->gutachterLockedBy;
+    }
+
+    /**
+     * Sets the gutachterLockedBy
+     *
+     * @param int $gutachterLockedBy
+     * @return void
+     */
+    public function setGutachterLockedBy(int $gutachterLockedBy)
+    {
+        $this->gutachterLockedBy = $gutachterLockedBy;
     }
 }
