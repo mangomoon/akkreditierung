@@ -33,6 +33,8 @@ class TrainerBegutachtungController extends BaseController
         $begutachtung->trainerId = $trainer->getUid();
         $begutachtung->ansuchenId = $ansuchen->getUid();
 
+        $this->trainerRepository->setGutachterLockedAndPersist($trainer);
+
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
         foreach ($values as $property => $value) {
             $getter = 'get' . ucfirst($property);

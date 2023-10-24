@@ -165,13 +165,10 @@
                         </td>
                         <td class="td-knopf">
                             <f:if condition="({item.upcomingStatus}>0) && ({currentUser.usergroup}=={extensionConfiguration.usergroupGs})">                              
-                                <f:then>
-                                    <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
-                                </f:then>
-                                <f:else>
-                                    
+                                <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
+                            </f:if>
+                            <f:if condition="({currentUser.usergroup}=={extensionConfiguration.usergroupAg})">
                                     <f:switch expression="{item.status}">
-
                                         <f:case value="20">
                                             <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 40}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
@@ -184,11 +181,7 @@
                                         <f:case value="160">
                                             <f:link.action action="begutachtungsSchluss" arguments="{ansuchen : item, gutachtervorschlag: 170}" title="Begutachtung abschließen" class="knopf-quadratisch begutachtungsSchluss"></f:link.action>
                                         </f:case>
-
                                     </f:switch>
-                                    
-                                </f:else>
-                               
                             </f:if>
                         </td>
                     </tr>

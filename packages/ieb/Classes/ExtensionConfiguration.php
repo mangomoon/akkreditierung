@@ -18,7 +18,7 @@ class ExtensionConfiguration
     protected string $emailBabiBurgenland = 'dieter.szorger@bgld.gv.at';
     protected string $emailBabiKärnten = 'nadine.hell@ktn.gv.at';
     protected string $emailBabiNiederoesterreich = 'philipp.roessl@noel.gv.at';
-    protected string $emailBabiOberoesterreich = 'guenter.brandstetter@ooe.gv.at';
+    protected array $emailBabiOberoesterreich = ['guenter.brandstetter@ooe.gv.at, Theresia.Berger-Schauer@ooe.gv.at'];
     protected string $emailBabiSalzburg = 'bildung@salzburg.gv.at';
     protected string $emailBabiSteiermark = 'susanne.lucchesi-palli@stmk.gv.at';
     protected string $emailBabiTirol = 'kultur@tirol.gv.at';
@@ -85,5 +85,96 @@ class ExtensionConfiguration
     {
         return $this->emailAddressGs;
     }
+
+    public function getEmailBabiBurgenland(): string
+    {
+        return $this->emailBabiBurgenland;
+    }
+
+    public function getEmailBabiKärnten(): string
+    {
+        return $this->emailBabiKärnten;
+    }
+
+    public function getEmailBabiNiederoesterreich(): string
+    {
+        return $this->emailBabiNiederoesterreich;
+    }
+
+    public function getEmailBabiOberoesterreich(): string
+    {
+        return $this->emailBabiOberoesterreich;
+    }
+
+    public function getEmailBabiSalzburg(): string
+    {
+        return $this->emailBabiSalzburg;
+    }
+
+    public function getEmailBabiSteiermark(): string
+    {
+        return $this->emailBabiSteiermark;
+    }
+
+    public function getEmailBabiTirol(): string
+    {
+        return $this->emailBabiTirol;
+    }
+
+    public function getEmailBabiVorarlberg(): string
+    {
+        return $this->emailBabiVorarlberg;
+    }
+
+    public function getEmailBabiWien(): string
+    {
+        return $this->emailBabiWien;
+    }
+
+    public function getEmailPsaBurgenland(): string
+    {
+        return $this->emailPsaBurgenland;
+    }
+
+    public function getEmailPsaKärnten(): string
+    {
+        return $this->emailPsaKärnten;
+    }
+
+    public function getEmailPsaNiederoesterreich(): string
+    {
+        return $this->emailPsaNiederoesterreich;
+    }
+
+    public function getEmailPsaOberoesterreich(): string
+    {
+        return $this->emailPsaOberoesterreich;
+    }
+
+    public function getEmailPsaSalzburg(): string
+    {
+        return $this->emailPsaSalzburg;
+    }
+
+    public function getEmailPsaSteiermark(): string
+    {
+        return $this->emailPsaSteiermark;
+    }
+
+    public function getEmailPsaTirol(): string
+    {
+        return $this->emailPsaTirol;
+    }
+
+    public function getEmailPsaVorarlberg(): string
+    {
+        return $this->emailPsaVorarlberg;
+    }
+
+    public function getEmailPsaWien(): string
+    {
+        return $this->emailPsaWien;
+    }
+
 
 }
