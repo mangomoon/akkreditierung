@@ -52,50 +52,42 @@
      okpsa = 0;
      trbabi = 0;
      trpsa = 0;
-     qb = 0;
+     qb = 1;
      qp = 0;
-     ll = 0;
+     ll = 1;
 
-    //  validieren();
+
+    if ($('#verwendungBabi').is(':checked')) {
+        trbabi = 1;
+    };
+    if ($('#verwendungPsa').is(':checked')) {
+        trpsa = 1;
+    };
     
-
-     if ($('#verwendungBabi').is(':checked')) {
-         trbabi = 1;
-     };
-     if ($('#verwendungPsa').is(':checked')) {
-         trpsa = 1;
-     };
-
-     if (!$('div.upload-qualifikationBabiDatei').hasClass('req-file')) {
-         qb = 1;
-     };
-     if (!$('div.upload-qualifikationPsaDatei').hasClass('req-file')) {
-         qp = 1;
-     };
-     if (!$('div.upload-lebenslaufDatei').hasClass('req-file')) {
-         ll = 1;
-     };
-     if ($('div.upload-qualifikationBabiDatei').hasClass('req-leer')) {
-        qb = 0;
-    };
-    if ($('div.upload-qualifikationPsaDatei').hasClass('req-leer')) {
-        qp = 0;
-    };
-    if ($('div.upload-lebenslaufDatei').hasClass('req-leer')) {
-        ll = 0;
-    };
+    if (trbabi == 1) {
+        if (($('div.upload-qualifikationBabiDatei').hasClass('req-leer'))  &&  ($('#qualifikationBabi').val()=='')) {
+            qb = 0;
+        };
+        if ($('div.upload-lebenslaufDatei').hasClass('req-leer')) {
+            ll = 0;
+        };
+        if ((qb == 1) && (ll == 1)) {
+            okbabi = 1;
+            $('#okbabi').attr('value', 1);
+        }
+    }
+    if (trpsa == 1) {
+        if (($('div.upload-qualifikationPsaDatei').hasClass('req-leer'))  &&  ($('#qualifikationPsa').val()=='')) {
+            qp = 0;  
+        } else {
+            okpsa = 1;
+            $('#okpsa').attr('value', 1);
+        };
+    }
 
 
-     if ((trbabi == 1) && (qb == 1) && (ll == 1)) {
-         okbabi = 1;
-         $('#okbabi').attr('value', 1);
-     }
-     if ((trpsa == 1) && (qp == 1)) {
-         okpsa = 1;
-         $('#okpsa').attr('value', 1);
-     }
-
-     //console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+    //   console.log('okBabi '+ okbabi + ' | okPsa' + okpsa + ' | qb ' + qb+ ' | ll ' + ll+ ' | qp ' + qp);
+    //   console.log($('#qualifikationBabi').val());
 
 
 
@@ -254,6 +246,16 @@
      }
  };
 
+ // Trainermanagement Ansuchen Prüfbescheid ############################
+
+    function ansuchenTrainerPruefbescheid() {
+        if($('.pruefjanein.ja').hasClass('checked')) {
+            $('.nur-mit-pruefbescheid').each(function() {
+                $(this).show();
+            });
+        };
+    };
+
  // Anmerkung öffnen  ###################################
  function anmerkungoeffnen() {
      $('.anmerkung').each(function() {
@@ -403,8 +405,9 @@ function qualifikationPsaSprache() {
     $('#validieren-test').click(function(){
         console.log("--------- Bericht: -----------");
         // validieren();
-        validierenansuchen();
+        //validierenansuchen();
         // setStatusAfterReview();
+        validierentr();
         
     });
     
@@ -702,6 +705,7 @@ function qualifikationPsaSprache() {
              $('.japruef').each(function() {
                  $(this).addClass('ischecked');
              });
+             ansuchenTrainerPruefbescheid();
          };
          if ($(this).hasClass('nein')) {
             $('#pruefbescheidCheck').val(2);
@@ -713,6 +717,7 @@ function qualifikationPsaSprache() {
              $('.japruef').each(function() {
                  $(this).removeClass('ischecked');
              });
+             ansuchenTrainerPruefbescheid();
          }
      });
 

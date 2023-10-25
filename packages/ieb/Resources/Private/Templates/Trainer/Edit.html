@@ -18,14 +18,14 @@
         oeffnenTrainerBegutachtung();
         validierentr();
         $(document).ready(function() {
-            $("#qualifikationBabiDatei").on("change", function(e) {
-                $(this).parent().parent().parent().removeClass('req-leer'); 
+            $("input#qualifikationBabiDatei").on("change", function(e) {
+                $('div.upload-qualifikationBabiDatei').removeClass('req-leer'); 
             });
-            $("#qualifikationPsaDatei").on("change", function(e) {
-                $(this).parent().parent().parent().removeClass('req-leer'); 
+            $("input#qualifikationPsaDatei").on("change", function(e) {
+                $('div.upload-qualifikationPsaDatei').removeClass('req-leer'); 
             });
-            $("#lebenslaufDatei").on("change", function(e) {
-                $(this).parent().parent().parent().removeClass('req-leer'); 
+            $("input#lebenslaufDatei").on("change", function(e) {
+                $('div.upload-lebenslaufDatei').removeClass('req-leer'); 
             });
         });
     </script>

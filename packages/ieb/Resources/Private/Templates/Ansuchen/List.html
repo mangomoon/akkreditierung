@@ -7,7 +7,7 @@
         <f:link.action action="new" class="formlink ansuchen">Neues Ansuchen anlegen</f:link.action>
     </div>
     
-    <f:if condition="{ansuchen}">
+    <f:if condition="{ansuchen -> f:count()} > 2">
         <div id="sort">
             <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
         </div>
