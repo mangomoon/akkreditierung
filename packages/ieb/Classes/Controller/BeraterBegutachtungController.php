@@ -34,6 +34,8 @@ class BeraterBegutachtungController extends BaseController
         $begutachtung->beraterId = $berater->getUid();
         $begutachtung->ansuchenId = $ansuchen->getUid();
 
+        $this->beraterRepository->setGutachterLockedAndPersist($berater);
+
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
         foreach ($values as $property => $value) {
             $getter = 'get' . ucfirst($property);
@@ -59,11 +61,14 @@ class BeraterBegutachtungController extends BaseController
             return $this->htmlResponse('Nicht erlaubt!');
         }
 
+        
+
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
         foreach ($values as $property => $value) {
             $setter = 'set' . ucfirst($property);
             $berater->$setter($value);
         }
+        $berater->setGutachterLockedBy(0);
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
         $this->redirect('show', null, null, ['berater' => $berater, 'ansuchen' => $ansuchen]);

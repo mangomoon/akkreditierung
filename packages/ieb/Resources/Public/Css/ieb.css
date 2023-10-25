@@ -1545,6 +1545,56 @@ table.ansuchenbegutachtung td.check {
     font-weight: 600;
 }
 
+.statusbuttonzeile {
+    display:flex;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.statusbutton {
+    width: 25%;
+    height: 24px;
+    font-size: 0.85em;
+    color: var(--f3);
+    text-transform: uppercase;
+    cursor: pointer;
+    padding-top: 5px;
+    border: solid 1px #fff;
+    filter: drop-shadow(2px 2px 2px #677878);
+    border-radius: 3px;
+    text-align: center;
+    opacity: 0.7;
+}
+.statusbutton:hover{
+    filter: none;
+    opacity: 1;
+    color: #fff;
+}
+.statusbutton.active {
+    filter: none;
+    opacity: 1;
+    color: #fff;
+    filter: drop-shadow(0px 0px 4px #cecec2);  
+}
+.statusbutton.inactive:hover{
+    background: var(--ansuchen);
+}
+.statusbutton.upstatus-80 {
+    background-color: var(--angebotsverantwortliche);
+}
+.statusbutton.upstatus-100 {
+    background-color: var(--training);
+}
+.statusbutton.upstatus-200, .statusbutton.upstatus-220 {
+    background-color: var(--standorte);
+}
+.statusbutton.upstatus-140 {
+    background-color: var(--angebotsverantwortliche);
+}
+.statusbutton.upstatus-800 {
+    background-color: var(--stammdaten);
+}
 /* INFO ICON  ###########  */
 
 .infoicon {

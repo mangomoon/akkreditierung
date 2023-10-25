@@ -3,7 +3,6 @@
 
 <f:section name="content">
 
-
     <f:flashMessages />
     {diffAsJson -> f:format.raw()}
 
@@ -1029,6 +1028,7 @@
                     <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.fullName} 
+                            <code>uid: {t.uid} </code>
                             <f:if condition="{difftyp}">
                                 {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
                             </f:if>
@@ -1036,9 +1036,14 @@
                         </div>
                         <div class="rechts col-5">
                             <div class="abstand-klein"></div>
-                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid,ansuchenCompareId:diffCompareId}" target="_blank">Begutachtung starten</f:link.action>
+                                <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="TrainerBegutachtung" arguments="{trainer:t.uid,ansuchen:ansuchen.uid,ansuchenCompareId:diffCompareId}" target="_blank">Begutachtung starten</f:link.action> 
                                 <f:for each="{trainerorig}" as="tt">
+                                    
                                     <f:if condition="{t.uid}=={tt.uid}">
+                                        <f:if condition="{tt.gutachterLockedBy}>0">
+                                            <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: tt.gutachterLockedBy)}</f:variable>
+                                            &nbsp;<span class="titleview knopfrund achtung-orange " title="Wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} begutachtet."></span>
+                                        </f:if>
                                         <f:if condition="{ansuchen.typ}==1">
                                             <f:then>
                                                 <div class="status-babi">
@@ -1114,7 +1119,7 @@
                 <div class="row person" id="berater-{t.uid}">
                     <div class="links col-7">
                         {t.fullName} 
-                        
+                        <code>uid: {t.uid}</code>
                         <f:if condition="{difftyp}">
                             {ieb:ifDiff(diff:diff,field:'copy_berater/{t.uid}')}
                         </f:if>
@@ -1126,6 +1131,10 @@
                             <f:link.action class="knopf" pageUid="20" data="{fancybox:'fb-t-{t.uid}',type:'iframe',preload:'false'}" action="show" controller="BeraterBegutachtung" arguments="{berater:t.uid,ansuchen:ansuchen.uid,ansuchenCompareId:diffCompareId}" target="_blank">Begutachtung starten</f:link.action> 
                             <f:for each="{beraterorig}" as="tt">
                                 <f:if condition="{t.uid}=={tt.uid}">
+                                    <f:if condition="{tt.gutachterLockedBy}>0">
+                                        <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: tt.gutachterLockedBy)}</f:variable>
+                                        &nbsp;<span class="titleview knopfrund achtung-orange " title="Wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} begutachtet."></span>
+                                    </f:if>
                                         <span class="titleview person-statuskugel person-statuskugel-a berater status-{tt.reviewC3Status}" title="Begutachtung Qualifikation"></span>
                                         <span class="titleview person-statuskugel person-statuskugel-b berater status-{tt.reviewC32Status}" title="Begutachtung Erfahrung"></span>
                                 </f:if>
@@ -1214,6 +1223,29 @@
                 </div>
             </div>
 
+            <!-- STATUS Personal -->
+            <f:for each="{trainerorig}" as="t">
+                <f:if condition="{ansuchen.typ}==1">
+                    <f:then>
+                        <f:if condition="{t.statusAfterReviewBabi} > {tsarBabi}">
+                            <f:variable name="tsarBabi">{t.statusAfterReviewBabi}</f:variable>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{t.statusAfterReviewPsa} > {tsarPsa}">
+                            <f:variable name="tsarPsa">{t.statusAfterReviewPsa}</f:variable>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:for>
+            
+            <f:for each="{beraterorig}" as="b">
+                <f:if condition="{b.statusAfterReview} > {bsar}">
+                    <f:variable name="bsar">{b.statusAfterReview}</f:variable>
+                </f:if>
+            </f:for>
+
+
             <div class="abstand-gross"></div>
 
 
@@ -1241,6 +1273,9 @@
                         
                         
                     </div>
+
+
+
                     <div class="col">
                         <f:if condition="{ansuchen.gutachter2}">
                             <f:if condition="{currentUser.uid}=={ansuchen.gutachter2.uid}">
@@ -1296,9 +1331,45 @@
 
 
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                <label>
-                    <f:render partial="Form/Select" arguments="{property:'upcomingStatus', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
-                </label>
+                <div class="abstand-gross"></div>
+                <label>status</label>
+                <div class="abstand-klein"></div>
+                <div class="statusbuttonzeile" data-status="{ansuchen.status}">
+                    <f:if condition="{ansuchen.status}<100">
+                        <div class="statusbutton upstatus-80" data-upstatus="80">Nachbesserung (nicht akkreditiert)</div>
+                        <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                            <f:then>
+                                <div class="statusbutton upstatus-100 inactive titleview" title="Da Auflagen für Training oder Beratung bestehen, ist der Status 'akrreditiert' nicht möglich">akkreditiert</div>
+                            </f:then>
+                            <f:else>
+                                <div class="statusbutton upstatus-100" data-upstatus="100">akkreditiert</div>
+                            </f:else>
+                        </f:if>
+                        
+                        <div class="statusbutton upstatus-140" data-upstatus="140">akkreditiert mit auflagen</div>
+                        <div class="statusbutton upstatus-800" data-upstatus="800">nicht akkreditiert</div>
+                    </f:if>
+                    <f:if condition="{ansuchen.status}>100">
+                        <div class="statusbutton upstatus-200" data-upstatus="200">Zurück an Träger</div>
+                        <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                            <f:then>
+                                <div class="statusbutton upstatus-100 inactive titleview" title="Da Auflagen für Training oder Beratung bestehen, ist der Status 'akrreditiert' nicht möglich">akkreditiert</div>
+                            </f:then>
+                            <f:else>
+                                <div class="statusbutton upstatus-100" data-upstatus="100">akkreditiert</div>
+                            </f:else>
+                        </f:if>
+                        <div class="statusbutton upstatus-140" data-upstatus="140">akkreditiert mit auflagen</div>
+                        <div class="statusbutton upstatus-800" data-upstatus="800">nicht akkreditiert</div>
+                    </f:if>
+                
+                
+                
+                </div>
+
+                <div class="abstand-mittel"></div>
+                <f:form.hidden property="upcomingStatus" id="upcomingStatus" value="{ansuchen.upcomingStatus}" />
+
                 <f:form.hidden property="statusAgZwei" id="s1" value="{ansuchen.statusAgZwei}" />
                 <f:form.hidden property="statusAgEins" id="s2" value="{ansuchen.statusAgEins}" />
             </f:if>

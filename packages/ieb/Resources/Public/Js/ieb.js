@@ -885,6 +885,22 @@ function qualifikationPsaSprache() {
             }
         });
 
+     //  ########################################### FORM Begutachtung Status
+        $('.statusbutton').click(function() {
+            $('.statusbutton').each(function() {
+                $(this).removeClass('active');
+            })
+            ust = $(this).data('upstatus');
+            st = $('.statusbuttonzeile').data('status');
+            if(st==150 && ust==200) {
+                ust=220
+            };
+            console.log(st,ust);
+            $(this).addClass('active');
+            $('#upcomingStatus').val(ust);
+         });
+
+
      // ######################################## FORM Modal schliessen
 
      $('#schliessen').click(function() {
