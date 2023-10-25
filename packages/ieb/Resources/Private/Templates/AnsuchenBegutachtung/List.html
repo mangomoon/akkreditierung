@@ -72,8 +72,13 @@
                             <span class="ansuchenliste_ansuchenname">{item.name}</span>{f:if(condition:'{item.pruefbescheidCheck}==1', then:'<span class="knopfrund pruefbescheid titleview" title="mit Prüfbescheid"></span>')}
                             <br>
                             <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                            <f:if condition="{gutachter1.uid}">
+                                <div class="gutachterinfo">AG 1: {gutachter1.firstName} {gutachter1.LastName} ({f:if(condition:'{item.statusAgEins}', then:'dd')}) | {gutachter2.firstName} {gutachter2.LastName}</div>
+                            </f:if>
+
+
                             <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status}]</code>
-                            <code>[currentUser:{currentUser.uid} | group: {currentUser.usergroup} | Gutachter 1/2: {gutachter1.uid}/{gutachter2.uid}]</code>
+                            <code>[currentUser:{currentUser.uid} | group: {currentUser.usergroup} () | Gutachter 1/2: {gutachter1.uid}/{gutachter2.uid}]</code>
                             <code>gutachterLockedBy: {item.gutachterLockedBy}</code>
                         </td>
                         <td class="td-knopf">

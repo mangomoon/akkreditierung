@@ -285,6 +285,7 @@ span.pflicht {
     font-size: 0.9em;
     line-height: 150%;
     z-index: 9999;
+    cursor: grab;
 }
 
 .infobox a {
