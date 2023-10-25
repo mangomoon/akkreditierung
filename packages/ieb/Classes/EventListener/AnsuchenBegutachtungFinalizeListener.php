@@ -7,7 +7,6 @@ use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeEvent;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\MailService;
 use GeorgRinger\Ieb\Utility\AnsuchenUtility;
-use GeorgRinger\Ieb\Domain\Enum\Bundesland;
 
 final class AnsuchenBegutachtungFinalizeListener
 {
@@ -23,93 +22,24 @@ final class AnsuchenBegutachtungFinalizeListener
             $mails[$gsEmail] = '';
         }
 
-        // $emailBabiBurgenland = (new ExtensionConfiguration())->getEmailBabiBurgenland();
-        // $emailBabiKärnten = (new ExtensionConfiguration())->getEmailBabiKärnten();
-        // $emailBabiNiederoesterreich = (new ExtensionConfiguration())->getEmailBabiNiederoesterreich();
-        // $emailBabiOberoesterreich = (new ExtensionConfiguration())->getEmailBabiOberoesterreich();
-        // $emailBabiSalzburg = (new ExtensionConfiguration())->getEmailBabiSalzburg();
-        // $emailBabiSteiermark = (new ExtensionConfiguration())->getEmailBabiSteiermark();
-        // $emailBabiTirol = (new ExtensionConfiguration())->getEmailBabiTirol();
-        // $emailBabiVorarlberg = (new ExtensionConfiguration())->getEmailBabiVorarlberg();
-        // $emailBabiWien = (new ExtensionConfiguration())->getEmailBabiWien();
-        // $emailPsaBurgenland = (new ExtensionConfiguration())->getEmailPsaBurgenland();
-        // $emailPsaKärnten = (new ExtensionConfiguration())->getEmailPsaKärnten();
-        // $emailPsaNiederoesterreich = (new ExtensionConfiguration())->getEmailPsaNiederoesterreich();
-        // $emailPsaOberoesterreich = (new ExtensionConfiguration())->getEmailPsaOberoesterreich();
-        // $emailPsaSalzburg = (new ExtensionConfiguration())->getEmailPsaSalzburg();
-        // $emailPsaSteiermark = (new ExtensionConfiguration())->getEmailPsaSteiermark();
-        // $emailPsaTirol = (new ExtensionConfiguration())->getEmailPsaTirol();
-        // $emailPsaVorarlberg = (new ExtensionConfiguration())->getEmailPsaVorarlberg();
-        // $emailPsaWien = (new ExtensionConfiguration())->getEmailPsaWien();
+        $extensionConfiguration = new ExtensionConfiguration();
+        $possibleMails = [];
+        if ($event->ansuchen->getTyp() === 1) {
+            $possibleMails = $extensionConfiguration->getEmailBabi();
+        } elseif ($event->ansuchen->getTyp() === 2) {
+            $possibleMails = $extensionConfiguration->getEmailPsa();
+        }
 
-        // if ($event->ansuchen->getTyp() === 1) {
-        //     $bundesland = $event->ansuchen->getBundesland();
-        //     if ($bundesland) {
-        //         switch ($bundesland) {
-        //             case 1:
-        //                 $mails[$emailBabiBurgenland] = '';
-        //                 break;
-        //             case 2:
-        //                 $mails[$emailBabiKärnten] = '';
-        //                 break;
-        //             case 3:
-        //                 $mails[$emailBabiNiederoesterreich] = '';
-        //                 break;
-        //             case 4:
-        //                 $mails[$emailBabiOberoesterreich] = '';
-        //                 break;
-        //             case 5:
-        //                 $mails[$emailBabiSalzburg] = '';
-        //                 break;
-        //             case 6:
-        //                 $mails[$emailBabiSteiermark] = '';
-        //                 break;
-        //             case 7:
-        //                 $mails[$emailBabiTirol] = '';
-        //                 break;
-        //             case 8:
-        //                 $mails[$emailBabiVorarlberg] = '';
-        //                 break;
-        //             case 9:
-        //                 $mails[$emailBabiWien] = '';
-        //                 break;
-        //         }
-        //     }
-        // } else if ($event->ansuchen->getTyp() === 2) {
-        //     $bundesland = $event->ansuchen->getBundesland();
-        //     if ($bundesland) {
-        //         switch ($bundesland) {
-        //             case 1:
-        //                 $mails[$emailPsaBurgenland] = '';
-        //                 break;
-        //             case 2:
-        //                 $mails[$emailPsaKärnten] = '';
-        //                 break;
-        //             case 3:
-        //                 $mails[$emailPsaNiederoesterreich] = '';
-        //                 break;
-        //             case 4:
-        //                 $mails[$emailPsaOberoesterreich] = '';
-        //                 break;
-        //             case 5:
-        //                 $mails[$emailPsaSalzburg] = '';
-        //                 break;
-        //             case 6:
-        //                 $mails[$emailPsaSteiermark] = '';
-        //                 break;
-        //             case 7:
-        //                 $mails[$emailPsaTirol] = '';
-        //                 break;
-        //             case 8:
-        //                 $mails[$emailPsaVorarlberg] = '';
-        //                 break;
-        //             case 9:
-        //                 $mails[$emailPsaWien] = '';
-        //                 break;
-        //         }
-        //     }
-        // }
-
+        $mailsOfBundesland = $possibleMails[$event->ansuchen->getBundesland()] ?? false;
+        if ($mailsOfBundesland) {
+            if (is_array($mailsOfBundesland)) {
+                foreach($mailsOfBundesland as $mail) {
+                    $mails[$mail] = '';
+                }
+            } elseif(is_string($mailsOfBundesland)) {
+                $mails[$mailsOfBundesland] = '';
+            }
+        }
 
         $values = [
             'ansuchen' => $event->ansuchen,
