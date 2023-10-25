@@ -880,15 +880,7 @@
                 <f:for each="{relations.berateraktivundok}" as="t">
                     <div class="tb-zeile">
                         <f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
-                        <div class="a"><!--
-                            <f:switch expression="{t.statusAfterReview}">
-                                <f:case value="0"><span class="knopfrund ok-grey" title="Noch ohne Begutachtung. Einreichung erfoderlich"></span></f:case>
-                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung positiv"></span></f:case>
-                                <f:case value="2"><span class="titleview knopfrund achtung-gelb" title="Änderungen wurden vorgenommen, noch nicht begutachtet: Neueinreichung erforderlich."></span></f:case>
-                                <f:case value="3"><span class="titleview knopfrund achtung-orange" title="Negative Begutachtung oder Auflage(n), aber Änderungen noch nicht erfolgt!"></span></f:case>
-                                <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                                <f:case value="4"><span class="titleview knopfrund achtung-gelb" title="Änderung nach negativer Begutachtung erfolgt aber noch nicht neu begutachtet: Neueinreichung erforderlich."></span></f:case>
-                            </f:switch>&nbsp;&nbsp;-->
+                        <div class="a">
                             {t.fullname} 
                         </div>
 

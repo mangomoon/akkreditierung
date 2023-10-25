@@ -1546,6 +1546,20 @@ table.ansuchenbegutachtung td.check {
     font-weight: 600;
 }
 
+.gutachterinfo {
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--f5);
+}
+.gutachterstatus {
+    margin-top: 14px;
+    font-weight: 600;
+    color: var(--f5);
+}
+.gutachterselectstatus {
+    font-size: 1.3em;
+}
+
 .statusbuttonzeile {
     display:flex;
     gap: 20px;

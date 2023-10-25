@@ -1809,7 +1809,13 @@
 			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.150">
 				<source>Begutachtet nach Nachakkreditierung</source>
 			</trans-unit>
+			<trans-unit id="ansuchen.status.155" resname="ansuchen.status.150">
+				<source>Begutachtet nach Nachakkreditierung</source>
+			</trans-unit>
 			<trans-unit id="ansuchen.status.160" resname="ansuchen.status.160">
+				<source>Begutachtet nach Nachakkreditierung</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status.170" resname="ansuchen.status.160">
 				<source>Begutachtet nach Nachakkreditierung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.200" resname="ansuchen.status.200">

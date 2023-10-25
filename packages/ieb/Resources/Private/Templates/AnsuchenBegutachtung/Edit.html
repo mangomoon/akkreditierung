@@ -1260,13 +1260,69 @@
                             <f:if condition="{currentUser.uid}=={ansuchen.gutachter1.uid}">
                                 <f:then>
                                     <label>Status Vorschlag {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}
-                                        <f:render partial="Form/Select" arguments="{property:'statusAgEins', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
+                                        
                                     </label>
+                                    <f:if condition="{ansuchen.status}<100">
+                                        <f:then>
+                                            <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                <f:then>
+                                                    <f:form.select property="statusAgEins"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        1: 'Nachbesserungsauftrag',
+                                                        3: 'Akkreditert mit Auflagen',
+                                                        4: 'Nicht akkreditiert'
+                                                        }" />
+                                                </f:then>
+                                                <f:else>
+                                                    <f:form.select property="statusAgEins"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        1: 'Nachbesserungsauftrag',
+                                                        2: 'Akkreditiert',
+                                                        4: 'Nicht akkreditiert'
+                                                        }" />
+                                                </f:else>
+                                            </f:if>
+                                            
+                                        </f:then>
+                                        <f:else>
+                                            <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                <f:then>
+                                                    <f:form.select property="statusAgEins"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        1: 'Nachbesserungsauftrag',
+                                                        3: 'Akkreditert mit Auflagen',
+                                                        4: 'Nicht akkreditiert',
+                                                        5: 'Bearbeitungsauftrag'
+                                                        }" />
+                                                </f:then>
+                                                <f:else>
+                                                    <f:form.select property="statusAgEins"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        2: 'Akkreditiert',
+                                                        4: 'Nicht akkreditiert',
+                                                        5: 'Bearbeitungsauftrag'
+                                                        }" />
+                                                </f:else>
+                                            </f:if>
+                                        </f:else>
+                                    </f:if>
+                                    
+                                        
                                     <f:form.hidden property="statusAgZwei" id="statusAgZwei" value="{ansuchen.statusAgZwei}" />
                                 </f:then>
                                 <f:else>
                                     <label>Status Vorschlag {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}</label>
-                                    <f:translate key="ansuchen.status.{ansuchen.statusAgEins}" default="Status noch nicht vergeben" />
+                                    
+                                    <div class="gutachterstatus">
+                                        <f:switch expression="{ansuchen.statusAgEins}">
+                                            <f:case value="0">in Arbeit</f:case>
+                                            <f:case value="1">Nachbesserungsauftrag</f:case>
+                                            <f:case value="2">Akkreditiert</f:case>
+                                            <f:case value="3">Akkreditiert mit Auflagen</f:case>
+                                            <f:case value="4">Nicht akkreditiert</f:case>
+                                            <f:case value="5">Bearbeitungsauftrag</f:case>
+                                        </f:switch>
+                                    </div>
                                 </f:else>
                             </f:if>
                         </f:if>
@@ -1281,13 +1337,68 @@
                             <f:if condition="{currentUser.uid}=={ansuchen.gutachter2.uid}">
                                 <f:then>
                                     <label>Status Vorschlag {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}
-                                        <f:render partial="Form/Select" arguments="{property:'statusAgZwei', options:'{possibleStatus}', prependOption:1,prependOptionValue:'0', prependOptionLabel:'bitte einen Status wählen'}" />
+                                        <div class="gutachterselectstatus">
+                                        <f:if condition="{ansuchen.status}<100">
+                                            <f:then>
+                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                    <f:then>
+                                                        <f:form.select property="statusAgZwei"  options="{
+                                                            0: 'noch nicht gewählt', 
+                                                            1: 'Nachbesserungsauftrag',
+                                                            3: 'Akkreditert mit Auflagen',
+                                                            4: 'Nicht akkreditiert'
+                                                            }" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:form.select property="statusAgZwei"  options="{
+                                                            0: 'noch nicht gewählt', 
+                                                            1: 'Nachbesserungsauftrag',
+                                                            2: 'Akkreditiert',
+                                                            4: 'Nicht akkreditiert'
+                                                            }" />
+                                                    </f:else>
+                                                </f:if>
+                                                
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                    <f:then>
+                                                        <f:form.select property="statusAgZwei"  options="{
+                                                            0: 'noch nicht gewählt', 
+                                                            1: 'Nachbesserungsauftrag',
+                                                            3: 'Akkreditert mit Auflagen',
+                                                            4: 'Nicht akkreditiert',
+                                                            5: 'Bearbeitungsauftrag'
+                                                            }" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:form.select property="statusAgZwei"  options="{
+                                                            0: 'noch nicht gewählt', 
+                                                            2: 'Akkreditiert',
+                                                            4: 'Nicht akkreditiert',
+                                                            5: 'Bearbeitungsauftrag'
+                                                            }" />
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>    
+                                    </div>
                                     </label>
+
                                     <f:form.hidden property="statusAgEins" id="StatusAgEins" value="{ansuchen.statusAgEins}" />
                                 </f:then>
                                 <f:else>
                                     <label>Status Vorschlag {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}</label>
-                                    <f:translate key="ansuchen.status.{ansuchen.statusAgZwei}" default="Status noch nicht vergeben" />
+                                    <div class="gutachterstatus">
+                                        <f:switch expression="{ansuchen.statusAgZwei}">
+                                            <f:case value="0">in Arbeit</f:case>
+                                            <f:case value="1">Nachbesserungsauftrag</f:case>
+                                            <f:case value="2">Akkreditiert</f:case>
+                                            <f:case value="3">Akkreditiert mit Auflagen</f:case>
+                                            <f:case value="4">Nicht akkreditiert</f:case>
+                                            <f:case value="5">Bearbeitungsauftrag</f:case>
+                                        </f:switch>
+                                    </div>
                                 </f:else>
                             </f:if>
                         </f:if>
