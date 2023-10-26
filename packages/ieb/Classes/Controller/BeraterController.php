@@ -84,8 +84,8 @@ class BeraterController extends BaseController
         $berater->setLockedBy(0);
         if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
             $this->deleteFiles($fileDelete, $berater);
-            $this->beraterRepository->update($berater);
         }
+        $this->beraterRepository->update($berater);
         $this->redirect('index');
         
     }
