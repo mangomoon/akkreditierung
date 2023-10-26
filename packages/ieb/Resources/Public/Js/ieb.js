@@ -830,10 +830,12 @@ function qualifikationPsaSprache() {
         if ($(this).parent().hasClass('ok')) {
             neu=" ";
             t = $(this).parent().parent().parent().find('.extern').val();
-            i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
-            neu = i + " \nText an Träger:\n" + t;
-            $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
-            $(this).parent().parent().parent().find('.extern').text('');
+            if (t) {
+                i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
+                neu = i + " \nnicht ok war:\n" + t;
+                $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
+            }
+            $(this).parent().parent().parent().find('.extern').val('');
             console.log(neu);
         }
      });
@@ -862,16 +864,22 @@ function qualifikationPsaSprache() {
      //  ########################################### FORM Begutachtung Trainer
      $('.teilstatus label.knopf').click(function() {
          
-         $(this).find("input").prop('checked', true);
+
+        if($(this).hasClass('checked')) {
+            $(this).removeClass('checked');
+            $(this).find("input").prop('checked', false);
+            $(this).parent().find('.nan').prop('checked', true);
+        } else {
+            $(this).find("input").prop('checked', true);
          
-         oeffnenTrainerBegutachtung();
-         oeffnenBeraterBegutachtung();
+            oeffnenTrainerBegutachtung();
+            oeffnenBeraterBegutachtung();
 
-         $('#summestatus label').removeClass('checked');
-         //$(sr).addClass('checked');
-         $(this).parent().parent().find('.knopf').removeClass('checked');
-         $(this).addClass('checked');
-
+            $('#summestatus label').removeClass('checked');
+            $(this).parent().parent().find('.knopf').removeClass('checked');
+            $(this).addClass('checked');
+        }
+         
          return false;
      });
 
