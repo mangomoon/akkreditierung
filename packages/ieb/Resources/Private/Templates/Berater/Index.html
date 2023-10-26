@@ -161,7 +161,7 @@
                                             <f:link.action action="edit" title="Datensatz bearbeiten" class="knopf-quadratisch edit" arguments="{berater : berater}"></f:link.action>
                                         </f:then>
                                         <f:else>
-                                            <f:link.action action="unlock" class="locked-to-unlock knopf-quadratisch" title="Kann nicht bearbeitet werden, wird gerade von {lockInformation.lockedBy.name} bearbeitet. <br>Klicken zum <b>Entsperren</b>"></f:link.action>
+                                            <f:link.action action="unlock" arguments="{berater:berater}" class="locked-to-unlock knopf-quadratisch" title="Kann nicht bearbeitet werden, wird gerade von {lockInformation.lockedBy.name} bearbeitet. <br>Klicken zum <b>Entsperren</b>"></f:link.action>
                                         </f:else>
                                     </f:if>
                                 </f:else>
