@@ -1,0 +1,35 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+
+
+
+    <h2>Neues Ansuchen starten</h2>
+
+    <label for="name" class="reqlabel">Name des Bildungsangebots</label>
+    <f:form.textfield property="name" id="name" class="breite100 req" />
+
+    <div class="kriterium">
+        <h3>B.1.1 Programmbereich</h3>
+        <div id="bildungsbereich" class="formfields row bildungsbereich bb-{ansuchen.typ}">
+            <div class="col-10">
+                <label for="typ" class="inline reqlabel">Wählen Sie den Programmbereich aus:</label>
+                <f:switch expression="{ansuchen.typ}">
+                    <f:case value="0">
+                        <f:form.hidden name="typ" id="typ" property="typ" value="{ansuchen.typ}" />
+                        <knopf class="inline ansuchenjanein istbabi">Basisbildung</knopf>
+                        <knopf class="inline ansuchenjanein istpsa">Pflichtschulabschluss</knopf>
+                    </f:case>
+                    <f:case value="1">
+                        <span id="ansuchenbereichbabi" class="{f:if(condition:'{ansuchen.typ}==1',then:'babichecked')} fett">Basisbildung</span>
+                    </f:case>
+                    <f:case value="2">
+                        <span id="ansuchenbereichpsa" class="{f:if(condition:'{ansuchen.typ}==2',then:'psachecked')} fett">Pflichtschulabschluss</span>
+                    </f:case>
+                </f:switch>
+            </div>
+        </div>
+        
+    </div>
+    <p class="hinweis">Nachdem das Ansuchen angelegt wurde, finden Sie es in Ihrer Übersichtsliste und können es von dort aus weiterbearbeiten.</p>
+</html>
