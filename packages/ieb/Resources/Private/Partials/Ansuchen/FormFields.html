@@ -751,24 +751,33 @@
                         <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
                         <div class="tb-liste">
                             <f:for each="{relations.trainerbabi}" as="t">
+                                <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: t)}</f:variable>
+
                                 <div class="tb-zeile status-{t.statusAfterReviewBabi} "><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewBabi}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     <div class="a">
                                         {t.fullname} 
                                     </div>
                                     <div class="c">
-                                        <f:switch expression="{t.reviewC21BabiStatus}">
-                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                                        </f:switch>
-                                        <f:switch expression="{t.reviewC22BabiStatus}">
-                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                                        </f:switch>
+                                        <f:if condition="{relationUsagesInReview}">
+                                            <f:then>
+                                                <span class="titleview knopfrund in-begutachtung" title="In Begutachtung"></span>
+                                            </f:then>
+                                            <f:else>
+                                                <f:switch expression="{t.reviewC21BabiStatus}">
+                                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                                </f:switch>
+                                                <f:switch expression="{t.reviewC22BabiStatus}">
+                                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                                </f:switch>
+                                            </f:else>
+                                        </f:if>
                                     </div>
                                     <div class="d">
-                                        <f:if condition="{t.reviewFrist}">
+                                        <f:if condition="{t.reviewFrist} && !{relationUsagesInReview}">
                                             <span class="titleview" title="{t.reviewC2BabiCommentTr}">Frist:&nbsp;{t.reviewFrist -> f:format.date(format:'d.m.Y')}</span>
                                         </f:if>
                                     </div>
@@ -799,31 +808,38 @@
                                 <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
                             </f:else>
                         </f:if>
-                        <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
 
                         <div class="tb-liste">
                             <f:for each="{relations.trainerpsa}" as="t">
-
+                                <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: t)}</f:variable>
                                 <div class="tb-zeile status-{t.statusAfterReviewPsa} {f:if(condition:'!{t.okPsa}', then:'nur-mit-pruefbescheid hidden')}"><f:form.checkbox property="trainer" class="{f:if(condition:'{t.statusAfterReviewPsa}>2', then:'status-negativ')}" id="ansuchen.trainer.{t.uid}" value="{t.uid}"/>
                                     
                                     <div class="a">
                                         {t.fullname} 
                                     </div>  
                                     <div class="c">
-                                        <f:switch expression="{t.reviewC21PsaStatus}">
-                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                                        </f:switch>
-                                        <f:switch expression="{t.reviewC22PsaStatus}">
-                                            <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                            <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                            <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                                        </f:switch>
-                                    </div>
-                                    <div class="d">
-                                        <f:if condition="{t.reviewFrist}">
-                                            <span class="titleview" title="{t.reviewC2PsaCommentTr}">Frist:&nbsp;{t.reviewFrist -> f:format.date(format:'d.m.Y')}</span>
+                                        <f:if condition="{relationUsagesInReview}">
+                                            <f:then>
+                                                <span class="titleview knopfrund in-begutachtung" title="In Begutachtung"></span>
+                                            </f:then>
+                                            <f:else>
+                                                <f:switch expression="{t.reviewC21PsaStatus}">
+                                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                                </f:switch>
+                                                <f:switch expression="{t.reviewC22PsaStatus}">
+                                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                                </f:switch>
+                                            </div>
+                                            <div class="d">
+                                                <f:if condition="{t.reviewFrist} && !{relationUsagesInReview}">
+                                                    <span class="titleview" title="{t.reviewC2PsaCommentTr}">Frist:&nbsp;{t.reviewFrist -> f:format.date(format:'d.m.Y')}</span>
+                                                </f:if>
+                                            </f:else>
+                                                
                                         </f:if>
                                     </div>
                                 </div>
@@ -878,6 +894,8 @@
             <p class="hinweis">Es werden nur Personen gelistet, deren Daten vollständig sind.</p>
             <div class="tb-liste">
                 <f:for each="{relations.berateraktivundok}" as="t">
+
+                    <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: t)}</f:variable>
                     <div class="tb-zeile">
                         <f:form.checkbox property="berater" class="status-{t.statusAfterReview} {f:if(condition:'{t.statusAfterReview}>2', then:'status-negativ')}" id="ansuchen.berater.{t.uid}" value="{t.uid}"/>
                         <div class="a">
@@ -885,19 +903,26 @@
                         </div>
 
                         <div class="c">
-                            <f:switch expression="{t.reviewC3Status}">
-                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
-                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
-                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
-                            </f:switch>
-                            <f:switch expression="{t.reviewC32Status}">
-                                <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
-                                <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
-                                <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
-                            </f:switch>
+                            <f:if condition="{relationUsagesInReview}">
+                                <f:then>
+                                    <span class="titleview knopfrund in-begutachtung" title="In Begutachtung"></span>
+                                </f:then>
+                                <f:else>
+                                    <f:switch expression="{t.reviewC3Status}">
+                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Qualifikationsnachweis"></span></f:case>
+                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                    </f:switch>
+                                    <f:switch expression="{t.reviewC32Status}">
+                                        <f:case value="1"><span class="titleview knopfrund auflage-1" title="Begutachtung: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                        <f:case value="3"><span class="titleview knopfrund auflage-3" title="Begutachtung: Auflage für Erfahrungsnachweis"></span></f:case>
+                                        <f:case value="4"><span class="titleview knopfrund auflage-4" title="Begutachtung: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                    </f:switch>
+                                </f:else>         
+                            </f:if>
                         </div>
                         <div class="d">
-                            <f:if condition="{t.reviewFrist}">
+                            <f:if condition="{t.reviewFrist} && !{relationUsagesInReview}">
                                 <span class="titleview" title="{t.reviewC3CommentTr}">Frist:&nbsp;{t.reviewFrist -> f:format.date(format:'d.m.Y')}</span>
                             </f:if>
                         </div>
@@ -933,18 +958,7 @@
 
 </div>
 
-<!-- ############### TROTZDEM EINREICHEN ########### -->
-<f:if condition="({ansuchen.ok} == 0) || ({relations.stammdaten.ok} == 0)">
-    <div class="kriterium warnung">
-    <h2>Ansuchen unvollständig – Trotzdem einreichen</h2>
-    <p>Die automatische Überprüfung hat ergeben, dass die Angaben im Ansuchen oder zur Organisation unvollständig sind.</p>
-    <f:if condition="({ansuchen.statusAfterReview} == 1) || ({relations.statusAfterReview.ok} == 1)">
-        <p>Die automatische Überprüfung hat ergeben, dass Angaben im Ansuchen oder zur Organsiation zwar negativ beurteilt wurden, aber dazu noch keine Änderungen vorgenommen wurden.</p>
-    </f:if>
-    <p>Wenn sie das Ansuchen trotzdem einreichen wollen, begründen Sie das bitte im folgenden Textfeld:</p>
-    <f:form.textarea property="{trotzdemAbschicken}" id="trotzdem_abschicken"></f:form.textarea>
-</div>
-</f:if>
+
 
 <f:if condition="{ansuchen.pp3}">
     <f:then>

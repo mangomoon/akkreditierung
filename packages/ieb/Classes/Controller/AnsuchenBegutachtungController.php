@@ -99,11 +99,13 @@ class AnsuchenBegutachtungController extends BaseController
         $begutachtung->verantwortliche = $verantwortliche;
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung->copyToAnsuchen($ansuchen);
+        $ansuchen->setGutachterLockedBy(0);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $begutachtung->copyToStammdaten($stammdaten, $ansuchen);
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
+
         foreach ($verantwortliche as $id => $params) {
             /** @var AngebotVerantwortlich $verantwortlich */
             $verantwortlich = $this->angebotVerantwortlichRepository->getByIdAndPid($id, $ansuchen->getPid());

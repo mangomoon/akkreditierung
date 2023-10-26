@@ -60,15 +60,18 @@ class TrainerBegutachtungController extends BaseController
             return $this->htmlResponse('Nicht erlaubt!');
         }
         
-
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
+
+        $trainer->setGutachterLockedBy(0);
+        $this->trainerRepository->setUnGutachterLockedAndPersist($trainer);
+        
         foreach ($values as $property => $value) {
             $setter = 'set' . ucfirst($property);
             $trainer->$setter($value);
         }
-        $trainer->setGutachterLockedBy(0);
-        $this->trainerRepository->setUnGutachterLockedAndPersist($trainer);
+
         $this->trainerRepository->update($trainer);
+        $this->trainerRepository->forcePersist();
         $this->addFlashMessage('Begutachtung gespeichert');
         $this->redirect('show', null, null, ['trainer' => $trainer, 'ansuchen' => $ansuchen]);
     }

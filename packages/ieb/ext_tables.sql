@@ -71,7 +71,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	erklaerung_teil_a smallint(1) unsigned NOT NULL DEFAULT '0',
 	erklaerung_teil_b smallint(1) unsigned NOT NULL DEFAULT '0',
 	erklaerungd5 smallint(1) unsigned NOT NULL DEFAULT '0',
-	copy_stammdaten text NOT NULL DEFAULT '',
+	copy_stammdaten mediumtext NOT NULL DEFAULT '',
 	copy_trainer mediumtext NOT NULL DEFAULT '',
 	copy_berater mediumtext NOT NULL DEFAULT '',
 	copy_verantwortliche text NOT NULL DEFAULT '',

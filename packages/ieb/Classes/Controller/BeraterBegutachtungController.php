@@ -68,7 +68,9 @@ class BeraterBegutachtungController extends BaseController
             $setter = 'set' . ucfirst($property);
             $berater->$setter($value);
         }
-        $berater->setGutachterLockedBy(0);
+
+        $berater->setGutachterLockedBy(555);
+
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
         $this->redirect('show', null, null, ['berater' => $berater, 'ansuchen' => $ansuchen]);

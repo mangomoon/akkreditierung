@@ -67,6 +67,13 @@
                 </div>
             </div>
         </f:if>
+
+            <div class="row kriteriumteil">
+                <label>Informationen von und für die Geschäftsstelle</label>
+                <f:form.textarea id="notitzzettelfuerAG" property="notitzzettel" class="form-control"/>
+
+            </div>
+
         <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
             <div class="col">
             <div class="kriteriumtitel">
@@ -1445,41 +1452,51 @@
                 <div class="abstand-gross"></div>
                 <label>status</label>
                 <div class="abstand-klein"></div>
-                <div class="statusbuttonzeile" data-status="{ansuchen.status}">
+                <div class="">
                     <f:if condition="{ansuchen.status}<100">
-                        <div class="statusbutton upstatus-80" data-upstatus="80">Nachbesserung (nicht akkreditiert)</div>
-                        <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
-                            <f:then>
-                                <div class="statusbutton upstatus-100 inactive titleview" title="Da Auflagen für Training oder Beratung bestehen, ist der Status 'akrreditiert' nicht möglich">akkreditiert</div>
-                            </f:then>
-                            <f:else>
-                                <div class="statusbutton upstatus-100" data-upstatus="100">akkreditiert</div>
-                            </f:else>
-                        </f:if>
-                        
-                        <div class="statusbutton upstatus-140" data-upstatus="140">akkreditiert mit auflagen</div>
-                        <div class="statusbutton upstatus-800" data-upstatus="800">nicht akkreditiert</div>
-                    </f:if>
-                    <f:if condition="{ansuchen.status}>100">
-                        <div class="statusbutton upstatus-200" data-upstatus="200">Zurück an Träger</div>
-                        <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
-                            <f:then>
-                                <div class="statusbutton upstatus-100 inactive titleview" title="Da Auflagen für Training oder Beratung bestehen, ist der Status 'akrreditiert' nicht möglich">akkreditiert</div>
-                            </f:then>
-                            <f:else>
-                                <div class="statusbutton upstatus-100" data-upstatus="100">akkreditiert</div>
-                            </f:else>
-                        </f:if>
-                        <div class="statusbutton upstatus-140" data-upstatus="140">akkreditiert mit auflagen</div>
-                        <div class="statusbutton upstatus-800" data-upstatus="800">nicht akkreditiert</div>
-                    </f:if>
-                
-                
+                                            <f:then>
+                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                    <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
+                                                </f:if>
+                                                <f:form.select property="upcomingStatus"  options="{
+                                                    0: 'noch nicht gewählt', 
+                                                    50: 'Nachbesserungsauftrag',
+                                                    100: 'Akkreditiert',
+                                                    140: 'Akkreditert mit Auflagen',
+                                                    800: 'Nicht akkreditiert'
+                                                    }" />
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                    <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
+                                                </f:if>
+                                                <f:if condition="({ansuchen.status}==160)">
+                                                    <f:form.select property="upcomingStatus"  options="{
+                                                    0: 'noch nicht gewählt', 
+                                                    200: 'Bearbeitungsauftrag',
+                                                    100: 'Akkreditiert',
+                                                    140: 'Akkreditert mit Auflagen',
+                                                    810: 'Akkreditierung entzogen',
+                                                    820: 'Akkreditierung ausgesetzt'
+                                                    }" />
+                                                </f:if>
+                                                <f:if condition="({ansuchen.status}==150)">
+                                                    <f:form.select property="upcomingStatus"  options="{
+                                                    0: 'noch nicht gewählt', 
+                                                    220: 'Bearbeitungsauftrag',
+                                                    100: 'Akkreditiert',
+                                                    140: 'Akkreditert mit Auflagen',
+                                                    810: 'Akkreditierung entzogen',
+                                                    820: 'Akkreditierung ausgesetzt'
+                                                    }" />
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
                 
                 </div>
 
                 <div class="abstand-mittel"></div>
-                <f:form.hidden property="upcomingStatus" id="upcomingStatus" value="{ansuchen.upcomingStatus}" />
+
 
                 <f:form.hidden property="statusAgZwei" id="s1" value="{ansuchen.statusAgZwei}" />
                 <f:form.hidden property="statusAgEins" id="s2" value="{ansuchen.statusAgEins}" />
@@ -1491,13 +1508,15 @@
         </div>
 
 
-        <!-- mango: Notitzzettel nur für GS -->
+        <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:form.textarea id="notitzzettel" property="notitzzettel" class="form-control"/>
+        </f:if>
 
         <div id="sidebar">
             <div class="knopf-s" id="seite-nach-oben"></div>
-            <!-- mango: Notitzzettel nur für GS! -->
+            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
             <div class="knopf-s" id="notitzzettel-oeffnen" title="Notizzettel zeigen"></div>
+            </f:if>
             <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
             <f:form.submit value="" name="saveAndIndex" class="knopf-s sidebar speichern-zurueck" title="Speichern und zurück zur Liste"/>
             <f:link.action class="knopf-s sidebar zurueck" action="list" title="Zurück OHNE Speichern"></f:link.action> 
