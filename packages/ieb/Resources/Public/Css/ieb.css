@@ -378,7 +378,7 @@ p.hinweisextra {
     color: var(--f4);
 }
 .filelist-item a {
-    padding-left: 24px;
+    padding: 0 0 2px 23px;
     background-image: url("../Img/extension/wasauchimmer.svg");
     background-size: 16px;
     background-repeat: no-repeat;

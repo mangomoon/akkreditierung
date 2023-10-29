@@ -509,7 +509,7 @@
                     </div>
                     <f:for each="{verantwortliche}" as="p">
                         <div class="row person">
-                            <div class="col">
+                            <div class="links col-9">
                                 {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
         
                                 <div class="abstand-klein"></div>
@@ -518,8 +518,19 @@
                                 <f:render partial="Form/UploadListDiff" arguments="{
                                     media:'{p.lebenslaufDatei}',
                                     anmerkung:'{p.lebenslauf}'
-                                    
                                 }" />
+                            </div>
+                            <div class="rechts col-3">
+                                <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs} ||{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
+                                    <p class="klein">
+                                        <f:if condition="{p.reviewC1Babi}">
+                                            Management OK<br>
+                                        </f:if>
+                                        <f:if condition="{p.reviewC1Psa}">
+                                            Pädagogik OK
+                                        </f:if>
+                                    </p>
+                                </f:if>
                             </div>
                         </div>
                     </f:for>
@@ -563,11 +574,11 @@
                     </div>
                     <f:for each="{trainer}" as="t">
                     <div class="row person" id="trainer-{t.uid}">
-                        <div class="links col-7 td-knopf">
-                            {t.fullName} &nbsp;&nbsp;<f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                        <div class="links col-9">
+                            {t.fullName} &nbsp;&nbsp;
                         </div>
-                        <div class="rechts col-5">
-                            
+                        <div class="rechts col-3 td-knopf">
+                            <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
                         </div>
                     </div>
                 </f:for>
@@ -613,14 +624,14 @@
                                         </p>
                                     </div>
                                 </div>
-                                <f:for each="{relations.berater}" as="t">
+                                <f:for each="{berater}" as="t">
                                     <div class="row person" id="berater-{t.uid}">
-                                        <div class="links col-7 td-knopf">
-                                            {t.fullName}  &nbsp;&nbsp;<f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
+                                        <div class="links col-9 td-knopf">
+                                            {t.fullName}  &nbsp;&nbsp;&nbsp;&nbsp;
                                             
                                         </div>
-                                        <div class="rechts col-5">
-                                            
+                                        <div class="rechts col-3 td-knopf">
+                                            <f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
                                         </div>
                                     </div>
                                 </f:for>
