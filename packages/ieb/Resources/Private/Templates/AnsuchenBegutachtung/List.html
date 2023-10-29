@@ -5,14 +5,83 @@
 
 
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div id="nummer" class="sortierbutton">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="pid" class="sortierbutton">Organisation</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div id="bstatus" class="sortierbutton">Priorität</div> <div id="nummer" class="sortierbutton">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Bildungsangebot</div> <div id="pid" class="sortierbutton">Organisation</div>
         </div>
         <div id="ansuchenlistencontainer">
         <f:for each="{ansuchen}" as="item">
 
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
 
-            <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
+            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                <f:if condition="({item.status} == 20) && !{item.gutachter1}">
+                    <!-- Ersteinreichung -->
+                    <f:variable name="b-status">1</f:variable>
+                </f:if>
+                <f:if condition="({item.status} > 20) && !{item.gutachter1}">
+                    <!-- Zuteilung nicht erfgolt -->
+                    <f:variable name="b-status">3</f:variable>
+                </f:if>
+                <f:if condition="({item.gutachter1} && !{item.statusAgEins}) || ({item.gutachter2} && !{item.statusAgZwei})">
+                    <!-- In begutachtung durch die AG -->
+                    <f:variable name="b-status">4</f:variable>
+                </f:if>
+                <f:if condition="({item.gutachter1} && {item.statusAgEins} && !{item.gutachter2}) || ({item.gutachter2} && {item.statusAgEins} && {item.statusAgZwei})">
+                    <!-- Begutachtung durch AG abgeschlossen -->
+                    <f:variable name="b-status">2</f:variable>
+                </f:if>
+            </f:if>
+            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
+                <f:variable name="b-status">99</f:variable>
+                <f:if condition="{gutachter1.uid}=={currentUser.uid}">
+                    <f:variable name="b-status">1</f:variable>
+                    <f:if condition="{gutachter2.uid}">
+                        <f:then>
+                            <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
+                                <!--  -->
+                                <f:variable name="b-status">7</f:variable>
+                            </f:if>
+                            <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
+                                <!--  -->
+                                <f:variable name="b-status">1</f:variable>
+                            </f:if>
+                            <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
+                                <!--  -->
+                                <f:variable name="b-status">10</f:variable>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="({item.statusAgEins} == 0)">
+                                <f:then>
+                                    <!--  -->
+                                    <f:variable name="b-status">1</f:variable>
+                                </f:then>
+                                <f:else>
+                                    <!--  -->
+                                    <f:variable name="b-status">10</f:variable>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                     </f:if>
+                </f:if>
+                            <f:if condition="{gutachter2.uid}=={currentUser.uid}">
+                                    <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
+                                        <!--  -->
+                                    <f:variable name="b-status">7</f:variable>
+                                    </f:if>
+                                    <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
+                                        <!--  -->
+                                    <f:variable name="b-status">1</f:variable>
+                                    </f:if>
+                                    <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
+                                        <!--  -->
+                                    <f:variable name="b-status">10</f:variable>
+                                    </f:if>    
+                            </f:if>
+            </f:if>
+
+
+
+            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>

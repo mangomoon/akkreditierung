@@ -77,7 +77,7 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive,certificateDownload,trotzdem',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive,certificateDownload,torzdem',
+            \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive,certificateDownload,trotzdem',
         ]
     );
 
@@ -102,10 +102,10 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list,show,edit,update',
         ],
         [
-            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list, show,edit, update,finalizeStatus,zuteilung,zuteilungPersist,unlock,begutachtungsSchluss',
-            \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list, show,edit, updat2,unlock',
+            \GeorgRinger\Ieb\Controller\AnsuchenBegutachtungController::class => 'list,show,edit,update,finalizeStatus,zuteilung,zuteilungPersist,unlock,begutachtungsSchluss',
+            \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list,show,edit,update,unlock',
             \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update,unlock',
-            \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list, show,edit, update',
+            \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list,show,edit,update',
         ]
     );
 

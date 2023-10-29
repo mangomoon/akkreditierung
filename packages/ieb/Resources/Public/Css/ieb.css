@@ -833,11 +833,11 @@ span.knopfrund.in-begutachtung {
 span.knopfrund.pruefbescheid {
     width: 12px;
     height:12px;
-    background-image: none;
-    border-radius: 6px;
-    background-color:#dd7abb;
+    background-image: url('../Img/Quadrat_pruefbescheid.svg');
+    /* border-radius: 6px;
+    background-color:#dd7abb; */
     vertical-align:super;
-    margin-left: 3px;
+    margin-left: 5px;
 }
 span.knopfrund.sar-0 {
     background-image: url('../Img/dot-gruen.svg');
