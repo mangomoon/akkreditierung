@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="show_kommentare">
+
+<f:if condition="{status}">
+    <label>status</label>
+    <f:switch expression="{status}">
+        <f:case value="1"><p><span class="knopfrund auflage-1"></span> &nbsp;&nbsp;ok</p></f:case>
+        <f:case value="4"><p><span class="knopfrund achtung-orange"></span> &nbsp;&nbsp;nicht-ok</p></f:case>
+    </f:switch>
+</f:if>
+
+<f:if condition="{pruefbescheid}">
+    <label>Der vorliegende Prüfbescheid läuft ab am:</label>
+    <p><f:format.date format="d.m.Y">{pruefbescheid}</f:format.date></p>
+</f:if>
+
+<f:if condition="{extern}">
+    <label>Text an den Träger</label>
+    <p><f:format.nl2br>{extern}</f:format.nl2br></p>
+</f:if>
+
+
+<f:if condition="(({user}==2) || ({user}==3)) && {intern}">
+    <label>Interner Kommentar</label>
+    <f:for each="{intern}" as="comment">
+        <p>
+            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
+        </p>
+    </f:for>
+</f:if>
+
+</div>
+</html>
