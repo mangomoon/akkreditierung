@@ -67,12 +67,14 @@
                 </div>
             </div>
         </f:if>
-
+        <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
             <div class="row kriteriumteil">
                 <label>Informationen von und für die Geschäftsstelle</label>
                 <f:form.textarea id="notitzzettelfuerAG" property="notitzzettel" class="form-control"/>
 
             </div>
+        </f:if>
+            
 
         <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
             <div class="col">
@@ -407,14 +409,14 @@
                                             <f:if condition="{diff.kompetenz4.current}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz5} == 1">
-                                            <li>Grundlegende Kompetenzen in einer weiteren Sprache: {ansuchen.kompetenzText1}
-                                            <f:if condition="{diff.kompetenz5.current}"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <li>Grundlegende Kompetenzen in Englisch
+                                                <f:if condition="{diff.kompetenz5.current}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{diff.kompetenz1.previous}"><li class="diff">gelöscht: Deutsch als Erstsprache</li></f:if>
                                         <f:if condition="{diff.kompetenz2.previous}"><li class="diff">gelöscht: Deutsch als Zweitsprache</li></f:if>
                                         <f:if condition="{diff.kompetenz3.previous}"><li class="diff">gelöscht: Mathematische Kompetenzen</li></f:if>
                                         <f:if condition="{diff.kompetenz4.previous}"><li class="diff">gelöscht: Digitale Kompetenzen</li></f:if>
-                                        <f:if condition="{diff.kompetenz5.previous}"><li class="diff">gelöscht: Weitere Sprache({ansuchen.kompetenzText1})</li></f:if>
+                                        <f:if condition="{diff.kompetenz5.previous}"><li class="diff">gelöscht: Grundlegende Kompetenzen in Englisch</li></f:if>
                                     </f:then>
                                     <f:else>
                                         <li class="light">Deutsch – Kommunikation und Gesellschaft</li>

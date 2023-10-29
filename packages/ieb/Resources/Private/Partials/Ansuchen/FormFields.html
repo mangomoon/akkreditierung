@@ -21,6 +21,25 @@
         <f:form.textfield property="name" id="name" class="breite100 req" />
     </div>
 </div>
+<f:if condition="{ansuchen.status}>30">
+
+   <div class="formfields row kriterium gutachten">
+    <div class="col-3">
+        <p><label>Akkreditierungsentscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
+    </div>
+    <div class="col-3">
+        <p><label>Entscheidung/Status: </label> <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
+    </div>
+    <div class="col-6">
+        <f.if condition="{ansuchen.reviewTotalCommentTr}">
+            <p><label>Kommentar: </label>
+            <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+        </f.if>
+    </div>
+</div> 
+</f:if>
+
+
 <div class="formfields row">
     <div class="col">
         <p class="hinweis">Hinweis: Auf allen Dokumenten muss ersichtlich sein, welcher Organisation ein Dokument zuzuordnen ist, alle Dokumente sind eindeutig zu kennzeichnen (z. B. durch Logo, Fußzeile). Die mit Sternchen gekennzeichneten Felder sind Pflichtfelder.</p>

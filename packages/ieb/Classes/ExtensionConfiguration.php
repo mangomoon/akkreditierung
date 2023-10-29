@@ -9,7 +9,7 @@ use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 class ExtensionConfiguration
 {
     protected int $userIdForDatahandler = 1;
-    protected int $usergroupEingeladenInaktiv = 3;
+    protected int $usergroupEingeladenInaktiv = 999;
     protected int $usergroupAktiv = 1;
     protected int $usergroupAg = 3;
     protected int $usergroupGs = 2;
@@ -26,11 +26,11 @@ class ExtensionConfiguration
         $this->ansuchenEnde = new \DateTime('2028-12-31');
         $this->emailBabi = [
             BundeslandEnum::Burgenland->value => 'dieter.szorger@bgld.gv.at',
-            BundeslandEnum::Kärnten->value => 'dieter.szorger@bgld.gv.at',
+            BundeslandEnum::Kärnten->value => 'nadine.hell@ktn.gv.at',
             BundeslandEnum::Niederösterreich->value => 'philipp.roessl@noel.gv.at',
             BundeslandEnum::Oberösterreich->value => ['guenter.brandstetter@ooe.gv.at', 'Theresia.Berger-Schauer@ooe.gv.at'],
             BundeslandEnum::Salzburg->value => 'bildung@salzburg.gv.at',
-            BundeslandEnum::Steiermark->value => 'susanne.lucchesi-palli@stmk.gv.at',
+            BundeslandEnum::Steiermark->value => ['susanne.lucchesi-palli@stmk.gv.at', 'marion.koller@stmk.gv.at'],
             BundeslandEnum::Tirol->value => 'kultur@tirol.gv.at',
             BundeslandEnum::Vorarlberg->value => 'wissenschaft@vorarlberg.at',
             BundeslandEnum::Wien->value => 'eb@ma13.wien.gv.at',
@@ -39,9 +39,9 @@ class ExtensionConfiguration
             BundeslandEnum::Burgenland->value => 'dieter.szorger@bgld.gv.at',
             BundeslandEnum::Kärnten->value => 'nadine.hell@ktn.gv.at',
             BundeslandEnum::Niederösterreich->value => 'philipp.roessl@noel.gv.at',
-            BundeslandEnum::Oberösterreich->value => 'guenter.brandstetter@ooe.gv.at',
-            BundeslandEnum::Salzburg->value => 'bildung@salzburg.gv.at',
-            BundeslandEnum::Steiermark->value => 'susanne.lucchesi-palli@stmk.gv.at',
+            BundeslandEnum::Oberösterreich->value => ['guenter.brandstetter@ooe.gv.at', 'Theresia.Berger-Schauer@ooe.gv.at'],
+            BundeslandEnum::Salzburg->value => 'bildung@salzburg.gv.at', 
+            BundeslandEnum::Steiermark->value => ['susanne.lucchesi-palli@stmk.gv.at', 'marion.koller@stmk.gv.at'],
             BundeslandEnum::Tirol->value => 'kultur@tirol.gv.at',
             BundeslandEnum::Vorarlberg->value => 'wissenschaft@vorarlberg.at',
             BundeslandEnum::Wien->value => 'eb@ma13.wien.gv.at',

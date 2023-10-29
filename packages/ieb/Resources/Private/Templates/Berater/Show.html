@@ -3,6 +3,8 @@
 
 
 <f:section name="content">
+
+<f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: berater)}</f:variable>
   <div id="berater-show">
     <h1>{berater.fullName}</h1>
 
@@ -50,7 +52,22 @@
           </div>
           <div class="rechts ohne-bg col-5">
 
-              &nbsp;
+            <f:if condition="{relationUsagesInReview}">
+                <f:then>
+                    <div class="show_kommentare">
+                        <p><label>Zur Zeit in Begutachtung</label></p>
+                    </div>
+                    
+                </f:then>
+                <f:else>
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:trainer.reviewC3Status,
+                        extern:trainer.reviewC3CommentTr,
+                        intern:trainer.reviewC3CommentInternal,
+                        user:currentUser.usergroup
+                        }" />
+                </f:else>
+            </f:if>
 
           </div>
       </div>
@@ -78,7 +95,22 @@
               }" />
           </div>
           <div class="rechts col-5">
-
+            <f:if condition="{relationUsagesInReview}">
+                <f:then>
+                    <div class="show_kommentare">
+                        <p><label>Zur Zeit in Begutachtung</label></p>
+                    </div>
+                    
+                </f:then>
+                <f:else>
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:trainer.reviewC32Status,
+                        extern:trainer.reviewC32CommentTr,
+                        intern:trainer.reviewC32CommentInternal,
+                        user:currentUser.usergroup
+                        }" />
+                </f:else>
+            </f:if>
           </div>
       </div>
   </div>

@@ -1,11 +1,13 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 
 <f:section name="content">
+    <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: trainer)}</f:variable>
+
     <div id="trainer-show">
     <h1>{trainer.fullName}</h1>
-
+    <f:debug>{_all}</f:debug>
     <div class="begutachtung-kriterium" id="c21b">
       <div class="kriteriumtitel">
           <div class="row">
@@ -41,6 +43,23 @@
 
           </div>
           <div class="rechts col-5">
+            <f:if condition="{relationUsagesInReview}">
+                <f:then>
+                    <div class="show_kommentare">
+                        <p><label>Zur Zeit in Begutachtung</label></p>
+                    </div>
+                    
+                </f:then>
+                <f:else>
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:trainer.reviewC21BabiStatus,
+                        extern:trainer.reviewC21BabiCommentTr,
+                        intern:trainer.reviewC21BabiCommentInternal,
+                        user:currentUser.usergroup
+                        }" />
+                </f:else>
+            </f:if>
+            
           </div>
       </div>
     </div>
@@ -95,7 +114,22 @@
                           }" />
                       </div>
                       <div class="rechts col-5">
-
+                        <f:if condition="{relationUsagesInReview}">
+                            <f:then>
+                                <div class="show_kommentare">
+                                    <p><label>Zur Zeit in Begutachtung</label></p>
+                                </div>
+                                
+                            </f:then>
+                            <f:else>
+                                <f:render partial="Ansuchen/Kommentare" arguments="{
+                                    status:trainer.reviewC21PsaStatus,
+                                    extern:trainer.reviewC21PsaCommentTr,
+                                    intern:trainer.reviewC21PsaCommentInternal,
+                                    user:currentUser.usergroup
+                                    }" />
+                            </f:else>
+                        </f:if>
                       </div>
                       </div>
                       <div class="row">
@@ -138,6 +172,30 @@
                             }" />
                         </div>
                         <div class="rechts col-5">
+                            <f:if condition="{relationUsagesInReview}">
+                                <f:then>
+                                    <div class="show_kommentare">
+                                        <p><label>Zur Zeit in Begutachtung</label></p>
+                                    </div>
+                                    
+                                </f:then>
+                                <f:else>
+                                    <label>Basisbildung:</label>
+                                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                                        status:trainer.reviewC22BabiStatus,
+                                        extern:trainer.reviewC22BabiCommentTr,
+                                        intern:trainer.reviewC22BabiCommentInternal,
+                                        user:currentUser.usergroup
+                                        }" />
+                                    <label>PSA:</label>
+                                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                                        status:trainer.reviewC22PsaStatus,
+                                        extern:trainer.reviewC22PsaCommentTr,
+                                        intern:trainer.reviewC22PsaCommentInternal,
+                                        user:currentUser.usergroup
+                                        }" />
+                                </f:else>
+                            </f:if>
                         </div>
                     </div>
                 </div>

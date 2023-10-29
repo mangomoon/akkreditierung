@@ -145,8 +145,14 @@
 				</table>
 				<div class="abstand-mittel"></div>
 			</div>
+
 			<div class="rechts col-5">
-				
+				<f:render partial="Ansuchen/Kommentare" arguments="{
+					status:stammdaten.reviewA1Status,
+					extern:stammdaten.reviewA1CommentTr,
+					intern:stammdaten.reviewA1CommentInternalData,
+					user:user
+					}" />
 			</div>
 		
 		</div>
@@ -249,7 +255,12 @@
 					</div>
 				</div>
 				<div class="rechts col-5">
-					
+					<f:render partial="Ansuchen/Kommentare" arguments="{
+						status:stammdaten.reviewA2Status,
+						extern:stammdaten.reviewA2CommentTr,
+
+						user:currentUser.usergroup
+						}" />
 				</div>
 					
 			</div>

@@ -9,7 +9,13 @@
     {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
     {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
 
+
+    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+        <f:variable name="gs">1</f:variable>
+    </f:if>
     <div id="ansuchen-show">
+
+
 
 <div class="begutachtung-kopf row">
     <div class="col">
@@ -32,16 +38,32 @@
     </div>
 </div>
 <div class="abstand-gross"></div>
+<f:if condition="{ansuchen.status}>30">
 
+   <div class="row kriterium gutachten">
+    <div class="col-3">
+        <p><label>Akkreditierungsentscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
+    </div>
+    <div class="col-3">
+        <p><label>Entscheidung/Status: </label> <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
+    </div>
+    <div class="col-6">
+        <f.if condition="{ansuchen.reviewTotalCommentTr}">
+            <p><label>Kommentar: </label>
+            <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+        </f.if>
+    </div>
+</div> 
+</f:if>
 
 <!-- Stammdaten -->
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:relations.stammdaten}" />
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup}" />
 
 
 
         <!-- B.1. Eckdaten zum Angebot #################################################### -->
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewB1Status}" id="kB1">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB1Status}" id="kB1">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -109,6 +131,12 @@
                     </div>
                     <div class="rechts col-5">
 
+                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewB1Status,
+                            extern:ansuchen.reviewB1CommentTr,
+                            intern:ansuchen.reviewB1CommentInternalData,
+                            user:currentUser.usergroup
+                            }" />
                     </div>
                 
                 </div>
@@ -119,7 +147,7 @@
     
         <!-- B.1.4 Standorte #################################################### -->
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewB14Status}" id="kB14">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB14Status}" id="kB14">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -162,18 +190,23 @@
                         
                     </div>
                     <div class="rechts col-5">
-                        &nbsp;
+                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewB14Status,
+                            extern:ansuchen.reviewB14CommentTr,
+                            intern:ansuchen.reviewB14CommentInternalData,
+                            user:currentUser.usergroup
+                            }" />
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <f:if condition="!{ansuchen.pp3}"> 
+        <f:if condition="!{ansuchen.pp3} && {ansuchen.typ}==2"> 
 
         <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
 
-        <div class="begutachtung-kriterium psa row status-{ansuchen.reviewB15Status}" id="kB15">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB15Status}" id="kB15">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -192,12 +225,14 @@
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidDatei}==1',then:'ja', else:'nein')}</b>.</p>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'ja', else:'nein')}</b>.</p>
                             <f:render partial="Form/UploadList" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
                                 anmerkung:'{ansuchen.pruefbescheid}',
                             }" />
 
+
+                        <p>&nbsp;</p>
                         <h4>Kooperierende Einrichtung</h4>
                         <div class="erlaeuterung">
                             <p class="hinweis"><span class="worthinweis">Hinweis:</span> Sollte die kooperierende Schule noch nicht feststehen, dann ist eine Bestätigung der Bildungsdirektion vorzulegen, dass eine Prüfungsschule zugeteilt wird.</p>&nbsp;<br>
@@ -219,7 +254,13 @@
 
                     </div>
                     <div class="rechts col-5">
-
+                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewB15Status,
+                            extern:ansuchen.reviewB15CommentTr,
+                            intern:ansuchen.reviewB15CommentInternalData,
+                            user:currentUser.usergroup,
+                            pruefbescheid:ansuchen.reviewFristPruefbescheid
+                            }" />
                     </div>
 
                 </div>
@@ -231,7 +272,7 @@
 
         <!-- B.2.1 Ansprache und Erreichung der Zielgruppe #################################################### -->
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewB2Status}" id="kB2">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB2Status}" id="kB2">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -261,7 +302,12 @@
                         }" />
                     </div>
                     <div class="rechts col-5">
-
+                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewB2Status,
+                            extern:ansuchen.reviewB2CommentTr,
+                            intern:ansuchen.reviewB2CommentInternalData,
+                            user:currentUser.usergroup
+                            }" />
                     </div>
 
                 </div>
@@ -271,7 +317,7 @@
         <!-- B.2.2 Didaktisch-methodisches Vorgehen #################################################### -->
 
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewB22Status}" id="kB22">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB22Status}" id="kB22">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -377,7 +423,12 @@
                     </div>
                     </div>
                     <div class="rechts col-5">
-                        
+                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewB22Status,
+                            extern:ansuchen.reviewB22CommentTr,
+                            intern:ansuchen.reviewB22CommentInternalData,
+                            user:currentUser.usergroup
+                            }" />
                     </div>
                 </div>
             </div>
@@ -386,7 +437,7 @@
         <!-- B.2.3 Beratung, Coaching und Begleitung #################################################### -->
 
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewB23Status}" id="kB23">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB23Status}" id="kB23">
             <div class="col">
                 <div class="kriteriumtitel">
                     <div class="row">
@@ -421,7 +472,12 @@
                     </div>
                 </div>
                 <div class="rechts col-5">
-                    
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:ansuchen.reviewB23Status,
+                        extern:ansuchen.reviewB23CommentTr,
+                        intern:ansuchen.reviewB23CommentInternalData,
+                        user:currentUser.usergroup
+                        }" />
                 </div>
 
             </div>
@@ -432,7 +488,7 @@
         <!-- C.1 Projektleitung #################################################### -->
 
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewC1Status}" id="kC1">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewC1Status}" id="kC1">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -451,40 +507,40 @@
                         <p class="showinfobox">Die Projektleitung verfügt über Management-Kompetenz (Erfahrung oder formale Qualifikation) und pädagogische Kompetenz in der Jugend- oder Erwachsenenpädagogik (Erfahrung oder formale Qualifikation). Die Kompetenzen können von einer Person oder im Team erbracht werden.</p>
                         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
                     </div>
+                    <f:for each="{verantwortliche}" as="p">
+                        <div class="row person">
+                            <div class="col">
+                                {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
+        
+                                <div class="abstand-klein"></div>
+                                <label>Lebenslauf</label>
+                                <div class="abstand-klein"></div>
+                                <f:render partial="Form/UploadListDiff" arguments="{
+                                    media:'{p.lebenslaufDatei}',
+                                    anmerkung:'{p.lebenslauf}'
+                                    
+                                }" />
+                            </div>
+                        </div>
+                    </f:for>
                 </div>
                 <div class="rechts col-5">
-                    
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:ansuchen.reviewC1Status,
+                        extern:ansuchen.reviewC1CommentTr,
+                        intern:ansuchen.reviewC1CommentInternalData,
+                        user:currentUser.usergroup
+                        }" />
                 </div>
             </div>
-            <f:for each="{relations.angebotVerantwortliche}" as="p">
-                <div class="row person">
-                    <div class="links col-7">
-                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
-
-                        <div class="abstand-klein"></div>
-                        <label>Lebenslauf</label>
-                        <div class="abstand-klein"></div>
-                        <f:render partial="Form/UploadListDiff" arguments="{
-                            media:'{p.lebenslaufDatei}',
-                            anmerkung:'{p.lebenslauf}'
-                            
-                        }" />
-                    </div>
-                    <div class="rechts col-5">
-                        
-                    </div>
-                </div>
-            </f:for>
-
-            <div class="row bg-f0">&nbsp;</div>
-
+            
             </div>
         </div>
 
         <!-- C.2 Training #################################################### -->
 
 
-        <div class="begutachtung-kriterium row status-{ansuchen.reviewC2Status}" id="kC2">
+        <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewC2Status}" id="kC2">
             <div class="col">
             <div class="kriteriumtitel">
                 <div class="row">
@@ -505,10 +561,7 @@
                             <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
-                </div>
-                <div class="rechts col-5"></div>
-            </div>
-                <f:for each="{relations.trainer}" as="t">
+                    <f:for each="{trainer}" as="t">
                     <div class="row person" id="trainer-{t.uid}">
                         <div class="links col-7 td-knopf">
                             {t.fullName} &nbsp;&nbsp;<f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
@@ -518,8 +571,16 @@
                         </div>
                     </div>
                 </f:for>
-                
-                <div class="row bg-f0">&nbsp;</div> 
+                </div>
+                <div class="rechts col-5">
+                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                        status:ansuchen.reviewC2Status,
+                        extern:ansuchen.reviewC2CommentTr,
+                        intern:ansuchen.reviewC2CommentInternalData,
+                        user:currentUser.usergroup
+                        }" />
+                </div>
+            </div>
 
             </div>
         </div>
@@ -528,7 +589,7 @@
 
 
 
-                <div class="begutachtung-kriterium row status-{ansuchen.reviewC3Status}" id="kC3">
+                <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewC3Status}" id="kC3">
                     <div class="col">
                     <div class="kriteriumtitel">
                         <div class="row">
@@ -552,26 +613,31 @@
                                         </p>
                                     </div>
                                 </div>
+                                <f:for each="{relations.berater}" as="t">
+                                    <div class="row person" id="berater-{t.uid}">
+                                        <div class="links col-7 td-knopf">
+                                            {t.fullName}  &nbsp;&nbsp;<f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
+                                            
+                                        </div>
+                                        <div class="rechts col-5">
+                                            
+                                        </div>
+                                    </div>
+                                </f:for>
                             </div>
+
                         </div>
+
                         <div class="rechts col-5">
+                            <f:render partial="Ansuchen/Kommentare" arguments="{
+                                status:ansuchen.reviewC3Status,
+                                extern:ansuchen.reviewC3CommentTr,
+                                intern:ansuchen.reviewC3CommentInternalData,
+                                user:currentUser.usergroup
+                                }" />
                         </div>
                     </div>
-                    <f:for each="{relations.berater}" as="t">
-                        <div class="row person" id="berater-{t.uid}">
-                            <div class="links col-7 td-knopf">
-                                {t.fullName}  &nbsp;&nbsp;<f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
-                                
-                            </div>
-                            <div class="rechts col-5">
-                                
-                            </div>
-                        </div>
-                    </f:for>
-        
                     
-
-                    <div class="row bg-f0">&nbsp;</div>
                     </div>
                 </div>
 

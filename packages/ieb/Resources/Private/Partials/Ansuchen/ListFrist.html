@@ -24,14 +24,14 @@
         </f:if>
     </f:for>
     <f:if condition="{ansuchen.reviewTotalFrist}">
-        <f:if condition="{f:format.date(date: '{ansuchen.reviewTotalFrist.date}', format: 'U')} < {frist}">
-            <f:variable name="frist">{ansuchen.reviewTotalFrist.date}</f:variable>
+        <f:if condition="{ansuchen.reviewTotalFrist} < {frist}">
+            <f:variable name="frist">{ansuchen.reviewTotalFrist}</f:variable>
             <f:variable name="fristtyp"> (Allgemeine Frist)</f:variable>
         </f:if>
     </f:if>
     <f:if condition="{ansuchen.reviewFristPruefbescheid}">
-        <f:if condition="{f:format.date(date: '{ansuchen.reviewFristPruefbescheid.date}', format: 'U')} < {frist}">
-            <f:variable name="frist">{ansuchen.reviewFristPruefbescheid.date}</f:variable>
+        <f:if condition="{ansuchen.reviewFristPruefbescheid} < {frist}">
+            <f:variable name="frist">{ansuchen.reviewFristPruefbescheid}</f:variable>
             <f:variable name="fristtyp"> (Prüfbescheid)</f:variable>
         </f:if>
     </f:if>
