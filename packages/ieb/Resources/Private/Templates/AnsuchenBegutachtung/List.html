@@ -12,6 +12,9 @@
 
             {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
 
+            <f:if condition="{item.status}==40 || {item.status}==90 ||  {item.status}==170 ||  {item.status}==215 || {item.status}==155 || {item.status}==235">
+                <f:variable name="begutachtungsstatus">1</f:variable>
+            </f:if>
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                 <f:if condition="({item.status} == 20) && !{item.gutachter1}">
                     <!-- Ersteinreichung -->
@@ -41,7 +44,7 @@
                         <f:then>
                             <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
                                 <!-- Meine Begutachtung abgeschlossen, die des anderen noch nicht -->
-                                <f:variable name="b-status">7</f:variable>
+                                <f:variable name="b-status">5</f:variable>
                             </f:if>
                             <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
                                 <!-- Meine Begutachtung steht noch aus, die des anderen ist abgeschlossen -->
@@ -49,7 +52,14 @@
                             </f:if>
                             <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
                                 <!-- beide Begutachtungen sind abgeschlossen -->
-                                <f:variable name="b-status">10</f:variable>
+                                <f:if condition="{begutachtungsstatus}==1">
+                                    <f:then>
+                                        <f:variable name="b-status">10</f:variable>
+                                    </f:then>
+                                    <f:else>
+                                        <f:variable name="b-status">9</f:variable>
+                                    </f:else>
+                                </f:if>
                             </f:if>
                         </f:then>
                         <f:else>
@@ -60,7 +70,7 @@
                                 </f:then>
                                 <f:else>
                                     <!-- meine Begutachtung (als einzelner) ist abgeschlossen -->
-                                    <f:variable name="b-status">9</f:variable>
+                                    <f:variable name="b-status">8</f:variable>
                                 </f:else>
                             </f:if>
                         </f:else>
@@ -69,9 +79,10 @@
 
                 <f:if condition="{item.gutachter2.uid}=={currentUser.uid}">
                     <f:variable name="b-status">2</f:variable>
+                    
                     <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} > 0)">
                         <!-- Meine Begutachtung abgeschlossen, die des anderen noch nicht -->
-                        <f:variable name="b-status">7</f:variable>
+                        <f:variable name="b-status">5</f:variable>
                     </f:if>
                     <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
                         <!-- Meine Begutachtung steht noch aus, die des anderen ist abgeschlossen -->
@@ -79,7 +90,14 @@
                      </f:if>
                     <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
                         <!-- beide Begutachtungen sind abgeschlossen -->
-                        <f:variable name="b-status">10</f:variable>
+                        <f:if condition="{begutachtungsstatus}==1">
+                            <f:then>
+                                <f:variable name="b-status">10</f:variable>
+                            </f:then>
+                            <f:else>
+                                <f:variable name="b-status">9</f:variable>
+                            </f:else>
+                        </f:if>
                     </f:if>    
                 </f:if>
 
@@ -215,6 +233,9 @@
                             <f:if condition="{gutachter1.uid}=={currentUser.uid}">
                                 <f:if condition="{gutachter2.uid}">
                                     <f:then>
+                                        <f:if condition="({item.statusAgEins} == 0) && ({item.statusAgZwei} == 0)">
+                                            <span class="titleview knopfrund achtung-grau " title="Beide Begutachtungen stehen noch aus."></span>
+                                        </f:if>
                                         <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} == 0)">
                                             <span class="titleview knopfrund ok-grey " title="Begutachtung durch mich erfolgt, die von {gutachter2.firstName} {gutachter2.LastName} steht noch aus."></span>
                                         </f:if>

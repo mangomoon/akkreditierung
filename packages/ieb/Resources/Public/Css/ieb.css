@@ -813,6 +813,9 @@ span.knopfrund.ansuchenliste {
 span.knopfrund.auflage-1 {
     background-image: url('../Img/rund_ok.svg');
 }
+span.knopfrund.achtung-grau {
+    background-image: url('../Img/rund_achtung-grau.svg');
+}
 span.knopfrund.achtung-gelb {
     background-image: url('../Img/rund_achtung-gelb.svg');
 }
