@@ -11,14 +11,13 @@
         <p>Liebe Geschäftsstelle,</p>
         <p>Die Akkreditierungsgruppe hat die Begutachtung des Ansuchen Nr. {ansuchen.nummer} ({ansuchen.name}) abgeschlossen.</p>
 
+        <p>Der Kommentar der Akkreditierungsgruppe:</p>
+        <p><i><f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br></i></p>
 
-
-
-  
-
-
-
-
+        <f:if condition="{ansuchen.notitzzettel}">
+            <p>Zudem gibt es weitere Anmerkungen:</p>
+            <p><i><f:format.nl2br>{ansuchen.notitzzettel}</f:format.nl2br></i></p>
+        </f:if>
 
 
         <f:render partial="Notification/Fuss" />

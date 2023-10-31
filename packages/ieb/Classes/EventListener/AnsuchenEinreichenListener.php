@@ -38,7 +38,7 @@ final class AnsuchenEinreichenListener
     {
         $ansuchen = $event->ansuchen;
         $stammdaten = $event->stammdaten;
-        if (in_array($ansuchen->getStatus(), [AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value])
+        if (in_array($ansuchen->getStatus(), [AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value, AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value])
             && $stammdaten->getReviewA1Status()
             && $stammdaten->getReviewA2Status()
         ) {

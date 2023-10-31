@@ -23,10 +23,10 @@
 
 
 
-        <f:if condition="{ansuchen.status}!=20">
+        <f:if condition="{ansuchen.status}!=30">
             <f:variable name="difftyp">1</f:variable>
         </f:if>
-        <f:if condition="{ansuchen.kopieVon} && {ansuchen.status} == 20">
+        <f:if condition="{ansuchen.kopieVon} && {ansuchen.status} == 30">
             <f:variable name="difftyp">2</f:variable>
         </f:if>
 
@@ -69,8 +69,8 @@
         </f:if>
         <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
             <div class="row kriteriumteil">
-                <label>Informationen von und für die Geschäftsstelle</label>
-                <f:form.textarea id="notitzzettelfuerAG" property="notitzzettel" class="form-control"/>
+                <label>Weitere allgemeine Anmerkungen</label>
+                <f:format.nl2br>{ansuchen.notitzzettel}</f:format.nl2br>
 
             </div>
         </f:if>
@@ -108,7 +108,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.name}
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.name}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.name}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                         <tr>
@@ -120,7 +120,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.markenname}
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.markenname}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.markenname}', status=ansuchen.status, pp3=ansuchen.pp3}" />
 
                             </td>
                         </tr>
@@ -137,7 +137,7 @@
                             </td>
                             <td class="daten">
                                 <ieb:arrayValue array="{settings.static.rechtsform}" key="{stammdaten.rechtsform}" fallback="fehlt" />
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.rechtsform}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.rechtsform}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                         <tr>
@@ -149,7 +149,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.seit} 
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.seit}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.seit}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                                 
                             </td>
                         </tr>
@@ -185,9 +185,9 @@
                             </td>
                             <td class="daten">
                                 <f:format.nl2br>{stammdaten.strasse}</f:format.nl2br><br />{stammdaten.plz} {stammdaten.ort}
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.strasse}', status='{ansuchen.status}'}" />
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.plz}', status='{ansuchen.status}'}" />
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.ort}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.strasse}', status=ansuchen.status, pp3=ansuchen.pp3}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.plz}', status=ansuchen.status, pp3=ansuchen.pp3}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.ort}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                         <tr>
@@ -199,7 +199,7 @@
                             </td>
                             <td class="daten">
                                 <a href="mailto:{stammdaten.email}">{stammdaten.email}</a>
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.email}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.email}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                         <tr>
@@ -211,7 +211,7 @@
                             </td>
                             <td class="daten">
                                 {stammdaten.telefon}
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.relefon}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.relefon}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                         <tr>
@@ -225,7 +225,7 @@
                                 <f:if condition="{stammdaten.website}">
                                     <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
                                 </f:if>
-                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.website}', status='{ansuchen.status}'}" />
+                                <f:render partial="AnsuchenBegutachtung/StammdatenDiff" arguments="{field='{diff.copy_stammdaten.website}', status=ansuchen.status, pp3=ansuchen.pp3}" />
                             </td>
                         </tr>
                     </table>
@@ -520,8 +520,6 @@
                         <p class="erklaerung"><span class="reqlabel">GARANTIEERKLÄRUNG</span>: Wir garantieren, dass die Einrichtung über die räumliche Infrastruktur zur Durchführung des Bildungsangebots verfügt und auch an den Standorten die Qualitätsstandards von Ö-Cert implementiert sind bzw. – wenn kein Ö-Cert vorhanden – die unter A.2.2 angegeben Qualitätsstandards der Einrichtung eingehalten werden: &nbsp;
                             {f:if(condition: '{ansuchen.standortErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         <p>Bundesland: {settings.static.bundesland.{ansuchen.bundesland}}
-                            <f:if condition="{difftyp}">{ieb:diff(diff:diff,field:'bundesland')}</f:if>
-                            
                             </p>
                             
 
@@ -1298,7 +1296,6 @@
                                                 <f:then>
                                                     <f:form.select property="statusAgEins"  options="{
                                                         0: 'noch nicht gewählt', 
-                                                        1: 'Nachbesserungsauftrag',
                                                         3: 'Akkreditert mit Auflagen',
                                                         4: 'Nicht akkreditiert',
                                                         5: 'Bearbeitungsauftrag'
@@ -1374,7 +1371,6 @@
                                                     <f:then>
                                                         <f:form.select property="statusAgZwei"  options="{
                                                             0: 'noch nicht gewählt', 
-                                                            1: 'Nachbesserungsauftrag',
                                                             3: 'Akkreditert mit Auflagen',
                                                             4: 'Nicht akkreditiert',
                                                             5: 'Bearbeitungsauftrag'
@@ -1472,24 +1468,22 @@
                                                 <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
                                                     <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
                                                 </f:if>
-                                                <f:if condition="({ansuchen.status}==160)">
+                                                <f:if condition="({ansuchen.status}==160) || ({ansuchen.status}==210) || ({ansuchen.status}==170) || ({ansuchen.status}==215)">
                                                     <f:form.select property="upcomingStatus"  options="{
                                                     0: 'noch nicht gewählt', 
                                                     200: 'Bearbeitungsauftrag',
                                                     100: 'Akkreditiert',
                                                     140: 'Akkreditert mit Auflagen',
-                                                    810: 'Akkreditierung entzogen',
-                                                    820: 'Akkreditierung ausgesetzt'
+                                                    810: 'Akkreditierung entzogen'
                                                     }" />
                                                 </f:if>
-                                                <f:if condition="({ansuchen.status}==150)">
+                                                <f:if condition="({ansuchen.status}==150) || ({ansuchen.status}==155) || ({ansuchen.status}==230) || ({ansuchen.status}==235)">
                                                     <f:form.select property="upcomingStatus"  options="{
                                                     0: 'noch nicht gewählt', 
                                                     220: 'Bearbeitungsauftrag',
                                                     100: 'Akkreditiert',
                                                     140: 'Akkreditert mit Auflagen',
-                                                    810: 'Akkreditierung entzogen',
-                                                    820: 'Akkreditierung ausgesetzt'
+                                                    810: 'Akkreditierung entzogen'
                                                     }" />
                                                 </f:if>
                                             </f:else>
@@ -1516,9 +1510,7 @@
 
         <div id="sidebar">
             <div class="knopf-s" id="seite-nach-oben"></div>
-            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
             <div class="knopf-s" id="notitzzettel-oeffnen" title="Notizzettel zeigen"></div>
-            </f:if>
             <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
             <f:form.submit value="" name="saveAndIndex" class="knopf-s sidebar speichern-zurueck" title="Speichern und zurück zur Liste"/>
             <f:link.action class="knopf-s sidebar zurueck" action="list" title="Zurück OHNE Speichern"></f:link.action> 

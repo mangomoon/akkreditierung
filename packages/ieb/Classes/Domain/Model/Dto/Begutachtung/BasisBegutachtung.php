@@ -60,6 +60,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $status = 0;
     public string $reviewTotalCommentInternalStep = '';
     public string $notitzzettel = '';
+    public string $trotzdemAbschicken = '';
 
     public array $verantwortliche = [];
     /** @var \DateTime */
@@ -89,7 +90,7 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewC1CommentInternalStep', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
         'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 
-        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid','statusAfterReview',
+        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid','statusAfterReview','trotzdemAbschicken'
     ];
 
     private const FIELDS_STAMMDATEN = [

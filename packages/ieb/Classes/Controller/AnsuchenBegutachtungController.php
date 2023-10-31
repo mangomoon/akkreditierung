@@ -238,6 +238,15 @@ class AnsuchenBegutachtungController extends BaseController
         }
         
         $ansuchen->setUpcomingStatus(0);
+        $ansuchen->setTrotzdemAbschicken('');
+
+        // Zuteilung löschen
+        // $ansuchen->setGutachter1(0);
+        // $ansuchen->setGutachter2(0);
+        $ansuchen->setReviewVerrechnung1('');
+        $ansuchen->setReviewVerrechnung2('');
+        $ansuchen->setReviewVerrechnungCheck1(false);
+        $ansuchen->setReviewVerrechnungCheck2(false);
         $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();

@@ -32,8 +32,8 @@ class AnsuchenController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        //$ansuchen = $this->ansuchenRepository->getAllEditableForTr();
-        $ansuchen = $this->ansuchenRepository->getAll();
+        $ansuchen = $this->ansuchenRepository->getAllEditableForTr();
+        //$ansuchen = $this->ansuchenRepository->getAll();
         $this->view->assign('ansuchen', $ansuchen);
         $stammdaten = $this->stammdatenRepository->getLatest();
         $this->view->assign('stammdaten', $stammdaten);
@@ -117,7 +117,7 @@ class AnsuchenController extends BaseController
                 case 10:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
-                case 30:
+                case 20:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 80:
@@ -130,10 +130,10 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
                 case 200:
-                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
                     break;
                 case 220:
-                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
                     break;
             }
             $this->ansuchenRepository->update($newAnsuchen);
@@ -150,8 +150,8 @@ class AnsuchenController extends BaseController
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
-                case 30:
-                    $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                case 20:
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 80:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
@@ -163,10 +163,10 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
                 case 200:
-                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
                     break;
                 case 220:
-                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
                     break;
             }
             $stammdaten = $this->stammdatenRepository->getLatest();
