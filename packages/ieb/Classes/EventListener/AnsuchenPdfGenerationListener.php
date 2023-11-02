@@ -30,10 +30,6 @@ final class AnsuchenPdfGenerationListener
             return;
         }
 
-        if ($event->ansuchen->getAkkreditierungPdf()) {
-            return;
-        }
-
         $pdf = $this->getPdfString($event);
         $this->writeFile($pdf, $event->ansuchen);
     }
