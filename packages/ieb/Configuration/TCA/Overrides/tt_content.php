@@ -24,3 +24,10 @@ foreach ($plugins as $key => $title) {
         $title
     );
 }
+
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['ieb_ansuchen'] = 'recursive,select_key,pages';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['ieb_ansuchen'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'ieb_ansuchen',
+    'FILE:EXT:ieb/Configuration/FlexForms/flexform_ansuchen.xml'
+);
