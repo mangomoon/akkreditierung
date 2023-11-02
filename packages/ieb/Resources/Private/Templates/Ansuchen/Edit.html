@@ -12,7 +12,7 @@
         <f:render partial="Ansuchen/FormFields" arguments="{_all}" />
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
-        <f:link.action class="knopf-s knopfersatz zurueck" action="list" >Abbrechen</f:link.action>
+        <f:link.action class="knopf-s knopfersatz zurueck" action="unlock"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action>
     </f:form>
 
     <script>

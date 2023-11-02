@@ -199,6 +199,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
+    
     protected function getAllVerantwortliche(int $pid): array
     {
         $items = [];

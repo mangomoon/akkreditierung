@@ -1520,7 +1520,7 @@
             <div class="knopf-s" id="notitzzettel-oeffnen" title="Notizzettel zeigen"></div>
             <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
             <f:form.submit value="" name="saveAndIndex" class="knopf-s sidebar speichern-zurueck" title="Speichern und zurück zur Liste"/>
-            <f:link.action class="knopf-s sidebar zurueck" action="list" title="Zurück OHNE Speichern"></f:link.action> 
+            <f:link.action class="knopf-s sidebar zurueck" action="unlock"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste OHNE Speichern"></f:link.action> 
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
 
@@ -1530,9 +1530,8 @@
         
         <f:form.submit value="Speichern" name="save" class="knopf-s" />
         <f:form.submit value="Speichern & Zurück" name="saveAndIndex" class="knopf-s" />
-        <f:link.action class="knopf-s knopfersatz zurueck" action="list"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
-    
-    
+        <f:link.action class="knopf-s knopfersatz zurueck" action="unlock"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
+
     </f:form>
 
 

@@ -121,7 +121,12 @@
          $('#erklaerungd2').removeClass('reqcheckbox');
      }
 
-
+    // Prüfbescheid Check Erklärung
+    if (($('.pruefjanein.ja').hasClass('checked')) && $('#erklaerungd2').not(':checked')) {
+        //console.log("Erklärung Wuppe");
+        $('#erklaerungd2').addClass('reqcheckbox');
+        allesda=0;
+    }
      
 
     //  console.log("allesda ohne bb: " + allesda);
@@ -405,9 +410,9 @@ function qualifikationPsaSprache() {
     $('#validieren-test').click(function(){
         console.log("--------- Bericht: -----------");
         // validieren();
-        //validierenansuchen();
+        validierenansuchen();
         // setStatusAfterReview();
-        validierentr();
+        // validierentr();
         
     });
     

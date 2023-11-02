@@ -10,7 +10,7 @@
     <f:form action="update" class="trtrainer" name="trainer" object="{trainer}" enctype="multipart/form-data">
         <f:render partial="Trainer/FormFields" arguments="{trainer:trainer}" />
         <f:form.submit value="Speichern" class="knopf-s" />
-        <f:link.action class="knopf-s knopfersatz zurueck" action="index"  title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
+        <f:link.action class="knopf-s knopfersatz zurueck" action="unlock"  arguments="{trainer:trainer}" title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action> 
     </f:form>
 
     <script>
