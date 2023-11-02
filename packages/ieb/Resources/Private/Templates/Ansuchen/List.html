@@ -12,7 +12,7 @@
             <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
         </div>
     </f:if>
-    
+
 
     <div id="ansuchenlistencontainer">
     <f:if condition="{ansuchen}">
@@ -103,27 +103,35 @@
 
 
     <!-- STAMMDATEN -->
-    <f:if condition="{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
-        <span class="titleview knopfrund ok-grey" title="STAMMDATEN: Angaben sind vollständig"></span>
+    <f:if condition="{usedInAnsuchen}">
+        <f:then>
+            <span class="titleview knopfrund in-begutachtung" title="Stammdaten: In Begutachtung"></span>
+        </f:then>
+        <f:else>
+            <f:if condition="{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
+                    <span class="titleview knopfrund ok-grey" title="STAMMDATEN: Angaben sind vollständig"></span>
+                </f:if>
+                <f:if condition="!{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
+                    <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben sind unvollständig"></span>
+                </f:if>
+                <f:if condition="{stammdaten.statusAfterReview}==1">
+                    <span class="titleview knopfrund auflage-1" title="STAMMDATEN: Begutachtung positiv"></span>
+                </f:if>
+                <f:if condition="{stammdaten.statusAfterReview}==2">
+                    <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+                </f:if>
+                <f:if condition="{stammdaten.statusAfterReview}==3">
+                    <span class="titleview knopfrund achtung-orange" title="STAMMDATEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
+                </f:if>
+                <f:if condition="{stammdaten.statusAfterReview}==4">
+                    <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+                </f:if>
+                <f:if condition="{stammdaten.statusAfterReview}==5">
+                    <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
+                </f:if>
+        </f:else>
     </f:if>
-    <f:if condition="!{stammdaten.ok} && ({stammdaten.statusAfterReview}==0)">
-        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben sind unvollständig"></span>
-    </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}==1">
-        <span class="titleview knopfrund auflage-1" title="STAMMDATEN: Begutachtung positiv"></span>
-    </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}==2">
-        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
-    </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}==3">
-        <span class="titleview knopfrund achtung-orange" title="STAMMDATEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
-    </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}==4">
-        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
-    </f:if>
-    <f:if condition="{stammdaten.statusAfterReview}==5">
-        <span class="titleview knopfrund achtung-gelb" title="STAMMDATEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
-    </f:if> 
+     
 
     <!-- TRAINING -->
 
