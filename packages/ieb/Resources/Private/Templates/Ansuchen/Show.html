@@ -578,7 +578,15 @@
                             {t.fullName} &nbsp;&nbsp;
                         </div>
                         <div class="rechts col-3 td-knopf">
-                            <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                                <f:then>
+                                    <f:link.action pageUid="213" action="show" target="_blank" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                </f:else>
+                            </f:if>
+                            
                         </div>
                     </div>
                 </f:for>
@@ -631,7 +639,15 @@
                                             
                                         </div>
                                         <div class="rechts col-3 td-knopf">
-                                            <f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
+                                            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                                                <f:then>
+                                                    <f:link.action pageUid="213" action="show" target="_blank" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:link.action pageUid="13" action="show" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
+                                                </f:else>
+                                            </f:if>
+                                            
                                         </div>
                                     </div>
                                 </f:for>

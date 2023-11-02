@@ -545,7 +545,7 @@
                         </div>
                         <div>
                             
-                            <f:form.textarea property="reviewC2PsaCommentInternalStep" id="comment1-reviewC2PsaCommentInternal" class="" />
+                            <f:form.textarea property="reviewC2PsaCommentInternalStep" id="comment1-reviewC2PsaCommentInternal" class="intern" />
                         </div>
                     </div>
                     <div class="komm-ext-2">
@@ -569,9 +569,13 @@
 <f:form.hidden property="statusAfterReviewBabi" id="sarBabi" value="{statusAfterReviewBabi}" />
 <f:form.hidden property="statusAfterReviewPsa" id="sarPsa" value="{statusAfterReviewPsa}" />
 
+
+
 <div class="begutachtung-kriterium">
-    <f:form.submit value="Speichern" name="save" class="knopf-s" />
+    <f:form.submit value="Speichern" name="save" class="knopf-s" id="submit-t"/>
     <div class="knopf-s knopfersatz" id="schliessen">Abbrechen</div>
+
+    <f:link.action action="abbrechen" arguments="{trainer : trainer}" title="Schließen und zurück zur Liste" class="">Abbrechen</f:link.action>
 </div>
 
 

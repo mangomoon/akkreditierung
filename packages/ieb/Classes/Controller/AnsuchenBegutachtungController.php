@@ -119,6 +119,7 @@ class AnsuchenBegutachtungController extends BaseController
                 $this->angebotVerantwortlichRepository->update($verantwortlich);
             }
         }
+        
         $this->angebotVerantwortlichRepository->forcePersist();
         //$this->addFlashMessage('Ansuchen wurde ergänzt');
 
@@ -241,8 +242,8 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setTrotzdemAbschicken('');
 
         // Zuteilung löschen
-        // $ansuchen->setGutachter1(0);
-        // $ansuchen->setGutachter2(0);
+        $ansuchen->setGutachter1(NULL);
+        $ansuchen->setGutachter2(NULL);
         $ansuchen->setReviewVerrechnung1('');
         $ansuchen->setReviewVerrechnung2('');
         $ansuchen->setReviewVerrechnungCheck1(false);

@@ -69,11 +69,11 @@ class BeraterBegutachtungController extends BaseController
             $berater->$setter($value);
         }
 
-        $berater->setGutachterLockedBy(555);
-
+        $berater->setGutachterLockedBy(0);
+        $berater->setLebenslaufKommentar('Teste mich!');
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
-        $this->redirect('show', null, null, ['berater' => $berater, 'ansuchen' => $ansuchen]);
+        $this->redirect('show', null, null, ['ansuchen' => $ansuchen]);
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void

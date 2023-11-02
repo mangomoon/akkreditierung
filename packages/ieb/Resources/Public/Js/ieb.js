@@ -293,7 +293,7 @@
 // Trainer Begutachtung: öffnen der nicht-ok-Kommentarfelder und Check all Kompetenzen... ##########################
 
 function oeffnenTrainerBegutachtung() {
-    var s = 1;
+    s = 1;
     var a = 0;
     var b = 0;
     var c = 0;
@@ -816,6 +816,17 @@ function qualifikationPsaSprache() {
         if($(this).parent().hasClass('checked')) {
             $(this).parent().removeClass('checked');
             $(this).parent().parent().find('.nan').prop('checked', true);
+            if ($(this).parent().hasClass('nicht-ok')) {
+                neu=" ";
+                t = $(this).parent().parent().parent().find('.extern').val();
+                if (t) {
+                    i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
+                    neu = i + " \nnicht ok war:\n" + t;
+                    $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
+                }
+                $(this).parent().parent().parent().find('.extern').val('');
+            }
+
         } else {
             $(this).parent().parent().find('.knopf').removeClass('checked');
             $(this).parent().addClass('checked');
@@ -869,17 +880,30 @@ function qualifikationPsaSprache() {
             $(this).removeClass('checked');
             $(this).find("input").prop('checked', false);
             $(this).parent().find('.nan').prop('checked', true);
-        } else {
-            $(this).find("input").prop('checked', true);
-         
+            
             oeffnenTrainerBegutachtung();
             oeffnenBeraterBegutachtung();
-
+        } else {
+            $(this).find("input").prop('checked', true);
+            
+            oeffnenTrainerBegutachtung();
+            oeffnenBeraterBegutachtung();
+            
             $('#summestatus label').removeClass('checked');
             $(this).parent().parent().find('.knopf').removeClass('checked');
             $(this).addClass('checked');
         }
-         
+        
+
+        if ((s == 1) && ($('.extern').val()!='')) {
+            neu="";
+            t = $('.extern').val();
+            i = $('.intern').val();
+            neu = i + " \nnicht ok war:\n" + t;
+            $('.intern').val(neu);
+            $('.extern').val('');
+            }
+
          return false;
      });
 
@@ -922,10 +946,9 @@ function qualifikationPsaSprache() {
 
     // ######################################## SUBMIT UND (!) FORM Modal schliessen
 
-     $('#submit-t').on('submit', function () {
-        console.log("VOR success!");
+     $('#submit').on('submit', function (e) {
         $.post('tx_ieb_ansuchenbegutachtung[save]', $(this).serialize(), function(data) {
-            console.log("success!");
+            // console.log("success!");
           $('#positionForm').closest(".ui-dialog-content").dialog("close");
         }, "html");
         return false;

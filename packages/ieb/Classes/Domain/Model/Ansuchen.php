@@ -3801,7 +3801,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \GeorgRinger\Ieb\Domain\Model\User $gutachter1
      * @return void
      */
-    public function setGutachter1(\GeorgRinger\Ieb\Domain\Model\User $gutachter1)
+    public function setGutachter1(?\GeorgRinger\Ieb\Domain\Model\User $gutachter1)
     {
         $this->gutachter1 = $gutachter1;
     }
@@ -3822,7 +3822,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \GeorgRinger\Ieb\Domain\Model\User $gutachter2
      * @return void
      */
-    public function setGutachter2(\GeorgRinger\Ieb\Domain\Model\User $gutachter2)
+    public function setGutachter2(?\GeorgRinger\Ieb\Domain\Model\User $gutachter2)
     {
         $this->gutachter2 = $gutachter2;
     }
