@@ -10,6 +10,7 @@ use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Seo\IebTitleProvider;
 use GeorgRinger\Ieb\Service\RelationLockService;
+use GeorgRinger\Ieb\Utility\AnsuchenUtility;
 use GeorgRinger\News\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -101,7 +102,7 @@ class BaseController extends ActionController
                 FileReference::class
             );
 
-        $uploadFolder = '1:/content/' . self::currentSysFolderPageIdentifier() . '/';
+        $uploadFolder = AnsuchenUtility::getFilePath(self::getCurrentUserPid());
         // if folder does not exist
         $path = Environment::getPublicPath() . '/fileadmin/' . str_replace('1:/', '', $uploadFolder);
         if (!is_dir($path)) {

@@ -5,12 +5,14 @@ namespace GeorgRinger\Ieb\Event;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 
 class AnsuchenBegutachtungFinalizeEvent
 {
 
     public function __construct(
         public readonly Ansuchen $ansuchen,
+        public readonly Stammdaten $stammdaten,
     )
     {
 

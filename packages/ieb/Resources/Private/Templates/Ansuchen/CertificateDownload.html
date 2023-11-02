@@ -5,6 +5,7 @@
 <pdf:document 
     title="{ansuchen.nummer} {ansuchen.akkreditierungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
     outputPath = ".pdf"
+    outputDestination="{outputDestination}"
     sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
 
     <pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">

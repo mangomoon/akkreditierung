@@ -69,6 +69,7 @@ enum AnsuchenStatus: int
     public static function statusBearbeitbarDurchTr(): array
     {
         return [
+            self::NEU->value,
             self::NEU_IN_ARBEIT->value,
             self::IN_ARBEIT->value,
             self::NACHBESSERUNGSAUFTRAG->value,

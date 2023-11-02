@@ -9,6 +9,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Event;
+use GeorgRinger\Ieb\EventListener\AnsuchenPdfGenerationListener;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
 
@@ -42,7 +43,7 @@ class AnsuchenController extends BaseController
             'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
         ]);
         // $this->view->assign('stammdaten', $stammdaten);
-        
+
         return $this->htmlResponse();
     }
 
@@ -112,13 +113,14 @@ class AnsuchenController extends BaseController
     {
         $this->check($ansuchen);
         $ansuchennummer = $ansuchen->getNummer();
-        $this->addFlashMessage('Das Ansuchen ' .$ansuchennummer .' wurde eingereicht');
+        $this->addFlashMessage('Das Ansuchen ' . $ansuchennummer . ' wurde eingereicht');
         $newSnapShotIfVersionChangedByTr = false;
         if ($newSnapShotIfVersionChangedByTr) {
             $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $this->stammdatenRepository->getLatest());
             $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
             $newAnsuchen->setEinreichDatum(new \DateTime());
             switch ($ansuchen->getStatus()) {
+                case 0:
                 case 10:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
@@ -152,6 +154,7 @@ class AnsuchenController extends BaseController
             // }
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
+                case 0:
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
@@ -313,6 +316,9 @@ class AnsuchenController extends BaseController
         $this->redirect('list');
     }
 
+    /**
+     * @see AnsuchenPdfGenerationListener
+     */
     public function certificateDownloadAction(Ansuchen $ansuchen)
     {
         $this->check($ansuchen);
@@ -320,6 +326,7 @@ class AnsuchenController extends BaseController
             'ansuchen' => $ansuchen,
             'stammdaten' => $this->stammdatenRepository->getLatest(),
             'extensionConfiguration' => $this->extensionConfiguration,
+            'outputDestination' => 'inline',
         ]);
         $this->addRelationDataToView();
     }

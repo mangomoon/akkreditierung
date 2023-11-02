@@ -63,12 +63,6 @@ trait CurrentUserTrait
         return $user['username'];
     }
 
-    public static function currentSysFolderPageIdentifier(): string
-    {
-        $pid = self::getCurrentUserPid();
-        return str_pad((string)$pid, 4, '0', STR_PAD_LEFT);
-    }
-
     private static function getCurrentUserField(string $field)
     {
         $user = self::getCurrentUser();

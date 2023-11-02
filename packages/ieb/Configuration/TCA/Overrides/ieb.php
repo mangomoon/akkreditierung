@@ -62,10 +62,25 @@ $GLOBALS['TCA']['tx_ieb_domain_model_textbausteine']['columns']['kriterium']['co
     ['C.2.Trainer:in: PSA', 'c2tp'],
     ['C.3. Beratung (allgemein)', 'c3'],
     ['C.3. Berater:in', 'c3b'],
-    ['Allgemeiner Kommentar', 'allg']
+    ['Allgemeiner Kommentar', 'allg'],
 ];
 
 foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
     $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['readOnly'] = true;
     $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['copy_' . $field]['config']['renderType'] = 'json';
 }
+
+$GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['akkreditierung_pdf'] = [
+    'label' => 'Akkreditierung PDF',
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+        'akkreditierung_pdf',
+        [
+            'foreign_match_fields' => [
+                'fieldname' => 'akkreditierung_pdf',
+                'tablenames' => 'tx_ieb_domain_model_ansuchen',
+                'table_local' => 'sys_file',
+            ],
+            'maxitems' => 1,
+        ]
+    ),
+];

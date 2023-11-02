@@ -23,4 +23,9 @@ class AnsuchenUtility
 
         return $recipients;
     }
+
+    public static function getFilePath(int $pageId): string
+    {
+        return '1:/content/' . str_pad((string)$pageId, 4, '0', STR_PAD_LEFT) . '/';
+    }
 }

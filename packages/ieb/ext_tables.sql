@@ -293,6 +293,7 @@ CREATE TABLE tx_ieb_domain_model_trainer (
   import int(11) unsigned NOT NULL DEFAULT '0'
 );
 CREATE TABLE tx_ieb_domain_model_ansuchen (
+  akkreditierung_pdf int(11) unsigned NOT NULL DEFAULT '0',
   import int(11) unsigned NOT NULL DEFAULT '0'
 );
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (

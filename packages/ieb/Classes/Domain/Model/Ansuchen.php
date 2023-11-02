@@ -3992,4 +3992,20 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->pp3;
     }
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $akkreditierungPdf;
+
+    public function getAkkreditierungPdf(): ?\TYPO3\CMS\Extbase\Domain\Model\FileReference
+    {
+        return $this->akkreditierungPdf;
+    }
+
+    public function setAkkreditierungPdf(?\TYPO3\CMS\Extbase\Domain\Model\FileReference $akkreditierungPdf): void
+    {
+        $this->akkreditierungPdf = $akkreditierungPdf;
+    }
+
 }
