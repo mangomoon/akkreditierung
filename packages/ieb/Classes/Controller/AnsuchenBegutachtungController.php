@@ -240,6 +240,7 @@ class AnsuchenBegutachtungController extends BaseController
         
         $ansuchen->setUpcomingStatus(0);
         $ansuchen->setTrotzdemAbschicken('');
+        $ansuchen->setNotitzzettel('');
 
         // Zuteilung löschen
         $ansuchen->setGutachter1(NULL);

@@ -3,6 +3,7 @@
 
 
 <f:section name="content">
+    {stammdaten -> f:variable(name: 'stammdatenorig')} 
     {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
     {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
     {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
@@ -57,6 +58,10 @@
 </f:if>
 
 <!-- Stammdaten -->
+
+
+
+
 <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup}" />
 
 

@@ -2093,6 +2093,12 @@ ul.typo3-messages li {
     border-radius: 0;
     display: none;
 }
+.notizzettelanzeige {
+    background: #fbf2af;
+    border-radius: 0;
+    border: solid 1px var(--f3);
+    padding: 8px;
+}
 
 /* SIDEBAR */
 #sidebar {

@@ -53,6 +53,8 @@ class AnsuchenArchivRepository
         return $query->execute()->fetchAllAssociative();
     }
 
+
+    
     private function getQueryBuilder(string $tableName): QueryBuilder
     {
         return GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);

@@ -12,7 +12,7 @@
         <f:form.hidden property="submitted" value="1"/>
 
 
-        <f:if condition="{userIsPartOfGs}">
+        <f:if condition="{userIsPartOfGs}"></f:if>
             <div>
                 <label for="trPid">
                     Träger
@@ -20,10 +20,11 @@
                                    prependOptionValue="0" prependOptionLabel=""/>
                 </label>
             </div>
-        </f:if>
-        <f:form.submit value="Filtern"/>
-    </f:form>
+        
+        <f:form.submit class="knopf-s" value="Anzeigen"/>
 
+    </f:form>
+    <div class="abstand-gross"></div>
 
 
 
@@ -34,7 +35,6 @@
                     <tbody>
                     <f:for each="{pagination.paginator.paginatedItems}" as="item">
                         {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
-
 
                         <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
                             <table class="ansuchenliste archiv">
@@ -80,7 +80,7 @@
                                             </tr>
                                             <f:for each="{oldVersions}" as="oldVersion">
                                                 <tr>
-                                                    <td>{oldVersion.uid}</td>
+                                                    <td>{oldVersion.uid} ## {oldVersion.version} ## {oldVersion.upcoming_status}</td>
                                                     <td>{oldVersion.einreich_datum}</td>
                                                     <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /></td>
                                                 </tr>
