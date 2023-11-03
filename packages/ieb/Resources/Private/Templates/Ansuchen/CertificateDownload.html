@@ -2,6 +2,14 @@
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
         xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
         data-namespace-typo3-fluid="true">
+
+
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+
+
 <pdf:document 
     title="{ansuchen.nummer} {ansuchen.akkreditierungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
     outputPath = ".pdf"
@@ -107,7 +115,7 @@
                 </style>
             <h2 style="page-break-before: always;">Standorte</h2>
             <p>Die Akkreditierung gilt für die Durchführung des Bildungsangebotes an den im Folgenden <br>genannten Standorten:<br><br></p>
-            <f:for each="{relations.standorte}" as="standort">
+            <f:for each="{standorte}" as="standort">
                 <p>{standort.name} <br>{standort.adresse}<br>{standort.plz} {standort.ort}<br><br></p>
             </f:for>
 
@@ -130,84 +138,73 @@
                 <p>Auflagen für die Akkreditierung des Angebots Brückenkurs zum Einstieg in den Pflichtschulabschluss, des Bildungsträgers {stammdaten.name} vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</p>
                 
                
-                <f:if condition="{stammdaten.reviewA1CommentTr}">
-                    <p>A.1 Stammdaten<br>
-                        {stammdaten.reviewA1CommentTr}
+                <f:if condition="{stammdaten.reviewA1Status}>2">
+                    <p>A.1 Stammdaten<br>{stammdaten.reviewA1CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{stammdaten.reviewA2CommentTr}">
-                    <p>A.2 Qualität des Anbieters<br>
-                        {stammdaten.reviewA2CommentTr}
+                <f:if condition="{stammdaten.reviewA2Status}>2">
+                    <p>A.2 Qualität des Anbieters<br>{stammdaten.reviewA2CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB1CommentTr}">
-                    <p>B.1.3 Tabellarische Übersicht und Kosten(satz)<br>
-                        {ansuchen.reviewB1CommentTr}
+                <f:if condition="{ansuchen.reviewB1Status}>2">
+                    <p>B.1.3 Tabellarische Übersicht und Kosten(satz)<br>{ansuchen.reviewB1CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB14CommentTr}">
-                    <p>B.1.4 Standorte<br>
-                        {ansuchen.reviewB14CommentTr}
+                <f:if condition="{ansuchen.reviewB14Status}>2">
+                    <p>B.1.4 Standorte<br>{ansuchen.reviewB14CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB15CommentTr}">
-                    <p>B.1.5 Abnahme von Prüfungen<br>
-                        {ansuchen.reviewB15CommentTr}
+                <f:if condition="{ansuchen.reviewB15Status}>2">
+                    <p>B.1.5 Abnahme von Prüfungen<br>{ansuchen.reviewB15CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB2CommentTr}">
-                    <p>B.2.1 Ansprache und Erreichung der Zielgruppe<br>
-                        {ansuchen.reviewB2CommentTr}
+                <f:if condition="{ansuchen.reviewB2Status}>2">
+                    <p>B.2.1 Ansprache und Erreichung der Zielgruppe<br>{ansuchen.reviewB2CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB22CommentTr}">
-                    <p>B.2.2 Didaktisch-methodisches Vorgehen<br>
-                        {ansuchen.reviewB22CommentTr}
+                <f:if condition="{ansuchen.reviewB22Status}>2">
+                    <p>B.2.2 Didaktisch-methodisches Vorgehen<br>{ansuchen.reviewB22CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewB23CommentTr}">
-                    <p>B.2.3 Beratung, Coaching und Begleitung<br>
-                        {ansuchen.reviewB23CommentTr}
+                <f:if condition="{ansuchen.reviewB23Status}>2">
+                    <p>B.2.3 Beratung, Coaching und Begleitung<br>{ansuchen.reviewB23CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewC1CommentTr}">
-                    <p>C.1 Projektleitung<br>
-                        {ansuchen.reviewC1CommentTr}
+                <f:if condition="{ansuchen.reviewC1Status}>2">
+                    <p>C.1 Projektleitung<br>{ansuchen.reviewC1CommentTr}
                     </p>
                 </f:if>
-                <f:if condition="{ansuchen.reviewC2CommentTr}">
-                    <p>C.2 Training (allgemein)<br>
-                        {ansuchen.reviewC2CommentTr}
+                <f:if condition="{ansuchen.reviewC2Status}>2">
+                    <p>C.2 Training (allgemein)<br>{ansuchen.reviewC2CommentTr}
                     </p>
                 </f:if>
-                <f:for each="{relations.trainer}" as="p">
+                <f:for each="{trainer}" as="p">
                     <f:if condition="{ansuchen.typ}==1">
                         <f:then>
-                            <f:if condition="{p.reviewC2BabiCommentTr}">
+                            <f:if condition="{p.reviewC21BabiStatus}>2 || {p.reviewC22BabiStatus}>2">
                                 <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2BabiCommentTr}</p>
                             </f:if>
                         </f:then>
                         <f:else>
-                            <f:if condition="{p.reviewC2PsaCommentTr}">
+                            <f:if condition="{p.reviewC21PsaStatus}>2 || {p.reviewC22PsaStatus}>2">
                                 <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2PsaCommentTr}</p>
                                 </div>
                             </f:if>
                         </f:else>
                     </f:if>
                 </f:for>
-                <f:if condition="{ansuchen.reviewC3CommentTr}">
-                    <p>C.3 Beratung (allgemein)<br>
-                        {ansuchen.reviewC3CommentTr}
+                <f:if condition="{ansuchen.reviewC3Status}==4">
+                    <p>C.3 Beratung (allgemein)<br>{ansuchen.reviewC3CommentTr}
                     </p>
                 </f:if>
-                <f:for each="{relations.berater}" as="p">
-                    <f:if condition="{p.reviewC3CommentTr}">
+                <f:for each="{berater}" as="p">
+                    <f:if condition="{p.reviewC3Status}>2 || {p.reviewC32Status}>2">
                         <p style="page-break-inside: avoid;">Berater/in: {p.vorname} {p.nachname}<br>{p.reviewC3CommentTr}</p>
                     </f:if>
                 </f:for>
+
                 <f:if condition="{ansuchen.reviewTotalCommentTr}">
-                    <p>Allgemeine Anmerkung<br>
-                        {ansuchen.reviewTotalCommentTr}
+                    <p>Allgemeine Anmerkung<br>{ansuchen.reviewTotalCommentTr}
                     </p>
                 </f:if>
             </f:if>

@@ -293,7 +293,8 @@
                                     </td>
                                     <td class="td-knopf">
                                         <f:if condition="{item.status}>90">
-                                            <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
+                                            <!-- <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="PDF TEST">X</f:link.action> -->
+                                            <f:link.typolink parameter="{item.akkreditierungPdf.originalResource.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&nbsp;</f:link.typolink>
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
