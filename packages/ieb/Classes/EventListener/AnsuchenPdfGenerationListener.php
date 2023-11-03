@@ -44,17 +44,15 @@ final class AnsuchenPdfGenerationListener
         }
         $directory = str_replace('1:/', '', AnsuchenUtility::getFilePath($ansuchen->getPid()));
 
-        $ansuchenNummer = $ansuchen->getNummer();
-        $ansuchenDatum = $ansuchen->getAkkreditierungDatum();
-        $ansuchenDatum = date_format($ansuchenDatum,"Y-m-d");
         $ansuchenStatus = $ansuchen->getStatus();
-        if($ansuchenStatus === 100) {
+        if ($ansuchenStatus === AnsuchenStatus::AKKREDITIERT->value) {
             $ansuchenStatus = '_akkreditiert';
-        } elseif ($ansuchenStatus == 140) {
+        } elseif ($ansuchenStatus === AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value) {
             $ansuchenStatus = '_akkreditiert-mit-Auflagen';
         }
         try {
-            $potentialFile = $storage->addFile($tmpFile, $storage->getFolder($directory), $ansuchenNummer .'_' . $ansuchenDatum . $ansuchenStatus .'_' . $ansuchen->getUid() . '.pdf', DuplicationBehavior::RENAME);
+            $targetFileName = $ansuchen->getNummer() . '_' . date_format($ansuchen->getAkkreditierungDatum(), 'Y-m-d') . $ansuchenStatus . '_' . $ansuchen->getUid() . '.pdf';
+            $potentialFile = $storage->addFile($tmpFile, $storage->getFolder($directory), $targetFileName, DuplicationBehavior::RENAME);
         } catch (\Exception $e) {
             echo $e->getMessage();
             die;
