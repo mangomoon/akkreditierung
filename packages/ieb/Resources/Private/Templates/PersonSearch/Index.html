@@ -1,0 +1,56 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Suche</h1>
+    <f:form action="index" name="search" object="{search}">
+
+        <div>
+            <label for="searchword">
+                Name
+                <f:form.textfield property="searchword" id="searchword" />
+            </label>
+        </div>
+
+        <f:form.submit value="Suche"/>
+    </f:form>
+    <f:if condition="{search.used}">
+        <f:if condition="{trainer}">
+            <f:then>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Ansuchen</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:groupedFor as="groupedTrainer" groupBy="trainerName" groupKey="trainerName" each="{trainer}" >
+                         <tr>
+                            <td>{trainerName}</td>
+                            <td>
+                                <ul>
+                                <f:for each="{groupedTrainer}" as="groupItem">
+                                    <li>
+                                        {groupItem.ansuchenName} - {groupItem.ansuchenNummer}
+                                    </li>
+                                </f:for>
+                                </ul>
+                            </td>
+                        </tr>
+                    </f:groupedFor>
+
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>yyy
+                <div>Keine Trainer gefunden</div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
+
+</html>

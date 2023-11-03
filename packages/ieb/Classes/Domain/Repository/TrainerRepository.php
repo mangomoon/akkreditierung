@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 
+use GeorgRinger\Ieb\Domain\Model\Dto\PersonSearch;
 use GeorgRinger\Ieb\Domain\Model\Dto\TrainerSearch;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -21,7 +26,6 @@ class TrainerRepository extends BaseRepository
     public function findBySearch(?TrainerSearch $search)
     {
         $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         if (!$search) {
             return $query->execute();
         }
@@ -39,13 +43,61 @@ class TrainerRepository extends BaseRepository
         return $query->execute();
     }
 
-    public function getActiveBabi() {
+    public function findInPersonSearch(PersonSearch $search)
+    {
+        if (!$search->isUsed()) {
+            return [];
+        }
 
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_trainer');
 
+        $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+        $rows = $queryBuilder
+            ->select('tx_ieb_domain_model_trainer.*')
+            ->addSelectLiteral('CONCAT(tx_ieb_domain_model_trainer.vorname, \' \', tx_ieb_domain_model_trainer.nachname) as trainerName')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
+            ->from('tx_ieb_domain_model_trainer')
+            ->rightJoin(
+                'tx_ieb_domain_model_trainer',
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_ansuchen_trainer_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
+            )
+            ->rightJoin(
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->where(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_babi_status', 0),
+                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_babi_status', 0),
+                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_psa_status', 0),
+                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_psa_status', 0)
+                ),
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                    $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                ),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.deleted', 0),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
+            )
+            ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')
+            ->execute()
+            ->fetchAllAssociative();
+        return $rows;
+    }
+
+    public function getActiveBabi()
+    {
         $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         $query->matching(
-            $query->logicalAnd (
+            $query->logicalAnd(
                 $query->equals('archiviert', false),
                 $query->equals('okbabi', true),
                 $query->equals('verwendungBabi', true)
@@ -54,17 +106,23 @@ class TrainerRepository extends BaseRepository
         return $query->execute();
     }
 
-    public function getActivePSA() {
-
-
+    public function getActivePSA()
+    {
         $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
         $query->matching(
-            $query->logicalAnd (
+            $query->logicalAnd(
                 $query->equals('archiviert', false),
                 $query->equals('verwendungPsa', true)
             )
         );
         return $query->execute();
+    }
+
+    protected function getQuery($forcedPid = 0): QueryInterface
+    {
+        $query = parent::getQuery($forcedPid);
+        $query->setOrderings(['nachname' => QueryInterface::ORDER_ASCENDING]);
+
+        return $query;
     }
 }

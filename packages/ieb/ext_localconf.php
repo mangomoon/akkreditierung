@@ -153,6 +153,17 @@ defined('TYPO3') || die();
         ]
     );
 
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
+        'PersonSearch',
+        [
+            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index',
+        ]
+    );
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\ObjectStorageConverter::class);
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter::class);
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferencesConverter::class);
