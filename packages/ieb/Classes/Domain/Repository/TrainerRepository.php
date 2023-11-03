@@ -58,6 +58,8 @@ class TrainerRepository extends BaseRepository
             ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
             ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
             ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
+            ->addSelect('stammdaten.name as stammdatenName')
+            ->addSelect('stammdaten.markenname as stammdatenMarkenname')
             ->from('tx_ieb_domain_model_trainer')
             ->rightJoin(
                 'tx_ieb_domain_model_trainer',
@@ -70,6 +72,12 @@ class TrainerRepository extends BaseRepository
                 'tx_ieb_domain_model_ansuchen',
                 'tx_ieb_domain_model_ansuchen',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->rightJoin(
+                'tx_ieb_domain_model_trainer',
+                'tx_ieb_domain_model_stammdaten',
+                'stammdaten',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.pid', $queryBuilder->quoteIdentifier('stammdaten.pid'))
             )
             ->where(
                 $queryBuilder->expr()->orX(

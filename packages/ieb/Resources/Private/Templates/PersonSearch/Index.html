@@ -24,22 +24,27 @@
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Stammdaten</th>
                         <th>Ansuchen</th>
                     </tr>
                     </thead>
                     <tbody>
                     <f:groupedFor as="groupedTrainer" groupBy="trainerName" groupKey="trainerName" each="{trainer}" >
+                        <f:variable name="first">{groupedTrainer -> ieb:firstArray()}</f:variable>
                          <tr>
                             <td>{trainerName}</td>
+                             <td>{first.stammdatenName} ({first.stammdatenMarkenname})</td>
                             <td>
                                 <ul>
                                 <f:for each="{groupedTrainer}" as="groupItem">
                                     <li>
                                         {groupItem.ansuchenName} - {groupItem.ansuchenNummer}
+                                        {groupItem.stammdatenName}
                                     </li>
                                 </f:for>
                                 </ul>
                             </td>
+
                         </tr>
                     </f:groupedFor>
 
