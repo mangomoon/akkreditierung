@@ -17,12 +17,14 @@ class FristUeberwachungService
             'frist' => 'review_total_frist',
             't1' => 'review_total_frist_mail_sent1t',
             't14' => 'review_total_frist_mail_sent14t',
+            't14Skip' => true,
         ],
         'ansuchen_pruefbescheid' => [
             'table' => 'tx_ieb_domain_model_ansuchen',
             'frist' => 'review_frist_pruefbescheid',
             't1' => 'review_frist_pruefbescheid_mail_sent1t',
             't14' => 'review_frist_pruefbescheid_mail_sent14t',
+            't14Skip' => true,
         ],
         'berater' => [
             'table' => 'tx_ieb_domain_model_berater',
@@ -43,6 +45,7 @@ class FristUeberwachungService
             'frist' => 'review_oecert_frist',
             't1' => 'review_oecert_frist_mail_sent1t',
             't14' => 'review_oecert_frist_mail_sent14t',
+            't14AlternativeDays' => 180,
         ],
     ];
     protected array $idLists = [];
@@ -162,7 +165,7 @@ class FristUeberwachungService
             ])
             ->execute()
             ->fetchAllAssociative();
-        foreach($ansuchenRows as &$row) {
+        foreach ($ansuchenRows as &$row) {
             $row[$configuration['frist']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['frist']];
             $row[$configuration['t1']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t1']];
             $row[$configuration['t14']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t14']];
@@ -208,18 +211,22 @@ class FristUeberwachungService
     protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, array $configuration, bool $addAnsuchenConstraint = true): array
     {
         $now = $GLOBALS['EXEC_TIME'];
+        $dateConstraints = [
+            $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->eq($configuration['t1'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
+                $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
+            ),
+        ];
+        if (!($configuration['t14Skip'] ?? false)) {
+            $days = $configuration['t14AlternativeDays'] ?? 14;
+            $dateConstraints[] = $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
+                $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
+            );
+        }
         $where = [
             $queryBuilder->expr()->gt($configuration['frist'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-            $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->eq($configuration['t1'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-                    $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
-                ),
-                $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-                    $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * 14), Connection::PARAM_INT)),
-                ),
-            ),
+            $queryBuilder->expr()->orX(...$dateConstraints),
         ];
 
         if ($addAnsuchenConstraint) {
@@ -238,7 +245,7 @@ class FristUeberwachungService
         foreach ($rows as $row) {
             $isRelation = $row['relationUid'] ?? false;
 
-            if (!$row[$t14Field] && $row[$fristField] - (86400 * 14) > $GLOBALS['EXEC_TIME']) {
+            if (!($configuration['t14Skip'] ?? false) && !$row[$t14Field] && $row[$fristField] - (86400 * ($configuration['t14AlternativeDays'] ?? 14)) > $GLOBALS['EXEC_TIME']) {
                 $this->records[$row['uid']][$type]['t14'][] = $row;
             } else {
                 $this->records[$row['uid']][$type]['t1'][] = $row;
