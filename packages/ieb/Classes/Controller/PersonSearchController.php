@@ -24,6 +24,7 @@ class PersonSearchController extends ActionController
         $this->view->assignMultiple([
             'search' => $search,
             'trainer' => $this->trainerRepository->findInPersonSearch($search),
+            'berater' => $this->beraterRepository->findInPersonSearch($search),
         ]);
         return $this->htmlResponse();
     }

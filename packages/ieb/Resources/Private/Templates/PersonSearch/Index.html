@@ -18,6 +18,7 @@
         <f:form.submit value="Suche"/>
     </f:form>
     <f:if condition="{search.used}">
+        <h3>Trainer</h3>
         <f:if condition="{trainer}">
             <f:then>
                 <table>
@@ -51,8 +52,47 @@
                     </tbody>
                 </table>
             </f:then>
-            <f:else>yyy
+            <f:else>
                 <div>Keine Trainer gefunden</div>
+            </f:else>
+        </f:if>
+
+        <h3>Berater</h3>
+        <f:if condition="{berater}">
+            <f:then>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stammdaten</th>
+                        <th>Ansuchen</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
+                        <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
+                        <tr>
+                            <td>{beraterName}</td>
+                            <td>{first.stammdatenName} ({first.stammdatenMarkenname})</td>
+                            <td>
+                                <ul>
+                                    <f:for each="{groupedBerater}" as="groupItem">
+                                        <li>
+                                            {groupItem.ansuchenName} - {groupItem.ansuchenNummer}
+                                            {groupItem.stammdatenName}
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </td>
+
+                        </tr>
+                    </f:groupedFor>
+
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>
+                <div>Keine Berater gefunden</div>
             </f:else>
         </f:if>
     </f:if>
