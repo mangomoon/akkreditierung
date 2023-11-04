@@ -211,6 +211,7 @@ class AnsuchenRepository extends BaseRepository
             'version_active' => 1,
             'version_based_on' => $ansuchen->getUid(),
             'version' => $ansuchen->getVersion() + 1,
+            'upcoming_status' => 0,
         ];
         $jsons = $this->getJsonFromRelations($ansuchen, $stammdaten);
         foreach ($jsons as $key => $value) {

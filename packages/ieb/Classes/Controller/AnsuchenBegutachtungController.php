@@ -239,7 +239,7 @@ class AnsuchenBegutachtungController extends BaseController
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
         
-        $ansuchen->setUpcomingStatus(0);
+        
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
 
@@ -257,7 +257,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
-
+        
         $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
 
         $this->redirect('list');

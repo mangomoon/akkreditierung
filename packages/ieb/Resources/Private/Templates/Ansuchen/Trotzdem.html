@@ -7,11 +7,12 @@
             <h3>Ansuchen Nr. {ansuchen.nummer} abschicken trotz durch automatische Überprüfung vermuteter Mängel</h3>
 
             <f:form action="update" class="" name="ansuchen" object="{ansuchen}" enctype="multipart/form-data">
-                <label for>Bitte geben Sie an, warum Sie das Ansuschen trotzdem abschicken wollen:</label>
+                <label for>Bitte geben Sie an, warum Sie das Ansuchen trotzdem abschicken wollen:</label>
 
                 <f:form.textarea property="trotzdemAbschicken" id="trotzdemabschicken" class=""></f:form.textarea>
 
                 <f:form.submit value="Trotzdem abschicken" name="saveAndEinreichen" class="knopf-s" />
+                <f:link.action class="knopf-s knopfersatz zurueck" action="list" title="Zurück zur Liste OHNE Speichern">Abbrechen</f:link.action>
             </f:form>
 
         </div>
