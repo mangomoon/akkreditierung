@@ -2155,3 +2155,42 @@ ul.typo3-messages li {
     background-image: url('../Img/notitz.svg');
     background-size: cover;
 }
+
+
+/* PERSONENSUCHE  */
+
+.personensuche td, .personensuche td.td-knopf {
+    vertical-align: top;
+    border-top: solid 1px var(--f2);
+    text-align: left;
+    padding: 8px 0;
+}
+.personensuche .td-knopf .knopf-quadratisch {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    float:right;
+}
+.personensuche td.name {
+    width: 350px;
+    font-weight: 500;
+    padding-right: 30px;
+}
+.personensuche td.organisation {
+    min-width: 300px;
+    font-size: 0.9em;
+}
+.personensuche td.ansuchen {
+    width: 150px;
+    font-size: 0.9em;
+}
+.tx-ieb table.personensuche li.td-knopf {
+    width: 140px;
+    padding: 2px 0;
+}
+.personensuche ul {
+    margin:0;
+}
+.personensuche label {
+    display: inline;
+}

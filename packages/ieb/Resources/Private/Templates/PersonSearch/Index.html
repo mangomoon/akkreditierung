@@ -5,42 +5,72 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>Suche</h1>
+    <!-- <h1>Suche</h1> -->
     <f:form action="index" name="search" object="{search}">
 
         <div>
             <label for="searchword">
-                Name
+                Nachname (oder Teil davon): &nbsp;&nbsp;
                 <f:form.textfield property="searchword" id="searchword" />
             </label>
         </div>
 
-        <f:form.submit value="Suche"/>
+        <f:form.submit class="knopf-s" value="Suchen"/>
     </f:form>
     <f:if condition="{search.used}">
-        <h3>Trainer</h3>
+        <h3>TRAINER</h3>
         <f:if condition="{trainer}">
             <f:then>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Stammdaten</th>
-                        <th>Ansuchen</th>
-                    </tr>
-                    </thead>
+                <table class="personensuche">
                     <tbody>
                     <f:groupedFor as="groupedTrainer" groupBy="trainerName" groupKey="trainerName" each="{trainer}" >
                         <f:variable name="first">{groupedTrainer -> ieb:firstArray()}</f:variable>
                          <tr>
-                            <td>{trainerName}</td>
-                             <td>{first.stammdatenName} ({first.stammdatenMarkenname})</td>
-                            <td>
+                            <td class="name td-knopf">{trainerName} &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : first.uid}" class="knopf-quadratisch show" title="{trainerName} zeigen"></f:link.action> </td>
+                            <td class="organisation">
+                                
+                                <f:if condition="{first.stammdatenMarkenname}">
+                                    <f:then>
+                                        {first.stammdatenMarkenname} ({first.stammdatenName})
+                                    </f:then>
+                                    <f:else>
+                                        {first.stammdatenName}
+                                    </f:else>
+                                </f:if>
+                            </td>
+                            <td> <label>babi: &nbsp;</label>
+                                <f:switch expression="{first.review_c21_babi_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Babi: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Babi: Auflage für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Babi: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                </f:switch>
+                                <f:switch expression="{first.review_c22_babi_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Babi: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Babi: Auflage für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Babi: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                </f:switch>
+                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psa &nbsp;</label>
+                                <f:switch expression="{first.review_c21_psa_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Babi: anerkannt für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Babi: Auflage für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Babi: nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                </f:switch>
+                                <f:switch expression="{first.review_c22_psa_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Babi: anerkannt für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Babi: Auflage für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Babi: nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                </f:switch>
+                            </td>
+                            <td class="ansuchen">
                                 <ul>
                                 <f:for each="{groupedTrainer}" as="groupItem">
-                                    <li>
-                                        {groupItem.ansuchenName} - {groupItem.ansuchenNummer}
-                                        {groupItem.stammdatenName}
+                                    <li class="titleview td-knopf" title="{groupItem.ansuchenName}">
+                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                        <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                                     </li>
                                 </f:for>
                                 </ul>
@@ -57,38 +87,56 @@
             </f:else>
         </f:if>
 
-        <h3>Berater</h3>
+        <h3>&nbsp;<br>BERATER</h3>
         <f:if condition="{berater}">
             <f:then>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Stammdaten</th>
-                        <th>Ansuchen</th>
-                    </tr>
-                    </thead>
+                <table class="personensuche">
                     <tbody>
-                    <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
-                        <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
-                        <tr>
-                            <td>{beraterName}</td>
-                            <td>{first.stammdatenName} ({first.stammdatenMarkenname})</td>
-                            <td>
-                                <ul>
+                        <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
+                            <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
+                             <tr>
+                                <td class="name td-knopf">{beraterName} &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Berater" arguments="{berater : first.uid}" class="knopf-quadratisch show" title="{beraterName} zeigen"></f:link.action></td>
+                                <td class="organisation">
+                                    
+                                    <f:if condition="{first.stammdatenMarkenname}">
+                                        <f:then>
+                                            {first.stammdatenMarkenname} ({first.stammdatenName})
+                                        </f:then>
+                                        <f:else>
+                                            {first.stammdatenName}
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:switch expression="{first.review_c3_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="anerkannt für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Auflage für Qualifikationsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="nicht-ok für Qualifikationsnachweis"></span></f:case>
+                                </f:switch>
+                                <f:switch expression="{first.review_c32_status}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="ohne Bugtachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="anerkannt für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="3"><span class="titleview knopfrund auflage-3" title="Auflage für Erfahrungsnachweis"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="nicht-ok für Erfahrungsnachweis"></span></f:case>
+                                </f:switch>
+                                </td>
+                                <td class="ansuchen">
+                                    <ul>
                                     <f:for each="{groupedBerater}" as="groupItem">
-                                        <li>
-                                            {groupItem.ansuchenName} - {groupItem.ansuchenNummer}
-                                            {groupItem.stammdatenName}
+                                        <li class="titleview td-knopf" title="{groupItem.ansuchenName}">
+                                            {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                                         </li>
                                     </f:for>
-                                </ul>
-                            </td>
-
-                        </tr>
-                    </f:groupedFor>
-
-                    </tbody>
+                                    </ul>
+                                </td>
+    
+                            </tr>
+                        </f:groupedFor>
+    
+                        </tbody>
+                    
                 </table>
             </f:then>
             <f:else>

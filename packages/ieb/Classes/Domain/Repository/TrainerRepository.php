@@ -55,6 +55,10 @@ class TrainerRepository extends BaseRepository
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_trainer.*')
             ->addSelectLiteral('CONCAT(tx_ieb_domain_model_trainer.vorname, \' \', tx_ieb_domain_model_trainer.nachname) as trainerName')
+            ->addSelect('tx_ieb_domain_model_trainer.review_c21_babi_status')
+            ->addSelect('tx_ieb_domain_model_trainer.review_c22_babi_status')
+            ->addSelect('tx_ieb_domain_model_trainer.review_c21_psa_status')
+            ->addSelect('tx_ieb_domain_model_trainer.review_c22_psa_status')
             ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
             ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
             ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
