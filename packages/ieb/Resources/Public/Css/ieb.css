@@ -937,11 +937,7 @@ table.ansuchenliste td.ansuchenliste_tr.agentscheid {
 }
 
 
-/* ANSUCHENLISTE ARCHIV */
 
-.acchiv span.ansuchenliste_ansuchennr {
-    font-size: 0.9em;
-}
 
 /* ANSUCHEN NEW/EDIT */
 
@@ -2193,4 +2189,84 @@ ul.typo3-messages li {
 }
 .personensuche label {
     display: inline;
+}
+
+/* ANSUCHENLISTE ARCHIV */
+
+table.archiv-vorversionen:nth-of-type(odd) {
+    background: var(--f1);
+}
+table.archiv-vorversionen tr:hover {
+    background: #f6f7ee;
+}
+.archiv span.ansuchenliste_ansuchennr {
+    font-size: 0.9em;
+}
+.archiv td.td-knopf {
+    text-align: right;
+}
+table.ansuchenliste .archiv-vorversionen td {
+    padding: 2px;
+}
+.archiv-vorversionen td:nth-of-type(1) {
+    width: 142px;
+}
+.archiv-vorversionen td:nth-of-type(2) {
+    width: 40px;
+}
+.archiv-vorversionen td:nth-of-type(3) {
+    width: 40px;
+}
+.archiv-vorversionen .td-knopf .knopf-quadratisch {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.archiv summary {
+    border: solid 1px var(--f2);
+    border-radius: 3px;
+    width: 154px;
+    padding-left: 6px;
+    cursor: pointer;
+    color: #fff;
+    background: var(--f2);
+    box-shadow: 2px 2px 2px #aaa;
+    margin-bottom: 4px;
+}
+.archiv summary:hover {
+    box-shadow: none;
+    background: var(--f1);
+}
+
+/* PAGINATOR */
+ul.f3-widget-paginator li {
+    list-style:none;
+    display: inline-block;
+    background-image: none;
+    padding: 0;
+    margin-right: 6px;
+}
+ul.f3-widget-paginator li a {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    color: #fff;
+    background: var(--f1);
+    border: solid 1px var(--f2);
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+}
+
+ul.f3-widget-paginator li.previous a, ul.f3-widget-paginator li.next a{
+    background: none;
+    border: none;
+    width: auto;
+    color: var(--f3);
+    padding: 0 20px;
+}
+
+ul.f3-widget-paginator li a:hover, ul.f3-widget-paginator li.current a {
+    background: var(--f2);
+    color: #fff;
 }

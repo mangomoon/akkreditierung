@@ -16,8 +16,7 @@
             <div>
                 <label for="trPid">
                     Träger
-                    <f:form.select property="trPid" id="trPid" options="{filter.tr}"
-                                   prependOptionValue="0" prependOptionLabel=""/>
+                    <f:form.select property="trPid" id="trPid" options="{filter.tr}" prependOptionValue="0" prependOptionLabel=""/>
                 </label>
             </div>
         
@@ -39,7 +38,7 @@
                         <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
                             <table class="ansuchenliste archiv">
                                 <tr>
-                                    <td colspan="2" class="ansuchenliste_tr">
+                                    <td colspan="3" class="ansuchenliste_tr">
                                         Name des Organisation
                                         <f:if condition="{stammdaten.markenname}">
                                             <f:then>
@@ -50,45 +49,47 @@
                                             </f:else>
                                         </f:if>
                                     </td>
-                                    <td>
-
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="ansuchenliste_ansuchennr">
                                         {item.nummer}
                                     </td>
                                     <td>
-                                        <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
-                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                                        <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                        <f:if condition="{item.status}==100 || {item.status}==140">
+                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date> | 
+                                        </f:if>
+                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> am <f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:link.action action="show" pageUid="21" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                        <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="archiv-vorversionen-td" colspan="3">
+                                    <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
+                                        <f:if condition="{oldVersions}">
+                                            <details>
+                                                <summary><span class="">Vorversionen ({oldVersions -> f:count()})</span></summary>
+                                                
+                                                    <f:for each="{oldVersions}" as="oldVersion">
+                                                        <table class="archiv-vorversionen">
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td>{oldVersion.version} </td>
+                                                                <td>[{oldVersion.uid}]</td>
+                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.einreich_datum}</f:format.date></td>
+                                                                <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action></td>
+                                                            </tr>
+                                                        </table>
+                                                    </f:for>
+                                                
+                                            </details>
+                                        </f:if>
+                                    </ieb:ansuchenOldVersionLoader>
                                     </td>
                                 </tr>
                             </table>
-                            <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
-                                <f:if condition="{oldVersions}">
-                                    <details>
-                                        <summary>Vorige Versionen ({oldVersions -> f:count()})</summary>
-    
-                                        <table>
-                                            <tr>
-                                                <th>uid</th>
-                                                <th>datum</th>
-                                                <th>status</th>
-                                            </tr>
-                                            <f:for each="{oldVersions}" as="oldVersion">
-                                                <tr>
-                                                    <td>{oldVersion.uid} ## {oldVersion.version} ## {oldVersion.upcoming_status}</td>
-                                                    <td>{oldVersion.einreich_datum}</td>
-                                                    <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /></td>
-                                                </tr>
-                                            </f:for>
-                                        </table>
-                                    </details>
-                                </f:if>
-                            </ieb:ansuchenOldVersionLoader>
                         </div>
                     </f:for>
                 <f:render partial="Pagination" arguments="{pagination: pagination.pagination, pages: pagination.pages, paginator: pagination.paginator}" />
