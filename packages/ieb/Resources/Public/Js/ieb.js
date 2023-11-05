@@ -619,7 +619,13 @@ function qualifikationPsaSprache() {
     });
 
 
-
+    $('.personarchivieren').click(function() {
+        t = $(this).find('.modalcontent').html();
+        $('.modalcontent').html(t);
+        $(".close").html('Zurück zum Formular');
+        $(".close").css('width','220px');
+        modal.showModal();
+    })
 
      $("#submitstartstandort").click(function() {
 

@@ -13,6 +13,7 @@ class ExtensionConfiguration
     protected int $usergroupAktiv = 1;
     protected int $usergroupAg = 3;
     protected int $usergroupGs = 2;
+    protected int $usergroupTr = 1;
     protected int $pageRegistration = 22;
     protected \DateTime $ansuchenEnde;
     protected string $emailAddressGs = 'office@initiative-erwachsenenbildung.at';
@@ -82,6 +83,11 @@ class ExtensionConfiguration
     public function getUsergroupGs(): int
     {
         return $this->usergroupGs;
+    }
+
+    public function getUsergroupTr(): int
+    {
+        return $this->usergroupTr;
     }
 
     public function getAnsuchenEnde(): \DateTime

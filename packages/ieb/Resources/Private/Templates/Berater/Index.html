@@ -35,10 +35,11 @@
             </f:form>
         </div>
     </f:if>
-
-    <div class="formzeile">
-        <f:link.action action="new" class="formlink berater">Neue Person anlegen</f:link.action>
-    </div>
+    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupTr}">
+        <div class="formzeile">
+            <f:link.action action="new" class="formlink berater">Neue Person anlegen</f:link.action>
+        </div>
+    </f:if>
 
     <f:if condition="{beraters}">
         <table class="tx_ieb berater">
@@ -129,8 +130,9 @@
                                         <f:then>
                                             <f:if condition="{relationUsages}">
                                                 <f:then>
-                                                    <f:link.action action="archive" title="Datensatz archivieren. <br><b>ACHTUNG</b>: wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
-                                                        {relationUsage.nummer} ({relationUsage.name})<br></f:for> und wird automatisch aus diesem(n) Ansuchen entfernt." class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>
+                                                    <div class="personarchivieren knopf-quadratisch hide" title="Datensatz archivieren"><div class="modalcontent hidden"><p><b>ACHTUNG</b>: wird verwendet in Ansuchen: <br><f:for each='{relationUsages}' as='relationUsage'>
+                                                        {relationUsage.nummer} ({relationUsage.name})<br></f:for> und wird automatisch aus diesem(n) Ansuchen entfernt.</p><p><f:link.action action="archive" title="Datensatz archivieren." class="knopf knopf-s2" arguments="{berater : berater}">Datensatz archivieren</f:link.action></p></div>
+                                                    </div>
                                                 </f:then>
                                                 <f:else>
                                                     <f:link.action action="archive" title="Datensatz archivieren" class="knopf-quadratisch hide" arguments="{berater : berater}"></f:link.action>

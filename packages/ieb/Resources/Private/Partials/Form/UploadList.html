@@ -14,13 +14,13 @@
         <f:for each="{media}" as="m">
             <f:if condition="{m.originalResource}">
                 <div class="filelist-item">
-                <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}">{m.originalResource.originalFile.properties.name}</a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
+                <a href="{m.originalResource.publicUrl}" target="_blank" class="ext-{m.originalResource.originalFile.properties.extension}"><f:format.crop maxCharacters="60">{m.originalResource.originalFile.properties.name}</f:format.crop></a> &nbsp;&nbsp;[<f:format.date format="%d. %B %Y">{m.originalResource.originalFile.properties.creation_date}</f:format.date>]
             </div>
             </f:if>
             <ieb:fal path="{m.publicUrl}">
                 <f:if condition="{file}">
                     <div class="filelist-item">
-                        <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] 
+                        <a href="{m.publicUrl}" target="_blank" class="ext-{file.extension}" title="{file.name}"><ieb:fal path="{m.publicUrl}"><f:format.crop maxCharacters="60">{file.name}</f:format.crop></ieb:fal></a> &nbsp;&nbsp;[<ieb:fal path="{m.publicUrl}"><f:format.date format="%d. %B %Y">{file.properties.creation_date}</f:format.date></ieb:fal>] 
                     </div>
                 </f:if>
 

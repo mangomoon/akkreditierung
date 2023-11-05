@@ -697,6 +697,9 @@ input[type="submit"].knopf-s2 {
     filter: drop-shadow(2px 2px 2px var(--f2));
     font-size: 0.8em;
 }
+a.knopf-s2:focus-visible,a.knopf-s2:focus {
+    border: none;
+}
 
 .knopf-s2:hover {
     background-color: var(--f2);
