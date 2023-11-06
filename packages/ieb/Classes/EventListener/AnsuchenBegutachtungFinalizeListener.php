@@ -30,16 +30,21 @@ final class AnsuchenBegutachtungFinalizeListener
             $possibleMails = $extensionConfiguration->getEmailPsa();
         }
 
-        $mailsOfBundesland = $possibleMails[$event->ansuchen->getBundesland()] ?? false;
-        if ($mailsOfBundesland) {
-            if (is_array($mailsOfBundesland)) {
-                foreach($mailsOfBundesland as $mail) {
-                    $mails[$mail] = '';
+        $status = $event->ansuchen->getStatus();
+        if ($status == 100 || $status == 140 || $status == 800 || $status == 810) {
+
+            $mailsOfBundesland = $possibleMails[$event->ansuchen->getBundesland()] ?? false;
+            if ($mailsOfBundesland) {
+                if (is_array($mailsOfBundesland)) {
+                    foreach($mailsOfBundesland as $mail) {
+                        $mails[$mail] = '';
+                    }
+                } elseif(is_string($mailsOfBundesland)) {
+                    $mails[$mailsOfBundesland] = '';
                 }
-            } elseif(is_string($mailsOfBundesland)) {
-                $mails[$mailsOfBundesland] = '';
             }
         }
+
 
         $values = [
             'ansuchen' => $event->ansuchen,

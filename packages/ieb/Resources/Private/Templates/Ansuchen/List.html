@@ -155,13 +155,20 @@
         <f:else>
             <f:if condition="{tsuir}">
                 <f:then>
-                    <span class="titleview knopfrund in-begutachtung" title="Training: In Begutachtung"></span>
+                    <f:if condition="{item.pruefbescheidCheck}">
+                        <f:then>
+                            <span class="titleview knopfrund ok-grey" title="TRAINING: Personen werden bei Vorlage eines Prüfbescheids nicht begutachtet."></span>
+                        </f:then>
+                        <f:else>
+                            <span class="titleview knopfrund in-begutachtung" title="Training: In Begutachtung"></span>
+                        </f:else>
+                    </f:if>
                 </f:then>
                 <f:else>
                     <f:if condition="{item.typ}==1">
                         <f:then>
                             <f:if condition="{tsarBabi}==0">
-                                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen nicht begutachtet. Einreichung erforderlich."></span>
+                                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen noch nicht begutachtet. Einreichung erforderlich."></span>
                             </f:if>
                             <f:if condition="{tsarBabi}==1">
                                 <span class="titleview knopfrund auflage-1" title="TRAINING: Begutachtung positiv"></span>
@@ -182,8 +189,13 @@
                             </f:if>
                         </f:then>
                         <f:else>
-                            <f:if condition="{tsarPsa}==0">
-                                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen nicht begutachtet. Einreichung erforderlich."></span>
+                            <f:if condition="{item.pruefbescheidCheck}">
+                                <f:then>
+                                    <span class="titleview knopfrund ok-grey" title="TRAINING: Personen werden bei Vorlage eines Prüfbescheids nicht begutachtet."></span>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{tsarPsa}==0">
+                                <span class="titleview knopfrund ok-grey" title="TRAINING: Personen noch nicht begutachtet. Einreichung erforderlich."></span>
                             </f:if>
                             <f:if condition="{tsarPsa}==1">
                                 <span class="titleview knopfrund auflage-1" title="TRAINING: Begutachtung positiv"></span>
@@ -202,6 +214,9 @@
                             <f:if condition="{tsarPsa}==5">
                                 <span class="titleview knopfrund achtung-gelb" title="TRAINING: Angaben nach negativer Begutachtung bearbeitet. Neueinreichung ist erforderlich"></span>
                             </f:if>
+                                </f:else>
+                            </f:if>
+                            
                         </f:else>
                     </f:if>
                 </f:else>
