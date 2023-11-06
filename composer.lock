@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3842bcc1e480399fb48f00ee54c767e2",
+    "content-hash": "b2c1877b3fceee736dde2f68f69d854e",
     "packages": [
         {
             "name": "b13/bolt",
@@ -1824,6 +1824,66 @@
                 }
             ],
             "time": "2023-05-31T08:11:22+00:00"
+        },
+        {
+            "name": "jigal/t3adminer",
+            "version": "12.0.1",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:jigal/t3adminer.git",
+                "reference": "8e76d49a483117ecdb22fa21d4dcf0fef0911b4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/jigal%2Ft3adminer/repository/archive.zip?sha=8e76d49a483117ecdb22fa21d4dcf0fef0911b4c",
+                "reference": "8e76d49a483117ecdb22fa21d4dcf0fef0911b4c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phar": "*",
+                "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0",
+                "typo3/cms-core": "^11.5.0 || ^12.4.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "t3adminer"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jigal\\T3adminer\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jigal van Hemert",
+                    "email": "jigal.van.hemert@typo3.org",
+                    "homepage": "http://www.typo3coder.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adminer as BE module to work with the database",
+            "homepage": "https://forge.typo3.org/projects/extension-t3adminer",
+            "keywords": [
+                "adminer",
+                "database",
+                "dev",
+                "mariadb",
+                "mysql",
+                "phpmyadmin",
+                "postgresq",
+                "sqlite",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://forge.typo3.org/projects/extension-t3adminer/issues"
+            },
+            "time": "2023-09-03T20:40:40+00:00"
         },
         {
             "name": "league/csv",

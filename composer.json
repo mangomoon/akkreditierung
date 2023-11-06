@@ -18,6 +18,7 @@
         "georgringer/ieb": "@dev",
         "georgringer/news": "^10",
         "helhum/typo3-console": "^8.0",
+        "jigal/t3adminer": "^12.0",
         "league/csv": "^9.8",
         "mangomoon/mangomoon": "dev-main",
         "mangomoon/mangomoonspecify": "@dev",

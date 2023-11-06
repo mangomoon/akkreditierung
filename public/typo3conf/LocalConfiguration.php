@@ -80,6 +80,11 @@ return [
             'debugMode' => '0',
             'resourceExtensionRegexp' => 'css|eot|gif|ico|jpe?g|js(?:on)|png|svg|ttf|webp|woff2?|xml',
         ],
+        't3adminer' => [
+            'IPaccess' => '',
+            'applyDevIpMask' => '0',
+            'exportDirectory' => 'fileadmin',
+        ],
     ],
     'FE' => [
         'debug' => true,
