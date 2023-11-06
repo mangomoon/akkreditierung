@@ -4,9 +4,19 @@
 <f:section name="Main">
     <p>
         Hallo xyz,<br>
-        folgende Datensätze sind offen:
+        folgende Fristen sind für folgendes Ansuchen "{ansuchen.name} [{ansuchen.nummer}]"
     </p>
     <p>
+        <f:if condition="{records.stammdaten}">
+            <h3>Stammdaten</h3>
+            <f:for each="{records.stammdaten}" key="type" as="items">
+                <h4>Typ {type}</h4>
+
+                <f:for each="{items}" as="item">
+                    {item.name} [{item.uid}]<br>
+                </f:for>
+            </f:for>
+        </f:if>
         <f:if condition="{records.ansuchen}">
             <h3>Ansuchen</h3>
             <f:for each="{records.ansuchen}" key="type" as="items">

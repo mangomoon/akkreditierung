@@ -4,6 +4,7 @@ namespace GeorgRinger\Ieb\Service\Checks;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Service\MailService;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -52,24 +53,25 @@ class FristUeberwachungService
     protected array $records = [];
     protected MailService $mailService;
 
-    public function __construct(protected readonly array $emails)
+    public function __construct(protected readonly array $emails, protected readonly bool $skipPersistSent = false)
     {
         $this->mailService = GeneralUtility::makeInstance(MailService::class);
     }
 
-    public function sendEmails(): void
+    public function sendEmails(): int
     {
         $this->collect();
-        print_r($this->records);
-        die('ednd');
         if (empty($this->records)) {
-            return;
+            return 0;
         }
 
         $this->sendMails();
 
-        $this->setAsSent();
+        if (!$this->skipPersistSent) {
+            $this->setAsSent();
+        }
 
+        return count($this->records);
     }
 
     private function collect()
@@ -87,20 +89,30 @@ class FristUeberwachungService
 
     protected function sendMails()
     {
-        foreach ($this->records as $pid => $records) {
+        foreach ($this->records as $uid => $records) {
             $variables = [
                 'records' => $records,
-                'pid' => $pid,
+                'ansuchen' => BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $uid),
             ];
             $this->mailService
-                ->sendSingle($variables, 'Checks/FristenUeberwachung', 'dummy@example.com', 'Jone Doe ' . $pid);
+                ->sendSingle($variables, 'Checks/FristenUeberwachung', 'dummy@example.com', 'Jone Doe ' . $uid);
 
         }
     }
 
-    protected function setAsSent()
+    protected function setAsSent(): void
     {
-        // todo
+        foreach ($this->idLists as $table => $config) {
+            foreach ($config as $fristField => $idList) {
+                $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
+                $queryBuilder->update($table)
+                    ->set($fristField, $GLOBALS['EXEC_TIME'])
+                    ->where(
+                        $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($idList, Connection::PARAM_INT_ARRAY))
+                    )
+                    ->execute();
+            }
+        }
     }
 
     private function getAnsuchenDirect(string $type): void
@@ -151,7 +163,6 @@ class FristUeberwachungService
         foreach ($stammdatenRowsWithFrist as $item) {
             $stammdatenRowsWithFristByPid[$item['pid']] = $item;
         }
-        print_r($stammdatenRowsWithFristByPid);
 
         // now fetch all ansuchen which match with those pids
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
@@ -169,6 +180,7 @@ class FristUeberwachungService
             $row[$configuration['frist']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['frist']];
             $row[$configuration['t1']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t1']];
             $row[$configuration['t14']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t14']];
+            $row['relationUid'] = $stammdatenRowsWithFristByPid[$row['pid']]['stammdatenUid'];
         }
         $this->addToRecords($ansuchenRows, $configuration, $type);
     }
@@ -211,6 +223,7 @@ class FristUeberwachungService
     protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, array $configuration, bool $addAnsuchenConstraint = true): array
     {
         $now = $GLOBALS['EXEC_TIME'];
+        $emptyFields = [$configuration['t1']];
         $dateConstraints = [
             $queryBuilder->expr()->andX(
                 $queryBuilder->expr()->eq($configuration['t1'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
@@ -223,7 +236,17 @@ class FristUeberwachungService
                 $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
             );
+            $emptyFields[] = $configuration['t14'];
         }
+
+        $dateToLateConstraints = [
+            $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now, Connection::PARAM_INT)),
+        ];
+        foreach ($emptyFields as $emptyField) {
+            $dateToLateConstraints[] = $queryBuilder->expr()->eq($emptyField, $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
+        }
+        $dateConstraints[] = $queryBuilder->expr()->andX(...$dateToLateConstraints);
+
         $where = [
             $queryBuilder->expr()->gt($configuration['frist'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
             $queryBuilder->expr()->orX(...$dateConstraints),
@@ -241,16 +264,19 @@ class FristUeberwachungService
     protected function addToRecords(array $rows, array $configuration, string $type): void
     {
         $t14Field = $configuration['t14'];
+        $t1Field = $configuration['t1'];
         $fristField = $configuration['frist'];
         foreach ($rows as $row) {
-            $isRelation = $row['relationUid'] ?? false;
+            $relevantUpdateId = $row['relationUid'] ?: $row['uid'];
 
             if (!($configuration['t14Skip'] ?? false) && !$row[$t14Field] && $row[$fristField] - (86400 * ($configuration['t14AlternativeDays'] ?? 14)) > $GLOBALS['EXEC_TIME']) {
                 $this->records[$row['uid']][$type]['t14'][] = $row;
+                $this->idLists[$configuration['table']][$t14Field][] = $relevantUpdateId;
             } else {
                 $this->records[$row['uid']][$type]['t1'][] = $row;
+                $this->idLists[$configuration['table']][$t1Field][] = $relevantUpdateId;
             }
-            $this->idLists[$configuration['table']][] = $row['uid'];
+
         }
     }
 

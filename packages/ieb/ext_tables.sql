@@ -98,11 +98,11 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	notitzzettel text NOT NULL DEFAULT '',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
 	trotzdem_abschicken text NOT NULL DEFAULT '',
-	review_total_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_total_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_total_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
+	review_total_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	review_frist_pruefbescheid bigint(11) NOT NULL DEFAULT '0',
-	review_frist_pruefbescheid_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_frist_pruefbescheid_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_pruefbescheid_mail_sent14t int(11) NOT NULL DEFAULT '0',
+	review_frist_pruefbescheid_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	status_after_review int(11) NOT NULL DEFAULT '0',
 	ende int(11) NOT NULL DEFAULT '0',
 	pruefbescheid_check int(11) DEFAULT '0' NOT NULL,
@@ -155,8 +155,8 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	locked_by int(11) NOT NULL DEFAULT '0',
 	status_after_review int(11) NOT NULL DEFAULT '0',
 	review_frist bigint(11) NOT NULL DEFAULT '0',
-	review_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
+	review_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
 	gutachter_locked_by int(11) NOT NULL DEFAULT '0'
 );
@@ -207,8 +207,8 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_babi_comment_internal_step text NOT NULL DEFAULT '',
 	review_frist bigint(11) NOT NULL DEFAULT '0',
 	locked_by int(11) NOT NULL DEFAULT '0',
-	review_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
+	review_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	status_after_review_babi int(11) NOT NULL DEFAULT '0',
 	status_after_review_psa int(11) NOT NULL DEFAULT '0',
 	pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
@@ -250,8 +250,8 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	review_a2_comment_internal_step text NOT NULL DEFAULT '',
 	review_a2_comment_tr text NOT NULL DEFAULT '',
 	review_oecert_frist bigint(11) NOT NULL DEFAULT '0',
-	review_oecert_frist_mail_sent14t smallint(1) unsigned NOT NULL DEFAULT '0',
-	review_oecert_frist_mail_sent1t smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_oecert_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
+	review_oecert_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	status_after_review int(11) NOT NULL DEFAULT '0'
 );
 

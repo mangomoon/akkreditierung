@@ -7,8 +7,10 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\AngebotVerantwortlich;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
+use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
@@ -264,7 +266,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
 
-    protected function addNewComment(Ansuchen|Stammdaten $object, string $fieldName): void
+    protected function addNewComment(Ansuchen|Stammdaten|Berater|Trainer $object, string $fieldName): void
     {
         $commentFieldGetter = 'get' . ucfirst($fieldName . 'Step');
         $comment = $object->$commentFieldGetter();
