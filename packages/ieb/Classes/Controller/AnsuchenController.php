@@ -7,8 +7,6 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
-use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenFilter;
-use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Event;
 use GeorgRinger\Ieb\EventListener\AnsuchenPdfGenerationListener;
@@ -35,26 +33,16 @@ class AnsuchenController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        /** @var Stammdaten $stammdaten */
+        $ansuchen = $this->ansuchenRepository->getAllEditableForTr();
+        //$ansuchen = $this->ansuchenRepository->getAll();
+        $this->view->assign('ansuchen', $ansuchen);
         $stammdaten = $this->stammdatenRepository->getLatest();
         $pid = $stammdaten->getPid();
-
-        $filter = new AnsuchenFilter();
-        switch ($this->settings['mode'] ?? '') {
-            case 'bundesland':
-//                $filter->bundesland = 9; // todo
-                $filter->status = AnsuchenStatus::statusBearbeitbarDurchTr();
-                break;
-            default:
-                $filter->status = AnsuchenStatus::statusBearbeitbarDurchTr();
-        }
-
-
         $this->view->assignMultiple([
-            'ansuchen' => $this->ansuchenRepository->getAllEditableForTr($filter),
             'stammdaten' => $stammdaten,
             'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
         ]);
+        // $this->view->assign('stammdaten', $stammdaten);
 
         return $this->htmlResponse();
     }

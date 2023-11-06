@@ -7,7 +7,6 @@ namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
-use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenFilter;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Model\Standort;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
@@ -49,21 +48,13 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
-    public function getAllEditableForTr(AnsuchenFilter $filter): QueryResultInterface
+    public function getAllEditableForTr(): QueryResultInterface
     {
         $query = $this->getQuery();
         $constraints = [
+            $query->in('status', AnsuchenStatus::statusBearbeitbarDurchTr()),
             $query->equals('version_active', 1),
         ];
-
-        if (!empty($filter->status)) {
-            $constraints[] = $query->in('status', $filter->status);
-        }
-        if ($filter->bundesland > 0) {
-            $constraints[] = $query->equals('bundesland', $filter->bundesland);
-        }
-
-
         $query->matching($query->logicalAnd($constraints));
         return $query->execute();
     }
@@ -161,28 +152,28 @@ class AnsuchenRepository extends BaseRepository
             'review_c3_comment_internal' => '',
             'review_c3_comment_internal_step' => '',
             'review_c3_comment_tr' => '',
-            'review_c3_status' => '0',
+            'review_c3_status'  => '0',
             'review_total_comment_internal' => 0,
             'review_total_comment_internal_step' => '',
             'review_total_comment_tr' => '',
             'review_total_status' => '0',
             'review_total_frist' => '0',
             'review_frist_pruefbescheid' => '',
-            'review_b14_comment_internal' => '',
-            'review_b14_comment_internal_step' => '',
-            'review_b14_comment_tr' => '',
-            'review_b14_status' => '0',
-            'review_b15_comment_internal' => '',
-            'review_b15_comment_internal_step' => '',
-            'review_b15_comment_tr' => '',
-            'review_b15_status' => '0',
-            'review_b22_comment_internal' => '',
-            'review_b22_comment_internal_step' => '',
-            'review_b22_comment_tr' => '',
-            'review_b22_status' => '0',
-            'review_b23_comment_internal' => '',
-            'review_b23_comment_internal_step' => '',
-            'review_b23_comment_tr' => '',
+            'review_b14_comment_internal'  => '',
+            'review_b14_comment_internal_step'  => '',
+            'review_b14_comment_tr'  => '',
+            'review_b14_status'  => '0',
+            'review_b15_comment_internal'  => '',
+            'review_b15_comment_internal_step'  => '',
+            'review_b15_comment_tr'  => '',
+            'review_b15_status'  => '0',
+            'review_b22_comment_internal'  => '',
+            'review_b22_comment_internal_step'  => '',
+            'review_b22_comment_tr'  => '',
+            'review_b22_status'  => '0',
+            'review_b23_comment_internal'  => '',
+            'review_b23_comment_internal_step'  => '',
+            'review_b23_comment_tr'  => '',
             'review_b23_status' => '0',
             'review_frist_pruefbescheid' => '0',
             'erklaerungd1' => '0',
