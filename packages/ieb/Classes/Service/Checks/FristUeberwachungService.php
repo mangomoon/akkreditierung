@@ -3,6 +3,7 @@
 namespace GeorgRinger\Ieb\Service\Checks;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\MailService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
@@ -51,11 +52,13 @@ class FristUeberwachungService
     ];
     protected array $idLists = [];
     protected array $records = [];
+    protected ExtensionConfiguration $extensionConfiguration;
     protected MailService $mailService;
 
     public function __construct(protected readonly array $emails, protected readonly bool $skipPersistSent = false)
     {
         $this->mailService = GeneralUtility::makeInstance(MailService::class);
+        $this->extensionConfiguration = new ExtensionConfiguration();
     }
 
     public function sendEmails(): int
@@ -87,17 +90,47 @@ class FristUeberwachungService
         }
     }
 
-    protected function sendMails()
+    protected function sendMails(): void
     {
         foreach ($this->records as $uid => $records) {
             $variables = [
                 'records' => $records,
                 'ansuchen' => BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $uid),
             ];
-            $this->mailService
-                ->sendSingle($variables, 'Checks/FristenUeberwachung', 'dummy@example.com', 'Jone Doe ' . $uid);
 
+            $recipients = $this->getRecipientsForAnsuchen($uid);
+
+            $this->mailService
+                ->send('Checks/FristenUeberwachung', $recipients, $variables);
         }
+    }
+
+    protected function getRecipientsForAnsuchen(int $ansuchenId): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_angebotverantwortlich');
+        $rows = $queryBuilder
+            ->select('tx_ieb_domain_model_angebotverantwortlich.*')
+            ->from('tx_ieb_domain_model_angebotverantwortlich')
+            ->rightJoin(
+                'tx_ieb_domain_model_angebotverantwortlich',
+                'tx_ieb_ansuchen_verantwortlichemail_angebotverantwortlich_mm',
+                'mm',
+                $queryBuilder->expr()->eq('mm.uid_foreign', $queryBuilder->quoteIdentifier('tx_ieb_domain_model_angebotverantwortlich.uid'))
+            )
+            ->where(
+                $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.ok', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
+            )
+            ->execute()
+            ->fetchAllAssociative();
+
+        $recipients = [$this->extensionConfiguration->getEmailAddressGs() => ''];
+        foreach ($rows as $row) {
+            if (GeneralUtility::validEmail($row['email'])) {
+                $recipients[$row['email']] = sprintf('%s %s', $row['vorname'], $row['nachname']);
+            }
+        }
+        return $recipients;
     }
 
     protected function setAsSent(): void
