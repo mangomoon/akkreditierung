@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Dto\ExternalViewFilter;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Model\Standort;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
@@ -68,6 +69,36 @@ class AnsuchenRepository extends BaseRepository
         $collection = [];
         $this->buildHistory($id, $collection);
         return $collection;
+    }
+
+    public function getAllForExternalView(ExternalViewFilter $filter)
+    {
+        $query = $this->getEmptyQuery();
+        $constraints = [
+            $query->in('uid', $this->getMaxAkkredierteIds()),
+        ];
+        if ($filter->bundesland) {
+            $constraints[] = $query->equals('bundesland', $filter->bundesland->value);
+        }
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
+    private function getMaxAkkredierteIds(): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+        $maxIdRows = $queryBuilder
+            ->addSelectLiteral('max(uid) as uid')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter([AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value], Connection::PARAM_INT_ARRAY))
+            )
+            ->groupBy('nummer')
+            ->execute()
+            ->fetchAllAssociative();
+
+        return array_column($maxIdRows, 'uid');
     }
 
     private function buildHistory(int $id, array &$collection): void
@@ -152,28 +183,28 @@ class AnsuchenRepository extends BaseRepository
             'review_c3_comment_internal' => '',
             'review_c3_comment_internal_step' => '',
             'review_c3_comment_tr' => '',
-            'review_c3_status'  => '0',
+            'review_c3_status' => '0',
             'review_total_comment_internal' => 0,
             'review_total_comment_internal_step' => '',
             'review_total_comment_tr' => '',
             'review_total_status' => '0',
             'review_total_frist' => '0',
             'review_frist_pruefbescheid' => '',
-            'review_b14_comment_internal'  => '',
-            'review_b14_comment_internal_step'  => '',
-            'review_b14_comment_tr'  => '',
-            'review_b14_status'  => '0',
-            'review_b15_comment_internal'  => '',
-            'review_b15_comment_internal_step'  => '',
-            'review_b15_comment_tr'  => '',
-            'review_b15_status'  => '0',
-            'review_b22_comment_internal'  => '',
-            'review_b22_comment_internal_step'  => '',
-            'review_b22_comment_tr'  => '',
-            'review_b22_status'  => '0',
-            'review_b23_comment_internal'  => '',
-            'review_b23_comment_internal_step'  => '',
-            'review_b23_comment_tr'  => '',
+            'review_b14_comment_internal' => '',
+            'review_b14_comment_internal_step' => '',
+            'review_b14_comment_tr' => '',
+            'review_b14_status' => '0',
+            'review_b15_comment_internal' => '',
+            'review_b15_comment_internal_step' => '',
+            'review_b15_comment_tr' => '',
+            'review_b15_status' => '0',
+            'review_b22_comment_internal' => '',
+            'review_b22_comment_internal_step' => '',
+            'review_b22_comment_tr' => '',
+            'review_b22_status' => '0',
+            'review_b23_comment_internal' => '',
+            'review_b23_comment_internal_step' => '',
+            'review_b23_comment_tr' => '',
             'review_b23_status' => '0',
             'review_frist_pruefbescheid' => '0',
             'erklaerungd1' => '0',

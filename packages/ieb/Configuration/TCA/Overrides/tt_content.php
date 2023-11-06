@@ -16,6 +16,7 @@ $plugins = [
     'Registration' => 'IEB :: Registration',
     'Reporting' => 'IEB :: Reporting',
     'PersonSearch' => 'IEB :: Personensuche',
+    'ExternalView' => 'IEB :: Externe Ansicht',
 ];
 
 foreach ($plugins as $key => $title) {
