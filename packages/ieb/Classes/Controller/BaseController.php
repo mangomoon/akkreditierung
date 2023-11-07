@@ -205,6 +205,11 @@ class BaseController extends ActionController
         }
     }
 
+    protected function redirectToPageId(string|int $pageId) {
+        $uri = $this->uriBuilder->reset()->setTargetPageUid((int)$pageId)->buildFrontendUri();
+        $this->redirectToUri($uri);
+    }
+
     protected function getPaginator(QueryResultInterface|array $items, int $itemsPerPage = 20): ArrayPaginator|QueryResultPaginator
     {
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;

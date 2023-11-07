@@ -247,26 +247,26 @@ class AnsuchenController extends BaseController
         }
         if (isset($arguments['saveAndStammdaten'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/?id=10");
+            $this->redirectToPageId(10);
         }
         if (isset($arguments['saveAndTrainer'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/?id=12");
+            $this->redirectToPageId(12);
         }
         if (isset($arguments['saveAndStandorte'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/?id=11");
+            $this->redirectToPageId(11);
         }
         if (isset($arguments['saveAndStandorteOhne'])) {
-            $this->redirectToUri("/?id=11");
+            $this->redirectToPageId(11);
         }
         if (isset($arguments['saveAndBerater'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/?id=13");
+            $this->redirectToPageId(13);
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            $this->redirectToUri("/?id=18");
+            $this->redirectToPageId(18);
         }
         if (isset($arguments['saveAndEinreichen'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
@@ -280,19 +280,19 @@ class AnsuchenController extends BaseController
         $arguments = $this->request->getArguments();
 
         if (isset($arguments['saveAndTrainer'])) {
-            $this->redirectToUri("/?id=12");
+            $this->redirectToPageId(12);
         }
         if (isset($arguments['saveAndStandorte'])) {
-            $this->redirectToUri("/?id=11");
+            $this->redirectToPageId(11);
         }
         if (isset($arguments['saveAndBerater'])) {
-            $this->redirectToUri("/?id=13");
+            $this->redirectToPageId(13);
         }
         if (isset($arguments['saveAndStammdaten'])) {
-            $this->redirectToUri("/?id=10");
+            $this->redirectToPageId(10);
         }
         if (isset($arguments['saveAndVerantwortliche'])) {
-            $this->redirectToUri("/?id=18");
+            $this->redirectToPageId(18);
         }
         $this->redirect('list');
     }

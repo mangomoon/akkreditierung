@@ -74,12 +74,12 @@ class TrainerBegutachtungController extends BaseController
         $this->trainerRepository->forcePersist();
         $this->addFlashMessage('Begutachtung gespeichert');
         // $this->redirect('show', null, null, ['ansuchen' => $ansuchen, 'trainer' => $trainer]);
-        $this->redirectToUri("/?id=217");
+        $this->redirectToPageId(217);
     }
 
     public function abbrechenAction(Trainer $trainer) {
         $this->trainerRepository->setUnGutachterLockedAndPersist($trainer);
-        $this->redirectToUri("/?id=217");
+        $this->redirectToPageId(217);
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void

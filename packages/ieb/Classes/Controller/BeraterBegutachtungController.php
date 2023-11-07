@@ -72,12 +72,12 @@ class BeraterBegutachtungController extends BaseController
         $this->beraterRepository->setUnGutachterLockedAndPersist($berater);
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
-        $this->redirectToUri("/?id=217");
+        $this->redirectToPageId(217);
     }
 
     public function abbrechenAction(Berater $berater) {
         $this->beraterRepository->setUnGutachterLockedAndPersist($berater);
-        $this->redirectToUri("/?id=217");
+        $this->redirectToPageId(217);
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
