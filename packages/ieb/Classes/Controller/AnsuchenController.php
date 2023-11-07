@@ -33,8 +33,7 @@ class AnsuchenController extends BaseController
 
     public function listAction(): ResponseInterface
     {
-        $ansuchen = $this->ansuchenRepository->getAllEditableForTr();
-        //$ansuchen = $this->ansuchenRepository->getAll();
+        $ansuchen = $this->ansuchenRepository->getAll();
         $this->view->assign('ansuchen', $ansuchen);
         $stammdaten = $this->stammdatenRepository->getLatest();
         $pid = $stammdaten->getPid();

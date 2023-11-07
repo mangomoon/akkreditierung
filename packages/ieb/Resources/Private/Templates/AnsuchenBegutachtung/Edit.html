@@ -586,7 +586,7 @@
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: {f:if(condition: '{ansuchen.pruefbescheidCheck}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: {f:if(condition: '{ansuchen.pruefbescheidCheck}==1', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.pruefbescheid_check}"><span class="vorher-knopf">geändert</span></f:if></p>
 
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
@@ -739,7 +739,7 @@
                         </div>
                         <f:if condition="{ansuchen.typ}==1"><p>Einzelunterricht zum Lerneinstieg in der Basisbildung  wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p></f:if>
                             
-                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.fernlehre}"><span class="vorher-knopf">geändert</span></f:if></p>
                             <div class="abstand-mittel"></div>
                         
 
@@ -855,7 +855,7 @@
                             <div class="abstand-gross"></div>
                             <label>Kinderbetreuung</label>
                                 <p>
-                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                                    Im Bildungsangebot wird bei Nachfrage Kinderbetreuung angeboten: {f:if(condition: '{ansuchen.kinderbetreuung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}  <f:if condition="{diff.kinderbetreuung}"><span class="vorher-knopf">geändert</span></f:if>
                                 </p>
                         </div>
                     </div>
@@ -889,7 +889,7 @@
                 </div>
 
             </div>
-
+                        
             <f:for each="{verantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
@@ -903,7 +903,7 @@
                             </f:if>
                         </f:for>
 
-
+                        {ieb:ifDiff(diff:diff,field:'copy_verantwortliche_mail/{p.uid}/email')}
 
 
                         <div class="abstand-klein"></div>
@@ -1085,7 +1085,7 @@
                 <div class="row">
                     <div class="links col-7">
                         <f:if condition="{ansuchen.pruefbescheidDatei} && {ansuchen.typ}==2">
-                            <p>Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde: {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                            <p>Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde: {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}  <f:if condition="{diff.erklaerungd2}"><span class="vorher-knopf">geändert</span></f:if></p>
                         </f:if>
                         
                         <div class="erlaeuterung">
