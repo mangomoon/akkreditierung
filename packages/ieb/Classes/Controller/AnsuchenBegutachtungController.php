@@ -252,6 +252,8 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnung2('');
         $ansuchen->setReviewVerrechnungCheck1(false);
         $ansuchen->setReviewVerrechnungCheck2(false);
+        $ansuchen->setStatusAgEins(0);
+        $ansuchen->setStatusAgZwei(0);
         $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();

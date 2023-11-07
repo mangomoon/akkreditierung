@@ -20,16 +20,16 @@
                 <tbody>
                 <f:for each="{ansuchen}" as="item">
                     <tr>
-                        <td>{item.name}</td>
-                        <td>{item.nummer}</td>
-                        <td>{item.status}</td>
+                        <td>{item.name} [{item.uid}]</td>
+                        <td>{item.nummer} ({item.version})</td>
+                        <td>{item.status} <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action></td>
                     </tr>
                 </f:for>
                 </tbody>
             </table>
         </f:then>
         <f:else>
-            <p>Leider keine Ansuchen hier</p>
+            <p>Keine Ansuchen vorhanden</p>
         </f:else>
     </f:if>
 </f:section>

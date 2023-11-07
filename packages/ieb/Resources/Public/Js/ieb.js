@@ -957,13 +957,6 @@ function qualifikationPsaSprache() {
 
     // ######################################## SUBMIT UND (!) FORM Modal schliessen
 
-     $('#submit').on('submit', function (e) {
-        $.post('tx_ieb_ansuchenbegutachtung[save]', $(this).serialize(), function(data) {
-            // console.log("success!");
-          $('#positionForm').closest(".ui-dialog-content").dialog("close");
-        }, "html");
-        return false;
-      });
 
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
@@ -1065,8 +1058,11 @@ function qualifikationPsaSprache() {
 
     });
 
-    $("#trainerbegutachtung").submit(function(e) {
-        
+    // $("#trainerbegutachtung").submit(function(e) {
+        $("#trainerbegutachtung").on( "submit", function() {
+
+
+
         var t = $('#trainerId').val();
         var as = $("#trainerbegutachtung input.c21b:checked").val();
         var bs = $("#trainerbegutachtung input.c22b:checked").val();
@@ -1156,14 +1152,13 @@ function qualifikationPsaSprache() {
             //console.log("np: " + np)
             //console.log("cs: " +cs+" ds: "+ds);
         }
-
+        
         //console.log(as,bs);
-        //e.preventDefault(); // Achtung!
-        // ############### SAR Ende
-
-        parent.$.fancybox.close();
-
+        // parent.jQuery.fancybox.fadeOut( 2000 );
+        // parent.jQuery.fancybox.close();
+       
     });
+
 
     $('fancyclose').click(function(){
         parent.$.fancybox.close();
@@ -1172,6 +1167,7 @@ function qualifikationPsaSprache() {
      $(".req").focus(function() {
          $(this).removeClass("req-leer");
      });
+
      $(".reqselect").focus(function() {
          $(this).removeClass("req-leer");
      });
