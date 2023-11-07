@@ -174,7 +174,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
         $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
-        $this->ansuchenRepository->setUnGutachterLockedAndPersist($ansuchen);
+        $this->ansuchenRepository->unsetGutachterLockedAndPersist($ansuchen);
         $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen));
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();

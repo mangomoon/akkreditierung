@@ -63,7 +63,7 @@ class TrainerBegutachtungController extends BaseController
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
 
         $trainer->setGutachterLockedBy(0);
-        $this->trainerRepository->setUnGutachterLockedAndPersist($trainer);
+        $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
         
         foreach ($values as $property => $value) {
             $setter = 'set' . ucfirst($property);
@@ -78,7 +78,7 @@ class TrainerBegutachtungController extends BaseController
     }
 
     public function abbrechenAction(Trainer $trainer) {
-        $this->trainerRepository->setUnGutachterLockedAndPersist($trainer);
+        $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
         $this->redirectToPageId(217);
     }
 

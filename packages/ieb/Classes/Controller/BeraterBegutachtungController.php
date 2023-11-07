@@ -69,14 +69,14 @@ class BeraterBegutachtungController extends BaseController
             $berater->$setter($value);
         }
 
-        $this->beraterRepository->setUnGutachterLockedAndPersist($berater);
+        $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
         $this->redirectToPageId(217);
     }
 
     public function abbrechenAction(Berater $berater) {
-        $this->beraterRepository->setUnGutachterLockedAndPersist($berater);
+        $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
         $this->redirectToPageId(217);
     }
 
