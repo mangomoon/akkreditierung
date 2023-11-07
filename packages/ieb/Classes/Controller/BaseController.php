@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Controller;
 
+use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Berater;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
+use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\ExtensionConfiguration;
@@ -224,4 +228,24 @@ class BaseController extends ActionController
         return $paginator;
     }
 
+    protected function addNewComment(Ansuchen|Stammdaten|Berater|Trainer $object, string $fieldName): void
+    {
+        $commentFieldGetter = 'get' . ucfirst($fieldName . 'Step');
+        $comment = $object->$commentFieldGetter();
+        if (!$comment) {
+            return;
+        }
+        $getterForData = 'get' . ucfirst($fieldName) . 'Data';
+        $comments = $object->$getterForData();
+        $comments[] = [
+            'user' => self::getCurrentUserName(),
+            'user_uid' => self::getCurrentUserId(),
+            'comment' => $comment,
+            'date' => time(),
+        ];
+        $setter = 'set' . ucfirst($fieldName);
+        $setterStep = 'set' . ucfirst($fieldName) . 'Step';
+        $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
+        $object->$setterStep('');
+    }
 }

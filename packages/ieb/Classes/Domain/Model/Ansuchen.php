@@ -22,6 +22,8 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
+    use CommentTrait;
+
     /**
      * @var \DateTime
      */
@@ -2931,28 +2933,6 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @param string $input
-     */
-    protected function getConvertedJson(string $input): array
-    {
-        $final = [];
-        foreach ((array)json_decode($input, true) as $item) {
-            if (is_array($item)) {
-                $final[] = $item;
-            }
-        }
-        return $final;
-    }
-
-    /**
-     * @param string $input
-     */
-    protected function getConvertedJsonSimple(string $input)
-    {
-        return json_decode($input, true);
-    }
-
-    /**
      * Returns the reviewB1CommentTr
      *
      * @return string reviewB1CommentTr
@@ -4007,5 +3987,4 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->akkreditierungPdf = $akkreditierungPdf;
     }
-
 }

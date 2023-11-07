@@ -46,7 +46,7 @@ class TrainerBegutachtungController extends BaseController
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
             'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
-            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId)
+            'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId),
         ]);
         return $this->htmlResponse();
     }
@@ -55,21 +55,23 @@ class TrainerBegutachtungController extends BaseController
     {
         // check
         $ansuchen = $this->ansuchenRepository->findByIdentifier($begutachtung->ansuchenId);
+        /** @var Trainer $trainer */
         $trainer = $this->trainerRepository->findByIdentifier($begutachtung->trainerId);
         if (!$trainer || !$ansuchen || $ansuchen->getPid() !== $trainer->getPid()) {
             return $this->htmlResponse('Nicht erlaubt!');
         }
-        
+
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
 
         $trainer->setGutachterLockedBy(0);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
-        
+
         foreach ($values as $property => $value) {
             $setter = 'set' . ucfirst($property);
             $trainer->$setter($value);
         }
 
+        $this->commentVersioning($trainer);
         $this->trainerRepository->update($trainer);
         $this->trainerRepository->forcePersist();
         $this->addFlashMessage('Begutachtung gespeichert');
@@ -77,9 +79,17 @@ class TrainerBegutachtungController extends BaseController
         $this->redirectToPageId(217);
     }
 
-    public function abbrechenAction(Trainer $trainer) {
+    public function abbrechenAction(Trainer $trainer)
+    {
+        $this->commentVersioning($trainer);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
         $this->redirectToPageId(217);
+    }
+
+    private function commentVersioning(Trainer $trainer): void
+    {
+        $this->addNewComment($trainer, 'reviewC2BabiCommentInternal');
+        $this->addNewComment($trainer, 'reviewC2PsaCommentInternal');
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void

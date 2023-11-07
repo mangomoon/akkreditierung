@@ -268,27 +268,6 @@ class AnsuchenBegutachtungController extends BaseController
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');
     }
 
-    protected function addNewComment(Ansuchen|Stammdaten|Berater|Trainer $object, string $fieldName): void
-    {
-        $commentFieldGetter = 'get' . ucfirst($fieldName . 'Step');
-        $comment = $object->$commentFieldGetter();
-        if (!$comment) {
-            return;
-        }
-        $getterForData = 'get' . ucfirst($fieldName) . 'Data';
-        $comments = $object->$getterForData();
-        $comments[] = [
-            'user' => self::getCurrentUserName(),
-            'user_uid' => self::getCurrentUserId(),
-            'comment' => $comment,
-            'date' => time(),
-        ];
-        $setter = 'set' . ucfirst($fieldName);
-        $setterStep = 'set' . ucfirst($fieldName) . 'Step';
-        $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
-        $object->$setterStep('');
-    }
-
     public function initializeUpdateAction()
     {
         $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewTotalFrist');

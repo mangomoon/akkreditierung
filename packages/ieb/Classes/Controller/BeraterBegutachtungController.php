@@ -7,6 +7,7 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto;
 use GeorgRinger\Ieb\Domain\Model\Berater;
+use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
@@ -69,6 +70,7 @@ class BeraterBegutachtungController extends BaseController
             $berater->$setter($value);
         }
 
+        $this->commentVersioning($berater);
         $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');
@@ -76,8 +78,14 @@ class BeraterBegutachtungController extends BaseController
     }
 
     public function abbrechenAction(Berater $berater) {
+        $this->commentVersioning($berater);
         $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
         $this->redirectToPageId(217);
+    }
+
+    private function commentVersioning(Berater $berater): void
+    {
+        $this->addNewComment($berater, 'reviewC3CommentInternal');
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void

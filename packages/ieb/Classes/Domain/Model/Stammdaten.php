@@ -20,6 +20,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
 class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
+    use CommentTrait;
+
     /**
      * name
      *
@@ -1021,20 +1023,6 @@ class Stammdaten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getReviewA2CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewA2CommentInternal);
-    }
-
-    /**
-     * @param string $input
-     */
-    protected function getConvertedJson(string $input): array
-    {
-        $final = [];
-        foreach ((array)json_decode($input, true) as $item) {
-            if (is_array($item)) {
-                $final[] = $item;
-            }
-        }
-        return $final;
     }
 
     /**

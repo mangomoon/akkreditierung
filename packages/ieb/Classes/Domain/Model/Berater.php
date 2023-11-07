@@ -20,6 +20,8 @@ namespace GeorgRinger\Ieb\Domain\Model;
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
+    use CommentTrait;
+
     /**
      * @var \DateTime
      */
@@ -672,4 +674,10 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->gutachterLockedBy = $gutachterLockedBy;
     }
+
+    public function getReviewC3CommentInternalData()
+    {
+        return $this->getConvertedJson($this->reviewC3CommentInternal);
+    }
+
 }
