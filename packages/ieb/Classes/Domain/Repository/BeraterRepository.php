@@ -56,21 +56,19 @@ class BeraterRepository extends BaseRepository
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_berater.*')
             ->addSelectLiteral('CONCAT(tx_ieb_domain_model_berater.vorname, \' \', tx_ieb_domain_model_berater.nachname) as beraterName')
-            ->addSelect('tx_ieb_domain_model_berater.review_c3_status')
-            ->addSelect('tx_ieb_domain_model_berater.review_c32_status')
             ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
             ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
             ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
             ->addSelect('stammdaten.name as stammdatenName')
             ->addSelect('stammdaten.markenname as stammdatenMarkenname')
             ->from('tx_ieb_domain_model_berater')
-            ->rightJoin(
+            ->leftJoin(
                 'tx_ieb_domain_model_berater',
                 'tx_ieb_ansuchen_berater_mm',
                 'tx_ieb_ansuchen_berater_mm',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_berater_mm.uid_foreign'))
             )
-            ->rightJoin(
+            ->leftJoin(
                 'tx_ieb_ansuchen_berater_mm',
                 'tx_ieb_domain_model_ansuchen',
                 'tx_ieb_domain_model_ansuchen',
@@ -93,7 +91,6 @@ class BeraterRepository extends BaseRepository
                 ),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.deleted', 0),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
             )
             ->groupBy('tx_ieb_domain_model_berater.uid', 'tx_ieb_domain_model_ansuchen.nummer')

@@ -65,13 +65,13 @@ class TrainerRepository extends BaseRepository
             ->addSelect('stammdaten.name as stammdatenName')
             ->addSelect('stammdaten.markenname as stammdatenMarkenname')
             ->from('tx_ieb_domain_model_trainer')
-            ->rightJoin(
+            ->leftJoin(
                 'tx_ieb_domain_model_trainer',
                 'tx_ieb_ansuchen_trainer_mm',
                 'tx_ieb_ansuchen_trainer_mm',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
             )
-            ->rightJoin(
+            ->leftJoin(
                 'tx_ieb_ansuchen_trainer_mm',
                 'tx_ieb_domain_model_ansuchen',
                 'tx_ieb_domain_model_ansuchen',
@@ -96,7 +96,6 @@ class TrainerRepository extends BaseRepository
                 ),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.deleted', 0),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
             )
             ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')
