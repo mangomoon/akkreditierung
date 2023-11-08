@@ -243,7 +243,7 @@
                                             <span class="titleview knopfrund achtung-gelb " title="Begutachtung durch {gutachter2.firstName} {gutachter2.LastName} erfolgt, meine steht noch aus."></span>
                                         </f:if>
                                         <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
-                                            <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==215 || {item.status}==235 ">
+                                            <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==170 || {item.status}==215 || {item.status}==235 ">
                                                 <f:then>
                                                     <span class="titleview knopfrund auflage-1 " title="Begutachtung abgeschlossen."></span>
                                                 </f:then>
@@ -259,7 +259,7 @@
                                                 <span class="titleview knopfrund achtung-gelb " title="Begutachtung steht noch aus."></span>
                                             </f:then>
                                             <f:else>
-                                                <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==215 || {item.status}==235 ">
+                                                <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==170 || {item.status}==215 || {item.status}==235 ">
                                                     <f:then>
                                                         <span class="titleview knopfrund auflage-1 " title="Begutachtung abgeschlossen."></span>
                                                     </f:then>
@@ -281,12 +281,12 @@
                                         <span class="titleview knopfrund achtung-gelb " title="Begutachtung durch {gutachter1.firstName} {gutachter1.LastName} erfolgt, meine steht noch aus."></span>
                                     </f:if>
                                     <f:if condition="({item.statusAgEins} > 0) && ({item.statusAgZwei} > 0)">
-                                        <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==215 || {item.status}==235 ">
+                                        <f:if condition="{item.status}==40 || {item.status}==90 || {item.status}==170 || {item.status}==215 || {item.status}==235 ">
                                             <f:then>
                                                 <span class="titleview knopfrund auflage-1 " title="Begutachtung abgeschlossen."></span>
                                             </f:then>
                                             <f:else>
-                                                <span class="titleview knopfrund auflage-1 " title="Begutachtung erfolgt, bitte Begutachtung abschließen.3"></span>
+                                                <span class="titleview knopfrund auflage-1 " title="Begutachtung erfolgt, bitte Begutachtung abschließen."></span>
                                             </f:else>
                                         </f:if>
                                     </f:if>    

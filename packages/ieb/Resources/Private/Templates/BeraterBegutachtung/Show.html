@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="komm-int">
-                        <f:for each="{reviewC3CommentInternalData}" as="comment">
+                        <f:for each="{berater.reviewC3CommentInternalData}" as="comment">
                             <p>
                                 <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
                             </p>

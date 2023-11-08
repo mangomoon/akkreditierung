@@ -88,7 +88,8 @@ class AnsuchenBegutachtungController extends BaseController
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
      */
     public function begutachtungsSchlussAction(Ansuchen $ansuchen, int $gutachtervorschlag = 0): ResponseInterface
-    {          
+    {   
+        $ansuchen->setGutachterLockedBy(0);
         $ansuchen->setStatus($gutachtervorschlag);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();

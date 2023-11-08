@@ -939,8 +939,33 @@ table.ansuchenliste td.ansuchenliste_tr.agentscheid {
     background-color: var(--training);
 }
 
+table.zuteilung {
+    margin: 40px 0;
+    width: 100%;
+}
+table.zuteilung td {
+    padding: 10px 3px 8px 0;
+    border-bottom: solid 1px var(--f2);
+    border-top: solid 1px var(--f2);
+    vertical-align: middle;
+}
+table.zuteilung td.zuteilungradio {
+    width: 40px;
+    text-align: center;
+}
+table.zuteilung td.zuteilungradio input[type=radio] {
+    /* border: 0px; */
+    width: 100%;
+    height: 1em;
+}
 
-
+table.zuteilung td.zuteilungname {
+    padding-left: 12px;
+    font-weight: 500;
+}
+table.zuteilung td.zuteilungtext {
+    font-size: 0.9em;
+}
 
 /* ANSUCHEN NEW/EDIT */
 

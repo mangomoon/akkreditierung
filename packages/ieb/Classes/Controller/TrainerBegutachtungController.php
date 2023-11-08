@@ -81,7 +81,7 @@ class TrainerBegutachtungController extends BaseController
 
     public function abbrechenAction(Trainer $trainer)
     {
-        $this->commentVersioning($trainer);
+        // $this->commentVersioning($trainer);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
         $this->redirectToPageId(217);
     }

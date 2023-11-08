@@ -32,7 +32,7 @@ $columns = [
     ],
 
     'ausschluss' => [
-        'label' => '???',
+        'label' => 'Ausschluss',
         'config' => [
             'type' => 'text',
 
@@ -45,3 +45,4 @@ $columns = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $columns);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', 'tr_admin', '', 'after:username');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', 'archiviert', '', 'after:tr_admin');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', 'ausschluss', '', 'after:archiviert');

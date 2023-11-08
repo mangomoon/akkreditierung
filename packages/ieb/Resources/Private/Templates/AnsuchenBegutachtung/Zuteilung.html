@@ -14,11 +14,48 @@
         <f:form action="zuteilungPersist" object="{zuteilung}" name="zuteilung">
             <f:form.hidden property="ansuchenId" />
 
+            
+
             <div class="kriterium">
+                <table class="zuteilung">
+                    <!-- <tr>
+                        <td class="zuteilungradio">
+                            1
+                        </td>
+                        <td class="zuteilungradio">
+                            2
+                        </td>
+                        <td class="zuteilungname">
+
+                        </td>
+                        <td class="zuteilungtext">
+                            Ausschluss
+                        </td>
+                    </tr> -->
+                    
+                    <f:for each="{alleGutachter}" as="g">
+                    <tr>
+                        <td class="zuteilungradio">
+                            <f:form.radio property="gutachter1" class="reqcheckbox" id="gutachter1" value="{g.uid}" />
+                        </td>
+                        <td class="zuteilungradio">
+                            <f:form.radio property="gutachter2" class="reqcheckbox" id="gutachter2" value="{g.uid}" />
+                        </td>
+                        <td class="zuteilungname">
+                            {g.firstName} {g.lastName}
+                        </td>
+                        <td class="zuteilungtext">
+                            <f:format.nl2br>{g.ausschluss}</f:format.nl2br>
+                        </td>
+                    </tr>
+                     
+                </f:for>
+                </table>
+                
+
+
             <div class="kriteriumteil">
                 <h4>Gutachter 1</h4>
-                <f:form.select property="gutachter1" options="{alleGutachter}" optionLabelField="nameForSelect"
-                            optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
                 <p>
                     <label for="reviewVerrechnungCheck1">
                     <f:form.checkbox property="reviewVerrechnungCheck1" id="reviewVerrechnungCheck1" value="1" /> verrechnungsrelevante Zuteilung
@@ -30,8 +67,6 @@
 
             <div class="kriteriumteil">
                 <h4>Gutachter 2</h4>
-                <f:form.select property="gutachter2" options="{alleGutachter}" optionLabelField="nameForSelect"
-                            optionValueField="uid" prependOptionLabel="Wählen" prependOptionValue="0"/>
                 <p>
                     <label for="reviewVerrechnungCheck2">
                     <f:form.checkbox property="reviewVerrechnungCheck2" id="reviewVerrechnungCheck2" value="1" /> verrechnungsrelevante Zuteilung
