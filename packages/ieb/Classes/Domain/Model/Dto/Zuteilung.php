@@ -7,6 +7,8 @@ namespace GeorgRinger\Ieb\Domain\Model\Dto;
 class Zuteilung
 {
 
+
+
     /** @var int */
     protected int $gutachter1 = 0;
     /** @var int */
@@ -25,6 +27,7 @@ class Zuteilung
 
     /** @var string */
     protected $reviewVerrechnung2 = '';
+
 
 
     public function getGutachter1(): int

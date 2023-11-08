@@ -298,10 +298,10 @@
                             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                                 <f:if condition="{item.gutachter1}">
                                     <f:then>
-                                        <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="Zuteilung bearbeiten" class="knopf-quadratisch zuteilung-edit"></f:link.action>
+                                        <f:link.action action="zuteilung" arguments="{ansuchen : item, user : currentUser.uid}" title="Zuteilung bearbeiten" class="knopf-quadratisch zuteilung-edit"></f:link.action>
                                     </f:then>
                                     <f:else>
-                                        <f:link.action action="zuteilung" arguments="{ansuchen : item}" title="Zuteilung" class="knopf-quadratisch zuteilung"></f:link.action>
+                                        <f:link.action action="zuteilung" arguments="{ansuchen : item, user : currentUser.uid}" title="Zuteilung" class="knopf-quadratisch zuteilung"></f:link.action>
                                     </f:else>
                                 </f:if>
                             </f:if>

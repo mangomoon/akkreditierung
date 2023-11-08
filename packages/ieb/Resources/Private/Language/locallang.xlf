@@ -1807,7 +1807,7 @@
 				<source>Akkreditiert mit Auflagen</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.150" resname="ansuchen.status.150">
-				<source>Eingereicht zur Nachakkreditierung oder Auflagenerfüllung</source>
+				<source>Eingereicht zur Nachakkreditierung</source>
 			</trans-unit>
 			<trans-unit id="ansuchen.status.155" resname="ansuchen.status.155">
 				<source>Begutachtet nach Auflagenerfüllung</source>

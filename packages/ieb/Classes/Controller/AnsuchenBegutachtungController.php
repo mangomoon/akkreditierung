@@ -171,6 +171,10 @@ class AnsuchenBegutachtungController extends BaseController
                 $ansuchen->setGutachter2($gutachter2);
             }
         }
+        // if($zuteilung->getUser()==$ansuchen->getGutachterLockedBy()) {
+        //     $ansuchen->setGutachterLockedBy(0);
+        // }
+        $ansuchen->setGutachterLockedBy(0);
         $ansuchen->setReviewVerrechnungCheck1($zuteilung->getReviewVerrechnungCheck1());
         $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
@@ -245,7 +249,7 @@ class AnsuchenBegutachtungController extends BaseController
         
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
-
+        $ansuchen->setGutachterLockedBy(0);
         // Zuteilung löschen
         $ansuchen->setGutachter1(NULL);
         $ansuchen->setGutachter2(NULL);

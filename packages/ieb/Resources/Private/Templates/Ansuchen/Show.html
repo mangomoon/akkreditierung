@@ -372,7 +372,7 @@
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
 
-                        <p>Einzelunterricht wird angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
+                        <p>Es wird Einzelunterricht zum Lerneinstieg angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
 
                         <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                         
@@ -402,7 +402,6 @@
 
 
                             <p class="hinweis">Hinweis: Beschreibung max. 1 Seite </p>
-                            <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.</p>
                         </div>
                         <f:if condition="{ansuchen.typ}==2">
                             <p>Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird: {f:if(condition: '{ansuchen.erklaerungTeilB}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>

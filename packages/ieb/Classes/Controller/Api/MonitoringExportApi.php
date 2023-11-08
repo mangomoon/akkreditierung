@@ -34,6 +34,8 @@ class MonitoringExportApi implements RequestHandlerInterface
             $ansuchen['bundesland'] = $allCounties[$ansuchen['bundesland']] ?? 'error';
             $ansuchen['status'] = $allStatus[$ansuchen['status']] ?? 'error';
             $ansuchen['stammdaten'] = $this->fetchStammdaten($ansuchen['pid']);
+
+            
         }
         return $data;
     }

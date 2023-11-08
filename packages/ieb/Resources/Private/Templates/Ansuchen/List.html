@@ -281,16 +281,31 @@
                                                 </td>
                                             </f:then>
                                             <f:else>
-                                                <!-- mango !!!!!  -->
-                                                <td class="td-knopf"><div class="locked knopf-quadratisch" title="In Begutachtung"></div></td>
+                                                <f:if condition="{item.status}>799">
+                                                    <f:then>
+                                                        <td class="td-knopf"><span class="titleview knopfrund achtung-gelb" title="Ansuchen, die den Status 'nicht akkreditiert' erhalten haben, können nicht bearbeitet werden."></span></td>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <td class="td-knopf"><div class="locked knopf-quadratisch" title="In Begutachtung"></div></td>
+                                                    </f:else>
+                                                </f:if>
+                                                
                                             </f:else>
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:link.action action="clone" arguments="{ansuchen : item}" class="knopf-quadratisch clone" title="Ansuchen kopieren"></f:link.action>
+                                        <f:if condition="{item.status}>799">
+                                                    <f:then>
+                                                        &nbsp;
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:link.action action="clone" arguments="{ansuchen : item}" class="knopf-quadratisch clone" title="Ansuchen kopieren"></f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                        
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.einReichbarDurchTr}">
+                                        <f:if condition="{item.einReichbarDurchTr} || {item.status}>799">
                                             <f:link.action action="archive" arguments="{ansuchen : item}" class="knopf-quadratisch hide" title="Ansuchen archivieren"></f:link.action>
                                         </f:if>
                                     </td>
@@ -298,6 +313,9 @@
                                         <f:if condition="{item.status}>90">
                                             <!-- <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="PDF TEST">X</f:link.action> -->
                                             <f:link.typolink parameter="{item.akkreditierungPdf.originalResource.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</f:link.typolink>
+                                        </f:if>
+                                        <f:if condition="{item.pp3}">
+                                            <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
