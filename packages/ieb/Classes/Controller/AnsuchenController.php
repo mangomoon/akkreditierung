@@ -145,12 +145,13 @@ class AnsuchenController extends BaseController
             $this->ansuchenRepository->update($newAnsuchen);
         } else {
             $ansuchen->setEinreichDatum(new \DateTime());
+            
             $ansuchen->setStatusAfterReview(0);
             $ansuchen->setLockedBy(0);
-            // foreach(['uebersichtText', 'zielgruppenAnsprache', 'didaktikKommentar', 'beratungText', 'reviewC3CommentTr', 'pruefbescheid', 'kooperation'] as $field) {
-            //     $setter = 'set' .ucfirst($field);
-            //     $ansuchen->$setter('');
-            // }
+
+            $ansuchen->setUpcomingStatus(0);
+            $ansuchen->setNotitzzettel('');
+
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 0:
@@ -176,6 +177,9 @@ class AnsuchenController extends BaseController
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
                     break;
             }
+            
+            
+
             $stammdaten = $this->stammdatenRepository->getLatest();
             $this->ansuchenRepository->updateJsonRelations($ansuchen, $stammdaten);
             $this->ansuchenRepository->update($ansuchen);

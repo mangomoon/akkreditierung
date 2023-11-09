@@ -1927,6 +1927,38 @@ span.person-statuskugel.status-3 {
     border: solid 2px #fff;
     float: left;
 }
+.personen, .personen .kriteriumtitel, .personen .begutachtung-kriterium, .personen .begutachtung-kriterium .links, #ansuchen-show .personen .begutachtung-kriterium .rechts, .personen .trainerqualifikationsbegutachtung {
+    background: var(--f0);
+    font-size: 0.9em;
+}
+
+.person summary {
+    background: var(--f0);
+    font-size: 1.1em;
+    font-weight: 800;
+    padding: 4px 6px;
+    color: var(--f4);
+    list-style: none;
+    cursor: pointer;
+}
+.person details > summary::before {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    content: url('../Img/Quadrat_show.svg');
+    display: inline-block;
+}
+.person details[open] > summary::before {
+    content: url('../Img/close2.svg');
+}
+.person details[open] > summary {
+    font-size: 1.5em;
+}
+.person details .trainer-show {
+    background: var(--f0);
+    padding-left: 30px;
+}
+
 
 /* Schlusskommentar */
 .schlusskommentar {

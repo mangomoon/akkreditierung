@@ -16,7 +16,9 @@
     </f:if>
     <div id="ansuchen-show">
 
-
+<f:if condition="!{editableByTr}">
+    <f:variable name="AnsuchenInBegutachtung">1</f:variable>
+</f:if>
 
 <div class="begutachtung-kopf row">
     <div class="col">
@@ -141,12 +143,14 @@
                     </f:if>
                     </div>
                     <div class="rechts col-5">
-
+  
+                    
                         <f:render partial="Ansuchen/Kommentare" arguments="{
                             status:ansuchen.reviewB1Status,
                             extern:ansuchen.reviewB1CommentTr,
                             intern:ansuchen.reviewB1CommentInternalData,
-                            user:currentUser.usergroup
+                            user:currentUser.usergroup,
+                            inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                     </div>
                 
@@ -205,7 +209,8 @@
                             status:ansuchen.reviewB14Status,
                             extern:ansuchen.reviewB14CommentTr,
                             intern:ansuchen.reviewB14CommentInternalData,
-                            user:currentUser.usergroup
+                            user:currentUser.usergroup,
+                            inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                     </div>
 
@@ -270,7 +275,8 @@
                             extern:ansuchen.reviewB15CommentTr,
                             intern:ansuchen.reviewB15CommentInternalData,
                             user:currentUser.usergroup,
-                            pruefbescheid:ansuchen.reviewFristPruefbescheid
+                            pruefbescheid:ansuchen.reviewFristPruefbescheid,
+                            inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                     </div>
 
@@ -317,7 +323,8 @@
                             status:ansuchen.reviewB2Status,
                             extern:ansuchen.reviewB2CommentTr,
                             intern:ansuchen.reviewB2CommentInternalData,
-                            user:currentUser.usergroup
+                            user:currentUser.usergroup,
+                            inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                     </div>
 
@@ -437,7 +444,8 @@
                             status:ansuchen.reviewB22Status,
                             extern:ansuchen.reviewB22CommentTr,
                             intern:ansuchen.reviewB22CommentInternalData,
-                            user:currentUser.usergroup
+                            user:currentUser.usergroup,
+                            inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                     </div>
                 </div>
@@ -486,7 +494,8 @@
                         status:ansuchen.reviewB23Status,
                         extern:ansuchen.reviewB23CommentTr,
                         intern:ansuchen.reviewB23CommentInternalData,
-                        user:currentUser.usergroup
+                        user:currentUser.usergroup,
+                        inBegutachtung:AnsuchenInBegutachtung,
                         }" />
                 </div>
 
@@ -550,7 +559,8 @@
                         status:ansuchen.reviewC1Status,
                         extern:ansuchen.reviewC1CommentTr,
                         intern:ansuchen.reviewC1CommentInternalData,
-                        user:currentUser.usergroup
+                        user:currentUser.usergroup,
+                        inBegutachtung:AnsuchenInBegutachtung,
                         }" />
                 </div>
             </div>
@@ -574,39 +584,50 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="links col-7">
+            <div class="row personen">
+                <div class="col">
                     <div class="erlaeuterung">
                         <div class="showinfobox" id="c-2-hilfe">
                             <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
                             <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
+
                     <f:for each="{trainer}" as="t">
-                    <div class="row person" id="trainer-{t.uid}">
-                        <div class="links col-9">
-                            {t.fullName} &nbsp;&nbsp;
-                        </div>
-                        <div class="rechts col-3 td-knopf">
-                            <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                                <f:then>
-                                    <f:link.action pageUid="213" action="show" target="_blank" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
-                                </f:then>
-                                <f:else>
-                                    <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
-                                </f:else>
-                            </f:if>
+                        <div class="row person" id="trainer-{t.uid}">
+                            <div class="col-12">
+                                <details>
+                                <summary>{t.fullName}</summary>
+                                <f:render partial="Trainer/Properties" arguments="{trainer: t}"/>
+                                </details>
+                            </div>
                             
+
+                            <!-- <div>
+                                <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                                    <f:then>
+                                        <f:link.action pageUid="213" action="show" target="_blank" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </div> -->
                         </div>
-                    </div>
-                </f:for>
+                    </f:for>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="links col-7">
                 </div>
                 <div class="rechts col-5">
                     <f:render partial="Ansuchen/Kommentare" arguments="{
                         status:ansuchen.reviewC2Status,
                         extern:ansuchen.reviewC2CommentTr,
                         intern:ansuchen.reviewC2CommentInternalData,
-                        user:currentUser.usergroup
+                        user:currentUser.usergroup,
+                        inBegutachtung:AnsuchenInBegutachtung,
                         }" />
                 </div>
             </div>
@@ -631,9 +652,8 @@
                         </div>
         
                     </div>
-                    <div class="row">
-                        <div class="links col-7">
-                            <div class="kriteriumteil">
+                    <div class="row personen">
+                        <div class="col">
                                 <div class="erlaeuterung">
                                     <div class="showinfobox" id="c-3-hilfe">
                                         <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
@@ -643,12 +663,14 @@
                                     </div>
                                 </div>
                                 <f:for each="{berater}" as="t">
-                                    <div class="row person" id="berater-{t.uid}">
-                                        <div class="links col-9 td-knopf">
-                                            {t.fullName}  &nbsp;&nbsp;&nbsp;&nbsp;
-                                            
+                                    <div class="row person" id="trainer-{t.uid}">
+                                        <div class="col-12">
+                                            <details>
+                                            <summary>{t.fullName}</summary>
+                                            <f:render partial="Berater/Properties" arguments="{berater: t}"/>
+                                            </details>
                                         </div>
-                                        <div class="rechts col-3 td-knopf">
+                                        <!-- <div class="rechts col-3 td-knopf">
                                             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                                                 <f:then>
                                                     <f:link.action pageUid="213" action="show" target="_blank" controller="Berater" arguments="{berater : t.uid}" class="knopf-quadratisch show" title="Berater:in zeigen"></f:link.action>
@@ -658,19 +680,22 @@
                                                 </f:else>
                                             </f:if>
                                             
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </f:for>
                             </div>
 
                         </div>
-
+                    <div class="row">
+                        <div class="links col-7">
+                        </div>
                         <div class="rechts col-5">
                             <f:render partial="Ansuchen/Kommentare" arguments="{
                                 status:ansuchen.reviewC3Status,
                                 extern:ansuchen.reviewC3CommentTr,
                                 intern:ansuchen.reviewC3CommentInternalData,
-                                user:currentUser.usergroup
+                                user:currentUser.usergroup,
+                                inBegutachtung:AnsuchenInBegutachtung,
                                 }" />
                         </div>
                     </div>

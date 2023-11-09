@@ -1,8 +1,12 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="show_kommentare">
-
-<f:if condition="{status}">
+<f:if condition="{inBegutachtung} && {user}==1">
+    <f:then>
+        <label>Ansuchen in Begutachtung</label>
+    </f:then>
+    <f:else>
+        <f:if condition="{status}">
     <label>status</label>
     <f:switch expression="{status}">
         <f:case value="1"><p><span class="knopfrund auflage-1"></span> &nbsp;&nbsp;ok</p></f:case>
@@ -21,6 +25,7 @@
 </f:if>
 
 
+
 <f:if condition="(({user}==2) || ({user}==3)) && {intern}">
     <label>Interner Kommentar</label>
     <f:for each="{intern}" as="comment">
@@ -29,6 +34,9 @@
         </p>
     </f:for>
 </f:if>
+    </f:else>
+</f:if>
+
 
 </div>
 </html>
