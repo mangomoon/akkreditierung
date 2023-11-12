@@ -32,6 +32,79 @@
             <p>Keine Ansuchen vorhanden</p>
         </f:else>
     </f:if>
+
+
+
+    <h1>AKKREDITIERTE ANSUCHEN</h1>
+
+
+    <f:form method="get" action="index" name="filter" object="{filter}">
+        <f:form.hidden property="submitted" value="1"/>
+
+
+        <f:if condition="{userIsPartOfGs}"></f:if>
+            <div>
+                <label for="trPid">
+                    Träger
+                    <f:form.select property="trPid" id="trPid" options="{filter.tr}" prependOptionValue="0" prependOptionLabel=""/>
+                </label>
+            </div>
+        
+        <f:form.submit class="knopf-s" value="Anzeigen"/>
+
+    </f:form>
+    <div class="abstand-gross"></div>
+
+
+
+    <f:if condition="{filter.submitted}">
+        <f:if condition="{items}">
+            <f:then>
+                <table>
+                    <tbody>
+                    <f:for each="{pagination.paginator.paginatedItems}" as="item">
+                        {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+
+                        <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
+                            <table class="ansuchenliste archiv">
+                                <tr>
+                                    <td colspan="3" class="ansuchenliste_tr">
+                                        Name des Organisation
+                                        <f:if condition="{stammdaten.markenname}">
+                                            <f:then>
+                                                <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                            </f:then>
+                                            <f:else>
+                                                <span class="fett">{stammdaten.name}</span>
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ansuchenliste_ansuchennr">
+                                        {item.nummer}
+                                    </td>
+                                    <td>
+                                        <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                        <f:if condition="{item.status}==100 || {item.status}==140">
+                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date> | 
+                                        </f:if>
+                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> am <f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date>
+                                    </td>
+                                    <td class="td-knopf">
+                                        <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </f:for>
+                <f:render partial="Pagination" arguments="{pagination: pagination.pagination, pages: pagination.pages, paginator: pagination.paginator}" />
+            </f:then>
+            <f:else>
+                <div>Keine Ansuchen passen auf die Filter</div>
+            </f:else>
+        </f:if>
+    </f:if>
 </f:section>
 
 </html>

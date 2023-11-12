@@ -41,7 +41,6 @@ class AnsuchenController extends BaseController
             'stammdaten' => $stammdaten,
             'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
         ]);
-        // $this->view->assign('stammdaten', $stammdaten);
 
         return $this->htmlResponse();
     }

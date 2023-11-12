@@ -37,32 +37,56 @@
     <div class="col">
         <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
         </p>
-        <p class="rechtsbuendig"><f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
+        <p class="rechtsbuendig">
+            <f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+                <f:then>
+                    <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" />
+                </f:then>
+                <f:else>
+                    In Begutachtung
+                </f:else>
+            </f:if>
+        </p>
     </div>
 </div>
 <div class="abstand-gross"></div>
+
 
 <f:if condition="!{ansuchen.versionActive}">
     <h4>ARCHIV: Version {ansuchen.version}, eingereicht am <f:format.date format='d.m.Y'>{ansuchen.einreichDatum}</f:format.date>, Akkreditierungsentscheidung (<f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" />) am <f:format.date format='d.m.Y'>{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></h4>
     <div class="abstand-gross"></div>
 </f:if>
 
-<f:if condition="{ansuchen.status}>30">
+<f:if condition="{ansuchen.pp3}==1 && {ansuchen.version}==0">
+    <f:then>
+        <div class="row kriterium gutachten"><p>Das Ansuchen stammt aus der 3. Programmperiode und wurde in diesem System noch nicht eingereicht. Erst nach einer ersten Einreichung und Begutachtung, können Details eingesehen werden.</p></div>
+    </f:then>
+    <f:else>
+        
 
-   <div class="row kriterium gutachten">
-    <div class="col-3">
-        <p><label>Akkreditierungsentscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
-    </div>
-    <div class="col-3">
-        <p><label>Entscheidung/Status: </label> <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
-    </div>
-    <div class="col-6">
-        <f.if condition="{ansuchen.reviewTotalCommentTr}">
-            <p><label>Kommentar: </label>
-            <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-        </f.if>
-    </div>
-</div> 
+
+<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+    <f:then>
+        <div class="row kriterium gutachten">
+            <div class="col-3">
+                <p><label>Akkreditierungsentscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
+            </div>
+            <div class="col-3">
+                <p><label>Entscheidung/Status: </label> <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
+            </div>
+            <div class="col-6">
+                <f.if condition="{ansuchen.reviewTotalCommentTr}">
+                    <p><label>Kommentar: </label>
+                    <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                </f.if>
+            </div>
+        </div> 
+    </f:then>
+    <f:else>
+
+    </f:else>
+
+   
 </f:if>
 
 <!-- Stammdaten -->
@@ -598,7 +622,7 @@
                             <div class="col-12">
                                 <details>
                                 <summary>{t.fullName}</summary>
-                                <f:render partial="Trainer/Properties" arguments="{trainer: t}"/>
+                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ}"/>
                                 </details>
                             </div>
                             
@@ -740,6 +764,7 @@
             </div>
         </div>
         </div>
-
+    </f:else>
+</f:if>
 </f:section>
 </html>

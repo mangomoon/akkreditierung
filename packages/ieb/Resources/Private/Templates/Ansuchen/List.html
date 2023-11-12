@@ -9,7 +9,7 @@
 
     <f:if condition="{ansuchen -> f:count()} > 2">
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton titleview" title="letzte Begutachtung" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div> <div id="bearbeitbar" class="sortierbutton">bearbeitbar</div>
         </div>
     </f:if>
 
@@ -27,7 +27,7 @@
                         
 
 
-                        <div class="ansuchenlistenitem" data-name="{item.name}" data-nummer="{item.nummer}"  data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungDatum}</f:format.date>">
+                        <div class="ansuchenlistenitem" data-name="{item.name}" data-nummer="{item.nummer}" data-bearbeitbar="{f:if(condition:'{item.editableByTr}',then:'1', else:'2')}"  data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungEntscheidungDatum}</f:format.date>">
 
 
                             <table class="ansuchenliste">
@@ -258,7 +258,29 @@
                                                 <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                                             </f:then>
                                             <f:else>
-                                                In Begutachtung
+                                                <f:if condition="{item.status}>790">
+                                                    <f:then>
+                                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        In Begutachtung 
+                                                <f:switch expression="{item.status}">
+                                                    <f:case value="30">(Neueinreichung)</f:case>
+                                                    <f:case value="40">(Neueinreichung)</f:case>
+                                                    <f:case value="85">(nach Nachbesserungsauftrag)</f:case>
+                                                    <f:case value="90">(nach Nachbesserungsauftrag)</f:case>
+                                                    <f:case value="160">(war »akkreditiert«)</f:case>
+                                                    <f:case value="170">(war »akkreditiert«)</f:case>
+                                                    <f:case value="210">(war »akkreditiert«)</f:case>
+                                                    <f:case value="215">(war »akkreditiert«)</f:case>
+                                                    <f:case value="150">(war »akkreditiert mit Auflagen«)</f:case>
+                                                    <f:case value="155">(war »akkreditiert mit Auflagen«)</f:case>
+                                                    <f:case value="230">(war »akkreditiert mit Auflagen«)</f:case>
+                                                    <f:case value="235">(war »akkreditiert mit Auflagen«)</f:case>
+                                                </f:switch>
+                                                    </f:else>
+                                                </f:if>
+                                                
                                             </f:else>
                                         </f:if>
                                         
