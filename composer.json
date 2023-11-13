@@ -14,6 +14,7 @@
         "b13/container": "^1.4",
         "b13/menus": "^0.3.0",
         "bithost-gmbh/pdfviewhelpers": "^2.5",
+        "cweagans/composer-patches": "^1.7",
         "drlenux/array-smart-diff": "^1.0",
         "georgringer/ieb": "@dev",
         "georgringer/news": "^10",
@@ -74,7 +75,8 @@
         },
         "allow-plugins": {
             "typo3/cms-composer-installers": true,
-            "typo3/class-alias-loader": true
+            "typo3/class-alias-loader": true,
+            "cweagans/composer-patches": true
         }
     },
     "extra": {
@@ -90,7 +92,14 @@
             "post-autoload-dump": [
                 "@folder-structure"
             ]
-        }
+        },
+        "patches": {
+            "typo3/cms-core": {
+                "https://github.com/TYPO3/typo3/commit/9d044bad26b3f114a93bd8e0146436c275d265d4": "./patches/core-smtp-settings.patch"
+            }
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true
     },
     "scripts": {
         "folder-structure": [
