@@ -27,6 +27,7 @@ class BeraterBegutachtungController extends BaseController
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\BeraterRepository $beraterRepository;
     protected Repository\TextbausteineRepository $textbausteineRepository;
+    protected array $commentFields = ['reviewC3CommentInternal'];
 
 
     public function showAction(Berater $berater, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\BeraterBegutachtung $begutachtung = null): ResponseInterface
@@ -66,8 +67,10 @@ class BeraterBegutachtungController extends BaseController
 
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
         foreach ($values as $property => $value) {
-            $setter = 'set' . ucfirst($property);
-            $berater->$setter($value);
+            if (!in_array($property, $this->commentFields, true)) {
+                $setter = 'set' . ucfirst($property);
+                $berater->$setter($value);
+            }
         }
 
         $this->commentVersioning($berater);
@@ -85,7 +88,9 @@ class BeraterBegutachtungController extends BaseController
 
     private function commentVersioning(Berater $berater): void
     {
-        $this->addNewComment($berater, 'reviewC3CommentInternal');
+        foreach ($this->commentFields as $field) {
+            $this->addNewComment($berater, $field);
+        }
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void

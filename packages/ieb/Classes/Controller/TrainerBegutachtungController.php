@@ -10,6 +10,7 @@ use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository;
 use GeorgRinger\Ieb\Service\DiffService;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 /**
@@ -26,6 +27,7 @@ class TrainerBegutachtungController extends BaseController
     protected Repository\AnsuchenRepository $ansuchenRepository;
     protected Repository\TrainerRepository $trainerRepository;
     protected Repository\TextbausteineRepository $textbausteineRepository;
+    protected array $commentFields = ['reviewC2BabiCommentInternal', 'reviewC2PsaCommentInternal'];
 
     public function showAction(Trainer $trainer, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\TrainerBegutachtung $begutachtung = null): ResponseInterface
     {
@@ -65,10 +67,11 @@ class TrainerBegutachtungController extends BaseController
 
         $trainer->setGutachterLockedBy(0);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
-
         foreach ($values as $property => $value) {
-            $setter = 'set' . ucfirst($property);
-            $trainer->$setter($value);
+            if (!in_array($property, $this->commentFields, true)) {
+                $setter = 'set' . ucfirst($property);
+                $trainer->$setter($value);
+            }
         }
 
         $this->commentVersioning($trainer);
@@ -88,8 +91,9 @@ class TrainerBegutachtungController extends BaseController
 
     private function commentVersioning(Trainer $trainer): void
     {
-        $this->addNewComment($trainer, 'reviewC2BabiCommentInternal');
-        $this->addNewComment($trainer, 'reviewC2PsaCommentInternal');
+        foreach ($this->commentFields as $commentField) {
+            $this->addNewComment($trainer, $commentField);
+        }
     }
 
     public function injectAnsuchenRepository(Repository\AnsuchenRepository $ansuchenRepository): void
