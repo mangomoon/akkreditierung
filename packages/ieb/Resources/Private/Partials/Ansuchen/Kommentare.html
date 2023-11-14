@@ -7,9 +7,19 @@
     </f:then>
     <f:else>
         <f:if condition="{status}">
-    <label>status</label>
+    <label>status </label>
     <f:switch expression="{status}">
         <f:case value="1"><p><span class="knopfrund auflage-1"></span> &nbsp;&nbsp;ok</p></f:case>
+        <f:case value="2">
+            <f:if condition="({user}==2) || ({user}==3)">
+                <p><span class="knopfrund achtung-gelb"></span> &nbsp;&nbsp;fraglich</p>
+            </f:if>
+        </f:case>
+        <f:case value="3">
+            <f:if condition="({user}==2) || ({user}==3)">
+                <p><span class="knopfrund achtung-gelb"></span> &nbsp;&nbsp;plenum</p>
+            </f:if>
+        </f:case>
         <f:case value="4"><p><span class="knopfrund achtung-orange"></span> &nbsp;&nbsp;nicht-ok</p></f:case>
     </f:switch>
 </f:if>

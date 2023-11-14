@@ -103,6 +103,26 @@ class AnsuchenBegutachtungController extends BaseController
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung->copyToAnsuchen($ansuchen);
         $ansuchen->setGutachterLockedBy(0);
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['saveAndIndex'])) {
+
+            try {
+                $this->addNewComment($stammdaten, 'reviewA1CommentInternal');
+                $this->addNewComment($stammdaten, 'reviewA2CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
+                $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
+            } catch (\JsonException $e) {
+            }
+        }
+
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $begutachtung->copyToStammdaten($stammdaten, $ansuchen);
@@ -123,6 +143,8 @@ class AnsuchenBegutachtungController extends BaseController
             }
         }
         
+            
+
         $this->angebotVerantwortlichRepository->forcePersist();
         //$this->addFlashMessage('Ansuchen wurde ergänzt');
 
@@ -132,6 +154,20 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('list');
         }
         $this->redirectTo($ansuchen->getUid());
+    }
+
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['save']) && $recordId > 0) {
+            $this->redirect('edit', null, null, ['ansuchen' => $recordId]);
+        }
+        if (isset($arguments['saveAndIndex'])) {
+            $this->ansuchenRepository->removeLockByUser($recordId);
+            
+            $this->redirect('list');
+        }
+        $this->redirect('list');
     }
 
     public function zuteilungAction(Ansuchen $ansuchen)
@@ -186,19 +222,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
-    protected function redirectTo(int $recordId): void
-    {
-        $arguments = $this->request->getArguments();
-        if (isset($arguments['save']) && $recordId > 0) {
-            $this->redirect('edit', null, null, ['ansuchen' => $recordId]);
-        }
-        if (isset($arguments['saveAndIndex'])) {
-            $this->ansuchenRepository->removeLockByUser($recordId);
-
-            $this->redirect('list');
-        }
-        $this->redirect('list');
-    }
+    
 
     public function unlockAction(Ansuchen $ansuchen): void
     {
@@ -236,9 +260,9 @@ class AnsuchenBegutachtungController extends BaseController
             $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
         } catch (\JsonException $e) {
         }
-        if($ansuchen->getUpcomingStatus() == 820) {
-            $ansuchen->setArchiviert() === 1;
-        }
+        // if($ansuchen->getUpcomingStatus() == 820) {
+        //     $ansuchen->setArchiviert() === 1;
+        // }
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
         

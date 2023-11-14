@@ -103,10 +103,11 @@ plugin.tx_ieb.settings.static.bundesland {
     2 = Kärnten
     3 = Niederösterreich
     4 = Oberösterreich
-    5 = Steiermark
-    6 = Tirol
-    7 = Vorarlberg
-    8 = Wien
+    5 = Salzburg
+    6 = Steiermark
+    7 = Tirol
+    8 = Vorarlberg
+    9 = Wien
 } 
 plugin.tx_ieb.settings.static.rechtsform {
     10 = Aktiengesellschaft (AG)

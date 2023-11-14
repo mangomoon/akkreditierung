@@ -364,7 +364,6 @@ function oeffnenBeraterBegutachtung() {
     }
     if (s < 3) {
         $('.komm-ext').hide();
-        $('')
     } else {
         $('.komm-ext').show();
     }
@@ -826,7 +825,7 @@ function qualifikationPsaSprache() {
 
         if($(this).parent().hasClass('checked')) {
             $(this).parent().removeClass('checked');
-            $(this).parent().parent().find('.nan').prop('checked', true);
+            $(this).parent().parent().find('.nan input').prop('checked', true);
             if ($(this).parent().hasClass('nicht-ok')) {
                 neu=" ";
                 t = $(this).parent().parent().parent().find('.extern').val();

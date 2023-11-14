@@ -2,12 +2,27 @@
 <f:section name="Subject">Fristenüberwachung</f:section>
 <f:section name="Title">Folgende Datensätze sind offen</f:section>
 <f:section name="Main">
-    <p>
-        Hallo xyz,<br>
-        folgende Fristen sind für folgendes Ansuchen "{ansuchen.name} [{ansuchen.nummer}]"
-    </p>
-    <p>
-        <f:if condition="{records.stammdaten}">
+
+    <p>Sehr geehrte Damen und Herren!</p>
+    
+    <!-- öCert -->
+    <f:if condition="{records.stammdaten}">
+        <p>Mit der Akkreditierung Ihres/r Bildungsangebote/s sind befristete Nachweise verbunden.</p>
+        <f:if condition="heute + 170d < öcertfrist">
+            <f:then>
+                <p>Ihr Ö-Cert läuft am ###### ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6 Monaten.</p>
+                <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie ein Ansuchen zur Nachakkreditierung ein.</p>
+            </f:then>
+            <f:else>
+                <p>Ihr Ö-Cert ist am ###### abgelaufen und nicht mehr gültig.</p>
+                <p>Laden Sie umgehend ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie ein Ansuchen zur Nachakkreditierung ein.</p>
+            </f:else>
+        </f:if>
+        
+        <p>Bitte beachten Sie, dass die rechtzeitige und vollständige Erfüllung der Akkreditierungsanforderungen die Bedingung für die Aufrechterhaltung der Akkreditierung Ihres/r Bildungsangebot/s darstellt.</p>
+
+        <p></p>
+
             <h3>Stammdaten</h3>
             <f:for each="{records.stammdaten}" key="type" as="items">
                 <h4>Typ {type}</h4>
@@ -16,16 +31,31 @@
                     {item.name} [{item.uid}]<br>
                 </f:for>
             </f:for>
-        </f:if>
-        <f:if condition="{records.ansuchen}">
-            <h3>Ansuchen</h3>
-            <f:for each="{records.ansuchen}" key="type" as="items">
-                <h4>Typ {type}</h4>
+            
+    </f:if>
 
-                <f:for each="{items}" as="item">
-                    {item.name} [{item.uid}]<br>
-                </f:for>
+
+
+
+    <f:if condition="{records.ansuchen}">
+        <p>Ihr Bildungsangebot Nr. {ansuchen.nummer} – {ansuchen.name} wurde zur Bearbeitung zurückgestellt und muss bis zum ###### erneut zur Nachakkreditierung eingereicht werden.</p>
+        <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
+
+        <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
+            
+
+        <f:for each="{records.ansuchen}" key="type" as="items">
+            <h4>Typ {type}</h4>
+
+            <f:for each="{items}" as="item">
+                {item.name} [{item.uid}]<br>
             </f:for>
-        </f:if>
-    </p>
+        </f:for>
+    </f:if>
+    
+
+    <p>Bei Fragen steht Ihnen die Geschäftsstelle der Initiative Erwachsenenbildung gerne zur Verfügung.</p>
+
+    <f:render partial="Notification/Fuss" />
+
 </f:section>

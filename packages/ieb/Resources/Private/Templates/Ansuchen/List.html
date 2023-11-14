@@ -9,7 +9,7 @@
 
     <f:if condition="{ansuchen -> f:count()} > 2">
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton titleview" title="letzte Begutachtung" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div> <div id="bearbeitbar" class="sortierbutton">bearbeitbar</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div class="sortierbutton" id="nummer">Nummer</div> <div class="sortierbutton titleview" title="letzte Begutachtung" id="status">Status</div> <div id="name" class="sortierbutton">Name</div> <div id="date" class="sortierbutton">Datum</div> 
         </div>
     </f:if>
 
@@ -23,11 +23,29 @@
                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.lockedBy)}</f:variable>
 
 
-
+                        
                         
 
 
-                        <div class="ansuchenlistenitem" data-name="{item.name}" data-nummer="{item.nummer}" data-bearbeitbar="{f:if(condition:'{item.editableByTr}',then:'1', else:'2')}"  data-status="{item.status}" data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungEntscheidungDatum}</f:format.date>">
+                        <div class="ansuchenlistenitem" data-name="{item.name}" data-nummer="{item.nummer}" data-status='
+                        
+                        <f:if condition="{item.editableByTr}">
+                            <f:then>
+                                <f:switch expression="{item.status}">
+                                    <f:case value="200">100</f:case>
+                                    <f:case value="220">100</f:case>
+                                    <f:case value="80">150</f:case>
+                                    <f:case value="100">200</f:case>
+                                    <f:case value="140">200</f:case>
+                                    <f:case value="10">300</f:case>
+                                    <f:case value="20">300</f:case>
+                                    <f:case value="820">500</f:case>
+                                </f:switch>
+                            </f:then>
+                            <f:else>
+                                9900
+                            </f:else>
+                        </f:if>' data-date="<f:format.date format='Y.m.d. H.i.s.'>{item.akkreditierungEntscheidungDatum}</f:format.date>">
 
 
                             <table class="ansuchenliste">
@@ -47,7 +65,6 @@
     <f:variable name="bsar">0</f:variable>
 
     <f:for each="{trainer}" as="t">
-
         <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: t)}</f:variable>
 
         <f:if condition="{item.typ}==1">
@@ -66,6 +83,24 @@
             <f:variable name="tsuir">1</f:variable>
         </f:if>
     </f:for>
+    <f:if condition="{tsarBabi} == 1 || {tsarPsa}==1">
+        <f:for each="{trainer}" as="t">
+            <f:if condition="{item.typ}==1">
+                <f:then>
+                    <f:if condition="{t.statusAfterReviewBabi} == 0">
+                        <f:variable name="tsarBabi">0</f:variable>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <f:if condition="{t.statusAfterReviewPsa} == 0">
+                        <f:variable name="tsarPsa">0</f:variable>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </f:for>
+    </f:if>
+    
+
     
     <f:for each="{berater}" as="b">
         <f:variable name="relationUsagesInReview">{ieb:relationUsedInReview(object: b)}</f:variable>
@@ -79,7 +114,17 @@
 
     
     <!-- ANSUCHEN -->
-    <f:if condition="{item.ok} && ({item.statusAfterReview}==0)">
+    <f:if condition="{item.status}==80 || {item.status}==200 || {item.status}==220 || ">
+        <f:then>
+            <f:if condition="{item.status}==80">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Nachbesserungsauftrag"></span>
+            </f:if>
+            <f:if condition="{item.status}==200 || {item.status}==220">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Bearbeitungsauftrag"></span>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{item.ok} && ({item.statusAfterReview}==0)">
         <span class="titleview knopfrund ok-grey" title="ANSUCHEN: Angaben sind vollständig"></span>
     </f:if>
     <f:if condition="!{item.ok} && ({item.statusAfterReview}==0)">
@@ -100,6 +145,9 @@
     <f:if condition="{item.statusAfterReview}==5">
         <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
     </f:if>
+        </f:else>
+    </f:if>
+    
 
 
     <!-- STAMMDATEN -->
@@ -262,21 +310,20 @@
                                                     <f:then>
                                                         <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
                                                     </f:then>
-                                                    <f:else>
-                                                        In Begutachtung 
+                                                    <f:else> 
                                                 <f:switch expression="{item.status}">
-                                                    <f:case value="30">(Neueinreichung)</f:case>
-                                                    <f:case value="40">(Neueinreichung)</f:case>
-                                                    <f:case value="85">(nach Nachbesserungsauftrag)</f:case>
-                                                    <f:case value="90">(nach Nachbesserungsauftrag)</f:case>
-                                                    <f:case value="160">(war »akkreditiert«)</f:case>
-                                                    <f:case value="170">(war »akkreditiert«)</f:case>
-                                                    <f:case value="210">(war »akkreditiert«)</f:case>
-                                                    <f:case value="215">(war »akkreditiert«)</f:case>
-                                                    <f:case value="150">(war »akkreditiert mit Auflagen«)</f:case>
-                                                    <f:case value="155">(war »akkreditiert mit Auflagen«)</f:case>
-                                                    <f:case value="230">(war »akkreditiert mit Auflagen«)</f:case>
-                                                    <f:case value="235">(war »akkreditiert mit Auflagen«)</f:case>
+                                                    <f:case value="30">In Begutachtung (Neueinreichung)</f:case>
+                                                    <f:case value="40">In Begutachtung (Neueinreichung)</f:case>
+                                                    <f:case value="85">In Begutachtung (nach Nachbesserungsauftrag)</f:case>
+                                                    <f:case value="90">In Begutachtung (nach Nachbesserungsauftrag)</f:case>
+                                                    <f:case value="160">akkreditiert (in Begutachtung)</f:case>
+                                                    <f:case value="170">akkreditiert (in Begutachtung)</f:case>
+                                                    <f:case value="210">akkreditiert (in Begutachtung)</f:case>
+                                                    <f:case value="215">akkreditiert (in Begutachtung)</f:case>
+                                                    <f:case value="150">akkreditiert mit Auflagen (in Begutachtung)</f:case>
+                                                    <f:case value="155">akkreditiert mit Auflagen (in Begutachtung)</f:case>
+                                                    <f:case value="230">akkreditiert mit Auflagen (in Begutachtung)</f:case>
+                                                    <f:case value="235">akkreditiert mit Auflagen (in Begutachtung)</f:case>
                                                 </f:switch>
                                                     </f:else>
                                                 </f:if>

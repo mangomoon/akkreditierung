@@ -46,10 +46,11 @@
 
         <p>Ihre eingereichten Änderungen wurden noch nicht akkreditiert. Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
     
-        <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-        <p>ETC.</p>
+        <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
+
+        <p>Ihre Akkreditierung bleibt bestehen.</p>
         
-    </f:if>
+        </f:if>
 
 
         <f:if condition="{ansuchen.status}==800">
