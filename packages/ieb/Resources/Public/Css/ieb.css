@@ -773,7 +773,7 @@ p.req-leer,
 .reqfile.req-leer input,
 input.req-leer,
 select.req-leer,
-textarea.req-leer {
+textarea.req-leer,p.checkleer {
     background-color: #fceaa1;
 }
 

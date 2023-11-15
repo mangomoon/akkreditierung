@@ -24,7 +24,7 @@
     <f:then>
 
     
-    <f:if condition="{ansuchen.pp3}">
+    <f:if condition="{ansuchen.pp3} && {ansuchen.version}==0">
         <f:then>
             <pdf:html autoHyphenation="1">
                 <style>
@@ -217,8 +217,9 @@
                 <li>mehr als 30% der Trainer/innen und/oder Berater/innen nicht mehr mit den bei der ersten Akkreditierung des Ansuchens angegebenen Personen ident sind. In diesem Fall ist die aktualisierte Auflistung sämtlicher Trainer/innen bzw. Berater/innen samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</li>
 
                 <li>projektleitende Person(en) wechseln. In diesem Fall sind die Angaben zur neuen verantwortlichen Person samt den erforderlichen Nachweisen zur Nachakkreditierung einzureichen.</li>
-
-                <li>wesentliche Änderungen des Angebots vorgenommen werden (Anzahl der Unterrichtseinheiten gesamt oder einzelner Module, Inhalte, Methoden u.ä.). In diesem Fall sind die Angaben zum veränderten Angebot bzw. die Neukonzeption zur Nachakkreditierung einzureichen, wobei die Änderungen deutlich kenntlich zu machen sind.</li>
+                <f:if condition="!({ansuchen.pp3} && {ansuchen.version}==0)">
+                    <li>wesentliche Änderungen des Angebots vorgenommen werden (Anzahl der Unterrichtseinheiten gesamt oder einzelner Module, Inhalte, Methoden u.ä.). In diesem Fall sind die Angaben zum veränderten Angebot bzw. die Neukonzeption zur Nachakkreditierung einzureichen, wobei die Änderungen deutlich kenntlich zu machen sind.</li>
+                </f:if>
 
                 <li>befristete Nachweise ablaufen (Ö-Cert, Bescheid zur Prüfungsberechtigung, u.a.). In diesem Fall sind die aktualisierten Nachweise vor dem Ablauftermin der im Ansuchen angegebenen Nachweise zur Nachakkreditierung einzureichen.</li>
 

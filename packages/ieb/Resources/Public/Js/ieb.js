@@ -41,9 +41,21 @@
          }
      });
 
+     if($('#qualifikationsnachweiseKommentar').val()!='') {
+            allesda = 1;
+            console.log("File: " + $(this).attr('class'));
+        } 
+
+
+     $('.reqcheckbox.req-leer').each(function() {
+        $(this).parent().addClass('checkleer');
+    });
+
+
+
      $('#ok').attr('value', allesda);
 
-     console.log("allesda = " + allesda);
+     //console.log("allesda = " + allesda);
  };
 
  // Vailidierung TRAINER
@@ -99,8 +111,8 @@
      validieren();
      $('.fehlt').each(function() {
          $(this).html("Daten fehlen!");
-         //allesda = 0;
      });
+
     //  console.log("Stammdaten: " + allesda);
      bb = 0;
      if ($('#bildungsbereich').hasClass('bb-1')) {
@@ -122,14 +134,14 @@
      }
 
     // Prüfbescheid Check Erklärung
-    if (($('.pruefjanein.ja').hasClass('checked')) && $('#erklaerungd2').not(':checked')) {
+    if (($('.pruefjanein.ja').hasClass('checked')) && !$('#erklaerungd2').is(':checked')) {
         //console.log("Erklärung Wuppe");
         $('#erklaerungd2').addClass('reqcheckbox');
         allesda=0;
     }
      
 
-    //  console.log("allesda ohne bb: " + allesda);
+      console.log("allesda ohne bb: " + allesda);
 
      var komp = 0;
      if ($('#kompetenz1').is(':checked')) {
@@ -743,11 +755,6 @@ function qualifikationPsaSprache() {
          }
      });
 
-     // ######################################## Form Ansuchen Beraterhinzufügen
-    //  $('.beraterwahl').click(function() {
-    //      $('#verhueller').show();
-    //      $('#beraterwahl').show();
-    //  });
 
      // ######################################## Form Ansuchen Babi/PSA
 

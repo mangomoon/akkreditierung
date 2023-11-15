@@ -125,26 +125,26 @@
         </f:then>
         <f:else>
             <f:if condition="{item.ok} && ({item.statusAfterReview}==0)">
-        <span class="titleview knopfrund ok-grey" title="ANSUCHEN: Angaben sind vollständig"></span>
-    </f:if>
-    <f:if condition="!{item.ok} && ({item.statusAfterReview}==0)">
-        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben sind unvollständig"></span>
-    </f:if>
-    <f:if condition="{item.statusAfterReview}==1">
-        <span class="titleview knopfrund auflage-1" title="ANSUCHEN: Begutachtung positiv"></span>
-    </f:if>
-    <f:if condition="{item.statusAfterReview}==2">
-        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
-    </f:if>
-    <f:if condition="{item.statusAfterReview}==3">
-        <span class="titleview knopfrund achtung-orange" title="ANSUCHEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
-    </f:if>
-    <f:if condition="{item.statusAfterReview}==4">
-        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
-    </f:if>
-    <f:if condition="{item.statusAfterReview}==5">
-        <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
-    </f:if>
+                <span class="titleview knopfrund ok-grey" title="ANSUCHEN: Angaben sind vollständig"></span>
+            </f:if>
+            <f:if condition="!{item.ok} && ({item.statusAfterReview}==0)">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben sind unvollständig"></span>
+            </f:if>
+            <f:if condition="{item.statusAfterReview}==1">
+                <span class="titleview knopfrund auflage-1" title="ANSUCHEN: Begutachtung positiv"></span>
+            </f:if>
+            <f:if condition="{item.statusAfterReview}==2">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+            </f:if>
+            <f:if condition="{item.statusAfterReview}==3">
+                <span class="titleview knopfrund achtung-orange" title="ANSUCHEN: Begutachtung negativ. Bearbeitung ist erforderlich"></span>
+            </f:if>
+            <f:if condition="{item.statusAfterReview}==4">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben bearbeitet. Neueinreichung ist möglicherweise erforderlich"></span>
+            </f:if>
+            <f:if condition="{item.statusAfterReview}==5">
+                <span class="titleview knopfrund achtung-gelb" title="ANSUCHEN: Angaben zu negativer Begutachtungen bearbeitet. Neueinreichung ist erforderlich"></span>
+            </f:if>
         </f:else>
     </f:if>
     
@@ -387,12 +387,10 @@
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.status}>90">
-                                            <!-- <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="PDF TEST">X</f:link.action> -->
-                                            <f:link.typolink parameter="{item.akkreditierungPdf.originalResource.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</f:link.typolink>
-                                        </f:if>
-                                        <f:if condition="{item.pp3}">
-                                            <f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
+                                        <f:if condition="{item.status}>90 && !({item.pp3} && {item.version}==0)">
+                                            <f:link.typolink parameter="{item.akkreditierungPdf.originalResource.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;
+                                        </f:link.typolink>
+                                        </f:if><f:if condition="{item.pp3} && {item.version}==0"><f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">

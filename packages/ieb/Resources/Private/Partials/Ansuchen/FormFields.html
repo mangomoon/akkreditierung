@@ -866,8 +866,8 @@
                             </f:for>
                         </div>
 
-                        <f:if condition="{ansuchen.pruefbescheidDatei}">
-                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="1" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                        <f:if condition="{ansuchen.pruefbescheidCheck}">
+                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="0" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>

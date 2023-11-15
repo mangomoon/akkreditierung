@@ -211,6 +211,7 @@ class AnsuchenRepository extends BaseRepository
             'erklaerungd2' => '0',
             'erklaerungd3' => '0',
             'erklaerungd5' => '0',
+            'statusAfterReview' => '0',
         ];
         $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
 
