@@ -192,6 +192,141 @@ class DiffService
                     if (isset($items[$k]['reviewC32Status'])) {
                         unset($items[$k]['reviewC32Status']);
                     }
+                    if (isset($items[$k]['reviewA1GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewA1GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewA2GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewA2GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewA1Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewA1Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewA2Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewA2Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewA1Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewA1Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewA2Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewA2Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB1GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB1GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB14GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB14GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB15GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB15GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB2GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB2GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB22GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB22GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB23GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewB23GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC1GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC1GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC2GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC3GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewTotalGsCommentInternalStep'])) {
+                        unset($items[$k]['reviewTotalGsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB1Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB1Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB14Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB14Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB15Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB15Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB2Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB2Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB22Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB22Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB23Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewB23Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC1Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC1Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC3Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewTotalAg1CommentInternalStep'])) {
+                        unset($items[$k]['reviewTotalAg1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB1Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB1Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB14Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB14Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB15Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB15Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB2Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB2Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB22Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB22Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewB23Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewB23Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC1Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC1Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC3Ag2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewTotalAg2CommentInternalStep'])) {
+                        unset($items[$k]['reviewTotalAg2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2BabiGsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC2BabiGsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2PsaGsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC2PsaGsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2BabiAg1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2BabiAg1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2PsaAg1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2PsaAg1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2BabiAg2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2BabiAg2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC2PsaAg2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC2PsaAg2CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3GsCommentInternalStep'])) {
+                        unset($items[$k]['reviewC3GsCommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3Ag1CommentInternalStep'])) {
+                        unset($items[$k]['reviewC3Ag1CommentInternalStep']);
+                }
+                if (isset($items[$k]['reviewC3Ag2CommentInternalStep'])) {
+                        unset($items[$k]['reviewC3Ag2CommentInternalStep']);
+                }
                 }
                 $row[$field] = $items;
             }
@@ -225,3 +360,6 @@ class DiffService
         return $result;
     }
 }
+
+
+
