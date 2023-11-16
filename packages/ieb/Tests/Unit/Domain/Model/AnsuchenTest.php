@@ -2380,6 +2380,636 @@ class AnsuchenTest extends UnitTestCase
     /**
      * @test
      */
+    public function getReviewB1GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB1GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB1GsCommentInternalStepForStringSetsReviewB1GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB1GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB14GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14GsCommentInternalStepForStringSetsReviewB14GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB14GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB1Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB1Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB1Ag1CommentInternalStepForStringSetsReviewB1Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB1Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB14Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14Ag1CommentInternalStepForStringSetsReviewB14Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB14Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB1Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB1Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB1Ag2CommentInternalStepForStringSetsReviewB1Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB1Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB1Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB14Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB14Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB14Ag2CommentInternalStepForStringSetsReviewB14Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB14Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB14Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15GsCommentInternalStepForStringSetsReviewB15GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB15GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB2GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB2GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB2GsCommentInternalStepForStringSetsReviewB2GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB2GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB2GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22GsCommentInternalStepForStringSetsReviewB22GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB22GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23GsCommentInternalStepForStringSetsReviewB23GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewB23GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC1GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC1GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1GsCommentInternalStepForStringSetsReviewC1GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC1GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC1GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2GsCommentInternalStepForStringSetsReviewC2GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC2GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3GsCommentInternalStepForStringSetsReviewC3GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC3GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewTotalGsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewTotalGsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalGsCommentInternalStepForStringSetsReviewTotalGsCommentInternalStep(): void
+    {
+        $this->subject->setReviewTotalGsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewTotalGsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15Ag1CommentInternalStepForStringSetsReviewB15Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB15Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB2Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB2Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB2Ag1CommentInternalStepForStringSetsReviewB2Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB2Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB2Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22Ag1CommentInternalStepForStringSetsReviewB22Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB22Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23Ag1CommentInternalStepForStringSetsReviewB23Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewB23Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC1Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC1Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1Ag1CommentInternalStepForStringSetsReviewC1Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC1Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC1Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2Ag1CommentInternalStepForStringSetsReviewC2Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3Ag1CommentInternalStepForStringSetsReviewC3Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewTotalAg1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewTotalAg1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalAg1CommentInternalStepForStringSetsReviewTotalAg1CommentInternalStep(): void
+    {
+        $this->subject->setReviewTotalAg1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewTotalAg1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB15Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB15Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB15Ag2CommentInternalStepForStringSetsReviewB15Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB15Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB15Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB2Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB2Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB2Ag2CommentInternalStepForStringSetsReviewB2Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB2Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB2Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB22Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB22Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB22Ag2CommentInternalStepForStringSetsReviewB22Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB22Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB22Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewB23Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewB23Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewB23Ag2CommentInternalStepForStringSetsReviewB23Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewB23Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewB23Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC1Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC1Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC1Ag2CommentInternalStepForStringSetsReviewC1Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC1Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC1Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2Ag2CommentInternalStepForStringSetsReviewC2Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3Ag2CommentInternalStepForStringSetsReviewC3Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3Ag2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewTotalAg2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewTotalAg2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewTotalAg2CommentInternalStepForStringSetsReviewTotalAg2CommentInternalStep(): void
+    {
+        $this->subject->setReviewTotalAg2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewTotalAg2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
     public function getVerantwortlicheReturnsInitialValueForAngebotVerantwortlich(): void
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

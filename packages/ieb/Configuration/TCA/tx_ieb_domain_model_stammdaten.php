@@ -12,11 +12,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,markenname,strasse,ort,seit,website,email,telefon,leitbild,qms_zertifikat,qualitaet_sicherung,qualitaet_personal,review_a1_comment_internal,review_a1_comment_tr,review_a1_comment_internal_step,review_a2_comment_internal,review_a2_comment_internal_step,review_a2_comment_tr',
+        'searchFields' => 'name,markenname,strasse,ort,seit,website,email,telefon,leitbild,qms_zertifikat,qualitaet_sicherung,qualitaet_personal,review_a1_comment_internal,review_a1_comment_tr,review_a1_comment_internal_step,review_a2_comment_internal,review_a2_comment_internal_step,review_a2_comment_tr,review_a1_gs_comment_internal_step,review_a2_gs_comment_internal_step,review_a1_ag1_comment_internal_step,review_a2_ag1_comment_internal_step,review_a1_ag2_comment_internal_step,review_a2_ag2_comment_internal_step',
         'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_stammdaten.gif'
     ],
     'types' => [
-        '1' => ['showitem' => 'name, markenname, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, qualitaet_sicherung, zertifikat_bis, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, locked_by, ok, weiterbildung_erklaerung, review_a1_status, review_a1_comment_internal, review_a1_comment_tr, review_a1_comment_internal_step, review_a2_status, review_a2_comment_internal, review_a2_comment_internal_step, review_a2_comment_tr, review_oecert_frist, review_oecert_frist_mail_sent14t, review_oecert_frist_mail_sent1t, status_after_review, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, markenname, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, qualitaet_sicherung, zertifikat_bis, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, locked_by, ok, weiterbildung_erklaerung, review_a1_status, review_a1_comment_internal, review_a1_comment_tr, review_a1_comment_internal_step, review_a2_status, review_a2_comment_internal, review_a2_comment_internal_step, review_a2_comment_tr, review_oecert_frist, review_oecert_frist_mail_sent14t, review_oecert_frist_mail_sent1t, status_after_review, review_a1_gs_comment_internal_step, review_a2_gs_comment_internal_step, review_a1_ag1_comment_internal_step, review_a2_ag1_comment_internal_step, review_a1_ag2_comment_internal_step, review_a2_ag2_comment_internal_step, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'hidden' => [
@@ -750,6 +750,78 @@ return [
                 'size' => 4,
                 'eval' => 'int',
                 'default' => 0
+            ]
+        ],
+        'review_a1_gs_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_gs_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_gs_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'review_a2_gs_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_gs_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_gs_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'review_a1_ag1_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_ag1_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_ag1_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'review_a2_ag1_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_ag1_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_ag1_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'review_a1_ag2_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_ag2_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a1_ag2_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
+            ]
+        ],
+        'review_a2_ag2_comment_internal_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_ag2_comment_internal_step',
+            'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.review_a2_ag2_comment_internal_step.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'default' => ''
             ]
         ],
     

@@ -19,7 +19,6 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
     use CommentTrait;
 
     /**
@@ -392,6 +391,48 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $gutachterLockedBy = 0;
+
+    /**
+     * reviewC2BabiGsCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2BabiGsCommentInternalStep = '';
+
+    /**
+     * reviewC2PsaGsCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2PsaGsCommentInternalStep = '';
+
+    /**
+     * reviewC2BabiAg1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2BabiAg1CommentInternalStep = '';
+
+    /**
+     * reviewC2PsaAg1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2PsaAg1CommentInternalStep = '';
+
+    /**
+     * reviewC2BabiAg2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC2BabiAg2CommentInternalStep = '';
+
+    /**
+     * reviewC2PsaAg2CommentInternalStep
+     *
+     * @var int
+     */
+    protected $reviewC2PsaAg2CommentInternalStep = 0;
 
     /**
      * Returns the nachname
@@ -1722,15 +1763,138 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->gutachterLockedBy = $gutachterLockedBy;
     }
-
     public function getReviewC2BabiCommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC2BabiCommentInternal);
     }
-
     public function getReviewC2PsaCommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC2PsaCommentInternal);
     }
-    
+
+    /**
+     * Returns the reviewC2BabiGsCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2BabiGsCommentInternalStep()
+    {
+        return $this->reviewC2BabiGsCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2BabiGsCommentInternalStep
+     *
+     * @param string $reviewC2BabiGsCommentInternalStep
+     * @return void
+     */
+    public function setReviewC2BabiGsCommentInternalStep(string $reviewC2BabiGsCommentInternalStep)
+    {
+        $this->reviewC2BabiGsCommentInternalStep = $reviewC2BabiGsCommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2PsaGsCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2PsaGsCommentInternalStep()
+    {
+        return $this->reviewC2PsaGsCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2PsaGsCommentInternalStep
+     *
+     * @param string $reviewC2PsaGsCommentInternalStep
+     * @return void
+     */
+    public function setReviewC2PsaGsCommentInternalStep(string $reviewC2PsaGsCommentInternalStep)
+    {
+        $this->reviewC2PsaGsCommentInternalStep = $reviewC2PsaGsCommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2BabiAg1CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2BabiAg1CommentInternalStep()
+    {
+        return $this->reviewC2BabiAg1CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2BabiAg1CommentInternalStep
+     *
+     * @param string $reviewC2BabiAg1CommentInternalStep
+     * @return void
+     */
+    public function setReviewC2BabiAg1CommentInternalStep(string $reviewC2BabiAg1CommentInternalStep)
+    {
+        $this->reviewC2BabiAg1CommentInternalStep = $reviewC2BabiAg1CommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2PsaAg1CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2PsaAg1CommentInternalStep()
+    {
+        return $this->reviewC2PsaAg1CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2PsaAg1CommentInternalStep
+     *
+     * @param string $reviewC2PsaAg1CommentInternalStep
+     * @return void
+     */
+    public function setReviewC2PsaAg1CommentInternalStep(string $reviewC2PsaAg1CommentInternalStep)
+    {
+        $this->reviewC2PsaAg1CommentInternalStep = $reviewC2PsaAg1CommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2BabiAg2CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC2BabiAg2CommentInternalStep()
+    {
+        return $this->reviewC2BabiAg2CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2BabiAg2CommentInternalStep
+     *
+     * @param string $reviewC2BabiAg2CommentInternalStep
+     * @return void
+     */
+    public function setReviewC2BabiAg2CommentInternalStep(string $reviewC2BabiAg2CommentInternalStep)
+    {
+        $this->reviewC2BabiAg2CommentInternalStep = $reviewC2BabiAg2CommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC2PsaAg2CommentInternalStep
+     *
+     * @return int
+     */
+    public function getReviewC2PsaAg2CommentInternalStep()
+    {
+        return $this->reviewC2PsaAg2CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC2PsaAg2CommentInternalStep
+     *
+     * @param int $reviewC2PsaAg2CommentInternalStep
+     * @return void
+     */
+    public function setReviewC2PsaAg2CommentInternalStep(int $reviewC2PsaAg2CommentInternalStep)
+    {
+        $this->reviewC2PsaAg2CommentInternalStep = $reviewC2PsaAg2CommentInternalStep;
+    }
 }

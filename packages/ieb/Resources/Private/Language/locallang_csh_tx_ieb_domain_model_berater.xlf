@@ -63,6 +63,15 @@
 			<trans-unit id="gutachter_locked_by.description" resname="gutachter_locked_by.description">
 				<source>gutachterLockedBy</source>
 			</trans-unit>
+			<trans-unit id="review_c3_gs_comment_internal_step.description" resname="review_c3_gs_comment_internal_step.description">
+				<source>reviewC3GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c3_ag1_comment_internal_step.description" resname="review_c3_ag1_comment_internal_step.description">
+				<source>reviewC3Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c3_ag2_comment_internal_step.description" resname="review_c3_ag2_comment_internal_step.description">
+				<source>reviewC3Ag2CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>

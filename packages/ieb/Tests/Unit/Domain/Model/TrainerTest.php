@@ -1035,4 +1035,130 @@ class TrainerTest extends UnitTestCase
 
         self::assertEquals(12, $this->subject->_get('gutachterLockedBy'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiGsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiGsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiGsCommentInternalStepForStringSetsReviewC2BabiGsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC2BabiGsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiGsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaGsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2PsaGsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaGsCommentInternalStepForStringSetsReviewC2PsaGsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC2PsaGsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaGsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiAg1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiAg1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiAg1CommentInternalStepForStringSetsReviewC2BabiAg1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2BabiAg1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiAg1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaAg1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2PsaAg1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaAg1CommentInternalStepForStringSetsReviewC2PsaAg1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2PsaAg1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2PsaAg1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2BabiAg2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC2BabiAg2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2BabiAg2CommentInternalStepForStringSetsReviewC2BabiAg2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2BabiAg2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC2BabiAg2CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC2PsaAg2CommentInternalStepReturnsInitialValueForInt(): void
+    {
+        self::assertSame(
+            0,
+            $this->subject->getReviewC2PsaAg2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC2PsaAg2CommentInternalStepForIntSetsReviewC2PsaAg2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC2PsaAg2CommentInternalStep(12);
+
+        self::assertEquals(12, $this->subject->_get('reviewC2PsaAg2CommentInternalStep'));
+    }
 }

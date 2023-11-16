@@ -19,7 +19,6 @@ namespace GeorgRinger\Ieb\Domain\Model;
  */
 class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
     use CommentTrait;
 
     /**
@@ -173,6 +172,27 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $gutachterLockedBy = 0;
+
+    /**
+     * reviewC3GsCommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3GsCommentInternalStep = '';
+
+    /**
+     * reviewC3Ag1CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3Ag1CommentInternalStep = '';
+
+    /**
+     * reviewC3Ag2CommentInternalStep
+     *
+     * @var string
+     */
+    protected $reviewC3Ag2CommentInternalStep = '';
 
     /**
      * __construct
@@ -674,10 +694,71 @@ class Berater extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->gutachterLockedBy = $gutachterLockedBy;
     }
-
     public function getReviewC3CommentInternalData()
     {
         return $this->getConvertedJson($this->reviewC3CommentInternal);
     }
 
+    /**
+     * Returns the reviewC3GsCommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC3GsCommentInternalStep()
+    {
+        return $this->reviewC3GsCommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC3GsCommentInternalStep
+     *
+     * @param string $reviewC3GsCommentInternalStep
+     * @return void
+     */
+    public function setReviewC3GsCommentInternalStep(string $reviewC3GsCommentInternalStep)
+    {
+        $this->reviewC3GsCommentInternalStep = $reviewC3GsCommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC3Ag1CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC3Ag1CommentInternalStep()
+    {
+        return $this->reviewC3Ag1CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC3Ag1CommentInternalStep
+     *
+     * @param string $reviewC3Ag1CommentInternalStep
+     * @return void
+     */
+    public function setReviewC3Ag1CommentInternalStep(string $reviewC3Ag1CommentInternalStep)
+    {
+        $this->reviewC3Ag1CommentInternalStep = $reviewC3Ag1CommentInternalStep;
+    }
+
+    /**
+     * Returns the reviewC3Ag2CommentInternalStep
+     *
+     * @return string
+     */
+    public function getReviewC3Ag2CommentInternalStep()
+    {
+        return $this->reviewC3Ag2CommentInternalStep;
+    }
+
+    /**
+     * Sets the reviewC3Ag2CommentInternalStep
+     *
+     * @param string $reviewC3Ag2CommentInternalStep
+     * @return void
+     */
+    public function setReviewC3Ag2CommentInternalStep(string $reviewC3Ag2CommentInternalStep)
+    {
+        $this->reviewC3Ag2CommentInternalStep = $reviewC3Ag2CommentInternalStep;
+    }
 }

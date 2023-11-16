@@ -348,6 +348,96 @@
 			<trans-unit id="pp3.description" resname="pp3.description">
 				<source>pp3</source>
 			</trans-unit>
+			<trans-unit id="review_b1_gs_comment_internal_step.description" resname="review_b1_gs_comment_internal_step.description">
+				<source>reviewB1GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b14_gs_comment_internal_step.description" resname="review_b14_gs_comment_internal_step.description">
+				<source>reviewB14GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b1_ag1_comment_internal_step.description" resname="review_b1_ag1_comment_internal_step.description">
+				<source>reviewB1Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b14_ag1_comment_internal_step.description" resname="review_b14_ag1_comment_internal_step.description">
+				<source>reviewB14Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b1_ag2_comment_internal_step.description" resname="review_b1_ag2_comment_internal_step.description">
+				<source>reviewB1Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b14_ag2_comment_internal_step.description" resname="review_b14_ag2_comment_internal_step.description">
+				<source>reviewB14Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b15_gs_comment_internal_step.description" resname="review_b15_gs_comment_internal_step.description">
+				<source>reviewB15GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b2_gs_comment_internal_step.description" resname="review_b2_gs_comment_internal_step.description">
+				<source>reviewB2GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b22_gs_comment_internal_step.description" resname="review_b22_gs_comment_internal_step.description">
+				<source>reviewB22GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b23_gs_comment_internal_step.description" resname="review_b23_gs_comment_internal_step.description">
+				<source>reviewB23GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c1_gs_comment_internal_step.description" resname="review_c1_gs_comment_internal_step.description">
+				<source>reviewC1GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_gs_comment_internal_step.description" resname="review_c2_gs_comment_internal_step.description">
+				<source>reviewC2GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c3_gs_comment_internal_step.description" resname="review_c3_gs_comment_internal_step.description">
+				<source>reviewC3GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_total_gs_comment_internal_step.description" resname="review_total_gs_comment_internal_step.description">
+				<source>reviewTotalGsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b15_ag1_comment_internal_step.description" resname="review_b15_ag1_comment_internal_step.description">
+				<source>reviewB15Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b2_ag1_comment_internal_step.description" resname="review_b2_ag1_comment_internal_step.description">
+				<source>reviewB2Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b22_ag1_comment_internal_step.description" resname="review_b22_ag1_comment_internal_step.description">
+				<source>reviewB22Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b23_ag1_comment_internal_step.description" resname="review_b23_ag1_comment_internal_step.description">
+				<source>reviewB23Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c1_ag1_comment_internal_step.description" resname="review_c1_ag1_comment_internal_step.description">
+				<source>reviewC1Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_ag1_comment_internal_step.description" resname="review_c2_ag1_comment_internal_step.description">
+				<source>reviewC2Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c3_ag1_comment_internal_step.description" resname="review_c3_ag1_comment_internal_step.description">
+				<source>reviewC3Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_total_ag1_comment_internal_step.description" resname="review_total_ag1_comment_internal_step.description">
+				<source>reviewTotalAg1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b15_ag2_comment_internal_step.description" resname="review_b15_ag2_comment_internal_step.description">
+				<source>reviewB15Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b2_ag2_comment_internal_step.description" resname="review_b2_ag2_comment_internal_step.description">
+				<source>reviewB2Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b22_ag2_comment_internal_step.description" resname="review_b22_ag2_comment_internal_step.description">
+				<source>reviewB22Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_b23_ag2_comment_internal_step.description" resname="review_b23_ag2_comment_internal_step.description">
+				<source>reviewB23Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c1_ag2_comment_internal_step.description" resname="review_c1_ag2_comment_internal_step.description">
+				<source>reviewC1Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_ag2_comment_internal_step.description" resname="review_c2_ag2_comment_internal_step.description">
+				<source>reviewC2Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c3_ag2_comment_internal_step.description" resname="review_c3_ag2_comment_internal_step.description">
+				<source>reviewC3Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_total_ag2_comment_internal_step.description" resname="review_total_ag2_comment_internal_step.description">
+				<source>reviewTotalAg2CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="verantwortliche.description" resname="verantwortliche.description">
 				<source>verantwortliche</source>
 			</trans-unit>

@@ -156,6 +156,24 @@
 			<trans-unit id="gutachter_locked_by.description" resname="gutachter_locked_by.description">
 				<source>gutachterLockedBy</source>
 			</trans-unit>
+			<trans-unit id="review_c2_babi_gs_comment_internal_step.description" resname="review_c2_babi_gs_comment_internal_step.description">
+				<source>reviewC2BabiGsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_gs_comment_internal_step.description" resname="review_c2_psa_gs_comment_internal_step.description">
+				<source>reviewC2PsaGsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_babi_ag1_comment_internal_step.description" resname="review_c2_babi_ag1_comment_internal_step.description">
+				<source>reviewC2BabiAg1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_ag1_comment_internal_step.description" resname="review_c2_psa_ag1_comment_internal_step.description">
+				<source>reviewC2PsaAg1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_babi_ag2_comment_internal_step.description" resname="review_c2_babi_ag2_comment_internal_step.description">
+				<source>reviewC2BabiAg2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_c2_psa_ag2_comment_internal_step.description" resname="review_c2_psa_ag2_comment_internal_step.description">
+				<source>reviewC2PsaAg2CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>

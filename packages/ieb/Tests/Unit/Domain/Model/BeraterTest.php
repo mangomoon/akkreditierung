@@ -442,4 +442,67 @@ class BeraterTest extends UnitTestCase
 
         self::assertEquals(12, $this->subject->_get('gutachterLockedBy'));
     }
+
+    /**
+     * @test
+     */
+    public function getReviewC3GsCommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3GsCommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3GsCommentInternalStepForStringSetsReviewC3GsCommentInternalStep(): void
+    {
+        $this->subject->setReviewC3GsCommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3GsCommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3Ag1CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3Ag1CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3Ag1CommentInternalStepForStringSetsReviewC3Ag1CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3Ag1CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3Ag1CommentInternalStep'));
+    }
+
+    /**
+     * @test
+     */
+    public function getReviewC3Ag2CommentInternalStepReturnsInitialValueForString(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getReviewC3Ag2CommentInternalStep()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setReviewC3Ag2CommentInternalStepForStringSetsReviewC3Ag2CommentInternalStep(): void
+    {
+        $this->subject->setReviewC3Ag2CommentInternalStep('Conceived at T3CON10');
+
+        self::assertEquals('Conceived at T3CON10', $this->subject->_get('reviewC3Ag2CommentInternalStep'));
+    }
 }

@@ -114,6 +114,36 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	review_verrechnung2 text NOT NULL DEFAULT '',
 	einzelunterricht smallint(1) unsigned NOT NULL DEFAULT '0',
 	pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
+	review_b1_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b14_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b1_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b14_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b1_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_b14_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_b15_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b2_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b22_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b23_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c1_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_total_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_b15_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b2_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b22_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b23_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c1_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_total_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_b15_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_b2_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_b22_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_b23_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_c1_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_total_ag2_comment_internal_step text NOT NULL DEFAULT '',
 	verantwortliche int(11) unsigned NOT NULL DEFAULT '0',
 	verantwortliche_mail int(11) unsigned NOT NULL DEFAULT '0',
 	kopie_von int(11) unsigned DEFAULT '0',
@@ -158,7 +188,10 @@ CREATE TABLE tx_ieb_domain_model_berater (
 	review_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
 	review_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
 	pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	gutachter_locked_by int(11) NOT NULL DEFAULT '0'
+	gutachter_locked_by int(11) NOT NULL DEFAULT '0',
+	review_c3_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c3_ag2_comment_internal_step text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_trainer (
@@ -212,7 +245,13 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	status_after_review_babi int(11) NOT NULL DEFAULT '0',
 	status_after_review_psa int(11) NOT NULL DEFAULT '0',
 	pp3 smallint(1) unsigned NOT NULL DEFAULT '0',
-	gutachter_locked_by int(11) NOT NULL DEFAULT '0'
+	gutachter_locked_by int(11) NOT NULL DEFAULT '0',
+	review_c2_babi_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_psa_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_babi_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_psa_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_babi_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_c2_psa_ag2_comment_internal_step int(11) NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (
@@ -252,7 +291,13 @@ CREATE TABLE tx_ieb_domain_model_stammdaten (
 	review_oecert_frist bigint(11) NOT NULL DEFAULT '0',
 	review_oecert_frist_mail_sent14t int(11) NOT NULL DEFAULT '0',
 	review_oecert_frist_mail_sent1t int(11) NOT NULL DEFAULT '0',
-	status_after_review int(11) NOT NULL DEFAULT '0'
+	status_after_review int(11) NOT NULL DEFAULT '0',
+	review_a1_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_a2_gs_comment_internal_step text NOT NULL DEFAULT '',
+	review_a1_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_a2_ag1_comment_internal_step text NOT NULL DEFAULT '',
+	review_a1_ag2_comment_internal_step text NOT NULL DEFAULT '',
+	review_a2_ag2_comment_internal_step text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_angebotverantwortlich (
@@ -275,8 +320,7 @@ CREATE TABLE fe_users (
 	email varchar(255) NOT NULL DEFAULT '',
 	tr_admin smallint(1) unsigned NOT NULL DEFAULT '0',
 	archiviert smallint(1) unsigned NOT NULL DEFAULT '0',
-	ausschluss text NOT NULL DEFAULT '',
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL
+	ausschluss text NOT NULL DEFAULT ''
 );
 
 CREATE TABLE tx_ieb_domain_model_textbausteine (

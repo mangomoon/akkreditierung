@@ -114,6 +114,24 @@
 			<trans-unit id="status_after_review.description" resname="status_after_review.description">
 				<source>statusAfterReview</source>
 			</trans-unit>
+			<trans-unit id="review_a1_gs_comment_internal_step.description" resname="review_a1_gs_comment_internal_step.description">
+				<source>reviewA1GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_a2_gs_comment_internal_step.description" resname="review_a2_gs_comment_internal_step.description">
+				<source>reviewA2GsCommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_a1_ag1_comment_internal_step.description" resname="review_a1_ag1_comment_internal_step.description">
+				<source>reviewA1Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_a2_ag1_comment_internal_step.description" resname="review_a2_ag1_comment_internal_step.description">
+				<source>reviewA2Ag1CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_a1_ag2_comment_internal_step.description" resname="review_a1_ag2_comment_internal_step.description">
+				<source>reviewA1Ag2CommentInternalStep</source>
+			</trans-unit>
+			<trans-unit id="review_a2_ag2_comment_internal_step.description" resname="review_a2_ag2_comment_internal_step.description">
+				<source>reviewA2Ag2CommentInternalStep</source>
+			</trans-unit>
 			<trans-unit id="pruefbescheid_datei.description" resname="pruefbescheid_datei.description">
 				<source>pruefbescheidDatei</source>
 			</trans-unit>
