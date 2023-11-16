@@ -1,0 +1,72 @@
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+<div class="komm-int">
+    <f:for each="{comments}" as="comment">
+        <p>
+            <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
+        </p>
+    </f:for>
+</div>
+<div class="komm-int-container">
+    <label class="komm-intern">intern</label>
+    <f:switch expression="{commentuser}">
+        <f:case value="a1">
+            <div class="commintstep">
+                <f:if condition="{commgs}">
+                    <label>interner Kommentar der Geschäftsstelle:</label>
+                    <p><f:format.nl2br>{commgs}</f:format.nl2br></p>
+                </f:if>
+                <f:if condition="{commag2}">
+                    <label>interner Kommentar Zweitbegutachtung:</label>
+                    <p><f:format.nl2br>{commag2}</f:format.nl2br></p>
+                </f:if>
+            </div>
+            <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+        </f:case>
+        <f:case value="a2">
+            <div class="commintstep">
+                <f:if condition="{commgs}">
+                    <label>interner Kommentar der Geschäftsstelle:</label>
+                    <p><f:format.nl2br>{commgs}</f:format.nl2br></p>
+                </f:if>
+                <f:if condition="{commag1}">
+                    <label>interner Kommentar Erstbegutachtung:</label>
+                    <p><f:format.nl2br>{commag1}</f:format.nl2br></p>
+                </f:if>
+            </div>
+            <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+        </f:case>
+        <f:case value="gs">
+            <div class="commintstep">
+                <f:if condition="{commag1}">
+                    <label>interner Kommentar Erstbegutachtung:</label>
+                    <p><f:format.nl2br>{commag1}</f:format.nl2br></p>
+                </f:if>
+                <f:if condition="{commag2}">
+                    <label>interner Kommentar Zweitbegutachtung:</label>
+                    <p><f:format.nl2br>{commag2}</f:format.nl2br></p>
+                </f:if>
+            </div>
+            <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+        </f:case>
+    </f:switch>
+</div>
+<div class="ansuchen knoepfe">
+    <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" class="sartest f-{property}"/>nan</label>
+    <label class="knopf ok {f:if(condition:'{status}==1', then:'checked')}" for="{property}Status-1"><f:form.radio property="{property}Status" id="{property}Status-1" value="1" class="sartest f-{property}"/>ok</label>
+    <label class="knopf zweit {f:if(condition:'{status}==2', then:'checked')}" for="{property}Status-2"><f:form.radio property="{property}Status" id="{property}Status-2" value="2" class="sartest f-{property}"/>fraglich</label>
+    <label class="knopf plenum {f:if(condition:'{status}==3', then:'checked')}" for="{property}Status-3"><f:form.radio property="{property}Status" id="{property}Status-3" value="3" class="sartest f-{property}"/>Plenum</label>
+    <label class="knopf nicht-ok {f:if(condition:'{status}==4', then:'checked')}" for="{property}Status-4"><f:form.radio property="{property}Status" id="{property}Status-4" value="4" class="sartest f-{property}"/>nicht-ok</label>
+</div>
+<div class="komm-ext  {f:if(condition:'{status}==4', then:'vis')}">
+    <label class="komm-extern">Info an Träger</label>
+    <f:form.textarea property="{property}CommentTr" id="comment2-{property}" class="extern" />
+    <div class="knopf textbausteinoeffner">Textbausteine</div>
+    <div class="textbausteine">
+        <f:for each="{tb}" as="baustein">
+            <div class="textbaustein"><f:format.nl2br>{baustein}</f:format.nl2br></div>
+        </f:for>
+    </div>
+</div>
