@@ -5,7 +5,11 @@
 
     {diff.copy_trainer.{trainer.uid} -> f:variable(name: 'dt')} 
 
-    <f:if condition="{ansuchen.status}!=30">
+    <f:if condition="{ansuchen.gutachter1.uid}=={currentUser.uid}"><f:variable name="commentuser">a1</f:variable></f:if>
+    <f:if condition="{ansuchen.gutachter2.uid}=={currentUser.uid}"><f:variable name="commentuser">a2</f:variable></f:if>
+    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}"><f:variable name="commentuser">gs</f:variable></f:if>
+
+    <f:if condition="{ansuchen.status}>30">
         <f:variable name="difftyp">1</f:variable>
     </f:if>
     <f:flashMessages />
@@ -494,9 +498,49 @@
                                 </p>
                             </f:for>
                         </div>
-                        <div>
+                        <div class="komm-int-container">
                             <label class="komm-intern">intern</label>
-                            <f:form.textarea property="reviewC2BabiCommentInternalStep" id="comment1-reviewC2BabiCommentInternal" class="" />
+                            <f:switch expression="{commentuser}">
+                                <f:case value="a1">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2BabiCommentInternalStep}">
+                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiCommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2BabiAg2CommentInternalStep}">
+                                        <label>interner Kommentar Zweitbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiAg2CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2BabiAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewC2BabiAg1CommentInternalStep"  />
+                                    
+                                </f:case>
+                                <f:case value="a2">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2BabiCommentInternalStep}">
+                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiCommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2BabiAg1CommentInternalStep}">
+                                        <label>interner Kommentar Erstbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiAg1CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2BabiAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-begutachtung.reviewC2BabiAg2CommentInternalStep"  />
+                                    
+                                </f:case>
+                                <f:case value="gs">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2BabiAg1CommentInternalStep}">
+                                        <label>interner Kommentar Erstbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiAg1CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2BabiAg2CommentInternalStep}">
+                                        <label>interner Kommentar Zweitbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2BabiAg2CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2BabiCommentInternalStep" class="komm-intern-textarea" id="comment1-reviewC2BabiCommentInternalStep"  />
+                                    
+                                </f:case>
+                            </f:switch>
                         </div>
                     </div>
                     <div class="komm-ext-1">
@@ -526,14 +570,6 @@
                             <f:render partial="Form/Input" arguments="{property:'reviewFrist',isDate:1,value:trainer.reviewFrist,id:'trainer-frist'}" />
                         </label>
                     
-                    
-                    <!-- <div class="komm-int">
-                        <f:for each="{trainer.reviewC2BabiCommentInternalData}" as="comment">
-                            <p>
-                                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
-                            </p>
-                        </f:for>
-                    </div> -->
                     <div>
                         <div class="komm-int">
                             <label class="komm-intern">intern</label>
@@ -543,9 +579,54 @@
                                 </p>
                             </f:for>
                         </div>
-                        <div>
-                            <f:form.textarea property="reviewC2PsaCommentInternalStep" id="comment1-reviewC2PsaCommentInternal" class="intern" />
+
+
+                        <div class="komm-int-container">
+                            <label class="komm-intern">intern</label>
+                            <f:switch expression="{commentuser}">
+                                <f:case value="a1">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2PsaCommentInternalStep}">
+                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaCommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2PsaAg2CommentInternalStep}">
+                                        <label>interner Kommentar Zweitbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaAg2CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2PsaAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewC2PsaAg1CommentInternalStep"  />
+                                    
+                                </f:case>
+                                <f:case value="a2">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2PsaCommentInternalStep}">
+                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaCommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2PsaAg1CommentInternalStep}">
+                                        <label>interner Kommentar Erstbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaAg1CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2PsaAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-begutachtung.reviewC2PsaAg2CommentInternalStep"  />
+                                    
+                                </f:case>
+                                <f:case value="gs">
+                                    <div class="commintstep">
+                                    <f:if condition="{begutachtung.reviewC2PsaAg1CommentInternalStep}">
+                                        <label>interner Kommentar Erstbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaAg1CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if>
+                                    <f:if condition="{begutachtung.reviewC2PsaAg2CommentInternalStep}">
+                                        <label>interner Kommentar Zweitbegutachtung:</label>
+                                        <p><f:format.nl2br>{begutachtung.reviewC2PsaAg2CommentInternalStep}</f:format.nl2br></p>
+                                    </f:if></div>
+                                    <f:form.textarea property="reviewC2PsaCommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+                                    
+                                </f:case>
+                            </f:switch>
                         </div>
+
+
                     </div>
                     <div class="komm-ext-2">
                         <label class="komm-extern">Info an Träger</label>

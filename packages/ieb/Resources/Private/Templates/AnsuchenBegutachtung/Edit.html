@@ -21,6 +21,10 @@
         {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
         {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
 
+        
+        <f:if condition="{ansuchen.gutachter1.uid}=={currentUser.uid}"><f:variable name="commentuser">a1</f:variable></f:if>
+        <f:if condition="{ansuchen.gutachter2.uid}=={currentUser.uid}"><f:variable name="commentuser">a2</f:variable></f:if>
+        <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}"><f:variable name="commentuser">gs</f:variable></f:if>
 
 
         <f:if condition="{ansuchen.status} > 30">
@@ -235,8 +239,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-
-                    <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData, tb:textbausteine.a1}" />
+                    <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA1CommentInternalStep, commag1:stammdatenorig.reviewA1Ag1CommentInternalStep, commag2:stammdatenorig.reviewA1Ag2CommentInternalStep}" />
                 </div>
             
             </div>
@@ -356,7 +359,7 @@
                                 <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:begutachtung.stammdatenReviewOecertFrist}" />
                             </label>
                         </f:if>
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2}" />
+                        <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA2CommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep}" />
                     </div>
 
                 </div>
@@ -483,7 +486,14 @@
                         
                         
                         
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB1', status:ansuchen.reviewB1Status, comments:ansuchen.reviewB1CommentInternalData, tb:textbausteine.b1}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{
+                            property:'reviewB1', 
+                            status:ansuchen.reviewB1Status, 
+                            comments:ansuchen.reviewB1CommentInternalData, 
+                            tb:textbausteine.b1,
+                            commentuser:commentuser,
+                            ansuchen:ansuchen    
+                        }" />
 
                         
                     </div>
@@ -554,7 +564,8 @@
                             reviewTr:ansuchen.kopieVon.reviewB14CommentTr, 
                             diff:difftyp}" />
 
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB14', status:ansuchen.reviewB14Status, comments:ansuchen.reviewB14CommentInternalData, tb:textbausteine.b14}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB14', status:ansuchen.reviewB14Status, comments:ansuchen.reviewB14CommentInternalData, tb:textbausteine.b14,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -630,7 +641,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewB15CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewB15CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB15', status:ansuchen.reviewB15Status, comments:ansuchen.reviewB15CommentInternalData, tb:textbausteine.b15}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB15', status:ansuchen.reviewB15Status, comments:ansuchen.reviewB15CommentInternalData, tb:textbausteine.b15,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -682,7 +694,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewB2CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewB2CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB2', status:ansuchen.reviewB2Status, comments:ansuchen.reviewB2CommentInternalData, tb:textbausteine.b21}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB2', status:ansuchen.reviewB2Status, comments:ansuchen.reviewB2CommentInternalData, tb:textbausteine.b21,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -813,7 +826,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewB22CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewB22CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB22', status:ansuchen.reviewB22Status, comments:ansuchen.reviewB22CommentInternalData, tb:textbausteine.b22}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB22', status:ansuchen.reviewB22Status, comments:ansuchen.reviewB22CommentInternalData, tb:textbausteine.b22,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
                 </div>
             </div>
@@ -867,7 +881,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewB23CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewB23CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData, tb:textbausteine.b23}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewB23', status:ansuchen.reviewB23Status, comments:ansuchen.reviewB23CommentInternalData, tb:textbausteine.b23,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -1011,7 +1026,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewC1CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewC1CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData, tb:textbausteine.c1}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC1', status:ansuchen.reviewC1Status, comments:ansuchen.reviewC1CommentInternalData, tb:textbausteine.c1,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -1108,7 +1124,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewC2CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewC2CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC2', status:ansuchen.reviewC2Status, comments:ansuchen.reviewC2CommentInternalData, tb:textbausteine.c2}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC2', status:ansuchen.reviewC2Status, comments:ansuchen.reviewC2CommentInternalData, tb:textbausteine.c2,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -1190,7 +1207,8 @@
                             reviewIntern: ansuchen.kopieVon.reviewC3CommentInternalData, 
                             reviewTr:ansuchen.kopieVon.reviewC3CommentTr, 
                             diff:difftyp}" />
-                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC3', status:ansuchen.reviewC3Status, comments:ansuchen.reviewC3CommentInternalData, tb:textbausteine.c3}" />
+                        <f:render partial="AnsuchenBegutachtung/Comment" arguments="{property:'reviewC3', status:ansuchen.reviewC3Status, comments:ansuchen.reviewC3CommentInternalData, tb:textbausteine.c3,commentuser:commentuser,
+                        ansuchen:ansuchen    }" />
                     </div>
 
                 </div>
@@ -1440,8 +1458,43 @@
                     </f:for>
                 </div>
                 <div>
-                    <f:form.textarea property="reviewTotalCommentInternalStep" id="comment1-reviewTotalCommentInternal" class="" />
+                    <f:switch expression="{commentuser}">
+                        <f:case value="a1">
+                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                                <label>interner Kommentar der Geschäftsführung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
+                                <label>interner Kommentar Zweitbegutachtung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:form.textarea property="reviewTotalAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                        </f:case>
+                        <f:case value="a2">
+                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                                <label>interner Kommentar der Geschäftsführung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
+                                <label>interner Kommentar Erstbegutachtung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:form.textarea property="reviewTotalAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                        </f:case>
+                        <f:case value="gs">
+                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                                <label>interner Kommentar Erstbegutachtung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
+                                <label>interner Kommentar Zweitbegutachtung:</label>
+                                <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
+                            </f:if>
+                            <f:form.textarea property="reviewTotalCommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                        </f:case>
+                    </f:switch>
                 </div>
+
                 
 
             </label>

@@ -430,7 +430,7 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * reviewC2PsaAg2CommentInternalStep
      *
-     * @var int
+     * @var string
      */
     protected $reviewC2PsaAg2CommentInternalStep = 0;
 
@@ -1890,10 +1890,10 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the reviewC2PsaAg2CommentInternalStep
      *
-     * @param int $reviewC2PsaAg2CommentInternalStep
+     * @param string $reviewC2PsaAg2CommentInternalStep
      * @return void
      */
-    public function setReviewC2PsaAg2CommentInternalStep(int $reviewC2PsaAg2CommentInternalStep)
+    public function setReviewC2PsaAg2CommentInternalStep(string $reviewC2PsaAg2CommentInternalStep)
     {
         $this->reviewC2PsaAg2CommentInternalStep = $reviewC2PsaAg2CommentInternalStep;
     }

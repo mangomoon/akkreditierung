@@ -251,7 +251,7 @@ CREATE TABLE tx_ieb_domain_model_trainer (
 	review_c2_babi_ag1_comment_internal_step text NOT NULL DEFAULT '',
 	review_c2_psa_ag1_comment_internal_step text NOT NULL DEFAULT '',
 	review_c2_babi_ag2_comment_internal_step text NOT NULL DEFAULT '',
-	review_c2_psa_ag2_comment_internal_step int(11) NOT NULL DEFAULT '0'
+	review_c2_psa_ag2_comment_internal_step text NOT NULL DEFAULT '',
 );
 
 CREATE TABLE tx_ieb_domain_model_stammdaten (

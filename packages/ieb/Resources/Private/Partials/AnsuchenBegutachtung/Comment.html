@@ -11,7 +11,47 @@
 </div>
 <div class="komm-int-container">
     <label class="komm-intern">intern</label>
-    <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+    <f:switch expression="{commentuser}">
+        <f:case value="a1">
+            <div class="commintstep">
+            <f:if condition="{{property}CommentInternalStep}">
+                <label>interner Kommentar der Geschäftsstelle:</label>
+                <p><f:format.nl2br>{{property}CommentInternalStep}</f:format.nl2br></p>
+            </f:if>
+            <f:if condition="{{property}Ag2CommentInternalStep}">
+                <label>interner Kommentar Zweitbegutachtung:</label>
+                <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
+            </f:if></div>
+            <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            
+        </f:case>
+        <f:case value="a2">
+            <div class="commintstep">
+            <f:if condition="{{property}CommentInternalStep}">
+                <label>interner Kommentar der Geschäftsstelle:</label>
+                <p><f:format.nl2br>{{property}CommentInternalStep}</f:format.nl2br></p>
+            </f:if>
+            <f:if condition="{{property}Ag1CommentInternalStep}">
+                <label>interner Kommentar Erstbegutachtung:</label>
+                <p><f:format.nl2br>{{property}Ag1CommentInternalStep}</f:format.nl2br></p>
+            </f:if></div>
+            <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            
+        </f:case>
+        <f:case value="gs">
+            <div class="commintstep">
+            <f:if condition="{{property}Ag1CommentInternalStep}">
+                <label>interner Kommentar Erstbegutachtung:</label>
+                <p><f:format.nl2br>{{property}Ag1CommentInternalStep}</f:format.nl2br></p>
+            </f:if>
+            <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
+                <label>interner Kommentar Zweitbegutachtung:</label>
+                <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
+            </f:if></div>
+            <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            
+        </f:case>
+    </f:switch>
 </div>
 <div class="ansuchen knoepfe">
     <label class="knopf nan" for="{property}Status-0"><f:form.radio property="{property}Status" id="{property}Status-0" value="0" class="sartest f-{property}"/>nan</label>

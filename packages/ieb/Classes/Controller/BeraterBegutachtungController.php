@@ -73,7 +73,7 @@ class BeraterBegutachtungController extends BaseController
             }
         }
 
-        $this->commentVersioning($berater);
+        //$this->commentVersioning($berater);
         $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
         $this->beraterRepository->update($berater);
         $this->addFlashMessage('Begutachtung gespeichert');

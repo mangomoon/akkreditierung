@@ -74,7 +74,7 @@ class TrainerBegutachtungController extends BaseController
             }
         }
 
-        $this->commentVersioning($trainer);
+        //$this->commentVersioning($trainer);
         $this->trainerRepository->update($trainer);
         $this->trainerRepository->forcePersist();
         $this->addFlashMessage('Begutachtung gespeichert');

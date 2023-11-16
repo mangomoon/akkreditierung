@@ -1698,6 +1698,19 @@ span.check-nein {
     text-transform: none;
 }
 
+.commintstep {
+    padding: 6px;
+    margin: 6px 0;
+    background:#b5c6ba;
+}
+.commintstep label {
+    color: #fff;
+}
+.commintstep p{
+    font-size: 0.9em;
+    padding: 3px 0;
+}
+
 .komm-int span.name {
     text-transform: uppercase;
     color: #fff;
