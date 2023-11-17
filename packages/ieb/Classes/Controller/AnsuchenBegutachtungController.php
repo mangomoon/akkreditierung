@@ -210,6 +210,7 @@ class AnsuchenBegutachtungController extends BaseController
         // if($zuteilung->getUser()==$ansuchen->getGutachterLockedBy()) {
         //     $ansuchen->setGutachterLockedBy(0);
         // }
+        $ansuchen->setZuteilungDatum(new \DateTime());
         $ansuchen->setGutachterLockedBy(0);
         $ansuchen->setReviewVerrechnungCheck1($zuteilung->getReviewVerrechnungCheck1());
         $ansuchen->setReviewVerrechnungCheck2($zuteilung->getReviewVerrechnungCheck2());
@@ -274,7 +275,8 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
-        // Zuteilung löschen
+        // Zuteilung löschen:
+        //$ansuchen->setZuteilungDatum(null);
         $ansuchen->setGutachter1(NULL);
         $ansuchen->setGutachter2(NULL);
         $ansuchen->setReviewVerrechnung1('');

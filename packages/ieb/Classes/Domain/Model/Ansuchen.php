@@ -81,9 +81,9 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * zuteilungDatum
      *
-     * @var string
+     *@var \DateTime
      */
-    protected $zuteilungDatum = '';
+    protected $zuteilungDatum = null;
 
     /**
      * akkreditierungEntscheidungDatum
@@ -1304,7 +1304,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the zuteilungDatum
      *
-     * @return string
+     * @return \DateTime
      */
     public function getZuteilungDatum()
     {
@@ -1314,11 +1314,12 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the zuteilungDatum
      *
-     * @param string $zuteilungDatum
+     * @param ?\DateTime $zuteilungDatum
      * @return void
      */
-    public function setZuteilungDatum(string $zuteilungDatum)
+    public function setZuteilungDatum(?\DateTime $zuteilungDatum)
     {
+        $zuteilungDatum = $zuteilungDatum === null ? 0 : $zuteilungDatum;
         $this->zuteilungDatum = $zuteilungDatum;
     }
 

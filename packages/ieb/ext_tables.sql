@@ -6,7 +6,7 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	nummer varchar(255) NOT NULL DEFAULT '',
 	akkreditierung_datum datetime DEFAULT NULL,
 	einreich_datum datetime DEFAULT NULL,
-	zuteilung_datum varchar(255) NOT NULL DEFAULT '',
+	zuteilung_datum datetime DEFAULT NULL,
 	akkreditierung_entscheidung_datum datetime DEFAULT NULL,
 	typ int(11) DEFAULT '0' NOT NULL,
 	bundesland int(11) DEFAULT '0' NOT NULL,

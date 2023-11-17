@@ -124,10 +124,12 @@ return [
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.zuteilung_datum',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.zuteilung_datum.description',
             'config' => [
+                'dbType' => 'datetime',
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'default' => ''
+                'renderType' => 'inputDateTime',
+                'size' => 12,
+                'eval' => 'datetime',
+                'default' => null,
             ],
         ],
         'akkreditierung_entscheidung_datum' => [

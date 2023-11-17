@@ -34,7 +34,7 @@
                 <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">ANHANG ZUR AKKREDITIERUNGSBESTÄTIGUNG</p>
     
                 <p style="text-align: center;line-height: 26pt">&nbsp;<br>
-                    Dieses Dokument ergänzt die Akkreditierungsbestätigung vom {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} <br>
+                    Dieses Dokument ergänzt die Akkreditierungsbestätigung vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} <br>
                     für das Bildungsangebot {ansuchen.nummer}, {ansuchen.name} <br>
                     für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls <br>
                     „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1–BMBWF01).<br><br><br></p>
@@ -52,7 +52,7 @@
                 Initiative Erwachsenenbildung
                 im Auftrag der Akkreditierungsgruppe
     
-                Wien, am {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')}
+                Wien, am {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
             </pdf:text>
         </f:then>
         <f:else>
@@ -102,7 +102,7 @@
             Initiative Erwachsenenbildung
             im Auftrag der Akkreditierungsgruppe
 
-            Wien, am {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')}
+            Wien, am {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
         </pdf:text>
     </f:else>
             </f:if>
@@ -134,8 +134,8 @@
 
 
             <f:if condition="{ansuchen.status}==140">
-                <h2 style="page-break-before: always;">Folgende Auflagen bestehen für das Bildungsangebot</h2>
-                <p>Auflagen für die Akkreditierung des Angebots Brückenkurs zum Einstieg in den Pflichtschulabschluss, des Bildungsträgers {stammdaten.name} vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</p>
+                <h2 style="page-break-before: always;">Auflagen</h2>
+                <p>Folgende Auflagen bestehen für die Akkreditierung des Angebots {ansuchen.nummer}, »{ansuchen.name}« des Bildungsträgers {stammdaten.name} vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</p>
                 
                
                 <f:if condition="{stammdaten.reviewA1Status}>2">

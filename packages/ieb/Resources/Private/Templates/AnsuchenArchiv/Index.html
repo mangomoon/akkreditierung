@@ -57,12 +57,30 @@
                                     <td>
                                         <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
                                         <f:if condition="{item.status}==100 || {item.status}==140">
-                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date> | 
+                                            <f:then>
+                                                <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date>
+                                            </f:then>
+                                            <f:else>
+                                                <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date>
+                                            </f:else>
+                                            
                                         </f:if>
-                                        <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" /> am <f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date>
+                                        
                                     </td>
+
+
                                     <td class="td-knopf">
-                                        <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                        <f:if condition="{item.pp3} && {item.version}==0">
+                                            <f:then>
+                                                <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
+                                            </f:then>
+                                            <f:else>
+                                                <f:link.typolink parameter="{item.akkreditierung_pdf.original_resource.public_url}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;
+                                                </f:link.typolink> 
+                                                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                            </f:else>
+                                        </f:if>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
