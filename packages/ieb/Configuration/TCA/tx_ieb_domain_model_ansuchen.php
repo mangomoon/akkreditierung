@@ -128,7 +128,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 12,
-                'eval' => 'datetime',
+                'eval' => 'datetime,null',
                 'default' => null,
             ],
         ],

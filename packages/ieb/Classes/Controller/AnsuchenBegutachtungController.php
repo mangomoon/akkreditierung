@@ -276,7 +276,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
         // Zuteilung löschen:
-        //$ansuchen->setZuteilungDatum(null);
+        $ansuchen->setZuteilungDatum(NULL);
         $ansuchen->setGutachter1(NULL);
         $ansuchen->setGutachter2(NULL);
         $ansuchen->setReviewVerrechnung1('');

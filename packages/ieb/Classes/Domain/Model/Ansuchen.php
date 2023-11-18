@@ -1319,7 +1319,7 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setZuteilungDatum(?\DateTime $zuteilungDatum)
     {
-        $zuteilungDatum = $zuteilungDatum === null ? 0 : $zuteilungDatum;
+        $zuteilungDatum = $zuteilungDatum === null ? null : $zuteilungDatum;
         $this->zuteilungDatum = $zuteilungDatum;
     }
 
