@@ -23,7 +23,8 @@
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
-            
+            <f:form.hidden property="{property}Ag2CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag2CommentInternalStep}" />
+            <f:form.hidden property="{property}CommentInternalStep" id="{property}CommentInternalStep" value="{ansuchen.{property}CommentInternalStep}" />
         </f:case>
         <f:case value="a2">
             <div class="commintstep">
@@ -36,7 +37,8 @@
                 <p><f:format.nl2br>{{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
-            
+            <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
+            <f:form.hidden property="{property}CommentInternalStep" id="{property}CommentInternalStep" value="{ansuchen.{property}CommentInternalStep}" />
         </f:case>
         <f:case value="gs">
             <div class="commintstep">
@@ -49,7 +51,8 @@
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
-            
+            <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
+            <f:form.hidden property="{property}Ag2CommentInternalStep" id="{property}Ag2CommentInternalStep" value="{ansuchen.{property}Ag2CommentInternalStep}" />
         </f:case>
     </f:switch>
 </div>

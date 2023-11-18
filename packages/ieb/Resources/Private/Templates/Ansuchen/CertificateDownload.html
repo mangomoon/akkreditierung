@@ -4,11 +4,11 @@
         data-namespace-typo3-fluid="true">
 
 
+        
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
         {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
         {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
-        {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
-
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
 
 <pdf:document 
     title="{ansuchen.nummer} {ansuchen.akkreditierungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"

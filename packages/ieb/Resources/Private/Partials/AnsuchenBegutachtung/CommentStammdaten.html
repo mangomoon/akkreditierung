@@ -24,6 +24,8 @@
                 </f:if>
             </div>
             <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            <f:form.hidden property="{property}Ag2CommentInternalStep" id="{commag2}" value="{commag2}" />
+            <f:form.hidden property="{property}CommentInternalStep" id="{commgs}" value="{commgs}" />
         </f:case>
         <f:case value="a2">
             <div class="commintstep">
@@ -37,6 +39,8 @@
                 </f:if>
             </div>
             <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            <f:form.hidden property="{property}Ag1CommentInternalStep" id="{commag1}" value="{commag1}" />
+            <f:form.hidden property="{property}CommentInternalStep" id="{commgs}" value="{commgs}" />
         </f:case>
         <f:case value="gs">
             <div class="commintstep">
@@ -50,6 +54,8 @@
                 </f:if>
             </div>
             <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            <f:form.hidden property="{property}Ag1CommentInternalStep" id="{commag1}" value="{commag1}" />
+            <f:form.hidden property="{property}Ag2CommentInternalStep" id="{commag2}" value="{commag2}" />
         </f:case>
     </f:switch>
 </div>
