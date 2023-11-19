@@ -888,6 +888,9 @@ table.ansuchenliste td{
     line-height: 16px;
     color: var(--f3);
 }
+.ansuchenliste_bezeichnung {
+    width: 900px;
+}
 .ansuchenliste_ansuchennr p {
     margin:0;
     padding:0;
