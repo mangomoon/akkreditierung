@@ -2,12 +2,14 @@
 <div class="tx-ieb">
     <f:render section="content" />
 </div>
-<f:if condition="{currentUser.usergroup}"
-<div class="begutachtung-kriterium testknopf">
-    <div class="knopf knopf-s" id="code-toggler">Toggle &lt;Code&gt;</div>
-    <br>
-    <div class="knopf knopf-s" id="validieren-test">Validierungstest</div>
-</div>
+<f:if condition="{currentUser.usergroup}==2 || {currentUser.uid}<8">
+    <div class="begutachtung-kriterium testknopf">
+        <div class="knopf knopf-s" id="code-toggler">Toggle &lt;Code&gt;</div>
+        <br>
+        <div class="knopf knopf-s" id="validieren-test">Validierungstest</div>
+    </div>
+</f:if>
+
 <dialog class="modal" id="modal">
     <div class="modalcontent"></div>
     <div class="knopf-s2 close">ok</div>

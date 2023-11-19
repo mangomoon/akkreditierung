@@ -420,8 +420,8 @@ function qualifikationPsaSprache() {
     });
     $('#validieren-test').click(function(){
         console.log("--------- Bericht: -----------");
-        // validieren();
-        validierenansuchen();
+        validieren();
+        //validierenansuchen();
         // setStatusAfterReview();
         // validierentr();
         
@@ -472,11 +472,11 @@ function qualifikationPsaSprache() {
        
 
 
-    //    console.log("--------- Bericht: -----------");
-    //    console.log("saralt: " + saralt + " sar: " + sar);
+        //console.log("--------- Bericht Stammdaten: -----------");
+        //console.log("saralt: " + saralt + " sar: " + sar);
 
 
-    //    e.preventDefault();
+        //e.preventDefault();
     });
 
 

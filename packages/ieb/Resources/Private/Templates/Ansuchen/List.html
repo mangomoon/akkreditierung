@@ -60,6 +60,8 @@
     {item.trainer -> f:variable(name: 'trainer')}
     {item.berater -> f:variable(name: 'berater')} 
 
+    
+
     <f:variable name="tsarBabi">0</f:variable>
     <f:variable name="tsarPsa">0</f:variable>
     <f:variable name="bsar">0</f:variable>
@@ -387,7 +389,7 @@
                                         </f:if>
                                     </td>
                                     <td class="td-knopf">
-                                        <f:if condition="{item.status}>90 && !({item.pp3} && {item.version}==0)"><f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch s" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>
+                                        <f:if condition="{item.status}>90 && !({item.pp3} && {item.version}==0)">
                                             <f:link.typolink parameter="{item.akkreditierungPdf.originalResource.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;
                                         </f:link.typolink>
                                         </f:if><f:if condition="{item.pp3} && {item.version}==0"><f:link.action action="certificateDownload" target="_blank" arguments="{ansuchen : item}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF"></f:link.action>

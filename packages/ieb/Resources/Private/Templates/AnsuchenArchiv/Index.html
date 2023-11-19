@@ -11,7 +11,6 @@
     <f:form method="get" action="index" name="filter" object="{filter}">
         <f:form.hidden property="submitted" value="1"/>
 
-
         <f:if condition="{userIsPartOfGs}"></f:if>
             <div>
                 <label for="trPid">
@@ -104,7 +103,7 @@
                                                                 <td>&nbsp;</td>
                                                                 <td>{oldVersion.version} </td>
                                                                 <td>[{oldVersion.uid}]</td>
-                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.einreich_datum}</f:format.date></td>
+                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date></td>
                                                                 <td class="td-knopf">
                                                                     <f:if condition="{oldVersion.akkreditierung_pdf}">
                                                                         <ieb:falFromRecord field="akkreditierung_pdf" id="{oldVersion.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
