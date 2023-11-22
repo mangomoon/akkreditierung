@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Berater;
+use GeorgRinger\Ieb\Domain\Model\CommentTrait;
 use GeorgRinger\Ieb\Domain\Model\FileReference;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 use GeorgRinger\Ieb\Domain\Model\Trainer;
@@ -44,6 +45,7 @@ class BaseController extends ActionController
 {
 
     use CurrentUserTrait;
+    use CommentTrait;
 
     protected RelationLockService $relationLockService;
     protected ExtensionConfiguration $extensionConfiguration;
@@ -209,7 +211,8 @@ class BaseController extends ActionController
         }
     }
 
-    protected function redirectToPageId(string|int $pageId) {
+    protected function redirectToPageId(string|int $pageId)
+    {
         $uri = $this->uriBuilder->reset()->setTargetPageUid((int)$pageId)->buildFrontendUri();
         $this->redirectToUri($uri);
     }
@@ -248,4 +251,36 @@ class BaseController extends ActionController
         $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
         $object->$setterStep('');
     }
+
+    protected function addNewCommentByAll(Ansuchen|Stammdaten|Berater|Trainer $object, string $initialFieldName): void
+    {
+        foreach (['gs', 'ag1', 'ag2'] as $prefix) {
+            $fieldName = str_replace('Comment', ucfirst($prefix) . 'Comment', $initialFieldName);
+            $commentFieldGetter = 'get' . ucfirst($fieldName . 'Step');
+            $comment = $object->$commentFieldGetter();
+            if (!$comment) {
+                continue;
+            }
+            $getterForData = 'get' . ucfirst($initialFieldName) . 'Data';
+            if (method_exists($object, $getterForData)) {
+                $comments = $object->$getterForData();
+            } else {
+                $getterForData = 'get' . ucfirst($initialFieldName);
+                $comments = $this->getConvertedJson($object->$getterForData());
+            }
+            $comments[] = [
+                'prefix' => $prefix,
+                'user' => self::getCurrentUserName(),
+                'user_uid' => self::getCurrentUserId(),
+                'comment' => $comment,
+                'date' => time(),
+            ];
+            $setter = 'set' . ucfirst($initialFieldName);
+            $setterStep = 'set' . ucfirst($initialFieldName) . 'Step';
+            $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
+            $object->$setterStep('');
+        }
+    }
+
+
 }

@@ -88,7 +88,26 @@ class AnsuchenBegutachtungController extends BaseController
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")
      */
     public function begutachtungsSchlussAction(Ansuchen $ansuchen, int $gutachtervorschlag = 0): ResponseInterface
-    {   
+    {
+
+        /** @var Stammdaten $stammdaten */
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
+        $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal');
+        $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB22CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB23CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC1CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal');
+
+        $this->stammdatenRepository->update($stammdaten);
+        $this->stammdatenRepository->forcePersist();
+
         $ansuchen->setGutachterLockedBy(0);
         $ansuchen->setStatus($gutachtervorschlag);
         $this->ansuchenRepository->update($ansuchen);
@@ -142,8 +161,7 @@ class AnsuchenBegutachtungController extends BaseController
                 $this->angebotVerantwortlichRepository->update($verantwortlich);
             }
         }
-        
-            
+
 
         $this->angebotVerantwortlichRepository->forcePersist();
         //$this->addFlashMessage('Ansuchen wurde ergänzt');
@@ -164,7 +182,7 @@ class AnsuchenBegutachtungController extends BaseController
         }
         if (isset($arguments['saveAndIndex'])) {
             $this->ansuchenRepository->removeLockByUser($recordId);
-            
+
             $this->redirect('list');
         }
         $this->redirect('list');
@@ -180,7 +198,7 @@ class AnsuchenBegutachtungController extends BaseController
         $zuteilung->setReviewVerrechnungCheck2($ansuchen->getReviewVerrechnungCheck2());
         $zuteilung->setReviewVerrechnung1($ansuchen->getReviewVerrechnung1());
         $zuteilung->setReviewVerrechnung2($ansuchen->getReviewVerrechnung2());
-        
+
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'zuteilung' => $zuteilung,
@@ -223,7 +241,6 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
-    
 
     public function unlockAction(Ansuchen $ansuchen): void
     {
@@ -231,7 +248,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->redirect('list');
     }
 
-    
+
     protected function getAllVerantwortliche(int $pid): array
     {
         $items = [];
@@ -266,19 +283,19 @@ class AnsuchenBegutachtungController extends BaseController
         // }
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
-        
+
         if (($ansuchen->getAkkreditierungDatum() === null) && ($ansuchen->getUpcomingStatus() > 80)) {
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
-        
-        
+
+
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
         // Zuteilung löschen:
-        $ansuchen->setZuteilungDatum(NULL);
-        $ansuchen->setGutachter1(NULL);
-        $ansuchen->setGutachter2(NULL);
+        $ansuchen->setZuteilungDatum(null);
+        $ansuchen->setGutachter1(null);
+        $ansuchen->setGutachter2(null);
         $ansuchen->setReviewVerrechnung1('');
         $ansuchen->setReviewVerrechnung2('');
         $ansuchen->setReviewVerrechnungCheck1(false);
