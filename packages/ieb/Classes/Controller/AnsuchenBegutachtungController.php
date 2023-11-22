@@ -292,8 +292,10 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
-        
-        $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
+
+        $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
+        $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
+        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent($ansuchen, $newAnsuchen, $stammdaten));
 
         $this->redirect('list');
         $this->addFlashMessage('Das Ansuchen wurde an der Träger geschickt');

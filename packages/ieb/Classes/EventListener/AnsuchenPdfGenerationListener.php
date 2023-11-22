@@ -5,7 +5,7 @@ namespace GeorgRinger\Ieb\EventListener;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
-use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeEvent;
+use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Utility\AnsuchenUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -24,9 +24,9 @@ final class AnsuchenPdfGenerationListener
         $this->resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
     }
 
-    public function __invoke(AnsuchenBegutachtungFinalizeEvent $event): void
+    public function __invoke(AnsuchenBegutachtungFinalizeAfterSnapshotEvent $event): void
     {
-        if (!in_array($event->ansuchen->getStatus(), [AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value], true)) {
+        if (!in_array($event->ansuchenOld->getStatus(), [AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value], true)) {
             return;
         }
 
@@ -79,7 +79,7 @@ final class AnsuchenPdfGenerationListener
             ['uid' => $ansuchen->getUid()]);
     }
 
-    private function getPdfString(AnsuchenBegutachtungFinalizeEvent $event): string
+    private function getPdfString(AnsuchenBegutachtungFinalizeAfterSnapshotEvent $event): string
     {
         $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
         $templatePath = GeneralUtility::getFileAbsFileName('EXT:ieb/Resources/Private/Templates/Ansuchen/CertificateDownload.html');
