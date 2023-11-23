@@ -33,6 +33,8 @@ class AnsuchenBegutachtungController extends BaseController
     protected Repository\AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
     protected Repository\TextbausteineRepository $textbausteineRepository;
     protected Repository\UserRepository $userRepository;
+    protected Repository\TrainerRepository $trainerRepository;
+    protected Repository\BeraterRepository $beraterRepository;
 
     public function listAction(): ResponseInterface
     {
@@ -244,6 +246,18 @@ class AnsuchenBegutachtungController extends BaseController
         $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal');
         $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal');
 
+        foreach($ansuchen->getTrainer() as $trainer) {
+            $this->addNewCommentByAll($trainer, 'reviewC2BabiCommentInternal');
+            $this->addNewCommentByAll($trainer, 'reviewC2PsaCommentInternal');
+            $this->trainerRepository->update($trainer);
+        }
+        $this->trainerRepository->forcePersist();
+        foreach($ansuchen->getBerater() as $berater) {
+            $this->addNewCommentByAll($berater, 'reviewC3CommentInternal');
+            $this->beraterRepository->update($berater);
+        }
+        $this->beraterRepository->forcePersist();
+
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
 
         if (($ansuchen->getAkkreditierungDatum() === null) && ($ansuchen->getUpcomingStatus() > 80)) {
@@ -310,5 +324,15 @@ class AnsuchenBegutachtungController extends BaseController
     public function injectUserRepository(Repository\UserRepository $repository): void
     {
         $this->userRepository = $repository;
+    }
+
+    public function injectTrainerRepository(Repository\TrainerRepository $repository): void
+    {
+        $this->trainerRepository = $repository;
+    }
+
+    public function injectBeraterRepository(Repository\BeraterRepository $repository): void
+    {
+        $this->beraterRepository = $repository;
     }
 }
