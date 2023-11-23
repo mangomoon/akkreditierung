@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\EventListener;
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\MailService;
@@ -31,15 +32,15 @@ final class AnsuchenBegutachtungFinalizeListener
         }
 
         $status = $event->ansuchen->getStatus();
-        if ($status == 100 || $status == 140 || $status == 800 || $status == 810) {
+        if (in_array($status, [AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value, AnsuchenStatus::NICHT_AKKREDITERT->value, AnsuchenStatus::AKKREDITIERUNG_ENTZOGEN->value], true)) {
 
             $mailsOfBundesland = $possibleMails[$event->ansuchen->getBundesland()] ?? false;
             if ($mailsOfBundesland) {
                 if (is_array($mailsOfBundesland)) {
-                    foreach($mailsOfBundesland as $mail) {
+                    foreach ($mailsOfBundesland as $mail) {
                         $mails[$mail] = '';
                     }
-                } elseif(is_string($mailsOfBundesland)) {
+                } elseif (is_string($mailsOfBundesland)) {
                     $mails[$mailsOfBundesland] = '';
                 }
             }
