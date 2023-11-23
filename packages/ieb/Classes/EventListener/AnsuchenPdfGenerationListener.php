@@ -58,12 +58,23 @@ final class AnsuchenPdfGenerationListener
             die;
         }
 
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_ieb_domain_model_ansuchen');
 
         if (!$potentialFile) {
             die('PDF could not be created for ansuchen: ' . $ansuchen->getUid());
         }
 
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+        $queryBuilder
+            ->delete('sys_file_reference')
+            ->where(
+                $queryBuilder->expr()->eq('table_local', $queryBuilder->createNamedParameter('sys_file', \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('tablenames', $queryBuilder->createNamedParameter('tx_ieb_domain_model_ansuchen', \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('fieldname', $queryBuilder->createNamedParameter('akkreditierung_pdf', \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('uid_foreign', $queryBuilder->createNamedParameter($ansuchen->getUid(), \PDO::PARAM_INT)),
+            )
+            ->executeStatement();
+
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_ieb_domain_model_ansuchen');
         $connection->insert('sys_file_reference', [
             'table_local' => 'sys_file',
             'uid_local' => $potentialFile->getUid(),
