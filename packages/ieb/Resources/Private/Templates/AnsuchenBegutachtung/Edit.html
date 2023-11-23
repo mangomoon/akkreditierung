@@ -358,7 +358,7 @@
                                 <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:begutachtung.stammdatenReviewOecertFrist}" />
                             </label>
                         </f:if>
-                        <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA2CommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep}" />
+                        <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2,commentuser:commentuser, commgs:stammdatenorig.reviewA2CommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep}" />
                     </div>
 
                 </div>
@@ -1450,7 +1450,7 @@
                 Allgemeiner Kommentar <i>intern</i>
                 
                 <div class="komm-int">
-                    <f:for each="{ansuchen.kopieVon.reviewTotalCommentInternalData}" as="comment">
+                    <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
                         <p>
                             <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
                         </p>
@@ -1459,6 +1459,7 @@
                 <div>
                     <f:switch expression="{commentuser}">
                         <f:case value="a1">
+                            <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
                                 <label>interner Kommentar der Geschäftsführung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
@@ -1466,10 +1467,14 @@
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
                                 <label>interner Kommentar Zweitbegutachtung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
-                            </f:if>
+                            </f:if></div>
                             <f:form.textarea property="reviewTotalAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                            <f:form.hidden property="reviewTotalAg2CommentInternalStep" id="reviewTotalAg2CommentInternalStep" value="{ansuchen.reviewTotalAg2CommentInternalStep}" />
+                            <f:form.hidden property="reviewTotalCommentInternalStep" id="reviewTotalCommentInternalStep" value="{ansuchen.reviewTotalCommentInternalStep}" />
+                            
                         </f:case>
                         <f:case value="a2">
+                            <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
                                 <label>interner Kommentar der Geschäftsführung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
@@ -1477,10 +1482,14 @@
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
                                 <label>interner Kommentar Erstbegutachtung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
-                            </f:if>
+                            </f:if></div>
                             <f:form.textarea property="reviewTotalAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                            <f:form.hidden property="reviewTotalAg1CommentInternalStep" id="reviewTotalAg1CommentInternalStep" value="{ansuchen.reviewTotalAg1CommentInternalStep}" />
+                            <f:form.hidden property="reviewTotalCommentInternalStep" id="reviewTotalCommentInternalStep" value="{ansuchen.reviewTotalCommentInternalStep}" />
+                            
                         </f:case>
                         <f:case value="gs">
+                            <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
                                 <label>interner Kommentar Erstbegutachtung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
@@ -1488,8 +1497,11 @@
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
                                 <label>interner Kommentar Zweitbegutachtung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
-                            </f:if>
+                            </f:if></div>
                             <f:form.textarea property="reviewTotalCommentInternalStep" class="komm-intern-textarea" id="comment1-reviewTotal"  />
+                            <f:form.hidden property="reviewTotalAg1CommentInternalStep" id="reviewTotalAg1CommentInternalStep" value="{ansuchen.reviewTotalAg1CommentInternalStep}" />
+                            <f:form.hidden property="reviewTotalAg2CommentInternalStep" id="reviewTotalAg21CommentInternalStep" value="{ansuchen.reviewTotalAg2CommentInternalStep}" />
+                            
                         </f:case>
                     </f:switch>
                 </div>

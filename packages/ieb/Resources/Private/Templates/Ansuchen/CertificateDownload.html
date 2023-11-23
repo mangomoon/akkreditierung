@@ -31,7 +31,7 @@
                     p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
                 </style>
     
-                <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">ANHANG ZUR AKKREDITIERUNGSBESTÄTIGUNG uid={ansuchen.uid}</p>
+                <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">ANHANG ZUR AKKREDITIERUNGSBESTÄTIGUNG</p>
     
                 <p style="text-align: center;line-height: 26pt">&nbsp;<br>
                     Dieses Dokument ergänzt die Akkreditierungsbestätigung vom {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} <br>
@@ -61,7 +61,7 @@
                 p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
             </style>
 
-            <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">AKKREDITIERUNGSBESTÄTIGUNG  uid={ansuchen.uid}</p>
+            <p style="text-align:center; color:#c31a1e; font-size: 15pt; letter-spacing:1pt;">AKKREDITIERUNGSBESTÄTIGUNG</p>
 
             <p style="text-align: center;line-height: 26pt">&nbsp;<br>
                 Dem Ansuchen des Bildungsträgers <br>
@@ -225,7 +225,14 @@
 
                 <li>Auflagen erfüllt werden.</li>
             </ul>
+            <p><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+            
             </pdf:html>
+            <pdf:text fontFamily="opensans"
+                      fontSize="5"
+                      color="#aaaaaa">
+                DATA: uid={ansuchen.uid} | v={ansuchen.version}
+            </pdf:text>
             </f:then>
             <!-- ENDE AKKREDITIERTE ANSUCHEN-->
 

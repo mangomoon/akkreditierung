@@ -14,11 +14,11 @@
     <f:switch expression="{commentuser}">
         <f:case value="a1">
             <div class="commintstep">
-            <f:if condition="{{property}CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}CommentInternalStep}">
                 <label>interner Kommentar der Geschäftsstelle:</label>
-                <p><f:format.nl2br>{{property}CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}CommentInternalStep}</f:format.nl2br></p>
             </f:if>
-            <f:if condition="{{property}Ag2CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
                 <label>interner Kommentar Zweitbegutachtung:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
@@ -28,13 +28,13 @@
         </f:case>
         <f:case value="a2">
             <div class="commintstep">
-            <f:if condition="{{property}CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}CommentInternalStep}">
                 <label>interner Kommentar der Geschäftsstelle:</label>
-                <p><f:format.nl2br>{{property}CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}CommentInternalStep}</f:format.nl2br></p>
             </f:if>
-            <f:if condition="{{property}Ag1CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
                 <label>interner Kommentar Erstbegutachtung:</label>
-                <p><f:format.nl2br>{{property}Ag1CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
             <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
@@ -42,9 +42,9 @@
         </f:case>
         <f:case value="gs">
             <div class="commintstep">
-            <f:if condition="{{property}Ag1CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
                 <label>interner Kommentar Erstbegutachtung:</label>
-                <p><f:format.nl2br>{{property}Ag1CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
                 <label>interner Kommentar Zweitbegutachtung:</label>

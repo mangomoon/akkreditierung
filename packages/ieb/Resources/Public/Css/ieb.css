@@ -1708,6 +1708,7 @@ span.check-nein {
 }
 .commintstep label {
     color: #fff;
+    padding-top: 8px;
 }
 .commintstep p{
     font-size: 0.9em;

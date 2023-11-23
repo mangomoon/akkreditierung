@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\EventListener;
 
-use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeEvent;
+use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\MailService;
 use GeorgRinger\Ieb\Utility\AnsuchenUtility;
@@ -14,7 +14,7 @@ final class AnsuchenBegutachtungFinalizeListener
     {
     }
 
-    public function __invoke(AnsuchenBegutachtungFinalizeEvent $event)
+    public function __invoke(AnsuchenBegutachtungFinalizeAfterSnapshotEvent $event)
     {
         $mails = AnsuchenUtility::getMailVeranwortliche($event->ansuchen);
         $gsEmail = (new ExtensionConfiguration())->getEmailAddressGs();

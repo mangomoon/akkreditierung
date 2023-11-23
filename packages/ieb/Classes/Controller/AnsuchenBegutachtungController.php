@@ -90,20 +90,7 @@ class AnsuchenBegutachtungController extends BaseController
     public function begutachtungsSchlussAction(Ansuchen $ansuchen, int $gutachtervorschlag = 0): ResponseInterface
     {
 
-        /** @var Stammdaten $stammdaten */
-        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
-        $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal');
-        $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB22CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB23CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB2CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC1CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC2CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal');
+        
 
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
@@ -123,24 +110,6 @@ class AnsuchenBegutachtungController extends BaseController
         $begutachtung->copyToAnsuchen($ansuchen);
         $ansuchen->setGutachterLockedBy(0);
         $arguments = $this->request->getArguments();
-        // if (isset($arguments['saveAndIndex'])) {
-
-        //     try {
-        //         $this->addNewComment($stammdaten, 'reviewA1CommentInternal');
-        //         $this->addNewComment($stammdaten, 'reviewA2CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
-        //         $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
-        //     } catch (\JsonException $e) {
-        //     }
-        // }
 
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
@@ -262,25 +231,18 @@ class AnsuchenBegutachtungController extends BaseController
     {
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
-
-        // try {
-        //     $this->addNewComment($stammdaten, 'reviewA1CommentInternal');
-        //     $this->addNewComment($stammdaten, 'reviewA2CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB1CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB14CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB15CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB22CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB23CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewB2CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewC1CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewC2CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewC3CommentInternal');
-        //     $this->addNewComment($ansuchen, 'reviewTotalCommentInternal');
-        // } catch (\JsonException $e) {
-        // }
-        // if($ansuchen->getUpcomingStatus() == 820) {
-        //     $ansuchen->setArchiviert() === 1;
-        // }
+        $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal');
+        $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB22CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB23CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC1CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC2CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal');
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
 
