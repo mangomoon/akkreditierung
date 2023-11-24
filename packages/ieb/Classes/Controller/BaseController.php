@@ -268,12 +268,12 @@ class BaseController extends ActionController
                 $getterForData = 'get' . ucfirst($initialFieldName);
                 $comments = $this->getConvertedJson($object->$getterForData());
             }
-            if ($prefix == 'gs') {
+            if ($prefix === 'gs') {
                 $user = 'Geschäftsstelle';
-            } elseif ($prefix == 'ag1') {
-                $user = 'Ag1 Name ...';
-            } elseif ($prefix == 'ag2') {
-                $user = 'Ag2 Name ...';
+            } elseif ($prefix === 'ag1' && $object instanceof Ansuchen && $object->getGutachter1()) {
+                $user = $object->getGutachter1()->getFullname();
+            } elseif ($prefix === 'ag2' && $object instanceof Ansuchen && $object->getGutachter2()) {
+                $user = $object->getGutachter2()->getFullname();
             }
             $comments[] = [
                 'prefix' => $prefix,
