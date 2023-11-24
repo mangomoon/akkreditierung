@@ -17,7 +17,7 @@ final class AnsuchenBegutachtungFinalizeListener
 
     public function __invoke(AnsuchenBegutachtungFinalizeAfterSnapshotEvent $event)
     {
-        $mails = AnsuchenUtility::getMailVeranwortliche($event->ansuchen);
+        $mails = AnsuchenUtility::getMailVeranwortliche($event->ansuchenAfterSnapshot);
         $gsEmail = (new ExtensionConfiguration())->getEmailAddressGs();
         if ($gsEmail) {
             $mails[$gsEmail] = '';
@@ -25,16 +25,16 @@ final class AnsuchenBegutachtungFinalizeListener
 
         $extensionConfiguration = new ExtensionConfiguration();
         $possibleMails = [];
-        if ($event->ansuchen->getTyp() === 1) {
+        if ($event->ansuchenAfterSnapshot->getTyp() === 1) {
             $possibleMails = $extensionConfiguration->getEmailBabi();
-        } elseif ($event->ansuchen->getTyp() === 2) {
+        } elseif ($event->ansuchenAfterSnapshot->getTyp() === 2) {
             $possibleMails = $extensionConfiguration->getEmailPsa();
         }
 
-        $status = $event->ansuchen->getStatus();
+        $status = $event->ansuchenAfterSnapshot->getStatus();
         if (in_array($status, [AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value, AnsuchenStatus::NICHT_AKKREDITERT->value, AnsuchenStatus::AKKREDITIERUNG_ENTZOGEN->value], true)) {
 
-            $mailsOfBundesland = $possibleMails[$event->ansuchen->getBundesland()] ?? false;
+            $mailsOfBundesland = $possibleMails[$event->ansuchenAfterSnapshot->getBundesland()] ?? false;
             if ($mailsOfBundesland) {
                 if (is_array($mailsOfBundesland)) {
                     foreach ($mailsOfBundesland as $mail) {
@@ -48,8 +48,8 @@ final class AnsuchenBegutachtungFinalizeListener
 
 
         $values = [
-            'ansuchen' => $event->ansuchen,
-            'newStatus' => $event->ansuchen->getStatus(),
+            'ansuchen' => $event->ansuchenAfterSnapshot,
+            'newStatus' => $event->ansuchenAfterSnapshot->getStatus(),
         ];
 
         $this->mailService->send('Notification/AnsuchenBegutachtungFinalize', $mails, $values);

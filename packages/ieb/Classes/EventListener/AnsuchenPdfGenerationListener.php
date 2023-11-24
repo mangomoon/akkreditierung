@@ -31,7 +31,7 @@ final class AnsuchenPdfGenerationListener
         }
 
         $pdf = $this->getPdfString($event);
-        $this->writeFile($pdf, $event->ansuchen);
+        $this->writeFile($pdf, $event->ansuchenAfterSnapshot);
     }
 
     private function writeFile(string $pdf, Ansuchen $ansuchen): void
@@ -98,7 +98,7 @@ final class AnsuchenPdfGenerationListener
         $standaloneView->setFormat('html');
         $standaloneView->setTemplatePathAndFilename($templatePath);
         $standaloneView->assignMultiple([
-            'ansuchen' => $event->ansuchen,
+            'ansuchen' => $event->ansuchenAfterSnapshot,
             'stammdaten' => $event->stammdaten,
             'extensionConfiguration' => new ExtensionConfiguration(),
             'outputDestination' => 'string',

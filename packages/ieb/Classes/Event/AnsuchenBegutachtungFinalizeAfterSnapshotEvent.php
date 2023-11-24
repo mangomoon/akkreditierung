@@ -11,7 +11,7 @@ class AnsuchenBegutachtungFinalizeAfterSnapshotEvent
 {
 
     public function __construct(
-        public readonly Ansuchen $ansuchen,
+        public readonly Ansuchen $ansuchenAfterSnapshot,
         public readonly Ansuchen $ansuchenOld,
         public readonly Stammdaten $stammdaten,
     )
