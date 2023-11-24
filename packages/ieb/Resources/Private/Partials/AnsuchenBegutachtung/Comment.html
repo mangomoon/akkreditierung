@@ -14,43 +14,43 @@
     <f:switch expression="{commentuser}">
         <f:case value="a1">
             <div class="commintstep">
-            <f:if condition="{ansuchen.{property}CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}GsCommentInternalStep}">
                 <label>interner Kommentar der Geschäftsstelle:</label>
-                <p><f:format.nl2br>{ansuchen.{property}CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}GsCommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
-                <label>interner Kommentar Zweitbegutachtung:</label>
+                <label>interner Kommentar {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
             <f:form.hidden property="{property}Ag2CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag2CommentInternalStep}" />
-            <f:form.hidden property="{property}CommentInternalStep" id="{property}CommentInternalStep" value="{ansuchen.{property}CommentInternalStep}" />
+            <f:form.hidden property="{property}GsCommentInternalStep" id="{property}GsCommentInternalStep" value="{ansuchen.{property}GsCommentInternalStep}" />
         </f:case>
         <f:case value="a2">
             <div class="commintstep">
-            <f:if condition="{ansuchen.{property}CommentInternalStep}">
+            <f:if condition="{ansuchen.{property}GsCommentInternalStep}">
                 <label>interner Kommentar der Geschäftsstelle:</label>
-                <p><f:format.nl2br>{ansuchen.{property}CommentInternalStep}</f:format.nl2br></p>
+                <p><f:format.nl2br>{ansuchen.{property}GsCommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
-                <label>interner Kommentar Erstbegutachtung:</label>
+                <label>interner Kommentar {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
             <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
-            <f:form.hidden property="{property}CommentInternalStep" id="{property}CommentInternalStep" value="{ansuchen.{property}CommentInternalStep}" />
+            <f:form.hidden property="{property}GsCommentInternalStep" id="{property}GsCommentInternalStep" value="{ansuchen.{property}GsCommentInternalStep}" />
         </f:case>
         <f:case value="gs">
             <div class="commintstep">
             <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
-                <label>interner Kommentar Erstbegutachtung:</label>
+                <label>interner Kommentar {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
-                <label>interner Kommentar Zweitbegutachtung:</label>
+                <label>interner Kommentar {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
-            <f:form.textarea property="{property}CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            <f:form.textarea property="{property}GsCommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
             <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
             <f:form.hidden property="{property}Ag2CommentInternalStep" id="{property}Ag2CommentInternalStep" value="{ansuchen.{property}Ag2CommentInternalStep}" />
         </f:case>

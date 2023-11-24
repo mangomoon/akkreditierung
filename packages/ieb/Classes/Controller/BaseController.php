@@ -268,15 +268,22 @@ class BaseController extends ActionController
                 $getterForData = 'get' . ucfirst($initialFieldName);
                 $comments = $this->getConvertedJson($object->$getterForData());
             }
+            if ($prefix == 'gs') {
+                $user = 'Geschäftsstelle';
+            } elseif ($prefix == 'ag1') {
+                $user = 'Ag1 Name ...';
+            } elseif ($prefix == 'ag2') {
+                $user = 'Ag2 Name ...';
+            }
             $comments[] = [
                 'prefix' => $prefix,
-                'user' => self::getCurrentUserName(),
+                'user' => $user,
                 'user_uid' => self::getCurrentUserId(),
                 'comment' => $comment,
                 'date' => time(),
             ];
             $setter = 'set' . ucfirst($initialFieldName);
-            $setterStep = 'set' . ucfirst($initialFieldName) . 'Step';
+            $setterStep = 'set' . ucfirst($fieldName) . 'Step';
             $object->$setter(json_encode($comments, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
             $object->$setterStep('');
         }

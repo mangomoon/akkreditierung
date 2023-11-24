@@ -238,7 +238,7 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA1CommentInternalStep, commag1:stammdatenorig.reviewA1Ag1CommentInternalStep, commag2:stammdatenorig.reviewA1Ag2CommentInternalStep}" />
+                    <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA1GsCommentInternalStep, commag1:stammdatenorig.reviewA1Ag1CommentInternalStep, commag2:stammdatenorig.reviewA1Ag2CommentInternalStep, ansuchen:ansuchen}" />
                 </div>
             
             </div>
@@ -358,7 +358,7 @@
                                 <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:begutachtung.stammdatenReviewOecertFrist}" />
                             </label>
                         </f:if>
-                        <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2,commentuser:commentuser, commgs:stammdatenorig.reviewA2CommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep}" />
+                        <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2,commentuser:commentuser, commgs:stammdatenorig.reviewA2GsCommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep, ansuchen:ansuchen}" />
                     </div>
 
                 </div>
