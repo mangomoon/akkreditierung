@@ -108,6 +108,7 @@ class AnsuchenBegutachtungController extends BaseController
     public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung, array $verantwortliche = []): void
     {
         $begutachtung->verantwortliche = $verantwortliche;
+        /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung->copyToAnsuchen($ansuchen);
         $ansuchen->setGutachterLockedBy(0);
@@ -235,6 +236,8 @@ class AnsuchenBegutachtungController extends BaseController
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal');
         $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal');
+
+
         $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal');
         $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal');
         $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal');
@@ -287,6 +290,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
 
         $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
+        /** @var Ansuchen $newAnsuchen */
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent($ansuchen, $newAnsuchen, $stammdaten));
 
