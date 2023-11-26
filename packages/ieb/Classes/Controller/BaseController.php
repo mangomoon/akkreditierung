@@ -252,7 +252,7 @@ class BaseController extends ActionController
         $object->$setterStep('');
     }
 
-    protected function addNewCommentByAll(Ansuchen|Stammdaten|Berater|Trainer $object, string $initialFieldName): void
+    protected function addNewCommentByAll(Ansuchen|Stammdaten|Berater|Trainer $object, string $initialFieldName, string $gutachter1Name, string $gutachter2Name): void
     {
         foreach (['gs', 'ag1', 'ag2'] as $prefix) {
             $fieldName = str_replace('Comment', ucfirst($prefix) . 'Comment', $initialFieldName);
@@ -271,10 +271,10 @@ class BaseController extends ActionController
 
             if ($prefix === 'gs') {
                 $user = 'Geschäftsstelle';
-            } elseif ($prefix === 'ag1' && $object instanceof Ansuchen && $object->getGutachter1()) {
-                $user = $object->getGutachter1()->getFullname();
-            } elseif ($prefix === 'ag2' && $object instanceof Ansuchen && $object->getGutachter2()) {
-                $user = $object->getGutachter2()->getFullname();
+            } elseif ($prefix === 'ag1') {
+                $user = $gutachter1Name;
+            } elseif ($prefix === 'ag2') {
+                $user = $gutachter2Name;
             } else {
                 $user = self::getCurrentUserName();
             }

@@ -234,29 +234,33 @@ class AnsuchenBegutachtungController extends BaseController
     {
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
-        $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal');
-        $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal');
+
+        $gutachter1Name = $ansuchen->getGutachter1() ? $ansuchen->getGutachter1()->getFullName() : '';
+        $gutachter2Name = $ansuchen->getGutachter2() ? $ansuchen->getGutachter2()->getFullName() : '';
+
+        $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal', $gutachter1Name, $gutachter2Name);
 
 
-        $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB22CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB23CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewB2CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC1CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC2CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal');
-        $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal');
+        $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewB22CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewB23CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewB2CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewC1CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewC2CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewC3CommentInternal', $gutachter1Name, $gutachter2Name);
+        $this->addNewCommentByAll($ansuchen, 'reviewTotalCommentInternal', $gutachter1Name, $gutachter2Name);
 
         foreach($ansuchen->getTrainer() as $trainer) {
-            $this->addNewCommentByAll($trainer, 'reviewC2BabiCommentInternal');
-            $this->addNewCommentByAll($trainer, 'reviewC2PsaCommentInternal');
+            $this->addNewCommentByAll($trainer, 'reviewC2BabiCommentInternal', $gutachter1Name, $gutachter2Name);
+            $this->addNewCommentByAll($trainer, 'reviewC2PsaCommentInternal', $gutachter1Name, $gutachter2Name);
             $this->trainerRepository->update($trainer);
         }
         $this->trainerRepository->forcePersist();
         foreach($ansuchen->getBerater() as $berater) {
-            $this->addNewCommentByAll($berater, 'reviewC3CommentInternal');
+            $this->addNewCommentByAll($berater, 'reviewC3CommentInternal', $gutachter1Name, $gutachter2Name);
             $this->beraterRepository->update($berater);
         }
         $this->beraterRepository->forcePersist();
