@@ -1523,57 +1523,63 @@
 
 
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                <f:then>
                 <div class="abstand-gross"></div>
-                <label>status</label>
-                <div class="abstand-klein"></div>
-                <div class="">
-                    <f:if condition="{ansuchen.status}<100">
-                                            <f:then>
-                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || (({ansuchen.typ}==2 && {tsarPsa}>2)) && !{ansuchen.pruefbescheidCheck}) || {bsar}>2">
-                                                    <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
-                                                </f:if>
-                                                <f:form.select property="upcomingStatus"  options="{
-                                                    0: 'noch nicht gewählt', 
-                                                    80: 'Nachbesserungsauftrag',
-                                                    100: 'Akkreditiert',
-                                                    140: 'Akkreditert mit Auflagen',
-                                                    800: 'Nicht akkreditiert'
-                                                    }" />
-                                            </f:then>
-                                            <f:else>
-                                                <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
-                                                    <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
-                                                </f:if>
-                                                <f:if condition="({ansuchen.status}==160) || ({ansuchen.status}==210) || ({ansuchen.status}==170) || ({ansuchen.status}==215)">
+                    <label>status</label>
+                    <div class="abstand-klein"></div>
+                    <div class="">
+                        <f:if condition="{ansuchen.status}<100">
+                                                <f:then>
+                                                    <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || (({ansuchen.typ}==2 && {tsarPsa}>2)) && !{ansuchen.pruefbescheidCheck}) || {bsar}>2">
+                                                        <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
+                                                    </f:if>
                                                     <f:form.select property="upcomingStatus"  options="{
-                                                    0: 'noch nicht gewählt', 
-                                                    200: 'Bearbeitungsauftrag',
-                                                    100: 'Akkreditiert',
-                                                    140: 'Akkreditert mit Auflagen',
-                                                    810: 'Akkreditierung entzogen',
-                                                    820: 'Akkreditierung ausgesetzt'
-                                                    }" />
-                                                </f:if>
-                                                <f:if condition="({ansuchen.status}==150) || ({ansuchen.status}==155) || ({ansuchen.status}==230) || ({ansuchen.status}==235)">
-                                                    <f:form.select property="upcomingStatus"  options="{
-                                                    0: 'noch nicht gewählt', 
-                                                    220: 'Bearbeitungsauftrag',
-                                                    100: 'Akkreditiert',
-                                                    140: 'Akkreditert mit Auflagen',
-                                                    810: 'Akkreditierung entzogen',
-                                                    820: 'Akkreditierung ausgesetzt'
-                                                    }" />
-                                                </f:if>
-                                            </f:else>
-                                        </f:if>
+                                                        0: 'noch nicht gewählt', 
+                                                        80: 'Nachbesserungsauftrag',
+                                                        100: 'Akkreditiert',
+                                                        140: 'Akkreditert mit Auflagen',
+                                                        800: 'Nicht akkreditiert'
+                                                        }" />
+                                                </f:then>
+                                                <f:else>
+                                                    <f:if condition="(({ansuchen.typ}==1 && {tsarBabi}>2) || ({ansuchen.typ}==2 && {tsarPsa}>2)) || {bsar}>2">
+                                                        <span class="titleview knopfrund achtung-gelb" title="Auflagen bei Training oder Beratung!"></span> 
+                                                    </f:if>
+                                                    <f:if condition="({ansuchen.status}==160) || ({ansuchen.status}==210) || ({ansuchen.status}==170) || ({ansuchen.status}==215)">
+                                                        <f:form.select property="upcomingStatus"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        200: 'Bearbeitungsauftrag',
+                                                        100: 'Akkreditiert',
+                                                        140: 'Akkreditert mit Auflagen',
+                                                        810: 'Akkreditierung entzogen',
+                                                        820: 'Akkreditierung ausgesetzt'
+                                                        }" />
+                                                    </f:if>
+                                                    <f:if condition="({ansuchen.status}==150) || ({ansuchen.status}==155) || ({ansuchen.status}==230) || ({ansuchen.status}==235)">
+                                                        <f:form.select property="upcomingStatus"  options="{
+                                                        0: 'noch nicht gewählt', 
+                                                        220: 'Bearbeitungsauftrag',
+                                                        100: 'Akkreditiert',
+                                                        140: 'Akkreditert mit Auflagen',
+                                                        810: 'Akkreditierung entzogen',
+                                                        820: 'Akkreditierung ausgesetzt'
+                                                        }" />
+                                                    </f:if>
+                                                </f:else>
+                                            </f:if>
+                    
+                    </div>
+
+                    <div class="abstand-mittel"></div>
+
+
+                    <f:form.hidden property="statusAgZwei" id="s1" value="{ansuchen.statusAgZwei}" />
+                    <f:form.hidden property="statusAgEins" id="s2" value="{ansuchen.statusAgEins}" />
+                </f:then>
+                <f:else>
+                    <f:form.hidden property="status" id="status-trsfr" value="{ansuchen.status}" />
+                </f:else>
                 
-                </div>
-
-                <div class="abstand-mittel"></div>
-
-
-                <f:form.hidden property="statusAgZwei" id="s1" value="{ansuchen.statusAgZwei}" />
-                <f:form.hidden property="statusAgEins" id="s2" value="{ansuchen.statusAgEins}" />
             </f:if>
         
 

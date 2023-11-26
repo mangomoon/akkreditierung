@@ -94,6 +94,14 @@ class StammdatenController extends BaseController
         }
     }
 
+    public function unlockAction(Stammdaten $stammdaten)
+    {
+        $this->check($stammdaten);
+        $stammdaten->setLockedBy(0);
+        $this->stammdatenRepository->update($stammdaten);
+        $this->redirect('index');
+    }
+
     public function initializeCreateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('newStammdaten');

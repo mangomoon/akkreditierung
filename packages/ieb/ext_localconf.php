@@ -19,10 +19,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Stamm',
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit, unlock',
         ],
         [
-            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit',
+            \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit, unlock',
         ]
     );
 
