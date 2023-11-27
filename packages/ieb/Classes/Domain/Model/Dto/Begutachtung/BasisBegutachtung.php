@@ -72,7 +72,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $reviewC2GsCommentInternalStep = '';
     public string $reviewC3GsCommentInternalStep = '';
     public string $reviewTotalGsCommentInternalStep = '';
-    
+
     public string $reviewB1Ag1CommentInternalStep = '';
     public string $reviewB14Ag1CommentInternalStep = '';
     public string $reviewB15Ag1CommentInternalStep = '';
@@ -83,7 +83,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public string $reviewC2Ag1CommentInternalStep = '';
     public string $reviewC3Ag1CommentInternalStep = '';
     public string $reviewTotalAg1CommentInternalStep = '';
-    
+
     public string $reviewB1Ag2CommentInternalStep = '';
     public string $reviewB14Ag2CommentInternalStep = '';
     public string $reviewB15Ag2CommentInternalStep = '';
@@ -130,11 +130,11 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewB2CommentInternalStep', 'reviewB2CommentTr', 'reviewB2Status',
         'reviewC1CommentInternalStep', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
-        'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus', 
-        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid','statusAfterReview','trotzdemAbschicken',
-        'reviewB1GsCommentInternalStep','reviewB1Ag1CommentInternalStep','reviewB1Ag2CommentInternalStep','reviewB14GsCommentInternalStep','reviewB14Ag1CommentInternalStep','reviewB14Ag2CommentInternalStep',
+        'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus',
+        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid', 'statusAfterReview', 'trotzdemAbschicken',
+        'reviewB1GsCommentInternalStep', 'reviewB1Ag1CommentInternalStep', 'reviewB1Ag2CommentInternalStep', 'reviewB14GsCommentInternalStep', 'reviewB14Ag1CommentInternalStep', 'reviewB14Ag2CommentInternalStep',
         'reviewB15GsCommentInternalStep', 'reviewB2GsCommentInternalStep', 'reviewB22GsCommentInternalStep', 'reviewB23GsCommentInternalStep', 'reviewC1GsCommentInternalStep', 'reviewC2GsCommentInternalStep', 'reviewC3GsCommentInternalStep', 'reviewTotalGsCommentInternalStep', 'reviewB15Ag1CommentInternalStep', 'reviewB2Ag1CommentInternalStep', 'reviewB22Ag1CommentInternalStep', 'reviewB23Ag1CommentInternalStep', 'reviewC1Ag1CommentInternalStep', 'reviewC2Ag1CommentInternalStep', 'reviewC3Ag1CommentInternalStep', 'reviewTotalAg1CommentInternalStep', 'reviewB15Ag2CommentInternalStep', 'reviewB2Ag2CommentInternalStep', 'reviewB22Ag2CommentInternalStep', 'reviewB23Ag2CommentInternalStep', 'reviewC1Ag2CommentInternalStep', 'reviewC2Ag2CommentInternalStep', 'reviewC3Ag2CommentInternalStep', 'reviewTotalAg2CommentInternalStep',
-        ];
+    ];
 
     private const FIELDS_STAMMDATEN = [
         'stammdatenReviewA1Status', 'stammdatenReviewA1CommentInternal', 'stammdatenReviewA1CommentInternalStep', 'stammdatenReviewA1CommentTr',
@@ -152,7 +152,7 @@ class BasisBegutachtung extends AbstractDomainObject
         $this->status = $ansuchen->getStatus();
 
         foreach (self::FIELDS_STAMMDATEN as $field) {
-            if($field == "stammdatenStatusAfterReview") {
+            if ($field == "stammdatenStatusAfterReview") {
                 $realFieldName = "statusAfterReview";
             } else {
                 $realFieldName = str_replace('stammdatenR', 'r', $field);
@@ -173,13 +173,15 @@ class BasisBegutachtung extends AbstractDomainObject
     public function copyToStammdaten(Stammdaten $stammdaten, Ansuchen $ansuchen): void
     {
         foreach (self::FIELDS_STAMMDATEN as $field) {
-            if($field == "stammdatenStatusAfterReview") {
+            if ($field === 'stammdatenStatusAfterReview') {
                 $realFieldName = "statusAfterReview";
             } else {
                 $realFieldName = str_replace('stammdatenR', 'r', $field);
             }
-            $setter = 'set' . ucfirst($realFieldName);
-            $stammdaten->$setter($this->$field);
+            if (!str_ends_with($field, 'InternalStep')) {
+                $setter = 'set' . ucfirst($realFieldName);
+                $stammdaten->$setter($this->$field);
+            }
         }
     }
 
