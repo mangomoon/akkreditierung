@@ -12,7 +12,9 @@ use GeorgRinger\Ieb\ExtensionConfiguration;
 use League\Csv;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ReportingController extends ActionController
 {
@@ -84,6 +86,24 @@ class ReportingController extends ActionController
                 'status' => array_column(AnsuchenStatus::cases(), 'name', 'value'),
                 'tr' => $this->reportingRepository->getAllTraegerNames(),
             ],
+        ]);
+
+        return $this->htmlResponse();
+    }
+
+    public function dateLogAction(string $selected = ''): ResponseInterface
+    {
+        $availableDateRanges = $this->reportingRepository->getDateLogUsage();
+        $items = null;
+        if ($selected && isset($availableDateRanges[$selected])) {
+            $split = GeneralUtility::intExplode('-', $selected);
+            $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
+        }
+        DebuggerUtility::var_dump($items);
+        $this->view->assignMultiple([
+            'dateRanges' => $availableDateRanges,
+            'selected' => $selected,
+            'items' => $items,
         ]);
 
         return $this->htmlResponse();

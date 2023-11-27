@@ -146,10 +146,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Reporting',
         [
-            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter',
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog',
         ],
         [
-            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter',
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog',
         ]
     );
 

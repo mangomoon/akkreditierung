@@ -1,0 +1,45 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h1>Datums LOG</h1>
+
+    <f:form action="dateLog" name="dateLog" method="post">
+        <f:form.select name="selected" value="{selected}" options="{dateRanges}" prependOptionLabel="" prependOptionValue="" />
+        <f:form.submit value="Submit"/>
+    </f:form>
+    <f:if condition="{items}">
+        <f:then>
+            <table>
+                <thead>
+                <tr>
+                    <th>Uid</th>
+                    <th>Name</th>
+                    <th>einreich_datum</th>
+                    <th>zuteilung_datum</th>
+                    <th>akkreditierung_entscheidung_datum</th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="{items}" as="item">
+                    <tr>
+                        <td>{item.uid}</td>
+                        <td>{item.name}</td>
+                        <td>{item.einreich_datum}</td>
+                        <td>{item.zuteilung_datum}</td>
+                        <td>{item.akkreditierung_entscheidung_datum}</td>
+                    </tr>
+                </f:for>
+                </tbody>
+            </table>
+        </f:then>
+        <f:else>
+
+        </f:else>
+    </f:if>
+</f:section>
+
+</html>

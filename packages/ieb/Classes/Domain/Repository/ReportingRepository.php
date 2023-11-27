@@ -7,9 +7,12 @@ use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ReportingRepository
 {
+
+    private array $dateLogFields = ['einreich_datum', 'zuteilung_datum', 'akkreditierung_entscheidung_datum'];
 
     public function getTrWithNoAnsuchen(): array
     {
@@ -83,6 +86,63 @@ class ReportingRepository
         }
         return $items;
     }
+
+    public function getDateLog(int $year, int $quarter): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+
+        $dateConstraints = [];
+        foreach ($this->dateLogFields as $field) {
+            $dateConstraints[] = $queryBuilder->expr()->andX(
+                sprintf('year(%s)=%s', $field, $year),
+                sprintf('quarter(%s)=%s', $field, $quarter),
+            );
+        }
+
+        $rows = $queryBuilder
+            ->select('*')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->orX(...$dateConstraints),
+            )
+            ->orderBy('tstamp', 'DESC')
+            ->executeQuery()
+            ->fetchAllAssociative();
+
+        DebuggerUtility::var_dump([$year, $quarter, $rows]);
+        return $rows;
+    }
+
+
+    public function getDateLogUsage(): array
+    {
+        $items = [];
+        foreach ($this->dateLogFields as $field) {
+            $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+
+            $rows = $queryBuilder
+                ->addSelectLiteral('count(*) as count')
+                ->addSelectLiteral(sprintf('year(%s) as year', $field))
+                ->addSelectLiteral(sprintf('quarter(%s) as quarter', $field))
+                ->from('tx_ieb_domain_model_ansuchen')
+                ->where(
+                    $queryBuilder->expr()->isNotNull($field)
+                )
+                ->groupBy('year', 'quarter')
+                ->execute()
+                ->fetchAllAssociative();
+
+            foreach ($rows as $row) {
+                if (!$row['year'] || !$row['quarter']) {
+                    continue;
+                }
+                $items[sprintf('%s-%s', $row['year'], $row['quarter'])] = sprintf('%s - %s', $row['year'], $row['quarter']);
+            }
+        }
+        ksort($items);
+        return $items;
+    }
+
 
     private function getQueryBuilder(string $tableName): QueryBuilder
     {
