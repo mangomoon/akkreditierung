@@ -365,7 +365,7 @@
             </div>
         </div>
 
-
+        <f:if condition="!{ansuchen.pp3}">
         <!-- B.1. Eckdaten zum Angebot #################################################### -->
 
         <div class="begutachtung-kriterium row status-{ansuchen.reviewB1Status}" id="kB1">
@@ -502,7 +502,7 @@
         </div>
     </div>
 
-    
+        </f:if>
         <!-- B.1.4 Standorte #################################################### -->
 
         <div class="begutachtung-kriterium row status-{ansuchen.reviewB14Status}" id="kB14">
@@ -570,7 +570,7 @@
                 </div>
             </div>
         </div>
-
+        <f:if condition="!{ansuchen.pp3}">
         <!-- B.1.5 Abnahme von Prüfungen #################################################### -->
 
         <f:if condition="{ansuchen.typ} == 2">
@@ -888,7 +888,7 @@
             </div>
         </div>
 
-
+</f:if>
         <!-- C.1 Projektleitung #################################################### -->
 
         <div class="begutachtung-kriterium row status-{ansuchen.reviewC1Status}" id="kC1">

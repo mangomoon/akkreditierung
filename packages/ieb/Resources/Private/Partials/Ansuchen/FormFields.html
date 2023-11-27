@@ -605,7 +605,9 @@
         </div>
         <div class="abstand-gross psa"></div>
         <p class="psa">
-            <f:form.checkbox property="erklaerungTeilB" id="erklaerungTeilB" value="1" /> Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.
+            <f:if condition="{ansuchen.pruefbescheidCheck}">
+                <f:form.checkbox property="erklaerungTeilB" id="erklaerungTeilB" value="1" class="reqcheckbox" /> Wir bestätigen, dass die Prüfung gemäß den gesetzlichen Bestimmungen abgenommen wird.
+            </f:if>
         </p>
         <div class="formfields row">
             <div class="col-6">
@@ -867,7 +869,7 @@
                         </div>
 
                         <f:if condition="{ansuchen.pruefbescheidCheck}">
-                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="0" />Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="0" />Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>
