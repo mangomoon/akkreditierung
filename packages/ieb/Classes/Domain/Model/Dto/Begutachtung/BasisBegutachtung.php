@@ -178,7 +178,7 @@ class BasisBegutachtung extends AbstractDomainObject
             } else {
                 $realFieldName = str_replace('stammdatenR', 'r', $field);
             }
-            if (!str_ends_with($field, 'InternalStep')) {
+            if (!str_ends_with($field, 'CommentInternal')) {
                 $setter = 'set' . ucfirst($realFieldName);
                 $stammdaten->$setter($this->$field);
             }

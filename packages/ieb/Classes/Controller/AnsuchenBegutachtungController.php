@@ -234,7 +234,6 @@ class AnsuchenBegutachtungController extends BaseController
     {
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
-
         $gutachter1Name = $ansuchen->getGutachter1() ? $ansuchen->getGutachter1()->getFullName() : '';
         $gutachter2Name = $ansuchen->getGutachter2() ? $ansuchen->getGutachter2()->getFullName() : '';
 
