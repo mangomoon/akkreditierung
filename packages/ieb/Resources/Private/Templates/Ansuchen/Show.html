@@ -4,21 +4,21 @@
 
 <f:section name="content">
 
-<f:debug>{_all}</f:debug>
+
      
-    <f:if condition="{currentUser.usergroup}!=1">
+    <f:if condition="{currentUser.usergroup}==1 && {ansuchen.status}<50">
         <f:then>
-            {stammdaten -> f:variable(name: 'stammdatenorig')}
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
-        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
-        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
-        {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
-        {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
-        </f:then>
-        <f:else>
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
             {ansuchen.trainer -> f:variable(name: 'trainer')}
             {ansuchen.berater -> f:variable(name: 'berater')}
+        </f:then>
+        <f:else>
+            {stammdaten -> f:variable(name: 'stammdatenorig')}
+            {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+            {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+            {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+            {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
+            {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
         </f:else>
         
     </f:if>
@@ -36,7 +36,7 @@
 </f:if>
 
 <div class="begutachtung-kopf row">
-    <div class="col">
+    <div class="col-8">
         <p class="name">
             <f:if condition="{stammdaten.markenname}">
                 <f:then>
@@ -48,8 +48,12 @@
             </f:if>
         </p>
         <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
+        <f:if condition="{currentUser.usergroup}==1 && {ansuchen.status}>50">
+            <p>Es werden die Daten der letzten Einreichung mit der Begutachtung vom <f:format.date format='d.m.Y'>{ansuchen.akkreditierungEntscheidungDatum}</f:format.date> gezeigt.</p>
+        </f:if>
+        
     </div>
-    <div class="col">
+    <div class="col-4">
         <p class="typ"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
         </p>
         <p class="rechtsbuendig">
