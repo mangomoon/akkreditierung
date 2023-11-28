@@ -3,12 +3,27 @@
 
 
 <f:section name="content">
-    {stammdaten -> f:variable(name: 'stammdatenorig')} 
-    {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
-    {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
-    {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
-    {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
-    {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+
+<f:debug>{_all}</f:debug>
+     
+    <f:if condition="{currentUser.usergroup}!=1">
+        <f:then>
+            {stammdaten -> f:variable(name: 'stammdatenorig')}
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
+        {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+        </f:then>
+        <f:else>
+            {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
+            {ansuchen.trainer -> f:variable(name: 'trainer')}
+            {ansuchen.berater -> f:variable(name: 'berater')}
+        </f:else>
+        
+    </f:if>
+    
+    
 
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
@@ -16,7 +31,7 @@
     </f:if>
     <div id="ansuchen-show">
 
-<f:if condition="!{editableByTr}">
+<f:if condition="!{ansuchen.editableByTr}">
     <f:variable name="AnsuchenInBegutachtung">1</f:variable>
 </f:if>
 
@@ -167,7 +182,7 @@
                     </f:if>
                     </div>
                     <div class="rechts col-5">
-  
+
                     
                         <f:render partial="Ansuchen/Kommentare" arguments="{
                             status:ansuchen.reviewB1Status,
