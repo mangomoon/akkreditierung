@@ -1,5 +1,5 @@
 myApp:
-    prefix: /api/v1
+    prefix: /api/v1-Hg8E39Jol1
     routes:
         - name: application
           path: /monitoring-export

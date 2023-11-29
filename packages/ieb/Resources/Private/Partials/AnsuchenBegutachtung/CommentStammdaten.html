@@ -19,7 +19,7 @@
                     <p><f:format.nl2br>{commgs}</f:format.nl2br></p>
                 </f:if>
                 <f:if condition="{commag2}">
-                    <label>interner Kommentar {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
+                    <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
                     <p><f:format.nl2br>{commag2}</f:format.nl2br></p>
                 </f:if>
             </div>
@@ -34,7 +34,7 @@
                     <p><f:format.nl2br>{commgs}</f:format.nl2br></p>
                 </f:if>
                 <f:if condition="{commag1}">
-                    <label>interner Kommentar {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
+                    <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
                     <p><f:format.nl2br>{commag1}</f:format.nl2br></p>
                 </f:if>
             </div>
@@ -45,11 +45,11 @@
         <f:case value="gs">
             <div class="commintstep">
                 <f:if condition="{commag1}">
-                    <label>interner Kommentar {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
+                    <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
                     <p><f:format.nl2br>{commag1}</f:format.nl2br></p>
                 </f:if>
                 <f:if condition="{commag2}">
-                    <label>interner Kommentar {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
+                    <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
                     <p><f:format.nl2br>{commag2}</f:format.nl2br></p>
                 </f:if>
             </div>
