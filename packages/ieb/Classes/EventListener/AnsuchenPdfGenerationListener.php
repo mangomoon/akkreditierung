@@ -51,7 +51,7 @@ final class AnsuchenPdfGenerationListener
             $ansuchenStatus = '_akkreditiert-mit-Auflagen';
         }
         try {
-            $targetFileName = $ansuchen->getNummer() . '_' . date_format($ansuchen->getAkkreditierungDatum(), 'Y-m-d') . $ansuchenStatus . '_' . $ansuchen->getUid() . '.pdf';
+            $targetFileName = $ansuchen->getNummer() . '_' . date_format($ansuchen->getAkkreditierungEntscheidungDatum(), 'Y-m-d') . $ansuchenStatus . '_' . $ansuchen->getUid() . '.pdf';
             $potentialFile = $storage->addFile($tmpFile, $storage->getFolder($directory), $targetFileName, DuplicationBehavior::RENAME);
         } catch (\Exception $e) {
             echo $e->getMessage();

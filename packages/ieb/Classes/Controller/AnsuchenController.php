@@ -328,6 +328,10 @@ class AnsuchenController extends BaseController
     public function certificateDownloadAction(Ansuchen $ansuchen)
     {
         $this->check($ansuchen);
+        // $aktuelleVersion = $ansuchen->getVersion();
+        // if ($aktuelleVersion != 0) {
+        //     $vorigeVersion = $aktuelleversion - 1;
+        // }
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $this->stammdatenRepository->getLatest(),

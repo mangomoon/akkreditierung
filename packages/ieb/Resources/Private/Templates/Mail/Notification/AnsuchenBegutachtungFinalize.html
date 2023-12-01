@@ -11,65 +11,74 @@
 
         <p>Sehr geehrte Damen und Herren!</p>
 
+        <f:if condition="{ansuchen.pp3}==1">
+            <f:then>
+                <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe stattgegeben.</p>
+                <p>&nbsp;</p>
+                <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen.</p>
+            </f:then>
+            <f:else>
+                        <f:if condition="{ansuchen.status}<50">
 
-        <f:if condition="{ansuchen.status}<50">
+                            <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                        
+                        </f:if>
 
-            <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-        
+                        <f:if condition="{ansuchen.status}==80">
+
+                            <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                        
+                        </f:if>
+
+                        <f:if condition="{ansuchen.status}==100">
+
+                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
+                            <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                        </f:if>
+                        
+                        <f:if condition="{ansuchen.status}==140">
+
+                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
+                            <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                        </f:if>
+
+                        <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
+
+                        <p>Ihre eingereichten Änderungen wurden noch nicht akkreditiert. Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
+                    
+                        <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
+
+                        <p>Ihre Akkreditierung bleibt bestehen.</p>
+                        
+                        </f:if>
+
+
+                        <f:if condition="{ansuchen.status}==800">
+
+                            <p>Die Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird mit sofortiger Wirksamkeit aus folgenden Gründen nicht stattgegeben:</p>
+                        
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                            <p>ETC.</p>
+                            
+                        </f:if>
+                        
+                        <f:if condition="{ansuchen.status}==820">
+
+                            <p>Die Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird mit sofortiger Wirksamkeit aus folgenden Gründen entzogen:</p>
+                        
+                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                            <p>ETC.</p>
+                            
+                        </f:if>
+            </f:else>
         </f:if>
 
-        <f:if condition="{ansuchen.status}==80">
-
-            <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-        
-        </f:if>
-
-        <f:if condition="{ansuchen.status}==100">
-
-            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
-            <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2027. </p>
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie  <f:link.action pageUid="14" action="certificateDownload" extensionName="ieb" controller="Ansuchen"  target="_blank" arguments="{ansuchen : ansuchen}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
-        </f:if>
-        
-        <f:if condition="{ansuchen.status}==140">
-
-            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
-            <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2027. </p>
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.action pageUid="14" action="certificateDownload" extensionName="ieb" controller="Ansuchen"  target="_blank" arguments="{ansuchen : ansuchen}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
-        </f:if>
-
-        <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
-
-        <p>Ihre eingereichten Änderungen wurden noch nicht akkreditiert. Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
-    
-        <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
-
-        <p>Ihre Akkreditierung bleibt bestehen.</p>
-        
-        </f:if>
-
-
-        <f:if condition="{ansuchen.status}==800">
-
-            <p>Die Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird mit sofortiger Wirksamkeit aus folgenden Gründen nicht stattgegeben:</p>
-        
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>ETC.</p>
-            
-        </f:if>
-        
-        <f:if condition="{ansuchen.status}==820">
-
-            <p>Die Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird mit sofortiger Wirksamkeit aus folgenden Gründen entzogen:</p>
-        
-            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-            <p>ETC.</p>
-            
-        </f:if>
     
         <f:render partial="Notification/Fuss" />
 

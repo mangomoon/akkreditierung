@@ -25,7 +25,6 @@
     
     
 
-
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:variable name="gs">1</f:variable>
     </f:if>
@@ -113,7 +112,7 @@
 
 
 
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup}" />
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen}" />
 
 
 
@@ -187,7 +186,6 @@
                     </div>
                     <div class="rechts col-5">
 
-                    
                         <f:render partial="Ansuchen/Kommentare" arguments="{
                             status:ansuchen.reviewB1Status,
                             extern:ansuchen.reviewB1CommentTr,
@@ -195,6 +193,8 @@
                             user:currentUser.usergroup,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
+                        
+                        
                     </div>
                 
                 </div>
@@ -248,13 +248,16 @@
                         
                     </div>
                     <div class="rechts col-5">
-                        <f:render partial="Ansuchen/Kommentare" arguments="{
+                        
+                            <f:render partial="Ansuchen/Kommentare" arguments="{
                             status:ansuchen.reviewB14Status,
                             extern:ansuchen.reviewB14CommentTr,
                             intern:ansuchen.reviewB14CommentInternalData,
                             user:currentUser.usergroup,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
+                        
+                        
                     </div>
 
                 </div>
@@ -321,6 +324,7 @@
                             pruefbescheid:ansuchen.reviewFristPruefbescheid,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
+                        
                     </div>
 
                 </div>
@@ -637,6 +641,8 @@
                     </div>
 
                     <f:for each="{trainer}" as="t">
+                        
+
                         <div class="row person" id="trainer-{t.uid}">
                             <div class="col-12">
                                 <details>
@@ -665,13 +671,13 @@
                 <div class="links col-7">
                 </div>
                 <div class="rechts col-5">
-                    <f:render partial="Ansuchen/Kommentare" arguments="{
-                        status:ansuchen.reviewC2Status,
-                        extern:ansuchen.reviewC2CommentTr,
-                        intern:ansuchen.reviewC2CommentInternalData,
-                        user:currentUser.usergroup,
-                        inBegutachtung:AnsuchenInBegutachtung,
-                        }" />
+                            <f:render partial="Ansuchen/Kommentare" arguments="{
+                            status:ansuchen.reviewC2Status,
+                            extern:ansuchen.reviewC2CommentTr,
+                            intern:ansuchen.reviewC2CommentInternalData,
+                            user:currentUser.usergroup,
+                            }" />
+                    
                 </div>
             </div>
 

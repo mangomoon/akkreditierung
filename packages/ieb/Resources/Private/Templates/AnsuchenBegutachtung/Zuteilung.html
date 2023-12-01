@@ -18,7 +18,7 @@
 
             <div class="kriterium">
                 <table class="zuteilung">
-                    <!-- <tr>
+                    <tr>
                         <td class="zuteilungradio">
                             1
                         </td>
@@ -31,8 +31,21 @@
                         <td class="zuteilungtext">
                             Ausschluss
                         </td>
-                    </tr> -->
-                    
+                    </tr>
+                    <tr>
+                        <td class="zuteilungradio">
+                            <f:form.radio property="gutachter1" class="reqcheckbox" id="gutachter1" value="0" />
+                        </td>
+                        <td class="zuteilungradio">
+                            <f:form.radio property="gutachter2" class="reqcheckbox" id="gutachter2" value="0" />
+                        </td>
+                        <td class="zuteilungname">
+                            
+                        </td>
+                        <td class="zuteilungtext">
+                            
+                        </td>
+                    </tr>
                     <f:for each="{alleGutachter}" as="g">
                     <tr>
                         <td class="zuteilungradio">

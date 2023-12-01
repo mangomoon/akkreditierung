@@ -11,7 +11,7 @@
         {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
 
 <pdf:document 
-    title="{ansuchen.nummer} {ansuchen.akkreditierungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
+    title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
     outputPath = ".pdf"
     outputDestination="{outputDestination}"
     sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
@@ -24,7 +24,7 @@
     <f:then>
 
     
-    <f:if condition="{ansuchen.pp3} && {ansuchen.version}==0">
+    <f:if condition="{ansuchen.pp3}">
         <f:then>
             <pdf:html autoHyphenation="1">
                 <style>
@@ -38,9 +38,6 @@
                     für das Bildungsangebot {ansuchen.nummer}, {ansuchen.name} <br>
                     für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls <br>
                     „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1–BMBWF01).<br><br><br></p>
-
-                    
-    
                     <br>
                 </p>
                 <p style="font-size:8.5pt;">Ergeben sich innerhalb des Durchführungszeitraums Änderungen des akkreditierten Programms (Standorte, Personal), so ist die Geschäftsstelle davon umgehend in Kenntnis zu setzen und das Ansuchen zur Nachakkreditierung einzureichen.<br><br><br><br><br><br><br><br><br><br></p>

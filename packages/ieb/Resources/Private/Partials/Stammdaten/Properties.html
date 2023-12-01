@@ -147,12 +147,20 @@
 			</div>
 
 			<div class="rechts col-5">
-				<f:render partial="Ansuchen/Kommentare" arguments="{
+				<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+					<f:then>
+					<f:render partial="Ansuchen/Kommentare" arguments="{
 					status:stammdaten.reviewA1Status,
 					extern:stammdaten.reviewA1CommentTr,
 					intern:stammdaten.reviewA1CommentInternalData,
 					user:user
 					}" />
+				</f:then>
+				<f:else>
+					<label>Ansuchen in Begutachtung</label>
+				</f:else>
+				</f:if>
+				
 			</div>
 		
 		</div>
@@ -255,12 +263,21 @@
 					</div>
 				</div>
 				<div class="rechts col-5">
-					<f:render partial="Ansuchen/Kommentare" arguments="{
-						status:stammdaten.reviewA2Status,
-						extern:stammdaten.reviewA2CommentTr,
+					<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+						<f:then>
+							<f:render partial="Ansuchen/Kommentare" arguments="{
+													status:stammdaten.reviewA2Status,
+													extern:stammdaten.reviewA2CommentTr,
 
-						user:currentUser.usergroup
-						}" />
+													user:currentUser.usergroup
+													}" />
+						</f:then>
+						<f:else>
+							<label>Ansuchen in Begutachtung</label>
+						</f:else>
+						
+					</f:if>
+					
 				</div>
 					
 			</div>
