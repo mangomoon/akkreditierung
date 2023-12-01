@@ -1421,6 +1421,14 @@ span.suchwort {
 
 /* ARCHIV (Listen) */
 
+.archivfilter select, .archivfilter input[type="text"] {
+    width: 100%;
+    font-size: 1em;
+}
+.archivfilter option {
+    line-height: 160%;
+}
+
 .archiv {
     background: var(--f0b);
     padding: 10px 0;

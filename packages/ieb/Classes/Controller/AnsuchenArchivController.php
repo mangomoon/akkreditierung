@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
+use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenArchivFilter;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchivRepository;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
@@ -44,6 +45,7 @@ class AnsuchenArchivController extends BaseController
         $options = [
             'tr' => $this->reportingRepository->getAllTraegerNames(),
             'status' => array_column(AnsuchenStatus::cases(), 'name', 'value'),
+            'bundesland' => array_column(BundeslandEnum::cases(), 'name', 'value'),
         ];
 
         return $options;

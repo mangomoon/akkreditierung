@@ -36,6 +36,13 @@ class AnsuchenArchivRepository
         if ($filter->status >= 0) {
             $constraints[] = $queryBuilder->expr()->eq('status', $queryBuilder->createNamedParameter($filter->status, \PDO::PARAM_INT));
         }
+        if ($filter->trPid >= 0) {
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
+            //$constraints[] = $queryBuilder->expr()->eq('pid', $queryBuilder->expr()->eq($filter->trPid, \PDO::PARAM_INT));
+        }
+        if ($filter->bundesland >= 0) {
+            $constraints[] = $queryBuilder->expr()->eq('bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \PDO::PARAM_INT));
+        }
         if ($filter->search) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($filter->search) . '%';
             $constraints[] = $queryBuilder->expr()->like('tx_ieb_domain_model_ansuchen.name', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR));

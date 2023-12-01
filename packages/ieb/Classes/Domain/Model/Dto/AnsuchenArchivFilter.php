@@ -13,6 +13,7 @@ class AnsuchenArchivFilter extends AbstractDomainObject
     public string $institution = '';
     public int $status = -1;
     public string $search = '';
+    public int $bundesland = 0;
     public string $searchStammdaten = '';
     public int $trPid = 0;
 

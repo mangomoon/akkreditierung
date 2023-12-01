@@ -10,39 +10,48 @@
 
     <f:form method="get" action="index" name="filter" object="{filter}">
         <f:form.hidden property="submitted" value="1"/>
-
+        
         <f:if condition="{userIsPartOfGs}"></f:if>
-            <div>
+        <div class="row archivfilter" >
+            <div class="col-4">
                 <label for="trPid">
-                    Träger
-                    <f:form.select property="trPid" id="trPid" options="{options.tr}" prependOptionValue="0" prependOptionLabel=""/>
+                    Träger<br>
+                    <f:form.select property="trPid" id="trPid" options="{options.tr}" prependOptionValue="-1" prependOptionLabel=""/>
                 </label>
             </div>
-            <div>
+            <div class="col-4">
                 <label for="status">
-                    Status
+                    Status<br>
                     <f:form.select property="status" id="status" options="{options.status}" prependOptionValue="-1" prependOptionLabel=""/>
                 </label>
             </div>
-            <div>
+            <div class="col-2">
                 <label for="ansuchenNummer">
-                    Ansuchennummer
+                    Bundesland<br>
+                    <f:form.select property="bundesland" id="bundesland" options="{options.bundesland}" prependOptionValue="-1" prependOptionLabel=""/>
+                </label>
+            </div>
+            <div class="col-2">
+                <label for="ansuchenNummer">
+                    Ansuchennummer<br>
                     <f:form.textfield property="ansuchenNummer" id="ansuchenNummer" />
                 </label>
             </div>
-            <div>
+        </div>
+        <div class="row archivfilter">
+            <div class="col-6">
                 <label for="searchText">
-                    Suchtext
+                    Suchen im Ansuchen
                     <f:form.textfield property="search" id="searchText" />
                 </label>
             </div>
-            <div>
+            <div class="col-6">
                 <label for="searchTextStammdaten">
-                    Suchtext stammdaten
+                    Suchen in den Organisationsdaten
                     <f:form.textfield property="searchStammdaten" id="searchTextStammdaten" />
                 </label>
             </div>
-        
+        </div>
         <f:form.submit class="knopf-s" value="Anzeigen"/>
 
     </f:form>
@@ -62,7 +71,6 @@
                             <table class="ansuchenliste archiv">
                                 <tr>
                                     <td colspan="4" class="ansuchenliste_tr">
-                                        Name des Organisation
                                         <f:if condition="{item.stammdatenMarkenname}">
                                             <f:then>
                                                 <span class="fett">{item.stammdatenMarkenname}</span> &nbsp;&nbsp;{item.stammdatenName}
