@@ -15,7 +15,31 @@
             <div>
                 <label for="trPid">
                     Träger
-                    <f:form.select property="trPid" id="trPid" options="{filter.tr}" prependOptionValue="0" prependOptionLabel=""/>
+                    <f:form.select property="trPid" id="trPid" options="{options.tr}" prependOptionValue="0" prependOptionLabel=""/>
+                </label>
+            </div>
+            <div>
+                <label for="status">
+                    Status
+                    <f:form.select property="status" id="status" options="{options.status}" prependOptionValue="-1" prependOptionLabel=""/>
+                </label>
+            </div>
+            <div>
+                <label for="ansuchenNummer">
+                    Ansuchennummer
+                    <f:form.textfield property="ansuchenNummer" id="ansuchenNummer" />
+                </label>
+            </div>
+            <div>
+                <label for="searchText">
+                    Suchtext
+                    <f:form.textfield property="search" id="searchText" />
+                </label>
+            </div>
+            <div>
+                <label for="searchTextStammdaten">
+                    Suchtext stammdaten
+                    <f:form.textfield property="searchStammdaten" id="searchTextStammdaten" />
                 </label>
             </div>
         
@@ -39,12 +63,12 @@
                                 <tr>
                                     <td colspan="4" class="ansuchenliste_tr">
                                         Name des Organisation
-                                        <f:if condition="{stammdaten.markenname}">
+                                        <f:if condition="{item.stammdatenMarkenname}">
                                             <f:then>
-                                                <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                                <span class="fett">{item.stammdatenMarkenname}</span> &nbsp;&nbsp;{item.stammdatenName}
                                             </f:then>
                                             <f:else>
-                                                <span class="fett">{stammdaten.name}</span>
+                                                <span class="fett">{item.stammdatenName}</span>
                                             </f:else>
                                         </f:if>
                                     </td>

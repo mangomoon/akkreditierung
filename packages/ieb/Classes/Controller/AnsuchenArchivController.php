@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Controller;
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenArchivFilter;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchivRepository;
+use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 
@@ -12,6 +14,7 @@ class AnsuchenArchivController extends BaseController
 {
 
     protected AnsuchenArchivRepository $ansuchenArchivRepository;
+    protected ReportingRepository $reportingRepository;
 
     public function indexAction(AnsuchenArchivFilter $filter = null): ResponseInterface
     {
@@ -31,8 +34,19 @@ class AnsuchenArchivController extends BaseController
                 'paginator' => $paginator,
                 'pagination' => $pagination,
             ],
+            'options' => $this->getOptions(),
         ]);
         return $this->htmlResponse();
+    }
+
+    protected function getOptions(): array
+    {
+        $options = [
+            'tr' => $this->reportingRepository->getAllTraegerNames(),
+            'status' => array_column(AnsuchenStatus::cases(), 'name', 'value'),
+        ];
+
+        return $options;
     }
 
     public function injectAnsuchenArchivRepository(AnsuchenArchivRepository $ansuchenArchivRepository): void
@@ -40,4 +54,8 @@ class AnsuchenArchivController extends BaseController
         $this->ansuchenArchivRepository = $ansuchenArchivRepository;
     }
 
+    public function injectReportingRepository(ReportingRepository $reportingRepository): void
+    {
+        $this->reportingRepository = $reportingRepository;
+    }
 }
