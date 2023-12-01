@@ -27,6 +27,7 @@ class AnsuchenArchivRepository
 
         $constraints = [
             $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+            $queryBuilder->expr()->gt('status', $queryBuilder->createNamedParameter(20, \PDO::PARAM_INT)),
         ];
 
         if ($filter->ansuchenNummer) {
@@ -38,7 +39,6 @@ class AnsuchenArchivRepository
         }
         if ($filter->trPid >= 0) {
             $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
-            //$constraints[] = $queryBuilder->expr()->eq('pid', $queryBuilder->expr()->eq($filter->trPid, \PDO::PARAM_INT));
         }
         if ($filter->bundesland >= 0) {
             $constraints[] = $queryBuilder->expr()->eq('bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \PDO::PARAM_INT));
