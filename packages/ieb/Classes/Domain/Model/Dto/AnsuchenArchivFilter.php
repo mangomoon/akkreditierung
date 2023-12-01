@@ -11,8 +11,9 @@ class AnsuchenArchivFilter extends AbstractDomainObject
     public bool $submitted = false;
     public string $ansuchenNummer = '';
     public string $institution = '';
-    public int $status = 0;
+    public int $status = -1;
     public string $search = '';
+    public string $searchStammdaten = '';
     public int $trPid = 0;
 
 }
