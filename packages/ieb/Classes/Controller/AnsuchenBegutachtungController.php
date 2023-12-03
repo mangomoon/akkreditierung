@@ -284,7 +284,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnungCheck2(false);
         $ansuchen->setStatusAgEins(0);
         $ansuchen->setStatusAgZwei(0);
-        $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+        
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
 
@@ -295,6 +295,8 @@ class AnsuchenBegutachtungController extends BaseController
         $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
         /** @var Ansuchen $newAnsuchen */
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
+        $newAnsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+        $this->ansuchenRepository->update($newAnsuchen);
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent($newAnsuchen, $ansuchen, $stammdaten));
 
         $this->redirect('list');
