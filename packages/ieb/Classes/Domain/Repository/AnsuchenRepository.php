@@ -376,4 +376,19 @@ class AnsuchenRepository extends BaseRepository
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('tx_ieb_domain_model_ansuchen');
     }
+
+    public function getPreviousVersionDate(int $ansuchen, int $ansuchenVorversionId)
+    {
+        $aktuell = $this->findByUid($ansuchen);
+        $aktuelleVersion = $aktuell->getVersion();
+        $previous = $this->findByUid($ansuchenVorversionId);
+        if ($aktuelleVersion == 0) {
+            $datum = $aktuell -> getAkkreditierungEntscheidungDatum();
+        } else {
+            $datum = $previous -> getAkkreditierungEntscheidungDatum();
+        }
+        return $datum;
+    }
+
+
 }
