@@ -93,7 +93,7 @@ class AnsuchenBegutachtungController extends BaseController
     {
 
         
-
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
 
