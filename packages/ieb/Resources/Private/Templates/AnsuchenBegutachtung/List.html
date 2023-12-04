@@ -105,7 +105,7 @@
 
 
 
-            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
+            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="<f:format.case mode='lower'>{stammdaten.name}</f:format.case>" >
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>

@@ -621,13 +621,21 @@ function qualifikationPsaSprache() {
         $(this).addClass('aktiv');
 
         c = $(this).attr('id');
-        console.log(c);
+        //console.log(c);
         $('.ansuchenlistenitem').sort(function(a, b) {
 
             return $(a).data(c) > $(b).data(c) ? 1 : -1;
 
           }).appendTo('#ansuchenlistencontainer');
     });
+    $('#beraterliste .person').sort(function(a, b) {
+        return $(a).data('name') > $(b).data('name') ? 1 : -1;
+      }).appendTo('#beraterliste');
+      $('#trainerliste .person').sort(function(a, b) {
+        return $(a).data('name') > $(b).data('name') ? 1 : -1;
+      }).appendTo('#trainerliste');
+    // Trainer und Berater Listung sortieren:
+
 
 
     $('.personarchivieren').click(function() {

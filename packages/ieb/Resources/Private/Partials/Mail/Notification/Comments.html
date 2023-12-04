@@ -3,6 +3,7 @@
 {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
 {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
 
+<p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
 
 <f:if condition="{stammdaten.reviewA1Status}==4">
     <p><f:format.nl2br>{stammdaten.reviewA1CommentTr}</f:format.nl2br></p>
@@ -38,7 +39,7 @@
 <f:if condition="{ansuchen.reviewC3Status}==4">
     <p><f:format.nl2br>{ansuchen.reviewC3CommentTr}</f:format.nl2br></p>
 </f:if>
-<p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+
 
 <f:for each="{trainer}" as="p">
     <f:if condition="{ansuchen.typ}==1">

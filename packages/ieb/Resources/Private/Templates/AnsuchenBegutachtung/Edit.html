@@ -1056,9 +1056,9 @@
                 </div>
                 
             </div>
-
+            <div id="trainerliste">
                 <f:for each="{trainer}" as="t">
-                    <div class="row person" id="trainer-{t.uid}">
+                    <div class="row person" data-name="{t.nachname}"  id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.fullName} 
                             <code>uid: {t.uid} </code>
@@ -1097,7 +1097,7 @@
                         </div>
                     </div>
                 </f:for>
-                        
+            </div>
                 <f:for each="{diff.copy_trainer}" as="tt">
                     <f:if condition="{tt.fullName.previous} && !{tt.fullName.current}">
                         <div class="row person"><div class="links col-7"><span class="vorher-knopf">gelöscht:</span> <i></i>{tt.fullName.previous}</i></div><div class="rechts col-5"></div></div>
@@ -1150,9 +1150,9 @@
                 </div>
 
             </div>
-
+            <div id="beraterliste">
             <f:for each="{berater}" as="t">
-                <div class="row person" id="berater-{t.uid}">
+                <div class="row person" data-name="{t.nachname}" id="berater-{t.uid}">
                     <div class="links col-7">
                         {t.fullName} 
                         <code>uid: {t.uid}</code>
@@ -1179,7 +1179,7 @@
                     </div>
                 </div>
             </f:for>
-
+            </div>
             <f:for each="{diff.copy_berater}" as="tt">
       
                 <f:if condition="{tt.fullName.previous} && !{tt.fullName.current}">
