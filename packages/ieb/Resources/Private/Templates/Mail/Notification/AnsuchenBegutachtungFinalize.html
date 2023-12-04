@@ -17,6 +17,11 @@
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe stattgegeben.</p>
                     <p>&nbsp;</p>
                     <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen.</p>
+                    <p>KACK!!<ieb:falFromRecord field="akkreditierung_pdf" id="{ansuchen.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                        <f:if condition="{falItems.0}">
+                            <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >SCHLUMPF!</a>
+                        </f:if>
+                    </ieb:falFromRecord></p>
                 </f:if>
                 <f:if condition="{ansuchen.status}==140">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
