@@ -94,12 +94,22 @@ final class AnsuchenPdfGenerationListener
     {
         $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
         $templatePath = GeneralUtility::getFileAbsFileName('EXT:ieb/Resources/Private/Templates/Ansuchen/CertificateDownload.html');
+        $ansuchenOld = $event->ansuchenOld;
+        $ansuchenAfterSnapshot = $event->ansuchenAfterSnapshot;
+        $aktuelleVersion = $ansuchenAfterSnapshot->getVersion();
+
+        if ($aktuelleVersion == 0) {
+            $datum = $ansuchenAfterSnapshot -> getAkkreditierungEntscheidungDatum();
+        } else {
+            $datum = $ansuchenOld -> getAkkreditierungEntscheidungDatum();
+        }
 
         $standaloneView->setFormat('html');
         $standaloneView->setTemplatePathAndFilename($templatePath);
         $standaloneView->assignMultiple([
             'ansuchen' => $event->ansuchenAfterSnapshot,
             'stammdaten' => $event->stammdaten,
+            'datum' => $datum,
             'extensionConfiguration' => new ExtensionConfiguration(),
             'outputDestination' => 'string',
         ]);

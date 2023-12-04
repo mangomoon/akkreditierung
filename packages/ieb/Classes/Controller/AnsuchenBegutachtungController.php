@@ -297,6 +297,7 @@ class AnsuchenBegutachtungController extends BaseController
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
         $newAnsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
         $this->ansuchenRepository->update($newAnsuchen);
+        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent($newAnsuchen, $ansuchen, $stammdaten));
 
         $this->redirect('list');

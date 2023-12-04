@@ -105,7 +105,15 @@
 
 
 
-            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="<f:format.case mode='lower'>{stammdaten.name}</f:format.case>" >
+            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" 
+            <f:if condition="{stammdaten.markenname}">
+                <f:then>
+                    data-pid="<f:format.case mode='lower'>{stammdaten.markenname}</f:format.case>"
+                </f:then>
+                <f:else>
+                    data-pid="<f:format.case mode='lower'>{stammdaten.name}</f:format.case>"
+                </f:else>
+            </f:if> >
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>
