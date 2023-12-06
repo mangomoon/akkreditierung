@@ -162,11 +162,13 @@
                                         <li class="light">Englisch – Globalität und Transkulturalität</li>
                                         <li class="light">Mathematik</li>
                                         <li class="light">Berufsorientierung</li>
+                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
                                         <p>Wahlmodule</p>
-                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'<li>Kreativität und Gestaltung</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz2}==1', then:'<li>Gesundheit und Soziales</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz3}==1', then:'<li>Natur und Technik</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz4}==1', then:'<li>Weitere Sprachen: {ansuchen.kompetenzText1}</li>')}
+                                        <li>Kreativität und Gestaltung</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
+                                        <li>Gesundheit und Soziales</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
+                                        <li>Natur und Technik</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
+                                        <li>Weitere Sprachen: {ansuchen.kompetenzText2}</li>')}
                                     </f:else>
                                 </f:if>
 
@@ -634,7 +636,7 @@
                     <div class="erlaeuterung">
                         <div class="showinfobox" id="c-2-hilfe">
                             <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
-                            <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50&nbsp;% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
+                            <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
 
@@ -649,6 +651,17 @@
                                 </details>
                             </div>
                             
+
+                            <!-- <div>
+                                <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+                                    <f:then>
+                                        <f:link.action pageUid="213" action="show" target="_blank" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </div> -->
                         </div>
                     </f:for>
 

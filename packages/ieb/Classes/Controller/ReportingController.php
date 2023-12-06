@@ -99,7 +99,7 @@ class ReportingController extends ActionController
             $split = GeneralUtility::intExplode('-', $selected);
             $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
         }
-        //DebuggerUtility::var_dump($items);
+        DebuggerUtility::var_dump($items);
         $this->view->assignMultiple([
             'dateRanges' => $availableDateRanges,
             'selected' => $selected,

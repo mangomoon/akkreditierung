@@ -310,7 +310,7 @@
     <div class="kriteriumteil">
         <h3>B.1.2 Kompetenzbereiche</h3>
 
-        <f:if condition="{ansuchen.typ}==1">
+        <f:if condition="({ansuchen.typ}==1) || {ansuchen.typ}==0)">
             <div class="erlaeuterung babi">
             <p class="hinweis babi reqkomp">Hinweis: Neben den Lernkompetenzen sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
         </div>
@@ -333,7 +333,7 @@
             </div>
         </div>
         </f:if>
-        <f:if condition="{ansuchen.typ}==2">
+        <f:if condition="({ansuchen.typ}==2) || {ansuchen.typ}==0)">
             <div class="erlaeuterung psa">
                 <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
                 <div class="formfields row psa">
@@ -869,7 +869,7 @@
                         </div>
 
                         <f:if condition="{ansuchen.pruefbescheidCheck}">
-                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="1" />Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
+                            <p><label for="erklaerungd2" class="erklaerungd2"><f:form.checkbox property="erklaerungd2" class="{f:if(condition:'{ansuchen.reviewC2Status}>2', then:'status-negativ')}" id="erklaerungd2" value="0" />Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde.</label></p>
                         </f:if>
                         <div class="formzeile">
                             <f:form.submit value="Training: Daten bearbeiten" name="saveAndTrainer" class="formlink trainer titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung des Trainingspersonals. Das Ansuchen wird gespeichert."/>

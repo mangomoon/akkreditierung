@@ -79,7 +79,7 @@
                     <f:if condition="{trainer.reviewC21PsaStatus}">
                                 <div class="begutachtungsinfo">
                                     <span class="titleview person-statuskugel-a person-statuskugel status-{trainer.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
-                                    <label>Begutachtung PSA Qualifikation</label>
+                                    <label>Begutachtung Babi Qualifikation</label>
                                     <div class="erlaeuterung">
                                         <div>
                                             <label class="dunkel">Interner Kommentar</label>
@@ -154,8 +154,8 @@
                 <div class="rechts col-5">
                        <f:if condition="{trainer.reviewC22PsaStatus}">
                                 <div class="begutachtungsinfo">
-                                    <span class="titleview person-statuskugel-a person-statuskugel status-{trainer.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
-                                    <label>Begutachtung PSA Erfahrung</label>
+                                    <span class="titleview person-statuskugel-a person-statuskugel status-{trainer.reviewC22PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
+                                    <label>Begutachtung Babi Qualifikation</label>
                                     <div class="erlaeuterung">
                                         <div>
                                             <label class="dunkel">Interner Kommentar</label>
@@ -200,22 +200,9 @@
                 </div>
             </div>
         </div>
-        <!-- ### !!! ### -->
-        <f:form.hidden name="reviewC22PsaStatus" id="reviewC22PsaStatus" property="reviewC22PsaStatus" value="{trainer.reviewC22PsaStatus}" />
-        <f:form.hidden name="reviewC21PsaStatus" id="reviewC21PsaStatus" property="reviewC21PsaStatus" value="{trainer.reviewC21PsaStatus}" />
-        <f:form.hidden name="reviewC2PsaCommentInternal" id="reviewC2PsaCommentInternal" property="reviewC2PsaCommentInternal" value="{trainer.reviewC2PsaCommentInternal}" />
-        <f:form.hidden name="reviewC2PsaGsCommentInternalStep" id="reviewC2PsaGsCommentInternalStep" property="reviewC2PsaGsCommentInternalStep" value="{trainer.reviewC2PsaGsCommentInternalStep}" />
-        <f:form.hidden property="reviewC2PsaAg1CommentInternalStep" id="reviewC2PsaAg1CommentInternalStep" value="{begutachtung.reviewC2PsaAg1CommentInternalStep}" />
-        <f:form.hidden property="reviewC2PsaAg2CommentInternalStep" id="reviewC2PsaAg2CommentInternalStep" value="{begutachtung.reviewC2PsaAg2CommentInternalStep}" />
-        <f:form.hidden name="reviewC2PsaCommentTr" id="reviewC2PsaCommentTr" property="reviewC2PsaCommentTr" value="{trainer.reviewC2PsaCommentTr}" />reviewC22Quali8
-        <f:form.hidden name="reviewC22Quali1" id="reviewC22Quali1" property="reviewC22Quali1" value="{trainer.reviewC22Quali1}" />
-        <f:form.hidden name="reviewC22Quali2" id="reviewC22Quali2" property="reviewC22Quali2" value="{trainer.reviewC22Quali2}" />
-        <f:form.hidden name="reviewC22Quali3" id="reviewC22Quali3" property="reviewC22Quali3" value="{trainer.reviewC22Quali3}" />
-        <f:form.hidden name="reviewC22Quali4" id="reviewC22Quali4" property="reviewC22Quali4" value="{trainer.reviewC22Quali4}" />
-        <f:form.hidden name="reviewC22Quali5" id="reviewC22Quali5" property="reviewC22Quali5" value="{trainer.reviewC22Quali5}" />
-        <f:form.hidden name="reviewC22Quali6" id="reviewC22Quali6" property="reviewC22Quali6" value="{trainer.reviewC22Quali6}" />
-        <f:form.hidden name="reviewC22Quali7" id="reviewC22Quali7" property="reviewC22Quali7" value="{trainer.reviewC22Quali7}" />
-        <f:form.hidden name="reviewC22Quali8" id="reviewC22Quali8" property="reviewC22Quali8" value="{trainer.reviewC22Quali8}" />
+
+
+
     </f:then>
     <f:else>
                 <!-- ############################ PSA ############################### -->
@@ -483,14 +470,6 @@
                         </div>
                     </div>
                 </div>
-        <!-- ### !!! ### -->
-        <f:form.hidden name="reviewC22BabiStatus" id="reviewC22BabiStatus" property="reviewC22BabiStatus" value="{trainer.reviewC22BabiStatus}" />
-        <f:form.hidden name="reviewC21BabiStatus" id="reviewC21BabiStatus" property="reviewC21BabiStatus" value="{trainer.reviewC21BabiStatus}" />
-        <f:form.hidden name="reviewC2BabiCommentInternal" id="reviewC2BabiCommentInternal" property="reviewC2BabiCommentInternal" value="{trainer.reviewC2BabiCommentInternal}" />
-        <f:form.hidden property="reviewC2BabiAg1CommentInternalStep" id="reviewC2BabiAg1CommentInternalStep" value="{begutachtung.reviewC2BabiAg1CommentInternalStep}" />
-        <f:form.hidden property="reviewC2BabiAg2CommentInternalStep" id="reviewC2BabiAg2CommentInternalStep" value="{begutachtung.reviewC2BabiAg2CommentInternalStep}" />
-        <f:form.hidden property="reviewC2BabiGsCommentInternalStep" id="reviewC2BabiGsCommentInternalStep" value="{begutachtung.reviewC2BabiGsCommentInternalStep}" />
-        <f:form.hidden name="reviewC2BabiCommentTr" id="reviewC2BabiCommentTr" property="reviewC2BabiCommentTr" value="{trainer.reviewC2BabiCommentTr}" />
     </f:else>
 </f:if>
 <f:if condition="{ansuchen.typ}==1">
@@ -504,7 +483,13 @@
                     <label>Frist
                         <f:render partial="Form/Input" arguments="{property:'reviewFrist',isDate:1,value:trainer.reviewFrist}" />
                     </label>
-
+                    <!-- <div class="komm-int">
+                        <f:for each="{trainer.reviewC2PsaCommentInternalData}" as="comment">
+                            <p>
+                                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
+                            </p>
+                        </f:for>
+                    </div> -->
                     <div>
                         <div class="komm-int">
                             <f:for each="{trainer.reviewC2BabiCommentInternalData}" as="comment">

@@ -294,11 +294,13 @@
                                         <li class="light">Englisch – Globalität und Transkulturalität</li>
                                         <li class="light">Mathematik</li>
                                         <li class="light">Berufsorientierung</li>
+                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
                                         <p>Wahlmodule</p>
-                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'<li>Kreativität und Gestaltung</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz2}==1', then:'<li>Gesundheit und Soziales</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz3}==1', then:'<li>Natur und Technik</li>')} 
-                                        {f:if(condition:'{ansuchen.kompetenz4}==1', then:'<li>Weitere Sprachen: {ansuchen.kompetenzText1}</li>')}
+                                        <li>Kreativität und Gestaltung</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
+                                        <li>Gesundheit und Soziales</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
+                                        <li>Natur und Technik</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
+                                        <li>Weitere Sprachen: {ansuchen.kompetenzText2}</li>')}
                                     </f:else>
                                 </f:if>
 

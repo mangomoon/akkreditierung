@@ -109,7 +109,7 @@ class ReportingRepository
             ->executeQuery()
             ->fetchAllAssociative();
 
-        //DebuggerUtility::var_dump([$year, $quarter, $rows]);
+        DebuggerUtility::var_dump([$year, $quarter, $rows]);
         return $rows;
     }
 

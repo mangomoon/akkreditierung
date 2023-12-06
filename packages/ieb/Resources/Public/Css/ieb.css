@@ -38,7 +38,6 @@ gelb:   #EDC509
 }
 
 code {
-    display: inline-block;
     display: none;
     font-size: 0.8em;
     color: blue;
@@ -2355,31 +2354,4 @@ ul.f3-widget-paginator li.previous a, ul.f3-widget-paginator li.next a{
 ul.f3-widget-paginator li a:hover, ul.f3-widget-paginator li.current a {
     background: var(--f2);
     color: #fff;
-}
-
-
-/* AUSWERTUNGEN  */
-
-.tx-ieb table.auswertung th {
-    font-weight: 300;
-    font-size: 0.8em;
-    text-align: left;
-    background: var(--f2);
-    padding: 5px 2px 4px 2px;
-    color: #fff;
-}
-.tx-ieb table.auswertung td {
-    border-bottom: solid 1px var(--f3);
-    padding: 4px 4px;
-    font-size: 0.8em;
-}
-.tx-ieb table.auswertung td.datum {
-    width: 80px;
-    font-weight: 500;
-}
-.tx-ieb table.auswertung td.nummer {
-    width: 80px;
-}
-.tx-ieb table.auswertung td.name {
-    width: 320px;
 }

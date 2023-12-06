@@ -5,8 +5,7 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h2>Aktionen der Geschäftsstelle</h2>
-    <p>Quartal:</p>
+    <h1>Datums LOG</h1>
 
     <f:form action="dateLog" name="dateLog" method="post">
         <f:form.select name="selected" value="{selected}" options="{dateRanges}" prependOptionLabel="" prependOptionValue="" />
@@ -14,68 +13,31 @@
     </f:form>
     <f:if condition="{items}">
         <f:then>
-            <table class="auswertung gs-liste">
+            <table>
                 <thead>
                 <tr>
-                    <th>DATUM</th>
-                    <th>NR</th>
-                    <th>VERSION</th>
-                    <th>NAME</th>
-                    <th>ORGANISATION</th>
-                    <th>AKTION</th>
+                    <th>Uid</th>
+                    <th>Name</th>
+                    <th>einreich_datum</th>
+                    <th>zuteilung_datum</th>
+                    <th>akkreditierung_entscheidung_datum</th>
                 </tr>
                 </thead>
                 <tbody>
                 <f:for each="{items}" as="item">
-                    <f:if condition="{item.einreich_datum}">
-                        <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.einreich_datum}</f:format.date> x</td>
-                            <td class="nummer">{item.nummer}</td>
-                            <td class="version">{item.version} <code>{item.uid}</code></td>
-                            <td class="name">{item.name}</td>
-                            <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Einreichung
-                                <f:switch expression="{item.status}">
-                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
-                                </f:switch>
-                            </td>
-                        </tr>
-                    </f:if>
-                    <f:if condition="{item.zuteilung_datum}">
-                        <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date> y</td>
-                            <td class="nummer">{item.nummer}</td>
-                            <td class="nummer">{item.version} <code>{item.uid}</code></td>
-                            <td class="name">{item.name}</td>
-                            <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Zuteilung
-                                <f:switch expression="{item.status}">
-                                    <f:case value="30">Erstzuteilung</f:case>
-                                    <f:case value="y">Folgezuteilung</f:case>
-                                </f:switch>
-                            </td>
-                        </tr>
-                    </f:if>
-                    <f:if condition="{item.akkreditierung_entscheidung_datum}">
-                        <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date> z</td>
-                            <td class="nummer">{item.nummer}</td>
-                            <td class="nummer">{item.version} <code>{item.uid}</code></td>
-                            <td class="name">{item.name}</td>
-                            <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Akkreditierungsentscheidung
-                                <f:switch expression="{item.status}">
-                                    <f:case value="30">Akkreditieunrgsentscheidung</f:case>
-                                </f:switch>
-                            </td>
-                        </tr>
-                    </f:if>
+                    <tr>
+                        <td>{item.uid}</td>
+                        <td>{item.name}</td>
+                        <td>{item.einreich_datum}</td>
+                        <td>{item.zuteilung_datum}</td>
+                        <td>{item.akkreditierung_entscheidung_datum}</td>
+                    </tr>
                 </f:for>
                 </tbody>
             </table>
         </f:then>
         <f:else>
-            <p>Keine Daten für diesen Zeitraum.</p>
+
         </f:else>
     </f:if>
 </f:section>
