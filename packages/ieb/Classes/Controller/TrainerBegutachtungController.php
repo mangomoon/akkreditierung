@@ -114,6 +114,7 @@ class TrainerBegutachtungController extends BaseController
     public function initializeUpdateAction()
     {
         $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewFrist');
+        $this->setTypeConverterConfigurationForDate('begutachtung', 'reviewPsaFrist');
     }
 
 }

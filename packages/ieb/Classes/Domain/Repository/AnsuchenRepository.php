@@ -200,6 +200,7 @@ class AnsuchenRepository extends BaseRepository
             'review_total_ag2_comment_internal_step' => '',
             'review_total_comment_tr' => '',
             'review_total_status' => '0',
+            'review_incoming_status' => '0',
             'review_total_frist' => '0',
             'review_frist_pruefbescheid' => '',
             'review_b14_comment_internal' => '',

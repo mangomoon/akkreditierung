@@ -242,7 +242,7 @@
                             </f:if>
                             <f:if condition="{tsarPsa}==3">
                                 <span class="titleview knopfrund achtung-orange" title="TRAINING: Negative Begutachtung(en) oder Auflage(n). Bearbeitung erforderlich: <br><f:for each='{ansuchen.trainer}' as='t'>
-                                    {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewFrist}</f:format.date><br>
+                                    {t.vorname} {t.nachname}: Frist <f:format.date format='d.m.Y'>{t.reviewPsaFrist}</f:format.date><br>
                                 </f:for>"></span>
                             </f:if>
                             <f:if condition="{tsarPsa}==4">

@@ -365,6 +365,13 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewTotalStatus = 0;
 
     /**
+     * reviewIncomingStatus
+     *
+     * @var int
+     */
+    protected $reviewIncomingStatus = 0;
+
+    /**
      * reviewTotalFrist
      *
      * @var \DateTime
@@ -2057,6 +2064,27 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setReviewTotalStatus(int $reviewTotalStatus)
     {
         $this->reviewTotalStatus = $reviewTotalStatus;
+    }
+
+    /**
+     * Returns the reviewIncomingStatus
+     *
+     * @return int
+     */
+    public function getReviewIncomingStatus()
+    {
+        return $this->reviewIncomingStatus;
+    }
+
+    /**
+     * Sets the reviewIncomingStatus
+     *
+     * @param int $reviewIncomingStatus
+     * @return void
+     */
+    public function setReviewIncomingStatus(int $reviewIncomingStatus)
+    {
+        $this->reviewIncomingStatus = $reviewIncomingStatus;
     }
 
     /**

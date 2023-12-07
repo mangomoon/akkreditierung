@@ -27,6 +27,9 @@
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
                     <p><f:format.nl2br>{trainer.reviewC2PsaCommentTr}</f:format.nl2br></p>
+                    <f:if condition="{trainer.reviewPsaFrist}">
+                        <p>FRIST: <b><f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date></p></b>
+                    </f:if>
                 </div>
             </f:if>
 

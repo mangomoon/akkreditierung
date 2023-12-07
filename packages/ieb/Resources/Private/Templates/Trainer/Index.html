@@ -97,6 +97,9 @@
                             <f:if condition="!{relationUsagesInReview} && {trainer.reviewFrist}">
                                 <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date>
                             </f:if>
+                            <f:if condition="!{relationUsagesInReview} && {trainer.reviewPsaFrist}">
+                                <f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date>
+                            </f:if>
                         </td>
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>

@@ -42,6 +42,13 @@ class FristUeberwachungService
             't14' => 'review_frist_mail_sent14t',
             'join' => 'tx_ieb_ansuchen_trainer_mm',
         ],
+        'trainer_psa' => [
+            'table' => 'tx_ieb_domain_model_trainer',
+            'frist' => 'review_psa_frist',
+            't1' => 'review_psa_frist_mail_sent1t',
+            't14' => 'review_psa_frist_mail_sent14t',
+            'join' => 'tx_ieb_ansuchen_trainer_mm',
+        ],
         'stammdaten' => [
             'table' => 'tx_ieb_domain_model_stammdaten',
             'frist' => 'review_oecert_frist',
@@ -314,7 +321,7 @@ class FristUeberwachungService
     }
 
     /**
-     * SELECT uid,name,review_frist_pruefbescheid as f1,review_frist_pruefbescheid_mail_sent1t as t1_,review_frist_pruefbescheid_mail_sent14t as t14_, from_unixtime(review_frist_pruefbescheid,"%Y-%m-%d %h %i %s") AS frist, from_unixtime(review_frist_pruefbescheid_mail_sent1t,"%Y-%m-%d %h %i %s") AS t1, from_unixtime(review_frist_pruefbescheid_mail_sent14t,"%Y-%m-%d %h %i %s") AS t14 FROM `tx_ieb_domain_model_ansuchen` where version_active=1;
+     * SELECT uid,name,review_frist_pruefbescheid as f1,review_frist_pruefbescheid_mail_sent1t as t1_,review_frist_pruefbescheid_mail_sent14t as t14_, from_unixtime(review_frist_pruefbescheid,"%Y-%m-%d %h %i %s") AS frist, from_unixtime(review_frist_pruefbescheid_mail_sent1t,"%Y-%m-%d %h %i %s") AS t1, from_unixtime(s_pruefbescheid_mail_sent14t,"%Y-%m-%d %h %i %s") AS t14 FROM `tx_ieb_domain_model_ansuchen` where version_active=1;
      */
 
 }

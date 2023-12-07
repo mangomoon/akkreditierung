@@ -171,6 +171,12 @@ class DiffService
                     if (isset($items[$k]['reviewFristMailSent1t'])) {
                         unset($items[$k]['reviewFristMailSent1t']);
                     }
+                    if (isset($items[$k]['reviewPsaFristMailSent14t'])) {
+                        unset($items[$k]['reviewPsaFristMailSent14t']);
+                    }
+                    if (isset($items[$k]['reviewPsaFristMailSent1t'])) {
+                        unset($items[$k]['reviewPsaFristMailSent1t']);
+                    }
                     if (isset($items[$k]['statusAfterReviewBabi'])) {
                         unset($items[$k]['statusAfterReviewBabi']);
                     }

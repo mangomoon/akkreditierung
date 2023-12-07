@@ -344,6 +344,13 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reviewFrist = null;
 
     /**
+     * reviewPsaFrist
+     *
+     * @var \DateTime
+     */
+    protected $reviewPsaFrist = null;
+
+    /**
      * lockedBy
      *
      * @var int
@@ -364,6 +371,20 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $reviewFristMailSent1t = false;
 
+    /**
+     * reviewPsaFristMailSent14t
+     *
+     * @var bool
+     */
+    protected $reviewPsaFristMailSent14t = false;
+
+    /**
+     * reviewPsaFristMailSent1t
+     *
+     * @var bool
+     */
+    protected $reviewPsaFristMailSent1t = false;
+    
     /**
      * statusAfterReviewBabi
      *

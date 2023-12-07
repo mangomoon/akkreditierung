@@ -144,6 +144,9 @@
 			<trans-unit id="review_total_status.description" resname="review_total_status.description">
 				<source>reviewTotalStatus</source>
 			</trans-unit>
+			<trans-unit id="review_incoming_status.description" resname="review_incoming_status.description">
+				<source>reviewIncomingStatus</source>
+			</trans-unit>
 			<trans-unit id="review_total_frist.description" resname="review_total_frist.description">
 				<source>reviewTotalFrist</source>
 			</trans-unit>

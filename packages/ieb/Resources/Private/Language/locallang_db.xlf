@@ -288,11 +288,17 @@
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_total_status" resname="tx_ieb_domain_model_ansuchen.review_total_status">
 				<source>Review Total Status</source>
 			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_incoming_status" resname="tx_ieb_domain_model_ansuchen.review_incoming_status">
+				<source>Status</source>
+			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_total_status.description" resname="tx_ieb_domain_model_ansuchen.review_total_status.description">
 				<source>Review Total Status</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_total_frist" resname="tx_ieb_domain_model_ansuchen.review_total_frist">
 				<source>Review Total Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_ieb_domain_model_ansuchen.review_incoming_status.description" resname="tx_ieb_domain_model_ansuchen.review_incoming_status.description">
+				<source>Status zu Beginn des Versionszyklus</source>
 			</trans-unit>
 			<trans-unit id="tx_ieb_domain_model_ansuchen.review_total_frist.description" resname="tx_ieb_domain_model_ansuchen.review_total_frist.description">
 				<source>Review Total Frist</source>
