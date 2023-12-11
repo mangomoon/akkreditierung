@@ -125,31 +125,31 @@ class AnsuchenController extends BaseController
                 case 0:
                 case 10:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-                    $newAnsuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    $newAnsuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 20:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-                    $newAnsuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    $newAnsuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 80:
                     $newAnsuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
-                    $newAnsuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
+                    $newAnsuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
                     break;
                 case 100:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
                     break;
                 case 140:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
                 case 200:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
                     break;
                 case 220:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
-                    $ansuchen->setIncomingStatus(AIncomingnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
+                    $ansuchen->setReviewIncomingStatus(AIncomingnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
                     break;
             }
             $this->ansuchenRepository->update($newAnsuchen);
@@ -167,31 +167,31 @@ class AnsuchenController extends BaseController
                 case 0:
                 case 10:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 20:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ERSTEINREICHUNG->value);
                     break;
                 case 80:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_NACHBESSERUNGSAUFTRAG->value);
                     break;
                 case 100:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value);
                     break;
                 case 140:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value);
                     break;
                 case 200:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value);
                     break;
                 case 220:
                     $ansuchen->setStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
-                    $ansuchen->setIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
+                    $ansuchen->setReviewIncomingStatus(AnsuchenStatus::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value);
                     break;
             }
             

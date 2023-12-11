@@ -23,7 +23,7 @@
                 </div>
             </f:if>
             <div class="abstand-mittel"></div>
-            <f:if condition="({trainer.reviewC21PsaStatus}==4 || {trainer.reviewC22PsaStatus}==4) && {trainer.reviewC2PsaCommentTr}">
+            <f:if condition="({trainer.reviewC21PsaStatus}>2 || {trainer.reviewC22PsaStatus}>2) && {trainer.reviewC2PsaCommentTr}">
                 <div class="commentTr">
                     <label>Kommentar zur Verwendung im Bereich Pflichtschulabschluss</label>
                     <p><f:format.nl2br>{trainer.reviewC2PsaCommentTr}</f:format.nl2br></p>
