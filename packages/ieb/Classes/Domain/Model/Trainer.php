@@ -1691,6 +1691,90 @@ class Trainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->reviewFristMailSent1t;
     }
 
+
+    /**
+     * Returns the reviewPsaFrist
+     *
+     * @return \DateTime
+     */
+    public function getReviewPsaFrist()
+    {
+        return $this->reviewPsaFrist;
+    }
+    /**
+     * Sets the reviewPsaFrist
+     *
+     * @param ?\DateTime $reviewPsaFrist
+     * @return void
+     */
+    public function setReviewPsaFrist(?\DateTime $reviewPsaFrist)
+    {
+        $reviewPsaFrist = $reviewPsaFrist === null ? 0 : $reviewPsaFrist;
+        $this->reviewPsaFrist = $reviewPsaFrist;
+    }
+
+    /**
+     * Returns the reviewPsaFristMailSent14t
+     *
+     * @return bool
+     */
+    public function getReviewPsaFristMailSent14t()
+    {
+        return $this->reviewPsaFristMailSent14t;
+    }
+
+    /**
+     * Sets the reviewPsaFristMailSent14t
+     *
+     * @param bool $reviewPsaFristMailSent14t
+     * @return void
+     */
+    public function setReviewPsaFristMailSent14t(bool $reviewPsaFristMailSent14t)
+    {
+        $this->reviewPsaFristMailSent14t = $reviewPsaFristMailSent14t;
+    }
+
+    /**
+     * Returns the boolean state of reviewPsaFristMailSent14t
+     *
+     * @return bool
+     */
+    public function isReviewPsaFristMailSent14t()
+    {
+        return $this->reviewPsaFristMailSent14t;
+    }
+
+    /**
+     * Returns the reviewPsaFristMailSent1t
+     *
+     * @return bool
+     */
+    public function getReviewPsaFristMailSent1t()
+    {
+        return $this->reviewPsaFristMailSent1t;
+    }
+
+    /**
+     * Sets the reviewPsaFristMailSent1t
+     *
+     * @param bool $reviewPsaFristMailSent1t
+     * @return void
+     */
+    public function setReviewPsaFristMailSent1t(bool $reviewPsaFristMailSent1t)
+    {
+        $this->reviewPsaFristMailSent1t = $reviewPsaFristMailSent1t;
+    }
+
+    /**
+     * Returns the boolean state of reviewPsaFristMailSent1t
+     *
+     * @return bool
+     */
+    public function isReviewPsaFristMailSent1t()
+    {
+        return $this->reviewPsaFristMailSent1t;
+    }
+
     /**
      * Returns the statusAfterReviewBabi
      *

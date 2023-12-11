@@ -53,9 +53,11 @@
                 </th>
                 <th>Info</th>
                 <th>letzte Änderung</th>
-                <th>Frist</th>
+                
                 <th>BaBi</th>
+                <th></th>
                 <th>PSA</th>
+                <th></th>
                 <th class="td-knopf" colspan="3">
                    </th>
             </tr>
@@ -93,14 +95,6 @@
                         </td>
                         <td>{trainer.tstamp -> f:format.date(format:'d.m.Y')}</td>
 
-                        <td>
-                            <f:if condition="!{relationUsagesInReview} && {trainer.reviewFrist}">
-                                <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date>
-                            </f:if>
-                            <f:if condition="!{relationUsagesInReview} && {trainer.reviewPsaFrist}">
-                                <f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date>
-                            </f:if>
-                        </td>
                         <f:if condition="{trainer.verwendungBabi}">
                             <f:then>
                                 <td class="istok">
@@ -129,8 +123,14 @@
                                         </f:else>
                                     </f:if>
                                 </td>
+                                <td>
+                                    <f:if condition="!{relationUsagesInReview} && {trainer.reviewFrist}">
+                                        <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date>
+                                    </f:if>
+                                </td>
                             </f:then>
                             <f:else>
+                                <td></td>
                                 <td></td>
                             </f:else>
                         </f:if>
@@ -165,8 +165,14 @@
                                                 </f:else>
                                             </f:if>
                                         </td>
+                                        <td>
+                                            <f:if condition="!{relationUsagesInReview} && {trainer.reviewPsaFrist}">
+                                                <f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date>
+                                            </f:if>
+                                        </td>
                             </f:then>
                             <f:else>
+                                <td></td>
                                 <td></td>
                             </f:else>
                         </f:if>

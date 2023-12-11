@@ -8,13 +8,13 @@
     
 
     <f:for each="{trainer}" as="t">
-        <f:if condition="{t.reviewFrist}">
+        <f:if condition="{t.reviewFrist} && {ansuchen.typ}==1">
             <f:if condition="{f:format.date(date: '{t.reviewFrist.date}', format: 'U')} < {frist}">
                 <f:variable name="frist">{t.reviewFrist.date}</f:variable>
                 <f:variable name="fristtyp"> (Training)</f:variable>
             </f:if>
         </f:if>
-        <f:if condition="{t.reviewPsaFrist}">
+        <f:if condition="{t.reviewPsaFrist} && {ansuchen.typ}==2">
             <f:if condition="{f:format.date(date: '{t.reviewPsaFrist.date}', format: 'U')} < {frist}">
                 <f:variable name="frist">{t.reviewPsaFrist.date}</f:variable>
                 <f:variable name="fristtyp"> (Training)</f:variable>
