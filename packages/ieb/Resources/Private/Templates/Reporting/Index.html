@@ -5,19 +5,22 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>Reporting</h1>
 
-    <ul>
+
+    <ul class="ul-menu">
         <f:if condition="{userIsPartOfGs}">
             <li>
-                <f:link.action action="noRequest">TR ohne Ansuchen</f:link.action>
+                <f:link.action action="noRequest">ORGANISATIONEN OHNE ANSUCHEN</f:link.action>
             </li>
         </f:if>
         <li>
-            <f:link.action action="filter">Filter</f:link.action>
+            <f:link.action action="filter">VERSCHIEDENES</f:link.action>
         </li>
         <li>
-            <f:link.action action="dateLog">dateLog</f:link.action>
+            <f:link.action action="dateLog">AKTIONEN DER GESCHÄFTSSTELLE</f:link.action>
+        </li>
+        <li>
+            <f:link.action action="gutachtenStatistik">ZUTEILUNGSSTATISTIK</f:link.action>
         </li>
     </ul>
 </f:section>

@@ -240,6 +240,7 @@
                         <p class="erklaerung"> Ich bestätige, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen:
                             &nbsp;
                         </p>
+                        <p class="erklaerung">Wir bestätigen die Aktualität und Richtigkeit der Angaben unter A.: {f:if(condition: '{ansuchen.erklaerungTeilA}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
                     </div>
                     <f:render partial="Ansuchen/UploadList" arguments="{media:relations.stammdaten.qualitaetPersonalDatei}" />
                 </div>

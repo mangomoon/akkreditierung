@@ -109,6 +109,24 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
+    public function gutachenStatistikAction(string $selected = ''): ResponseInterface
+    {
+        $availableDateRanges = $this->reportingRepository->getDateLogUsage();
+        $items = null;
+        if ($selected && isset($availableDateRanges[$selected])) {
+            $split = GeneralUtility::intExplode('-', $selected);
+            $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
+        }
+        //DebuggerUtility::var_dump($items);
+        $this->view->assignMultiple([
+            'dateRanges' => $availableDateRanges,
+            'selected' => $selected,
+            'items' => $items,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     protected function csvResponse(string $result, string $filename)
     {
         header('Content-Disposition: attachment; filename="' . $filename . '"');

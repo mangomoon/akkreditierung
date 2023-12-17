@@ -139,10 +139,10 @@ class AnsuchenBegutachtungController extends BaseController
         //$this->addFlashMessage('Ansuchen wurde ergänzt');
 
         // if status changes, no need to stay in record show
-        if ($begutachtung->status > 0) {
-            $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
-            $this->redirect('list');
-        }
+        // if ($begutachtung->status > 0) {
+        //     $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
+        //     $this->redirect('list');
+        // }
         $this->redirectTo($ansuchen->getUid());
     }
 

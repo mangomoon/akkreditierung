@@ -132,6 +132,8 @@ label.inline {
     text-align: right;
 }
 
+
+
 .error {
     padding: 12px;
     background: #fceaa1;
@@ -2359,6 +2361,17 @@ ul.f3-widget-paginator li a:hover, ul.f3-widget-paginator li.current a {
 
 
 /* AUSWERTUNGEN  */
+
+.ul-menu a {
+    text-decoration: none;
+    padding: 4px;
+}
+.ul-menu a:hover {
+    background: white;
+}
+.ul-menu li{
+    margin-bottom: 20px;
+}
 
 .tx-ieb table.auswertung th {
     font-weight: 300;

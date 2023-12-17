@@ -29,43 +29,59 @@
                 <f:for each="{items}" as="item">
                     <f:if condition="{item.einreich_datum}">
                         <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.einreich_datum}</f:format.date> x</td>
+                            <td class="datum"><f:format.date format='d.m.Y'>{item.einreich_datum}</f:format.date> <code>Einreichung</code></td>
                             <td class="nummer">{item.nummer}</td>
                             <td class="version">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Einreichung
-                                <f:switch expression="{item.status}">
+                            <td class="aktion"><code>Incoming Status: {item.incomingStatus} | Status: {item.status}</code>
+                                <f:switch expression="{item.incomingStatus}">
                                     <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
+                                    <f:case value="85">Begutachtung nach Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Nachakkreditierung</f:case>
+                                    <f:case value="160">Nachakkreditierung</f:case>
+                                    <f:case value="210">Begutachtung nach Zurückstellung</f:case>
+                                    <f:case value="230">Begutachtung nach Zurückstellung</f:case>
                                 </f:switch>
                             </td>
                         </tr>
                     </f:if>
                     <f:if condition="{item.zuteilung_datum}">
                         <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date> y</td>
+                            <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date> <code>Zuteilung</code></td>
                             <td class="nummer">{item.nummer}</td>
                             <td class="nummer">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Zuteilung
-                                <f:switch expression="{item.status}">
-                                    <f:case value="30">Erstzuteilung</f:case>
-                                    <f:case value="y">Folgezuteilung</f:case>
+                            <td class="aktion"><code>Incoming Status: {item.incomingStatus} | Status: {item.status}</code>
+                                <f:switch expression="{item.incomingStatus}">
+                                    <f:case value="30">Zuteilung nach Ersteinreichung</f:case>
+                                    <f:case value="85">Erneute Zuteilung nach Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Zuteilung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="160">Zuteilung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="210">Erneute Zuteilung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="230">Erneute Zuteilung zur Nachakreditierungsbegutachtung</f:case>
                                 </f:switch>
                             </td>
                         </tr>
                     </f:if>
                     <f:if condition="{item.akkreditierung_entscheidung_datum}">
                         <tr>
-                            <td class="datum"><f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date> z</td>
+                            <td class="datum"><f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date> <code>Entscheidung</code></td>
                             <td class="nummer">{item.nummer}</td>
                             <td class="nummer">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>{item.status}</code> Akkreditierungsentscheidung
+                            <td class="aktion"><code>Incoming Status: {item.incomingStatus} | Status: {item.status}</code>
                                 <f:switch expression="{item.status}">
-                                    <f:case value="30">Akkreditieunrgsentscheidung</f:case>
+                                    <f:case value="80">Akkreditierungsentscheidung: Nachbesserungsauftrag</f:case>
+                                    <f:case value="100">Akkreditierungsentscheidung: akkreditiert</f:case>
+                                    <f:case value="140">Akkreditierungsentscheidung: akkreditiert mit Auflagen</f:case>
+                                    <f:case value="200">Akkreditierungsentscheidung: Zurückstellung</f:case>
+                                    <f:case value="220">Akkreditierungsentscheidung: Zurückstellung</f:case>
+                                    <f:case value="800">Akkreditierungsentscheidung: nicht akkreditiert</f:case>
+                                    <f:case value="810">Akkreditierungsentscheidung: Akkreditierung entzogen</f:case>
+                                    <f:case value="820">Akkreditierungsentscheidung: Akkreditierung ausgesetzt</f:case>
                                 </f:switch>
                             </td>
                         </tr>
