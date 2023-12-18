@@ -436,26 +436,21 @@
                                             <f:if condition="{diff.kompetenz1.current} && {difftyp}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz2} == 1">
-                                            <li>Deutsch als Zweitsprache
+                                            <li>Gesundheit und Soziales
                                             <f:if condition="{diff.kompetenz2.current} && {difftyp}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz3} == 1">
-                                            <li>Gesundheit und Soziales
+                                            <li>Natur und Technik
                                             <f:if condition="{diff.kompetenz3.current} && {difftyp}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz4} == 1">
-                                            <li>Natur und Technik
+                                            <li>Weitere Sprachen: {ansuchen.kompetenzText1}
                                             <f:if condition="{diff.kompetenz4.current} && {difftyp}"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
-                                        <f:if condition="{ansuchen.kompetenz5} == 1">
-                                            <li>Weitere Sprachen: {ansuchen.kompetenzText2}
-                                            <f:if condition="{diff.kompeten51.current} && {difftyp}"> <span class="vorher-knopf">neu</span></f:if></li>
-                                        </f:if>
-                                        <f:if condition="{diff.kompetenz1.previous}"><li class="diff">gelöscht: Deutsch als Erstsprache</li></f:if>
-                                        <f:if condition="{diff.kompetenz2.previous}"><li class="diff">gelöscht: Deutsch als Zweitsprache</li></f:if>
-                                        <f:if condition="{diff.kompetenz3.previous}"><li class="diff">gelöscht: Mathematische Kompetenzen</li></f:if>
-                                        <f:if condition="{diff.kompetenz4.previous}"><li class="diff">gelöscht: Digitale Kompetenzen</li></f:if>
-                                        <f:if condition="{diff.kompetenz5.previous}"><li class="diff">gelöscht: Weitere Sprache({ansuchen.kompetenzText1})</li></f:if>
+                                        <f:if condition="{diff.kompetenz1.previous}"><li class="diff">gelöscht: Kreativität und Gestaltung</li></f:if>
+                                        <f:if condition="{diff.kompetenz2.previous}"><li class="diff">gelöscht: Gesundheit und Soziales</li></f:if>
+                                        <f:if condition="{diff.kompetenz3.previous}"><li class="diff">gelöscht: Natur und Technik</li></f:if>
+                                        <f:if condition="{diff.kompetenz4.previous}"><li class="diff">gelöscht: Weitere Sprache({ansuchen.kompetenzText1})</li></f:if>
 
                                     </f:else>
                                 </f:if>

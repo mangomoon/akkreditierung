@@ -1,0 +1,64 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h2>Aktionen der Geschäftsstelle</h2>
+    <label>Zeitraum (Quartal):</label>
+
+    <f:form action="gutachtenStatistik" name="gutachtenStatistik" method="post">
+        <f:form.select name="selected" value="{selected}" options="{dateRanges}" prependOptionLabel="" prependOptionValue="" /><label for="asCsv">
+            CSV
+            <f:form.checkbox property="csv" id="csv" value="1"/>
+        </label>
+        &nbsp;&nbsp;&nbsp;<f:form.submit class="knopf-s2" value="abfragen"/> 
+        
+    </f:form>
+    <f:if condition="{items}">
+        <f:then>
+            <table class="auswertung gs-liste">
+                <thead>
+                <tr>
+                    <th>DATUM</th>
+                    <th>NR</th>
+                    <th>NAME</th>
+                    <th>relevant</th>
+                    <th>txt</th>
+                    <th>ORGANISATION</th>
+                    <th>AKTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="{items}" as="item">
+                    <f:if condition="{item.zuteilung_datum} && {item.gutachter1}">
+                        <tr>
+                            <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
+                            <td class="nummer">{item.nummer}</td>
+                            <td class="nummer">{item.gutachter1}</td>
+                            <td class="name">{item.name}</td>
+                            <td class="organisation">Organisation</td>
+                            <td class="aktion"><code>Incoming Status: {item.incomingStatus} | Status: {item.status}</code>
+                                <f:switch expression="{item.incomingStatus}">
+                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
+                                    <f:case value="85">Erneute Begutachtung nach Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="160">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="210">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="230">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                </f:switch>
+                            </td>
+                        </tr>
+                    </f:if>
+                </f:for>
+                </tbody>
+            </table>
+        </f:then>
+        <f:else>
+            <p>Keine Daten für diesen Zeitraum.</p>
+        </f:else>
+    </f:if>
+</f:section>
+
+</html>

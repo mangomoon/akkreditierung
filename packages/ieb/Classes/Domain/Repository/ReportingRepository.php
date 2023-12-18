@@ -139,7 +139,7 @@ class ReportingRepository
                 $items[sprintf('%s-%s', $row['year'], $row['quarter'])] = sprintf('%s - %s', $row['year'], $row['quarter']);
             }
         }
-        ksort($items);
+        krsort($items);
         return $items;
     }
 

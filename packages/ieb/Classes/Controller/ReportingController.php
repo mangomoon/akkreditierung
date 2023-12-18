@@ -109,20 +109,28 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function gutachenStatistikAction(string $selected = ''): ResponseInterface
+    public function gutachtenStatistikAction(string $selected = '', int $csv=0): ResponseInterface
     {
         $availableDateRanges = $this->reportingRepository->getDateLogUsage();
         $items = null;
         if ($selected && isset($availableDateRanges[$selected])) {
             $split = GeneralUtility::intExplode('-', $selected);
             $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
+            if ($csv && !empty($items)) {
+                $fields = [
+                    'name' => 'Name',
+                    'nummer' => 'Nummer',
+                ];
+                $csvContent = $this->generateCsv($items, $fields);
+                $this->csvResponse($csvContent, 'ansuchen.csv');
+            }
         }
-        //DebuggerUtility::var_dump($items);
         $this->view->assignMultiple([
             'dateRanges' => $availableDateRanges,
             'selected' => $selected,
             'items' => $items,
         ]);
+        
 
         return $this->htmlResponse();
     }
