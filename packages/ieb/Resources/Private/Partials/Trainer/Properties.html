@@ -117,12 +117,12 @@
 									</div>
 									
 								</f:then>
-								<f:else>
+								<f:else>###{trainer.reviewC21PsaStatus}---{user}
 									<f:render partial="Ansuchen/Kommentare" arguments="{
 										status:trainer.reviewC21PsaStatus,
 										extern:trainer.reviewC21PsaCommentTr,
 										intern:trainer.reviewC21PsaCommentInternal,
-										user:currentUser.usergroup
+										user:user,
 										}" />
 								</f:else>
 							</f:if>
@@ -174,7 +174,7 @@
 											status:trainer.reviewC22BabiStatus,
 											extern:trainer.reviewC22BabiCommentTr,
 											intern:trainer.reviewC22BabiCommentInternal,
-											user:currentUser.usergroup
+											user:user,
 											}" />
 								</f:if>
 								<f:if condition="{typ}==2">
@@ -182,7 +182,7 @@
 											status:trainer.reviewC22PsaStatus,
 											extern:trainer.reviewC22PsaCommentTr,
 											intern:trainer.reviewC22PsaCommentInternal,
-											user:currentUser.usergroup
+											user:user,
 											}" />
 								</f:if>
 										

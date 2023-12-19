@@ -6,6 +6,7 @@
         <label>Ansuchen in Begutachtung</label>
     </f:then>
     <f:else>
+        <f:debug>{_all}</f:debug>
         <f:if condition="{status}">
             <label>status </label>
             <f:switch expression="{status}">

@@ -22,7 +22,7 @@
         </f:else>
         
     </f:if>
-    
+    {ansuchen.trainer -> f:variable(name: 'trainer')}
     
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
@@ -647,21 +647,12 @@
                             <div class="col-12">
                                 <details>
                                 <summary>{t.fullName}</summary>
-                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ}"/>
+                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup}"/>
                                 </details>
                             </div>
                             
 
-                            <!-- <div>
-                                <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                                    <f:then>
-                                        <f:link.action pageUid="213" action="show" target="_blank" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
-                                    </f:then>
-                                    <f:else>
-                                        <f:link.action pageUid="12" action="show" controller="Trainer" arguments="{trainer : t.uid}" class="knopf-quadratisch show" title="Trainer:in zeigen"></f:link.action>
-                                    </f:else>
-                                </f:if>
-                            </div> -->
+
                         </div>
                     </f:for>
 
