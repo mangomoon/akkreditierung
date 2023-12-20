@@ -48,9 +48,7 @@
 					<f:else>
 						<f:render partial="Ansuchen/Kommentare" arguments="{
 							status:trainer.reviewC21BabiStatus,
-							extern:trainer.reviewC21BabiCommentTr,
-							intern:trainer.reviewC21BabiCommentInternal,
-							user:currentUser.usergroup
+							user:user,
 							}" />
 					</f:else>
 				</f:if>
@@ -117,11 +115,9 @@
 									</div>
 									
 								</f:then>
-								<f:else>###{trainer.reviewC21PsaStatus}---{user}
+								<f:else>
 									<f:render partial="Ansuchen/Kommentare" arguments="{
 										status:trainer.reviewC21PsaStatus,
-										extern:trainer.reviewC21PsaCommentTr,
-										intern:trainer.reviewC21PsaCommentInternal,
 										user:user,
 										}" />
 								</f:else>
@@ -172,16 +168,16 @@
 								<f:if condition="{typ}==1">
 									<f:render partial="Ansuchen/Kommentare" arguments="{
 											status:trainer.reviewC22BabiStatus,
-											extern:trainer.reviewC22BabiCommentTr,
-											intern:trainer.reviewC22BabiCommentInternal,
+											extern:trainer.reviewC2BabiCommentTr,
+											intern:trainer.reviewC2BabiCommentInternalData,
 											user:user,
 											}" />
 								</f:if>
 								<f:if condition="{typ}==2">
 										<f:render partial="Ansuchen/Kommentare" arguments="{
 											status:trainer.reviewC22PsaStatus,
-											extern:trainer.reviewC22PsaCommentTr,
-											intern:trainer.reviewC22PsaCommentInternal,
+											extern:trainer.reviewC2PsaCommentTr,
+											intern:trainer.reviewC2PsaCommentInternalData,
 											user:user,
 											}" />
 								</f:if>

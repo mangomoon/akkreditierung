@@ -7,47 +7,62 @@
 <f:for each="{trainer}" as="p">
     <f:if condition="{ansuchen.typ}==1">
         <f:then>
+            <f:if condition="{p.reviewC21BabiStatus}>2 || {p.reviewC22BabiStatus}>2">
+                <p>Training {p.vorname} {p.nachname}:
+            </f:if>
             <f:if condition="{p.reviewC21BabiStatus}==3">
-                <p>Training {p.vorname} {p.nachname}: Auflage (Qualifikation): {p.reviewC2BabiCommentTr} </p>
+                 Auflage (Qualifikation) 
             </f:if>
             <f:if condition="{p.reviewC21BabiStatus}==4">
-                <p>Training {p.vorname} {p.nachname}: nicht-ok (Qualifikation): {p.reviewC2BabiCommentTr}</p>
+                nicht-ok (Qualifikation) 
             </f:if>
             <f:if condition="{p.reviewC22BabiStatus}==3">
-                <p>Training {p.vorname} {p.nachname}: Auflage (Erfahrung): {p.reviewC2BabiCommentTr} </p>
+                Auflage (Erfahrung) 
             </f:if>
             <f:if condition="{p.reviewC22BabiStatus}==4">
-                <p>Training {p.vorname} {p.nachname}: nicht-ok (Erfahrung): {p.reviewC2BabiCommentTr}</p>
+                nicht-ok (Erfahrung) 
             </f:if>
+                :</p>
+            <p><f:format.nl2br>{p.reviewC2BabiCommentTr}</f:format.nl2br></p>
         </f:then>
         <f:else>
+            <f:if condition="{p.reviewC21PsaStatus}>2 || {p.reviewC22PsaStatus}>2">
+                <p>Training {p.vorname} {p.nachname}: 
+            </f:if>
             <f:if condition="{p.reviewC21PsaStatus}==3">
-                <p>Training {p.vorname} {p.nachname}: Auflage (Qualifikation): {p.reviewC2PsaCommentTr} </p>
+                Auflage (Qualifikation) 
             </f:if>
             <f:if condition="{p.reviewC21PsaStatus}==4">
-                <p>Training {p.vorname} {p.nachname}: nicht-ok (Qualifikation): {p.reviewC2PsaCommentTr}</p>
+                nicht-ok (Qualifikation) 
             </f:if>
             <f:if condition="{p.reviewC22PsaStatus}==3">
-                <p>Training {p.vorname} {p.nachname}: Auflage (Erfahrung): {p.reviewC2PsaCommentTr} </p>
+                Auflage (Erfahrung) 
             </f:if>
             <f:if condition="{p.reviewC22PsaStatus}==4">
-                <p>Training {p.vorname} {p.nachname}: nicht-ok (Erfahrung): {p.reviewC2PsaCommentTr}</p>
+                nicht-ok (Erfahrung) 
             </f:if>
+                :</p>
+            <p><f:format.nl2br>{p.reviewC2PsaCommentTr}</f:format.nl2br></p>
         </f:else>
     </f:if>
 </f:for>
 
 <f:for each="{berater}" as="p">
+    <f:if condition="{p.reviewC3Status}>2 || {p.reviewC32Status}>2">
+        <p>Beratung {p.vorname} {p.nachname}: 
+    </f:if>
     <f:if condition="{p.reviewC3Status}==3">
-        <p>Beratung {p.vorname} {p.nachname}: Auflage (Qualifikation): {p.reviewC3CommentTr} </p>
+        Auflage (Qualifikation) 
     </f:if>
     <f:if condition="{p.reviewC3Status}==4">
-        <p>Beratung {p.vorname} {p.nachname}: nicht-ok (Qualifikation): {p.reviewC3CommentTr}</p>
+        nicht-ok (Qualifikation) 
     </f:if>
     <f:if condition="{p.reviewC32Status}==3">
-        <p>Beratung {p.vorname} {p.nachname}: Auflage (Erfahrung): {p.reviewC32CommentTr} </p>
+        Auflage (Erfahrung) 
     </f:if>
     <f:if condition="{p.reviewC32Status}==4">
-        <p>Beratung {p.vorname} {p.nachname}: nicht-ok (Erfahrung): {p.reviewC32CommentTr}</p>
+        nicht-ok (Erfahrung)
     </f:if>
+        :</p>
+      <p><f:format.nl2br>{p.reviewC3CommentTr}</f:format.nl2br></p>
 </f:for>

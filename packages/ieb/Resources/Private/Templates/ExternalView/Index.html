@@ -9,31 +9,81 @@
 
     <f:if condition="{ansuchen}">
         <f:then>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Nummer</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
+            
+
                 <f:for each="{ansuchen}" as="item">
-                    <tr>
-                        <td>{item.name} [{item.uid}]</td>
-                        <td>{item.nummer} ({item.version})</td>
-                        <td>{item.status} <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action></td>
-                    </tr>
+                    <f:if condition="{item.version}>0">
+
+
+                    {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+                    <table class="ansuchenliste archiv">
+                        <tr>
+                            <td colspan="4" class="ansuchenliste_tr">
+                                <f:if condition="{item.stammdatenMarkenname}">
+                                    <f:then>
+                                        <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                    </f:then>
+                                    <f:else>
+                                        <span class="fett">{stammdaten.name}</span>
+                                    </f:else>
+                                </f:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ansuchenliste_ansuchennr">
+                                {item.nummer}
+                            </td>
+                            <td class="ansuchenliste_bezeichnung">
+                                <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                <f:if condition="{item.status}==100 || {item.status}==140">
+                                    <f:then>
+                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                    </f:then>
+                                    <f:else>
+                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                    </f:else>
+                                    
+                                </f:if>
+                                
+                            </td>
+
+                            <td class="td-knopf">
+                                <f:if condition="{item.akkreditierungPdf}">
+                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                <f:if condition="{falItems.0}">
+                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                </f:if>
+                                            </ieb:falFromRecord>
+                                        </f:if>
+                            </td>
+                            <td class="td-knopf">
+                                <f:if condition="{item.pp3} && {item.version}==0">
+                                    <f:then>
+                                        <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
+                                    </f:then>
+                                    <f:else>
+                                        
+
+                                        <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                    </f:else>
+                                </f:if>
+                                
+                            </td>
+                        </tr>
+
+
+
+
+
+                    </f:if>
                 </f:for>
-                </tbody>
-            </table>
         </f:then>
         <f:else>
             <p>Keine Ansuchen vorhanden</p>
         </f:else>
     </f:if>
 
-
+<!--
 
     <h1>AKKREDITIERTE ANSUCHEN</h1>
 
@@ -105,6 +155,8 @@
             </f:else>
         </f:if>
     </f:if>
+
+-->
 </f:section>
 
 </html>

@@ -16,31 +16,16 @@
                 <f:if condition="{ansuchen.status}==100">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe stattgegeben.</p>
                     <p>&nbsp;</p>
-                    <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument <f:if condition="{ansuchen.akkreditierungPdf.originalResource}">
-                        <f:then>
-                            <f:link.typolink absolute="1" parameter="{pdf.originalFile.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink>
-                        </f:then>
-                        <f:else>
-                            <f:link.action action="certificateDownload" absolute="1" pageUid="14" target="_blank" extensionName="ieb" pluginName="ansuchen" controller="Ansuchen" arguments="{ansuchen : ansuchen}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action>
-                        </f:else>
-                    </f:if> herunterladen.</p>
+                    <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
+                        <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
+                         herunterladen.</p>
                     
                 </f:if>
                 <f:if condition="{ansuchen.status}==140">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
                     <p>&nbsp;</p>
                     <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
-                        <f:comment>
-                            <f:if condition="{ansuchen.akkreditierungPdf.originalResource}">
-                            <f:then>
-                                <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink>
-                            </f:then>
-                            <f:else>
-                                <f:link.action action="certificateDownload" absolute="1" pageUid="14" target="_blank" extensionName="ieb" pluginName="ansuchen" controller="Ansuchen" arguments="{ansuchen : ansuchen}" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.action>
-                            </f:else>
-                        </f:if>
-                        </f:comment>
-                        <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink>
+                        <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
                          herunterladen.</p>
                 </f:if>
                 <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
@@ -78,7 +63,7 @@
                             <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
                         </f:if>
                         
                         <f:if condition="{ansuchen.status}==140">
@@ -86,7 +71,9 @@
                             <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <f:link.typolink absolute="1" parameter="{ansuchen.akkreditierungPdf.originalResource.publicUrl}"  target="_blank" class="knopf-quadratisch zertifikat" title="Akkreditierungs-Zertifikat als PDF">HIER</f:link.typolink> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                            
                         </f:if>
 
                         <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">

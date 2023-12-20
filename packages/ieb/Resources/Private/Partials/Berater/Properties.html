@@ -54,10 +54,8 @@
 					</f:then>
 					<f:else>
 						<f:render partial="Ansuchen/Kommentare" arguments="{
-							status:trainer.reviewC3Status,
-							extern:trainer.reviewC3CommentTr,
-							intern:trainer.reviewC3CommentInternal,
-							user:currentUser.usergroup
+							status:berater.reviewC3Status,
+							user:user,
 							}" />
 					</f:else>
 				</f:if>
@@ -97,10 +95,10 @@
 					</f:then>
 					<f:else>
 						<f:render partial="Ansuchen/Kommentare" arguments="{
-							status:trainer.reviewC32Status,
-							extern:trainer.reviewC32CommentTr,
-							intern:trainer.reviewC32CommentInternal,
-							user:currentUser.usergroup
+							status:berater.reviewC32Status,
+							extern:berater.reviewC3CommentTr, 
+							intern:berater.reviewC3CommentInternalData,
+							user:user
 							}" />
 					</f:else>
 				</f:if>
