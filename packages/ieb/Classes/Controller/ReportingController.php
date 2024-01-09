@@ -45,9 +45,11 @@ class ReportingController extends ActionController
                 'strasse' => 'Strasse',
                 'plz' => 'PLZ',
                 'ort' => 'Ort',
+                'telefon' => 'Telefon',
+                'email' => 'E-Mail',
             ];
             $csvContent = $this->generateCsv($items, $fields);
-            $this->csvResponse($csvContent, 'no-request.csv');
+            $this->csvResponse($csvContent, 'Organisationen-ohne-Ansuchen.csv');
         }
         $this->view->assign('items', $items);
         return $this->htmlResponse();
@@ -151,7 +153,7 @@ class ReportingController extends ActionController
     {
         $csv = Csv\Writer::createFromString();
         $csv->insertOne(array_values($fieldlist));
-
+        $csv->setDelimiter(";");
         $allowedKeys = array_keys($fieldlist);
         foreach ($rows as $row) {
             $limitedSet = array_intersect_key($row, array_flip($allowedKeys));

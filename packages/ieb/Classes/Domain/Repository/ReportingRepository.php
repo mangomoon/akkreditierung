@@ -29,6 +29,7 @@ class ReportingRepository
             ->where(
                 $queryBuilder->expr()->isNull('ansuchen.uid'),
             )
+            ->orderBy('tx_ieb_domain_model_stammdaten.name', 'ASC')
             ->execute()
             ->fetchAllAssociative();
     }

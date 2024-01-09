@@ -5,21 +5,22 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h1>TR ohne Ansuchen</h1>
+    <h1>Organisationen ohne Ansuchen</h1>
 
     <f:if condition="{items}">
         <f:then>
-            <f:link.action action="noRequest" arguments="{csv:1}">Als CSV herunterladen</f:link.action>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
-                </thead>
+            <f:link.action action="noRequest" class="knopfersatz knopf-s2" arguments="{csv:1}">als CSV herunterladen</f:link.action>
+            <p>&nbsp;</p>
+            <table class="zuteilung klein">
+
                 <tbody>
                 <f:for each="{items}" as="item">
                     <tr>
                         <td>{item.name}</td>
+                        <td>{item.strasse}<br>{item.plz} {item.ort}</td>
+                        <td>{item.telefon}</td>
+                        <td><a href="mailto:{item.email}">{item.email}</a></td>
+                        <td>{item.www}</td>
                     </tr>
                 </f:for>
                 </tbody>
