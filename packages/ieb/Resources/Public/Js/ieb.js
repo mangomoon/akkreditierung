@@ -908,6 +908,9 @@ function qualifikationPsaSprache() {
             
             oeffnenTrainerBegutachtung();
             oeffnenBeraterBegutachtung();
+            if($(this).hasClass('ok')) {
+                s = 1;
+            }
         } else {
             $(this).find("input").prop('checked', true);
             
@@ -923,12 +926,12 @@ function qualifikationPsaSprache() {
         if ((s == 1) && ($('.extern').val()!='')) {
             neu="";
             t = $('.extern').val();
-            i = $('.intern').val();
+            i = $('.komm-intern-textarea').val();
             neu = i + " \nnicht ok war:\n" + t;
-            $('.intern').val(neu);
+            $('.komm-intern-textarea').val(neu);
             $('.extern').val('');
             }
-
+        console.log ("neu= "+ neu);
          return false;
      });
 
@@ -957,7 +960,7 @@ function qualifikationPsaSprache() {
             if(st==150 && ust==200) {
                 ust=220
             };
-            console.log(st,ust);
+            // console.log(st,ust);
             $(this).addClass('active');
             $('#upcomingStatus').val(ust);
          });
