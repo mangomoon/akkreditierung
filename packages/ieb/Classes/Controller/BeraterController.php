@@ -81,13 +81,27 @@ class BeraterController extends BaseController
     public function updateAction(Berater $berater, array $fileDelete = [])
     {
         $this->check($berater);
-        $berater->setLockedBy(0);
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['saveAndIndex'])) {
+            $berater->setLockedBy(0);
+        }
         if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
             $this->deleteFiles($fileDelete, $berater);
         }
         $this->beraterRepository->update($berater);
-        $this->redirect('index');
+        return $this->redirectTo($berater->getUid());
         
+    }
+
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['save']) && $recordId > 0) {
+            $this->redirect('edit', null, null, ['berater' => $recordId]);
+        }
+        if (isset($arguments['saveAndIndex'])) {
+            $this->redirect('index');
+        }
     }
 
     public function deleteAction(Berater $berater)

@@ -80,12 +80,16 @@ class TrainerController extends BaseController
     public function updateAction(Trainer $trainer, array $fileDelete = [])
     {
         $this->check($trainer);
-        $trainer->setLockedBy(0);
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['saveAndIndex'])) {
+            $trainer->setLockedBy(0);
+        }
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
             $this->deleteFiles($fileDelete, $trainer);
             $this->trainerRepository->update($trainer);
         }
-        $this->redirect('index');
+        
+        return $this->redirectTo($trainer->getUid());
     }
 
     public function deleteAction(Trainer $trainer)
@@ -95,6 +99,17 @@ class TrainerController extends BaseController
             $this->trainerRepository->remove($trainer);
         }
         $this->redirect('index');
+    }
+
+    protected function redirectTo(int $recordId): void
+    {
+        $arguments = $this->request->getArguments();
+        if (isset($arguments['save']) && $recordId > 0) {
+            $this->redirect('edit', null, null, ['trainer' => $recordId]);
+        }
+        if (isset($arguments['saveAndIndex'])) {
+            $this->redirect('index');
+        }
     }
 
     public function unlockAction(Trainer $trainer)
