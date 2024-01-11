@@ -70,6 +70,7 @@ class FristUeberwachungService
 
     public function sendEmails(): int
     {
+        $this->idLists = $this->records = [];
         $this->collect();
         if (empty($this->records)) {
             return 0;
@@ -84,15 +85,28 @@ class FristUeberwachungService
         return count($this->records);
     }
 
+    public function sendStammdatenMails(): int
+    {
+        $this->idLists = $this->records = [];
+        $this->getFromStammdaten();
+
+        $this->sendMailsGroupedStammdaten();
+
+        if (!$this->skipPersistSent) {
+             $this->setAsSent();
+        }
+
+        return count($this->records);
+    }
+
     private function collect()
     {
+        $this->idLists = $this->records = [];
         foreach ($this->configuration as $k => $_) {
             if (str_starts_with($k, 'ansuchen_')) {
                 $this->getAnsuchenDirect($k);
             } elseif ($k === 'berater' || $k === 'trainer') {
                 $this->getFromJoin($k);
-            } elseif ($k === 'stammdaten') {
-                $this->getFromStammdaten($k);
             }
         }
     }
@@ -109,6 +123,40 @@ class FristUeberwachungService
 
             $this->mailService
                 ->send('Checks/FristenUeberwachung', $recipients, $variables);
+        }
+    }
+
+    protected function sendMailsGroupedStammdaten(): void
+    {
+        $collectedRecipients = [];
+        foreach ($this->records as $ansuchenId => $data) {
+            foreach ($data['stammdaten'] as $type => $records) {
+                foreach ($records as $record) {
+                    $recipients = $this->getRecipientsForAnsuchen($record['uid']);
+                    $cacheKey = md5(json_encode($recipients));
+                    $collectedRecipients[$cacheKey]['recipients'] = $recipients;
+                    $collectedRecipients[$cacheKey]['records'][$record['relationUid']][] = $record['uid'];
+                }
+            }
+        }
+        foreach ($collectedRecipients as $data) {
+            $infos = [];
+
+            foreach ($data['records'] as $stammdatenId => $ansuchenIds) {
+                $ansuchen = [];
+                foreach ($ansuchenIds as $id) {
+                    $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer');
+                }
+                $infos[] = [
+                    'stammdaten' => BackendUtility::getRecord('tx_ieb_domain_model_stammdaten', $stammdatenId, 'uid,name,review_oecert_frist_mail_sent1t,review_oecert_frist,review_oecert_frist_mail_sent14t'),
+                    'ansuchen' => $ansuchen,
+                ];
+            }
+            $variables = [
+                'infos' => $infos,
+            ];
+            $this->mailService
+                ->send('Checks/FristenUeberwachungStammdaten', $data['recipients'], $variables);
         }
     }
 
@@ -173,9 +221,9 @@ class FristUeberwachungService
         $this->addToRecords($rows, $configuration, $type);
     }
 
-    private function getFromStammdaten(string $type): void
+    private function getFromStammdaten(): void
     {
-        $configuration = $this->configuration[$type];
+        $configuration = $this->configuration['stammdaten'];
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($configuration['table']);
         $maxIdRows = $queryBuilder
@@ -222,7 +270,7 @@ class FristUeberwachungService
             $row[$configuration['t14']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['t14']];
             $row['relationUid'] = $stammdatenRowsWithFristByPid[$row['pid']]['stammdatenUid'];
         }
-        $this->addToRecords($ansuchenRows, $configuration, $type);
+        $this->addToRecords($ansuchenRows, $configuration, 'stammdaten');
     }
 
     private function getFromJoin(string $type): void
@@ -263,6 +311,7 @@ class FristUeberwachungService
     protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, array $configuration, bool $addAnsuchenConstraint = true): array
     {
         $now = $GLOBALS['EXEC_TIME'];
+        $days = 1;
         $emptyFields = [$configuration['t1']];
         $dateConstraints = [
             $queryBuilder->expr()->andX(
@@ -270,8 +319,9 @@ class FristUeberwachungService
                 $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
             ),
         ];
+        $lastDayCount = 1;
         if (!($configuration['t14Skip'] ?? false)) {
-            $days = $configuration['t14AlternativeDays'] ?? 14;
+            $days = $lastDayCount = $configuration['t14AlternativeDays'] ?? 14;
             $dateConstraints[] = $queryBuilder->expr()->andX(
                 $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
@@ -280,7 +330,7 @@ class FristUeberwachungService
         }
 
         $dateToLateConstraints = [
-            $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now, Connection::PARAM_INT)),
+            $queryBuilder->expr()->lt($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
         ];
         foreach ($emptyFields as $emptyField) {
             $dateToLateConstraints[] = $queryBuilder->expr()->eq($emptyField, $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));

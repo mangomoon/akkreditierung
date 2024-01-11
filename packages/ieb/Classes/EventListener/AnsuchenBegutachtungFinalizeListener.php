@@ -9,6 +9,7 @@ use GeorgRinger\Ieb\Event\AnsuchenBegutachtungFinalizeAfterSnapshotEvent;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\MailService;
 use GeorgRinger\Ieb\Utility\AnsuchenUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -55,11 +56,34 @@ final class AnsuchenBegutachtungFinalizeListener
 
         $values = [
             'ansuchen' => $event->ansuchenAfterSnapshot,
+            'firstAnsuchen' => $this->getInitialAnsuchen($event->ansuchenAfterSnapshot),
             'pdf' => $this->getAttachmentFromAnsuchen($event->ansuchenAfterSnapshot),
             'newStatus' => $event->ansuchenAfterSnapshot->getStatus(),
         ];
 
         $this->mailService->send('Notification/AnsuchenBegutachtungFinalize', $mails, $values);
+    }
+
+    protected function getInitialAnsuchen(Ansuchen $ansuchen): ?Ansuchen
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+
+        $row = $queryBuilder->select('*')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
+            )
+            ->execute()
+            ->fetchAssociative();
+        if ($row) {
+            $dataMapper = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class);
+            $objects = $dataMapper->map(\GeorgRinger\Ieb\Domain\Model\Ansuchen::class, [$row]);
+            if ($objects) {
+                return $objects[0];
+            }
+        }
+        return null;
     }
 
     protected function getAttachmentFromAnsuchen(Ansuchen $ansuchen): ?FileReference
