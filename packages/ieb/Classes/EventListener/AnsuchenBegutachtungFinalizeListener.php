@@ -12,9 +12,8 @@ use GeorgRinger\Ieb\Utility\AnsuchenUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
-use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 
 final class AnsuchenBegutachtungFinalizeListener
 {
@@ -77,8 +76,8 @@ final class AnsuchenBegutachtungFinalizeListener
             ->execute()
             ->fetchAssociative();
         if ($row) {
-            $dataMapper = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class);
-            $objects = $dataMapper->map(\GeorgRinger\Ieb\Domain\Model\Ansuchen::class, [$row]);
+            $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+            $objects = $dataMapper->map(Ansuchen::class, [$row]);
             if ($objects) {
                 return $objects[0];
             }

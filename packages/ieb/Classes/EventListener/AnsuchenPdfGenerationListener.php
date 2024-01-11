@@ -12,6 +12,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 final class AnsuchenPdfGenerationListener
@@ -108,6 +109,7 @@ final class AnsuchenPdfGenerationListener
         $standaloneView->setTemplatePathAndFilename($templatePath);
         $standaloneView->assignMultiple([
             'ansuchen' => $event->ansuchenAfterSnapshot,
+            'firstAnsuchen' => $this->getInitialAnsuchen($event->ansuchenAfterSnapshot),
             'stammdaten' => $event->stammdaten,
             'datum' => $datum,
             'extensionConfiguration' => new ExtensionConfiguration(),
@@ -115,5 +117,28 @@ final class AnsuchenPdfGenerationListener
         ]);
 
         return $standaloneView->render();
+    }
+
+
+    protected function getInitialAnsuchen(Ansuchen $ansuchen): ?Ansuchen
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+
+        $row = $queryBuilder->select('*')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
+            )
+            ->execute()
+            ->fetchAssociative();
+        if ($row) {
+            $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+            $objects = $dataMapper->map(Ansuchen::class, [$row]);
+            if ($objects) {
+                return $objects[0];
+            }
+        }
+        return null;
     }
 }
