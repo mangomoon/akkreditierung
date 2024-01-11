@@ -166,6 +166,17 @@ defined('TYPO3') || die();
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
+        'Esf',
+        [
+            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf',
+        ],
+        [
+            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf',
+        ]
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Ieb',
         'ExternalView',
         [
             \GeorgRinger\Ieb\Controller\ExternalViewController::class => 'index',

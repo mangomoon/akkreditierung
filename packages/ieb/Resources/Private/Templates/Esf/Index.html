@@ -1,0 +1,24 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <h2>ESF Reporting</h2>
+
+    <table>
+        <f:for each="{ansuchen}" as="item">
+            <tr>
+                <td>{item.uid}</td>
+                <td>{item.nummer}</td>
+                <td>{item.name}</td>
+                <td>{item.version}</td>
+                <td>{item.status}</td>
+                <td><f:link.action action="show" arguments="{ansuchen:item}">details</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+</f:section>
+
+</html>

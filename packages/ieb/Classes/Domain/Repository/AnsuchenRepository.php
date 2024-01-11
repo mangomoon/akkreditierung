@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Extbase\Reflection\ReflectionService;
@@ -43,6 +44,17 @@ class AnsuchenRepository extends BaseRepository
     {
         $query = $this->getQuery();
         $constraints = [
+            $query->equals('version_active', 1),
+        ];
+        $query->matching($query->logicalAnd($constraints));
+        return $query->execute();
+    }
+
+    public function getAllAkkreditiert(): QueryResultInterface
+    {
+        $query = $this->getQuery();
+        $constraints = [
+            $query->in('status', AnsuchenStatus::statusForAkkreditiertOnly()),
             $query->equals('version_active', 1),
         ];
         $query->matching($query->logicalAnd($constraints));
@@ -92,7 +104,7 @@ class AnsuchenRepository extends BaseRepository
             ->addSelectLiteral('max(uid) as uid')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter([AnsuchenStatus::AKKREDITIERT->value, AnsuchenStatus::AKKREDITIERT_MIT_AUFLAGEN->value], Connection::PARAM_INT_ARRAY))
+                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForAkkreditiertOnly(), Connection::PARAM_INT_ARRAY))
             )
             ->groupBy('nummer')
             ->execute()
@@ -324,6 +336,19 @@ class AnsuchenRepository extends BaseRepository
             'copy_verantwortliche' => json_encode($copyVerantwortliche, JSON_PRETTY_PRINT),
             'copy_verantwortliche_mail' => json_encode($copyVerantwortlicheMail, JSON_PRETTY_PRINT),
         ];
+    }
+
+    public function getAllEsfVersonsOfAnsuchen(Ansuchen $ansuchen)
+    {
+        $query = $this->getQuery();
+        $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
+
+        $constraints = [
+            $query->in('status', AnsuchenStatus::statusForAkkreditiertOnly()),
+            $query->equals('nummer', $ansuchen->getNummer()),
+        ];
+        $query->matching($query->logicalAnd($constraints));
+        return $query->execute();
     }
 
     public function removeLockByUser(int $ansuchenId): void

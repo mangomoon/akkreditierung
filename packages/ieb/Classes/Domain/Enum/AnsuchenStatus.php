@@ -170,6 +170,17 @@ enum AnsuchenStatus: int
         ];
     }
 
+    /**
+     * @return int[]
+     */
+    public static function statusForAkkreditiertOnly(): array
+    {
+        return [
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+        ];
+    }
+
      /**
      * @return int[]
      */
