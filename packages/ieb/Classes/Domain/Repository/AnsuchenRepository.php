@@ -378,18 +378,16 @@ class AnsuchenRepository extends BaseRepository
             ->getConnectionForTable('tx_ieb_domain_model_ansuchen');
     }
 
-    public function getPreviousVersionDate(int $ansuchen, int $ansuchenVorversionId)
+    public function getFirstVersion(string $ansuchennummer)
     {
-        $aktuell = $this->findByUid($ansuchen);
-        $aktuelleVersion = $aktuell->getVersion();
-        $previous = $this->findByUid($ansuchenVorversionId);
-        if ($aktuelleVersion == 0) {
-            $datum = $aktuell -> getAkkreditierungEntscheidungDatum();
-        } else {
-            $datum = $previous -> getAkkreditierungEntscheidungDatum();
-        }
-        return $datum;
-    }
+        $query = $this->getQuery();
+        $constraints = [
+            $query->equals('nummer', $ansuchennummer),
+            $query->equals('version', 0),
+        ];
+        $query->matching($query->logicalAnd($constraints));
 
+        return $query->execute();
+    }
 
 }

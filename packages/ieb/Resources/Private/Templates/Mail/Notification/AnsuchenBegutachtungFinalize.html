@@ -16,7 +16,7 @@
                 <f:if condition="{ansuchen.status}==100">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe stattgegeben.</p>
                     <p>&nbsp;</p>
-                    <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
+                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
                         <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
                          herunterladen.</p>
                     
@@ -24,7 +24,7 @@
                 <f:if condition="{ansuchen.status}==140">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
                     <p>&nbsp;</p>
-                    <p>Der Anhang ergänzt die vorangehende Akkreditierungsbestätigung für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
+                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
                         <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
                          herunterladen.</p>
                 </f:if>

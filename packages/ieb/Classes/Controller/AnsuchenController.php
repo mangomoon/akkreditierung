@@ -342,15 +342,14 @@ class AnsuchenController extends BaseController
     public function certificateDownloadAction(Ansuchen $ansuchen)
     {
         $this->check($ansuchen);
-        $aktuelleId = $ansuchen->getUid();
-        $vorigeId = $ansuchen->getVersionBasedOn();
-        $datum = $this->ansuchenRepository->getPreviousVersionDate($aktuelleId, $vorigeId);
+        $ansuchennummer = $ansuchen->getNummer();
+        $firstVersion = $this->ansuchenRepository->getFirstVersion($ansuchennummer);
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $this->stammdatenRepository->getLatest(),
             'extensionConfiguration' => $this->extensionConfiguration,
             'outputDestination' => 'inline',
-            'datum' => $datum,
+            'firstVersion' => $firstVersion,
         ]);
         $this->addRelationDataToView();
     }
