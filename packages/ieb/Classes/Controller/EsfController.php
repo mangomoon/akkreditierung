@@ -24,11 +24,23 @@ class EsfController extends BaseController
     public function showAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
+        $this->collectSingleViewData($ansuchen);
+        return $this->htmlResponse();
+    }
+
+    public function pdfAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        $this->check($ansuchen);
+        $this->collectSingleViewData($ansuchen);
+        return $this->htmlResponse();
+    }
+
+    private function collectSingleViewData(Ansuchen $ansuchen): void
+    {
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'versions' => $this->ansuchenRepository->getAllEsfVersonsOfAnsuchen($ansuchen),
         ]);
-        return $this->htmlResponse();
     }
 
     public function injectAnsuchenRepository(AnsuchenRepository $ansuchenRepository): void

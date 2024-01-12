@@ -15,7 +15,10 @@
                 <td>{item.name}</td>
                 <td>{item.version}</td>
                 <td>{item.status}</td>
-                <td><f:link.action action="show" arguments="{ansuchen:item}">details</f:link.action></td>
+                <td>
+                    <f:link.action action="show" arguments="{ansuchen:item}">details</f:link.action>
+                    <f:link.action action="pdf" arguments="{ansuchen:item}">pdf</f:link.action>
+                </td>
             </tr>
         </f:for>
     </table>
