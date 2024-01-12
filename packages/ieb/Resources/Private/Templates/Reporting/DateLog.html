@@ -27,9 +27,7 @@
                 </thead>
                 <tbody>
                 <f:for each="{items}" as="item">
-
-                    {item.copy_stammdaten}
-                    SSSS{stammdaten.name}
+                    
                     <f:if condition="{item.einreich_datum}">
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.einreich_datum}</f:format.date> <code>Einreichung</code></td>
@@ -37,14 +35,14 @@
                             <td class="version">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>Incoming Status: {item.ReviewIncomingStatus} | Status: {item.status}</code>
-                                <f:switch expression="{item.ReviewIncomingStatus}">
-                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
-                                    <f:case value="85">Begutachtung nach Nachbesserungsauftrag</f:case>
-                                    <f:case value="150">Nachakkreditierung</f:case>
-                                    <f:case value="160">Nachakkreditierung</f:case>
-                                    <f:case value="210">Begutachtung nach Zurückstellung</f:case>
-                                    <f:case value="230">Begutachtung nach Zurückstellung</f:case>
+                            <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
+                                <f:switch expression="{item.review_incoming_status}">
+                                    <f:case value="30">Einreicht zur Begutachtung nach Ersteinreichung</f:case>
+                                    <f:case value="85">Einreicht zur Begutachtung nach Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Einreicht zur Nachakkreditierung</f:case>
+                                    <f:case value="160">Einreicht zur Nachakkreditierung</f:case>
+                                    <f:case value="210">Einreicht zur Begutachtung nach Zurückstellung</f:case>
+                                    <f:case value="230">Einreicht zur Begutachtung nach Zurückstellung</f:case>
                                 </f:switch>
                             </td>
                         </tr>
@@ -56,8 +54,8 @@
                             <td class="nummer">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>Incoming Status: {item.ReviewIncomingStatus} | Status: {item.status}</code>
-                                <f:switch expression="{item.ReviewIncomingStatus}">
+                            <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
+                                <f:switch expression="{item.review_incoming_status}">
                                     <f:case value="30">Zuteilung nach Ersteinreichung</f:case>
                                     <f:case value="85">Erneute Zuteilung nach Nachbesserungsauftrag</f:case>
                                     <f:case value="150">Zuteilung zur Nachakreditierungsbegutachtung</f:case>
@@ -75,7 +73,7 @@
                             <td class="nummer">{item.version} <code>{item.uid}</code></td>
                             <td class="name">{item.name}</td>
                             <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>Incoming Status: {item.ReviewIncomingStatus} | Status: {item.status}</code>
+                            <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
                                 <f:switch expression="{item.status}">
                                     <f:case value="80">Akkreditierungsentscheidung: Nachbesserungsauftrag</f:case>
                                     <f:case value="100">Akkreditierungsentscheidung: akkreditiert</f:case>

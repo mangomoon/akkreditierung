@@ -5,26 +5,30 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h2>ESF Reporting for "{ansuchen.name}" [{ansuchen.uid}]</h2>
+    <h2>ESF Reporting for {ansuchen.nummer} "{ansuchen.name}" [{ansuchen.uid}]</h2>
 
     <table>
         <tr>
-            <th>uid</th>
+            <th>version</th>
             <th>datum von</th>
             <th>datum bis</th>
             <th>status</th>
             <th>trainer</th>
             <th>berater</th>
+            <th>ort</th>
         </tr>
 
         <f:for each="{versions}" as="version" iteration="i">
+            {version.copyTrainerData -> f:variable(name: 'trainer')}
+            {version.copyBeraterData -> f:variable(name: 'berater')}
+            {version.copyStandorteData -> f:variable(name: 'standorte')}
             <tr>
-                <td>{version.uid}</td>
-                <td>{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</td>
+                <td>{version.version}</td>
+                <td>{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y H:i:s')}</td>
                 <td>
                     <f:if condition="{versions.{i.cycle}.uid}">
                         <f:then>
-                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y H:i:s')}
                         </f:then>
                         <f:else>
                             aktuell
@@ -32,8 +36,19 @@
                     </f:if>
                 </td>
                 <td>{version.status}</td>
-                <td></td>
-                <td></td>
+                <td>
+                    <f:for each="{trainer}" as="t">
+                        {t.fullName} <br>
+                    </f:for>
+                </td>
+                <td><f:for each="{berater}" as="t">
+                    {t.fullName} <br>
+                </f:for></td>
+                <td>
+                    <f:for each="{standorte}" as="t">
+                        {t.name} ({t.adresse}, {t.plz} {t.ort}) <br>
+                    </f:for>
+                </td>
             </tr>
         </f:for>
     </table>

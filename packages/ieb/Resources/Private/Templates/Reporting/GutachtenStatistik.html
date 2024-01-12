@@ -5,7 +5,7 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <h2>Aktionen der Geschäftsstelle</h2>
+    <h2>Zuteilungsstatistik Gutachter:innen</h2>
     <label>Zeitraum (Quartal):</label>
 
     <f:form action="gutachtenStatistik" name="gutachtenStatistik" method="post">
@@ -22,12 +22,11 @@
                 <thead>
                 <tr>
                     <th>DATUM</th>
-                    <th>NR</th>
                     <th>NAME</th>
-                    <th>relevant</th>
-                    <th>txt</th>
-                    <th>ORGANISATION</th>
-                    <th>AKTION</th>
+                    <th>NR</th>
+                    <th>€</th>
+                    <th>KOMMENTAR</th>
+                    <th>STATUS BEI ZUTEILUNG</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,12 +34,16 @@
                     <f:if condition="{item.zuteilung_datum} && {item.gutachter1}">
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
+                            <td class="gutachter">{item.gutachter1}</td><f:debug>{item.gutachter1}</f:debug>
                             <td class="nummer">{item.nummer}</td>
-                            <td class="nummer">{item.gutachter1}</td>
-                            <td class="name">{item.name}</td>
-                            <td class="organisation">Organisation</td>
-                            <td class="aktion"><code>Incoming Status: {item.incomingStatus} | Status: {item.status}</code>
-                                <f:switch expression="{item.incomingStatus}">
+                            <td class="datum">
+                                {f:if(condition: '{item.review_verrechnung_check1}', then: 'ja', else: 'nein')}
+                            </td>
+                            <td class="aktion">
+                                <f:if condition="{item.review_verrechnung1}"><f:then>{item.review_verrechnung1}</f:then><f:else></f:else></f:if>
+                            </td>
+                            <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
+                                <f:switch expression="{item.review_incoming_status}">
                                     <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
                                     <f:case value="85">Erneute Begutachtung nach Nachbesserungsauftrag</f:case>
                                     <f:case value="150">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
@@ -50,6 +53,9 @@
                                 </f:switch>
                             </td>
                         </tr>
+                    </f:if>
+                    <f:if condition="{item.zuteilung_datum} && {item.gutachter2}">
+                        
                     </f:if>
                 </f:for>
                 </tbody>
