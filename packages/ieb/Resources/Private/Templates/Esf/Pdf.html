@@ -1,0 +1,54 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <pdf:document
+            title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
+            outputPath=".pdf"
+            outputDestination="inline">
+
+        <pdf:page margin="{top: 45, right: 16, bottom: 40, left: 16}">
+            <pdf:html>
+            <h2>ESF Reporting for "{ansuchen.name}" [{ansuchen.uid}]</h2>
+
+            <table>
+                <tr>
+                    <th>uid</th>
+                    <th>datum von</th>
+                    <th>datum bis</th>
+                    <th>status</th>
+                    <th>trainer</th>
+                    <th>berater</th>
+                </tr>
+
+                <f:for each="{versions}" as="version" iteration="i">
+                    <tr>
+                        <td>{version.uid}</td>
+                        <td>{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}</td>
+                        <td>
+                            <f:if condition="{versions.{i.cycle}.uid}">
+                                <f:then>
+                                    {versions.{i.cycle}.akkreditierungEntscheidungDatum ->
+                                    f:format.date(format:'d.m.Y')}
+                                </f:then>
+                                <f:else>
+                                    aktuell
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td>{version.status}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </f:for>
+            </table>
+            </pdf:html>
+        </pdf:page>
+    </pdf:document>
+</f:section>
+
+</html>
