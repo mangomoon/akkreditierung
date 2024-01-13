@@ -1269,6 +1269,11 @@ table.tx_ieb.trainer td {
     background-image: url('../Img/Edit_hell.svg');
 }
 
+.td-knopf .knopf-quadratisch.esf {
+    background-image: url('../Img/esf.svg');
+    background-size: 100%;
+}
+
 .td-knopf .knopf-quadratisch.hide {
     background-image: url('../Img/hide_hell.svg');
 }

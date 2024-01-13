@@ -399,6 +399,9 @@
                                         </f:comment>
                                     </td>
                                     <td class="td-knopf">
+                                        <f:link.action pageUid="218" action="pdf" controller="Esf" arguments="{ansuchen : item}" class="knopf-quadratisch esf" target="_blank" title="Personal- und Standortliste (PDF)"></f:link.action>
+                                    </td>
+                                    <td class="td-knopf">
 
                                         <f:if condition="{item.typ}==1">
                                             <f:then>
@@ -429,8 +432,9 @@
                                             </f:else>
                                         </f:if>
 
-                                        <f:link.action pageUid="208" action="pdf" controller="Esf" arguments="{ansuchen : item}" class="knopf-quadratisch pdf" title="Ansuchen als PDF">esf</f:link.action>
+                                        
                                     </td>
+                                    
                                 </tr>
                             </table>
                         </div>
