@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -13,6 +14,7 @@ class ReportingRepository
 {
 
     private array $dateLogFields = ['einreich_datum', 'zuteilung_datum', 'akkreditierung_entscheidung_datum'];
+    private array $enhancementCache = [];
 
     public function getTrWithNoAnsuchen(): array
     {
@@ -110,10 +112,25 @@ class ReportingRepository
             ->executeQuery()
             ->fetchAllAssociative();
 
-        //DebuggerUtility::var_dump([$year, $quarter, $rows]);
+        foreach($rows as &$row) {
+            $this->enhanceRow($row);
+        }
+
         return $rows;
     }
 
+    protected function enhanceRow(array &$ansuchen) {
+        foreach(['gutachter1', 'gutachter2'] as $field) {
+            if (!$ansuchen[$field]) {
+                continue;
+            }
+            if (!isset($this->enhancementCache[$ansuchen[$field]])) {
+               ;
+                $this->enhancementCache[$ansuchen[$field]] = BackendUtility::getRecord('fe_users', $ansuchen[$field], '*');
+            }
+            $ansuchen[$field] = $this->enhancementCache[$ansuchen[$field]];
+        }
+    }
 
     public function getDateLogUsage(): array
     {

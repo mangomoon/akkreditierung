@@ -111,7 +111,7 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function gutachtenStatistikAction(string $selected = '', int $csv=0): ResponseInterface
+    public function gutachtenStatistikAction(string $selected = '', int $csv = 0): ResponseInterface
     {
         $availableDateRanges = $this->reportingRepository->getDateLogUsage();
         $items = null;
@@ -132,7 +132,7 @@ class ReportingController extends ActionController
             'selected' => $selected,
             'items' => $items,
         ]);
-        
+
 
         return $this->htmlResponse();
     }
