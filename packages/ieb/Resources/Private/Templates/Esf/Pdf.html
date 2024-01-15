@@ -8,7 +8,7 @@
 <f:section name="content">
     <pdf:document
             title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
-            outputPath=".pdf"
+            outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='Y-m-d' />.pdf"
             outputDestination="inline"
             sourceFile="EXT:ieb/Resources/Private/Pdfs/esf.pdf">
 
@@ -19,7 +19,8 @@
                 p {font-family: "opensans", sans-serif;font-size: 10.5pt;}
             </style>
 
-            <h2 style="font-family: opensans; color:#c31a1e; font-size: 13pt; line-height:30pt;">Personal- und Standorteliste für {ansuchen.nummer} ({ansuchen.name})</h2>
+            <h2 style="font-family: opensans; color:#c31a1e; font-size: 13pt; line-height:30pt;">Personal- und Standorteliste für {ansuchen.nummer} ({ansuchen.name}) </h2>
+            <p style="font-size:8pt;font-family: opensans;">Stand <f:format.date date="now" format="d.m.Y" /></p>
 
 
                 <f:for each="{versions}" as="version" iteration="i">

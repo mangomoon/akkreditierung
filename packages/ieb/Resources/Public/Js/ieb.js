@@ -1221,6 +1221,14 @@ function qualifikationPsaSprache() {
      $('#notitzzettel-oeffnen').click(function() {
         $('#notitzzettel').toggle();
      });
+
+
+     $('#csv-knopf').click(function(eventObj) {
+        $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="1" /> ');
+        $("#csvtauglichesform").submit();
+        $('#csvinput').remove();
+    });
+
  });
 
  // JQUERY MULTISELECT ########################################

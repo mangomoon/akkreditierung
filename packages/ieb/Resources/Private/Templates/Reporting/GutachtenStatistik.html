@@ -13,7 +13,7 @@
             CSV
             <f:form.checkbox property="csv" id="csv" value="1"/>
         </label>
-        &nbsp;&nbsp;&nbsp;<f:form.submit class="knopf-s2" value="abfragen"/> 
+        &nbsp;&nbsp;&nbsp;<f:form.submit class="knopf-s2" value="anzeigen"/> <f:form.submit class="knopf-s2" value="als CSV HERUNTERLADEN"/> 
         
     </f:form>
     <f:if condition="{items}">
@@ -23,6 +23,7 @@
                 <tr>
                     <th>DATUM</th>
                     <th>NAME</th>
+                    <th>1/2</th>
                     <th>NR</th>
                     <th>€</th>
                     <th>KOMMENTAR</th>
@@ -36,7 +37,8 @@
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
                             <td class="gutachter">{item.gutachter1} </td>
-                            <td class="nummer">{item.nummer}</td>
+                            <td>1</td>
+                            <td class="nummer">{item.nummer} ({item.version})</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check1}', then: 'ja', else: 'nein')}
                             </td>
@@ -56,7 +58,28 @@
                         </tr>
                     </f:if>
                     <f:if condition="{item.zuteilung_datum} && {item.gutachter2}">
-                        
+                        <tr>
+                            <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
+                            <td class="gutachter">{item.gutachter2} </td>
+                            <td>2</td>
+                            <td class="nummer">{item.nummer} ({item.version})</td>
+                            <td class="datum">
+                                {f:if(condition: '{item.review_verrechnung_check2}', then: 'ja', else: 'nein')}
+                            </td>
+                            <td class="aktion">
+                                <f:if condition="{item.review_verrechnung1}"><f:then>{item.review_verrechnung2}</f:then><f:else></f:else></f:if>
+                            </td>
+                            <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
+                                <f:switch expression="{item.review_incoming_status}">
+                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
+                                    <f:case value="85">Erneute Begutachtung nach Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="160">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="210">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="230">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                </f:switch>
+                            </td>
+                        </tr>
                     </f:if>
                 </f:for>
                 </tbody>
