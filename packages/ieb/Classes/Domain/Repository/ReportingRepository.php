@@ -112,23 +112,33 @@ class ReportingRepository
             ->executeQuery()
             ->fetchAllAssociative();
 
-        foreach($rows as &$row) {
+        foreach ($rows as &$row) {
             $this->enhanceRow($row);
         }
 
         return $rows;
     }
 
-    protected function enhanceRow(array &$ansuchen) {
-        foreach(['gutachter1', 'gutachter2'] as $field) {
+    protected function enhanceRow(array &$ansuchen): void
+    {
+        // fetch gutachter records
+        foreach (['gutachter1', 'gutachter2'] as $field) {
             if (!$ansuchen[$field]) {
                 continue;
             }
             if (!isset($this->enhancementCache[$ansuchen[$field]])) {
-               ;
+                ;
                 $this->enhancementCache[$ansuchen[$field]] = BackendUtility::getRecord('fe_users', $ansuchen[$field], '*');
             }
             $ansuchen[$field] = $this->enhancementCache[$ansuchen[$field]];
+        }
+        // convert json fields
+        foreach (['stammdaten', 'trainer', 'berater', 'verantwortliche', 'verantwortliche_mail'] as $field) {
+            $field = 'copy_' . $field;
+            if (!$ansuchen[$field]) {
+                continue;
+            }
+            $ansuchen[$field] = json_decode($ansuchen[$field], true, 512, JSON_THROW_ON_ERROR);
         }
     }
 
