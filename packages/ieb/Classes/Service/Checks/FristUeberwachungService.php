@@ -357,7 +357,7 @@ class FristUeberwachungService
         $t1Field = $configuration['t1'];
         $fristField = $configuration['frist'];
         foreach ($rows as $row) {
-            $relevantUpdateId = $row['relationUid'] ?: $row['uid'];
+            $relevantUpdateId = $row['relationUid'] ?? $row['uid'];
 
             if (!($configuration['t14Skip'] ?? false) && !$row[$t14Field] && $row[$fristField] - (86400 * ($configuration['t14AlternativeDays'] ?? 14)) > $GLOBALS['EXEC_TIME']) {
                 $this->records[$row['uid']][$type]['t14'][] = $row;
