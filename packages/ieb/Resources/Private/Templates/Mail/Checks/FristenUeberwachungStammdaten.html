@@ -1,43 +1,28 @@
 <f:layout name="SystemEmail"/>
-<f:section name="Subject">Fristenüberwachung</f:section>
-<f:section name="Title">Folgende Datensätze sind offen</f:section>
+<f:section name="Subject">Fristenüberwachung Ö-Cert</f:section>
+<f:section name="Title">Fristenüberwachung Ö-Cert</f:section>
 <f:section name="Main">
 
     <p>Sehr geehrte Damen und Herren!</p>
 
     <p>Mit der Akkreditierung Ihres/r Bildungsangebote/s sind befristete Nachweise verbunden.</p>
-
-
-    <p>Folgende Stammdaten sind betroffen:</p>
     <f:for each="{infos}" as="info">
-        <div style="border:1px solid red;padding:10px;margin:10px;">
-            <h3>Stammdaten {info.stammdaten.name}</h3>
-            Frist:
-            <f:format.date format="d.m.Y">@{info.stammdaten.review_oecert_frist}</f:format.date>
-            <br>
-
-            <strong>Folgende Ansuchen sind aktiv</strong>
-            <ul>
-                <f:for each="{info.ansuchen}" as="ansuchen">
-                    <li>{ansuchen.name} [{ansuchen.uid}]</li>
-                </f:for>
-            </ul>
-        </div>
-
-    </f:for>
-    <f:if condition="heute + 170d < öcertfrist">
+   <f:if condition="heute + 170d < öcertfrist">
         <f:then>
-            <p>Ihr Ö-Cert läuft am ###### ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6
+            <p>Ihr Ö-Cert läuft am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6
                 Monaten.</p>
-            <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie ein Ansuchen zur
+            <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen zur
                 Nachakkreditierung ein.</p>
         </f:then>
         <f:else>
-            <p>Ihr Ö-Cert ist am ###### abgelaufen und nicht mehr gültig.</p>
-            <p>Laden Sie umgehend ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie ein Ansuchen
+            <p>Ihr Ö-Cert ist am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> abgelaufen und nicht mehr gültig.</p>
+            <p>Laden Sie umgehend ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen
                 zur Nachakkreditierung ein.</p>
         </f:else>
     </f:if>
+    </f:for>
+
+    <p>&nbsp;</p>
 
     <p>Bitte beachten Sie, dass die rechtzeitige und vollständige Erfüllung der Akkreditierungsanforderungen die
         Bedingung für die Aufrechterhaltung der Akkreditierung Ihres/r Bildungsangebot/s darstellt.</p>

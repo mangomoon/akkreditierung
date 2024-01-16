@@ -1,25 +1,26 @@
 <f:layout name="SystemEmail"/>
-<f:section name="Subject">Fristenüberwachung</f:section>
-<f:section name="Title">Folgende Datensätze sind offen</f:section>
+<f:section name="Subject">Fristenüberwachung für {ansuchen.nummer}</f:section>
+<f:section name="Title">Fristenüberwachung</f:section>
 <f:section name="Main">
 
     <p>Sehr geehrte Damen und Herren!</p>
-    
-    <f:if condition="{records.ansuchen}">
-        <p>Ihr Bildungsangebot Nr. {ansuchen.nummer} – {ansuchen.name} wurde zur Bearbeitung zurückgestellt und muss bis zum ###### erneut zur Nachakkreditierung eingereicht werden.</p>
+
+
+    <f:if condition="{records.ansuchen_pruefbescheid}">
+        <p>Mit der Akkreditierung Ihres Bildungsangebotes Nr. {ansuchen.nummer} – {ansuchen.name} sind befristete Nachweise verbunden.</p>
+        <p>Ihr Prüfbescheid ist am <f:format.date format='d.m.Y'>{ansuchen.review_frist_pruefbescheid}</f:format.date> abgelaufen.</p>
+        <p>Laden Sie bitte die erforderlichen Nachweise in der Akkreditierungs-Datenbank hoch und reichen Sie das Ansuchen zur Nachakkreditierung ein.</p>
+        <p>&nbsp;</p>
+    </f:if>
+    <f:if condition="{records.ansuchen_total}">
+        <p>Ihr Bildungsangebot Nr. {ansuchen.nummer} – {ansuchen.name} wurde zur Bearbeitung zurückgestellt und muss bis zum <f:format.date format='d.m.Y'>{ansuchen.review_total_frist}</f:format.date> erneut zur Nachakkreditierung eingereicht werden.</p>
         <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und legen das Ansuchen dann erneut zur Akkreditierung vor:</p>
 
-        <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
-            
-
-        <f:for each="{records.ansuchen}" key="type" as="items">
-            <h4>Typ {type}</h4>
-
-            <f:for each="{items}" as="item">
-                {item.name} [{item.uid}]<br>
-            </f:for>
-        </f:for>
+        <f:render partial="Notification/CommentsLower" arguments="{ansuchen : ansuchen}"/>
+        <p>&nbsp;</p>
+        
     </f:if>
+
     
 
     <p>Bei Fragen steht Ihnen die Geschäftsstelle der Initiative Erwachsenenbildung gerne zur Verfügung.</p>

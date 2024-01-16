@@ -931,7 +931,6 @@ function qualifikationPsaSprache() {
             $('.komm-intern-textarea').val(neu);
             $('.extern').val('');
             }
-        console.log ("neu= "+ neu);
          return false;
      });
 
