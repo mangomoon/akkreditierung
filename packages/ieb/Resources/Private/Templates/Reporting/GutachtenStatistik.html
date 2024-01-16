@@ -27,6 +27,7 @@
                     <th>NR</th>
                     <th>€</th>
                     <th>KOMMENTAR</th>
+                    <th>stammdaten name</th>
                     <th>STATUS BEI ZUTEILUNG</th>
                 </tr>
                 </thead>
@@ -45,6 +46,7 @@
                             <td class="aktion">
                                 <f:if condition="{item.review_verrechnung1}"><f:then>{item.review_verrechnung1}</f:then><f:else></f:else></f:if>
                             </td>
+                            <td>{item.copy_stammdaten.name}</td>
                             <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
                                 <f:switch expression="{item.review_incoming_status}">
                                     <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
