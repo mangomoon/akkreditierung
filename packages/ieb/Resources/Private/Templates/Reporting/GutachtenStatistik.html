@@ -36,7 +36,8 @@
                         
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
-                            <td class="gutachter">{f:if(condition:item.gutachter1,then:'{item.gutachter1.username}')}</td>
+                            <td class="gutachter">{f:if(condition:item.gutachter1,then:'{item.gutachter1.first_name}&nbsp;{item.gutachter1.last_name}')}</td>
+                            <td>1</td>
                             <td class="nummer">{item.nummer}</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check1}', then: 'ja', else: 'nein')}
@@ -59,7 +60,7 @@
                     <f:if condition="{item.zuteilung_datum} && {item.gutachter2}">
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
-                            <td class="gutachter">{item.gutachter2} </td>
+                            <td class="gutachter">{f:if(condition:item.gutachter2,then:'{item.gutachter2.first_name}&nbsp;{item.gutachter2.last_name}')}</td>
                             <td>2</td>
                             <td class="nummer">{item.nummer} ({item.version})</td>
                             <td class="datum">
