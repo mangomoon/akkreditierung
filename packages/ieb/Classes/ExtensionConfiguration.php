@@ -21,6 +21,8 @@ class ExtensionConfiguration
     protected array $emailBabi = [];
     /** @var string[]|array[] */
     protected array $emailPsa = [];
+    /** @var int[] */
+    protected array $bundeslandUserGroups = [];
 
     public function __construct()
     {
@@ -41,11 +43,22 @@ class ExtensionConfiguration
             BundeslandEnum::Kärnten->value => 'nadine.hell@ktn.gv.at',
             BundeslandEnum::Niederösterreich->value => 'philipp.roessl@noel.gv.at',
             BundeslandEnum::Oberösterreich->value => ['guenter.brandstetter@ooe.gv.at', 'Theresia.Berger-Schauer@ooe.gv.at'],
-            BundeslandEnum::Salzburg->value => 'bildung@salzburg.gv.at', 
+            BundeslandEnum::Salzburg->value => 'bildung@salzburg.gv.at',
             BundeslandEnum::Steiermark->value => ['susanne.lucchesi-palli@stmk.gv.at', 'marion.koller@stmk.gv.at'],
             BundeslandEnum::Tirol->value => 'kultur@tirol.gv.at',
             BundeslandEnum::Vorarlberg->value => 'wissenschaft@vorarlberg.at',
             BundeslandEnum::Wien->value => 'eb@ma13.wien.gv.at',
+        ];
+        $this->bundeslandUserGroups = [
+            BundeslandEnum::Burgenland->value => 10,
+            BundeslandEnum::Kärnten->value => 11,
+            BundeslandEnum::Niederösterreich->value => 12,
+            BundeslandEnum::Oberösterreich->value => 13,
+            BundeslandEnum::Salzburg->value => 14,
+            BundeslandEnum::Steiermark->value => 15,
+            BundeslandEnum::Tirol->value => 16,
+            BundeslandEnum::Vorarlberg->value => 17,
+            BundeslandEnum::Wien->value => 18,
         ];
     }
 
@@ -110,4 +123,8 @@ class ExtensionConfiguration
         return $this->emailPsa;
     }
 
+    public function getBundeslandUserGroups(): array
+    {
+        return $this->bundeslandUserGroups;
+    }
 }
