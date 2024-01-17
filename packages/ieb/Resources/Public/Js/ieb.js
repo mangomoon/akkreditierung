@@ -1223,13 +1223,12 @@ function qualifikationPsaSprache() {
 
     // ######################################## CSV Download
     
-    $('#csv-knopf').click(function(eventObj) {
-        console.log('CSV!');
+    $('#csv-knopf').click(function() {
+        $('#csvinput').remove();
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="1" /> ');
         $("#csvtauglichesform").submit();
     });
-    $('#anzeigen-knopf').click(function(eventObj) {
-        console.log('ANZEIGEN');
+    $('#anzeigen-knopf').click(function() {
         $('#csvinput').remove();
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="0" /> ');
         $("#csvtauglichesform").submit();

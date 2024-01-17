@@ -1,0 +1,90 @@
+
+{ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
+{ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+{ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+
+<p><f:format.nl2br>{ansuchen.review_total_comment_tr}</f:format.nl2br></p>
+
+<f:if condition="{stammdaten.review_a1_status}==4">
+    <p><f:format.nl2br>{stammdaten.review_a1_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{stammdaten.review_a2_status}==4">
+    <p><f:format.nl2br>{stammdaten.review_a2_comment_tr}</f:format.nl2br></p>
+</f:if>
+
+<f:if condition="{ansuchen.review_b1_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b1_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_b14_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b14_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_b15_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b15_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_b2_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b2_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_b22_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b22_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_b23_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_b23_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_c1_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_c1_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_c2_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_c2_comment_tr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.review_c3_status}==4">
+    <p><f:format.nl2br>{ansuchen.review_c3_comment_tr}</f:format.nl2br></p>
+</f:if>
+
+
+<f:for each="{trainer}" as="p">
+    <f:if condition="{ansuchen.typ}==1">
+        <f:then>
+            <f:if condition="{p.reviewC21BabiStatus}==3">
+                <p>Training {p.vorname} {p.nachname}: AUFLAGE (Qualifikation): {p.reviewC2BabiCommentTr} </p>
+            </f:if>
+            <f:if condition="{p.reviewC21BabiStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC2BabiCommentTr}</p>
+            </f:if>
+            <f:if condition="{p.reviewC22BabiStatus}==3">
+                <p>Training {p.vorname} {p.nachname}: AUFLAGE (Erfahrung): {p.reviewC2BabiCommentTr} </p>
+            </f:if>
+            <f:if condition="{p.reviewC22BabiStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC2BabiCommentTr}</p>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{p.reviewC21PsaStatus}==3">
+                <p>Training {p.vorname} {p.nachname}: AUFLAGE (Qualifikation): {p.reviewC2PsaCommentTr} </p>
+            </f:if>
+            <f:if condition="{p.reviewC21PsaStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC2PsaCommentTr}</p>
+            </f:if>
+            <f:if condition="{p.reviewC22PsaStatus}==3">
+                <p>Training {p.vorname} {p.nachname}: AUFLAGE (Erfahrung): {p.reviewC2PsaCommentTr} </p>
+            </f:if>
+            <f:if condition="{p.reviewC22PsaStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC2PsaCommentTr}</p>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:for>
+
+<f:for each="{berater}" as="p">
+    <f:if condition="{p.reviewC3Status}==3">
+        <p>Beratung {p.vorname} {p.nachname}: AUFLAGE (Qualifikation): {p.reviewC3CommentTr} </p>
+    </f:if>
+    <f:if condition="{p.reviewC3Status}==4">
+        <p>Beratung {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC3CommentTr}</p>
+    </f:if>
+    <f:if condition="{p.reviewC32Status}==3">
+        <p>Beratung {p.vorname} {p.nachname}: AUFLAGE (Erfahrung): {p.reviewC32CommentTr} </p>
+    </f:if>
+    <f:if condition="{p.reviewC32Status}==4">
+        <p>Beratung {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC32CommentTr}</p>
+    </f:if>
+</f:for>
