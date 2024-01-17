@@ -50,15 +50,15 @@ class ExtensionConfiguration
             BundeslandEnum::Wien->value => 'eb@ma13.wien.gv.at',
         ];
         $this->bundeslandUserGroups = [
-            BundeslandEnum::Burgenland->value => 10,
-            BundeslandEnum::Kärnten->value => 11,
-            BundeslandEnum::Niederösterreich->value => 12,
-            BundeslandEnum::Oberösterreich->value => 13,
-            BundeslandEnum::Salzburg->value => 14,
-            BundeslandEnum::Steiermark->value => 15,
-            BundeslandEnum::Tirol->value => 16,
-            BundeslandEnum::Vorarlberg->value => 17,
-            BundeslandEnum::Wien->value => 18,
+            BundeslandEnum::Burgenland->value => 15,
+            BundeslandEnum::Kärnten->value => 9,
+            BundeslandEnum::Niederösterreich->value => 7,
+            BundeslandEnum::Oberösterreich->value => 8,
+            BundeslandEnum::Salzburg->value => 10,
+            BundeslandEnum::Steiermark->value => 11,
+            BundeslandEnum::Tirol->value => 12,
+            BundeslandEnum::Vorarlberg->value => 13,
+            BundeslandEnum::Wien->value => 14,
         ];
     }
 

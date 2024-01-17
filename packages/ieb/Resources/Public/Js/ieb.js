@@ -1221,11 +1221,18 @@ function qualifikationPsaSprache() {
         $('#notitzzettel').toggle();
      });
 
-
-     $('#csv-knopf').click(function(eventObj) {
+    // ######################################## CSV Download
+    
+    $('#csv-knopf').click(function(eventObj) {
+        console.log('CSV!');
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="1" /> ');
         $("#csvtauglichesform").submit();
+    });
+    $('#anzeigen-knopf').click(function(eventObj) {
+        console.log('ANZEIGEN');
         $('#csvinput').remove();
+        $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="0" /> ');
+        $("#csvtauglichesform").submit();
     });
 
  });

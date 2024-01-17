@@ -9,14 +9,6 @@
     <f:form action="filter" id="csvtauglichesform" name="reportingFilter" object="{reportingFilter}">
         <f:form.hidden property="submitted" value="1"/>
 
-        <div>
-            <label for="asCsv">
-                CSV
-                <!--<f:form.checkbox property="csv" id="asCsv" value="1"/>-->
-            </label>
-        </div>
-
-
         <div class="row archivfilter" >
             <div class="col-4">
                 <label for="trPid">
@@ -44,7 +36,9 @@
             </div>
         </div>
 
-        <f:form.submit class="knopf-s2" value="anzeigen"/> <f:form.submit class="knopf-s2" id="csv-knopf" value="      csv      "/>
+        <!--<f:form.submit class="knopf-s2" id="anzeigen-knopf" value="anzeigen"/> <f:form.submit class="knopf-s2" id="csv-knopf" value="      csv      "/>-->
+        <div class="knopf-s knopfersatz" id="anzeigen-knopf" >anzeigen</div> <div class="knopf-s knopfersatz" id="csv-knopf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <p>&nbsp;</p>
     </f:form>
     <f:if condition="{reportingFilter.submitted}">
         <f:if condition="{items}">

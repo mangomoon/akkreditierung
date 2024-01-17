@@ -25,9 +25,9 @@
                     <th>NAME</th>
                     <th>1/2</th>
                     <th>NR</th>
+                    <th>ORGANISATION</th>
                     <th>€</th>
                     <th>KOMMENTAR</th>
-                    <th>stammdaten name</th>
                     <th>STATUS BEI ZUTEILUNG</th>
                 </tr>
                 </thead>
@@ -39,14 +39,15 @@
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
                             <td class="gutachter">{f:if(condition:item.gutachter1,then:'{item.gutachter1.first_name}&nbsp;{item.gutachter1.last_name}')}</td>
                             <td>1</td>
-                            <td class="nummer">{item.nummer}</td>
+                            <td class="nummer">{item.nummer} ({item.version})</td>
+                            <td>{item.copy_stammdaten.name}</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check1}', then: 'ja', else: 'nein')}
                             </td>
                             <td class="aktion">
                                 <f:if condition="{item.review_verrechnung1}"><f:then>{item.review_verrechnung1}</f:then><f:else></f:else></f:if>
                             </td>
-                            <td>{item.copy_stammdaten.name}</td>
+                            
                             <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
                                 <f:switch expression="{item.review_incoming_status}">
                                     <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
@@ -65,6 +66,7 @@
                             <td class="gutachter">{f:if(condition:item.gutachter2,then:'{item.gutachter2.first_name}&nbsp;{item.gutachter2.last_name}')}</td>
                             <td>2</td>
                             <td class="nummer">{item.nummer} ({item.version})</td>
+                            <td>{item.copy_stammdaten.name}</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check2}', then: 'ja', else: 'nein')}
                             </td>
