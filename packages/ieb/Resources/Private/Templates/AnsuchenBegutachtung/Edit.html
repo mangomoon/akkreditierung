@@ -1455,9 +1455,9 @@
                     <f:switch expression="{commentuser}">
                         <f:case value="a1">
                             <div class="commintstep">
-                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                            <f:if condition="{ansuchen.reviewTotalGsCommentInternalStep}">
                                 <label>interner Kommentar der Geschäftsführung:</label>
-                                <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
+                                <f:format.nl2br>{ansuchen.reviewTotalGsCommentInternalStep}</f:format.nl2br>
                             </f:if>
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
                                 <label>interner Kommentar Zweitbegutachtung:</label>
@@ -1465,14 +1465,14 @@
                             </f:if></div>
                             <f:form.textarea property="reviewTotalAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-ag1reviewTotal"  />
                             <f:form.hidden property="reviewTotalAg2CommentInternalStep" id="reviewTotalAg2CommentInternalStep" value="{ansuchen.reviewTotalAg2CommentInternalStep}" />
-                            <f:form.hidden property="reviewTotalCommentInternalStep" id="reviewTotalCommentInternalStep" value="{ansuchen.reviewTotalCommentInternalStep}" />
+                            <f:form.hidden property="reviewTotalGsCommentInternalStep" id="reviewTotalGsCommentInternalStep" value="{ansuchen.reviewTotalGsCommentInternalStep}" />
                             
                         </f:case>
                         <f:case value="a2">
                             <div class="commintstep">
-                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                            <f:if condition="{ansuchen.reviewTotalGsCommentInternalStep}">
                                 <label>interner Kommentar der Geschäftsführung:</label>
-                                <f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br>
+                                <f:format.nl2br>{ansuchen.reviewTotalGsCommentInternalStep}</f:format.nl2br>
                             </f:if>
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
                                 <label>interner Kommentar Erstbegutachtung:</label>
@@ -1480,12 +1480,12 @@
                             </f:if></div>
                             <f:form.textarea property="reviewTotalAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-ag2reviewTotal"  />
                             <f:form.hidden property="reviewTotalAg1CommentInternalStep" id="reviewTotalAg1CommentInternalStep" value="{ansuchen.reviewTotalAg1CommentInternalStep}" />
-                            <f:form.hidden property="reviewTotalCommentInternalStep" id="reviewTotalCommentInternalStep" value="{ansuchen.reviewTotalCommentInternalStep}" />
+                            <f:form.hidden property="reviewTotalGsCommentInternalStep" id="reviewTotalGsCommentInternalStep" value="{ansuchen.reviewTotalGsCommentInternalStep}" />
                             
                         </f:case>
                         <f:case value="gs">
                             <div class="commintstep">
-                            <f:if condition="{ansuchen.reviewTotalCommentInternalStep}">
+                            <f:if condition="{ansuchen.reviewTotalAg1CommentInternalStep}">
                                 <label>interner Kommentar Erstbegutachtung:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
                             </f:if>
@@ -1588,6 +1588,16 @@
 
 
         <div id="sidebar">
+            <div class="infob">
+                <f:if condition="{stammdaten.markenname}">
+                <f:then>
+                    {stammdaten.markenname}: 
+                </f:then>
+                <f:else>
+                    {stammdaten.name}: 
+                </f:else>
+                </f:if>
+            {ansuchen.nummer}</div>
             <div class="knopf-s" id="seite-nach-oben"></div>
             <div class="knopf-s" id="notitzzettel-oeffnen" title="Notizzettel zeigen"></div>
             <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
@@ -1595,6 +1605,7 @@
             <f:link.action class="knopf-s sidebar zurueck" action="unlock"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste OHNE Speichern"></f:link.action> 
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
+
 
         
         <f:form.hidden property="statusAfterReview" id="sar" value="0" />

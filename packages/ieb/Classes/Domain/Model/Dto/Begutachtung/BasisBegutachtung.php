@@ -60,7 +60,7 @@ class BasisBegutachtung extends AbstractDomainObject
     public int $status = 0;
     public string $reviewTotalCommentInternalStep = '';
     public string $notitzzettel = '';
-    public string $trotzdemAbschicken = '';
+    //public string $trotzdemAbschicken = '';
 
     public string $reviewB1GsCommentInternalStep = '';
     public string $reviewB14GsCommentInternalStep = '';
@@ -131,7 +131,7 @@ class BasisBegutachtung extends AbstractDomainObject
         'reviewC1CommentInternalStep', 'reviewC1CommentTr', 'reviewC1Status',
         'reviewC2CommentInternalStep', 'reviewC2CommentTr', 'reviewC2Status',
         'reviewC3CommentInternalStep', 'reviewC3CommentTr', 'upcomingStatus',
-        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid', 'statusAfterReview', 'trotzdemAbschicken',
+        'reviewC3Status', 'notitzzettel', 'statusAgEins', 'statusAgZwei', 'reviewTotalFrist', 'reviewFristPruefbescheid', 'statusAfterReview', 
         'reviewB1GsCommentInternalStep', 'reviewB1Ag1CommentInternalStep', 'reviewB1Ag2CommentInternalStep', 'reviewB14GsCommentInternalStep', 'reviewB14Ag1CommentInternalStep', 'reviewB14Ag2CommentInternalStep',
         'reviewB15GsCommentInternalStep', 'reviewB2GsCommentInternalStep', 'reviewB22GsCommentInternalStep', 'reviewB23GsCommentInternalStep', 'reviewC1GsCommentInternalStep', 'reviewC2GsCommentInternalStep', 'reviewC3GsCommentInternalStep', 'reviewTotalGsCommentInternalStep', 'reviewB15Ag1CommentInternalStep', 'reviewB2Ag1CommentInternalStep', 'reviewB22Ag1CommentInternalStep', 'reviewB23Ag1CommentInternalStep', 'reviewC1Ag1CommentInternalStep', 'reviewC2Ag1CommentInternalStep', 'reviewC3Ag1CommentInternalStep', 'reviewTotalAg1CommentInternalStep', 'reviewB15Ag2CommentInternalStep', 'reviewB2Ag2CommentInternalStep', 'reviewB22Ag2CommentInternalStep', 'reviewB23Ag2CommentInternalStep', 'reviewC1Ag2CommentInternalStep', 'reviewC2Ag2CommentInternalStep', 'reviewC3Ag2CommentInternalStep', 'reviewTotalAg2CommentInternalStep',
     ];

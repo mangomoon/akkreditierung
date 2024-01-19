@@ -1450,7 +1450,19 @@ span.suchwort {
     padding: 0;
     padding-left: 8px;
 }
-
+.archiv-show .person-statuskugel {
+    width: 12px;
+    height: 12px;
+    vertical-align: text-top;
+}
+.archiv-show .personenname {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 30px;
+}
+.archiv-show .person {
+    border-bottom: solid 1px var(--f3);
+}
 .light {
     opacity: 0.5;
 }
@@ -2245,7 +2257,28 @@ ul.typo3-messages li {
     background-size: cover;
 }
 
-
+/* INFOBAR */
+#infobar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    color: #fff;
+    font-size: 0.9em;
+}
+#infobarinfo {
+    transform: rotate(-90deg) translateY(-143px);
+    width: 100vH;
+    background: var(--f3);
+    padding: 4px;
+    padding-top: 12px;
+    text-align: center;
+}
+.infob {
+    transform: rotate(-90deg) translateY(-136px) translateX(160px);
+    width: 300px;
+    font-size: 0.9em;
+    color: var(--f4);
+}
 /* PERSONENSUCHE  */
 
 .personensuche td, .personensuche td.td-knopf {

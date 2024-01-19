@@ -846,7 +846,7 @@ function qualifikationPsaSprache() {
                 t = $(this).parent().parent().parent().find('.extern').val();
                 if (t) {
                     i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
-                    neu = i + " \nnicht ok war:\n" + t;
+                    neu = i + " \nnicht ok war: " + t;
                     $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
                 }
                 $(this).parent().parent().parent().find('.extern').val('');
@@ -868,7 +868,7 @@ function qualifikationPsaSprache() {
             t = $(this).parent().parent().parent().find('.extern').val();
             if (t) {
                 i = $(this).parent().parent().parent().find('.komm-intern-textarea').val();
-                neu = i + " \nnicht ok war:\n" + t;
+                neu = i + " \nnicht ok war: " + t;
                 $(this).parent().parent().parent().find('.komm-intern-textarea').val(neu);
             }
             $(this).parent().parent().parent().find('.extern').val('');
@@ -927,7 +927,7 @@ function qualifikationPsaSprache() {
             neu="";
             t = $('.extern').val();
             i = $('.komm-intern-textarea').val();
-            neu = i + " \nnicht ok war:\n" + t;
+            neu = i + " \nnicht ok war: " + t;
             $('.komm-intern-textarea').val(neu);
             $('.extern').val('');
             }

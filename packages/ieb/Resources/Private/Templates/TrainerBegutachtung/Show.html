@@ -504,10 +504,7 @@
     <f:then>
         <div class="begutachtung-kriterium" id="k1">
             <div class="row">
-                <div class="links col-7">
-
-                </div>
-                <div class="rechts col-5">
+                <div class="rechts col-12">
                     <label>Frist
                         <f:render partial="Form/Input" arguments="{property:'reviewFrist',isDate:1,value:trainer.reviewFrist}" />
                     </label>
@@ -588,10 +585,8 @@
     <f:else>
         <div class="begutachtung-kriterium" id="k1">
             <div class="row">
-                <div class="links col-7">
 
-                </div>
-                <div class="rechts col-5">
+                <div class="rechts col-12">
                     
                         <label>Frist
                             <f:render partial="Form/Input" arguments="{property:'reviewPsaFrist',isDate:1,value:trainer.reviewPsaFrist,id:'trainer-psa-frist'}" />

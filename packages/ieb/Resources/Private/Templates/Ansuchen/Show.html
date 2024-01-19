@@ -28,7 +28,8 @@
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:variable name="gs">1</f:variable>
     </f:if>
-    <div id="ansuchen-show">
+
+    <div id="ansuchen-show" class="archiv-show">
 
 <f:if condition="!{ansuchen.editableByTr}">
     <f:variable name="AnsuchenInBegutachtung">1</f:variable>
@@ -162,13 +163,15 @@
                                         <li class="light">Englisch – Globalität und Transkulturalität</li>
                                         <li class="light">Mathematik</li>
                                         <li class="light">Berufsorientierung</li>
-                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
                                         <p>Wahlmodule</p>
-                                        <li>Kreativität und Gestaltung</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
-                                        <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
-                                        <li>Gesundheit und Soziales</li>')} {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
-                                        <li>Natur und Technik</li>')} {f:if(condition:'{ansuchen.kompetenz5}==1', then:'
-                                        <li>Weitere Sprachen: {ansuchen.kompetenzText2}</li>')}
+                                        {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
+                                        <li>Kreativität und Gestaltung</li>')} 
+                                        {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
+                                        <li>Gesundheit und Soziales</li>')} 
+                                        {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
+                                        <li>Natur und Technik</li>')} 
+                                        {f:if(condition:'{ansuchen.kompetenz4}==1', then:'
+                                        <li>Weitere Sprachen: {ansuchen.kompetenzText1}</li>')}
                                     </f:else>
                                 </f:if>
 
@@ -581,9 +584,10 @@
                                 <div class="abstand-klein"></div>
                                 <label>Lebenslauf</label>
                                 <div class="abstand-klein"></div>
-                                <f:render partial="Form/UploadListDiff" arguments="{
+
+                                <f:render partial="Form/UploadList" arguments="{
                                     media:'{p.lebenslaufDatei}',
-                                    anmerkung:'{p.lebenslauf}'
+                                    anmerkung: '{p.lebenslauf}',
                                 }" />
                             </div>
                             <div class="rechts col-3">
@@ -646,7 +650,20 @@
                         <div class="row person" id="trainer-{t.uid}">
                             <div class="col-12">
                                 <details>
-                                <summary>{t.fullName}</summary>
+                                <summary><f:if condition="{ansuchen.typ}==1">
+                                    <f:then>
+                                        
+                                            <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                            <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                        
+                                    </f:then>
+                                    <f:else>
+                                        
+                                            <span class="titleview person-statuskugel-c person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
+                                            <span class="titleview person-statuskugel-d person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
+                                        
+                                    </f:else>
+                                </f:if><span class="personenname">{t.fullName}</span></summary>
                                 <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup}"/>
                                 </details>
                             </div>
@@ -706,7 +723,8 @@
                                     <div class="row person" id="trainer-{t.uid}">
                                         <div class="col-12">
                                             <details>
-                                            <summary>{t.fullName}</summary>
+                                            <summary><span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.fullName}</span></summary>
                                             <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup}"/>
                                             </details>
                                         </div>
