@@ -59,6 +59,7 @@ class FristUeberwachungService
     ];
     protected array $idLists = [];
     protected array $records = [];
+    protected array $recordsNew = [];
     protected ExtensionConfiguration $extensionConfiguration;
     protected MailService $mailService;
 
@@ -71,18 +72,52 @@ class FristUeberwachungService
     public function sendEmails(): int
     {
         $this->idLists = $this->records = [];
-        $this->collect();
+        $this->collect(['ansuchen_total', 'ansuchen_pruefbescheid']);
         if (empty($this->records)) {
             return 0;
         }
 
-        $this->sendMails();
+        $this->send();
 
         if (!$this->skipPersistSent) {
             $this->setAsSent();
         }
 
         return count($this->records);
+    }
+
+    public function sendEmailsTrainer(): int
+    {
+        $this->idLists = $this->records = $this->recordsNew = [];
+        $this->collect(['trainer', 'trainer_psa']);
+        if (empty($this->records)) {
+            return 0;
+        }
+
+        $count = $this->sendMailsGroupedTrainer();
+
+        if (!$this->skipPersistSent) {
+            $this->setAsSent();
+        }
+
+        return $count;
+    }
+
+    public function sendEmailsBerater(): int
+    {
+        $this->idLists = $this->records = $this->recordsNew = [];
+        $this->collect(['berater']);
+        if (empty($this->records)) {
+            return 0;
+        }
+
+        $count = $this->sendMailsGroupedBerater();
+
+        if (!$this->skipPersistSent) {
+            $this->setAsSent();
+        }
+
+        return $count;
     }
 
     public function sendStammdatenMails(): int
@@ -93,16 +128,19 @@ class FristUeberwachungService
         $this->sendMailsGroupedStammdaten();
 
         if (!$this->skipPersistSent) {
-             $this->setAsSent();
+            $this->setAsSent();
         }
 
         return count($this->records);
     }
 
-    private function collect()
+    private function collect(array $keys): void
     {
         $this->idLists = $this->records = [];
         foreach ($this->configuration as $k => $_) {
+            if (!in_array($k, $keys, true)) {
+                continue;
+            }
             if (str_starts_with($k, 'ansuchen_')) {
                 $this->getAnsuchenDirect($k);
             } elseif ($k === 'berater' || $k === 'trainer') {
@@ -111,7 +149,7 @@ class FristUeberwachungService
         }
     }
 
-    protected function sendMails(): void
+    protected function send(): void
     {
         foreach ($this->records as $uid => $records) {
             $variables = [
@@ -128,17 +166,7 @@ class FristUeberwachungService
 
     protected function sendMailsGroupedStammdaten(): void
     {
-        $collectedRecipients = [];
-        foreach ($this->records as $ansuchenId => $data) {
-            foreach ($data['stammdaten'] as $type => $records) {
-                foreach ($records as $record) {
-                    $recipients = $this->getRecipientsForAnsuchen($record['uid']);
-                    $cacheKey = md5(json_encode($recipients));
-                    $collectedRecipients[$cacheKey]['recipients'] = $recipients;
-                    $collectedRecipients[$cacheKey]['records'][$record['relationUid']][] = $record['uid'];
-                }
-            }
-        }
+        $collectedRecipients = $this->collectRecipientsAndGroup('stammdaten');
         foreach ($collectedRecipients as $data) {
             $infos = [];
 
@@ -158,6 +186,65 @@ class FristUeberwachungService
             $this->mailService
                 ->send('Checks/FristenUeberwachungStammdaten', $data['recipients'], $variables);
         }
+    }
+
+    protected function sendMailsGroupedTrainer(): int
+    {
+        $count = 0;
+        foreach (['trainer', 'trainer_psa'] as $key) {
+            $collectedRecipients = $this->collectRecipientsAndGroup($key);
+            foreach ($collectedRecipients as $data) {
+                $infos = [];
+
+                foreach ($data['records'] as $trainerId => $ansuchenIds) {
+                    $ansuchen = [];
+                    foreach ($ansuchenIds as $id) {
+                        $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer');
+                    }
+                    $infos[] = [
+                        'trainer' => BackendUtility::getRecord('tx_ieb_domain_model_trainer', $trainerId, '*'),
+                        'ansuchen' => $ansuchen,
+                    ];
+                }
+                $variables = [
+                    'infos' => $infos,
+                    'type' => $key,
+                ];
+                $this->mailService
+                    ->send('Checks/FristenUeberwachungTrainer', $data['recipients'], $variables);
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+    protected function sendMailsGroupedBerater(): int
+    {
+        $count = 0;
+        foreach (['berater'] as $key) {
+            $collectedRecipients = $this->collectRecipientsAndGroup($key);
+            foreach ($collectedRecipients as $data) {
+                $infos = [];
+
+                foreach ($data['records'] as $trainerId => $ansuchenIds) {
+                    $ansuchen = [];
+                    foreach ($ansuchenIds as $id) {
+                        $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer');
+                    }
+                    $infos[] = [
+                        'berater' => BackendUtility::getRecord('tx_ieb_domain_model_berater', $trainerId, '*'),
+                        'ansuchen' => $ansuchen,
+                    ];
+                }
+                $variables = [
+                    'infos' => $infos,
+                ];
+                $this->mailService
+                    ->send('Checks/FristenUeberwachungBerater', $data['recipients'], $variables);
+                $count++;
+            }
+        }
+        return $count;
     }
 
     protected function getRecipientsForAnsuchen(int $ansuchenId): array
@@ -362,12 +449,33 @@ class FristUeberwachungService
             if (!($configuration['t14Skip'] ?? false) && !$row[$t14Field] && $row[$fristField] - (86400 * ($configuration['t14AlternativeDays'] ?? 14)) > $GLOBALS['EXEC_TIME']) {
                 $this->records[$row['uid']][$type]['t14'][] = $row;
                 $this->idLists[$configuration['table']][$t14Field][] = $relevantUpdateId;
+                $this->recordsNew[$type]['t14'][$relevantUpdateId][] = $row['uid'];
             } else {
                 $this->records[$row['uid']][$type]['t1'][] = $row;
+                $this->recordsNew[$type]['t1'][$relevantUpdateId][] = $row['uid'];
                 $this->idLists[$configuration['table']][$t1Field][] = $relevantUpdateId;
             }
 
         }
+    }
+
+    protected function collectRecipientsAndGroup(string $key): array
+    {
+        $collectedRecipients = [];
+        foreach ($this->records as $ansuchenId => $data) {
+            if (!isset($data[$key])) {
+                continue;
+            }
+            foreach ($data[$key] as $type => $records) {
+                foreach ($records as $record) {
+                    $recipients = $this->getRecipientsForAnsuchen($record['uid']);
+                    $cacheKey = md5(json_encode($recipients));
+                    $collectedRecipients[$cacheKey]['recipients'] = $recipients;
+                    $collectedRecipients[$cacheKey]['records'][$record['relationUid']][] = $record['uid'];
+                }
+            }
+        }
+        return $collectedRecipients;
     }
 
     /**
