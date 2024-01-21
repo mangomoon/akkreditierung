@@ -1,0 +1,36 @@
+<f:layout name="SystemEmail"/>
+<f:section name="Subject">Fristenüberwachung</f:section>
+<f:section name="Title">Folgende Datensätze sind offen</f:section>
+<f:section name="Main">
+
+    <p>Sehr geehrte Damen und Herren!</p>
+
+    <p>Mit der Akkreditierung Ihres/r Bildungsangebote/s sind befristete Nachweise verbunden.</p>
+
+
+    <p>Folgende Berater sind betroffen:</p>
+    <f:for each="{infos}" as="info">
+        <div style="border:1px solid red;padding:10px;margin:10px;">
+            <h3>Berater {info.berater.nachname}</h3>
+
+            <strong>Folgende Ansuchen sind aktiv</strong>
+            <ul>
+                <f:for each="{info.ansuchen}" as="ansuchen">
+                    <li>{ansuchen.name} [{ansuchen.uid}]</li>
+                </f:for>
+            </ul>
+        </div>
+
+    </f:for>
+
+    <p>Bitte beachten Sie, dass die rechtzeitige und vollständige Erfüllung der Akkreditierungsanforderungen die
+        Bedingung für die Aufrechterhaltung der Akkreditierung Ihres/r Bildungsangebot/s darstellt.</p>
+
+    <p></p>
+
+
+    <p>Bei Fragen steht Ihnen die Geschäftsstelle der Initiative Erwachsenenbildung gerne zur Verfügung.</p>
+
+    <f:render partial="Notification/Fuss"/>
+
+</f:section>

@@ -50,6 +50,23 @@ class FristUeberwachungCommand extends Command
 
         $ansuchenService = GeneralUtility::makeInstance(FristUeberwachungService::class, $emails, (bool)$input->getOption('skipPersistSent'));
 
+
+        $io->section('Berater');
+        $sentMails = $ansuchenService->sendEmailsBerater();
+        if ($sentMails === 0) {
+            $io->info('No emails sent!');
+        } else {
+            $io->success('Sent ' . $sentMails . ' emails!');
+        }
+
+        $io->section('Trainer');
+        $sentMails = $ansuchenService->sendEmailsTrainer();
+        if ($sentMails === 0) {
+            $io->info('No emails sent!');
+        } else {
+            $io->success('Sent ' . $sentMails . ' emails!');
+        }
+
         $io->section('Stammdaten ÖCERT');
         $sentMails = $ansuchenService->sendStammdatenMails();
         if ($sentMails === 0) {
