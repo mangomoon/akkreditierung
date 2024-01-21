@@ -13,6 +13,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 
 final class AnsuchenEinreichenListener
 {
@@ -72,6 +73,7 @@ final class AnsuchenEinreichenListener
             'newStatus' => $event->ansuchen->getStatus(),
             'previousStatus' => $event->previousStatus->value,
             'user' => $event->user,
+            'stammdaten' => $event->stammdaten,
         ];
 
         $this->mailService->send('Notification/AnsuchenEinreichen', $mails, $values);

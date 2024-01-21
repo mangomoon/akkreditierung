@@ -1,30 +1,38 @@
 <f:layout name="SystemEmail"/>
-<f:section name="Subject">Fristenüberwachung</f:section>
+<f:section name="Subject">Fristenüberwachung Training</f:section>
 <f:section name="Title">Folgende Datensätze sind offen</f:section>
 <f:section name="Main">
 
     <p>Sehr geehrte Damen und Herren!</p>
 
-    <p>Mit der Akkreditierung Ihres/r Bildungsangebote/s sind befristete Nachweise verbunden.</p>
+    <p>Mit der Akkreditierung Ihres/r Bildungsangebote/s war(en) folgende Auflage(n) für Trainer/innen verbunden:</p>
 
 
-    <p>Folgende Trainer sind betroffen [Type {type}]:</p>
     <f:for each="{infos}" as="info">
-        <div style="border:1px solid red;padding:10px;margin:10px;">
-            <h3>Trainer {info.trainer.nachname}</h3>
-
-            <strong>Folgende Ansuchen sind aktiv</strong>
+        <p style="font-size: 1.2em;font-weight:bold">{info.trainer.vorname} {info.trainer.nachname}</p>
+        <p>Die Auflage/n:</p>
+        <f:if condition="{info.trainer.review_c2_babi_comment_tr}">
+            
+            <p>Bereich Basisbildung: <br><f:format.nl2br>{info.trainer.review_c2_babi_comment_tr}</f:format.nl2br></p>
+        </f:if>
+        <f:if condition="{info.trainer.review_c2_psa_comment_tr}">
+            
+            <p>Bereich Pflichtschulsabschluss: <br><f:format.nl2br>{info.trainer.review_c2_psa_comment_tr}</f:format.nl2br></p>
+        </f:if>
+        <f:render partial="Notification/CommentsPersonal"/>
+        <p>Die Person ist in folgenden Ansuchen tätig:</p>
             <ul>
                 <f:for each="{info.ansuchen}" as="ansuchen">
-                    <li>{ansuchen.name} [{ansuchen.uid}]</li>
+                    <li>{ansuchen.nummer} – {ansuchen.name} </li>
                 </f:for>
             </ul>
-        </div>
 
     </f:for>
 
+    <p>Laden Sie bitte die erforderlichen Nachweise zur Erfüllung der Auflage/n in der Akkreditierungs-Datenbank hoch und reichen Sie das Ansuchen zur Nachakkreditierung ein.</p>
+    <p></p>
     <p>Bitte beachten Sie, dass die rechtzeitige und vollständige Erfüllung der Akkreditierungsanforderungen die
-        Bedingung für die Aufrechterhaltung der Akkreditierung Ihres/r Bildungsangebot/s darstellt.</p>
+        Bedingung für die Aufrechterhaltung der Akkreditierung Ihres/r Bildungsangebots/e darstellt.</p>
 
     <p></p>
 
