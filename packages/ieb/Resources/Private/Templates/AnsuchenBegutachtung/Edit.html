@@ -587,9 +587,9 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
+                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die  Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein Prüfbescheid des Ministeriums vor: {f:if(condition: '{ansuchen.pruefbescheidCheck}==1', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.pruefbescheid_check} && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. <br>Es liegt ein bzw. mehrere Prüfbescheid/e des Ministeriums vor: {f:if(condition: '{ansuchen.pruefbescheidCheck}==1', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.pruefbescheid_check} && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p>
 
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',

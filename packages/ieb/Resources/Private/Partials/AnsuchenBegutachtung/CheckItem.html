@@ -1,0 +1,13 @@
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{ansuchen.review{key}status} == 4">
+    <div class="check-item">
+        <div class="begutachtung-kriterium row" id="k{key}}">
+        <div class="col">
+            <h6>{title}</h6>
+            <p class="kommentar-check"><f:format.nl2br>{ansuchen.review{key}CommentTr}</f:format.nl2br></p>
+        </div>
+        </div>
+    </div>
+</f:if>

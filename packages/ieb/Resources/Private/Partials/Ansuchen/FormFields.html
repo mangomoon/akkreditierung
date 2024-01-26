@@ -451,8 +451,8 @@
     <div class="kriteriumteil">
         <h3>B.1.5 Abnahme von Prüfungen</h3>
         <div class="info"></div>
-        <div class="infobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
-        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor.
+        <div class="infobox" id="b-1-5-hilfe">Der Prüfbescheid weist die Kompetenzbereiche und Standorte aus.</div>
+        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein bzw. mehrere Prüfbescheid/e des Ministeriums vor.
             <knopf class="inline pruefjanein ja {f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'checked')}">ja</knopf>
             <knopf class="inline pruefjanein nein {f:if(condition:'{ansuchen.pruefbescheidCheck}==2',then:'checked')}">nein</knopf>
         </p>
@@ -471,7 +471,7 @@
                 property:'pruefbescheidDatei', 
                 id:'pruefbescheidDatei', 
                 req:'', 
-                label:'Prüfbescheid (pdf)',
+                label:'Prüfbescheid/e (pdf)',
                 anmerkung:'pruefbescheid',
                 metadaten:'{ansuchen.pruefbescheidDatei.originalResource}',
                 media:ansuchen.pruefbescheidDatei,

@@ -1,0 +1,73 @@
+
+{ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
+{ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+{ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+
+<p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+
+<f:if condition="{stammdaten.reviewA1Status}==4">
+    <p>A.1 Angaben zur Organisation:<br><f:format.nl2br>{stammdaten.reviewA1CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{stammdaten.reviewA2Status}==4">
+    <p>A.2 Qualität des Anbieters:<br><f:format.nl2br>{stammdaten.reviewA2CommentTr}</f:format.nl2br></p>
+</f:if>
+
+<f:if condition="{ansuchen.reviewB1Status}==4">
+    <p>B.1 Eckdaten zum Angebot:<br><f:format.nl2br>{ansuchen.reviewB1CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewB14Status}==4">
+    <p>B.1.4 Kursstandorte:<br><f:format.nl2br>{ansuchen.reviewB14CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewB15Status}==4">
+    <p>B.1.5 Abnahme von Prüfungen:<br><f:format.nl2br>{ansuchen.reviewB15CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewB2Status}==4">
+    <p>B.2.1 Ansprache und Erreichung der Zielgruppe:<br><f:format.nl2br>{ansuchen.reviewB2CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewB22Status}==4">
+    <p>B.2.2 Didaktisch-methodisches Vorgehen:<br><f:format.nl2br>{ansuchen.reviewB22CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewB23Status}==4">
+    <p>B.2.3 Beratung, Coaching und Begleitung:<br><f:format.nl2br>{ansuchen.reviewB23CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewC1Status}==4">
+    <p>C.1 Projektleitung:<br><f:format.nl2br>{ansuchen.reviewC1CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewC2Status}==4">
+    <p>C.2 Training:<br><f:format.nl2br>{ansuchen.reviewC2CommentTr}</f:format.nl2br></p>
+</f:if>
+<f:if condition="{ansuchen.reviewC3Status}==4">
+    <p>C.3 Beratung:<br><f:format.nl2br>{ansuchen.reviewC3CommentTr}</f:format.nl2br></p>
+</f:if>
+
+
+<f:for each="{trainer}" as="p">
+    <f:if condition="{ansuchen.typ}==1">
+        <f:then>
+            <f:if condition="{p.reviewC21BabiStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC2BabiCommentTr}</p>
+            </f:if>
+            <f:if condition="{p.reviewC22BabiStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC2BabiCommentTr}</p>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{p.reviewC21PsaStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC2PsaCommentTr}</p>
+            </f:if>
+
+            <f:if condition="{p.reviewC22PsaStatus}==4">
+                <p>Training {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC2PsaCommentTr}</p>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:for>
+
+<f:for each="{berater}" as="p">
+    <f:if condition="{p.reviewC3Status}==4">
+        <p>Beratung {p.vorname} {p.nachname}: NICHT-OK (Qualifikation): {p.reviewC3CommentTr}</p>
+    </f:if>
+    <f:if condition="{p.reviewC32Status}==4">
+        <p>Beratung {p.vorname} {p.nachname}: NICHT-OK (Erfahrung): {p.reviewC32CommentTr}</p>
+    </f:if>
+</f:for>

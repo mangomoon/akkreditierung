@@ -84,7 +84,7 @@
         
 
 
-<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+<f:if condition="{ansuchen.status}>30">
     <f:then>
         <div class="row kriterium gutachten">
             <div class="col-3">
@@ -288,9 +288,9 @@
                 <div class="row">
                     <div class="links col-7">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die gewählten Kompetenzbereiche und Standorte aus.</div>
+                            <div class="showinfobox" id="b-1-5-hilfe">Der Prüfbescheid weist die  Kompetenzbereiche und Standorte aus.</div>
                         </div>
-                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein Prüfbescheid des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'ja', else:'nein')}</b>.</p>
+                        <p>Die Einrichtung ist berechtigt, selbst Prüfungen durchzuführen. Es liegt ein bzw. mehrere Prüfbescheid/e des Ministeriums vor: <b>{f:if(condition:'{ansuchen.pruefbescheidCheck}==1',then:'ja', else:'nein')}</b>.</p>
                             <f:render partial="Form/UploadList" arguments="{
                                 media:'{ansuchen.pruefbescheidDatei}',
                                 anmerkung:'{ansuchen.pruefbescheid}',

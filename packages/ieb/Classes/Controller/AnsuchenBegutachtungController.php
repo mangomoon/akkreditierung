@@ -247,8 +247,6 @@ class AnsuchenBegutachtungController extends BaseController
 
         $this->addNewCommentByAll($stammdaten, 'reviewA1CommentInternal', $gutachter1Name, $gutachter2Name);
         $this->addNewCommentByAll($stammdaten, 'reviewA2CommentInternal', $gutachter1Name, $gutachter2Name);
-
-
         $this->addNewCommentByAll($ansuchen, 'reviewB1CommentInternal', $gutachter1Name, $gutachter2Name);
         $this->addNewCommentByAll($ansuchen, 'reviewB14CommentInternal', $gutachter1Name, $gutachter2Name);
         $this->addNewCommentByAll($ansuchen, 'reviewB15CommentInternal', $gutachter1Name, $gutachter2Name);
