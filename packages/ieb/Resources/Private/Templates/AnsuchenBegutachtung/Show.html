@@ -1,0 +1,135 @@
+
+        {stammdaten -> f:variable(name: 'stammdatenorig')} 
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
+        {ansuchen.trainer -> f:variable(name: 'trainerorig')} 
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+        {ansuchen.berater -> f:variable(name: 'beraterorig')} 
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+        {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+        {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')}
+
+
+<div class="begutachtung-kopf row">
+    <div class="col">
+        <p class="name">
+            <f:if condition="{stammdaten.markenname}">
+                <f:then>
+                    {stammdaten.markenname}
+                </f:then>
+                <f:else>
+                    {stammdaten.name}
+                </f:else>
+            </f:if>
+        </p>
+        <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
+    </div>
+    <div class="col">
+        <p id="typ" class=" typ typ-{ansuchen.typ}"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
+        </p>
+        <p class="rechtsbuendig"><f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /> <f:if condition="{ansuchen.kopieVon}"> | 
+            <b>Kopie</b> von {ansuchen.kopieVon.nummer} ({ansuchen.kopieVon.name})
+        </f:if></p>
+    </div>
+</div>
+<div class="abstand-gross"></div>
+<f:if condition="{ansuchen.notitzzettel}">
+            <div class="row begutachtung-kriterium">
+                <div class="col">
+                    <p><label>Weitere Anmerkungen:</label></p>
+                    <p class="notizzettelanzeige"><f:format.nl2br>{ansuchen.notitzzettel}</f:format.nl2br></p>
+                </div>
+            </div>
+</f:if>
+
+<div id="kommentar-check">
+    <h6>GESAMTBEURTEILUNG</h6>
+    <div class="kommentar-check">
+        <h6><f:translate key="ansuchen.status.{ansuchen.upcomingStatus}" default="Status {ansuchen.upcomingStatus} unbekannt" /></h6>
+        <p class="kommentar-check"><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+    </div>
+    <div class="abstand-gross"></div>
+    <h6>DIE AUFLAGEN/KOMMENTARE IM EINZELNEN</h6>
+    <div class="abstand-gross"></div>
+
+<f:if condition="{stammdaten.reviewA1Status} == 4">
+    <div class="check-item">
+        <div class="begutachtung-kriterium row" id="kA1">
+        <div class="col">
+            <h6>A.1. Stammdaten</h6>
+            <p class="kommentar-check"><f:format.nl2br>{stammdaten.reviewA1CommentTr}</f:format.nl2br></p>
+        </div>
+        </div>
+    </div>
+</f:if>
+<f:if condition="{stammdaten.reviewA2Status} == 4">
+    <div class="check-item">
+        <div class="begutachtung-kriterium row" id="kA2">
+        <div class="col">
+            <h6>A.2. Qualität des Anbieters</h6>
+            <p class="kommentar-check"><f:format.nl2br>{stammdaten.reviewA2CommentTr}</f:format.nl2br></p>
+        </div>
+        </div>
+    </div>
+</f:if>
+
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B1', title:'B.1. Eckdaten zum Angebot', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B14', title:'B.1.4 Standorte', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B15', title:'B.1.5 Abnahme von Prüfungen', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B2', title:'B.2.1 Ansprache und Erreichung der Zielgruppe', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B22', title:'B.2.2 Didaktisch-methodisches Vorgehen', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'B23', title:'B.2.3 Beratung, Coaching und Begleitung', ansuchen : ansuchen}" />
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C1', title:'C.1 Projektleitung', ansuchen : ansuchen}" />
+<h6>TRAINING</h6>
+<div class="abstand-klein"></div>
+
+
+<f:for each="{trainerorig}" as="t">
+    <f:if condition="{ansuchen.typ}==1">
+        <f:then>
+            <f:if condition="{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2">
+                <div class="kommentar-check">
+                    <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span></p> 
+                    <p><f:format.nl2br>{t.reviewC2BabiCommentTr} </f:format.nl2br></p>
+                </div>
+            </f:if>  
+        </f:then>
+        <f:else>
+            <f:if condition="{t.reviewC21PsaStatus}>2 || {t.reviewC22PsaStatus}>2">
+                <div class="kommentar-check">
+                    <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (Psa)"></span>
+                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (Psa)"></span></p> 
+                    <p><f:format.nl2br>{t.reviewC2PsaCommentTr} </f:format.nl2br></p>
+                </div>
+            </f:if>
+        </f:else>
+    </f:if>
+    
+    
+    <div class="abstand-mittel"></div>
+    
+</f:for>
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C2', title:'C.2 Training allgemein', ansuchen : ansuchen}" />
+
+<h6>BERATUNG</h6>
+<div class="abstand-klein"></div>
+<f:for each="{beraterorig}" as="t">
+    <div class="kommentar-check">
+        <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation"></span>
+            <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung"></span></p> 
+        <p><f:format.nl2br>{t.reviewC3CommentTr} </f:format.nl2br></p>
+    </div>
+    <div class="abstand-mittel"></div>
+</f:for>
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C3', title:'C.3 Beratung allgemein', ansuchen : ansuchen}" />
+
+
+
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'Total', title:'Total', ansuchen : ansuchen}" />
+
+<div class="abstand-gross"></div>
+<f:link.action class="knopf-s knopfersatz " action="list"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste">zurück</f:link.action>
+<f:link.action class="knopf-s knopfersatz " action="edit"  arguments="{ansuchen:ansuchen}" title="bearbeiten">bearbeiten</f:link.action>
+<f:link.action class="knopf-s knopfersatz " action="finalizeStatus"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste">abschicken</f:link.action>
+<div class="abstand-gross"></div>
+</div>

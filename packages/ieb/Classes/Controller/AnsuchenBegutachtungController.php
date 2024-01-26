@@ -49,6 +49,7 @@ class AnsuchenBegutachtungController extends BaseController
 
     public function editAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
+        $this->setTitleTag($ansuchen->getTitleTag());
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
@@ -81,10 +82,17 @@ class AnsuchenBegutachtungController extends BaseController
      */
     public function showAction(Ansuchen $ansuchen, int $diffWithAlternativeId = 0): ResponseInterface
     {
-        $this->view->assign('ansuchen', $ansuchen);
+        $this->setTitleTag($ansuchen->getTitleTag());
+        /** @var Stammdaten $stammdaten */
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
+        $this->view->assignMultiple([
+            'ansuchen' => $ansuchen,
+            'stammdaten' => $stammdaten,
+        ]);
         $begutachtung = new Dto\Begutachtung\BasisBegutachtung();
         return $this->htmlResponse();
     }
+
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("ansuchen")

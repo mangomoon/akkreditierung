@@ -9,19 +9,7 @@
 
     <f:section name="Main">
         <p>Die Geschäftsstelle hat folgenden Kommentar angegeben:</p>
-        <p><i><f:format.nl2br>{ansuchen.reviewTotalCommentInternalStep}</f:format.nl2br></i></p>
-
-        <f:if condition="{ansuchen.notitzzettel}">
-            <p>Zudem gibt es weitere Anmerkungen:</p>
-            <p><i><f:format.nl2br>{ansuchen.notitzzettel}</f:format.nl2br></i></p>
-        </f:if>
-
-
-  
-
-
-
-
+        <p><i><f:format.nl2br>{ansuchen.notitzzettel}</f:format.nl2br></i></p>
 
 
         <f:render partial="Notification/Fuss" />

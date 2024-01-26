@@ -185,7 +185,8 @@
                                     </f:switch>
                                     )
                                 </f:if>
-                                <f:if condition="{gutachter2.uid}"> | AG 2: {gutachter2.firstName} {gutachter2.LastName} (
+                                <f:if condition="{gutachter2.uid}"><f:if condition="!{gutachter1.uid}"><div class="gutachterinfo"></f:if> | AG 2: {gutachter2.firstName} {gutachter2.LastName} (
+
                                         <f:switch expression="{item.statusAgZwei}">
                                             <f:case value="0">in Arbeit</f:case>
                                             <f:case value="1">Nachbesserungsauftrag</f:case>
@@ -315,8 +316,9 @@
                             </f:if>
                         </td>
                         <td class="td-knopf">
+                            <f:link.action action="show" arguments="{ansuchen : item}" title="Ansuchen checken" class="knopf-quadratisch einreichen"></f:link.action>
                             <f:if condition="({item.upcomingStatus}>0) && ({currentUser.usergroup}=={extensionConfiguration.usergroupGs})">                              
-                                <f:link.action action="finalizeStatus" arguments="{ansuchen : item}" title="Ansuchen abschicken: {f:translate(key:'ansuchen.status.{item.upcomingStatus}',default:'Status {item.status} unbekannt')}" class="knopf-quadratisch einreichen"></f:link.action>
+                                <f:link.action action="show" arguments="{ansuchen : item}" title="Ansuchen checken" class="knopf-quadratisch einreichen"></f:link.action>
                             </f:if>
                             <f:if condition="({currentUser.usergroup}=={extensionConfiguration.usergroupAg}) && ({gutachter2.uid}=={currentUser.uid} || {gutachter1.uid}=={currentUser.uid})">
                             <f:if condition="({gutachter2} && ({item.statusAgEins} > 0) && ({item.statusAgZwei}) > 0)  || (!{gutachter2} && ({item.statusAgEins} > 0)) > 0)">

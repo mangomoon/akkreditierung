@@ -215,6 +215,11 @@ h4 {
     margin-top: 0.4em;
 }
 
+h6 {
+    font-size: 1em;
+    font-weight:500;
+    color: #48686f;
+}
 table {
     width: 100%;
 }

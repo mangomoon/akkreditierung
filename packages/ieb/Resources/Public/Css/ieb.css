@@ -2110,7 +2110,19 @@ select#field_upcomingStatus option[value=100] {
     padding-top: 10px;
 }
 
-
+#kommentar-check h6 {
+    padding-left: 12px;
+}
+.kommentar-check {
+    background: var(--f0b);
+    padding: 12px;
+    margin-top: 4px;
+}
+#kommentar-check .person-statuskugel {
+    width: 12px;
+    height: 12px;
+    vertical-align: baseline;
+}
 
 /* ############### DIFF ################### */
 .diff {

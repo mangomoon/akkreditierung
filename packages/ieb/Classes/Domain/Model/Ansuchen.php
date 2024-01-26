@@ -2953,9 +2953,10 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->erklaerungTeilB;
     }
+
     public function getTitleTag()
     {
-        return sprintf('%s [%s]', $this->name, $this->nummer);
+        return sprintf('%s [%s]', $this->nummer, $this->name);
     }
 
     /**

@@ -3,6 +3,6 @@
 
 This email was sent by {typo3.sitename} from URL: {normalizedParams.siteUrl}
 
-Blablabla.
+
 
 {typo3.information.copyrightNotice -> f:format.stripTags() -> f:format.htmlentitiesDecode()}
