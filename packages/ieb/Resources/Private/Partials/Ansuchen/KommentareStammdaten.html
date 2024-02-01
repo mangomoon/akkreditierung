@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="show_kommentare">
+<f:if condition="{inBegutachtung} && {user}==1">
+    <f:then>
+        <label>Ansuchen in Begutachtung</label>
+    </f:then>
+    <f:else>
+        
+        <f:if condition="{stammdaten.review{key}Status}">
+            <label>status </label>
+            <f:switch expression="{stammdaten.review{key}Status}">
+                <f:case value="1"><p><span class="knopfrund auflage-1"></span> &nbsp;&nbsp;ok</p></f:case>
+                <f:case value="2">
+                    <f:if condition="({user}==2) || ({user}==3)">
+                        <p><span class="knopfrund achtung-gelb"></span> &nbsp;&nbsp;fraglich</p>
+                    </f:if>
+                </f:case>
+                <f:case value="3">
+                    <f:if condition="({user}==2) || ({user}==3)">
+                        <p><span class="knopfrund achtung-gelb"></span> &nbsp;&nbsp;plenum</p>
+                    </f:if>
+                </f:case>
+                <f:case value="4"><p><span class="knopfrund achtung-orange"></span> &nbsp;&nbsp;nicht-ok</p></f:case>
+            </f:switch>
+        </f:if>
+
+
+        <f:if condition="{stammdaten.review{key}CommentTr}">
+            <f:if condition="{user}==1">
+                <f:then>
+                    <label>Info zum Status</label>
+                </f:then>
+                <f:else>
+                    <label>Text an den Träger</label>
+                </f:else>
+            </f:if>
+            
+            <p><f:format.nl2br>{stammdaten.review{key}CommentTr}</f:format.nl2br></p>
+        </f:if>
+
+        <f:if condition="(({user}==2) || ({user}==3)) && ({ansuchen.{key}CommentInternalData} || {key})">
+            <label>Interner Kommentar</label>
+            <f:for each="{stammdaten.review{key}CommentInternalData}" as="comment">
+                <p>
+                    <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
+                </p>
+            </f:for>
+            <f:if condition="{stammdaten.review{key}Ag1CommentInternalStep} || {stammdaten.review{key}Ag2CommentInternalStep} || {stammdaten.review{key}GsCommentInternalStep}">
+                <div class="commintstep">
+                    <label>AKTUELLE KOMMENTARE</label>
+                    <p><span class="weiss">{ansuchen.gutachter1.fullName}:</span> <f:format.nl2br>{stammdaten.review{key}Ag1CommentInternalStep}</f:format.nl2br></p>
+                    <p><span class="weiss">{ansuchen.gutachter2.fullName}:</span> <f:format.nl2br>{stammdaten.review{key}Ag2CommentInternalStep}</f:format.nl2br></p>
+                    <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{stammdaten.review{key}GsCommentInternalStep}</f:format.nl2br></p>
+                </div>
+            </f:if>
+            
+        </f:if>
+    </f:else>
+</f:if>
+
+
+</div>
+</html>
