@@ -19,6 +19,7 @@
             {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
             {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
             {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+            {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
         </f:else>
         
     </f:if>
@@ -113,7 +114,7 @@
 
 
 
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen}" />
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen, stammdatenorig:stammdatenorig}" />
 
 
 
@@ -188,11 +189,10 @@
                     </f:if>
                     </div>
                     <div class="rechts col-5">
-
+                        
                         <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewB1Status,
-                            extern:ansuchen.reviewB1CommentTr,
-                            intern:ansuchen.reviewB1CommentInternalData,
+                            ansuchen:ansuchen,
+                            key:'B1',
                             user:currentUser.usergroup,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
@@ -253,11 +253,10 @@
                     <div class="rechts col-5">
                         
                             <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewB14Status,
-                            extern:ansuchen.reviewB14CommentTr,
-                            intern:ansuchen.reviewB14CommentInternalData,
-                            user:currentUser.usergroup,
-                            inBegutachtung:AnsuchenInBegutachtung,
+                                ansuchen:ansuchen,
+                                key:'B14',
+                                user:currentUser.usergroup,
+                                inBegutachtung:AnsuchenInBegutachtung,
                             }" />
                         
                         
@@ -320,9 +319,8 @@
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewB15Status,
-                            extern:ansuchen.reviewB15CommentTr,
-                            intern:ansuchen.reviewB15CommentInternalData,
+                            ansuchen:ansuchen,
+                            key:'B15',
                             user:currentUser.usergroup,
                             pruefbescheid:ansuchen.reviewFristPruefbescheid,
                             inBegutachtung:AnsuchenInBegutachtung,
@@ -370,9 +368,8 @@
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewB2Status,
-                            extern:ansuchen.reviewB2CommentTr,
-                            intern:ansuchen.reviewB2CommentInternalData,
+                            ansuchen:ansuchen,
+                            key:'B2',
                             user:currentUser.usergroup,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
@@ -491,9 +488,8 @@
                     </div>
                     <div class="rechts col-5">
                         <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewB22Status,
-                            extern:ansuchen.reviewB22CommentTr,
-                            intern:ansuchen.reviewB22CommentInternalData,
+                            ansuchen:ansuchen,
+                            key:'B22',
                             user:currentUser.usergroup,
                             inBegutachtung:AnsuchenInBegutachtung,
                             }" />
@@ -541,9 +537,8 @@
                 </div>
                 <div class="rechts col-5">
                     <f:render partial="Ansuchen/Kommentare" arguments="{
-                        status:ansuchen.reviewB23Status,
-                        extern:ansuchen.reviewB23CommentTr,
-                        intern:ansuchen.reviewB23CommentInternalData,
+                        ansuchen:ansuchen,
+                        key:'B23',
                         user:currentUser.usergroup,
                         inBegutachtung:AnsuchenInBegutachtung,
                         }" />
@@ -579,6 +574,11 @@
                     <f:for each="{verantwortliche}" as="p">
                         <div class="row person">
                             <div class="links col-9">
+                                <f:for each="{verantwortlicheMail}" as="pm">
+                                    <f:if condition ="{p.uid} == {pm.uid}">
+                                        <span class="pseudoknopf mail"></span>
+                                    </f:if>
+                                </f:for>
                                 {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
         
                                 <div class="abstand-klein"></div>
@@ -607,9 +607,8 @@
                 </div>
                 <div class="rechts col-5">
                     <f:render partial="Ansuchen/Kommentare" arguments="{
-                        status:ansuchen.reviewC1Status,
-                        extern:ansuchen.reviewC1CommentTr,
-                        intern:ansuchen.reviewC1CommentInternalData,
+                        ansuchen:ansuchen,
+                        key:'C1',
                         user:currentUser.usergroup,
                         inBegutachtung:AnsuchenInBegutachtung,
                         }" />
@@ -663,7 +662,7 @@
                                             <span class="titleview person-statuskugel-d person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
                                         
                                     </f:else>
-                                </f:if><span class="personenname">{t.fullName}</span></summary>
+                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span></summary>
                                 <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup}"/>
                                 </details>
                             </div>
@@ -680,9 +679,8 @@
                 </div>
                 <div class="rechts col-5">
                             <f:render partial="Ansuchen/Kommentare" arguments="{
-                            status:ansuchen.reviewC2Status,
-                            extern:ansuchen.reviewC2CommentTr,
-                            intern:ansuchen.reviewC2CommentInternalData,
+                                ansuchen:ansuchen,
+                                key:'C2',
                             user:currentUser.usergroup,
                             }" />
                     
@@ -724,7 +722,7 @@
                                         <div class="col-12">
                                             <details>
                                             <summary><span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
-                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.fullName}</span></summary>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span></summary>
                                             <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup}"/>
                                             </details>
                                         </div>
@@ -738,9 +736,8 @@
                         </div>
                         <div class="rechts col-5">
                             <f:render partial="Ansuchen/Kommentare" arguments="{
-                                status:ansuchen.reviewC3Status,
-                                extern:ansuchen.reviewC3CommentTr,
-                                intern:ansuchen.reviewC3CommentInternalData,
+                                ansuchen:ansuchen,
+                                key:'C3',
                                 user:currentUser.usergroup,
                                 inBegutachtung:AnsuchenInBegutachtung,
                                 }" />

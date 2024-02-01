@@ -72,7 +72,9 @@ body {
 .fett {
     font-weight: 600;
 }
-
+.weiss {
+   color: #fff; 
+}
 hr.hell {
     border:0;
     border-top: dotted 2px var(--f1);
@@ -221,7 +223,11 @@ span.pseudoknopf.mail {
     background-repeat: no-repeat;
     margin-left: 12px;
 }
-
+#ansuchen-show span.pseudoknopf.mail {
+    background: url('../Img/Email.svg');
+    background-repeat: no-repeat;
+    margin: 0 12px 0 0;
+}
 
 span.pflicht {
     font-size: 1.5em;
@@ -1742,7 +1748,9 @@ span.check-nein {
     font-size: 0.9em;
     padding: 3px 0;
 }
-
+.show_kommentare .commintstep {
+    background: rgb(183, 190, 175);
+}
 .komm-int span.name {
     text-transform: uppercase;
     color: #fff;
@@ -1980,7 +1988,7 @@ span.person-statuskugel.status-3 {
 .person summary {
     background: var(--f0);
     font-size: 1.1em;
-    font-weight: 800;
+    /* font-weight: 800; */
     padding: 4px 6px;
     color: var(--f4);
     list-style: none;

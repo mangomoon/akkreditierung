@@ -147,19 +147,20 @@
 			</div>
 
 			<div class="rechts col-5">
-				<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
-					<f:then>
-					<f:render partial="Ansuchen/Kommentare" arguments="{
-					status:stammdaten.reviewA1Status,
-					extern:stammdaten.reviewA1CommentTr,
-					intern:stammdaten.reviewA1CommentInternalData,
-					user:user
-					}" />
-				</f:then>
-				<f:else>
-					<label>Ansuchen in Begutachtung</label>
-				</f:else>
-				</f:if>
+				<f:if condition="!{ansuchen.editableByTr} && {user}==1">
+						<f:then>
+							<label>Ansuchen in Begutachtung</label>
+						</f:then>
+						<f:else>
+							<f:render partial="Ansuchen/KommentareStammdaten" arguments="{
+								ansuchen:ansuchen,
+								stammdaten: stammdatenorig,
+								key:'A1',
+								user:user,
+								}" />
+						</f:else>
+						
+					</f:if>
 				
 			</div>
 		
@@ -262,18 +263,19 @@
 						<p>Wir bestätigen, dass die fachspezifische Weiterbildung im Ausmaß von 16 UE/Jahr (Durchrechnungszeitraum Programmperiode) für das eingesetzte Personal eingehalten wird. Teilnahmebestätigungen sind bei Vor-Ort-Kontrollen vorzulegen: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}.</p>
 					</div>
 				</div>
+				
 				<div class="rechts col-5">
-					<f:if condition="{ansuchen.status}>30 && {ansuchen.editableByTr}">
+					<f:if condition="!{ansuchen.editableByTr} && {user}==1">
 						<f:then>
-							<f:render partial="Ansuchen/Kommentare" arguments="{
-													status:stammdaten.reviewA2Status,
-													extern:stammdaten.reviewA2CommentTr,
-
-													user:currentUser.usergroup
-													}" />
+							<label>Ansuchen in Begutachtung</label>
 						</f:then>
 						<f:else>
-							<label>Ansuchen in Begutachtung</label>
+							<f:render partial="Ansuchen/KommentareStammdaten" arguments="{
+								ansuchen:ansuchen,
+								stammdaten: stammdatenorig,
+								key:'A2',
+								user:user,
+								}" />
 						</f:else>
 						
 					</f:if>

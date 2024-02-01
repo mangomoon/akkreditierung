@@ -51,7 +51,8 @@ class AnsuchenController extends BaseController
     {
         $this->setTitleTag($ansuchen->getTitleTag());
         $this->view->assign('ansuchen', $ansuchen);
-        $stammdaten = $this->stammdatenRepository->getLatest();
+        /** @var Stammdaten $stammdaten */
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $this->view->assign('stammdaten', $stammdaten);
         $this->addRelationDataToView();
         return $this->htmlResponse();

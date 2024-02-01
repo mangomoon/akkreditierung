@@ -16,3 +16,5 @@ public/typo3conf/ENABLE_INSTALL_TOOL
 packages/ieb/Resources/Private/Language/locallang_csh_*
 /config/sites/main/config.yaml
 /packages/mango
+public/typo3conf/LocalConfiguration.php
+.ddev/config.yaml

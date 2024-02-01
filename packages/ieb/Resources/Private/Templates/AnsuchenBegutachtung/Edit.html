@@ -425,10 +425,10 @@
                                         <f:if condition="{diff.kompetenz5.previous}"><li class="diff">gelöscht: Grundlegende Kompetenzen in Englisch</li></f:if>
                                     </f:then>
                                     <f:else>
-                                        <li class="light">Deutsch – Kommunikation und Gesellschaft</li>
-                                        <li class="light">Englisch – Globalität und Transkulturalität</li>
-                                        <li class="light">Mathematik</li>
-                                        <li class="light">Berufsorientierung</li>
+                                        <li class="notlight">Deutsch – Kommunikation und Gesellschaft</li>
+                                        <li class="notlight">Englisch – Globalität und Transkulturalität</li>
+                                        <li class="notlight">Mathematik</li>
+                                        <li class="notlight">Berufsorientierung</li>
                                         <p>Wahlmodule</p>
                                         <f:if condition="{ansuchen.kompetenz1} == 1">
                                             <li>Kreativität und Gestaltung
@@ -1054,7 +1054,7 @@
                 <f:for each="{trainer}" as="t">
                     <div class="row person" data-name="{t.nachname}"  id="trainer-{t.uid}">
                         <div class="links col-7">
-                            {t.fullName} 
+                            {t.vorname}<span class="fett"> {t.nachname}</span>
                             <code>uid: {t.uid} </code>
                             <f:if condition="{difftyp}">
                                 {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
@@ -1148,7 +1148,7 @@
             <f:for each="{berater}" as="t">
                 <div class="row person" data-name="{t.nachname}" id="berater-{t.uid}">
                     <div class="links col-7">
-                        {t.fullName} 
+                        {t.vorname}<span class="fett"> {t.nachname}</span>
                         <code>uid: {t.uid}</code>
                         <f:if condition="{difftyp}">
                             {ieb:ifDiff(diff:diff,field:'copy_berater/{t.uid}')}

@@ -7,9 +7,9 @@
     </f:then>
     <f:else>
         
-        <f:if condition="{status}">
+        <f:if condition="{ansuchen.review{key}Status}">
             <label>status </label>
-            <f:switch expression="{status}">
+            <f:switch expression="{ansuchen.review{key}Status}">
                 <f:case value="1"><p><span class="knopfrund auflage-1"></span> &nbsp;&nbsp;ok</p></f:case>
                 <f:case value="2">
                     <f:if condition="({user}==2) || ({user}==3)">
@@ -30,7 +30,7 @@
             <p><f:format.date format="d.m.Y">{pruefbescheid}</f:format.date></p>
         </f:if>
 
-        <f:if condition="{extern}">
+        <f:if condition="{ansuchen.review{key}CommentTr}">
             <f:if condition="{user}==1">
                 <f:then>
                     <label>Info zum Status</label>
@@ -40,18 +40,26 @@
                 </f:else>
             </f:if>
             
-            <p><f:format.nl2br>{extern}</f:format.nl2br></p>
+            <p><f:format.nl2br>{ansuchen.review{key}CommentTr}</f:format.nl2br></p>
         </f:if>
 
 
-
-        <f:if condition="(({user}==2) || ({user}==3)) && {intern}">
+        <f:if condition="(({user}==2) || ({user}==3)) && ({ansuchen.review{key}CommentInternalData} || {key})">
             <label>Interner Kommentar</label>
-            <f:for each="{intern}" as="comment">
+            <f:for each="{ansuchen.review{key}CommentInternalData}" as="comment">
                 <p>
                     <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
                 </p>
             </f:for>
+            <f:if condition="{ansuchen.review{key}Ag1CommentInternalStep} || {ansuchen.review{key}Ag2CommentInternalStep} || {ansuchen.review{key}GsCommentInternalStep}">
+                <div class="commintstep">
+                    <label>AKTUELLE KOMMENTARE</label>
+                    <p><span class="weiss">{ansuchen.gutachter1.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag1CommentInternalStep}</f:format.nl2br></p>
+                    <p><span class="weiss">{ansuchen.gutachter2.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag2CommentInternalStep}</f:format.nl2br></p>
+                    <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{ansuchen.review{key}GsCommentInternalStep}</f:format.nl2br></p>
+                </div>
+            </f:if>
+            
         </f:if>
     </f:else>
 </f:if>
