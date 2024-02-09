@@ -60,13 +60,21 @@ class TrainerBegutachtungController extends BaseController
         /** @var Trainer $trainer */
         $trainer = $this->trainerRepository->findByIdentifier($begutachtung->trainerId);
         if (!$trainer || !$ansuchen || $ansuchen->getPid() !== $trainer->getPid()) {
-            return $this->htmlResponse('Nicht erlaubt!');
+            return $this->htmlResponse('Fehler! Bearbeitung nicht möglilch.');
         }
 
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
 
         $trainer->setGutachterLockedBy(0);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
+
+        if($trainer->getReviewC21BabiStatus() == 1 && $trainer->getReviewC22BabiStatus() == 1) {
+            $trainer->setReviewFrist = null;
+        }
+        if($trainer->getReviewC21PsaStatus() == 1 && $trainer->getReviewC22PsaStatus() == 1) {
+            $this->trainerRepository->setReviewPsaFrist = null;
+        }
+
         foreach ($values as $property => $value) {
             if (!in_array($property, $this->commentFields, true)) {
                 $setter = 'set' . ucfirst($property);
@@ -74,7 +82,7 @@ class TrainerBegutachtungController extends BaseController
             }
         }
 
-        //$this->commentVersioning($trainer);
+
         $this->trainerRepository->update($trainer);
         $this->trainerRepository->forcePersist();
         $this->addFlashMessage('Begutachtung gespeichert');

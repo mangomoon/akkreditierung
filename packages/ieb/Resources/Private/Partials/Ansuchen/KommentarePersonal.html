@@ -44,14 +44,59 @@
         </f:if>
 
 
-
-        <f:if condition="(({user}==2) || ({user}==3)) && {intern}">
-            <label>Interner Kommentar</label>
+        <f:if condition="(({user}==2) || ({user}==3))">
+            <f:if condition="{intern}">
+                <label>Interner Kommentar</label>
             <f:for each="{intern}" as="comment">
                 <p>
                     <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
                 </p>
             </f:for>
+            </f:if>
+            <f:if condition="{aktuell.review{key}Ag1CommentInternalStep} || {aktuell.review{key}Ag2CommentInternalStep} || {aktuell.review{key}GsCommentInternalStep}">
+                <div class="commintstep">
+                    <label>AKTUELLE KOMMENTARE</label>
+                    <f:if condition="{ag1}">
+                        <p><span class="weiss">{ag1.fullName}:</span> <f:format.nl2br>{aktuell.review{key}Ag1CommentInternalStep}</f:format.nl2br></p>
+                    </f:if>
+                    <f:if condition="{ag1}">
+                        <p><span class="weiss">{ag2.fullName}:</span> <f:format.nl2br>{stamaktuellmdaten.review{key}Ag2CommentInternalStep}</f:format.nl2br></p>
+                    </f:if>
+                    <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{aktuell.review{key}GsCommentInternalStep}</f:format.nl2br></p>
+                </div>
+            </f:if>
+            <f:if condition="{typ}==1">
+                <f:then>
+                    <f:if condition="{aktuell.review{key}BabiAg1CommentInternalStep} || {aktuell.review{key}BabiAg2CommentInternalStep} || {aktuell.review{key}BabiGsCommentInternalStep}">
+                        <div class="commintstep">
+                            <label>AKTUELLE KOMMENTARE</label>
+                            <f:if condition="{ag1}">
+                                <p><span class="weiss">{ag1.fullName}:</span> <f:format.nl2br>{aktuell.review{key}BabiAg1CommentInternalStep}</f:format.nl2br></p>
+                            </f:if>
+                            <f:if condition="{ag2}">
+                                <p><span class="weiss">{ag2.fullName}:</span> <f:format.nl2br>{aktuell.review{key}BabiAg2CommentInternalStep}</f:format.nl2br></p>
+                            </f:if>
+                            <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{aktuell.review{key}BabiGsCommentInternalStep}</f:format.nl2br></p>
+                        </div>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <f:if condition="{aktuell.review{key}PsaAg1CommentInternalStep} || {aktuell.review{key}PsaAg2CommentInternalStep} || {aktuell.review{key}PsaGsCommentInternalStep}">
+                        <div class="commintstep">
+                            <label>AKTUELLE KOMMENTARE</label>
+                            <f:if condition="{ag1}">
+                                <p><span class="weiss">{ag1.fullName}:</span> <f:format.nl2br>{aktuell.review{key}PsaAg1CommentInternalStep}</f:format.nl2br></p>
+                            </f:if>
+                            <f:if condition="{ag2}">
+                                <p><span class="weiss">{ag2.fullName}:</span> <f:format.nl2br>{aktuell.review{key}PsaAg2CommentInternalStep}</f:format.nl2br></p>
+                            </f:if>
+                           
+                            <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{aktuell.review{key}PsaGsCommentInternalStep}</f:format.nl2br></p>
+                        </div>
+                    </f:if>
+                </f:else>
+            </f:if>
+            
         </f:if>
     </f:else>
 </f:if>

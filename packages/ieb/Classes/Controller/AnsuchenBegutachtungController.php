@@ -276,7 +276,6 @@ class AnsuchenBegutachtungController extends BaseController
             $ansuchen->setAkkreditierungDatum(new \DateTime());
         }
 
-
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);

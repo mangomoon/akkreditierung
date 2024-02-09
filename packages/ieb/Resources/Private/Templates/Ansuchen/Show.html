@@ -13,6 +13,7 @@
             {ansuchen.berater -> f:variable(name: 'berater')}
         </f:then>
         <f:else>
+            {ansuchen.berater -> f:variable(name: 'beraterorig')}
             {stammdaten -> f:variable(name: 'stammdatenorig')}
             {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
             {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
@@ -24,6 +25,7 @@
         
     </f:if>
     {ansuchen.trainer -> f:variable(name: 'trainer')}
+    {ansuchen.berater -> f:variable(name: 'berater')}
     
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
@@ -145,13 +147,21 @@
                         <f:if condition="!{ansuchen.pp3}">
                         <div class="kriteriumteil">
                             <h3>B.1.2 Kompetenzbereiche</h3>
-                            <div class="erlaeuterung {f:if condition:'{ansuchen.typ}==2', then:'notvisible'}">
-                                <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                            <div class="erlaeuterung">
+                                <f:if condition="{ansuchen.typ}==1">
+                                    <f:then>
+                                        <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                                    </f:then>
+                                    <f:else>
+                                        <p class="hinweis">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben.</p>
+                                    </f:else>
+                                </f:if>
+                                
                             </div>
                             <ul>
                                 <f:if condition="{ansuchen.typ}==1">
                                     <f:then>
-                                        <li class="light">Lernkompetenzen (Autonomes Lernen, Lernen lernen)</li>
+                                        <li class="">Lernkompetenzen (Autonomes Lernen, Lernen lernen)</li>
                                         {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
                                         <li>Deutsch als Erstsprache bzw. überwiegende Sprache</li>')} {f:if(condition:'{ansuchen.kompetenz2}==1', then:'
                                         <li>Deutsch als Zweitsprache</li>')} {f:if(condition:'{ansuchen.kompetenz3}==1', then:'
@@ -160,10 +170,10 @@
                                         <li>Grundlegende Kompetenzen in einer weiteren Sprache: {ansuchen.kompetenzText1}</li>')}
                                     </f:then>
                                     <f:else>
-                                        <li class="light">Deutsch – Kommunikation und Gesellschaft</li>
-                                        <li class="light">Englisch – Globalität und Transkulturalität</li>
-                                        <li class="light">Mathematik</li>
-                                        <li class="light">Berufsorientierung</li>
+                                        <li class="">Deutsch – Kommunikation und Gesellschaft</li>
+                                        <li class="">Englisch – Globalität und Transkulturalität</li>
+                                        <li class="">Mathematik</li>
+                                        <li class="">Berufsorientierung</li>
                                         <p>Wahlmodule</p>
                                         {f:if(condition:'{ansuchen.kompetenz1}==1', then:'
                                         <li>Kreativität und Gestaltung</li>')} 
@@ -331,7 +341,8 @@
                 </div>
             </div>
         </div>
-
+        </f:if>
+        <f:if condition="!{ansuchen.pp3}"> 
         <h2>B.2 Pädagogische und didaktische Konzeption</h2>
 
 
@@ -441,11 +452,11 @@
 
                     <div class="kriteriumteil">
                         <div class="erlaeuterung">
-                            <div class="showinfobox" id="b-2-c-x-hilfe">
-                                <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
-                            </div>
                             <f:if condition="{ansuchen.typ}=1">
                                 <f:then>
+                                    <div class="showinfobox" id="b-2-c-x-hilfe">
+                                        <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
+                                    </div>
                                     <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
                                     </p>
                                 </f:then>
@@ -642,7 +653,10 @@
                             <p class="hinweis">Hinweis Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
-
+                    <f:if condition="{ansuchen.typ}==2">
+                        <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
+                    </f:if>
+                    
                     <f:for each="{trainer}" as="t">
                         
 
@@ -654,16 +668,18 @@
                                         
                                             <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
                                             <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
-                                        
                                     </f:then>
                                     <f:else>
                                         
                                             <span class="titleview person-statuskugel-c person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
                                             <span class="titleview person-statuskugel-d person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
-                                        
                                     </f:else>
-                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span></summary>
-                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup}"/>
+                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span>
+                                <f:if condition="{ansuchen.typ}==1">
+                                    <f:then> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist}</f:format.date></span></f:then>
+                                    <f:else> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist}</f:format.date></span></f:else>
+                                </f:if></summary>
+                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
                                 </details>
                             </div>
                             
@@ -681,7 +697,9 @@
                             <f:render partial="Ansuchen/Kommentare" arguments="{
                                 ansuchen:ansuchen,
                                 key:'C2',
-                            user:currentUser.usergroup,
+                                user:currentUser.usergroup,
+                                inBegutachtung:AnsuchenInBegutachtung,
+                                
                             }" />
                     
                 </div>
@@ -723,7 +741,7 @@
                                             <details>
                                             <summary><span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
                                                 <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span></summary>
-                                            <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup}"/>
+                                                <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
                                             </details>
                                         </div>
                                     </div>
@@ -740,6 +758,7 @@
                                 key:'C3',
                                 user:currentUser.usergroup,
                                 inBegutachtung:AnsuchenInBegutachtung,
+                                beraterorig:beraterorig,
                                 }" />
                         </div>
                     </div>
@@ -771,9 +790,6 @@
                         </p>
                         <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16  für allfällige Kontrollen aufzubewahren: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <f:if condition="{ansuchen.typ}=2">
-                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</p>
-                        </f:if>
                         <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                         <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}

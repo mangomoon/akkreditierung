@@ -68,10 +68,16 @@
                             <td class="ansuchen">
                                 <ul>
                                 <f:for each="{groupedTrainer}" as="groupItem">
-                                    <li class="td-knopf">
-                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                        <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
-                                    </li>
+
+
+
+                                            <li class="td-knopf">
+                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                            </li>
+
+
+                                    
                                 </f:for>
                                 </ul>
                             </td>

@@ -10,16 +10,16 @@
     </f:for>
 </div>
 <div class="komm-int-container">
-    <label class="komm-intern">intern</label>
+    <label class="komm-intern">Aktuelle Kommentare</label>
     <f:switch expression="{commentuser}">
         <f:case value="a1">
             <div class="commintstep">
             <f:if condition="{ansuchen.{property}GsCommentInternalStep}">
-                <label>interner Kommentar der Geschäftsstelle:</label>
+                <label>Geschäftsstelle:</label>
                 <p><f:format.nl2br>{ansuchen.{property}GsCommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
-                <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
+                <label>{ansuchen.gutachter2.fullName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag1CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
@@ -29,11 +29,11 @@
         <f:case value="a2">
             <div class="commintstep">
             <f:if condition="{ansuchen.{property}GsCommentInternalStep}">
-                <label>interner Kommentar der Geschäftsstelle:</label>
+                <label>Geschäftsstelle:</label>
                 <p><f:format.nl2br>{ansuchen.{property}GsCommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
-                <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
+                <label>{ansuchen.gutachter1.fullName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
             <f:form.textarea property="{property}Ag2CommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
@@ -41,16 +41,17 @@
             <f:form.hidden property="{property}GsCommentInternalStep" id="{property}GsCommentInternalStep" value="{ansuchen.{property}GsCommentInternalStep}" />
         </f:case>
         <f:case value="gs">
+            
             <div class="commintstep">
             <f:if condition="{ansuchen.{property}Ag1CommentInternalStep}">
-                <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
+                <label>{ansuchen.gutachter1.fullName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag1CommentInternalStep}</f:format.nl2br></p>
             </f:if>
             <f:if condition="{ansuchen.{property}Ag2CommentInternalStep}">
-                <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
+                <label>{ansuchen.gutachter2.fullName}:</label>
                 <p><f:format.nl2br>{ansuchen.{property}Ag2CommentInternalStep}</f:format.nl2br></p>
             </f:if></div>
-            <f:form.textarea property="{property}GsCommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
+            <f:form.textarea property="{property}GsCommentInternalStep" class="komm-intern-textarea komm-intern-gs" id="comment1-{property}"  />
             <f:form.hidden property="{property}Ag1CommentInternalStep" id="{property}Ag1CommentInternalStep" value="{ansuchen.{property}Ag1CommentInternalStep}" />
             <f:form.hidden property="{property}Ag2CommentInternalStep" id="{property}Ag2CommentInternalStep" value="{ansuchen.{property}Ag2CommentInternalStep}" />
         </f:case>

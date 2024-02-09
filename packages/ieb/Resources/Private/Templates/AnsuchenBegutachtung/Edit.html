@@ -9,6 +9,8 @@
 
     <div class="abstand-gross"></div>
 
+
+
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}" id="ansuchenbegutachtung">
         {stammdaten -> f:variable(name: 'stammdatenorig')} 
         {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
@@ -20,6 +22,7 @@
         {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
         {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
 
+        <div id="username" class="hidden">{currentUser.first_name} {currentUser.last_name}</div>
         
         <f:if condition="{ansuchen.gutachter1.uid}=={currentUser.uid}"><f:variable name="commentuser">a1</f:variable></f:if>
         <f:if condition="{ansuchen.gutachter2.uid}=={currentUser.uid}"><f:variable name="commentuser">a2</f:variable></f:if>
@@ -30,9 +33,8 @@
             <f:variable name="difftyp">1</f:variable>
         </f:if>
         <f:if condition="{ansuchen.kopieVon} && {ansuchen.status} == 30">
-            <f:variable name="difftyp">2</f:variable>
+            <f:variable name="difftyp">3</f:variable>
         </f:if>
-
 
         <div class="begutachtung-kopf row">
             <div class="col">
@@ -79,8 +81,6 @@
                 </div>
             </div>
         </f:if>
-
-            
 
         <div class="begutachtung-kriterium row status-{stammdatenorig.reviewA1Status}" id="kA1">
             <div class="col">
@@ -238,8 +238,19 @@
                     <div class="abstand-mittel"></div>
                 </div>
                 <div class="rechts col-5">
-                    
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <f:switch expression="{stammdatenorig.reviewA1Status}">
+                        <f:case value="1"><span class="knopfrund auflage-1"></span></f:case>
+                        <f:case value="2"><span class="knopfrund achtung-gelb"></span></f:case>
+                        <f:case value="33"><span class="knopfrund auflage-3"></span></f:case>
+                        <f:case value="4"><span class="knopfrund auflage-4"></span></f:case>
+                    </f:switch>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="knopf stammdatenbegutachtungsoeffner" style="width:400px;">Stammdaten-Begutachtung öffnen</div></div>
+
+                    <div class="hidden stammdatenbegutachtungsfeld">
                     <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA1', status:stammdatenorig.reviewA1Status, comments:stammdatenorig.reviewA1CommentInternalData, tb:textbausteine.a1,commentuser:commentuser, commgs:stammdatenorig.reviewA1GsCommentInternalStep, commag1:stammdatenorig.reviewA1Ag1CommentInternalStep, commag2:stammdatenorig.reviewA1Ag2CommentInternalStep, ansuchen:ansuchen}" />
+                    </div>
                 </div>
             
             </div>
@@ -353,12 +364,25 @@
                         </div>
                     </div>
                     <div class="rechts col-5">
+                        <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <f:switch expression="{stammdatenorig.reviewA2Status}">
+                                <f:case value="1"><span class="knopfrund auflage-1"></span></f:case>
+                                <f:case value="2"><span class="knopfrund achtung-gelb"></span></f:case>
+                                <f:case value="3"><span class="knopfrund achtung-orange"></span></f:case>
+                                <f:case value="4"><span class="knopfrund auflage-4"></span></f:case>
+                            </f:switch>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+        
+                            <div class="hidden stammdatenbegutachtungsfeld">
+
                         <f:if condition="{stammdaten.qmsTyp}=1">
                             <label>Das ö-Cert läuft ab am
                                 <f:render partial="Form/Input" arguments="{property:'stammdatenReviewOecertFrist',isDate:1,value:begutachtung.stammdatenReviewOecertFrist}" />
                             </label>
                         </f:if>
                         <f:render partial="AnsuchenBegutachtung/CommentStammdaten" arguments="{property:'stammdatenReviewA2', status:stammdatenorig.reviewA2Status, comments:stammdatenorig.reviewA2CommentInternalData, tb:textbausteine.a2,commentuser:commentuser, commgs:stammdatenorig.reviewA2GsCommentInternalStep, commag1:stammdatenorig.reviewA2Ag1CommentInternalStep, commag2:stammdatenorig.reviewA2Ag2CommentInternalStep, ansuchen:ansuchen}" />
+                        </div>
                     </div>
 
                 </div>
@@ -391,8 +415,16 @@
                         </div>
                         <div class="kriteriumteil">
                             <h3>B.1.2 Kompetenzbereiche</h3>
-                            <div class="erlaeuterung {f:if condition:'{ansuchen.typ}==2', then:'notvisible'}">
-                                <p class="hinweis">Hinweis: Neben den Lernkompetenzen sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                            <div class="erlaeuterung">
+                                <f:if condition="{ansuchen.typ}==1">
+                                    <f:then>
+                                        <p class="hinweis">Hinweis: Neben der Lernkompetenz sind zumindest zwei weitere Kompetenzfelder auszuwählen.</p>
+                                    </f:then>
+                                    <f:else>
+                                        <p class="hinweis">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben.</p>
+                                    </f:else>
+                                </f:if>
+                                
                             </div>
                             <ul>
                                 <f:if condition="{ansuchen.typ}==1">
@@ -471,7 +503,7 @@
 
                     </div>
                     <div class="rechts col-5">
-
+                        
                         <f:render partial="AnsuchenBegutachtung/CommentDiff" arguments="{
                             reviewStatus:ansuchen.kopieVon.reviewB1Status, 
                             reviewIntern: ansuchen.kopieVon.reviewB1CommentInternalData, 
@@ -486,7 +518,8 @@
                             comments:ansuchen.reviewB1CommentInternalData, 
                             tb:textbausteine.b1,
                             commentuser:commentuser,
-                            ansuchen:ansuchen    
+                            ansuchen:ansuchen,
+                            currentUser: currentUser,
                         }" />
 
                         
@@ -1075,12 +1108,14 @@
                                         <f:if condition="{ansuchen.typ}==1">
                                             <f:then>
                                                 <div class="status-babi">
+                                                    <span class="weiss trainerbabifrist"><f:format.date format="d.m.Y">{tt.reviewFrist}</f:format.date></span>
                                                     <span class="titleview person-statuskugel-a person-statuskugel status-{tt.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
                                                     <span class="titleview person-statuskugel-b person-statuskugel status-{tt.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
                                                 </div>
                                             </f:then>
                                             <f:else>
                                                 <div class="status-psa">
+                                                    <span class="weiss trainerpsafrist"><f:format.date format="d.m.Y">{tt.reviewPsaFrist}</f:format.date></span>
                                                     <span class="titleview person-statuskugel-c person-statuskugel status-{tt.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
                                                     <span class="titleview person-statuskugel-d person-statuskugel status-{tt.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
                                                 </div>
@@ -1101,7 +1136,7 @@
                 <div class="row">
                     <div class="links col-7">
                         <f:if condition="{ansuchen.pruefbescheidDatei} && {ansuchen.typ}==2">
-                            <p>Ich bestätige, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde: {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}  <f:if condition="{diff.erklaerungd2}  && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p>
+                            <p>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde: {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}  <f:if condition="{diff.erklaerungd2}  && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p>
                         </f:if>
                         
                         <div class="erlaeuterung">
@@ -1165,6 +1200,7 @@
                                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: tt.gutachterLockedBy)}</f:variable>
                                         &nbsp;<span class="titleview knopfrund achtung-orange " title="Wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} begutachtet."></span>
                                     </f:if>
+                                        <span class="weiss beraterfrist"><f:format.date format="d.m.Y">{tt.reviewFrist}</f:format.date></span>
                                         <span class="titleview person-statuskugel person-statuskugel-a berater status-{tt.reviewC3Status}" title="Begutachtung Qualifikation"></span>
                                         <span class="titleview person-statuskugel person-statuskugel-b berater status-{tt.reviewC32Status}" title="Begutachtung Erfahrung"></span>
                                 </f:if>

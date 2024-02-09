@@ -114,12 +114,14 @@
 <h6>BERATUNG</h6>
 <div class="abstand-klein"></div>
 <f:for each="{beraterorig}" as="t">
+    <f:if condition="{t.reviewC3Status}>2 || {t.review32Status}>2">
     <div class="kommentar-check">
         <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation"></span>
             <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung"></span></p> 
         <p><f:format.nl2br>{t.reviewC3CommentTr} </f:format.nl2br></p>
     </div>
     <div class="abstand-mittel"></div>
+    </f:if>
 </f:for>
 <f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C3', title:'C.3 Beratung allgemein', ansuchen : ansuchen}" />
 

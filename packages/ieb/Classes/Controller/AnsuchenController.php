@@ -92,11 +92,12 @@ class AnsuchenController extends BaseController
         $stammdaten = $this->stammdatenRepository->getLatest();
         $jsonsOfCurrentAnsuchen = $this->ansuchenRepository->getJsonFromRelations($ansuchen, $stammdaten);
         $diffResult = (new DiffService($jsonsOfCurrentAnsuchen))->generateDiff($ansuchen->getUid(), $ansuchen->getVersionBasedOn());
-
+        $pid = $stammdaten->getPid();
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'stammdaten' => $stammdaten,
             'diff' => $diffResult,
+            'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
         ]);
         $this->addRelationDataToView();
         return $this->htmlResponse();

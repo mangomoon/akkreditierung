@@ -622,11 +622,20 @@ function qualifikationPsaSprache() {
 
         c = $(this).attr('id');
         //console.log(c);
-        $('.ansuchenlistenitem').sort(function(a, b) {
+        if (c == 'datum') {
+            $('.ansuchenlistenitem').sort(function(a, b) {
 
-            return $(a).data(c) > $(b).data(c) ? 1 : -1;
+                return $(a).data(c) < $(b).data(c) ? 1 : -1;
+    
+              }).appendTo('#ansuchenlistencontainer');
+        } else {
+            $('.ansuchenlistenitem').sort(function(a, b) {
 
-          }).appendTo('#ansuchenlistencontainer');
+                return $(a).data(c) > $(b).data(c) ? 1 : -1;
+    
+              }).appendTo('#ansuchenlistencontainer');
+        }
+        
     });
     $('#beraterliste .person').sort(function(a, b) {
         return $(a).data('name') > $(b).data('name') ? 1 : -1;
@@ -879,7 +888,6 @@ function qualifikationPsaSprache() {
      $('.textbausteinoeffner').click(function() {
          $(this).toggleClass('checked');
          $(this).next().toggle();
-         
      });
      $('.textbaustein').click(function() {
          var t = $(this).text() + " ";
@@ -895,6 +903,13 @@ function qualifikationPsaSprache() {
         })
      });
      // ########################################
+
+     // ######################################## Stammdtan in Begutachtung "Begutachtung öffnen"
+
+     $('.stammdatenbegutachtungsoeffner').click(function() {
+        $(this).toggleClass('checked');
+        $('.stammdatenbegutachtungsfeld').toggle();
+        });
 
 
      //  ########################################### FORM Begutachtung Trainer
@@ -974,6 +989,19 @@ function qualifikationPsaSprache() {
     // ######################################## SUBMIT UND (!) FORM Modal schliessen
 
 
+    // ######################################## Interner Kommentar mit GS personlaisieren
+
+    $('.komm-intern-gs').click(function() { 
+        n = $('#username').html();
+        t = $(this).val();
+        nt = t + '\n' + n + ': ';
+        $(this).val(nt);
+        //console.log(t);
+     }); 
+
+
+
+
 
      //  ########################################### FORM Begutachtung Personen: Aktualisieren von AnsuchenBegutachtung/SHOW
 
@@ -1047,7 +1075,7 @@ function qualifikationPsaSprache() {
         var c2 = 'status-'+s2;
         var a = '#berater-'+ t +' .person-statuskugel-a';
         var b = '#berater-'+ t +' .person-statuskugel-b';
-        
+        var f = '#berater-'+ t + ' .beraterfrist';
         $(a, window.parent.document).removeClass('status-0');
         $(a, window.parent.document).removeClass('status-1');
         $(a, window.parent.document).removeClass('status-2');
@@ -1070,6 +1098,12 @@ function qualifikationPsaSprache() {
             $('#sar').val(3);
         }  
 
+        if ((s1 == 1) && (s2 ==1)) {
+            $('#berater-frist').val('');
+        }
+        var xf = $('#berater-frist').val();
+        $(f, window.parent.document).html(xf);
+        
         parent.$.fancybox.close();
 
     });
@@ -1092,6 +1126,9 @@ function qualifikationPsaSprache() {
         var b = '#trainer-'+ t +' .person-statuskugel-b';
         var c = '#trainer-'+ t +' .person-statuskugel-c';
         var d = '#trainer-'+ t +' .person-statuskugel-d';
+        var fb = '#trainer-'+ t + ' .trainerbabifrist';
+        var fp = '#trainer-'+ t + ' .trainerpsafrist';
+
         // Bildungsbereich:
         var at = $('#at').html();
         
@@ -1135,6 +1172,17 @@ function qualifikationPsaSprache() {
         } else {
             $('#okbabi').val(1);
         }
+        if ((as == 1) && (bs ==1)) {
+            $('#trainer-frist').val('');
+        }
+        if ((cs == 1) && (ds ==1)) {
+            $('#trainer-psa-frist').val('');
+        }
+
+        var xfb = $('#trainer-frist').val();
+        var xfp = $('#trainer-psa-frist').val();
+        $(fb, window.parent.document).html(xfb);
+        $(fp, window.parent.document).html(xfp);
 
         // ############### SAR
 
@@ -1233,6 +1281,20 @@ function qualifikationPsaSprache() {
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="0" /> ');
         $("#csvtauglichesform").submit();
     });
+
+    // ######################################## ARCHIV Filter zurücksetzen
+    $('#zuruecksetzen').click(function() {
+        console.log('hui');
+        $('.filter').each(function() {
+            $(this).val('');
+        });
+        $('.filter3').each(function() {
+            $(this).val('-1');
+        });
+        // $('#bundesland').val('');
+    });
+
+
 
  });
 

@@ -31,7 +31,7 @@
             <f:if condition="{diff}  && {difftyp}">
                 <f:for each="{diff}" as="file">
                         <f:if condition="{file.publicUrl.previous}">
-                            <div class="diff"><span class="vorher">gelöscht:</span> <ieb:fal path="{file.publicUrl.previous}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></div>
+                            <div class="diff"><span class="vorher">gelöscht:</span> <ieb:fal path="{file.publicUrl.previous}"><a href="{file.publicUrl.previous}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></a></ieb:fal></div>
                         </f:if>
                 </f:for>
              </f:if>

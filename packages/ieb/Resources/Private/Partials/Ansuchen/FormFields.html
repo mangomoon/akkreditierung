@@ -32,7 +32,7 @@
     </div>
     <div class="col-6">
         <f.if condition="{ansuchen.reviewTotalCommentTr}">
-            <p><label>Kommentar: </label>
+            <p><label>Kommentar:</label>
             <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
         </f.if>
     </div>
@@ -264,9 +264,21 @@
         <p id="stammdatencheck" class="ok-{relations.stammdaten.ok} hinweis warnung">Angaben zu Stammdaten/Organisation fehlen!</p>
     </f:if>
 
-    <div class="formzeile">
-        <f:form.submit value="Organisation: Daten bearbeiten" name="saveAndStammdaten" class="formlink stammdaten titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung der Stammdaten/Organsiation. Das Ansuchen wird gespeichert."/>
-    </div>
+    
+    <f:if condition="{usedInAnsuchen}">
+        <f:then>
+           <p>Ein oder mehrere Ansuchen werden zur Zeit begutachtet, daher ist ein Bearbeiten der Stammdaten nicht möglich.<br>
+            <!--<f:for each="{usedInAnsuchen}" as="a">
+            {a.nummer} <i>{a.name}</i>,
+            </f:for>-->
+        </f:then>
+        <f:else>
+            <div class="formzeile">
+                <f:form.submit value="Organisation: Daten bearbeiten" name="saveAndStammdaten" class="formlink stammdaten titleview" title="Sie verlassen das Ansuchen und wechseln in die Bearbeitung der Stammdaten/Organsiation. Das Ansuchen wird gespeichert."/>
+            </div>
+        </f:else>
+    </f:if>
+
 </div>
 
 <!-- ################# SONDERANSUCHEN ################# -->
@@ -340,7 +352,7 @@
         </f:if>
         <f:if condition="({ansuchen.typ}==2) || {ansuchen.typ}==0)">
             <div class="erlaeuterung psa">
-                <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben..</p>
+                <p class="hinweis psa">Hinweis: Neben den vier verpflichtenden Kompetenzbereichen sind zwei Wahlmodule anzugeben.</p>
                 <div class="formfields row psa">
                     <div class="col-10">
                         <p>
@@ -596,13 +608,13 @@
 
     <div class="kriteriumteil">
         <div class="info babi"></div>
-        <div class="infobox" id="b-2-c-x-hilfe">
-            <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
-        </div>
-        <!--<div class="info psa"></div>
-        <div class="infobox" id="b-2-c-x-hilfe">
-            <p>Die Prüfungsvorbereitung orientiert sich an der Rechtsvorschrift für Pflichtschulabschluss-Prüfungs-Gesetz und der Verordnung der Bundesministerin für Unterricht, Kunst und Kultur über die Prüfungsgebiete der Pflichtschulabschluss-Prüfung.</p>
-        </div>-->
+        <f:if condition="{ansuchen.typ}==1">
+            <div class="infobox" id="b-2-c-x-hilfe">
+                <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
+            </div>
+        </f:if>
+
+
         <div class="erlaeuterung">
             <p class="babi">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen. </p>
             <p class="psa">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenzstand zu Beginn und begleitend erheben, sowie wie Sie die Teilnehmenden auf die Prüfung vorbereiten und welche Verfahren hier zum Einsatz kommen.</p>

@@ -339,7 +339,7 @@ class AnsuchenRepository extends BaseRepository
         ];
     }
 
-    public function getAllEsfVersonsOfAnsuchen(Ansuchen $ansuchen)
+    public function getAllEsfVersionsOfAnsuchen(Ansuchen $ansuchen)
     {
         $query = $this->getQuery();
         $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);

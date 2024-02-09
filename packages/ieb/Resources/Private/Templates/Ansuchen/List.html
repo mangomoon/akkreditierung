@@ -414,7 +414,8 @@
                                                     </f:then>
                                                     <f:else>
                                                         <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
-                                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
+                                                            <!-- <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action> -->
+                                                            <f:link.action class="knopf-quadratisch einreichen" title="TEST Ansuchen einreichen" action="trotzdem" arguments="{ansuchen:item}" ></f:link.action>
                                                         </f:if>
                                                     </f:else>
                                                     
@@ -427,7 +428,8 @@
                                                     </f:then>
                                                     <f:else>
                                                         <f:if condition="{item.einReichbarDurchTr} && {item.ok}">
-                                                            <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action>
+                                                            <!-- <f:link.action action="einreichen" arguments="{ansuchen : item}" class="knopf-quadratisch einreichen" title="Ansuchen einreichen"></f:link.action> -->
+                                                            <f:link.action class="knopf-quadratisch einreichen" title="TEST Ansuchen einreichen" action="trotzdem" arguments="{ansuchen:item}" ></f:link.action>
                                                         </f:if>
                                                     </f:else>
                                                     
@@ -456,7 +458,7 @@
     
     
 
-
+<!-- ######################################################## ARCHIV ########################################## -->
 
 
     <f:if condition="{archiviertexistiert}=='ja'">

@@ -39,7 +39,7 @@ class EsfController extends BaseController
     {
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
-            'versions' => $this->ansuchenRepository->getAllEsfVersonsOfAnsuchen($ansuchen),
+            'versions' => $this->ansuchenRepository->getAllEsfVersionsOfAnsuchen($ansuchen),
         ]);
     }
 

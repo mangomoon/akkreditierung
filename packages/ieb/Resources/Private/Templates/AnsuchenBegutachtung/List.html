@@ -5,7 +5,7 @@
 
 
         <div id="sort">
-            <span>SORTIEREN: &nbsp;&nbsp;</span><div id="bstatus" class="sortierbutton">Priorität</div> <div id="nummer" class="sortierbutton">Nummer</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Bildungsangebot</div> <div id="pid" class="sortierbutton">Organisation</div>
+            <span>SORTIEREN: &nbsp;&nbsp;</span><div id="bstatus" class="sortierbutton">Priorität</div> <div id="nummer" class="sortierbutton">Nummer</div> <div id="datum" class="sortierbutton">Einreichdatum</div> <div class="sortierbutton" id="status">Status</div> <div id="name" class="sortierbutton">Bildungsangebot</div> <div id="pid" class="sortierbutton">Organisation</div>
         </div>
         <div id="ansuchenlistencontainer">
         <f:for each="{ansuchen}" as="item">
@@ -15,24 +15,23 @@
             <f:if condition="{item.status}==40 || {item.status}==90 ||  {item.status}==170 ||  {item.status}==215 || {item.status}==155 || {item.status}==235">
                 <f:variable name="begutachtungsstatus">1</f:variable>
             </f:if>
+            <!-- b-status für AG -->
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                <f:if condition="({item.status} == 20) && !{item.gutachter1}">
-                    <!-- Ersteinreichung -->
+                <f:if condition="({item.status}<35) && !{item.gutachter1}">
                     <f:variable name="b-status">1</f:variable>
                 </f:if>
-                <f:if condition="({item.status} > 20) && !{item.gutachter1}">
-                    <!-- Zuteilung nicht erfgolt -->
+                <f:if condition="({item.status} > 30) && !{item.gutachter1} && !{item.gutachter2}">
                     <f:variable name="b-status">3</f:variable>
                 </f:if>
-                <f:if condition="({item.gutachter1} && !{item.statusAgEins}) || ({item.gutachter2} && !{item.statusAgZwei})">
-                    <!-- In begutachtung durch die AG -->
+                <f:if condition="(({item.status}==30 || {item.status}==85 || {item.status}==160 || {item.status}==210 || {item.status}==150 || {item.status}==230) && ({item.gutachter1} || ({item.gutachter2}))">
                     <f:variable name="b-status">4</f:variable>
                 </f:if>
-                <f:if condition="({item.gutachter1} && {item.statusAgEins} && !{item.gutachter2}) || ({item.gutachter2} && {item.statusAgEins} && {item.statusAgZwei})">
-                    <!-- Begutachtung durch AG abgeschlossen -->
+                <f:if condition="({item.status}==40 || {item.status}==90 || {item.status}==170 || {item.status}==215 || {item.status}==155 || {item.status}==235)">
                     <f:variable name="b-status">2</f:variable>
                 </f:if>
+
             </f:if>
+            <!-- b-status für AG -->
             <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg}">
                 <!-- alle Ansuchen: {item.nummer} -->
                 <f:variable name="b-status">99</f:variable>
@@ -105,7 +104,7 @@
 
 
 
-            <div class="ansuchenlistenitem" data-bstatus="{b-status}" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" 
+            <div class="ansuchenlistenitem <f:if condition='{item.gutachter1.uid}=={currentUser.uid} || {item.gutachter2.uid}=={currentUser.uid}'>ag-item</f:if>" data-bstatus="{b-status}" data-datum="<f:format.date format='Ymd'>{item.einreichDatum}</f:format.date>" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" 
             <f:if condition="{stammdaten.markenname}">
                 <f:then>
                     data-pid="<f:format.case mode='lower'>{stammdaten.markenname}</f:format.case>"
@@ -113,7 +112,17 @@
                 <f:else>
                     data-pid="<f:format.case mode='lower'>{stammdaten.name}</f:format.case>"
                 </f:else>
-            </f:if> >
+            </f:if> 
+            <f:if condition="{item.gutachter1.uid}=={currentUser.uid} || {item.gutachter2.uid}=={currentUser.uid}">
+                <f:then>
+                    data-ag="1"
+                </f:then>
+                <f:else>
+                    data-ag="2"
+                </f:else>
+                 
+            </f:if>
+            >
             <table class="ansuchenliste">
 
             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: item.gutachterLockedBy)}</f:variable>
@@ -317,7 +326,7 @@
                         </td>
                         <td class="td-knopf">
                             <f:if condition="({item.upcomingStatus}>0) && ({currentUser.usergroup}=={extensionConfiguration.usergroupGs})">                              
-                                <f:link.action action="show" arguments="{ansuchen : item}" title="Ansuchen checken" class="knopf-quadratisch einreichen"></f:link.action>
+                                <f:link.action action="show" arguments="{ansuchen : item}" title="Ansuchen abschicken" class="knopf-quadratisch einreichen"></f:link.action>
                             </f:if>
                             <f:if condition="({currentUser.usergroup}=={extensionConfiguration.usergroupAg}) && ({gutachter2.uid}=={currentUser.uid} || {gutachter1.uid}=={currentUser.uid})">
                             <f:if condition="({gutachter2} && ({item.statusAgEins} > 0) && ({item.statusAgZwei}) > 0)  || (!{gutachter2} && ({item.statusAgEins} > 0)) > 0)">
@@ -349,5 +358,28 @@
         </f:for>
     </div>
     
+
+    <f:if condition="{item.gutachter2.uid}=={currentUser.uid} || {item.gutachter2.uid}=={currentUser.uid}">
+        <f:then>
+            <script>
+                c = "ag";
+                $('.ansuchenlistenitem').sort(function(a, b) {
+
+                    return $(a).data(c) > $(b).data(c) ? 1 : -1;
+    
+                }).appendTo('#ansuchenlistencontainer');
+
+                $('.ag-item').last().addClass('last');
+              </script>
+        </f:then>
+        <f:else>
+              <script>
+                c = "bstatus";
+                $('.ansuchenlistenitem').sort(function(a, b) {
+                    return $(a).data(c) > $(b).data(c) ? 1 : -1;
+                }).appendTo('#ansuchenlistencontainer');
+              </script>
+        </f:else>
+    </f:if>
 </f:section>
 </html>

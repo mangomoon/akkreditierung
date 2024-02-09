@@ -54,8 +54,12 @@
             <f:if condition="{ansuchen.review{key}Ag1CommentInternalStep} || {ansuchen.review{key}Ag2CommentInternalStep} || {ansuchen.review{key}GsCommentInternalStep}">
                 <div class="commintstep">
                     <label>AKTUELLE KOMMENTARE</label>
-                    <p><span class="weiss">{ansuchen.gutachter1.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag1CommentInternalStep}</f:format.nl2br></p>
-                    <p><span class="weiss">{ansuchen.gutachter2.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag2CommentInternalStep}</f:format.nl2br></p>
+                    <f:if condition="{ansuchen.gutachter1}">
+                        <p><span class="weiss">{ansuchen.gutachter1.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag1CommentInternalStep}</f:format.nl2br></p>
+                    </f:if>
+                    <f:if condition="{ansuchen.gutachter2}">
+                        <p><span class="weiss">{ansuchen.gutachter2.fullName}:</span> <f:format.nl2br>{ansuchen.review{key}Ag2CommentInternalStep}</f:format.nl2br></p>
+                    </f:if>
                     <p><span class="weiss">Geschäftsstelle:</span> <f:format.nl2br>{ansuchen.review{key}GsCommentInternalStep}</f:format.nl2br></p>
                 </div>
             </f:if>

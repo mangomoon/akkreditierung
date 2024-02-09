@@ -594,7 +594,7 @@
                     
                     <div>
                         <div class="komm-int">
-                            <label class="komm-intern">intern</label>
+                            <label class="komm-intern">Interner Kommentar</label>
                             <f:for each="{trainer.reviewC2PsaCommentInternalData}" as="comment">
                                 <p>
                                     <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i:s')}]: </span> {comment.comment -> f:format.nl2br()}
@@ -604,16 +604,16 @@
 
 
                         <div class="komm-int-container">
-                            <label class="komm-intern">intern</label>
+                            <label class="komm-intern">Aktueller Kommentar</label>
                             <f:switch expression="{commentuser}">
                                 <f:case value="a1">
                                     <div class="commintstep">
                                     <f:if condition="{begutachtung.reviewC2PsaGsCommentInternalStep}">
-                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <label>Geschäftsstelle:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaGsCommentInternalStep}</f:format.nl2br></p>
                                     </f:if>
                                     <f:if condition="{begutachtung.reviewC2PsaAg2CommentInternalStep}">
-                                        <label>interner Kommentar {ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
+                                        <label>{ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaAg2CommentInternalStep}</f:format.nl2br></p>
                                     </f:if></div>
                                     <f:form.textarea property="reviewC2PsaAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-reviewC2PsaAg1CommentInternalStep"  />
@@ -623,11 +623,11 @@
                                 <f:case value="a2">
                                     <div class="commintstep">
                                     <f:if condition="{begutachtung.reviewC2PsaGsCommentInternalStep}">
-                                        <label>interner Kommentar der Geschäftsstelle:</label>
+                                        <label>Geschäftsstelle:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaGsCommentInternalStep}</f:format.nl2br></p>
                                     </f:if>
                                     <f:if condition="{begutachtung.reviewC2PsaAg1CommentInternalStep}">
-                                        <label>interner Kommentar {ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
+                                        <label>{ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaAg1CommentInternalStep}</f:format.nl2br></p>
                                     </f:if></div>
                                     <f:form.textarea property="reviewC2PsaAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-begutachtung.reviewC2PsaAg2CommentInternalStep"  />
@@ -637,11 +637,11 @@
                                 <f:case value="gs">
                                     <div class="commintstep">
                                     <f:if condition="{begutachtung.reviewC2PsaAg1CommentInternalStep}">
-                                        <label>interner Kommentar Erstbegutachtung:</label>
+                                        <label>{ansuchen.gutachter1.firstName} {ansuchen.gutachter1.lastName}:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaAg1CommentInternalStep}</f:format.nl2br></p>
                                     </f:if>
                                     <f:if condition="{begutachtung.reviewC2PsaAg2CommentInternalStep}">
-                                        <label>interner Kommentar Zweitbegutachtung:</label>
+                                        <label>{ansuchen.gutachter2.firstName} {ansuchen.gutachter2.lastName}:</label>
                                         <p><f:format.nl2br>{begutachtung.reviewC2PsaAg2CommentInternalStep}</f:format.nl2br></p>
                                     </f:if></div>
                                     <f:form.textarea property="reviewC2PsaGsCommentInternalStep" class="komm-intern-textarea" id="comment1-{property}"  />
