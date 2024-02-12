@@ -13,6 +13,10 @@
                 Nachname (oder Teil davon): &nbsp;&nbsp;
                 <f:form.textfield property="searchword" id="searchword" />
             </label>
+            <label for="trPid">
+                Träger: &nbsp;&nbsp;
+                <f:form.select property="trPid" id="trPid" options="{tr}" prependOptionValue="-1" prependOptionLabel=""/>
+            </label>
         </div>
 
         <f:form.submit class="knopf-s" value="Suchen"/>
