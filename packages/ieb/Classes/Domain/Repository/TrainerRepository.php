@@ -136,4 +136,12 @@ class TrainerRepository extends BaseRepository
 
         return $query;
     }
+
+    public function getAllForCsv()
+    {
+        $query = $this->getQuery();
+        return $query->execute();
+
+        // ...
+    }
 }

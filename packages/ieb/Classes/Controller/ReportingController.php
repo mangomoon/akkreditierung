@@ -10,6 +10,7 @@ use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use League\Csv;
+use League\Csv\CharsetConverter;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -73,6 +74,7 @@ class ReportingController extends ActionController
                 $fields = [
                     'name' => 'Name',
                     'nummer' => 'Nummer',
+                    'status' => 'Status',
                 ];
                 $csvContent = $this->generateCsv($items, $fields);
                 $this->csvResponse($csvContent, 'ansuchen.csv');
@@ -151,10 +153,17 @@ class ReportingController extends ActionController
 
     protected function generateCsv(array $rows, array $fieldlist): string
     {
+        $encoder = (new CharsetConverter())
+            ->inputEncoding('utf-8')
+            ->outputEncoding('iso-8859-15')
+        ;
         $csv = Csv\Writer::createFromString();
+        $csv->addFormatter($encoder);
         $csv->insertOne(array_values($fieldlist));
-        $csv->setDelimiter(";");
         $allowedKeys = array_keys($fieldlist);
+        $csv->setDelimiter(";");
+        // funktioniert nicht ...: 
+        $csv->encoding = 'iso-8859-15';
         foreach ($rows as $row) {
             $limitedSet = array_intersect_key($row, array_flip($allowedKeys));
             $csv->insertOne($limitedSet);

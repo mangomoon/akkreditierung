@@ -10,6 +10,8 @@ use GeorgRinger\Ieb\Domain\Model\Trainer;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
 use GeorgRinger\Ieb\Event\TrainerArchiveEvent;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use League\Csv;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -139,6 +141,36 @@ class TrainerController extends BaseController
             $this->trainerRepository->update($trainer);
         }
         $this->redirect('index');
+    }
+
+
+    protected function csvdownloadAction()
+    {
+        $rows = null;
+        $rows = $this->trainerRepository->getAllForCsv();
+
+        $fieldlist = [
+            'vorname' => 'Vorname',
+            'nachname' => 'Nachname',
+        ];
+        $csv = Csv\Writer::createFromString();
+        $csv->insertOne(array_values($fieldlist));
+        $csv->setDelimiter(";");
+        $allowedKeys = array_keys($fieldlist);
+        foreach ($rows as $row) {
+            $limitedSet = array_intersect_key($row, array_flip($allowedKeys));
+            $csv->insertOne($limitedSet);
+        }
+
+        return $csv->toString();
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Type: text/csv');
+        header('Content-Length: ' . strlen($result));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: no-cache');
+        echo $result;
+        exit;
     }
 
 }
