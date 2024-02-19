@@ -72,12 +72,13 @@ class ReportingController extends ActionController
 
             if ($reportingFilter->csv && !empty($items)) {
                 $fields = [
-                    'name' => 'Name',
                     'nummer' => 'Nummer',
+                    'name' => 'Name',
                     'status' => 'Status',
                 ];
                 $csvContent = $this->generateCsv($items, $fields);
-                $this->csvResponse($csvContent, 'ansuchen.csv');
+                $filename = date("Ymd") . '_IEB-Data.csv';
+                $this->csvResponse($csvContent, $filename);
             }
         }
 
@@ -126,7 +127,8 @@ class ReportingController extends ActionController
                     'nummer' => 'Nummer',
                 ];
                 $csvContent = $this->generateCsv($items, $fields);
-                $this->csvResponse($csvContent, 'ansuchen.csv');
+                $filename = date("Ymd") . '_ansuchen.csv';
+                $this->csvResponse($csvContent, $filename);
             }
         }
         $this->view->assignMultiple([
@@ -162,8 +164,6 @@ class ReportingController extends ActionController
         $csv->insertOne(array_values($fieldlist));
         $allowedKeys = array_keys($fieldlist);
         $csv->setDelimiter(";");
-        // funktioniert nicht ...: 
-        $csv->encoding = 'iso-8859-15';
         foreach ($rows as $row) {
             $limitedSet = array_intersect_key($row, array_flip($allowedKeys));
             $csv->insertOne($limitedSet);

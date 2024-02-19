@@ -991,13 +991,13 @@ function qualifikationPsaSprache() {
 
     // ######################################## Interner Kommentar mit GS personlaisieren
 
-    $('.komm-intern-gs').click(function() { 
-        n = $('#username').html();
-        t = $(this).val();
-        nt = t + '\n' + n + ': ';
-        $(this).val(nt);
-        //console.log(t);
-     }); 
+    // $('.komm-intern-gs').click(function() { 
+    //     n = $('#username').html();
+    //     t = $(this).val();
+    //     nt = t + '\n' + n + ': ';
+    //     $(this).val(nt);
+    //     //console.log(t);
+    //  }); 
 
 
 

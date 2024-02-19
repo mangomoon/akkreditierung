@@ -12,7 +12,18 @@
         <p>Die Akkreditierungsgruppe hat die Begutachtung des Ansuchen Nr. {ansuchen.nummer} ({ansuchen.name}) abgeschlossen.</p>
 
         <p>Der Kommentar der Akkreditierungsgruppe:</p>
-        <p><i><f:format.nl2br>{ansuchen.reviewTotalCommentInternal}</f:format.nl2br></i></p>
+        <!-- <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
+            <p>
+                <span class="name">{comment.user} [{comment.date -> f:format.date(format:'d.m.Y H:i')}]: </span> {comment.comment -> f:format.nl2br()}
+            </p>
+        </f:for> -->
+        <p style="font-size: 0.9em;text-transform: uppercase;">{ansuchen.gutachter1.fullName}:</p>
+        <p><f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br></p>
+        <p></p>
+        <p style="font-size: 0.9em;text-transform: uppercase;">{ansuchen.gutachter2.fullName}:</p>
+        <p><f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br></p>
+        <!-- <p style="font-size: 0.9em;text-transform: uppercase;">Geschäftsstelle:</p>
+        <p><f:format.nl2br>{ansuchen.reviewTotalGsCommentInternalStep}</f:format.nl2br></p> -->
 
 
         <f:render partial="Notification/Fuss" />

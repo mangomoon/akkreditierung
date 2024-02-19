@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.27 283.27">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 20px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #6b8884;
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #6b8884;
+      }
+
+      .cls-3 {
+        stroke-width: 10px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        fill: #a6bbb8;
+      }
+    </style>
+  </defs>
+  <g id="Ebene_1" data-name="Ebene 1">
+    <rect class="cls-2" x="3" y="3" width="277.27" height="277.27" rx="18.04" ry="18.04"/>
+  </g>
+  <g id="Ebene_3" data-name="Ebene 3">
+    <g>
+      <ellipse class="cls-5" cx="153.96" cy="165.92" rx="91.35" ry="89.6"/>
+      <polyline class="cls-3" points="151.34 76.32 151.58 164.25 90.9 100.87"/>
+    </g>
+    <g>
+      <path class="cls-1" d="M147,41.56s-61.92-12.95-92.45,39.42"/>
+      <polygon class="cls-4" points="78.2 88.36 34.12 67.9 45.93 100.16 78.2 88.36"/>
+    </g>
+  </g>
+</svg>

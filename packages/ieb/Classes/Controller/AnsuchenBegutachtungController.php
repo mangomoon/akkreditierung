@@ -59,7 +59,6 @@ class AnsuchenBegutachtungController extends BaseController
             $possibleStatus[$status] = $this->translate('ansuchen.status.' . $status, (string)$status) . ' [' . $status . ']';
         };
         $begutachtung->setByAnsuchen($ansuchen, $stammdaten);
-
         $diffCompareId = $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn();
         $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffCompareId);
         $this->view->assignMultiple([
