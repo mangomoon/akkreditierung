@@ -278,16 +278,16 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
-        // Zuteilung löschen:
-        $ansuchen->setZuteilungDatum(null);
-        $ansuchen->setGutachter1(null);
-        $ansuchen->setGutachter2(null);
-        $ansuchen->setReviewVerrechnung1('');
-        $ansuchen->setReviewVerrechnung2('');
-        $ansuchen->setReviewVerrechnungCheck1(false);
-        $ansuchen->setReviewVerrechnungCheck2(false);
-        $ansuchen->setStatusAgEins(0);
-        $ansuchen->setStatusAgZwei(0);
+        // // Zuteilung löschen:
+        // $ansuchen->setZuteilungDatum(null);
+        // $ansuchen->setGutachter1(null);
+        // $ansuchen->setGutachter2(null);
+        // $ansuchen->setReviewVerrechnung1('');
+        // $ansuchen->setReviewVerrechnung2('');
+        // $ansuchen->setReviewVerrechnungCheck1(false);
+        // $ansuchen->setReviewVerrechnungCheck2(false);
+        // $ansuchen->setStatusAgEins(0);
+        // $ansuchen->setStatusAgZwei(0);
         
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();

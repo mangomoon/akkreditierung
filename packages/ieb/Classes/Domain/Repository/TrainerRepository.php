@@ -144,4 +144,5 @@ class TrainerRepository extends BaseRepository
 
         // ...
     }
+
 }

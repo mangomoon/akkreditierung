@@ -61,7 +61,7 @@
 
                         <f:if condition="{ansuchen.status}==100">
 
-                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
+                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>)  im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
                             <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
@@ -69,7 +69,7 @@
                         
                         <f:if condition="{ansuchen.status}==140">
 
-                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
+                            <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>)  im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
 

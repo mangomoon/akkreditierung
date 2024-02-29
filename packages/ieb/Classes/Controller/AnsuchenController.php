@@ -164,6 +164,18 @@ class AnsuchenController extends BaseController
             $ansuchen->setUpcomingStatus(0);
             $ansuchen->setNotitzzettel('');
 
+            // Zuteilung löschen:
+            $ansuchen->setZuteilungDatum(null);
+            $ansuchen->setGutachter1(null);
+            $ansuchen->setGutachter2(null);
+            $ansuchen->setReviewVerrechnung1('');
+            $ansuchen->setReviewVerrechnung2('');
+            $ansuchen->setReviewVerrechnungCheck1(false);
+            $ansuchen->setReviewVerrechnungCheck2(false);
+            $ansuchen->setStatusAgEins(0);
+            $ansuchen->setStatusAgZwei(0);
+
+
             $previousStatus = AnsuchenStatus::tryFrom($ansuchen->getStatus());
             switch ($ansuchen->getStatus()) {
                 case 0:

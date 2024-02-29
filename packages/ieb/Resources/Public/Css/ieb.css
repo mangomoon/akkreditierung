@@ -2342,6 +2342,7 @@ ul.typo3-messages li {
 .personensuche td.organisation {
     min-width: 300px;
     font-size: 0.9em;
+    max-width: 330px;
 }
 .personensuche td.ansuchen {
     width: 150px;

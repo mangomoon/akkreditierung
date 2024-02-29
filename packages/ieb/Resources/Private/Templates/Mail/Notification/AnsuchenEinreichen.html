@@ -11,19 +11,19 @@
     <f:section name="Main">
         <p>Sehr geehrte Damen und Herren!</p>
 
-        <f:if condition="{ansuchen.status}==30">
+        <f:if condition="{ansuchen.status}<35">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
-        <f:if condition="{ansuchen.status}==85">
+        <f:if condition="{ansuchen.status}==85 || {ansuchen.status}==80">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) nach einem Nachbesserungsauftrag eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
-        <f:if condition="{ansuchen.status}==160">
+        <f:if condition="{ansuchen.status}==160 || {ansuchen.status}==100">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) nach "Akkreditiert" eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
-        <f:if condition="{ansuchen.status}==150">
+        <f:if condition="{ansuchen.status}==150 | {ansuchen.status}==140">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) nach "Akkreditiert mit Auflage" eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 

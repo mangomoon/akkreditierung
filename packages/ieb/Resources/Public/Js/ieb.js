@@ -418,6 +418,11 @@ function qualifikationPsaSprache() {
             $(this).toggle();
         });
     });
+    $('#codetoggler').click(function(){
+        $('code').each(function() {
+            $(this).toggle();
+        });
+    });
     $('#validieren-test').click(function(){
         console.log("--------- Bericht: -----------");
         validieren();
