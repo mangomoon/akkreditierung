@@ -61,6 +61,10 @@ class AnsuchenBegutachtungController extends BaseController
         $begutachtung->setByAnsuchen($ansuchen, $stammdaten);
         $diffCompareId = $diffWithAlternativeId ?: $ansuchen->getVersionBasedOn();
         $diffResult = (new DiffService())->generateDiff($ansuchen->getUid(), $diffCompareId);
+
+        $thisUid = $ansuchen->getUid();
+        $history = $this->ansuchenRepository->getAllPreviousVersions($thisUid);
+
         $this->view->assignMultiple([
             'ansuchen' => $ansuchen,
             'begutachtung' => $begutachtung,
@@ -72,6 +76,7 @@ class AnsuchenBegutachtungController extends BaseController
             'angebotVerantwortlicheLive' => $this->getAllVerantwortliche($ansuchen->getPid()),
             'stammdaten' => $stammdaten,
             'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
+            'history' => $history,
         ]);
         return $this->htmlResponse();
     }

@@ -8,8 +8,10 @@
     <f:render partial="FormErrors" />
 
     <div class="abstand-gross"></div>
-
-
+    
+    <div id="history">
+        <f:render partial="AnsuchenBegutachtung/History" arguments="{history:history}" />
+    </div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}" id="ansuchenbegutachtung">
         {stammdaten -> f:variable(name: 'stammdatenorig')} 
