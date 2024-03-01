@@ -1639,6 +1639,9 @@
             <f:form.submit value="" name="save" class="knopf-s sidebar speichern" title="Speichern"/>
             <f:form.submit value="" name="saveAndIndex" class="knopf-s sidebar speichern-zurueck" title="Speichern und zurück zur Liste"/>
             <f:link.action class="knopf-s sidebar zurueck" action="unlock"  arguments="{ansuchen:ansuchen}" title="Zurück zur Liste OHNE Speichern"></f:link.action> 
+            <f:if condition="{ansuchen.versionBasedOn}">
+                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : ansuchen.versionBasedOn}" class="knopf-s sidebar vorversion" title="Ansuchen Vorversion"></f:link.action>
+            </f:if>
             <div class="knopf-s" id="seite-nach-unten"></div>
         </div>
 

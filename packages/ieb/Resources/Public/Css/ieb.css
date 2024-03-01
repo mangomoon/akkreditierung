@@ -1332,7 +1332,7 @@ table.tx_ieb.trainer td {
     background-image: url('../Img/einreichen_warnung.svg');
     background-size: 100%;
 }
-.td-knopf .knopf-quadratisch.vorversion {
+.td-knopf .knopf-quadratisch.vorversion, .knopf-s.vorversion {
     background-image: url('../Img/vorversion.svg');
     background-size: 100%;
 }
