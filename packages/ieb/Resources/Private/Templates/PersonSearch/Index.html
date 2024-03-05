@@ -174,10 +174,12 @@
         <h3>&nbsp;<br>PROJEKTLEITUNG</h3>
         <f:if condition="{angebotverantwortlich}">
             <f:then>
+
                 <table class="personensuche">
                     <tbody>
                         <f:groupedFor as="groupedAngebotverantwortlich" groupBy="angebotVerantwortlichName" groupKey="angebotVerantwortlichName" each="{angebotverantwortlich}" >
                             <f:variable name="first">{groupedAngebotverantwortlich -> ieb:firstArray()}</f:variable>
+                            <f:if condition="{first.ansuchenNummer}">
                              <tr>
                                 <td class="name td-knopf">{angebotVerantwortlichName} &nbsp;&nbsp;&nbsp;</td>
                                 <td class="organisation">
@@ -224,6 +226,7 @@
                                 </td>
     
                             </tr>
+                        </f:if>
                         </f:groupedFor>
     
                         </tbody>
