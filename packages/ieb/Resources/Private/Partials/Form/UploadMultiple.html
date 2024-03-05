@@ -4,7 +4,7 @@
     <div class="formfields row" id="{id}">
         <div class="col-6">
             <label class="{f:if(condition: '{req}==reqfile', then: 'reqlabel', else: 'n' )}">{label}</label>
-            <ieb:form.uploadMultiple property="{property}" id="{property}" class="uploadfileinput titleview <f:if condition='({status}>2)'>status-negativ</f:if>" title="Um mehrere Dateien upzuloaden, können Sie im aufgehenden Fenster mehrere Dateien mit Strg + Klick (Windows) bzw. Ctrl + Klick (Mac) auswählen!"/>
+            <ieb:form.uploadMultiple property="{property}" id="{property}" class="uploadfileinput titleview <f:if condition='({status}>2)'>status-negativ</f:if>" title="Um mehrere Dateien upzuloaden, können Sie im aufgehenden Fenster mehrere Dateien mit Strg + Klick (Windows) bzw. Ctrl + Klick (Mac) auswählen!" additionalAttributes="{accept:'.pdf,.doc,.docx,.xls,.xlsx,.odt,.rtf,.jpg,.jpeg,.gif'}"/>
         </div>
         <div class="col-6">
             <f:if condition="{anmerkung}">

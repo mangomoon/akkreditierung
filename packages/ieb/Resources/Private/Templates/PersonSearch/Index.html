@@ -76,8 +76,16 @@
 
 
                                             <li class="td-knopf">
-                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                <f:if condition="{groupItem.ansuchenNummer}==''">
+                                                    <f:then>
+                                                        –
+                                                    </f:then>
+                                                    <f:else>
+                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
                                                 <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                                
                                             </li>
 
 
@@ -135,8 +143,16 @@
                                     <ul>
                                     <f:for each="{groupedBerater}" as="groupItem">
                                         <li class= "td-knopf">
-                                            {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                            <f:if condition="{groupItem.ansuchenNummer}==''">
+                                                    <f:then>
+                                                        –
+                                                    </f:then>
+                                                    <f:else>
+                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
                                             <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                            
                                         </li>
                                     </f:for>
                                     </ul>
@@ -153,6 +169,72 @@
                 <div>Keine Berater gefunden</div>
             </f:else>
         </f:if>
+
+
+        <h3>&nbsp;<br>PROJEKTLEITUNG</h3>
+        <f:if condition="{angebotverantwortlich}">
+            <f:then>
+                <table class="personensuche">
+                    <tbody>
+                        <f:groupedFor as="groupedAngebotverantwortlich" groupBy="angebotVerantwortlichName" groupKey="angebotVerantwortlichName" each="{angebotverantwortlich}" >
+                            <f:variable name="first">{groupedAngebotverantwortlich -> ieb:firstArray()}</f:variable>
+                             <tr>
+                                <td class="name td-knopf">{angebotVerantwortlichName} &nbsp;&nbsp;&nbsp;</td>
+                                <td class="organisation">
+                                    
+                                    <f:if condition="{first.stammdatenMarkenname}">
+                                        <f:then>
+                                            {first.stammdatenMarkenname} ({first.stammdatenName})
+                                        </f:then>
+                                        <f:else>
+                                            {first.stammdatenName}
+                                        </f:else>
+                                    </f:if><br>
+                                    <a href="mailto:{first.email}">{first.email}</a>&nbsp;&nbsp;&nbsp;Tel.: {first.telefon}
+                                </td>
+                                <td>
+                                    <f:switch expression="{first.review_c1_babi}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="Managament: ohne Begutachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Managament: ok"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Managament: nicht-ok"></span></f:case>
+                                </f:switch>
+                                <f:switch expression="{first.review_c1_psa}">
+                                    <f:case value="0"><span class="titleview knopfrund in-begutachtung" title="Pädagogik: ohne Begutachtung"></span></f:case>
+                                    <f:case value="1"><span class="titleview knopfrund auflage-1" title="Pädagogik: ok"></span></f:case>
+                                    <f:case value="4"><span class="titleview knopfrund auflage-4" title="Pädagogik: nicht-ok"></span></f:case>
+                                </f:switch>
+                                </td>
+                                <td class="ansuchen">
+                                    <ul>
+                                    <f:for each="{groupedAngebotverantwortlich}" as="groupItem">
+                                        <li class= "td-knopf">
+                                            <f:if condition="{groupItem.ansuchenNummer}==''">
+                                                    <f:then>
+                                                        –
+                                                    </f:then>
+                                                    <f:else>
+                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                            
+                                        </li>
+                                    </f:for>
+                                    </ul>
+                                </td>
+    
+                            </tr>
+                        </f:groupedFor>
+    
+                        </tbody>
+                    
+                </table>
+            </f:then>
+            <f:else>
+                <div>Keine Berater gefunden</div>
+            </f:else>
+        </f:if>
+
     </f:if>
 </f:section>
 

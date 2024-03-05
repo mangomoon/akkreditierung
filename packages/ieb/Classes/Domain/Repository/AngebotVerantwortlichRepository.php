@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Repository;
 
+use GeorgRinger\Ieb\Domain\Model\Dto\PersonSearch;
+use GeorgRinger\Ieb\Domain\Model\Dto\AngebotVerantwortlichSearch;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -29,5 +35,60 @@ class AngebotVerantwortlichRepository extends BaseRepository
             )
         );
         return $query->execute();
+    }
+
+
+
+    public function findInPersonSearch(PersonSearch $search)
+    {
+        if (!$search->isUsed()) {
+            return [];
+        }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_angebotverantwortlich');
+
+        $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+        $rows = $queryBuilder
+            ->select('tx_ieb_domain_model_angebotverantwortlich.*')
+            ->addSelectLiteral('CONCAT(tx_ieb_domain_model_angebotverantwortlich.vorname, \' \', tx_ieb_domain_model_angebotverantwortlich.nachname) as angebotVerantwortlichName')
+            ->addSelect('tx_ieb_domain_model_angebotverantwortlich.email  ')
+            ->addSelect('tx_ieb_domain_model_angebotverantwortlich.telefon')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
+            ->addSelect('stammdaten.name as stammdatenName')
+            ->addSelect('stammdaten.markenname as stammdatenMarkenname')
+            ->from('tx_ieb_domain_model_angebotverantwortlich')
+            ->leftJoin(
+                'tx_ieb_domain_model_angebotverantwortlich',
+                'tx_ieb_ansuchen_angebotverantwortlich_mm',
+                'tx_ieb_ansuchen_angebotverantwortlich_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_angebotverantwortlich_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_angebotverantwortlich_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_angebotverantwortlich_mm.uid_local'))
+            )
+            ->rightJoin(
+                'tx_ieb_domain_model_angebotverantwortlich',
+                'tx_ieb_domain_model_stammdaten',
+                'stammdaten',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.pid', $queryBuilder->quoteIdentifier('stammdaten.pid'))
+            )
+            ->where(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                    $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                ),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.deleted', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.hidden', 0),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
+            )
+            ->groupBy('tx_ieb_domain_model_angebotverantwortlich.uid', 'tx_ieb_domain_model_ansuchen.nummer')
+            ->execute()
+            ->fetchAllAssociative();
+        return $rows;
     }
 }

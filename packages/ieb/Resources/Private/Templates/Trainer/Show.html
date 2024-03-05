@@ -50,7 +50,7 @@
                     
                 </f:then>
                 <f:else>
-                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                    <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:trainer.reviewC21BabiStatus,
                         extern:trainer.reviewC21BabiCommentTr,
                         intern:trainer.reviewC21BabiCommentInternal,
@@ -121,7 +121,7 @@
                                 
                             </f:then>
                             <f:else>
-                                <f:render partial="Ansuchen/Kommentare" arguments="{
+                                <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                     status:trainer.reviewC21PsaStatus,
                                     extern:trainer.reviewC21PsaCommentTr,
                                     intern:trainer.reviewC21PsaCommentInternal,
@@ -179,14 +179,14 @@
                                 </f:then>
                                 <f:else>
                                     <label>Basisbildung:</label>
-                                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                                    <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22BabiStatus,
                                         extern:trainer.reviewC22BabiCommentTr,
                                         intern:trainer.reviewC22BabiCommentInternal,
                                         user:currentUser.usergroup
                                         }" />
                                     <label>PSA:</label>
-                                    <f:render partial="Ansuchen/Kommentare" arguments="{
+                                    <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22PsaStatus,
                                         extern:trainer.reviewC22PsaCommentTr,
                                         intern:trainer.reviewC22PsaCommentInternal,
@@ -199,7 +199,7 @@
                 </div>
 
                 <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                    <p>Tab schließen, um zum Ansuchen zurück zu kommen</p>
+                    <!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->
                 </f:if>
 </div>
 </f:section>

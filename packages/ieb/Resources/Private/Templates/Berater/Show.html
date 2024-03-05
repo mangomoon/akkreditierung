@@ -60,10 +60,10 @@
                     
                 </f:then>
                 <f:else>
-                    <f:render partial="Ansuchen/Kommentare" arguments="{
-                        status:trainer.reviewC3Status,
-                        extern:trainer.reviewC3CommentTr,
-                        intern:trainer.reviewC3CommentInternal,
+                    <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                        status:berater.reviewC3Status,
+                        extern:berater.reviewC3CommentTr,
+                        intern:berater.reviewC3CommentInternal,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -103,10 +103,10 @@
                     
                 </f:then>
                 <f:else>
-                    <f:render partial="Ansuchen/Kommentare" arguments="{
-                        status:trainer.reviewC32Status,
-                        extern:trainer.reviewC32CommentTr,
-                        intern:trainer.reviewC32CommentInternal,
+                    <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                        status:berater.reviewC32Status,
+                        extern:berater.reviewC32CommentTr,
+                        intern:berater.reviewC32CommentInternal,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -115,7 +115,7 @@
       </div>
   </div>
                 <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                    <p>Tab schließen, um zum Ansuchen zurück zu kommen</p>
+                    <!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->
                 </f:if>
 </div>
 </f:section>

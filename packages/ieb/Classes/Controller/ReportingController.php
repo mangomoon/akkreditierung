@@ -72,9 +72,11 @@ class ReportingController extends ActionController
 
             if ($reportingFilter->csv && !empty($items)) {
                 $fields = [
-                    'nummer' => 'Nummer',
                     'name' => 'Name',
+                    'nummer' => 'Nummer',
                     'status' => 'Status',
+                    'bundesland' => 'Bundesland',
+                    'typ' => 'Programmbereich',
                 ];
                 $csvContent = $this->generateCsv($items, $fields);
                 $filename = date("Ymd") . '_IEB-Data.csv';
