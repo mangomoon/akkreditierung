@@ -3,17 +3,20 @@
 
 <f:section name="content">
 
-    <f:if condition="{trainers -> f:count()} > 10">
         <div class="kriterium">
             <f:form action="index" object="{trainerSearch}" name="trainerSearch">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-4">
                         <label for="vorname">Vorname</label>
                         <f:form.textfield property="vorname" id="vorname" class="breite100" />
                     </div>
-                    <div class="col-5">
+                    <div class="col-4">
                         <label for="nachname">Nachname</label>
                         <f:form.textfield property="nachname" id="nachname" class="breite100" />
+                    </div>
+                    <div class="col-2">
+                        <label for="csvExport">CSV-Export</label>
+                        <f:form.checkbox id="csvExport" property="csvExport" value="1" />
                     </div>
                     <div class="col-2">
                         <f:form.submit value="Suche" class="knopf-s2 suche" />
@@ -33,7 +36,6 @@
                 </f:if>
             </f:form>
         </div>
-    </f:if>
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupTr}">
         <div class="formzeile">
             <f:link.action action="new" class="formlink trainer">Neue Person anlegen</f:link.action>
@@ -368,8 +370,6 @@
         </f:if>
 
     </f:if>
-
-    <!-- <f:link.action action="csvdownload" title="Daten als CSV herunterladen" class="knopf-s knopfersatz"  arguments="{trainer : trainer}">Trainer als CSV herunterladen</f:link.action> -->
 </f:section>
 
 </html>

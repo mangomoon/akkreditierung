@@ -30,10 +30,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Trainer',
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock,csvdownload',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ],
         [
-            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock,csvdownload',
+            \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
         ]
     );
 
