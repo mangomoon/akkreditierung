@@ -10,6 +10,7 @@ class TrainerSearch extends AbstractDomainObject
 
     public string $nachname = '';
     public string $vorname = '';
+    public bool $csvExport = false;
 
     public function isUsed(): bool
     {

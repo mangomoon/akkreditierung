@@ -9,13 +9,11 @@ use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
-use League\Csv;
-use League\Csv\CharsetConverter;
+use GeorgRinger\Ieb\Service\CsvService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ReportingController extends ActionController
 {
@@ -23,6 +21,7 @@ class ReportingController extends ActionController
 
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
+    protected CsvService $csvService;
 
     public function indexAction(): ResponseInterface
     {
@@ -49,8 +48,8 @@ class ReportingController extends ActionController
                 'telefon' => 'Telefon',
                 'email' => 'E-Mail',
             ];
-            $csvContent = $this->generateCsv($items, $fields);
-            $this->csvResponse($csvContent, 'Organisationen-ohne-Ansuchen.csv');
+            $csvContent = $this->csvService->generateCsv($items, $fields);
+            $this->csvService->response($csvContent, 'Organisationen-ohne-Ansuchen.csv');
         }
         $this->view->assign('items', $items);
         return $this->htmlResponse();
@@ -78,9 +77,9 @@ class ReportingController extends ActionController
                     'bundesland' => 'Bundesland',
                     'typ' => 'Programmbereich',
                 ];
-                $csvContent = $this->generateCsv($items, $fields);
+                $csvContent = $this->csvService->generateCsv($items, $fields);
                 $filename = date("Ymd") . '_IEB-Data.csv';
-                $this->csvResponse($csvContent, $filename);
+                $this->csvService->response($csvContent, $filename);
             }
         }
 
@@ -128,9 +127,9 @@ class ReportingController extends ActionController
                     'name' => 'Name',
                     'nummer' => 'Nummer',
                 ];
-                $csvContent = $this->generateCsv($items, $fields);
+                $csvContent = $this->csvService->generateCsv($items, $fields);
                 $filename = date("Ymd") . '_ansuchen.csv';
-                $this->csvResponse($csvContent, $filename);
+                $this->csvService->response($csvContent, $filename);
             }
         }
         $this->view->assignMultiple([
@@ -143,37 +142,6 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
-    protected function csvResponse(string $result, string $filename)
-    {
-        header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Type: text/csv');
-        header('Content-Length: ' . strlen($result));
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: no-cache');
-        echo $result;
-        exit;
-    }
-
-    protected function generateCsv(array $rows, array $fieldlist): string
-    {
-        $encoder = (new CharsetConverter())
-            ->inputEncoding('utf-8')
-            ->outputEncoding('iso-8859-15')
-        ;
-        $csv = Csv\Writer::createFromString();
-        $csv->addFormatter($encoder);
-        $csv->insertOne(array_values($fieldlist));
-        $allowedKeys = array_keys($fieldlist);
-        $csv->setDelimiter(";");
-        foreach ($rows as $row) {
-            $limitedSet = array_intersect_key($row, array_flip($allowedKeys));
-            $csv->insertOne($limitedSet);
-        }
-
-        return $csv->toString();
-    }
-
     private function isPartOfGs(): bool
     {
         return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);
@@ -183,6 +151,7 @@ class ReportingController extends ActionController
     public function initializeAction()
     {
         $this->extensionConfiguration = new ExtensionConfiguration();
+        $this->csvService = new CsvService();
     }
 
     public function injectReportingRepository(ReportingRepository $reportingRepository): void

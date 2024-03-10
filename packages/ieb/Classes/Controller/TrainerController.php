@@ -33,8 +33,9 @@ class TrainerController extends BaseController
 
     public function indexAction(TrainerSearch $trainerSearch = null): ResponseInterface
     {
+        $trainer = $this->trainerRepository->findBySearch($trainerSearch);
         $this->view->assignMultiple([
-            'trainers' => $this->trainerRepository->findBySearch($trainerSearch),
+            'trainers' => $trainer,
             'trainerSearch' => $trainerSearch,
         ]);
         return $this->htmlResponse();
