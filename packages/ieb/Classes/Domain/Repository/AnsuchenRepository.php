@@ -93,6 +93,22 @@ class AnsuchenRepository extends BaseRepository
         if ($filter->bundesland) {
             $constraints[] = $query->equals('bundesland', $filter->bundesland->value);
         }
+
+        if ($filter->ansuchenNummer) {
+            $constraints[] = $query->like('nummer', '%' . $filter->ansuchenNummer . '%');
+        }
+        if ($filter->status >= 0) {
+            $constraints[] = $query->equals('status', $filter->status);
+        }
+        if ($filter->trPid >= 0) {
+            $constraints[] = $query->equals('pid', $filter->trPid);
+        }
+        if ($filter->search) {
+            $escapedLikeString = '%' . $filter->search . '%';
+            $constraints[] = $query->like('name', $escapedLikeString);
+        }
+
+
         $query->matching($query->logicalAnd($constraints));
 
         return $query->execute();

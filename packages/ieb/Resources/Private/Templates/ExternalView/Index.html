@@ -7,6 +7,40 @@
 <f:section name="content">
     <h1>Akkreditierte Ansuchen</h1>
 
+    <f:form method="get" action="index" name="filter" object="{filter}">
+        <div class="row archivfilter" >
+            <div class="col-4">
+                <label for="trPid">
+                    Träger<br>
+                    <f:form.select property="trPid" id="trPid" class="filter3" options="{options.tr}" prependOptionValue="-1" prependOptionLabel=""/>
+                </label>
+            </div>
+            <div class="col-4">
+                <label for="status">
+                    Status<br>
+                    <f:form.select property="status" id="status"  class="filter3" options="{options.status}" prependOptionValue="-1" prependOptionLabel=""/>
+                </label>
+            </div>
+            <div class="col-2">
+                <label for="ansuchenNummer">
+                    Ansuchennummer<br>
+                    <f:form.textfield property="ansuchenNummer"  class="filter" id="ansuchenNummer" />
+                </label>
+            </div>
+        </div>
+        <div class="row archivfilter">
+            <div class="col-6">
+                <label for="searchText">
+                    Suchen im Ansuchen
+                    <f:form.textfield property="search"  class="filter" id="searchText" />
+                </label>
+            </div>
+        </div>
+        <f:form.submit class="knopf-s" value="Anzeigen"/> <div class="knopf-s knopfersatz" id="zuruecksetzen">Filter zurücksetzen</div>
+
+    </f:form>
+    <div class="abstand-gross"></div>
+
     <f:if condition="{ansuchen}">
         <f:then>
             
