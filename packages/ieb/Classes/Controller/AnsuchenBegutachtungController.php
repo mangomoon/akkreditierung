@@ -202,12 +202,16 @@ class AnsuchenBegutachtungController extends BaseController
             if ($gutachter1) {
                 $ansuchen->setGutachter1($gutachter1);
             }
+        } else {
+            $ansuchen->setGutachter1(null);
         }
         if ($zuteilung->getGutachter2()) {
             $gutachter2 = $this->userRepository->findByIdentifier($zuteilung->getGutachter2());
             if ($gutachter2) {
                 $ansuchen->setGutachter2($gutachter2);
             }
+        } else {
+            $ansuchen->setGutachter2(null);
         }
         // if($zuteilung->getUser()==$ansuchen->getGutachterLockedBy()) {
         //     $ansuchen->setGutachterLockedBy(0);
