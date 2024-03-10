@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\PersonSearch;
-use GeorgRinger\Ieb\Domain\Model\Dto\AngebotVerantwortlichSearch;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -84,6 +81,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
                 ),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.deleted', 0),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
             )
             ->groupBy('tx_ieb_domain_model_angebotverantwortlich.uid', 'tx_ieb_domain_model_ansuchen.nummer')

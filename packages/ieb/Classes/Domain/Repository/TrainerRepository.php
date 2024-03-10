@@ -96,6 +96,7 @@ class TrainerRepository extends BaseRepository
                 ),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
             )
             ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')

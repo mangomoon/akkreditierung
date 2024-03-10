@@ -91,6 +91,7 @@ class BeraterRepository extends BaseRepository
                 ),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
             )
             ->groupBy('tx_ieb_domain_model_berater.uid', 'tx_ieb_domain_model_ansuchen.nummer')
