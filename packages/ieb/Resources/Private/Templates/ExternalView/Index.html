@@ -7,6 +7,9 @@
 <f:section name="content">
     <h1>Akkreditierte Ansuchen</h1>
 
+    
+        
+
     <f:form method="get" action="index" name="filter" object="{filter}">
         <div class="row archivfilter" >
             <div class="col-4">
@@ -18,7 +21,15 @@
             <div class="col-4">
                 <label for="status">
                     Status<br>
-                    <f:form.select property="status" id="status"  class="filter3" options="{options.status}" prependOptionValue="-1" prependOptionLabel=""/>
+                    <f:form.hidden property="status" id="status"  class="filter3" />
+                    <select class="filter3" id="status" name="tx_ieb_externalview[filter][status]">
+                        <option value="-1"></option>
+                        <option value="100">AKKREDITIERT</option>
+                        <option value="140">AKKREDITIERT_MIT_AUFLAGEN</option>
+                        <option value="800">NICHT_AKKREDITERT</option>
+                        <option value="810">AKKREDITIERUNG_ENTZOGEN</option>
+                        <option value="820">AKKREDITIERUNG_AUSGESETZT</option>
+                    </select>
                 </label>
             </div>
             <div class="col-2">
@@ -28,14 +39,14 @@
                 </label>
             </div>
         </div>
-        <div class="row archivfilter">
+        <!-- <div class="row archivfilter">
             <div class="col-6">
                 <label for="searchText">
                     Suchen im Ansuchen
                     <f:form.textfield property="search"  class="filter" id="searchText" />
                 </label>
             </div>
-        </div>
+        </div> -->
         <f:form.submit class="knopf-s" value="Anzeigen"/> <div class="knopf-s knopfersatz" id="zuruecksetzen">Filter zurücksetzen</div>
 
     </f:form>
@@ -47,67 +58,191 @@
 
                 <f:for each="{ansuchen}" as="item">
                     <f:if condition="{item.version}>0">
-
-
-                    {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
-                    <table class="ansuchenliste archiv">
-                        <tr>
-                            <td colspan="4" class="ansuchenliste_tr">
-                                <f:if condition="{item.stammdatenMarkenname}">
-                                    <f:then>
-                                        <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
-                                    </f:then>
-                                    <f:else>
-                                        <span class="fett">{stammdaten.name}</span>
-                                    </f:else>
-                                </f:if>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ansuchenliste_ansuchennr">
-                                {item.nummer}<code>B: {item.bundesland}</code>
-                            </td>
-                            <td class="ansuchenliste_bezeichnung">
-                                <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
-                                <f:if condition="{item.status}==100 || {item.status}==140">
-                                    <f:then>
-                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
-                                    </f:then>
-                                    <f:else>
-                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
-                                    </f:else>
+                        <f:if condition="{currentUser.usergroup}=='16,14' || {currentUser.usergroup}=='14,16' || {currentUser.usergroup}=='14,17' || {currentUser.usergroup}=='17,14'">
+                            <f:then>
+                                <f:if condition="{currentUser.usergroup}=='16,14' || {currentUser.usergroup}=='14,16'">
+                                    <f:if condition="{item.typ}==2">
+                                        {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+                                        <table class="ansuchenliste archiv">
+                                            <tr>
+                                                <td colspan="4" class="ansuchenliste_tr">
+                                                    <f:if condition="{item.stammdatenMarkenname}">
+                                                        <f:then>
+                                                            <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                                        </f:then>
+                                                        <f:else>
+                                                            <span class="fett">{stammdaten.name}</span>
+                                                        </f:else>
+                                                    </f:if>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ansuchenliste_ansuchennr">
+                                                    {item.nummer}<code>B: {item.bundesland}</code>
+                                                </td>
+                                                <td class="ansuchenliste_bezeichnung">
+                                                    <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                                    <f:if condition="{item.status}==100 || {item.status}==140">
+                                                        <f:then>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                        </f:else>
+                                                        
+                                                    </f:if>
+                                                    
+                                                </td>
+                    
+                                                <td class="td-knopf">
+                                                    <f:if condition="{item.akkreditierungPdf}">
+                                                                <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                    <f:if condition="{falItems.0}">
+                                                                        <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                    </f:if>
+                                                                </ieb:falFromRecord>
+                                                            </f:if>
+                                                </td>
+                                                <td class="td-knopf">
+                                                    <f:if condition="{item.pp3} && {item.version}==0">
+                                                        <f:then>
+                                                            <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                                        </f:else>
+                                                    </f:if>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </f:if>
+                            </f:if>
+                            <f:if condition="{currentUser.usergroup}=='17,14'  || {currentUser.usergroup}=='14,17'">
+                                    <f:if condition="{item.typ}==1">
+                                        {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+                        <table class="ansuchenliste archiv">
+                            <tr>
+                                <td colspan="4" class="ansuchenliste_tr">
+                                    <f:if condition="{item.stammdatenMarkenname}">
+                                        <f:then>
+                                            <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                        </f:then>
+                                        <f:else>
+                                            <span class="fett">{stammdaten.name}</span>
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ansuchenliste_ansuchennr">
+                                    {item.nummer}<code>B: {item.bundesland}</code>
+                                </td>
+                                <td class="ansuchenliste_bezeichnung">
+                                    <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                    <f:if condition="{item.status}==100 || {item.status}==140">
+                                        <f:then>
+                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                        </f:then>
+                                        <f:else>
+                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                        </f:else>
+                                        
+                                    </f:if>
                                     
-                                </f:if>
-                                
-                            </td>
+                                </td>
+    
+                                <td class="td-knopf">
+                                    <f:if condition="{item.akkreditierungPdf}">
+                                                <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                    <f:if condition="{falItems.0}">
+                                                        <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                    </f:if>
+                                                </ieb:falFromRecord>
+                                            </f:if>
+                                </td>
+                                <td class="td-knopf">
+                                    <f:if condition="{item.pp3} && {item.version}==0">
+                                        <f:then>
+                                            <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
+                                        </f:then>
+                                        <f:else>
+                                            <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                            </tr>
+                        </table>
+                                    </f:if>
+    
+                            </f:if>
+                            </f:then>
+                            <f:else>
 
-                            <td class="td-knopf">
-                                <f:if condition="{item.akkreditierungPdf}">
-                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                <f:if condition="{falItems.0}">
-                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                    {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+                                    <table class="ansuchenliste archiv">
+                                        <tr>
+                                            <td colspan="4" class="ansuchenliste_tr">
+                                                <f:if condition="{item.stammdatenMarkenname}">
+                                                    <f:then>
+                                                        <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
+                                                    </f:then>
+                                                    <f:else>
+                                                        <span class="fett">{stammdaten.name}</span>
+                                                    </f:else>
                                                 </f:if>
-                                            </ieb:falFromRecord>
-                                        </f:if>
-                            </td>
-                            <td class="td-knopf">
-                                <f:if condition="{item.pp3} && {item.version}==0">
-                                    <f:then>
-                                        <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
-                                    </f:then>
-                                    <f:else>
-                                        <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
-                                    </f:else>
-                                </f:if>
-                            </td>
-                        </tr>
-                    </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ansuchenliste_ansuchennr">
+                                                {item.nummer}<code>B: {item.bundesland}</code>
+                                            </td>
+                                            <td class="ansuchenliste_bezeichnung">
+                                                <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                                <f:if condition="{item.status}==100 || {item.status}==140">
+                                                    <f:then>
+                                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                    </f:else>
+                                                    
+                                                </f:if>
+                                                
+                                            </td>
+                
+                                            <td class="td-knopf">
+                                                <f:if condition="{item.akkreditierungPdf}">
+                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                <f:if condition="{falItems.0}">
+                                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                </f:if>
+                                                            </ieb:falFromRecord>
+                                                        </f:if>
+                                            </td>
+                                            <td class="td-knopf">
+                                                <f:if condition="{item.pp3} && {item.version}==0">
+                                                    <f:then>
+                                                        <span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 ist in der neuen Akkreditierungsdatenbank noch nicht eingereicht worden. Details können daher noch nicht angezeigt werden."></span>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                            </f:else>
+                        </f:if>
+                        
+
+                    
 
                     </f:if>
                 </f:for>
         </f:then>
         <f:else>
-            <p>Keine Ansuchen vorhanden</p>
+            <p></p>
         </f:else>
     </f:if>
 </f:section>

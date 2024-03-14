@@ -92,6 +92,7 @@
                         <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span></p> 
                     <p><f:format.nl2br>{t.reviewC2BabiCommentTr} </f:format.nl2br></p>
                 </div>
+                <div class="abstand-mittel"></div>
             </f:if>  
         </f:then>
         <f:else>
@@ -101,12 +102,14 @@
                         <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (Psa)"></span></p> 
                     <p><f:format.nl2br>{t.reviewC2PsaCommentTr} </f:format.nl2br></p>
                 </div>
+                <div class="abstand-mittel"></div>
             </f:if>
         </f:else>
+        
     </f:if>
     
     
-    <div class="abstand-mittel"></div>
+    
     
 </f:for>
 <f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C2', title:'C.2 Training allgemein', ansuchen : ansuchen}" />
@@ -114,7 +117,7 @@
 <h6>BERATUNG</h6>
 <div class="abstand-klein"></div>
 <f:for each="{beraterorig}" as="t">
-    <f:if condition="{t.reviewC3Status}>2 || {t.review32Status}>2">
+    <f:if condition="{t.reviewC3Status}>2 || {t.reviewC32Status}>2">
     <div class="kommentar-check">
         <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation"></span>
             <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung"></span></p> 
@@ -123,8 +126,8 @@
     <div class="abstand-mittel"></div>
     </f:if>
 </f:for>
-<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C3', title:'C.3 Beratung allgemein', ansuchen : ansuchen}" />
 
+<f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'C3', title:'C.3 Beratung allgemein', ansuchen : ansuchen}" />
 
 
 <f:render partial="AnsuchenBegutachtung/CheckItem" arguments="{key:'Total', title:'Total', ansuchen : ansuchen}" />
