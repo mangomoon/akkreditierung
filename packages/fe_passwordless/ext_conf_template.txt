@@ -1,0 +1,5 @@
+# cat=import module/enable; type=string; label=Allowed contexts:Provice comma separated list of contexts which are allowed to use this service
+allowedContexts = Development/Ddev
+
+# cat=import module/enable; type=string; label=Used password
+password =

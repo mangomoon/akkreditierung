@@ -135,13 +135,13 @@ return [
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
         'transport_smtp_server' => '',
-        'transport_smtp_username' => '',
         'transport_smtp_stream_options' => [
             'ssl' => [
                 'verify_peer' => false,
                 'verify_peer_name' => false,
             ],
         ],
+        'transport_smtp_username' => '',
     ],
     'SYS' => [
         'caching' => [

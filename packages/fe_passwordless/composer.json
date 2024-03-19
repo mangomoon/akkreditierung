@@ -1,0 +1,29 @@
+{
+    "name": "studiomitte/fe-passwordless",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [
+        {
+            "name": "Georg Ringer",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^11 || ^12"
+    },
+    "autoload": {
+        "psr-4": {
+            "StudioMitte\\FePasswordless\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "StudioMitte\\FePasswordless\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "fe_passwordless"
+        }
+    }
+}

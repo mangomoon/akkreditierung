@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62e13c2aff797b024f953a44aa10b8da",
+    "content-hash": "a162ca7a536bafbe880a5c0cb197936d",
     "packages": [
         {
             "name": "b13/bolt",
@@ -3161,21 +3161,14 @@
         },
         {
             "name": "studiomitte/fe-passwordless",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/studiomitte/fe_passwordless.git",
-                "reference": "95ae0cf17f5b13b94280e4eae9c763d53458589a"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/studiomitte/fe_passwordless/zipball/95ae0cf17f5b13b94280e4eae9c763d53458589a",
-                "reference": "95ae0cf17f5b13b94280e4eae9c763d53458589a",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/fe_passwordless",
+                "reference": "8ea1d6822a1c9c4d0f704dbbd5f91f82af5e4540"
             },
             "require": {
-                "php": "^7.4 || ^8.1  || ^8.2",
-                "typo3/cms-core": "^10.4 || ^11 || ^12"
+                "typo3/cms-core": "^11 || ^12"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -3188,22 +3181,21 @@
                     "StudioMitte\\FePasswordless\\": "Classes"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
+            "autoload-dev": {
+                "psr-4": {
+                    "StudioMitte\\FePasswordless\\Tests\\": "Tests"
+                }
+            },
             "authors": [
                 {
                     "name": "Georg Ringer",
                     "role": "Developer"
                 }
             ],
-            "description": "This extension allows to log in with any frontend user by providing the username and previously defined password.",
-            "support": {
-                "issues": "https://github.com/studiomitte/fe_passwordless/issues",
-                "source": "https://github.com/studiomitte/fe_passwordless/tree/1.0.0"
-            },
-            "time": "2023-07-12T06:16:10+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "symfony/cache",
@@ -11115,6 +11107,7 @@
         "georgringer/ieb": 20,
         "mangomoon/mangomoon": 20,
         "mangomoon/mangomoonspecify": 20,
+        "studiomitte/fe-passwordless": 20,
         "typo3/cms-composer-installers": 20
     },
     "prefer-stable": false,
