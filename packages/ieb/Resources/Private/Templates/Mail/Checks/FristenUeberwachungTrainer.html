@@ -12,11 +12,11 @@
         <p style="font-size: 1.2em;font-weight:bold">{info.trainer.vorname} {info.trainer.nachname}</p>
         <p>Die Auflage/n:</p>
         <f:if condition="{info.trainer.review_c2_babi_comment_tr}">
-            
+            <p>FRIST: <f:format.date format="d.m.Y">{info.trainer.review_frist}</f:format.date></p>
             <p>Bereich Basisbildung: <br><f:format.nl2br>{info.trainer.review_c2_babi_comment_tr}</f:format.nl2br></p>
         </f:if>
         <f:if condition="{info.trainer.review_c2_psa_comment_tr}">
-            
+            <p>FRIST: <f:format.date format="d.m.Y">{info.trainer.review_psa_frist}</f:format.date></p>
             <p>Bereich Pflichtschulsabschluss: <br><f:format.nl2br>{info.trainer.review_c2_psa_comment_tr}</f:format.nl2br></p>
         </f:if>
         <f:render partial="Notification/CommentsPersonal"/>
