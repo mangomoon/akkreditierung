@@ -11,9 +11,11 @@ use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\CsvService;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ReportingController extends ActionController
 {
@@ -22,6 +24,7 @@ class ReportingController extends ActionController
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
     protected CsvService $csvService;
+    protected array $relationCache = [];
 
     public function indexAction(): ResponseInterface
     {
@@ -105,7 +108,6 @@ class ReportingController extends ActionController
             $split = GeneralUtility::intExplode('-', $selected);
             $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
         }
-        //DebuggerUtility::var_dump($items);
         $this->view->assignMultiple([
             'dateRanges' => $availableDateRanges,
             'selected' => $selected,
@@ -140,6 +142,154 @@ class ReportingController extends ActionController
 
 
         return $this->htmlResponse();
+    }
+
+    public function fullCsvAction(): ResponseInterface
+    {
+        $filter = new ReportingFilter();
+        $raws = $this->reportingRepository->getByFilter($filter);
+        $out = [];
+
+        foreach ($raws as $raw) {
+            // raw
+            $item = [];
+            foreach (['uid', 'nummer', 'name', 'nummer'] as $value) {
+                $item[$value] = $raw[$value];
+            }
+            try {
+                $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
+            } catch (\Exception $e) {
+                $item['status'] = 'unknown_' . $raw['status'];
+            }
+            try {
+                $item['bundesland'] = BundeslandEnum::tryFrom($raw['bundesland'])->name;
+            } catch (\Exception $e) {
+                $item['bundesland'] = 'uknown ' . $raw['bundesland'];
+            }
+            $item['typ'] = match ($raw['typ']) {
+                1 => 'BaBi',
+                2 => 'PSA',
+                default => 'unknown_' . $raw['typ'],
+            };
+            // boolean
+            foreach (['kinderbetreuung', 'einzelunterricht', 'pp3', 'fernlehre', 'pruefbescheid_check'] as $value) {
+                $item[$value] = $raw[$value] ? 'ja' : 'nein';
+            }
+
+            // date as date
+            foreach (['akkreditierung_datum'] as $value) {
+                if ($raw[$value]) {
+                    $date = strtotime($raw[$value]);
+                    $item[$value] = $date ? date('d.m.Y', $date) : '';
+                } else {
+                    $item[$value] = '';
+                }
+            }
+            // date as timestamp
+            foreach (['review_frist_pruefbescheid'] as $value) {
+                $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
+            }
+
+            $item['einreich_datum'] = '';
+            $item['zuteilung_datum'] = '';
+            $item['ende'] = '31.12.2028';
+            $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
+            if ($firstVersion) {
+                foreach (['einreich_datum', 'zuteilung_datum'] as $firstVersionDate) {
+                    if ($firstVersion[$firstVersionDate]) {
+                        $date = strtotime($firstVersion[$firstVersionDate]);
+                        $item[$firstVersionDate] = $date ? date('d.m.Y', $date) : '';
+                    } else {
+                        $item[$firstVersionDate] = '';
+                    }
+                }
+            }
+
+            // gutachter
+            foreach (['gutachter1', 'gutachter2'] as $gutachterId) {
+                $item[$gutachterId] = '';
+                if ($raw[$gutachterId] && !isset($this->relationCache['user'][$raw[$gutachterId]])) {
+                    $userRow = BackendUtility::getRecord('fe_users', $raw[$gutachterId], '*', '', false);
+                    if ($userRow) {
+                        $this->relationCache['user'][$userRow['uid']] = $userRow['first_name'] . ' ' . $userRow['last_name'];
+                    }
+                }
+                if ($this->relationCache['user'][$raw[$gutachterId]] ?? false) {
+                    $item[$gutachterId] = $this->relationCache['user'][$raw[$gutachterId]];
+                }
+            }
+
+            // verantwortliche
+            foreach (['verantwortliche', 'verantwortliche_mail'] as $verantwortliche) {
+                $item[$verantwortliche] = '';
+
+                $mm = $verantwortliche === 'verantwortliche_mail' ? 'tx_ieb_ansuchen_verantwortlichemail_angebotverantwortlich_mm' : 'tx_ieb_ansuchen_angebotverantwortlich_mm';
+                $users = $this->reportingRepository->getVerantwortliche($raw['uid'], $mm);
+                if ($users) {
+                    $userList = [];
+                    foreach ($users as $user) {
+                        $userList[] = sprintf('%s %s [%s] %s', $user['vorname'], $user['nachname'], $user['email'], $user['ok'] ? 'ok' : '');
+                    }
+                    $item[$verantwortliche] = implode('|', $userList);
+                }
+            }
+
+            //stammdaten
+            $item['markenname'] = '';
+            $item['review_oecert_frist'] = '';
+            if (!isset($this->relationCache['stammdaten'][$raw['pid']])) {
+                $this->relationCache['stammdaten'][$raw['pid']] = $this->reportingRepository->getLatestStammdaten($raw['pid']);
+            }
+            if ($this->relationCache['stammdaten'][$raw['pid']] ?? false) {
+                $stammdaten = $this->relationCache['stammdaten'][$raw['pid']];
+                $item['markenname'] = $stammdaten['markenname'] ?: $stammdaten['name'];
+                $item['review_oecert_frist'] = $stammdaten['review_oecert_frist'] ? date('d.m.Y', $stammdaten['review_oecert_frist']) : '';
+            }
+
+            // all frists
+            $frists = [];
+            // trainer
+            $trainer = $this->reportingRepository->getAllTrainer($raw['uid']);
+            if ($trainer) {
+                foreach ($trainer as $t) {
+                    $frist = $raw['typ'] === 1 ? $t['review_frist'] : $t['review_psa_frist'];
+                    if ($frist) {
+                        $frists[$frist] = $t['vorname'] . ' ' . $t['nachname'];
+                    }
+                }
+            }
+            // berater
+            $berater = $this->reportingRepository->getAllBerater($raw['uid']);
+            if ($berater) {
+                foreach ($berater as $b) {
+                    if ($b['review_frist']) {
+                        $frists[$b['review_frist']] = $b['vorname'] . ' ' . $b['nachname'];
+                    }
+                }
+
+            }
+
+            $item['nextFrist1'] = '';
+            $item['nextFrist2'] = '';
+
+            ksort($frists);
+            if ($frists) {
+                $firstKey = array_key_first($frists);
+                $item['nextFrist1'] = date('d.m.Y', $firstKey);
+                unset($frists[$firstKey]);
+
+                $nextFrists = [];
+                foreach ($frists as $key => $value) {
+                    $nextFrists[] = date('d.m.Y', $key);
+                }
+                $item['nextFrist2'] = implode('|', $nextFrists);
+            }
+
+            $out[] = $item;
+        }
+
+        DebuggerUtility::var_dump($out);
+        die;
     }
 
     private function isPartOfGs(): bool

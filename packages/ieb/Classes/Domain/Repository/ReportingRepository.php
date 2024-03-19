@@ -5,6 +5,7 @@ namespace GeorgRinger\Ieb\Domain\Repository;
 
 use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -169,6 +170,137 @@ class ReportingRepository
         }
         krsort($items);
         return $items;
+    }
+
+    public function getRecursiveAnsuchenUntilStatusFound(array $row, array $match): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+        $where = [];
+        $possibleMatch = [];
+        foreach ($match as $key => $status) {
+            $possibleMatch[$key] = $row[$key];
+            $where[] = $queryBuilder->expr()->eq($key, $queryBuilder->createNamedParameter($row[$key], \PDO::PARAM_INT));
+        }
+        if ($possibleMatch === $match) {
+            return $row;
+        }
+        if (!$row['version_based_on']) {
+            return [];
+        }
+        $parentRow = $queryBuilder
+            ->select('*')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(...$where)
+            ->execute()
+            ->fetchAssociative();
+        return $this->getRecursiveAnsuchenUntilStatusFound($parentRow, $match);
+    }
+
+    public function findAnsuchenByNummerAndVersion(string $nummer, int $version): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+        $row = $queryBuilder
+            ->select('*')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($nummer, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter($version, \PDO::PARAM_INT)),
+            )
+            ->execute()
+            ->fetchAssociative();
+        if (!$row) {
+            return [];
+        }
+        return $row;
+    }
+
+    public function getVerantwortliche(int $ansuchenId, $mm): array
+    {
+        if (!in_array($mm, ['tx_ieb_ansuchen_angebotverantwortlich_mm', 'tx_ieb_ansuchen_verantwortlichemail_angebotverantwortlich_mm'])) {
+            throw new \InvalidArgumentException('Invalid mm table');
+        }
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_angebotverantwortlich');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_angebotverantwortlich.*')
+            ->from('tx_ieb_domain_model_angebotverantwortlich')
+            ->rightJoin(
+                'tx_ieb_domain_model_angebotverantwortlich',
+                $mm,
+                'mm',
+                $queryBuilder->expr()->eq('mm.uid_foreign', $queryBuilder->quoteIdentifier('tx_ieb_domain_model_angebotverantwortlich.uid'))
+            )
+            ->where(
+                $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT))
+            )
+            ->execute()
+            ->fetchAllAssociative();
+    }
+
+    public function getLatestStammdaten(int $pid): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_stammdaten');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_stammdaten.*')
+            ->from('tx_ieb_domain_model_stammdaten')
+            ->where(
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, Connection::PARAM_INT))
+            )
+            ->orderBy('tstamp', 'DESC')
+            ->setMaxResults(1)
+            ->execute()
+            ->fetchAssociative();
+    }
+
+    public function getAllTrainer(int $ansuchenId): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_trainer');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_trainer.uid', 'vorname', 'nachname', 'review_frist', 'review_psa_frist')
+            ->from('tx_ieb_domain_model_trainer')
+            ->leftJoin(
+                'tx_ieb_domain_model_trainer',
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_ansuchen_trainer_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->where(
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
+
+    }
+
+    public function getAllBerater(int $ansuchenId): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_berater');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_berater.uid', 'vorname', 'nachname', 'review_frist')
+            ->from('tx_ieb_domain_model_berater')
+            ->leftJoin(
+                'tx_ieb_domain_model_berater',
+                'tx_ieb_ansuchen_berater_mm',
+                'tx_ieb_ansuchen_berater_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_berater_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_berater_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_berater_mm.uid_local'))
+            )
+            ->where(
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
+
     }
 
 
