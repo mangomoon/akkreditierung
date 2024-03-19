@@ -63,8 +63,6 @@
                 <f:else>
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:berater.reviewC3Status,
-                        extern:berater.reviewC3CommentTr,
-                        intern:berater.reviewC3CommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -106,14 +104,33 @@
                 <f:else>
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:berater.reviewC32Status,
-                        extern:berater.reviewC32CommentTr,
-                        intern:berater.reviewC32CommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
             </f:if>
           </div>
+          
       </div>
+
+      
+  </div>
+  <div class="begutachtung-kriterium">
+    <div class="row">
+        <div class="links auflagen col-6">
+            <f:if condition="{berater.reviewFrist}">
+                <p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{berater.reviewFrist}</f:format.date></span></p>
+            </f:if>
+            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                extern:berater.reviewC3CommentTr,
+                }" />
+        </div>
+        <div class="rechts col-6">
+            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                intern:berater.reviewC3CommentInternalData,
+                user:currentUser.usergroup
+                }" />
+        </div>
+    </div>
   </div>
                 <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                     <!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->

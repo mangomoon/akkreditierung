@@ -1476,7 +1476,7 @@ span.suchwort {
     vertical-align: top;
     padding-left: 30px;
 }
-.archiv-show .person {
+.archiv-show .person, .archiv-show .person-ansuchen {
     border-bottom: solid 1px var(--f3);
 }
 .person span.frist {
@@ -1575,6 +1575,7 @@ span.suchwort {
 
 .begutachtung-kriterium .rechts {
     background: var(--f2);
+    padding-bottom: 20px;
 }
 .begutachtung-kriterium .rechts.ohne-bg {
     background: var(--f0b);
@@ -1712,6 +1713,11 @@ table.ansuchenbegutachtung td.check {
 
 .show_kommentare {
     background: var(--f1);
+    padding: 2px 16px 8px 16px;;
+    font-size: 0.9em;
+}
+.auflagen .show_kommentare {
+    background: var(--fg0);
     padding: 2px 16px 8px 16px;;
     font-size: 0.9em;
 }
@@ -2006,7 +2012,7 @@ span.person-statuskugel.status-3 {
 .personen h2 {
     font-size: 18px;
 }
-.person summary {
+.person summary, .person-ansuchen summary {
     background: var(--f0);
     font-size: 1.1em;
     /* font-weight: 800; */
@@ -2015,18 +2021,23 @@ span.person-statuskugel.status-3 {
     list-style: none;
     cursor: pointer;
 }
-.person details > summary::before {
+.person details > summary::before, .person-ansuchen details > summary::before {
     width: 18px;
     height: 18px;
     margin-right: 6px;
     content: url('../Img/Quadrat_show.svg');
     display: inline-block;
 }
-.person details[open] > summary::before {
+.person details[open] > summary::before, .person-ansuchen details[open] > summary::before {
     content: url('../Img/close2.svg');
 }
 .person details[open] > summary {
     font-size: 1.5em;
+}
+.person-ansuchen details[open] {
+    padding-left: 21px;
+    margin-left: -21px;
+    border-left: solid 3px var(--f2);
 }
 .person details .trainer-show {
     background: var(--f0);
