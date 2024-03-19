@@ -226,13 +226,13 @@ class FristUeberwachungService
             foreach ($collectedRecipients as $data) {
                 $infos = [];
 
-                foreach ($data['records'] as $trainerId => $ansuchenIds) {
+                foreach ($data['records'] as $beraterId => $ansuchenIds) {
                     $ansuchen = [];
                     foreach ($ansuchenIds as $id) {
                         $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer');
                     }
                     $infos[] = [
-                        'berater' => BackendUtility::getRecord('tx_ieb_domain_model_berater', $trainerId, '*'),
+                        'berater' => BackendUtility::getRecord('tx_ieb_domain_model_berater', $beraterId, '*'),
                         'ansuchen' => $ansuchen,
                     ];
                 }

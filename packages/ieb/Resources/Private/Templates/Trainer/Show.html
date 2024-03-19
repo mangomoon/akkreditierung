@@ -52,8 +52,8 @@
                 <f:else>
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:trainer.reviewC21BabiStatus,
-                        extern:trainer.reviewC21BabiCommentTr,
-                        intern:trainer.reviewC21BabiCommentInternal,
+                        extern:trainer.reviewC2BabiCommentTr,
+                        intern:trainer.reviewC2BabiCommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -123,8 +123,8 @@
                             <f:else>
                                 <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                     status:trainer.reviewC21PsaStatus,
-                                    extern:trainer.reviewC21PsaCommentTr,
-                                    intern:trainer.reviewC21PsaCommentInternal,
+                                    extern:trainer.reviewC2PsaCommentTr,
+                                    intern:trainer.reviewC2PsaCommentInternalData,
                                     user:currentUser.usergroup
                                     }" />
                             </f:else>
@@ -182,14 +182,14 @@
                                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22BabiStatus,
                                         extern:trainer.reviewC22BabiCommentTr,
-                                        intern:trainer.reviewC22BabiCommentInternal,
+                                        intern:trainer.reviewC22BabiCommentInternalData,
                                         user:currentUser.usergroup
                                         }" />
                                     <label>PSA:</label>
                                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22PsaStatus,
                                         extern:trainer.reviewC22PsaCommentTr,
-                                        intern:trainer.reviewC22PsaCommentInternal,
+                                        intern:trainer.reviewC22PsaCommentInternalData,
                                         user:currentUser.usergroup
                                         }" />
                                 </f:else>

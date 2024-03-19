@@ -51,7 +51,8 @@
 
           </div>
           <div class="rechts ohne-bg col-5">
-
+          
+            
             <f:if condition="{relationUsagesInReview}">
                 <f:then>
                     <div class="show_kommentare">
@@ -63,7 +64,7 @@
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:berater.reviewC3Status,
                         extern:berater.reviewC3CommentTr,
-                        intern:berater.reviewC3CommentInternal,
+                        intern:berater.reviewC3CommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -106,7 +107,7 @@
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:berater.reviewC32Status,
                         extern:berater.reviewC32CommentTr,
-                        intern:berater.reviewC32CommentInternal,
+                        intern:berater.reviewC32CommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
