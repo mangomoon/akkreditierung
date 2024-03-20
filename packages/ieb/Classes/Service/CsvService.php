@@ -12,11 +12,7 @@ class CsvService
 
     public function generateCsv(iterable $items, array $fieldList): string
     {
-        $encoder = (new CharsetConverter())
-            ->inputEncoding('utf-8')
-            ->outputEncoding('iso-8859-15');
-        $csv = Csv\Writer::createFromString();
-        $csv->addFormatter($encoder);
+        $csv = $this->getCsv();
         $csv->insertOne(array_values($fieldList));
         $allowedKeys = array_keys($fieldList);
         $csv->setDelimiter(";");
@@ -32,6 +28,16 @@ class CsvService
         return $csv->toString();
     }
 
+    public function generateDirect(array $items, array $keys): string
+    {
+        $csv = $this->getCsv();
+        $csv->insertOne($keys);
+        $csv->setDelimiter(";");
+        $csv->insertAll($items);
+
+        return $csv->toString();
+    }
+
     public function response(string $result, string $filename)
     {
         header('Content-Disposition: attachment; filename="' . $filename . '"');
@@ -42,6 +48,19 @@ class CsvService
         header('Pragma: no-cache');
         echo $result;
         exit;
+    }
+
+    /**
+     * @return Csv\Writer
+     */
+    protected function getCsv(): Csv\Writer
+    {
+        $encoder = (new CharsetConverter())
+            ->inputEncoding('utf-8')
+            ->outputEncoding('iso-8859-15');
+        $csv = Csv\Writer::createFromString();
+        $csv->addFormatter($encoder);
+        return $csv;
     }
 
 }

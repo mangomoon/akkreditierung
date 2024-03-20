@@ -54,6 +54,9 @@ class ReportingRepository
         if ($filter->status >= 0) {
             $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \PDO::PARAM_INT));
         }
+        if ($filter->statusList) {
+            $constraints[] = $queryBuilder->expr()->in('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->statusList, Connection::PARAM_INT_ARRAY));
+        }
         if ($filter->trPid > 0) {
             $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
         }
@@ -172,28 +175,25 @@ class ReportingRepository
         return $items;
     }
 
-    public function getRecursiveAnsuchenUntilStatusFound(array $row, array $match): array
+    public function getRecursiveAnsuchen(array &$collection, array $row, string $fields = '*')
     {
+        $collection[] = $row;
         $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
-        $where = [];
-        $possibleMatch = [];
-        foreach ($match as $key => $status) {
-            $possibleMatch[$key] = $row[$key];
-            $where[] = $queryBuilder->expr()->eq($key, $queryBuilder->createNamedParameter($row[$key], \PDO::PARAM_INT));
-        }
-        if ($possibleMatch === $match) {
-            return $row;
-        }
+
         if (!$row['version_based_on']) {
-            return [];
+            return;
         }
         $parentRow = $queryBuilder
-            ->select('*')
+            ->select(...GeneralUtility::trimExplode(',', $fields, true))
             ->from('tx_ieb_domain_model_ansuchen')
-            ->where(...$where)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($row['version_based_on'], \PDO::PARAM_INT))
+            )
             ->execute()
             ->fetchAssociative();
-        return $this->getRecursiveAnsuchenUntilStatusFound($parentRow, $match);
+        if ($parentRow) {
+            $this->getRecursiveAnsuchen($collection, $parentRow, $fields);
+        }
     }
 
     public function findAnsuchenByNummerAndVersion(string $nummer, int $version): array

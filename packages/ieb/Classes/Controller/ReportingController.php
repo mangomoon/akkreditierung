@@ -144,16 +144,17 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function fullCsvAction(): ResponseInterface
+    public function fullCsvAction()
     {
         $filter = new ReportingFilter();
+        $filter->statusList = AnsuchenStatus::statusSichtbarDurchGs();
         $raws = $this->reportingRepository->getByFilter($filter);
         $out = [];
 
         foreach ($raws as $raw) {
             // raw
             $item = [];
-            foreach (['uid', 'nummer', 'name', 'nummer'] as $value) {
+            foreach (['uid', 'nummer', 'name', 'nummer', 'kompetenz1', 'kompetenz2', 'kompetenz3', 'kompetenz4', 'kompetenz5', 'kompetenz_text1'] as $value) {
                 $item[$value] = $raw[$value];
             }
             try {
@@ -176,6 +177,19 @@ class ReportingController extends ActionController
                 $item[$value] = $raw[$value] ? 'ja' : 'nein';
             }
 
+            $item['zuteilung_datum'] = '';
+            $allVersions = [];
+            $this->reportingRepository->getRecursiveAnsuchen($allVersions, $raw, 'uid,version,version_based_on,einreich_datum,zuteilung_datum');
+            // oldest first, latest last
+            $allVersions = array_reverse($allVersions);
+            foreach ($allVersions as $version) {
+                if ($version['zuteilung_datum']) {
+                    $date = strtotime($version['zuteilung_datum']);
+                    $item['zuteilung_datum'] = $date ? date('d.m.Y', $date) : '';
+                    break;
+                }
+            }
+
             // date as date
             foreach (['akkreditierung_datum'] as $value) {
                 if ($raw[$value]) {
@@ -191,11 +205,10 @@ class ReportingController extends ActionController
             }
 
             $item['einreich_datum'] = '';
-            $item['zuteilung_datum'] = '';
             $item['ende'] = '31.12.2028';
             $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
             if ($firstVersion) {
-                foreach (['einreich_datum', 'zuteilung_datum'] as $firstVersionDate) {
+                foreach (['einreich_datum'] as $firstVersionDate) {
                     if ($firstVersion[$firstVersionDate]) {
                         $date = strtotime($firstVersion[$firstVersionDate]);
                         $item[$firstVersionDate] = $date ? date('d.m.Y', $date) : '';
@@ -288,8 +301,8 @@ class ReportingController extends ActionController
             $out[] = $item;
         }
 
-        DebuggerUtility::var_dump($out);
-        die;
+        $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
+        $this->csvService->response($csvContent, 'IEB-Data.csv');
     }
 
     private function isPartOfGs(): bool
