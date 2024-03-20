@@ -9,6 +9,7 @@ class PersonSearch extends AbstractDomainObject
 {
 
     public string $searchword = '';
+    public bool $respectStatus = true;
 
     public function isUsed(): bool
     {

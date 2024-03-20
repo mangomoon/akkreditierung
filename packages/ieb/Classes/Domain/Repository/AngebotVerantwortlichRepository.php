@@ -39,10 +39,6 @@ class AngebotVerantwortlichRepository extends BaseRepository
 
     public function findInPersonSearch(PersonSearch $search)
     {
-        if (!$search->isUsed()) {
-            return [];
-        }
-
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_angebotverantwortlich');
 
         $where = [

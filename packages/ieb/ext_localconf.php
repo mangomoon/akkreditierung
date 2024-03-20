@@ -157,10 +157,10 @@ defined('TYPO3') || die();
         'Ieb',
         'PersonSearch',
         [
-            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index',
+            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index,csv',
         ],
         [
-            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index',
+            \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index,csv',
         ]
     );
 

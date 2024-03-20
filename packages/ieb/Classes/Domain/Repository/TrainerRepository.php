@@ -45,13 +45,32 @@ class TrainerRepository extends BaseRepository
 
     public function findInPersonSearch(PersonSearch $search)
     {
-        if (!$search->isUsed()) {
-            return [];
-        }
-
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_trainer');
 
         $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+
+        $where = [
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+        ];
+
+        if ($search->respectStatus) {
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_babi_status', 0),
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_babi_status', 0),
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_psa_status', 0),
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_psa_status', 0)
+            );
+        }
+
+        if ($search->searchword) {
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+            );
+        }
+
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_trainer.*')
             ->addSelectLiteral('CONCAT(tx_ieb_domain_model_trainer.vorname, \' \', tx_ieb_domain_model_trainer.nachname) as trainerName')
@@ -83,22 +102,7 @@ class TrainerRepository extends BaseRepository
                 'stammdaten',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.pid', $queryBuilder->quoteIdentifier('stammdaten.pid'))
             )
-            ->where(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_babi_status', 0),
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_babi_status', 0),
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_psa_status', 0),
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_psa_status', 0)
-                ),
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                    $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                ),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
-            )
+            ->where(...$where)
             ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')
             ->execute()
             ->fetchAllAssociative();

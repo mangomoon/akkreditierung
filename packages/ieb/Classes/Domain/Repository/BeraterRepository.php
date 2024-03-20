@@ -17,7 +17,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * (c) 2022 Georg Ringer <mail@ringer.it>
  */
-
 class BeraterRepository extends BaseRepository
 {
 
@@ -25,7 +24,7 @@ class BeraterRepository extends BaseRepository
     public function findBySearch(?BeraterSearch $search)
     {
         $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->setOrderings(['nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
         if (!$search) {
             return $query->execute();
         }
@@ -46,13 +45,29 @@ class BeraterRepository extends BaseRepository
 
     public function findInPersonSearch(PersonSearch $search)
     {
-        if (!$search->isUsed()) {
-            return [];
-        }
-
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_berater');
 
-        $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+        $where = [
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+        ];
+
+        if ($search->respectStatus) {
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c3_status', 0),
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c32_status', 0),
+            );
+        }
+
+        if ($search->searchword) {
+            $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->like('tx_ieb_domain_model_berater.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+            );
+        }
+
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_berater.*')
             ->addSelectLiteral('CONCAT(tx_ieb_domain_model_berater.vorname, \' \', tx_ieb_domain_model_berater.nachname) as beraterName')
@@ -80,36 +95,24 @@ class BeraterRepository extends BaseRepository
                 'stammdaten',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.pid', $queryBuilder->quoteIdentifier('stammdaten.pid'))
             )
-            ->where(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c3_status', 0),
-                    $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c32_status', 0),
-                ),
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->like('tx_ieb_domain_model_berater.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                    $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                ),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
-                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'))
-            )
+            ->where(...$where)
             ->groupBy('tx_ieb_domain_model_berater.uid', 'tx_ieb_domain_model_ansuchen.nummer')
             ->execute()
             ->fetchAllAssociative();
         return $rows;
     }
-    
-    public function getActive() {
+
+    public function getActive()
+    {
         $query = $this->getQuery();
-        $query->setOrderings(array('nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        $query->setOrderings(['nachname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
         $query->matching(
-            $query->logicalAnd (
+            $query->logicalAnd(
                 $query->equals('archiviert', false),
                 $query->equals('ok', true)
             )
         );
         return $query->execute();
     }
-    
+
 }
