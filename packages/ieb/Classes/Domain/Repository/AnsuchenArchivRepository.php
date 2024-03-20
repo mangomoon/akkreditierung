@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Repository;
 
+use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenArchivFilter;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class AnsuchenArchivRepository
 {
@@ -59,7 +61,8 @@ class AnsuchenArchivRepository
             $query->where(...$constraints);
         }
 
-        return $query->execute()->fetchAllAssociative();
+        $rows = $query->execute()->fetchAllAssociative();
+        return $this->switchToAlternativeVersion($rows);
     }
 
     public function getAllVersionsByNumber(string $ansuchenNummer, bool $excludeActive = true): array
@@ -81,6 +84,34 @@ class AnsuchenArchivRepository
         return $query->execute()->fetchAllAssociative();
     }
 
+    /**
+     * See https://github.com/georgringer/ieb/issues/138
+     * if status in AnsuchenStatus::statusBearbeitbarDurchTr
+     *  => switch with 1st version found in history where status in AnsuchenStatus::statusSichtbarDurchGs
+     */
+    protected function switchToAlternativeVersion(array $rows): array
+    {
+        $newRows = [];
+        foreach ($rows as $row) {
+            if (in_array($row['status'], AnsuchenStatus::statusBearbeitbarDurchTr(), true)) {
+                $versions = $this->getAllVersionsByNumber($row['nummer'], true);
+                if (empty($versions)) {
+                    // todo what to do
+                } else {
+                    foreach ($versions as $version) {
+                        if (in_array($version['status'], AnsuchenStatus::statusSichtbarDurchGs(), true)) {
+                            $newRows[] = $version;
+                            break;
+                        }
+                    }
+                }
+            } else {
+                $newRows[] = $row;
+            }
+        }
+
+        return $newRows;
+    }
 
     private function getQueryBuilder(string $tableName): QueryBuilder
     {
