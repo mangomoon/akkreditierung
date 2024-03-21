@@ -100,7 +100,7 @@
 							user:user,
 							typ:typ,
 							aktuell:berater,
-							key: 'C3',
+							
 							ag1:ag1,
 							ag2:ag2,
 							}" />
@@ -119,7 +119,7 @@
 		<f:else>
 			<div class="begutachtung-kriterium">
 				<div class="row">
-					<div class="links auflagen col-6">
+					<div class="links auflagen col-7">
 						<f:if condition="{berater.reviewFrist}">
 								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{berater.reviewFrist}</f:format.date></span></p>
 						</f:if>
@@ -129,14 +129,14 @@
 							user:user,
 							typ:typ,
 							aktuell:berater,
-							key: 'C3',
+							
 							ag1:ag1,
 							ag2:ag2,
 								}" />
 					</div>
-					<div class="rechts col-6">
+					<div class="rechts col-5">
 						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
-							status:berater.reviewC32Status,
+							
 							intern:berater.reviewC3CommentInternalData,
 							beraterorig:beraterorig,
 							user:user,
@@ -151,8 +151,6 @@
 			</div>
 			</f:else>
 		</f:if>
-					<f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-						<!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->
-					</f:if>
+
 	</div>
 </html>

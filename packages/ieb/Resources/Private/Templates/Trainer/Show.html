@@ -52,8 +52,6 @@
                 <f:else>
                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                         status:trainer.reviewC21BabiStatus,
-                        extern:trainer.reviewC2BabiCommentTr,
-                        intern:trainer.reviewC2BabiCommentInternalData,
                         user:currentUser.usergroup
                         }" />
                 </f:else>
@@ -123,8 +121,6 @@
                             <f:else>
                                 <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                     status:trainer.reviewC21PsaStatus,
-                                    extern:trainer.reviewC2PsaCommentTr,
-                                    intern:trainer.reviewC2PsaCommentInternalData,
                                     user:currentUser.usergroup
                                     }" />
                             </f:else>
@@ -181,15 +177,11 @@
                                     <label>Basisbildung:</label>
                                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22BabiStatus,
-                                        extern:trainer.reviewC22BabiCommentTr,
-                                        intern:trainer.reviewC22BabiCommentInternalData,
                                         user:currentUser.usergroup
                                         }" />
                                     <label>PSA:</label>
                                     <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                         status:trainer.reviewC22PsaStatus,
-                                        extern:trainer.reviewC22PsaCommentTr,
-                                        intern:trainer.reviewC22PsaCommentInternalData,
                                         user:currentUser.usergroup
                                         }" />
                                 </f:else>
@@ -197,7 +189,46 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="begutachtung-kriterium">
+                    <div class="row">
+                        <div class="links auflagen col-6">
+                            <p>BASISBILDUNG
+                            <f:if condition="{trainer.reviewFrist}">
+                                <span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span>
+                            </f:if></p>
+                            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                                extern:trainer.reviewC2BabiCommentTr,
+                                user:currentUser.usergroup
+                                }" />
+                        </div>
+                        <div class="rechts col-6">
+                            <p>&nbsp;</p>
+                            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                                intern:trainer.reviewC2BabiCommentInternalData,
+                                user:currentUser.usergroup
+                                }" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="links auflagen col-6">
+                            <p>PFLICHTSCHULSABSCHLUSS
+                            <f:if condition="{trainer.reviewPsaFrist}">
+                                <span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date></span>
+                            </f:if></p>
+                            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                                extern:trainer.reviewC2PsaCommentTr,
+                                user:currentUser.usergroup
+                                }" />
+                        </div>
+                        <div class="rechts col-6">
+                            <p>&nbsp;</p>
+                            <f:render partial="Ansuchen/KommentarePersonal" arguments="{
+                                intern:trainer.reviewC2PsaCommentInternalData,
+                                user:currentUser.usergroup
+                                }" />
+                        </div>
+                    </div>
+                  </div>
                 <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
                     <!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->
                 </f:if>

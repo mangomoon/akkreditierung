@@ -165,12 +165,11 @@
 								<f:if condition="{typ}==1">
 									<f:render partial="Ansuchen/KommentarePersonal" arguments="{
 											status:trainer.reviewC22BabiStatus,
-											extern:trainer.reviewC2BabiCommentTr,
-											intern:trainer.reviewC2BabiCommentInternalData,
+
 											user:user,
 											typ:typ,
 											aktuell:trainer,
-											key:'C2',
+
 											ag1:ag1,
 											ag2:ag2,
 											}" />
@@ -178,12 +177,11 @@
 								<f:if condition="{typ}==2">
 										<f:render partial="Ansuchen/KommentarePersonal" arguments="{
 											status:trainer.reviewC22PsaStatus,
-											extern:trainer.reviewC2PsaCommentTr,
-											intern:trainer.reviewC2PsaCommentInternalData,
+
 											user:user,
 											typ:typ,
 											aktuell:trainer,
-											key: 'C2',
+											
 											ag1:ag1,
 											ag2:ag2,
 											}" />
@@ -193,6 +191,100 @@
 							</div>
 						</div>
 					</div>
+
+
+					<!-- ######################## -->
+					<f:if condition="{typ}==1">
+					<f:if condition="{relationUsagesInReview}">
+		<f:then>
+			<div class="show_kommentare">
+				<p><label>Zur Zeit in Begutachtung</label></p>
+			</div>
+			
+		</f:then>
+		<f:else>
+			<div class="begutachtung-kriterium">
+				<div class="row">
+					<div class="links auflagen col-7">
+						<f:if condition="{trainer.reviewFrist}">
+								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span></p>
+						</f:if>
+						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
+							extern:trainer.reviewC2BabiCommentTr, 
+							trainerorig:trainerorig,
+							user:user,
+							typ:typ,
+							aktuell:trainer,
+							
+							ag1:ag1,
+							ag2:ag2,
+								}" />
+					</div>
+					<div class="rechts col-5">
+						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
+							
+							intern:trainer.reviewC2BabiCommentInternalData,
+							trainerorig:trainerorig,
+							user:user,
+							typ:typ,
+							aktuell:trainer,
+							key: 'C2',
+							ag1:ag1,
+							ag2:ag2,
+								}" />
+					</div>
+				</div>
+			</div>
+			</f:else>
+		</f:if>
+		</f:if>
+
+
+		<!-- ############################ -->
+		<f:if condition="{typ}==2">
+		<f:if condition="{relationUsagesInReview}">
+		<f:then>
+			<div class="show_kommentare">
+				<p><label>Zur Zeit in Begutachtung</label></p>
+			</div>
+			
+		</f:then>
+		<f:else>
+			<div class="begutachtung-kriterium">
+				<div class="row">
+					<div class="links auflagen col-7">
+						<f:if condition="{trainer.reviewFrist}">
+								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span></p>
+						</f:if>
+						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
+							extern:trainer.reviewC2PsaCommentTr, 
+							trainerorig:trainerorig,
+							user:user,
+							typ:typ,
+							aktuell:trainer,
+							
+							ag1:ag1,
+							ag2:ag2,
+								}" />
+					</div>
+					<div class="rechts col-5">
+						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
+							
+							intern:trainer.reviewC2PsaCommentInternalData,
+							trainerorig:trainerorig,
+							user:user,
+							typ:typ,
+							aktuell:trainer,
+							key: 'C2',
+							ag1:ag1,
+							ag2:ag2,
+								}" />
+					</div>
+				</div>
+			</div>
+			</f:else>
+		</f:if>
+		</f:if>
 	
 	</div>
 
