@@ -76,7 +76,6 @@ class FristUeberwachungService
         if (empty($this->records)) {
             return 0;
         }
-
         $this->send();
 
         if (!$this->skipPersistSent) {
@@ -403,7 +402,7 @@ class FristUeberwachungService
         $dateConstraints = [
             $queryBuilder->expr()->andX(
                 $queryBuilder->expr()->eq($configuration['t1'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-                $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
+                $queryBuilder->expr()->lte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
             ),
         ];
         $lastDayCount = 1;
@@ -411,7 +410,7 @@ class FristUeberwachungService
             $days = $lastDayCount = $configuration['t14AlternativeDays'] ?? 14;
             $dateConstraints[] = $queryBuilder->expr()->andX(
                 $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-                $queryBuilder->expr()->gte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
+                $queryBuilder->expr()->lte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
             );
             $emptyFields[] = $configuration['t14'];
         }
@@ -445,6 +444,7 @@ class FristUeberwachungService
         $fristField = $configuration['frist'];
         foreach ($rows as $row) {
             $relevantUpdateId = $row['relationUid'] ?? $row['uid'];
+            $row['frist_date'] = date('Y-m-d H:i:s', $row[$fristField]);
 
             if (!($configuration['t14Skip'] ?? false) && !$row[$t14Field] && $row[$fristField] - (86400 * ($configuration['t14AlternativeDays'] ?? 14)) > $GLOBALS['EXEC_TIME']) {
                 $this->records[$row['uid']][$type]['t14'][] = $row;
