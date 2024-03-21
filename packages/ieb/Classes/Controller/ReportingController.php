@@ -154,7 +154,7 @@ class ReportingController extends ActionController
         foreach ($raws as $raw) {
             // raw
             $item = [];
-            foreach (['uid', 'nummer', 'name', 'nummer', 'kompetenz1', 'kompetenz2', 'kompetenz3', 'kompetenz4', 'kompetenz5', 'kompetenz_text1'] as $value) {
+            foreach (['uid', 'nummer', 'name'] as $value) {
                 $item[$value] = $raw[$value];
             }
             try {
@@ -172,10 +172,26 @@ class ReportingController extends ActionController
                 2 => 'PSA',
                 default => 'unknown_' . $raw['typ'],
             };
+
             // boolean
             foreach (['kinderbetreuung', 'einzelunterricht', 'pp3', 'fernlehre', 'pruefbescheid_check'] as $value) {
                 $item[$value] = $raw[$value] ? 'ja' : 'nein';
             }
+
+            // kompetenzen
+            for ($i = 1; $i <= 10; $i++) {
+                $item['kompetenz' . $i] = '';
+            }
+            if ($raw['typ'] === 1) {
+                for ($i = 1; $i <= 5; $i++) {
+                    $item['kompetenz' . $i] = $raw['kompetenz' . $i];
+                }
+            } elseif ($raw['typ'] === 2) {
+                for ($i = 6; $i <= 10; $i++) {
+                    $item['kompetenz' . $i] = $raw['kompetenz' . ($i - 5)];
+                }
+            }
+            $item['kompetenz_text'] = $raw['kompetenz_text1'];
 
             $item['zuteilung_datum'] = '';
             $allVersions = [];
@@ -301,6 +317,7 @@ class ReportingController extends ActionController
             $out[] = $item;
         }
 
+//        print_r($out);die;
         $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
         $this->csvService->response($csvContent, 'IEB-Data.csv');
     }
