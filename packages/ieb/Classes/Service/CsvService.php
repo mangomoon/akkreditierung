@@ -31,10 +31,9 @@ class CsvService
     public function generateDirect(array $items, array $keys): string
     {
         $csv = $this->getCsv();
-        $csv->insertOne($keys);
         $csv->setDelimiter(";");
+        $csv->insertOne($keys);
         $csv->insertAll($items);
-
         return $csv->toString();
     }
 

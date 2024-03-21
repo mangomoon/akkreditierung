@@ -79,9 +79,10 @@ class PersonSearchController extends ActionController
             ];
             $csv[] = $line;
         }
+        $firstrow = array("Vorname","Nachname","Ansuchennummer");
 
-
-        $csvContent = $this->csvService->generateDirect($csv, array_keys($csv[0]));
+        // $csvContent = $this->csvService->generateDirect($csv, array_keys($csv[0]));
+        $csvContent = $this->csvService->generateDirect($csv, $firstrow);
         $this->csvService->response($csvContent, 'personen.csv');
     }
 

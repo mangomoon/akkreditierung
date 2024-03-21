@@ -92,11 +92,11 @@
                                                 <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierung_entscheidung_datum}</f:format.date>
                                             </f:then>
                                             <f:else>
-                                                <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierung_datum}</f:format.date>
+                                                <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.einreich_datum}</f:format.date>
                                             </f:else>
                                             
                                         </f:if>
-                                        <code>uid: {item.uid}</code>
+                                        <code>uid: {item.uid} status:{item.status} incoming:{item.review_incoming_status} version:{item.version}</code>
                                     </td>
 
                                     <td class="td-knopf">

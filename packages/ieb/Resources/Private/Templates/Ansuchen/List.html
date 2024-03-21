@@ -333,7 +333,8 @@
                                         </f:if>
                                         
                                         <f:if condition="{item.editableByTr}"><f:render partial="Ansuchen/ListFrist" arguments="{ansuchen:item, stammdaten:stammdaten}" /></f:if>
-                                        <code>[OK: {item.ok} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status} | sar: {item.statusAfterReview}]</code>
+                                        <code>STATUS: status: {item.status} | upcoming: {item.upcomingStatus} | incoming: {item.reviewIncomingStatus} | afterReview: {item.statusAfterReview} | Version: {item.version}</code>
+                                        <code>[OK: {item.ok} | UID: {item.uid} |  based on: {item.versionBasedOn}]</code>
                                         <code>[Stammdaten SAR: {stammdaten.statusAfterReview} | UID: {item.uid} | Version: {item.version} | based on: {item.versionBasedOn} | Status: {item.status} | sar: {item.statusAfterReview}]</code>
                                     </td>
                                     <td class="td-knopf">
