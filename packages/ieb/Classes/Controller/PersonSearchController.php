@@ -51,35 +51,72 @@ class PersonSearchController extends ActionController
 
         $csv = [];
         foreach ($this->trainerRepository->findInPersonSearch($search) as $row) {
+            if($row['ansuchenTyp']==1){
+                $typ = "BaBi";
+                $frist = $row['review_frist'];
+            } else {
+                $typ = "PSA";
+                $frist = $row['review_psa_frist'];
+            }
+            if ($frist) {
+                $frist = $frist ? date('d.m.Y', $frist) : '';
+            } else {
+                $frist = "nein";
+            }
             $line = [
                 'funktion' => 'Trainer',
                 'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
+                'bezeichnung' => $row['ansuchenName'],
+                'Frist' => $frist
             ];
 
             $csv[] = $line;
         }
         foreach ($this->beraterRepository->findInPersonSearch($search) as $row) {
+            if($row['ansuchenTyp']==1){
+                $typ = "BaBi";
+            } else {
+                $typ = "PSA";
+            }
+            $frist = $row['review_frist'];
+            if ($frist) {
+                $frist = $frist ? date('d.m.Y', $frist) : '';
+            } else {
+                $frist = "nein";
+            }
             $line = [
                 'funktion' => 'Berater',
                 'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
+                'bezeichnung' => $row['ansuchenName'],
+                'Frist' => $frist
             ];
 
             $csv[] = $line;
         }
         foreach ($this->angebotVerantwortlichRepository->findInPersonSearch($search) as $row) {
+            if($row['ansuchenTyp']==1){
+                $typ = "BaBi";
+            } else {
+                $typ = "PSA";
+            }
             $line = [
                 'funktion' => 'Projektleitung',
                 'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
+                'bezeichnung' => $row['ansuchenName'],
+
             ];
             $csv[] = $line;
         }
-        $firstrow = array("Vorname","Nachname","Ansuchennummer");
+        $firstrow = array("Funktion","Vorname","Nachname","Bereich", "Ansuchennummer","Bezeichnung","Auflage");
 
         // $csvContent = $this->csvService->generateDirect($csv, array_keys($csv[0]));
         $csvContent = $this->csvService->generateDirect($csv, $firstrow);
