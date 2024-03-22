@@ -9,7 +9,6 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class AnsuchenArchivRepository
 {
@@ -97,6 +96,9 @@ class AnsuchenArchivRepository
             if ($row['version_based_on'] > 0 && !in_array($row['status'], AnsuchenStatus::statusSichtbarDurchGs(), true)) {
                 $previous = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $row['version_based_on']);
                 if ($previous) {
+                    foreach(['stammdatenMarkenname', 'stammdatenName'] as $copyFields) {
+                        $previous[$copyFields] = $row[$copyFields];
+                    }
                     $newRows[] = $previous;
                 }
             } else {
