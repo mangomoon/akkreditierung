@@ -157,6 +157,9 @@ class ReportingController extends ActionController
             foreach (['uid', 'nummer', 'name'] as $value) {
                 $item[$value] = $raw[$value];
             }
+
+            $item['markenname'] = '';
+
             try {
                 $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
             } catch (\Exception $e) {
@@ -174,12 +177,12 @@ class ReportingController extends ActionController
             };
 
             // boolean
-            foreach (['kinderbetreuung', 'einzelunterricht', 'pp3', 'fernlehre', 'pruefbescheid_check'] as $value) {
+            foreach (['pruefbescheid_check', 'pp3', 'kinderbetreuung', 'einzelunterricht', 'fernlehre'] as $value) {
                 $item[$value] = $raw[$value] ? 'ja' : 'nein';
             }
 
             // kompetenzen
-            for ($i = 1; $i <= 10; $i++) {
+            for ($i = 1; $i <= 9; $i++) {
                 $item['kompetenz' . $i] = '';
             }
             if ($raw['typ'] === 1) {
@@ -187,11 +190,13 @@ class ReportingController extends ActionController
                     $item['kompetenz' . $i] = $raw['kompetenz' . $i];
                 }
             } elseif ($raw['typ'] === 2) {
-                for ($i = 6; $i <= 10; $i++) {
+                for ($i = 6; $i <= 9; $i++) {
                     $item['kompetenz' . $i] = $raw['kompetenz' . ($i - 5)];
                 }
             }
             $item['kompetenz_text'] = $raw['kompetenz_text1'];
+            
+            $item['einreich_datum'] = '';
 
             $item['zuteilung_datum'] = '';
             $allVersions = [];
@@ -215,12 +220,8 @@ class ReportingController extends ActionController
                     $item[$value] = '';
                 }
             }
-            // date as timestamp
-            foreach (['review_frist_pruefbescheid'] as $value) {
-                $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
-            }
 
-            $item['einreich_datum'] = '';
+            
             $item['ende'] = '31.12.2028';
             $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
             if ($firstVersion) {
@@ -263,8 +264,13 @@ class ReportingController extends ActionController
                 }
             }
 
+            
+            
+            // date as timestamp
+            foreach (['review_frist_pruefbescheid'] as $value) {
+                $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
+            }
             //stammdaten
-            $item['markenname'] = '';
             $item['review_oecert_frist'] = '';
             if (!isset($this->relationCache['stammdaten'][$raw['pid']])) {
                 $this->relationCache['stammdaten'][$raw['pid']] = $this->reportingRepository->getLatestStammdaten($raw['pid']);
@@ -318,7 +324,10 @@ class ReportingController extends ActionController
         }
 
 //        print_r($out);die;
-        $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
+
+        $firstrow = array("uid","Nr","Bezeichnung","Träger Name","Status","Bundesland","Bereich","Prüfbescheid","PP3","Kinderbetreuung","Einzelunterricht","Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)","M (BaBi)","Digital (BaBi)","E (BaBi)","Kreativität (PSA)","Gesundheit (PSA)","Natur","Weitere Sprache (PSA)", "Welche Sprache (PSA)","Einreich Datum","Zuteilung Datum","Akkreditierung Datum","Ende Datum","Gutachter 1","Gutachter 2","Projektleitung","Projektleitung Mail","Frist Prüfbescheid","Frist Ö-Cert","Nächste Frist","Weitere Fristen");
+        // $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
+        $csvContent = $this->csvService->generateDirect($out, $firstrow);
         $this->csvService->response($csvContent, 'IEB-Data.csv');
     }
 

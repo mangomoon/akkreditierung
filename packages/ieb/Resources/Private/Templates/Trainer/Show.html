@@ -191,7 +191,7 @@
                 </div>
                 <div class="begutachtung-kriterium">
                     <div class="row">
-                        <div class="links auflagen col-6">
+                        <div class="links auflagen col-7">
                             <p>BASISBILDUNG
                             <f:if condition="{trainer.reviewFrist}">
                                 <span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span>
@@ -201,7 +201,7 @@
                                 user:currentUser.usergroup
                                 }" />
                         </div>
-                        <div class="rechts col-6">
+                        <div class="rechts col-5">
                             <p>&nbsp;</p>
                             <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                 intern:trainer.reviewC2BabiCommentInternalData,
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="links auflagen col-6">
+                        <div class="links auflagen col-7">
                             <p>PFLICHTSCHULSABSCHLUSS
                             <f:if condition="{trainer.reviewPsaFrist}">
                                 <span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewPsaFrist}</f:format.date></span>
@@ -220,7 +220,7 @@
                                 user:currentUser.usergroup
                                 }" />
                         </div>
-                        <div class="rechts col-6">
+                        <div class="rechts col-5">
                             <p>&nbsp;</p>
                             <f:render partial="Ansuchen/KommentarePersonal" arguments="{
                                 intern:trainer.reviewC2PsaCommentInternalData,
@@ -229,9 +229,7 @@
                         </div>
                     </div>
                   </div>
-                <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupAg} || {currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
-                    <!-- <p>Tab schließen, um zum Ansuchen zurück zu kommen</p> -->
-                </f:if>
+
 </div>
 </f:section>
 </html>
