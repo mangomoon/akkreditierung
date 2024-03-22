@@ -12,6 +12,7 @@ class ReportingFilter extends AbstractDomainObject
     public bool $csv = false;
     public int $bundesland = 0;
     public int $status = -99;
+    public int $aboveStatus = 0;
     /** @var int[] */
     public array $statusList = [];
     public int $trPid = 0;

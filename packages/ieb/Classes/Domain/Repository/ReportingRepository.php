@@ -57,6 +57,9 @@ class ReportingRepository
         if ($filter->statusList) {
             $constraints[] = $queryBuilder->expr()->in('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->statusList, Connection::PARAM_INT_ARRAY));
         }
+        if ($filter->aboveStatus) {
+            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \PDO::PARAM_INT));
+        }
         if ($filter->trPid > 0) {
             $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
         }

@@ -147,7 +147,7 @@ class ReportingController extends ActionController
     public function fullCsvAction()
     {
         $filter = new ReportingFilter();
-        $filter->statusList = AnsuchenStatus::statusSichtbarDurchGs();
+        $filter->aboveStatus = AnsuchenStatus::IN_ARBEIT->value;
         $raws = $this->reportingRepository->getByFilter($filter);
         $out = [];
 
