@@ -329,9 +329,11 @@ class ReportingController extends ActionController
 //        print_r($out);die;
 
         $firstrow = ["uid", "Nr", "Bezeichnung", "Träger Name", "Status", "Bundesland", "Bereich", "Prüfbescheid", "PP3", "Kinderbetreuung", "Einzelunterricht", "Fernlehre", "D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)", "Einreich Datum", "Zuteilung Datum", "Akkreditierung Datum", "Ende Datum", "Gutachter 1", "Gutachter 2", "Projektleitung", "Projektleitung Mail", "Frist Prüfbescheid", "Frist Ö-Cert", "Nächste Frist", "Weitere Fristen"];
-        // $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
+
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
-        $this->csvService->response($csvContent, 'IEB-Data.csv');
+
+        $csvname = date('Y-m-d') ."-Ansuchen.csv";
+        $this->csvService->response($csvContent, $csvname);
     }
 
     private function isPartOfGs(): bool
