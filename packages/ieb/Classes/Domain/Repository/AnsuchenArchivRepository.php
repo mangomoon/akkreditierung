@@ -3,15 +3,14 @@ declare(strict_types=1);
 
 namespace GeorgRinger\Ieb\Domain\Repository;
 
-use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenArchivFilter;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class AnsuchenArchivRepository
 {
+    use AnsuchenRepositoryTrait;
 
     public function findByFilter(AnsuchenArchivFilter $filter): array
     {
@@ -62,7 +61,7 @@ class AnsuchenArchivRepository
         }
 
         $rows = $query->execute()->fetchAllAssociative();
-        return $this->switchToAlternativeVersion($rows);
+        return $this->switchToParentVersion($rows);
     }
 
     public function getAllVersionsByNumber(string $ansuchenNummer, bool $excludeActive = true): array
@@ -84,30 +83,6 @@ class AnsuchenArchivRepository
         return $query->execute()->fetchAllAssociative();
     }
 
-    /**
-     * See https://github.com/georgringer/ieb/issues/138
-     * if status not in AnsuchenStatus::statusSichtbarDurchGs
-     *  => use previous version
-     */
-    protected function switchToAlternativeVersion(array $rows): array
-    {
-        $newRows = [];
-        foreach ($rows as $row) {
-            if ($row['version_based_on'] > 0 && !in_array($row['status'], AnsuchenStatus::statusSichtbarDurchGs(), true)) {
-                $previous = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $row['version_based_on']);
-                if ($previous) {
-                    foreach(['stammdatenMarkenname', 'stammdatenName'] as $copyFields) {
-                        $previous[$copyFields] = $row[$copyFields];
-                    }
-                    $newRows[] = $previous;
-                }
-            } else {
-                $newRows[] = $row;
-            }
-        }
-
-        return $newRows;
-    }
 
     private function getQueryBuilder(string $tableName): QueryBuilder
     {

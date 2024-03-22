@@ -6,6 +6,7 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use GeorgRinger\Ieb\Domain\Model\Dto\ReportingFilter;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepositoryTrait;
 use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
@@ -20,6 +21,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class ReportingController extends ActionController
 {
     use CurrentUserTrait;
+    use AnsuchenRepositoryTrait;
 
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
@@ -149,6 +151,8 @@ class ReportingController extends ActionController
         $filter = new ReportingFilter();
         $filter->aboveStatus = AnsuchenStatus::IN_ARBEIT->value;
         $raws = $this->reportingRepository->getByFilter($filter);
+        $raws = $this->switchToParentVersion($raws);
+
         $out = [];
 
         foreach ($raws as $raw) {
@@ -195,7 +199,7 @@ class ReportingController extends ActionController
                 }
             }
             $item['kompetenz_text'] = $raw['kompetenz_text1'];
-            
+
             $item['einreich_datum'] = '';
 
             $item['zuteilung_datum'] = '';
@@ -221,7 +225,7 @@ class ReportingController extends ActionController
                 }
             }
 
-            
+
             $item['ende'] = '31.12.2028';
             $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
             if ($firstVersion) {
@@ -264,8 +268,7 @@ class ReportingController extends ActionController
                 }
             }
 
-            
-            
+
             // date as timestamp
             foreach (['review_frist_pruefbescheid'] as $value) {
                 $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
@@ -325,7 +328,7 @@ class ReportingController extends ActionController
 
 //        print_r($out);die;
 
-        $firstrow = array("uid","Nr","Bezeichnung","Träger Name","Status","Bundesland","Bereich","Prüfbescheid","PP3","Kinderbetreuung","Einzelunterricht","Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)","M (BaBi)","Digital (BaBi)","E (BaBi)","Kreativität (PSA)","Gesundheit (PSA)","Natur","Weitere Sprache (PSA)", "Welche Sprache (PSA)","Einreich Datum","Zuteilung Datum","Akkreditierung Datum","Ende Datum","Gutachter 1","Gutachter 2","Projektleitung","Projektleitung Mail","Frist Prüfbescheid","Frist Ö-Cert","Nächste Frist","Weitere Fristen");
+        $firstrow = ["uid", "Nr", "Bezeichnung", "Träger Name", "Status", "Bundesland", "Bereich", "Prüfbescheid", "PP3", "Kinderbetreuung", "Einzelunterricht", "Fernlehre", "D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)", "Einreich Datum", "Zuteilung Datum", "Akkreditierung Datum", "Ende Datum", "Gutachter 1", "Gutachter 2", "Projektleitung", "Projektleitung Mail", "Frist Prüfbescheid", "Frist Ö-Cert", "Nächste Frist", "Weitere Fristen"];
         // $csvContent = $this->csvService->generateDirect($out, array_keys($out[0]));
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
         $this->csvService->response($csvContent, 'IEB-Data.csv');
