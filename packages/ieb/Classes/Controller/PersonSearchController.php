@@ -118,9 +118,10 @@ class PersonSearchController extends ActionController
         }
         $firstrow = array("Funktion","Vorname","Nachname","Bereich", "Ansuchennummer","Bezeichnung","Auflage");
 
-        // $csvContent = $this->csvService->generateDirect($csv, array_keys($csv[0]));
+        $csvname = date('Y-m-d') ."-Personen.csv";
+
         $csvContent = $this->csvService->generateDirect($csv, $firstrow);
-        $this->csvService->response($csvContent, 'personen.csv');
+        $this->csvService->response($csvContent, $csvname);
     }
 
     public function injectTrainerRepository(TrainerRepository $trainerRepository): void
