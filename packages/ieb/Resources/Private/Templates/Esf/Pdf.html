@@ -12,6 +12,7 @@
             outputDestination="inline"
             sourceFile="EXT:ieb/Resources/Private/Pdfs/esf.pdf">
 
+            {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
         <pdf:page importPage="1" margin="{top: 35, right: 16, bottom: 30, left: 16}">
             <pdf:html>
 
@@ -20,7 +21,7 @@
                 td {font-family: "opensans", sans-serif;font-size: 9pt;line-height:14pt;}
             </style>
 
-            <h2 style="font-family: opensans; color:#c31a1e; font-size: 15pt; line-height:30pt;">Personal- und Standorteliste für:<br>{ansuchen.nummer} ({ansuchen.name}) </h2>
+            <h2 style="font-family: opensans; font-size: 15pt; line-height:30pt;">Personal- und Standorteliste für:<br><span style="color:#c31a1e; ">{stammdaten.name}: {ansuchen.nummer} ({ansuchen.name}) </span></h2>
             <p style="font-size:8pt;font-family: opensans;">Stand <f:format.date date="now" format="d.m.Y" /></p>
 
 

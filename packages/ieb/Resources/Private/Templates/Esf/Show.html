@@ -6,7 +6,7 @@
 
 <f:section name="content">
     <h2>ESF Reporting for {ansuchen.nummer} "{ansuchen.name}" [{ansuchen.uid}]</h2>
-
+<f:debug>{_all}</f:debug>
     <table>
         <tr>
             <th>version</th>
@@ -19,11 +19,12 @@
         </tr>
 
         <f:for each="{versions}" as="version" iteration="i">
+            {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
             {version.copyTrainerData -> f:variable(name: 'trainer')}
             {version.copyBeraterData -> f:variable(name: 'berater')}
             {version.copyStandorteData -> f:variable(name: 'standorte')}
             <tr>
-                <td>{version.version}</td>
+                <td>{version.version} {stammdaten.name}</td>
                 <td>{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y H:i:s')}</td>
                 <td>
                     <f:if condition="{versions.{i.cycle}.uid}">
