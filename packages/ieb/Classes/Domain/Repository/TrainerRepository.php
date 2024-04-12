@@ -70,6 +70,9 @@ class TrainerRepository extends BaseRepository
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
             );
         }
+        if ($search->trPid >= 0) {
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+        }
 
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_trainer.*')

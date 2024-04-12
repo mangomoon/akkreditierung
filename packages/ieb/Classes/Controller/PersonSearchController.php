@@ -31,7 +31,7 @@ class PersonSearchController extends ActionController
 
         $this->view->assignMultiple([
             'search' => $search,
-            //'tr' => $this->reportingRepository->getAllTraegerNames(),
+            'tr' => $this->reportingRepository->getAllTraegerNames(),
         ]);
 
         if ($search->isUsed()) {
