@@ -7,6 +7,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use GeorgRinger\Ieb\Domain\Model\Dto\ExternalViewFilter;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepositoryTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use Psr\Http\Message\ResponseInterface;
@@ -15,6 +16,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class ExternalViewController extends BaseController
 {
 
+    use AnsuchenRepositoryTrait;
     private AnsuchenRepository $ansuchenRepository;
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
@@ -33,8 +35,11 @@ class ExternalViewController extends BaseController
             }
         }
 
+        $items = $this->ansuchenRepository->getAllForExternalView($filter);
+        $items = $this->switchToParentVersion($items);
+
         $this->view->assignMultiple([
-            'ansuchen' => $this->ansuchenRepository->getAllForExternalView($filter),
+            'ansuchen' => $items,
             'filter' => $filter,
             'options' => $this->getOptions(),
         ]);
