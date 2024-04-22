@@ -24,6 +24,7 @@ final class AnsuchenBegutachtungsSchlussListener
 
         $values = [
             'ansuchen' => $event->ansuchen,
+            'stammdaten' => $event->stammdaten,
             'newStatus' => $event->ansuchen->getStatus(),
         ];
 

@@ -58,6 +58,7 @@ final class AnsuchenBegutachtungFinalizeListener
             'firstAnsuchen' => $this->getInitialAnsuchen($event->ansuchenAfterSnapshot),
             'pdf' => $this->getAttachmentFromAnsuchen($event->ansuchenAfterSnapshot),
             'newStatus' => $event->ansuchenAfterSnapshot->getStatus(),
+            'stammdaten' => $event->stammdaten,
         ];
 
         $this->mailService->send('Notification/AnsuchenBegutachtungFinalize', $mails, $values);

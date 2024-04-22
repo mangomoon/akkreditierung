@@ -54,7 +54,6 @@
                         <f:if condition="{ansuchen.status}==80">
 
                             <p>Bitte überarbeiten Sie die Angaben zu folgenden Kriterien und reichen das Ansuchen dann erneut zur Akkreditierung ein:</p>
-                            <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
                             <f:render partial="Notification/Comments" arguments="{ansuchen : ansuchen}"/>
                         
                         </f:if>

@@ -197,6 +197,9 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen = $this->ansuchenRepository->findByIdentifier($zuteilung->getAnsuchenId());
         /** @var Ansuchen $ansuchen */
         $ansuchen = $this->ansuchenRepository->findByIdentifier($zuteilung->getAnsuchenId());
+
+        $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
+
         if ($zuteilung->getGutachter1()) {
             $gutachter1 = $this->userRepository->findByIdentifier($zuteilung->getGutachter1());
             if ($gutachter1) {
@@ -223,7 +226,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setReviewVerrechnung1($zuteilung->getReviewVerrechnung1());
         $ansuchen->setReviewVerrechnung2($zuteilung->getReviewVerrechnung2());
         $this->ansuchenRepository->unsetGutachterLockedAndPersist($ansuchen);
-        $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen));
+        $this->eventDispatcher->dispatch(new Event\AnsuchenZuteilungEvent($ansuchen,$stammdaten));
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->redirect('list');

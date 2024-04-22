@@ -494,6 +494,13 @@
                         </div>
                         <div class="kriteriumteil">
                             <h3>B.1.3 Tabellarische Übersicht und Kostensatz</h3>
+                            
+                            <div class="erlaeuterung">
+                                <div class="showinfobox" id="ab-2-c-hilfe">Bei ESF-geförderten Projekten wird auch die aktuelle Angebotsplanung akzeptiert.</div>
+                                <p class="hinweis">Verwenden Sie bitte <a href="/fileadmin/downloads/TabellarischeUebersicht.pdf" target="_blank">diese Vorlage</a> und laden Sie die Übersicht(en) hier hoch.</p>
+                            </div>
+
+
                             <f:render partial="Form/UploadListDiff" arguments="{
                                 media:'{ansuchen.uebersichtDatei}',
                                 anmerkung:'{ansuchen.uebersichtText}',
@@ -1487,9 +1494,8 @@
                 reviewTr:ansuchen.kopieVon.reviewTotalCommentTr, 
                 diff:difftyp}" />
             <label>
-
                 Allgemeiner Kommentar <i>intern</i>
-                
+            </label>
                 <div class="komm-int">
                     <f:for each="{ansuchen.reviewTotalCommentInternalData}" as="comment">
                         <p>
@@ -1549,11 +1555,11 @@
 
                 
 
-            </label>
+            
             <label>
-                Allgemeiner Text an den Träger
+                Allgemeiner Text an den Träger</label>
                 <f:form.textarea property="reviewTotalCommentTr" class="form-control extern"/>
-            </label>
+            
             <div class="knopf textbausteinoeffner">Textbausteine</div>
 
             <div class="textbausteine">

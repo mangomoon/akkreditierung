@@ -11,6 +11,7 @@ class AnsuchenBegutachtungsSchlussEvent
 
     public function __construct(
         public readonly Ansuchen $ansuchen,
+        public readonly Stammdaten $stammdaten,
     )
     {
 

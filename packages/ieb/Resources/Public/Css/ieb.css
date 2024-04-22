@@ -1791,6 +1791,11 @@ label.komm-intern, label.komm-extern {
     margin:0;
 }
 
+textarea.extern {
+    background: #fff6c0;
+}
+
+
 .begutachtung-kriterium .knopf {
     cursor: pointer;
     padding: 8px 8px;
@@ -2052,7 +2057,7 @@ span.person-statuskugel.status-3 {
     padding: 20px;
 }
 .schlusskommentar textarea {
-    font-size: 1.3em;
+    font-size: 0.9em;
 }
 
 /* Checkboxes Begutachtung */

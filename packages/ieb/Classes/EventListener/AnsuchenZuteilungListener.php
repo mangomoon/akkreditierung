@@ -29,6 +29,7 @@ final class AnsuchenZuteilungListener
 
         $values = [
             'ansuchen' => $ansuchen,
+            'stammdaten' => $event->stammdaten,
         ];
 
         $this->mailService->send('Notification/AnsuchenZuteilung', $mails, $values);
