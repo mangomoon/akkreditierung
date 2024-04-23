@@ -157,51 +157,123 @@ class ReportingController extends ActionController
 
         foreach ($raws as $raw) {
             // raw
+
+            // uid, Nr
             $item = [];
-            foreach (['uid', 'nummer', 'name'] as $value) {
+            foreach (['uid', 'nummer'] as $value) {
                 $item[$value] = $raw[$value];
             }
-
+            // Träger Name (siehe unten Stammdaten)
             $item['markenname'] = '';
 
-            try {
-                $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
-            } catch (\Exception $e) {
-                $item['status'] = 'unknown_' . $raw['status'];
-            }
+            // Bundesland
             try {
                 $item['bundesland'] = BundeslandEnum::tryFrom($raw['bundesland'])->name;
             } catch (\Exception $e) {
                 $item['bundesland'] = 'uknown ' . $raw['bundesland'];
             }
+
+            // Bereich
             $item['typ'] = match ($raw['typ']) {
                 1 => 'BaBi',
                 2 => 'PSA',
                 default => 'unknown_' . $raw['typ'],
             };
 
-            // boolean
-            foreach (['pruefbescheid_check', 'pp3', 'kinderbetreuung', 'einzelunterricht', 'fernlehre'] as $value) {
-                $item[$value] = $raw[$value] ? 'ja' : 'nein';
-            }
+            // Programmperiode
+            $pp = substr($raw['nummer'], 0, 1);
+            $item['pp3'] = $pp;
 
-            // kompetenzen
-            for ($i = 1; $i <= 9; $i++) {
-                $item['kompetenz' . $i] = '';
+
+            // Akkkreditierungsstatus
+            switch($raw['status']) {
+                case 30:
+                    $akkstatus = "Ersteinreichung";
+                    break;
+                case 40:
+                    $akkstatus = "Ersteinreichung";
+                    break;
+                case 80:
+                    $akkstatus = "Nachbesserungsauftrag";
+                    break;
+                case 85:
+                    $akkstatus = "Nachbesserungsauftrag";
+                    break;
+                case 90:
+                    $akkstatus = "Nachbesserungsauftrag";
+                    break;
+                case 100:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 160:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 170:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 200:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 210:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 215:
+                    $akkstatus = "akkreditiert";
+                    break;
+                case 140:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 150:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 155:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 220:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 230:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 235:
+                    $akkstatus = "akkreditiert mit Auflage";
+                    break;
+                case 800:
+                    $akkstatus = "nicht akkreditiert";
+                    break;
+                case 810:
+                    $akkstatus = "Akkreditierung entzogen";
+                    break;
+                case 820:
+                    $akkstatus = "Akkreditierung ausgesetzt";
+                    break;
             }
-            if ($raw['typ'] === 1) {
-                for ($i = 1; $i <= 5; $i++) {
-                    $item['kompetenz' . $i] = $raw['kompetenz' . $i];
+            $item['akkstatus'] = $akkstatus;
+
+            //Einreich-Status
+            //...
+            try {
+                $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
+            } catch (\Exception $e) {
+                $item['status'] = 'unknown_' . $raw['status'];
+            }
+            
+            // Datum Ersteinreichung
+            //...
+            $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
+            if ($firstVersion) {
+                foreach (['einreich_datum'] as $firstVersionDate) {
+                    if ($firstVersion[$firstVersionDate]) {
+                        $date = strtotime($firstVersion[$firstVersionDate]);
+                        $item[$firstVersionDate] = $date ? date('d.m.Y', $date) : '';
+                    } else {
+                        $item[$firstVersionDate] = '';
+                    }
                 }
-            } elseif ($raw['typ'] === 2) {
-                for ($i = 6; $i <= 9; $i++) {
-                    $item['kompetenz' . $i] = $raw['kompetenz' . ($i - 5)];
-                }
             }
-            $item['kompetenz_text'] = $raw['kompetenz_text1'];
 
-            $item['einreich_datum'] = '';
-
+            // Datum Erstzuteilung
+            //...
             $item['zuteilung_datum'] = '';
             $allVersions = [];
             $this->reportingRepository->getRecursiveAnsuchen($allVersions, $raw, 'uid,version,version_based_on,einreich_datum,zuteilung_datum');
@@ -215,6 +287,7 @@ class ReportingController extends ActionController
                 }
             }
 
+            // Akkreditierungsdatum
             // date as date
             foreach (['akkreditierung_datum'] as $value) {
                 if ($raw[$value]) {
@@ -225,21 +298,16 @@ class ReportingController extends ActionController
                 }
             }
 
-
+            // Akkreditierungsdatum Ende
             $item['ende'] = '31.12.2028';
-            $firstVersion = $this->reportingRepository->findAnsuchenByNummerAndVersion($raw['nummer'], 0);
-            if ($firstVersion) {
-                foreach (['einreich_datum'] as $firstVersionDate) {
-                    if ($firstVersion[$firstVersionDate]) {
-                        $date = strtotime($firstVersion[$firstVersionDate]);
-                        $item[$firstVersionDate] = $date ? date('d.m.Y', $date) : '';
-                    } else {
-                        $item[$firstVersionDate] = '';
-                    }
-                }
-            }
 
-            // gutachter
+            // Gutachter 1 Erstzuteilung
+            $item['gutachtereinserstzuteilung'] = '###';
+
+            // Gutachter 2 Erstzuteilung
+            $item['gutachterzweierstzuteilung'] = '###';
+
+            // Gutachter 1 und 2 letzte Zuteilung
             foreach (['gutachter1', 'gutachter2'] as $gutachterId) {
                 $item[$gutachterId] = '';
                 if ($raw[$gutachterId] && !isset($this->relationCache['user'][$raw[$gutachterId]])) {
@@ -253,22 +321,10 @@ class ReportingController extends ActionController
                 }
             }
 
-            // verantwortliche
-            foreach (['verantwortliche', 'verantwortliche_mail'] as $verantwortliche) {
-                $item[$verantwortliche] = '';
+            //$item['einreich_datum'] = '';
 
-                $mm = $verantwortliche === 'verantwortliche_mail' ? 'tx_ieb_ansuchen_verantwortlichemail_angebotverantwortlich_mm' : 'tx_ieb_ansuchen_angebotverantwortlich_mm';
-                $users = $this->reportingRepository->getVerantwortliche($raw['uid'], $mm);
-                if ($users) {
-                    $userList = [];
-                    foreach ($users as $user) {
-                        $userList[] = sprintf('%s %s [%s] %s', $user['vorname'], $user['nachname'], $user['email'], $user['ok'] ? 'ok' : '');
-                    }
-                    $item[$verantwortliche] = implode('|', $userList);
-                }
-            }
-
-
+            
+            // ### FRISTEN
             // date as timestamp
             foreach (['review_frist_pruefbescheid'] as $value) {
                 $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
@@ -323,12 +379,69 @@ class ReportingController extends ActionController
                 $item['nextFrist2'] = implode('|', $nextFrists);
             }
 
+            //### FRISTEN ENDE
+
+
+            // verantwortliche
+            foreach (['verantwortliche', 'verantwortliche_mail'] as $verantwortliche) {
+                $item['verantwortlich1'] = '';
+                $item['verantwortlich2'] = '';
+
+                $mm = $verantwortliche === 'verantwortliche_mail' ? 'tx_ieb_ansuchen_verantwortlichemail_angebotverantwortlich_mm' : 'tx_ieb_ansuchen_angebotverantwortlich_mm';
+                $users = $this->reportingRepository->getVerantwortliche($raw['uid'], $mm);
+                if ($users) {
+                    //$userList = [];
+                    $i=0;
+                    foreach ($users as $user) {
+                        $i++;
+                        //$userList[] = sprintf('%s %s [%s] %s', $user['vorname'], $user['nachname'], $user['email'], $user['ok'] ? 'ok' : '');
+                        $verantwortlichemail = $user['email'];
+                        $verant = "verantwortlich".$i;
+                        $item[$verant] = $verantwortlichemail;
+                        
+                    }
+                }
+            }
+
+            // Prüfbescheid, Kinderbetreuung, Einzelunterricht, Fernlehre
+            // boolean
+            foreach (['pruefbescheid_check', 'kinderbetreuung', 'einzelunterricht', 'fernlehre'] as $value) {
+                $item[$value] = $raw[$value] ? 'ja' : 'nein';
+            }
+
+            // Kompetenzen
+            for ($i = 1; $i <= 9; $i++) {
+                $item['kompetenz' . $i] = '';
+            }
+            if ($raw['typ'] === 1) {
+                for ($i = 1; $i <= 5; $i++) {
+                    $item['kompetenz' . $i] = $raw['kompetenz' . $i];
+                }
+            } elseif ($raw['typ'] === 2) {
+                for ($i = 6; $i <= 9; $i++) {
+                    $item['kompetenz' . $i] = $raw['kompetenz' . ($i - 5)];
+                }
+            }
+            $item['kompetenz_text'] = $raw['kompetenz_text1'];
+
+            
+            // Bezeichnung
+            $item['bezeichnung'] = $raw['name'];
+
+
+
+
+            
+
+
+
+
             $out[] = $item;
         }
 
 //        print_r($out);die;
 
-        $firstrow = ["uid", "Nr", "Bezeichnung", "Träger Name", "Status", "Bundesland", "Bereich", "Prüfbescheid", "PP3", "Kinderbetreuung", "Einzelunterricht", "Fernlehre", "D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)", "Einreich Datum", "Zuteilung Datum", "Akkreditierung Datum", "Ende Datum", "Gutachter 1", "Gutachter 2", "Projektleitung", "Projektleitung Mail", "Frist Prüfbescheid", "Frist Ö-Cert", "Nächste Frist", "Weitere Fristen"];
+        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Einreich-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Frist Prüfbescheid", "Frist Ö-Cert","Weitere Fristen","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
 
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
 
