@@ -11,6 +11,7 @@
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
             {ansuchen.trainer -> f:variable(name: 'trainer')}
             {ansuchen.berater -> f:variable(name: 'berater')}
+            
         </f:then>
         <f:else>
             {ansuchen.berater -> f:variable(name: 'beraterorig')}
@@ -22,10 +23,13 @@
             {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
             {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
         </f:else>
-        
+    </f:if>
+    <f:if condition="{currentUser.usergroup}==1">
+        {ansuchen.standorte -> f:variable(name: 'standorte')}
     </f:if>
     {ansuchen.trainer -> f:variable(name: 'trainer')}
     {ansuchen.berater -> f:variable(name: 'berater')}
+    
     
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
@@ -98,8 +102,9 @@
             </div>
             <div class="col-6">
                 <f.if condition="{ansuchen.reviewTotalCommentTr}">
-                    <p><label>Kommentar: </label>
+                    <p class="show_kommentar_extern"><label>Kommentar: </label>
                     <f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
+                    <div class="abstand-mittel"></div>
                 </f.if>
             </div>
         </div> 
@@ -651,6 +656,20 @@
                 </div>
 
             </div>
+            <div class="row">
+                <div class="links col-7">
+                </div>
+                <div class="rechts col-5">
+                            <f:render partial="Ansuchen/Kommentare" arguments="{
+                                ansuchen:ansuchen,
+                                key:'C2',
+                                user:currentUser.usergroup,
+                                inBegutachtung:AnsuchenInBegutachtung,
+                                
+                            }" />
+                    
+                </div>
+            </div>
             <div class="row personen">
                 <div class="col">
                     <div class="erlaeuterung">
@@ -671,7 +690,6 @@
                                 <details>
                                 <summary><f:if condition="{ansuchen.typ}==1">
                                     <f:then>
-                                        
                                             <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
                                             <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
                                     </f:then>
@@ -696,20 +714,7 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="links col-7">
-                </div>
-                <div class="rechts col-5">
-                            <f:render partial="Ansuchen/Kommentare" arguments="{
-                                ansuchen:ansuchen,
-                                key:'C2',
-                                user:currentUser.usergroup,
-                                inBegutachtung:AnsuchenInBegutachtung,
-                                
-                            }" />
-                    
-                </div>
-            </div>
+            
 
             </div>
         </div>
@@ -730,6 +735,20 @@
                             </div>
                         </div>
         
+                    </div>
+
+                    <div class="row">
+                        <div class="links col-7">
+                        </div>
+                        <div class="rechts col-5">
+                            <f:render partial="Ansuchen/Kommentare" arguments="{
+                                ansuchen:ansuchen,
+                                key:'C3',
+                                user:currentUser.usergroup,
+                                inBegutachtung:AnsuchenInBegutachtung,
+                                beraterorig:beraterorig,
+                                }" />
+                        </div>
                     </div>
                     <div class="row personen">
                         <div class="col">
@@ -755,19 +774,7 @@
                             </div>
 
                         </div>
-                    <div class="row">
-                        <div class="links col-7">
-                        </div>
-                        <div class="rechts col-5">
-                            <f:render partial="Ansuchen/Kommentare" arguments="{
-                                ansuchen:ansuchen,
-                                key:'C3',
-                                user:currentUser.usergroup,
-                                inBegutachtung:AnsuchenInBegutachtung,
-                                beraterorig:beraterorig,
-                                }" />
-                        </div>
-                    </div>
+                    
                     
                     </div>
                 </div>
@@ -794,8 +801,8 @@
                     <div class="col" style="background:#DADBCF;margin-top:0;">
                         <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes.<br />Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16  für allfällige Kontrollen aufzubewahren: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
-                        </p>
+                        <!-- <p>Ich bestätige das Vorliegen von schriftlichen Vereinbarungen mit den angegebenen Trainer/innen zur fachspezifischen Weiterbildung im Ausmaß von 16  für allfällige Kontrollen aufzubewahren: {f:if(condition: '{stammdaten.weiterbildungErklaerung}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                        </p> -->
                         <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                         <p>Wir sind mit den AGB und Datenschutzbestimmungen der Initiative Erwachsenenbildung einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}

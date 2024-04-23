@@ -3,8 +3,10 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
+
+{ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
     <div class="begutachtung-kopf">
-        <h2>Gutachterzuteilung von {ansuchen.name}&nbsp; <span class="nr">{ansuchen.nummer}</span></h2>
+        <h2>Gutachterzuteilung von {ansuchen.name}&nbsp; <span class="nr">{ansuchen.nummer}</span> ({stammdaten.name})</h2>
     </div>
     
 
