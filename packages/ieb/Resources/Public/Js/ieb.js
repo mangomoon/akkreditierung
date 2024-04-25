@@ -1280,11 +1280,15 @@ function qualifikationPsaSprache() {
         $('#csvinput').remove();
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="1" /> ');
         $("#csvtauglichesform").submit();
+        $("#gutachtenStatistikform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[csv]" value="1" /> ');
+        $("#gutachtenStatistikform").submit();
     });
     $('#anzeigen-knopf').click(function() {
         $('#csvinput').remove();
         $("#csvtauglichesform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[reportingFilter][csv]" value="0" /> ');
         $("#csvtauglichesform").submit();
+        $("#gutachtenStatistikform").append('<input type="hidden" id="csvinput" name="tx_ieb_reporting[csv]" value="0" /> ');
+        $("#gutachtenStatistikform").submit();
     });
 
     // ######################################## ARCHIV Filter zurücksetzen

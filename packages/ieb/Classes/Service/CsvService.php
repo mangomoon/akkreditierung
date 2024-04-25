@@ -13,9 +13,9 @@ class CsvService
     public function generateCsv(iterable $items, array $fieldList): string
     {
         $csv = $this->getCsv();
+        $csv->setDelimiter(";");
         $csv->insertOne(array_values($fieldList));
         $allowedKeys = array_keys($fieldList);
-        $csv->setDelimiter(";");
         foreach ($items as $item) {
             if ($item instanceof AbstractEntity) {
                 $item = $item->_getCleanProperties();

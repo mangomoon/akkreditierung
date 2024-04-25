@@ -119,20 +119,30 @@ class ReportingController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function gutachtenStatistikAction(string $selected = '', int $csv = 0): ResponseInterface
+    public function gutachtenStatistikAction(string $selected = '', bool $csv = true): ResponseInterface
     {
         $availableDateRanges = $this->reportingRepository->getDateLogUsage();
         $items = null;
         if ($selected && isset($availableDateRanges[$selected])) {
             $split = GeneralUtility::intExplode('-', $selected);
             $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
+            
             if ($csv && !empty($items)) {
                 $fields = [
-                    'name' => 'Name',
-                    'nummer' => 'Nummer',
+                    'zuteilung_datum' => 'Datum',
+                    'nummer' => 'Ansuchen',
+                    //'gutachter1' => 'als Gutachter 1',
+                    'review_verrechnung_check1' => '€ für 1',
+                    'review_verrechnung1' => 'Komm für 1',
+                    //'gutachter2' => 'als Gutachter 2',
+                    'review_verrechnung_check2' => '€ für 2',
+                    'review_verrechnung2' => 'Komm für 2',
+                    'version' => 'Version',
+                    'pid' => 'Träger',
+                    'review_incoming_status' => 'Status bei Zuteilung',
                 ];
                 $csvContent = $this->csvService->generateCsv($items, $fields);
-                $filename = date("Ymd") . '_ansuchen.csv';
+                $filename = date("Ymd") . '_GutachterZuteilung.csv';
                 $this->csvService->response($csvContent, $filename);
             }
         }

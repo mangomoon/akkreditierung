@@ -8,12 +8,15 @@
     <h2>Zuteilungsstatistik Gutachter:innen</h2>
     <label>Zeitraum (Quartal):</label>
 
-    <f:form action="gutachtenStatistik" name="gutachtenStatistik" id="csvtauglichesform" method="post">
+    <f:form action="gutachtenStatistik" name="gutachtenStatistik" id="gutachtenStatistikform" method="post">
+        
 
-    <!--<f:form.checkbox property="csv" id="asCsv" value="1"/>-->
-        <f:form.select name="selected" value="{selected}" options="{dateRanges}" prependOptionLabel="" prependOptionValue="" />
-        &nbsp;&nbsp;&nbsp;<f:form.submit class="knopf-s2" value="anzeigen"/> 
-        <!--<f:form.submit class="knopf-s2" value="als CSV HERUNTERLADEN"/> -->
+    <!-- <input type="hidden" id="csvinput" name="tx_ieb_reporting[csv]" value="1" /> -->
+    <f:form.select name="selected" value="{selected}" options="{dateRanges}" prependOptionLabel="" prependOptionValue="" />
+        <!-- &nbsp;&nbsp;&nbsp;<f:form.submit class="knopf-s2" value="anzeigen"/> 
+
+    <f:form.submit class="knopf-s2" value="als CSV HERUNTERLADEN"/> -->
+
         <div class="abstand-mittel"></div>
         <div class="knopf-s knopfersatz" id="anzeigen-knopf" >anzeigen</div> <div class="knopf-s knopfersatz" id="csv-knopf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <div class="abstand-gross"></div>
@@ -27,6 +30,7 @@
                     <th>NAME</th>
                     <th>1/2</th>
                     <th>NR</th>
+                    <th>V</th>
                     <th>ORGANISATION</th>
                     <th>€</th>
                     <th>KOMMENTAR</th>
@@ -41,7 +45,8 @@
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
                             <td class="gutachter">{f:if(condition:item.gutachter1,then:'{item.gutachter1.first_name}&nbsp;{item.gutachter1.last_name}')}</td>
                             <td>1</td>
-                            <td class="nummer">{item.nummer} ({item.version})</td>
+                            <td class="nummer">{item.nummer}</td>
+                            <td class="nummer">{item.version}</td>
                             <td>{item.copy_stammdaten.name}</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check1}', then: 'ja', else: 'nein')}
@@ -67,7 +72,8 @@
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
                             <td class="gutachter">{f:if(condition:item.gutachter2,then:'{item.gutachter2.first_name}&nbsp;{item.gutachter2.last_name}')}</td>
                             <td>2</td>
-                            <td class="nummer">{item.nummer} ({item.version})</td>
+                            <td class="nummer">{item.nummer}</td>
+                            <td class="nummer">{item.version}</td>
                             <td>{item.copy_stammdaten.name}</td>
                             <td class="datum">
                                 {f:if(condition: '{item.review_verrechnung_check2}', then: 'ja', else: 'nein')}
