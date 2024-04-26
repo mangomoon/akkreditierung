@@ -16,16 +16,16 @@
                 <f:if condition="{ansuchen.status}==100">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe stattgegeben.</p>
                     <p>&nbsp;</p>
-                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
-                        <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
+                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Levelup Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
+                        <a href="https://akkreditierung.levelup-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
                          herunterladen.</p>
                     
                 </f:if>
                 <f:if condition="{ansuchen.status}==140">
                     <p>Der Nachakkreditierung ihres Bildungsangebots Nr. {ansuchen.nummer} – {ansuchen.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) wurde im Programmbereich Basisbildung durch die Akkreditierungsgruppe mit Auflagen stattgegeben.</p>
                     <p>&nbsp;</p>
-                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Initiative Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
-                        <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
+                    <p>Der Anhang ergänzt die Akkreditierungsbestätigung vom {firstAnsuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} für die Durchführung des Bildungsangebots im Rahmen des ESF-Calls „Basisbildung in der Levelup Erwachsenenbildung“ (047 / 1 - BMBWF01). Sie können das Dokument 
+                        <a href="https://akkreditierung.levelup-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a>
                          herunterladen.</p>
                 </f:if>
                 <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
@@ -63,7 +63,7 @@
                             <p>Ihrem Ansuchen auf Akkreditierung des Bildungsangebots Nr. {ansuchen.nummer} – <i>{ansuchen.name}</i> (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>)  im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} wird durch die Akkreditierungsgruppe stattgegeben.</p>
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
-                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.levelup-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
                         </f:if>
                         
                         <f:if condition="{ansuchen.status}==140">
@@ -72,7 +72,7 @@
                             <p>Die Akkreditierung erfolgt für den Zeitraum von {ansuchen.akkreditierungDatum -> f:format.date(format:'d.m.Y')} bis 31.12.2028. </p>
                             <p><f:format.nl2br>{ansuchen.reviewTotalCommentTr}</f:format.nl2br></p>
 
-                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.initiative-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
+                            <p>Ihre aktuelle Akkreditierungsbestätigung können Sie <a href="https://akkreditierung.levelup-erwachsenenbildung.at/fileadmin{pdf.identifier}" target="_blank">HIER</a> herunterladen, sie ersetzt die vorhergehende Bestätigung.</p>
                             
                         </f:if>
 

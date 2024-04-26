@@ -166,7 +166,7 @@ class AbstractImport
     {
         $split = explode('_', $filename);
         $dateSuffix = date('Y/m/', (int)$split[0]);
-        $url = 'https://akkreditierung.initiative-erwachsenenbildung.at/uploads/tx_ieb_pp3/' . $dateSuffix . $filename;
+        $url = 'https://akkreditierung.levelup-erwachsenenbildung.at/uploads/tx_ieb_pp3/' . $dateSuffix . $filename;
 
         $content = GeneralUtility::getUrl($url);
         if (!$content) {
