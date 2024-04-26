@@ -9,6 +9,8 @@ use GeorgRinger\Ieb\Domain\Repository\BeraterRepository;
 use GeorgRinger\Ieb\Domain\Repository\TrainerRepository;
 use GeorgRinger\Ieb\Domain\Repository\AngebotVerantwortlichRepository;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
+use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\CsvService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -16,10 +18,12 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class PersonSearchController extends ActionController
 {
+    use CurrentUserTrait;
 
     protected TrainerRepository $trainerRepository;
     protected BeraterRepository $beraterRepository;
     protected AngebotVerantwortlichRepository $angebotVerantwortlichRepository;
+    protected ExtensionConfiguration $extensionConfiguration;
     protected ReportingRepository $reportingRepository;
     protected CsvService $csvService;
 
@@ -48,6 +52,11 @@ class PersonSearchController extends ActionController
     {
         $search = new PersonSearch();
         $search->respectStatus = false;
+
+
+        if (!$this->isPartOfGs()) {
+            $search->trPid = self::getCurrentUserPid();
+        }
 
         $csv = [];
         foreach ($this->trainerRepository->findInPersonSearch($search) as $row) {
@@ -116,6 +125,7 @@ class PersonSearchController extends ActionController
             ];
             $csv[] = $line;
         }
+
         $firstrow = array("Funktion","Vorname","Nachname","Bereich", "Ansuchennummer","Bezeichnung","Auflage");
 
         $csvname = date('Y-m-d') ."-Personen.csv";
@@ -123,6 +133,12 @@ class PersonSearchController extends ActionController
         $csvContent = $this->csvService->generateDirect($csv, $firstrow);
         $this->csvService->response($csvContent, $csvname);
     }
+
+    private function isPartOfGs(): bool
+    {
+        return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);
+    }
+
 
     public function injectTrainerRepository(TrainerRepository $trainerRepository): void
     {
@@ -146,6 +162,7 @@ class PersonSearchController extends ActionController
 
     public function initializeAction()
     {
+        $this->extensionConfiguration = new ExtensionConfiguration();
         $this->csvService = new CsvService();
     }
 }
