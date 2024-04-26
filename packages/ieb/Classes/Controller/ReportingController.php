@@ -128,20 +128,118 @@ class ReportingController extends ActionController
             $items = $this->reportingRepository->getDateLog($split[0], $split[1]);
             
             if ($csv && !empty($items)) {
-                $fields = [
-                    'zuteilung_datum' => 'Datum',
-                    'nummer' => 'Ansuchen',
-                    //'gutachter1' => 'als Gutachter 1',
-                    'review_verrechnung_check1' => '€ für 1',
-                    'review_verrechnung1' => 'Komm für 1',
-                    //'gutachter2' => 'als Gutachter 2',
-                    'review_verrechnung_check2' => '€ für 2',
-                    'review_verrechnung2' => 'Komm für 2',
-                    'version' => 'Version',
-                    'pid' => 'Träger',
-                    'review_incoming_status' => 'Status bei Zuteilung',
-                ];
-                $csvContent = $this->csvService->generateCsv($items, $fields);
+
+                $out = [];
+                foreach ($items as $raw) {
+                    if($raw['gutachter1']) {
+                        
+                        $item = [];
+
+                        foreach (['zuteilung_datum'] as $value) {
+                            if ($raw[$value]) {
+                                $date = strtotime($raw[$value]);
+                                $item[$value] = $date ? date('d.m.Y', $date) : '';
+                            } else {
+                                $item[$value] = '';
+                            }
+                        }
+                        $item['nummer']=$raw['nummer'];
+                        $item['version']=$raw['version'];
+                        $item['gutachter1']=$raw['gutachter1']['first_name'] .' ' .$raw['gutachter1']['last_name'];
+                        $item['zuteilungstyp']='1';
+                        $item['review_verrechnung_check1']=$raw['review_verrechnung_check1'] ? 'ja' : 'nein';
+                        $item['review_verrechnung1']=$raw['review_verrechnung1'];
+                        
+                        $akkstatus='';
+                        switch($raw['review_incoming_status']) {
+                            case 30:
+                                $akkstatus = "Ersteinreichung";
+                                break;
+                            case 85:
+                                $akkstatus = "Nachbesserungsauftrag";
+                                break;
+                            case 150:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 160:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 210:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 215:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 230:
+                                $akkstatus = "akkreditiert mit Auflage";
+                                break;
+                        }
+                        if($akkstatus) {
+                            $item['review_incoming_status']=$akkstatus;
+                        } else {
+                            $item['review_incoming_status']=$raw['review_incoming_status'];
+                        }
+
+                        $out[] = $item;
+
+                        
+                    }
+                    if($raw['gutachter2']) {
+
+
+                        $item = [];
+
+                        foreach (['zuteilung_datum'] as $value) {
+                            if ($raw[$value]) {
+                                $date = strtotime($raw[$value]);
+                                $item[$value] = $date ? date('d.m.Y', $date) : '';
+                            } else {
+                                $item[$value] = '';
+                            }
+                        }
+                        $item['nummer']=$raw['nummer'];
+                        $item['version']=$raw['version'];
+                        $item['gutachter2']=$raw['gutachter2']['first_name'] .' ' .$raw['gutachter2']['last_name'];
+                        $item['zuteilungstyp']='2';
+                        $item['review_verrechnung_check2']=$raw['review_verrechnung_check2'] ? 'ja' : 'nein';
+                        $item['review_verrechnung2']=$raw['review_verrechnung2'];
+                        $akkstatus='';
+                        switch($raw['review_incoming_status']) {
+                            case 30:
+                                $akkstatus = "Ersteinreichung";
+                                break;
+                            case 85:
+                                $akkstatus = "Nachbesserungsauftrag";
+                                break;
+                            case 150:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 160:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 210:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 215:
+                                $akkstatus = "akkreditiert";
+                                break;
+                            case 230:
+                                $akkstatus = "akkreditiert mit Auflage";
+                                break;
+                        }
+                        if($akkstatus) {
+                            $item['review_incoming_status']=$akkstatus;
+                        } else {
+                            $item['review_incoming_status']=$raw['review_incoming_status'];
+                        }
+
+
+                        $out[] = $item;
+                    }
+                }
+
+                $firstrow = ['Datum','Nr','V','Name','1 2','verr','Kommentar','Status bei Zuteilung',];
+                $csvContent = $this->csvService->generateDirect($out, $firstrow);
                 $filename = date("Ymd") . '_GutachterZuteilung.csv';
                 $this->csvService->response($csvContent, $filename);
             }
@@ -180,7 +278,7 @@ class ReportingController extends ActionController
             try {
                 $item['bundesland'] = BundeslandEnum::tryFrom($raw['bundesland'])->name;
             } catch (\Exception $e) {
-                $item['bundesland'] = 'uknown ' . $raw['bundesland'];
+                $item['bundesland'] = 'unknown ' . $raw['bundesland'];
             }
 
             // Bereich
