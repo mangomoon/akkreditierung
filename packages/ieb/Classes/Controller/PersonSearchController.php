@@ -14,7 +14,6 @@ use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\CsvService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class PersonSearchController extends ActionController
 {
@@ -60,7 +59,7 @@ class PersonSearchController extends ActionController
 
         $csv = [];
         foreach ($this->trainerRepository->findInPersonSearch($search) as $row) {
-            if($row['ansuchenTyp']==1){
+            if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
                 $frist = $row['review_frist'];
             } else {
@@ -74,18 +73,19 @@ class PersonSearchController extends ActionController
             }
             $line = [
                 'funktion' => 'Trainer',
-                'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'nachname' => $row['nachname'],
                 'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
-                'Frist' => $frist
+                'traeger' => $row['stammdatenName'],
+                'Frist' => $frist,
             ];
 
             $csv[] = $line;
         }
         foreach ($this->beraterRepository->findInPersonSearch($search) as $row) {
-            if($row['ansuchenTyp']==1){
+            if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
             } else {
                 $typ = "PSA";
@@ -98,37 +98,39 @@ class PersonSearchController extends ActionController
             }
             $line = [
                 'funktion' => 'Berater',
-                'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'nachname' => $row['nachname'],
                 'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
-                'Frist' => $frist
+                'traeger' => $row['stammdatenName'],
+                'Frist' => $frist,
             ];
 
             $csv[] = $line;
         }
         foreach ($this->angebotVerantwortlichRepository->findInPersonSearch($search) as $row) {
-            if($row['ansuchenTyp']==1){
+            if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
             } else {
                 $typ = "PSA";
             }
             $line = [
                 'funktion' => 'Projektleitung',
-                'nachname' => $row['nachname'],
                 'vorname' => $row['vorname'],
+                'nachname' => $row['nachname'],
                 'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
+                'traeger' => $row['stammdatenName'],
 
             ];
             $csv[] = $line;
         }
 
-        $firstrow = array("Funktion","Vorname","Nachname","Bereich", "Ansuchennummer","Bezeichnung","Auflage");
+        $firstrow = ["Funktion", "Vorname","Nachname", "Bereich", "Ansuchennummer", "Bezeichnung", "Träger", "Auflage"];
 
-        $csvname = date('Y-m-d') ."-Personen.csv";
+        $csvname = date('Y-m-d') . "-Personen.csv";
 
         $csvContent = $this->csvService->generateDirect($csv, $firstrow);
         $this->csvService->response($csvContent, $csvname);
