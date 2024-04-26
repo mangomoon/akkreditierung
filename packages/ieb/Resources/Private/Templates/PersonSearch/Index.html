@@ -5,8 +5,11 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-    <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
+
+<f:debug>{_all}</f:debug>
+
     
+        
     <div class="abstand-klein"></div>
     <f:link.action class="knopfersatz knopf-s2" action="csv">Alle Personen in einem CSV</f:link.action>
     <div class="abstand-gross"></div>
@@ -244,7 +247,7 @@
         </f:if>
 
     </f:if>
-</f:if>
+
 </f:section>
 
 </html>

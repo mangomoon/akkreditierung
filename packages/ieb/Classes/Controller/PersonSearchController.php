@@ -32,7 +32,9 @@ class PersonSearchController extends ActionController
         if ($search === null) {
             $search = new PersonSearch();
         }
-
+        if (!$this->isPartOfGs()) {
+            $search->trPid = self::getCurrentUserPid();
+        }
         $this->view->assignMultiple([
             'search' => $search,
             'tr' => $this->reportingRepository->getAllTraegerNames(),
@@ -43,6 +45,7 @@ class PersonSearchController extends ActionController
                 'trainer' => $this->trainerRepository->findInPersonSearch($search),
                 'berater' => $this->beraterRepository->findInPersonSearch($search),
                 'angebotverantwortlich' => $this->angebotVerantwortlichRepository->findInPersonSearch($search),
+                
             ]);
         }
         return $this->htmlResponse();
