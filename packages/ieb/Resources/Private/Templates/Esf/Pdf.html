@@ -43,7 +43,7 @@
                     
                     <table style="page-break-inside: avoid;border-top:solid 0.7mm #777;">
                         <tr>
-                            <td colspan="2" style="line-height:200%;">
+                            <td colspan="3" style="line-height:200%;">
                                 {t.fullName}
                             </td>
                         </tr>
@@ -59,6 +59,16 @@
                                             aktuell
                                         </f:else>
                                     </f:if>
+                                </td>
+                                <td style="font-size:8pt;">
+                                    <f:if condition="{ansuchen.typ}==2">
+                                        <f:for each="{vt}" as="vtt">
+                                            <f:if condition="{vtt.uid}=={t.uid}">
+                                                ({f:if(condition:'{vtt.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa8}==1', then:'{vtt.qualifikationPsaKommentar}', else:'– ')})*
+                                            </f:if>
+                                        </f:for>
+                                    </f:if>
+                                    
                                 </td>
                                 <td style="width:70%;font-size:8pt;">
                                     <f:for each="{vt}" as="vtt">
@@ -78,7 +88,12 @@
                     </f:for>
                     <tr><td></td></tr>
                     </table>
+                    
                 </f:for>
+                <f:if condition="{ansuchen.typ}==2">
+                    <p style="font-size:7pt">* Kompetenzangaben: D = Deutsch – Kommunikation und Gesellschaft, E = Englisch – Globalität und Transkulturalität, M = Mathematik, <br>B = Berufsorientierung, K = Kreativität und Gestaltung, G = Gesundheit und Soziales, N = Natur und Technik</p>
+                </f:if>
+                
             </div>
                 <div style="page-break-inside: avoid;">
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">BERATUNG</h2>
