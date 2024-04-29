@@ -681,11 +681,11 @@
                     <f:if condition="{ansuchen.typ}==2">
                         <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
                     </f:if>
-                    
+                    <div id="trainerliste">
                     <f:for each="{trainer}" as="t">
                         
 
-                        <div class="row person-ansuchen" id="trainer-{t.uid}">
+                        <div class="row person person-ansuchen" data-name="{t.nachname}"  id="trainer-{t.uid}">
                             <div class="col-12">
                                 <details>
                                 <summary><f:if condition="{ansuchen.typ}==1">
@@ -711,6 +711,7 @@
 
                         </div>
                     </f:for>
+                    </div>
 
                 </div>
             </div>
@@ -760,8 +761,9 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
-                                    <div class="row person-ansuchen" id="trainer-{t.uid}">
+                                    <div class="row person person-ansuchen" data-name="{t.nachname}"  id="berater-{t.uid}">
                                         <div class="col-12">
                                             <details>
                                             <summary><span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
@@ -771,6 +773,7 @@
                                         </div>
                                     </div>
                                 </f:for>
+                                </div>
                             </div>
 
                         </div>
@@ -815,5 +818,7 @@
         </div>
     </f:else>
 </f:if>
+
+
 </f:section>
 </html>
