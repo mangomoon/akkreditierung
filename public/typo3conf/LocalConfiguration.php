@@ -36,7 +36,7 @@ return [
             'loginBackgroundImage' => '',
             'loginFootnote' => '',
             'loginHighlightColor' => '#c3161c',
-            'loginLogo' => 'EXT:ieb/Resources/Public/Backend/logo.svg',
+            'loginLogo' => 'EXT:ieb/Resources/Public/Backend/levelup-logo.svg',
             'loginLogoAlt' => '',
         ],
         'extension_builder' => [

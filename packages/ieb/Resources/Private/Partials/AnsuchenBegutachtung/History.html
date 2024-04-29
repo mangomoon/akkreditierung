@@ -14,7 +14,7 @@
                      <f:format.date format='H:i'>{item.einreichDatum}</f:format.date>
                   </td> -->
                <td>
-                  {item.version}
+                  {item.version + 1} 
                </td>
                <td>
                   <f:if condition="{item.version}==0 &&  !{item.pp3}">
@@ -40,7 +40,7 @@
                   <!-- <td>
                      <f:format.date format='H:i'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                   </td> -->
-               <td>
+               <td> 
                   {item.version}
                </td>
                <td>
@@ -68,7 +68,15 @@
                      <f:format.date format='H:i'>{item.zuteilungDatum}</f:format.date>
                   </td> -->
                <td>
-                  {item.version}
+                  <f:if condition="">
+                     <f:then>
+
+                     </f:then>
+                     <f:else>
+
+                     </f:else>
+                  </f:if>
+                  {item.version + 1}
                </td>
                <td>
                   Zuteilung
