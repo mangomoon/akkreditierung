@@ -1968,7 +1968,7 @@ textarea.extern {
     opacity: 0.3;
 }
 .person-statuskugel.status-0 {
-    background-color: var(--f0);
+    background-color: transparent;
     border: solid 2px var(--f2);
 }
 .person-statuskugel.status-1 {

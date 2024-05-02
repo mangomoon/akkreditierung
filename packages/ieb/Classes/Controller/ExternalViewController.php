@@ -7,6 +7,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use GeorgRinger\Ieb\Domain\Model\Dto\ExternalViewFilter;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchiveRepository;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepositoryTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
@@ -18,6 +19,7 @@ class ExternalViewController extends BaseController
 
     use AnsuchenRepositoryTrait;
     private AnsuchenRepository $ansuchenRepository;
+    private AnsuchenArchiveRepository $ansuchenArchiveRepository;
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
 
@@ -60,6 +62,7 @@ class ExternalViewController extends BaseController
     {
         $this->ansuchenRepository = $ansuchenRepository;
     }
+
 
     public function injectReportingRepository(ReportingRepository $reportingRepository): void
     {

@@ -138,8 +138,16 @@
 						</td>
 						<td class="daten">
 							<f:if condition="{stammdaten.website}">
-								<a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
-							</f:if>
+                                    <f:variable name="url"><f:format.crop maxCharacters='3'>{stammdaten.website}</f:format.crop></f:variable>
+                                    <f:if condition="url =='htt'">
+                                        <f:then>
+                                            <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                        </f:then>
+                                        <f:else>
+                                            <a href="https://{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                        </f:else>
+                                    </f:if>
+                     </f:if>
 						</td>
 					</tr>
 				</table>

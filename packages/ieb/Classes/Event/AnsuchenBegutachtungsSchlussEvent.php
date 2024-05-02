@@ -5,6 +5,7 @@ namespace GeorgRinger\Ieb\Event;
 
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
+use GeorgRinger\Ieb\Domain\Model\Stammdaten;
 
 class AnsuchenBegutachtungsSchlussEvent
 {

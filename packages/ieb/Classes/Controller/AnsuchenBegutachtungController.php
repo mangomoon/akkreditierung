@@ -113,7 +113,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setStatus($gutachtervorschlag);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
-        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungsSchlussEvent($ansuchen));
+        $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungsSchlussEvent($ansuchen, $stammdaten));
         $this->redirect('list');
     }
 
