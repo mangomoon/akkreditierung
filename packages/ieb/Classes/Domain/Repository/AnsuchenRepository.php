@@ -9,10 +9,7 @@ use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Model\Dto\ExternalViewFilter;
 use GeorgRinger\Ieb\Domain\Model\Stammdaten;
-use GeorgRinger\Ieb\Domain\Model\Standort;
 use GeorgRinger\Ieb\Service\CustomDataHandler;
-use http\Exception\RuntimeException;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -22,8 +19,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
-use TYPO3\CMS\Extbase\Reflection\ReflectionService;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -111,7 +106,7 @@ class AnsuchenRepository extends BaseRepository
 
         $query->matching($query->logicalAnd($constraints));
 
-        return $query->execute();
+        return $query->execute()->toArray();
     }
 
     private function getMaxAkkredierteIds(): array

@@ -6,20 +6,19 @@ namespace GeorgRinger\Ieb\Controller;
 use GeorgRinger\Ieb\Domain\Enum\AnsuchenStatus;
 use GeorgRinger\Ieb\Domain\Enum\BundeslandEnum;
 use GeorgRinger\Ieb\Domain\Model\Dto\ExternalViewFilter;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchivRepository;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
-use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchiveRepository;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepositoryTrait;
 use GeorgRinger\Ieb\Domain\Repository\ReportingRepository;
 use GeorgRinger\Ieb\ExtensionConfiguration;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ExternalViewController extends BaseController
 {
 
     use AnsuchenRepositoryTrait;
     private AnsuchenRepository $ansuchenRepository;
-    private AnsuchenArchiveRepository $ansuchenArchiveRepository;
+    private AnsuchenArchivRepository $ansuchenArchiveRepository;
     private ReportingRepository $reportingRepository;
     protected ExtensionConfiguration $extensionConfiguration;
 
