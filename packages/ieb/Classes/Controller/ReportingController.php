@@ -410,10 +410,52 @@ class ReportingController extends ActionController
             $item['ende'] = '31.12.2028';
 
             // Gutachter 1 Erstzuteilung
-            $item['gutachtereinserstzuteilung'] = '###';
+            $item['gutachtereinserstzuteilung'] = '';
+            $allVersions = [];
+            $this->reportingRepository->getRecursiveAnsuchen($allVersions, $raw, 'uid,version,version_based_on,einreich_datum,gutachter1');
+            // oldest first, latest last
+            $allVersions = array_reverse($allVersions);
+            foreach ($allVersions as $version) {
+                if ($version['gutachter1']) {
+
+                    if ($version['gutachter1'] && !isset($this->relationCache['user'][$version['gutachter1']])) {
+                        $userRow = BackendUtility::getRecord('fe_users', $version['gutachter1'], '*', '', false);
+                        if ($userRow) {
+                            $this->relationCache['user'][$userRow['uid']] = $userRow['first_name'] . ' ' . $userRow['last_name'];
+                        }
+                    }
+                    if ($this->relationCache['user'][$version['gutachter1']] ?? false) {
+                        $item['gutachtereinserstzuteilung']= $this->relationCache['user'][$version['gutachter1']];
+                    }
+
+
+                    break;
+                }
+            }
 
             // Gutachter 2 Erstzuteilung
-            $item['gutachterzweierstzuteilung'] = '###';
+            $item['gutachterzweierstzuteilung'] = '';
+            $allVersions = [];
+            $this->reportingRepository->getRecursiveAnsuchen($allVersions, $raw, 'uid,version,version_based_on,einreich_datum,gutachter2');
+            // oldest first, latest last
+            $allVersions = array_reverse($allVersions);
+            foreach ($allVersions as $version) {
+                if ($version['gutachter2']) {
+
+                    if ($version['gutachter2'] && !isset($this->relationCache['user'][$version['gutachter2']])) {
+                        $userRow = BackendUtility::getRecord('fe_users', $version['gutachter2'], '*', '', false);
+                        if ($userRow) {
+                            $this->relationCache['user'][$userRow['uid']] = $userRow['first_name'] . ' ' . $userRow['last_name'];
+                        }
+                    }
+                    if ($this->relationCache['user'][$version['gutachter2']] ?? false) {
+                        $item['gutachterzweierstzuteilung']= $this->relationCache['user'][$version['gutachter2']];
+                    }
+
+
+                    break;
+                }
+            }
 
             // Gutachter 1 und 2 letzte Zuteilung
             foreach (['gutachter1', 'gutachter2'] as $gutachterId) {
@@ -429,24 +471,11 @@ class ReportingController extends ActionController
                 }
             }
 
-            //$item['einreich_datum'] = '';
+            
 
             
-            // ### FRISTEN
-            // date as timestamp
-            foreach (['review_frist_pruefbescheid'] as $value) {
-                $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
-            }
-            //stammdaten
-            $item['review_oecert_frist'] = '';
-            if (!isset($this->relationCache['stammdaten'][$raw['pid']])) {
-                $this->relationCache['stammdaten'][$raw['pid']] = $this->reportingRepository->getLatestStammdaten($raw['pid']);
-            }
-            if ($this->relationCache['stammdaten'][$raw['pid']] ?? false) {
-                $stammdaten = $this->relationCache['stammdaten'][$raw['pid']];
-                $item['markenname'] = $stammdaten['markenname'] ?: $stammdaten['name'];
-                $item['review_oecert_frist'] = $stammdaten['review_oecert_frist'] ? date('d.m.Y', $stammdaten['review_oecert_frist']) : '';
-            }
+            // ### FRISTEN ##################
+            
 
             // all frists
             $frists = [];
@@ -487,11 +516,28 @@ class ReportingController extends ActionController
                 $item['nextFrist2'] = implode('|', $nextFrists);
             }
 
+
+            // Frist Prüfbescheid
+            foreach (['review_frist_pruefbescheid'] as $value) {
+                $item[$value] = $raw[$value] ? date('d.m.Y', $raw[$value]) : '';
+            }
+            // Frist Ö-Cert
+            $item['review_oecert_frist'] = '';
+            if (!isset($this->relationCache['stammdaten'][$raw['pid']])) {
+                $this->relationCache['stammdaten'][$raw['pid']] = $this->reportingRepository->getLatestStammdaten($raw['pid']);
+            }
+            if ($this->relationCache['stammdaten'][$raw['pid']] ?? false) {
+                $stammdaten = $this->relationCache['stammdaten'][$raw['pid']];
+                //$item['markenname'] = $stammdaten['markenname'] ?: $stammdaten['name'];
+                $item['review_oecert_frist'] = $stammdaten['review_oecert_frist'] ? date('d.m.Y', $stammdaten['review_oecert_frist']) : '';
+            }
+
             //### FRISTEN ENDE
 
 
             // verantwortliche
-            foreach (['verantwortliche', 'verantwortliche_mail'] as $verantwortliche) {
+            //foreach (['verantwortliche', 'verantwortliche_mail'] as $verantwortliche) {
+            foreach (['verantwortliche_mail'] as $verantwortliche) {
                 $item['verantwortlich1'] = '';
                 $item['verantwortlich2'] = '';
 
@@ -549,7 +595,7 @@ class ReportingController extends ActionController
 
 //        print_r($out);die;
 
-        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Einreich-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Frist Prüfbescheid", "Frist Ö-Cert","Weitere Fristen","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
+        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Einreich-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Weitere Fristen","Frist Prüfbescheid", "Frist Ö-Cert","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
 
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
 
