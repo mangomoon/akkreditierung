@@ -147,6 +147,12 @@ class DiffService
                     if (isset($items[$k]['reviewC2PsaCommentInternal'])) {
                         unset($items[$k]['reviewC2PsaCommentInternal']);
                     }
+                    if (isset($items[$k]['reviewC2BabiCommentInternalData'])) {
+                        unset($items[$k]['reviewC2BabiCommentInternalData']);
+                    }
+                    if (isset($items[$k]['reviewC2PsaCommentInternalData'])) {
+                        unset($items[$k]['reviewC2PsaCommentInternalData']);
+                    }
                     if (isset($items[$k]['reviewC2BabiCommentTr'])) {
                         unset($items[$k]['reviewC2BabiCommentTr']);
                     }
@@ -164,6 +170,9 @@ class DiffService
                     }
                     if (isset($items[$k]['reviewC22BabiStatus'])) {
                         unset($items[$k]['reviewC22BabiStatus']);
+                    }
+                    if (isset($items[$k]['reviewFrist'])) {
+                        unset($items[$k]['reviewFrist']);
                     }
                     if (isset($items[$k]['reviewFristMailSent14t'])) {
                         unset($items[$k]['reviewFristMailSent14t']);
@@ -332,6 +341,18 @@ class DiffService
                     }
                     if (isset($items[$k]['reviewC3Ag2CommentInternalStep'])) {
                             unset($items[$k]['reviewC3Ag2CommentInternalStep']);
+                    }
+                    if (isset($items[$k]['reviewC3CommentInternalData'])) {
+                        unset($items[$k]['reviewC3CommentInternalData']);
+                }
+                    if (isset($items[$k]['okpsa'])) {
+                        unset($items[$k]['okpsa']);
+                    }
+                    if (isset($items[$k]['okbabi'])) {
+                        unset($items[$k]['okbabi']);
+                    }
+                    if (isset($items[$k]['gutachterLockedBy'])) {
+                        unset($items[$k]['gutachterLockedBy']);
                     }
                 }
                 $row[$field] = $items;

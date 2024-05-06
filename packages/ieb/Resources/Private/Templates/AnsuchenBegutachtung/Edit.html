@@ -8,7 +8,7 @@
     <f:render partial="FormErrors" />
 
     <div class="abstand-gross"></div>
-    
+    <f:debug>{diff}</f:debug>
     <div id="history">
         <f:render partial="AnsuchenBegutachtung/History" arguments="{history:history}" />
     </div>
@@ -30,9 +30,9 @@
         <f:if condition="{ansuchen.gutachter2.uid}=={currentUser.uid}"><f:variable name="commentuser">a2</f:variable></f:if>
         <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}"><f:variable name="commentuser">gs</f:variable></f:if>
 
-
+        
         <f:if condition="{ansuchen.status} > 30">
-            <f:variable name="difftyp">1</f:variable>
+            <f:variable name="difftyp">2</f:variable>
         </f:if>
         <f:if condition="{ansuchen.kopieVon} && {ansuchen.status} == 30">
             <f:variable name="difftyp">3</f:variable>
@@ -50,7 +50,9 @@
                         </f:else>
                     </f:if>
                 </p>
-                <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version}</code>
+                <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> 
+                
+                <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version} | difftyp {difftyp}</code>
             </div>
             <div class="col">
                 <p id="typ" class=" typ typ-{ansuchen.typ}"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
@@ -331,7 +333,7 @@
                                         <p><span class="halbstark">Qualitätsverständnis und Qualitätsziele:</span> Beschreiben Sie, was Qualität für Ihre Einrichtung bedeutet, wo Qualität in Ihrer Einrichtung sichtbar wird.
                                         </p>
                                         <p><span class="halbstark">Kontinuierliche Verbesserung:</span> Stellen Sie dar, welche Maßnahmen gesetzt werden, um die Qualitätsziele Ihrer Einrichtung zu erreichen und wie eine Weiterentwicklung der Qualität gewährleistet
-                                            wird. Denken Sie dabei an Einholen von Feedback (Teilnehmer/innen, Mitarbeiter/innen), Umgang mit Beschwerden, etc.</p>
+                                            wird. Denken Sie dabei an Einholen von Feedback (Teilnehmerinnen und Teilnehmer, Mitarbeiterinnen und Mitarbeiter), Umgang mit Beschwerden, etc.</p>
                                         <p><span class="halbstark">Anforderungen an die Infrastruktur:</span> Nennen Sie die Kriterien, nach denen Sie Ihre Räumlichkeiten auswählen/gestalten, um ein erwachsenengerechtes Lernen zu ermöglichen (Räumlichkeiten,
                                             Größe, Lage, Erreichbarkeit, technische Ausstattung, Barrierefreiheit).</p>
                                         <p class="hinweis"><span class="worthinweis">Hinweis:</span> max. 3 Seiten, geben Sie jeweils Beispiele an.</p>
@@ -351,15 +353,11 @@
                         <div class="kriteriumteil">
                             <h3>A.2.3 Qualitätssicherung Personal</h3>
                             <div class="erlaeuterung">
-                                <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse bei den Trainer/innen und Berater/innen vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
+                                <p><span class="halbstark">Rahmenbedingungen:</span> Beschreiben Sie, welche Vertragsverhältnisse beim Personal vorliegen und wie die Rahmenbedingungen (z.B. Vor- und Nachbereitungszeiten, Supervision)
                                     geregelt sind.</p>
-                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Projektleitung und der Projektmitarbeiter/innen in Ihrer Einrichtung geregelt ist. Berücksichtigen
-                                    Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
-                                <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung der Mitarbeiter/innen setzt. In der IEB eingesetzte Trainer/innen sind zur Weiterbildung
-                                    verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
+                                <p><span class="halbstark">Interne Kommunikation:</span> Stellen Sie dar, wie die Zusammenarbeit zwischen den Ebenen der Projektleitung und der Projektmitarbeiterinnen und -mitarbeiter in Ihrer Einrichtung geregelt ist. Berücksichtigen Sie dabei die inhaltliche und die psychosoziale Ebene.</p>
+                                <p><span class="halbstark">Aus-/Weiterbildung:</span> Stellen Sie dar, welche Maßnahmen Ihre Einrichtung in Bezug auf die Aus- bzw. Weiterbildung des Personals setzt. In Level-up eingesetzte Trainerinnen und Trainer sind zur Weiterbildung verpflichtet (siehe Programmplanungsdokument Kapitel 3.3.2)</p>
                                 <p class="hinweis"><span class="worthinweis">Hinweis:</span> Beschreibung max. 2 Seiten.</p>
-
-                                
                             </div>
 
                             <f:render partial="Form/UploadListDiffRel" arguments="{
@@ -443,23 +441,23 @@
                                         <li class="light">Lernkompetenzen (Autonomes Lernen, Lernen lernen)</li>
                                         <f:if condition="{ansuchen.kompetenz1} == 1">
                                             <li>Deutsch als Erstsprache bzw. überwiegende Sprache
-                                            <f:if condition="{diff.kompetenz1.current}  && {difftyp}!=2"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <f:if condition="{diff.kompetenz1.current}  && {difftyp}>1"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz2} == 1">
                                             <li>Deutsch als Zweitsprache
-                                            <f:if condition="{diff.kompetenz2.current}  && {difftyp}!=2"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <f:if condition="{diff.kompetenz2.current}  && {difftyp}>1"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz3} == 1">
                                             <li>Mathematische Kompetenzen
-                                            <f:if condition="{diff.kompetenz3.current}  && {difftyp}!=2"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <f:if condition="{diff.kompetenz3.current}  && {difftyp}>1"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz4} == 1">
                                             <li>Digitale Kompetenzen
-                                            <f:if condition="{diff.kompetenz4.current}  && {difftyp}!=2"> <span class="vorher-knopf">neu</span></f:if></li>
+                                            <f:if condition="{diff.kompetenz4.current}  && {difftyp}>1"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{ansuchen.kompetenz5} == 1">
                                             <li>Grundlegende Kompetenzen in Englisch
-                                                <f:if condition="{diff.kompetenz5.current}  && {difftyp}!=2"> <span class="vorher-knopf">neu</span></f:if></li>
+                                                <f:if condition="{diff.kompetenz5.current}  && {difftyp}>1"> <span class="vorher-knopf">neu</span></f:if></li>
                                         </f:if>
                                         <f:if condition="{diff.kompetenz1.previous}"><li class="diff">gelöscht: Deutsch als Erstsprache</li></f:if>
                                         <f:if condition="{diff.kompetenz2.previous}"><li class="diff">gelöscht: Deutsch als Zweitsprache</li></f:if>
@@ -771,10 +769,10 @@
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="b-2-c-hilfe">
                                 <p>Das pädagogisch-didaktische Konzept des Bildungsträgers muss auf den jeweiligen zugrundeliegenden Curricula aufbauen.</p>
-                                <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainer/innen.</p>
+                                <p>Im Konzept werden folgende Punkte ersichtlich: erwachsenengerecht, geeigneter Methodenmix, zielgruppenadäquater Aufbau, Teilnehmendenorientierung, Rolle der Trainerinnen und Trainer.</p>
                                 <p>Fernunterricht: Konzeption und Sicherstellung der technischen Voraussetzungen, Angabe der Online-Lerninhalte und Begründung der Eignung des Online-Formats, Kommunikations- und Begleitprozesse während Online-Lernphasen, Prozentsatz des Online-Angebots (maximal 30%)</p>
                             </div>
-                            <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmer/innen gestalten bezüglich</p>
+                            <p>Stellen Sie dar, wie Sie den Lernprozess zielgruppengerecht und unter Berücksichtigung der individuellen Lernziele der Teilnehmerinnen und Trainer gestalten bezüglich</p>
                             <ul>
                                 <li>
                                     Aufbau, Lehrinhalte, Gestaltung/Methoden
@@ -793,9 +791,9 @@
 
                             <p class="hinweis">Hinweis: Beschreibung max. 5 Seiten</p>
                         </div>
-                        <f:if condition="{ansuchen.typ}==1"><p>Es wird Einzelunterricht zum Lerneinstieg angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.einzelunterricht}  && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p></f:if>
+                        <f:if condition="{ansuchen.typ}==1"><p>Es wird Einzelunterricht zum Lerneinstieg angeboten: {f:if(condition: '{ansuchen.einzelunterricht}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.einzelunterricht}  && {difftyp}>1"><span class="vorher-knopf">geändert</span></f:if></p></f:if>
                             
-                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.fernlehre}  && {difftyp}==1"><span class="vorher-knopf">geändert</span></f:if></p>
+                            <p>Das Bildungsangebot enthält Fernunterricht (maximal 30 %): {f:if(condition: '{ansuchen.fernlehre}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')} <f:if condition="{diff.fernlehre}  && {difftyp}>1"><span class="vorher-knopf">geändert</span></f:if></p>
                             <div class="abstand-mittel"></div>
                         
 
@@ -816,7 +814,7 @@
                                     <div class="showinfobox" id="b-2-c-x-hilfe">
                                         <p>Das Curriculum Basisbildung wird mit seinen Begleitmaterialien umgesetzt.</p>
                                     </div>
-                                    <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmer/innen zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
+                                    <p class="">Kompetenzerhebung: Beschreiben Sie, wie Sie den Kompetenz- bzw. Lernstand der Teilnehmerinnen und Trainer zu Beginn, begleitend sowie abschließend vor Zertifikatserstellung erheben und welche Verfahren hier zum Einsatz kommen.
                                     </p>
                                 </f:then>
                                 <f:else>
@@ -1159,9 +1157,9 @@
                         
                         <div class="erlaeuterung">
                             <div class="showinfobox" id="c-2-hilfe">
-                                <p>Die Anzahl der Trainer/innen ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainer/innen anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
+                                <p>Die Anzahl der Trainerinnen und Trainer ist ausreichend, um das geplante Kursangebot umzusetzen. Im Pflichtschulabschluss werden die Qualifikationen jener Trainerinnen und Trainer anerkannt, die durch den Bescheid des zuständigen Ministeriums abgedeckt sind.</p>
                             </div>
-                            <p class="hinweis"><span class="worthinweis">Hinweis:</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainer/innen nach IEB-Kriterien anerkannt werden.</p>
+                            <p class="hinweis"><span class="worthinweis">Hinweis:</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass mindestens 50% der Trainerinnen und Trainer nach Level Up-Kriterien anerkannt werden.</p>
                         </div>
                     </div>
                     <div class="rechts col-5">
@@ -1241,9 +1239,9 @@
                         <div class="kriteriumteil">
                             <div class="erlaeuterung">
                                 <div class="showinfobox" id="c-3-hilfe">
-                                    <p>Die Anzahl der Berater/innen ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
+                                    <p>Die Anzahl der Beraterinnen und Berater ist ausreichend, um das geplante Beratungsangebot umzusetzen.</p>
                                 </div>
-                                <p>Fügen Sie dem Ansuchen die eingesetzten Berater/innen hinzu.</p>
+                                <p>Fügen Sie dem Ansuchen die eingesetzten Beraterinnen und Berater hinzu.</p>
                                 <p class="hinweis">Hinweis: Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird. Dies ist unter B.2.3. darzustellen.</p>
                                 <p class="hinweis"><span class="worthinweis">Hinweis</span> Für die Akkreditierung des Bildungsangebots ist es erforderlich, dass pro Standort mindestens ein/e Berater/in nach IEB-Kriterien anerkannt wird.</p>
                             </div>
@@ -1282,16 +1280,16 @@
                 <div class="row">
 
                     <div class="col" style="background:#DADBCF;margin-top:0;">
-                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Mitarbeiter/innen über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes. Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                        <p>Ich bestätige das Vorliegen von Einverständniserklärungen aller unter C angegebenen Personals über die Bereitschaft, für die Durchführung des Bildungsangebots zur Verfügung zu stehen und zur Verwendung personenbezogener Daten für die Abwicklung des gegenständlichen Akkreditierungsansuchens im Sinne des Datenschutzgesetzes. Die Einverständniserklärungen sind von der Einrichtung für allfällige Kontrollen aufzubewahren: {f:if(condition: '{ansuchen.erklaerungd1}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
 
                         <f:if condition="{ansuchen.typ}=2">
-                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfer/innen und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfer/innen und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
+                            <p class="psa">Ich bestätige, dass bei den unter C.2. angeführten Personen sämtliche Prüfende und Lehrende enthalten sind, die durch den unter B.1.5. angelegten Prüfungsbescheid abgedeckt sind und alle neu dazu gekommenen Prüfenden und Lehrenden vom zuständigen Bildungsdirektion bestätigt sind.</p>
                         </f:if>
 
                         <p>Wir erklären hiermit, alle Angaben nach bestem Wissen und Gewissen wahrheitsgetreu gemacht zu haben: {f:if(condition: '{ansuchen.erklaerungd3}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
-                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Level Up – Erwachsenenbildung einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
+                        <p>Wir sind mit den AGB und Datenschutzbestimmungen der Level Up einverstanden: {f:if(condition: '{ansuchen.erklaerungd5}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}
                         </p>
                     </div>
 

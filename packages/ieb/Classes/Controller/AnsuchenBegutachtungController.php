@@ -290,6 +290,9 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
+        $nsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+
+
         // // Zuteilung löschen:
         // $ansuchen->setZuteilungDatum(null);
         // $ansuchen->setGutachter1(null);
@@ -311,7 +314,7 @@ class AnsuchenBegutachtungController extends BaseController
         $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
         /** @var Ansuchen $newAnsuchen */
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
-        $newAnsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+        //$newAnsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
         $this->ansuchenRepository->update($newAnsuchen);
         //$this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
         
