@@ -71,6 +71,41 @@ class ReportingRepository
         return $select->execute()->fetchAllAssociative();
     }
 
+    public function getByFilterWoTest(ReportingFilter $filter): array
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+
+        $select = $queryBuilder->select('tx_ieb_domain_model_ansuchen.*')
+            ->from('tx_ieb_domain_model_ansuchen');
+
+        $constraints = [
+            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+            $queryBuilder->expr()->neq('pid', $queryBuilder->createNamedParameter(218, \PDO::PARAM_INT)),
+        ];
+
+        if ($filter->bundesland > 0) {
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \PDO::PARAM_INT));
+        }
+        if ($filter->status >= 0) {
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \PDO::PARAM_INT));
+        }
+        if ($filter->statusList) {
+            $constraints[] = $queryBuilder->expr()->in('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->statusList, Connection::PARAM_INT_ARRAY));
+        }
+        if ($filter->aboveStatus) {
+            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \PDO::PARAM_INT));
+        }
+        if ($filter->trPid > 0) {
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
+        }
+
+        if (!empty($constraints)) {
+            $select->where(...$constraints);
+        }
+
+        return $select->execute()->fetchAllAssociative();
+    }
+
     public function getAllTraegerNames(): array
     {
         $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_stammdaten');

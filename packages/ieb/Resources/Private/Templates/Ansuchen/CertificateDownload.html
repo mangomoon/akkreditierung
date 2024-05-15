@@ -178,12 +178,12 @@
                     <f:if condition="{ansuchen.typ}==1">
                         <f:then>
                             <f:if condition="{p.reviewC21BabiStatus}>2 || {p.reviewC22BabiStatus}>2">
-                                <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2BabiCommentTr}</p>
+                                <p style="page-break-inside: avoid;">Trainerin/Trainer: {p.vorname} {p.nachname}<br>{p.reviewC2BabiCommentTr}</p>
                             </f:if>
                         </f:then>
                         <f:else>
                             <f:if condition="{p.reviewC21PsaStatus}>2 || {p.reviewC22PsaStatus}>2">
-                                <p style="page-break-inside: avoid;">Trainer/in: {p.vorname} {p.nachname}<br>{p.reviewC2PsaCommentTr}</p>
+                                <p style="page-break-inside: avoid;">Trainerin/Trainer: {p.vorname} {p.nachname}<br>{p.reviewC2PsaCommentTr}</p>
                                 </div>
                             </f:if>
                         </f:else>
@@ -195,7 +195,7 @@
                 </f:if>
                 <f:for each="{berater}" as="p">
                     <f:if condition="{p.reviewC3Status}>2 || {p.reviewC32Status}>2">
-                        <p style="page-break-inside: avoid;">Berater/in: {p.vorname} {p.nachname}<br>{p.reviewC3CommentTr}</p>
+                        <p style="page-break-inside: avoid;">Beraterin/Berater: {p.vorname} {p.nachname}<br>{p.reviewC3CommentTr}</p>
                     </f:if>
                 </f:for>
 

@@ -290,7 +290,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setTrotzdemAbschicken('');
         $ansuchen->setNotitzzettel('');
         $ansuchen->setGutachterLockedBy(0);
-        $nsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+        $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
 
 
         // // Zuteilung löschen:

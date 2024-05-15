@@ -78,10 +78,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="ansuchenliste_ansuchennr">
-                                                    {item.nummer}<code>B: {item.bundesland}</code>
+                                                    {item.nummer}<code>B: {item.bundesland} | uid:  {item.uid} </code>
                                                 </td>
                                                 <td class="ansuchenliste_bezeichnung">
-                                                    <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                                    <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
                                                     <f:if condition="{item.status}==100 || {item.status}==140">
                                                         <f:then>
                                                             <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
@@ -138,7 +138,7 @@
                                     {item.nummer}<code>B: {item.bundesland}</code>
                                 </td>
                                 <td class="ansuchenliste_bezeichnung">
-                                    <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                    <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
                                     <f:if condition="{item.status}==100 || {item.status}==140">
                                         <f:then>
                                             <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
@@ -194,10 +194,10 @@
                                         </tr>
                                         <tr>
                                             <td class="ansuchenliste_ansuchennr">
-                                                {item.nummer}<code>B: {item.bundesland}</code>
+                                                {item.nummer}<code>B: {item.bundesland} | status {item.status} | is: {item.reviewIncomingStatus}</code>
                                             </td>
                                             <td class="ansuchenliste_bezeichnung">
-                                                <span class="ansuchenliste_ansuchenname">{item.name} {item.uid}</span><br>
+                                                <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
                                                 <f:if condition="{item.status}==100 || {item.status}==140">
                                                     <f:then>
                                                         <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>

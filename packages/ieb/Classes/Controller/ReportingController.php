@@ -83,7 +83,7 @@ class ReportingController extends ActionController
                     'typ' => 'Programmbereich',
                 ];
                 $csvContent = $this->csvService->generateCsv($items, $fields);
-                $filename = date("Ymd") . '_IEB-Data.csv';
+                $filename = date("Ymd") . '_LevelUp-Data.csv';
                 $this->csvService->response($csvContent, $filename);
             }
         }
@@ -258,7 +258,7 @@ class ReportingController extends ActionController
     {
         $filter = new ReportingFilter();
         $filter->aboveStatus = AnsuchenStatus::IN_ARBEIT->value;
-        $raws = $this->reportingRepository->getByFilter($filter);
+        $raws = $this->reportingRepository->getByFilterWoTest($filter);
         $raws = $this->switchToParentVersion($raws);
 
         $out = [];
@@ -528,7 +528,7 @@ class ReportingController extends ActionController
             }
             if ($this->relationCache['stammdaten'][$raw['pid']] ?? false) {
                 $stammdaten = $this->relationCache['stammdaten'][$raw['pid']];
-                //$item['markenname'] = $stammdaten['markenname'] ?: $stammdaten['name'];
+                $item['markenname'] = $stammdaten['markenname'] ?: $stammdaten['name'];
                 $item['review_oecert_frist'] = $stammdaten['review_oecert_frist'] ? date('d.m.Y', $stammdaten['review_oecert_frist']) : '';
             }
 
