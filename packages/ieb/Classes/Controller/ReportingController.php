@@ -360,11 +360,11 @@ class ReportingController extends ActionController
 
             //Einreich-Status
             //...
-            try {
-                $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
-            } catch (\Exception $e) {
-                $item['status'] = 'unknown_' . $raw['status'];
-            }
+            // try {
+            //     $item['status'] = AnsuchenStatus::tryFrom($raw['status'])->name;
+            // } catch (\Exception $e) {
+            //     $item['status'] = 'unknown_' . $raw['status'];
+            // }
             
             // Datum Ersteinreichung
             //...
@@ -557,9 +557,19 @@ class ReportingController extends ActionController
                 }
             }
 
+            // Prüfbescheid Check
+
+            $item['pruefbescheid_check'] = '';
+            if ($raw['pruefbescheid_check'] == 1) {
+                $item['pruefbescheid_check'] = 'ja';
+            } elseif ($raw['pruefbescheid_check'] == 1) {
+                $item['pruefbescheid_check'] = 'nein';
+            }
+
+
             // Prüfbescheid, Kinderbetreuung, Einzelunterricht, Fernlehre
             // boolean
-            foreach (['pruefbescheid_check', 'kinderbetreuung', 'einzelunterricht', 'fernlehre'] as $value) {
+            foreach (['kinderbetreuung', 'einzelunterricht', 'fernlehre'] as $value) {
                 $item[$value] = $raw[$value] ? 'ja' : 'nein';
             }
 
@@ -595,7 +605,7 @@ class ReportingController extends ActionController
 
 //        print_r($out);die;
 
-        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Einreich-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Weitere Fristen","Frist Prüfbescheid", "Frist Ö-Cert","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
+        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Weitere Fristen","Frist Prüfbescheid", "Frist Ö-Cert","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
 
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
 

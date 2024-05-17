@@ -877,7 +877,7 @@ function qualifikationPsaSprache() {
             $(this).parent().parent().parent().find('.komm-ext').hide();
         }
 
-        if ($(this).parent().hasClass('ok')) {
+        if (($(this).parent().hasClass('ok')) || ($(this).parent().hasClass('zweit'))) {
             neu=" ";
             t = $(this).parent().parent().parent().find('.extern').val();
             if (t) {
@@ -919,7 +919,15 @@ function qualifikationPsaSprache() {
 
      //  ########################################### FORM Begutachtung Trainer
      $('.teilstatus label.knopf').click(function() {
-         
+        salt = 1;
+        // $(this).parent().find('.checked').css('background','red');
+        if (($(this).parent().find('.checked').hasClass('nicht-ok')) || ($(this).hasClass('nicht-ok'))) {
+            salt = 4;
+        }
+        if (($(this).parent().find('.checked').hasClass('auflage')) || ($(this).hasClass('auflage'))) {
+            salt = 3;
+        }
+        console.log('salt = '+salt);
 
         if($(this).hasClass('checked')) {
             $(this).removeClass('checked');
@@ -930,6 +938,9 @@ function qualifikationPsaSprache() {
             oeffnenBeraterBegutachtung();
             if($(this).hasClass('ok')) {
                 s = 1;
+            }
+            if($(this).hasClass('zweit')) {
+                s = 2;
             }
         } else {
             $(this).find("input").prop('checked', true);
@@ -943,11 +954,23 @@ function qualifikationPsaSprache() {
         }
         
 
-        if ((s == 1) && ($('.extern').val()!='')) {
+        if (((s == 1) || (s == 2)) && ($('.extern').val()!='')) {
             neu="";
             t = $('.extern').val();
             i = $('.komm-intern-textarea').val();
-            neu = i + "Nicht ok war: »" + t + "«";
+            console.log('salt verdammt = '+salt);
+            if (salt == 3) {
+                neu = i + "Auflage war: »" + t + "«";
+            } else if (salt == 4) {
+                neu = i + "Nicht ok war: »" + t + "«";
+            }
+           
+            // if($('.nicht-ok').hasClass('checked') && $('.nicht-ok').hasClass('checked')) {
+            //     console.log("immer noch was nicht so wie es sein soll!");
+            // } else {
+            //     console.log("Frist löschen!");
+            // }
+
             $('.komm-intern-textarea').val(neu);
             $('.extern').val('');
             }
