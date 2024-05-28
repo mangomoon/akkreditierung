@@ -116,7 +116,7 @@ class AnsuchenRepository extends BaseRepository
             ->addSelectLiteral('max(uid) as uid')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForAkkreditiertOnly(), Connection::PARAM_INT_ARRAY))
+                $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForAkkreditiertOnlyExtern(), Connection::PARAM_INT_ARRAY))
             )
             ->groupBy('nummer')
             ->execute()

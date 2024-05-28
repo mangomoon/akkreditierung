@@ -39,9 +39,10 @@ trait AnsuchenRepositoryTrait
                     $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());
                     if ($previous) {
                         $newRows[] = $previous;
+                        
                     }
                 } else {
-                    $newRows[] = $row;
+                    $newRows[] = $row;                   
                 }
             }
         }

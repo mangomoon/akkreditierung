@@ -181,6 +181,26 @@ enum AnsuchenStatus: int
         ];
     }
 
+    /**
+     * @return int[]
+     */
+    public static function statusForAkkreditiertOnlyExtern(): array
+    {
+        return [
+            self::AKKREDITIERT->value,
+            self::AKKREDITIERT_MIT_AUFLAGEN->value,
+            self::AKKREDITIERUNG_ENTZOGEN->value,
+            self::ZURUECK_AN_TR_AKKREDITIERT->value,
+            self::ZURUECK_AN_TR_AUFLAGE->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG_ODER_AUFLAGENERFUELLUNG->value,
+            self::EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value,
+            self::BEGUTACHTET_NACH_AUFLAGENERFUELLUNG->value,
+            self::BEGUTACHTET_NACH_EINGEREICHT_ZUR_NACHAKKREDITIERUNG->value,
+            self::EINGEREICHT_NACH_ZURUECK_AN_TR_AKKREDITIERT->value,
+            self::EINGEREICHT_NACH_ZURUECK_AN_TR_AUFLAGE->value,
+        ];
+    }
+
      /**
      * @return int[]
      */
