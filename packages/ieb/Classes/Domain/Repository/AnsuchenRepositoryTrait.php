@@ -21,10 +21,11 @@ trait AnsuchenRepositoryTrait
         $newRows = [];
         
         foreach ($rows as $row) {
-           
+            
             
             if (is_array($row)) {
                 $uid = $row['uid'];
+                //var_dump($uid);
                 if ($row['version_based_on'] > 0 && !in_array($row['status'], AnsuchenStatus::statusSichtbarDurchGs(), true)) {
                     $previous = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $row['version_based_on']);
                     if ($previous) {
@@ -42,16 +43,20 @@ trait AnsuchenRepositoryTrait
                 }
             } elseif($row instanceof Ansuchen) {
                 $uid = $row->getUid();
+
                 if ($row->getVersionBasedOn() > 0 && !in_array($row->getStatus(), AnsuchenStatus::statusSichtbarDurchGs(), true)) {
-                    $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());
+
                     
+                    $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());
+                    // $uidn = $previous->getUid();
+                    // var_dump($uidn);
                     if ($previous) {
                         $previous->lastuid = $uid;
                         $newRows[] = $previous;
-                        
                     }
-                } else {
                     
+                } else {
+                    //$previous->lastuid = $uid;
                     $newRows[] = $row;                   
                 }
             }

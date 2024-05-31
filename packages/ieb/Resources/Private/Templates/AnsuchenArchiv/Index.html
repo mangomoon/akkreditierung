@@ -61,6 +61,7 @@
 
     <f:if condition="{filter.submitted}">
         <f:if condition="{items}">
+            
             <f:then>
                 <table>
                     <tbody>
@@ -144,7 +145,7 @@
                                                                 <td>&nbsp;</td>
                                                                 <td>{oldVersion.version +1} </td>
                                                                 <td>[{oldVersion.uid}]</td>
-                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date></td>
+                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date><code>status: {oldVersion.status} incoming: {oldVersion.review_incoming_status}</code></td>
                                                                 <td class="td-knopf">
                                                                     <f:if condition="{oldVersion.akkreditierung_pdf}">
                                                                         <ieb:falFromRecord field="akkreditierung_pdf" id="{oldVersion.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">

@@ -121,7 +121,7 @@ class AnsuchenRepository extends BaseRepository
             ->groupBy('nummer')
             ->execute()
             ->fetchAllAssociative();
-
+        //var_dump($maxIdRows);
         return array_column($maxIdRows, 'uid');
     }
 

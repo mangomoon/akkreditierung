@@ -37,11 +37,10 @@ class ExternalViewController extends BaseController
         }
 
         $items = $this->ansuchenRepository->getAllForExternalView($filter);
-        //$lastitems = $items;
+
         $items = $this->switchToParentVersion($items);
 
         $this->view->assignMultiple([
-            //'ansuchenaktuell' => $lastitems,
             'ansuchen' => $items,
             'filter' => $filter,
             'options' => $this->getOptions(),
