@@ -19,8 +19,12 @@ trait AnsuchenRepositoryTrait
     public function switchToParentVersion(array $rows): array
     {
         $newRows = [];
+        
         foreach ($rows as $row) {
+           
+            
             if (is_array($row)) {
+                $uid = $row['uid'];
                 if ($row['version_based_on'] > 0 && !in_array($row['status'], AnsuchenStatus::statusSichtbarDurchGs(), true)) {
                     $previous = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $row['version_based_on']);
                     if ($previous) {
@@ -29,19 +33,25 @@ trait AnsuchenRepositoryTrait
                                 $previous[$copyFields] = $row[$copyFields];
                             }
                         }
+                        $previous['lastuid']=$uid;
                         $newRows[] = $previous;
                     }
                 } else {
+                    $previous['lastuid']=$uid;
                     $newRows[] = $row;
                 }
             } elseif($row instanceof Ansuchen) {
+                $uid = $row->getUid();
                 if ($row->getVersionBasedOn() > 0 && !in_array($row->getStatus(), AnsuchenStatus::statusSichtbarDurchGs(), true)) {
                     $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());
+                    
                     if ($previous) {
+                        $previous->lastuid = $uid;
                         $newRows[] = $previous;
                         
                     }
                 } else {
+                    
                     $newRows[] = $row;                   
                 }
             }

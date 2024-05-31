@@ -7,7 +7,7 @@
 <f:section name="content">
     <h1>Akkreditierte Ansuchen</h1>
 
-    <f:debug>{_all}</f:debug>
+
         
 
     <f:form method="get" action="index" name="filter" object="{filter}">
@@ -95,13 +95,23 @@
                                                 </td>
                     
                                                 <td class="td-knopf">
+                                                    
                                                     <f:if condition="{item.akkreditierungPdf}">
-                                                                <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                                    <f:if condition="{falItems.0}">
-                                                                        <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
-                                                                    </f:if>
-                                                                </ieb:falFromRecord>
-                                                            </f:if>
+                                                        <f:then>
+                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.uid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                <f:if condition="{falItems.0}">
+                                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                </f:if>
+                                                            </ieb:falFromRecord>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                <f:if condition="{falItems.0}">
+                                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                </f:if>
+                                                            </ieb:falFromRecord>
+                                                        </f:else>
+                                                    </f:if>
                                                 </td>
                                                 <td class="td-knopf">
                                                     <f:if condition="{item.pp3} && {item.version}==0">
