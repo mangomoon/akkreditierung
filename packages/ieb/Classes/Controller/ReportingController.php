@@ -358,6 +358,94 @@ class ReportingController extends ActionController
             }
             $item['akkstatus'] = $akkstatus;
 
+            $gutachter=false;
+            if($raw['gutachter1'] || $raw['gutachter2']) {
+                $gutachter=true;
+            }
+            switch($raw['status']) {
+                case 30:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 40:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 80:
+                    $akkstatus = "beim Träger";
+                    break;
+                case 85:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 90:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 100:
+                    $akkstatus = "beim Träger";
+                    break;
+                case 160:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 170:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 200:
+                    $akkstatus = "Bearbeitungsauftrag";
+                    break;
+                case 210:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 215:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 140:
+                    $akkstatus = "beim Träger";
+                    break;
+                case 150:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 155:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 220:
+                    $akkstatus = "Bearbeitungsauftrag";
+                    break;
+                case 230:
+                    $akkstatus = "eingereicht";
+                    if($gutachter) {
+                        $akkstatus = "eingereicht und zugeteilt";
+                    }
+                    break;
+                case 235:
+                    $akkstatus = "begutachtet";
+                    break;
+                case 800:
+                    $akkstatus = "beim Träger";
+                    break;
+                case 810:
+                    $akkstatus = "beim Träger";
+                    break;
+                case 820:
+                    $akkstatus = "beim Träger";
+                    break;
+                }
+                //zugeteilt ...
+            $item['akkstatus2'] = $akkstatus;
+
+
             //Einreich-Status
             //...
             // try {
@@ -605,7 +693,7 @@ class ReportingController extends ActionController
 
 //        print_r($out);die;
 
-        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Weitere Fristen","Frist Prüfbescheid", "Frist Ö-Cert","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
+        $firstrow = ["uid", "Nr", "Träger Name", "Bundesland", "Bereich", "Programmperiode","Akkreditierungs-Status","Ansuchen-Status","Datum Ersteinreichung","Datum Erstzuteilung","Akkreditierungsdatum", "Akkreditierungsdatum Ende","Gutachter 1 Erstzuteilung","Gutachter 2 Erstzuteilung","Gutachter 1 letzte Zuteilung","Gutachter 2 letzte Zuteilung","Nächste Frist","Weitere Fristen","Frist Prüfbescheid", "Frist Ö-Cert","Kontaktperson 1","Kontaktperson 2","Prüfbescheid","Kinderbetreuung", "Einzelunterricht", "Fernlehre","D Erstspr. (BaBi)", "D Zweitspr. (BaBi)", "M (BaBi)", "Digital (BaBi)", "E (BaBi)", "Kreativität (PSA)", "Gesundheit (PSA)", "Natur", "Weitere Sprache (PSA)", "Welche Sprache (PSA)","Bezeichnung"];
 
         $csvContent = $this->csvService->generateDirect($out, $firstrow);
 
