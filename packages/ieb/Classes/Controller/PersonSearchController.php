@@ -62,6 +62,8 @@ class PersonSearchController extends ActionController
 
         $csv = [];
         foreach ($this->trainerRepository->findInPersonSearch($search) as $row) {
+            $pp = substr($row['ansuchenNummer'], 0, 1);
+            
             if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
                 $frist = $row['review_frist'];
@@ -82,12 +84,14 @@ class PersonSearchController extends ActionController
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
                 'traeger' => $row['stammdatenName'],
+                'pp3' => $pp,
                 'Frist' => $frist,
             ];
 
             $csv[] = $line;
         }
         foreach ($this->beraterRepository->findInPersonSearch($search) as $row) {
+            $pp = substr($row['ansuchenNummer'], 0, 1);
             if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
             } else {
@@ -107,12 +111,14 @@ class PersonSearchController extends ActionController
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
                 'traeger' => $row['stammdatenName'],
+                'pp3' => $pp,
                 'Frist' => $frist,
             ];
 
             $csv[] = $line;
         }
         foreach ($this->angebotVerantwortlichRepository->findInPersonSearch($search) as $row) {
+            $pp = substr($row['ansuchenNummer'], 0, 1);
             if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
             } else {
@@ -125,13 +131,14 @@ class PersonSearchController extends ActionController
                 'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
+                'pp3' => $pp,
                 'traeger' => $row['stammdatenName'],
 
             ];
             $csv[] = $line;
         }
 
-        $firstrow = ["Funktion", "Vorname","Nachname", "Bereich", "Ansuchennummer", "Bezeichnung", "Träger", "Auflage"];
+        $firstrow = ["Funktion", "Vorname","Nachname", "Bereich", "Ansuchennummer", "Bezeichnung", "Träger", "PP", "Auflage"];
 
         $csvname = date('Y-m-d') . "-Personen.csv";
 

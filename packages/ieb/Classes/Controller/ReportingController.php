@@ -366,7 +366,7 @@ class ReportingController extends ActionController
                 case 30:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 40:
@@ -378,7 +378,7 @@ class ReportingController extends ActionController
                 case 85:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 90:
@@ -390,7 +390,7 @@ class ReportingController extends ActionController
                 case 160:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 170:
@@ -402,7 +402,7 @@ class ReportingController extends ActionController
                 case 210:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 215:
@@ -414,7 +414,7 @@ class ReportingController extends ActionController
                 case 150:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 155:
@@ -426,7 +426,7 @@ class ReportingController extends ActionController
                 case 230:
                     $akkstatus = "eingereicht";
                     if($gutachter) {
-                        $akkstatus = "eingereicht und zugeteilt";
+                        $akkstatus = "zugeteilt";
                     }
                     break;
                 case 235:

@@ -19,7 +19,7 @@
                 </label>
             </div>
             <div class="col-4">
-                <label for="status">
+                <!-- <label for="status">
                     Status<br>
                     <f:form.hidden property="status" id="status"  class="filter3" />
                     <select class="filter3" id="status" name="tx_ieb_externalview[filter][status]">
@@ -30,7 +30,7 @@
                         <option value="810">AKKREDITIERUNG_ENTZOGEN</option>
                         <option value="820">AKKREDITIERUNG_AUSGESETZT</option>
                     </select>
-                </label>
+                </label> -->
             </div>
             <div class="col-2">
                 <label for="ansuchenNummer">
@@ -88,12 +88,12 @@
                                                     <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
 
 
-                                                    <f:if condition="{item.akkreditierungDatum} < {item.akkreditierungEntscheidungDatum}">
+                                                    <f:if condition="{item.akkreditierungDatum}">
                                                         <f:then>
-                                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
                                                         </f:then>
                                                         <f:else>
-                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                                                         </f:else>
                                                     </f:if>
                                                     
@@ -156,12 +156,13 @@
                                                 </td>
                                                 <td class="ansuchenliste_bezeichnung">
                                                     <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
-                                                    <f:if condition="{item.akkreditierungDatum} < {item.akkreditierungEntscheidungDatum}">
+
+                                                    <f:if condition="{item.akkreditierungDatum}">
                                                         <f:then>
-                                                            <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
                                                         </f:then>
                                                         <f:else>
-                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                            <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                                                         </f:else>
                                                     </f:if>
                                                     
@@ -228,12 +229,12 @@
                                                             </td>
                                                             <td class="ansuchenliste_bezeichnung">
                                                                 <span class="ansuchenliste_ansuchenname">{item.name}</span><br>
-                                                                <f:if condition="{item.akkreditierungDatum} < {item.akkreditierungEntscheidungDatum}">
+                                                                <f:if condition="{item.akkreditierungDatum}">
                                                                     <f:then>
-                                                                        <f:translate key="ansuchen.status.{item.status}" /> seit <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                                        <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
                                                                     </f:then>
                                                                     <f:else>
-                                                                        <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                                        <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                                                                     </f:else>
                                                                 </f:if>
                                                                 

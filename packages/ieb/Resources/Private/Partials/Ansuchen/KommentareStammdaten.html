@@ -36,7 +36,7 @@
                 </f:else>
             </f:if>
             
-            <p><f:format.nl2br>{stammdaten.review{key}CommentTr}</f:format.nl2br></p>
+            <p class="show_kommentar_extern"><f:format.nl2br>{stammdaten.review{key}CommentTr}</f:format.nl2br></p>
         </f:if>
 
         <f:if condition="(({user}==2) || ({user}==3)) && ({ansuchen.{key}CommentInternalData} || {key})">

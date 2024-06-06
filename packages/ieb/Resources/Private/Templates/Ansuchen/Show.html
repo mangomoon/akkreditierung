@@ -120,13 +120,12 @@
 
 
 
-
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen, stammdatenorig:stammdatenorig}" />
+<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen, stammdatenorig:stammdatenorig, at:usedInAnsuchen}" />
 
 
 
         <!-- B.1. Eckdaten zum Angebot #################################################### -->
-
+        
         <div class="begutachtung-kriterium row zstatus-{ansuchen.reviewB1Status}" id="kB1">
             <div class="col">
             <div class="kriteriumtitel">

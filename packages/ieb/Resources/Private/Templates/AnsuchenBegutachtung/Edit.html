@@ -906,7 +906,7 @@
                                 media:'{ansuchen.beratungDatei}',
                                 anmerkung:'{ansuchen.beratungText}',
                                 difftyp:'{difftyp}',
-                                diff:'{diff.beratungDatei}',
+                                diff:'{diff.beratung_datei}',
                                 diffanmerkung:'{diff.beratung_text}'
                             }" />
                             <div class="abstand-gross"></div>
@@ -969,7 +969,7 @@
                         <div class="abstand-klein"></div>
                         <label>Lebenslauf</label>
                         <div class="abstand-klein"></div>
-
+                        
                         <f:if condition="({diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}) && {difftyp}==1">
                             <f:then>
                                 <div class="upload">
@@ -1001,11 +1001,28 @@
                                 </div>
                             </f:then>
                             <f:else>
+                                
+                                
+                                
+                                
                                 <f:render partial="Form/UploadListDiffRel" arguments="{
                                     media:'{p.lebenslaufDatei}',
-                                    anmerkung:'{p.lebenslauf}'
+                                    anmerkung:'{p.lebenslauf}',
+                                    difftyp:'{difftyp}',
+                                    diff:'{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}',
+                                    diffanmerkung:'{diff.copy_verantwortliche.{p.uid}.lebenslauf}'
                                 }" />
+
+                                <f:if condition="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}">
+                                    <f:for each="{diff.copy_verantwortliche.{p.uid}.lebenslaufDatei}" as="file">
+                                        <f:if condition="{file.previous.publicUrl}">
+                                            <div class="diff"><span class="vorher">gelöscht:</span> <a href="{file.previous.publicUrl}"><ieb:fal path="{file.previous.publicUrl}"><f:format.crop maxCharacters="40">{file.name}</f:format.crop></ieb:fal></a></div>
+                                        </f:if>
+                                        
+                                    </f:for>
+                                </f:if>
                             </f:else>
+                                
                         </f:if>
 
                         <f:if condition="{diff.copy_verantwortliche.{p.uid}.nachname.previous} ">
@@ -1513,11 +1530,11 @@
                         <f:case value="a1">
                             <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalGsCommentInternalStep}">
-                                <label>interner Kommentar der Geschäftsführung:</label>
+                                <label>interner Kommentar der Geschäftsstelle:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalGsCommentInternalStep}</f:format.nl2br>
                             </f:if>
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
-                                <label>interner Kommentar Zweitbegutachtung:</label>
+                                <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
                             </f:if></div>
                             <f:form.textarea property="reviewTotalAg1CommentInternalStep" class="komm-intern-textarea" id="comment1-ag1reviewTotal"  />
@@ -1528,11 +1545,11 @@
                         <f:case value="a2">
                             <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalGsCommentInternalStep}">
-                                <label>interner Kommentar der Geschäftsführung:</label>
+                                <label>interner Kommentar der Geschäftsstelle:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalGsCommentInternalStep}</f:format.nl2br>
                             </f:if>
                             <f:if condition="{ansuchen.reviewTotalAg1CommentInternalStep}">
-                                <label>interner Kommentar Erstbegutachtung:</label>
+                                <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
                             </f:if></div>
                             <f:form.textarea property="reviewTotalAg2CommentInternalStep" class="komm-intern-textarea" id="comment1-ag2reviewTotal"  />
@@ -1543,11 +1560,11 @@
                         <f:case value="gs">
                             <div class="commintstep">
                             <f:if condition="{ansuchen.reviewTotalAg1CommentInternalStep}">
-                                <label>interner Kommentar Erstbegutachtung:</label>
+                                <label>interner Kommentar {ansuchen.gutachter1.fullName}:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg1CommentInternalStep}</f:format.nl2br>
                             </f:if>
                             <f:if condition="{ansuchen.reviewTotalAg2CommentInternalStep}">
-                                <label>interner Kommentar Zweitbegutachtung:</label>
+                                <label>interner Kommentar {ansuchen.gutachter2.fullName}:</label>
                                 <f:format.nl2br>{ansuchen.reviewTotalAg2CommentInternalStep}</f:format.nl2br>
                             </f:if></div>
                             <f:form.textarea property="reviewTotalGsCommentInternalStep" class="komm-intern-textarea" id="comment1-gsreviewTotal"  />

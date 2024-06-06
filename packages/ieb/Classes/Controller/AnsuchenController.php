@@ -53,7 +53,11 @@ class AnsuchenController extends BaseController
         $this->view->assign('ansuchen', $ansuchen);
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
-        $this->view->assign('stammdaten', $stammdaten);
+        $pid = $stammdaten->getPid();
+        $this->view->assignMultiple([
+            'stammdaten' => $stammdaten,
+            'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
+        ]);
         $this->addRelationDataToView();
         return $this->htmlResponse();
     }

@@ -50,7 +50,7 @@
                         <f:for each="{versions}" as="version" iteration="i">
                             {version.copyTrainerData -> f:variable(name: 'vt')}
                             <tr>
-                                <td style="width:30%;">
+                                <td style="width:25%;">
                                     {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
                                         <f:then>
                                             {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
@@ -60,7 +60,7 @@
                                         </f:else>
                                     </f:if>
                                 </td>
-                                <td style="font-size:8pt;">
+                                <td style="width:25%;font-size:8pt;">
                                     <f:if condition="{ansuchen.typ}==2">
                                         <f:for each="{vt}" as="vtt">
                                             <f:if condition="{vtt.uid}=={t.uid}">
@@ -70,7 +70,7 @@
                                     </f:if>
                                     
                                 </td>
-                                <td style="width:70%;font-size:8pt;">
+                                <td style="width:50%;font-size:8pt;">
                                     <f:for each="{vt}" as="vtt">
                                         <f:if condition="{vtt.uid}=={t.uid}">
                                             <f:if condition="{version.typ}==1">
