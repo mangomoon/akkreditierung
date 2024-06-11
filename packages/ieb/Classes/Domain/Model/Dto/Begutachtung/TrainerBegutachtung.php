@@ -44,6 +44,8 @@ class TrainerBegutachtung extends AbstractDomainObject
     public int $statusAfterReviewBabi = 0;
     public int $statusAfterReviewPsa = 0;
 
+    public int $gutachterLockedBy = 0;
+
     public string $reviewC2BabiGsCommentInternalStep = '';
     public string $reviewC2PsaGsCommentInternalStep = '';
     public string $reviewC2BabiAg1CommentInternalStep = '';

@@ -1120,7 +1120,7 @@
                     <div class="row person" data-name="{t.nachname}"  id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.vorname}<span class="fett"> {t.nachname}</span>
-                            <code>uid: {t.uid} </code>
+                            <code>uid: {t.uid} gutachterLockedBy: {t.gutachterLockedBy}</code>
                             <f:if condition="{difftyp}">
                                 {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
                             </f:if>
@@ -1134,12 +1134,13 @@
                                     
                                     <f:if condition="{t.uid}=={tt.uid}">
                                         <f:if condition="{tt.gutachterLockedBy}>0">
+                                            
                                             <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: tt.gutachterLockedBy)}</f:variable>
                                             &nbsp;<span class="titleview knopfrund achtung-orange " title="Wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} begutachtet."></span>
                                         </f:if>
                                         <f:if condition="{ansuchen.typ}==1">
                                             <f:then>
-                                                <div class="status-babi">
+                                                <div class="status-babi"><code>tt: {tt.gutachterLockedBy} t: {t.gutachterLockedBy} k: {tt.reviewC2BabiCommentTr}</code>
                                                     <span class="weiss trainerbabifrist"><f:format.date format="d.m.Y">{tt.reviewFrist}</f:format.date></span>
                                                     <span class="titleview person-statuskugel-a person-statuskugel status-{tt.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
                                                     <span class="titleview person-statuskugel-b person-statuskugel status-{tt.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>

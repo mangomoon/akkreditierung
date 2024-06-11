@@ -31,11 +31,16 @@ class TrainerBegutachtungController extends BaseController
 
     public function showAction(Trainer $trainer, Ansuchen $ansuchen, int $ansuchenCompareId = 0, Dto\Begutachtung\TrainerBegutachtung $begutachtung = null): ResponseInterface
     {
+        
+
+        $this->trainerRepository->setGutachterLockedAndPersist($trainer);
+        
+
         $begutachtung = $begutachtung ?? new Dto\Begutachtung\TrainerBegutachtung();
         $begutachtung->trainerId = $trainer->getUid();
         $begutachtung->ansuchenId = $ansuchen->getUid();
 
-        $this->trainerRepository->setGutachterLockedAndPersist($trainer);
+        
 
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
         foreach ($values as $property => $value) {
@@ -50,11 +55,16 @@ class TrainerBegutachtungController extends BaseController
             'textbausteine' => $this->textbausteineRepository->getGroupedItems(),
             'diff' => (new DiffService())->generateDiff($ansuchen->getUid(), $ansuchenCompareId),
         ]);
+
+        
         return $this->htmlResponse();
     }
 
     public function updateAction(Dto\Begutachtung\TrainerBegutachtung $begutachtung)
     {
+
+
+
         // check
         $ansuchen = $this->ansuchenRepository->findByIdentifier($begutachtung->ansuchenId);
         /** @var Trainer $trainer */
@@ -63,10 +73,12 @@ class TrainerBegutachtungController extends BaseController
             return $this->htmlResponse('Fehler! Bearbeitung nicht möglilch.');
         }
 
+        $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
+        
         $values = $this->getPropertiesOfBegutachtung($begutachtung);
 
-        $trainer->setGutachterLockedBy(0);
-        $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
+        
+        
 
         if($trainer->getReviewC21BabiStatus() == 1 && $trainer->getReviewC22BabiStatus() == 1) {
             $trainer->setReviewFrist = null;
@@ -79,12 +91,14 @@ class TrainerBegutachtungController extends BaseController
             if (!in_array($property, $this->commentFields, true)) {
                 $setter = 'set' . ucfirst($property);
                 $trainer->$setter($value);
+                $trainer->setGutachterLockedBy(0);
             }
         }
-
-
+        
+        
         $this->trainerRepository->update($trainer);
         $this->trainerRepository->forcePersist();
+        
         $this->addFlashMessage('Begutachtung gespeichert');
         // $this->redirect('show', null, null, ['ansuchen' => $ansuchen, 'trainer' => $trainer]);
         $this->redirectToPageId(217);
@@ -92,9 +106,13 @@ class TrainerBegutachtungController extends BaseController
 
     public function abbrechenAction(Trainer $trainer)
     {
-        // $this->commentVersioning($trainer);
         $this->trainerRepository->unsetGutachterLockedAndPersist($trainer);
-        $this->redirectToPageId(217);
+        //$this->redirectToPageId(217);
+        $targetUrl = $this->uriBuilder
+            ->setTargetPageUid(217) // The UID of the target page
+            ->setLinkAccessRestrictedPages(true)
+            ->buildFrontendUri();
+        $this->redirectToUri($targetUrl);
     }
 
     private function commentVersioning(Trainer $trainer): void

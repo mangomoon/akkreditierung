@@ -21,4 +21,7 @@ class BeraterBegutachtung extends AbstractDomainObject
     public string $reviewC3GsCommentInternalStep = '';
     public string $reviewC3Ag1CommentInternalStep = '';
     public string $reviewC3Ag2CommentInternalStep = '';
+
+
+    public int $gutachterLockedBy = 0;
 }

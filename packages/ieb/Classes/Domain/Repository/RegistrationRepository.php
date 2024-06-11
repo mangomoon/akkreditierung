@@ -69,6 +69,12 @@ class RegistrationRepository
             'review_a2_comment_tr' => '',
             'review_a1_comment_internal_step' => '',
             'review_a2_comment_internal_step' => '',
+            'review_a1_gs_comment_internal_step' => '',
+            'review_a2_gs_comment_internal_step' => '',
+            'review_a1_ag1_comment_internal_step' => '',
+            'review_a2_ag1_comment_internal_step' => '',
+            'review_a1_ag2_comment_internal_step' => '',
+            'review_a2_ag2_comment_internal_step' => ''
         ];
         $this->insertToTable('tx_ieb_domain_model_stammdaten', $stammdatenData);
 
