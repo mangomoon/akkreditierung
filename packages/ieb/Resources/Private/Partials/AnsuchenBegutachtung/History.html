@@ -4,11 +4,16 @@
    </summary>
    <table id="historytable">
       <f:for each="{history}" as="item">
+         <f:if condition="{item.nummer}=={ansuchen.nummer}">
 
+           
+      
+      
          <f:if condition="{item.einreichdatum}">
             <tr data-datum="<f:format.date format='U'>{item.einreichDatum}</f:format.date>">
                <td>
                   <f:format.date format='d.m.Y'>{item.einreichDatum}</f:format.date>
+                  <code>uid: {item.uid} | A</code>
                </td>
                   <!-- <td>
                      <f:format.date format='H:i'>{item.einreichDatum}</f:format.date>
@@ -36,12 +41,13 @@
             <tr data-datum="<f:format.date format='U'>{item.akkreditierungEntscheidungDatum}</f:format.date>">
                <td>
                   <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                  <code>uid: {item.uid} | B</code>
                </td>
                   <!-- <td>
                      <f:format.date format='H:i'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                   </td> -->
                <td> 
-                  {item.version}
+                  {item.version + 1}
                </td>
                <td>
                   Ansuchen ausgeschickt: <f:translate key="ansuchen.status.{item.status}" default="Status {item.status} unbekannt" />
@@ -63,6 +69,7 @@
             <tr data-datum="<f:format.date format='U'>{item.zuteilungDatum}</f:format.date>">
                <td>
                   <f:format.date format='d.m.Y'>{item.zuteilungDatum}</f:format.date>
+                  <code>uid: {item.uid} | C</code>
                </td>
                   <!-- <td>
                      <f:format.date format='H:i'>{item.zuteilungDatum}</f:format.date>
@@ -86,7 +93,7 @@
                </td>
             </tr>
          </f:if>
-
+      </f:if> 
       </f:for>
    </table>
 </details>

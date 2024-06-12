@@ -9,7 +9,7 @@
 
     <div class="abstand-gross"></div>
     <div id="history">
-        <f:render partial="AnsuchenBegutachtung/History" arguments="{history:history}" />
+        <f:render partial="AnsuchenBegutachtung/History" arguments="{history:history, ansuchen:ansuchen}" />
     </div>
 
     <f:form action="update" arguments="{ansuchen:ansuchen}" class="transuchen begutachtung bereich-{ansuchen.typ}" name="begutachtung" object="{begutachtung}" id="ansuchenbegutachtung">
@@ -1233,9 +1233,11 @@
                                         <f:variable name="lockInformation">{ieb:lockedByCurrentUser(lockedBy: tt.gutachterLockedBy)}</f:variable>
                                         &nbsp;<span class="titleview knopfrund achtung-orange " title="Wird gerade von {lockInformation.lockedBy.first_name} {lockInformation.lockedBy.last_name} begutachtet."></span>
                                     </f:if>
+                                    <div class="status-babi">
                                         <span class="weiss beraterfrist"><f:format.date format="d.m.Y">{tt.reviewFrist}</f:format.date></span>
                                         <span class="titleview person-statuskugel person-statuskugel-a berater status-{tt.reviewC3Status}" title="Begutachtung Qualifikation"></span>
                                         <span class="titleview person-statuskugel person-statuskugel-b berater status-{tt.reviewC32Status}" title="Begutachtung Erfahrung"></span>
+                                    </div>
                                 </f:if>
                             </f:for>
                         <p>{t.reviewC2BabiCommentInternal}</p>
