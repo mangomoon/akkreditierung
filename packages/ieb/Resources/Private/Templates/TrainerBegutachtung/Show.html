@@ -17,7 +17,8 @@
         <f:form.hidden property="ansuchenId" />
         <f:form.hidden property="trainerId" id="trainerId"/>
         <div class="hidden" id="at">{ansuchen.typ}</div>
-        <h2>{trainer.fullName}</h2>
+        <h2>{trainer.fullName} </h2>
+        <f:if condition="{dt.fullName.previous} && {difftyp}==1"><div class="diff"><span class="vorher">vorher: </span> {dt.fullName.previous}</div></f:if>
         <p>Begutachtung basierend auf <strong>{ansuchen.name} <span class="nummer">[{ansuchen.nummer}]</strong></span>
         </p>
         <div class="row">
@@ -73,7 +74,7 @@
                         diff:'{dt.qualifikationBabiDatei}',
                         diffanmerkung:'{dt.qualifikationBabi}'
                     }" />
-
+                    
                 </div>
                 <div class="rechts col-5">
                     <f:if condition="{trainer.reviewC21PsaStatus}">

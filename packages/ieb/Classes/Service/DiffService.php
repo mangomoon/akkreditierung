@@ -192,6 +192,9 @@ class DiffService
                     if (isset($items[$k]['statusAfterReviewPsa'])) {
                         unset($items[$k]['statusAfterReviewPsa']);
                     }
+                    if (isset($items[$k]['statusAfterReview'])) {
+                        unset($items[$k]['statusAfterReview']);
+                    }
                     if (isset($items[$k]['reviewC3CommentInternalStep'])) {
                         unset($items[$k]['reviewC3CommentInternalStep']);
                     }
