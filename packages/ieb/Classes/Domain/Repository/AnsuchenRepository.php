@@ -84,6 +84,8 @@ class AnsuchenRepository extends BaseRepository
         $constraints = [
             $query->in('uid', $this->getMaxAkkredierteIds()),
             $query->equals('version_active', 1),
+            $query->greaterThan('version', 0),
+            $query->greaterThan('status', 90)
         ];
         if ($filter->bundesland) {
             $constraints[] = $query->equals('bundesland', $filter->bundesland->value);

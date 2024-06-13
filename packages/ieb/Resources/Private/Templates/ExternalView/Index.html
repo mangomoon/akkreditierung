@@ -58,8 +58,7 @@
 
                 <f:for each="{ansuchen}" as="item">
                     
-                    <f:if condition="{item.version}>0 && {item.status}>90">
-                        
+
                         <f:if condition="{currentUser.usergroup}=='16,14' || {currentUser.usergroup}=='14,16' || {currentUser.usergroup}=='14,17' || {currentUser.usergroup}=='17,14'">
                             <f:then>
                                 
@@ -277,7 +276,6 @@
 
                     
 
-                    </f:if>
                 </f:for>
         </f:then>
         <f:else>
