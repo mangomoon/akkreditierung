@@ -2121,6 +2121,51 @@
 			<trans-unit id="ansuchen.status.820" resname="ansuchen.status.820">
 				<source>Akkreditierung ausgesetzt</source>
 			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.100" resname="ansuchen.status.100">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.140" resname="ansuchen.status.140">
+				<source>Akkreditiert mit Auflagen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.150" resname="ansuchen.status.150">
+				<source>Akkreditiert mit Auflagen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.155" resname="ansuchen.status.155">
+				<source>Akkreditiert mit Auflagen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.160" resname="ansuchen.status.160">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.170" resname="ansuchen.status.170">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.200" resname="ansuchen.status.200">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.210" resname="ansuchen.status.210">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.215" resname="ansuchen.status.215">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.220" resname="ansuchen.status.220">
+				<source>Akkreditiert mit Auflagen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.230" resname="ansuchen.status.230">
+				<source>Akkreditiert mit Auflagen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.235" resname="ansuchen.status.235">
+				<source>Akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.800" resname="ansuchen.status.800">
+				<source>nicht akkreditiert</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.810" resname="ansuchen.status.810">
+				<source>Akkreditierung entzogen</source>
+			</trans-unit>
+			<trans-unit id="ansuchen.status-fix.820" resname="ansuchen.status.820">
+				<source>Akkreditierung ausgesetzt</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

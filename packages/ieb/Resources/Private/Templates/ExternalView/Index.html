@@ -230,10 +230,10 @@
                                                                 <span class="ansuchenliste_ansuchenname">{item.name}</span> {f:if(condition:'{item.pruefbescheidCheck}==1', then:'<span class="knopfrund pruefbescheid titleview" title="mit Prüfbescheid"></span>')}<br>
                                                                 <f:if condition="{item.akkreditierungDatum}">
                                                                     <f:then>
-                                                                        <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
+                                                                        <f:translate key="ansuchen.status-fix.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungDatum}</f:format.date>
                                                                     </f:then>
                                                                     <f:else>
-                                                                        <f:translate key="ansuchen.status.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
+                                                                        <f:translate key="ansuchen.status-fix.{item.status}" /> am <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>
                                                                     </f:else>
                                                                 </f:if>
                                                                 

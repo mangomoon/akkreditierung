@@ -42,9 +42,10 @@ trait AnsuchenRepositoryTrait
                     $newRows[] = $row;
                 }
             } elseif($row instanceof Ansuchen) {
+                // wenn external View
                 $uid = $row->getUid();
 
-                if ($row->getVersionBasedOn() > 0 && !in_array($row->getStatus(), AnsuchenStatus::statusSichtbarDurchGs(), true)) {
+                if ($row->getVersionBasedOn() > 0 ) {
 
                     
                     $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());

@@ -51,7 +51,7 @@
                 </p>
                 <h1><span class="nr">{ansuchen.nummer}</span> {ansuchen.name} </h1> 
                 
-                <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version} | difftyp {difftyp}</code>
+                <code>[UID {ansuchen.uid}] | Status {ansuchen.status} | Version {ansuchen.version+ 1} | difftyp {difftyp}</code>
             </div>
             <div class="col">
                 <p id="typ" class=" typ typ-{ansuchen.typ}"> {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'Pflichtschulabschluss')}
