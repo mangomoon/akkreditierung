@@ -85,14 +85,10 @@
 </f:if>
 
 <f:if condition="{ansuchen.pp3}==1 && {ansuchen.version}==0">
-    <f:then>
-        <div class="row kriterium gutachten"><p>Das Ansuchen stammt aus der 3. Programmperiode und wurde in diesem System noch nicht eingereicht. Erst nach einer ersten Einreichung und Begutachtung, können Details eingesehen werden.</p></div>
-    </f:then>
-    <f:else>
-        
+        <div class="row kriterium gutachten"><p>Das Ansuchen stammt aus der 3. Programmperiode und liegt erst in der ersten Version vor, möglicherweise sind die Daten unvollständig.</p></div>
+</f:if>
 
-
-<f:if condition="{ansuchen.status}>30">
+    <f:if condition="{ansuchen.status}>30">
     <f:then>
         <div class="row kriterium gutachten">
             <div class="col-3">
@@ -115,13 +111,13 @@
     </f:else>
 
    
-</f:if>
+    </f:if>
 
-<!-- Stammdaten -->
+    <!-- Stammdaten -->
 
 
 
-<f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen, stammdatenorig:stammdatenorig, at:usedInAnsuchen}" />
+    <f:render partial="Stammdaten/Properties" arguments="{stammdaten:stammdaten, user:currentUser.usergroup, ansuchen:ansuchen, stammdatenorig:stammdatenorig, at:usedInAnsuchen}" />
 
 
 
@@ -814,8 +810,7 @@
             </div>
         </div>
         </div>
-    </f:else>
-</f:if>
+
 
 
 </f:section>
