@@ -1967,6 +1967,10 @@ textarea.extern {
     border: solid 2px var(--f5);
     opacity: 0.3;
 }
+.bereich-2 .status-babi .berater.person-statuskugel, .bereich-1 .status-psa .berater.person-statuskugel{
+    border: solid 2px #fff;
+    opacity: 1;
+}
 .person-statuskugel.status-0 {
     background-color: transparent;
     border: solid 2px var(--f2);

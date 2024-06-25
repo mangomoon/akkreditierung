@@ -87,8 +87,8 @@ class PersonSearchController extends ActionController
                 'pp3' => $pp,
                 'Frist' => $frist,
             ];
-
-            $csv[] = $line;
+                $csv[] = $line;
+            
         }
         foreach ($this->beraterRepository->findInPersonSearch($search) as $row) {
             $pp = substr($row['ansuchenNummer'], 0, 1);
@@ -131,8 +131,8 @@ class PersonSearchController extends ActionController
                 'typ' => $typ,
                 'ansuchen' => $row['ansuchenNummer'],
                 'bezeichnung' => $row['ansuchenName'],
-                'pp3' => $pp,
                 'traeger' => $row['stammdatenName'],
+                'pp3' => $pp,
 
             ];
             $csv[] = $line;

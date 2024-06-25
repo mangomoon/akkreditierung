@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a162ca7a536bafbe880a5c0cb197936d",
+    "content-hash": "4f3bc888d7570fff78ed2592ed71707f",
     "packages": [
         {
             "name": "b13/bolt",
@@ -2278,6 +2278,53 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.19.1"
             },
             "time": "2024-03-17T08:10:35+00:00"
+        },
+        {
+            "name": "paragonie/argon2-refiner",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/argon2-refiner.git",
+                "reference": "9cee4dae6314be6d79e952da0c9a674a22aa752f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/argon2-refiner/zipball/9cee4dae6314be6d79e952da0c9a674a22aa752f",
+                "reference": "9cee4dae6314be6d79e952da0c9a674a22aa752f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8|^9",
+                "vimeo/psalm": "^3|^4"
+            },
+            "bin": [
+                "bin/benchmark"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\Argon2Refiner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                }
+            ],
+            "description": "Calculate the appropriate Argon2id parameters for the local hardware environment.",
+            "support": {
+                "issues": "https://github.com/paragonie/argon2-refiner/issues",
+                "source": "https://github.com/paragonie/argon2-refiner/tree/v0.3.0"
+            },
+            "time": "2021-04-19T03:00:01+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
