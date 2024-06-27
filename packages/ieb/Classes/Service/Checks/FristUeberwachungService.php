@@ -198,16 +198,8 @@ class FristUeberwachungService
                 foreach ($data['records'] as $trainerId => $ansuchenIds) {
                     $ansuchen = [];
                     foreach ($ansuchenIds as $id) {
-                        $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer,typ');
+                        $ansuchen[] = BackendUtility::getRecord('tx_ieb_domain_model_ansuchen', $id, 'uid,name,nummer');
                     }
-                    // foreach ($ansuchen as $ansuch) {
-                    //     if($ansuch['typ'] == 1) {
-                    //         $isBabi = 1;
-                    //     } elseif ($ansuch['typ'] == 2) {
-                    //         $isPsa = 1;
-                    //     }
-                    }
-
                     $infos[] = [
                         'trainer' => BackendUtility::getRecord('tx_ieb_domain_model_trainer', $trainerId, '*'),
                         'ansuchen' => $ansuchen,
