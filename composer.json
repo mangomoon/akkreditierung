@@ -27,7 +27,6 @@
         "plan2net/sierrha": "^0.4.2",
         "rogervila/array-diff-multidimensional": "^2.1",
         "sinso/app-routes": "^1.4",
-        "studiomitte/fe-passwordless": "@dev",
         "symfony/var-dumper": "^5.4",
         "typo3/cms-adminpanel": "^11",
         "typo3/cms-backend": "^11",
