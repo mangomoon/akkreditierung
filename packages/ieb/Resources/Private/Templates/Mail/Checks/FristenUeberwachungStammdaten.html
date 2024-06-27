@@ -7,17 +7,15 @@
 
     <p>Mit der Akkreditierung Ihres/r Bildungsangebots/e sind befristete Nachweise verbunden.</p>
     <f:for each="{infos}" as="info">
-   <f:if condition="heute + 170d < öcertfrist">
+   <f:if condition="{f:format.date(date: 'today-2', format: 'Y-m-d')} >= {f:format.date(date: '{info.stammdaten.review_oecert_frist}', format: 'Y-m-d')}">
         <f:then>
-            <p>Das Ö-Cert für {info.stammdaten.name} läuft am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6
-                Monaten.</p>
-            <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen zur
-                Nachakkreditierung ein.</p>
-        </f:then>
-        <f:else>
-            <p>Ihr Ö-Cert ist am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> abgelaufen und nicht mehr gültig.</p>
+            <p>Das Ö-Cert für {info.stammdaten.name} ist am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> abgelaufen und nicht mehr gültig.</p>
             <p>Laden Sie umgehend ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen
                 zur Nachakkreditierung ein.</p>
+        </f:then>
+        <f:else>
+            <p>Das Ö-Cert für {info.stammdaten.name} läuft am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6 Monaten.</p>
+            <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen zur Nachakkreditierung ein.</p>
         </f:else>
     </f:if>
     </f:for>
