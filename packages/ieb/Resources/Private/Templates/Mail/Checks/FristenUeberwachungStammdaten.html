@@ -9,7 +9,7 @@
     <f:for each="{infos}" as="info">
    <f:if condition="heute + 170d < öcertfrist">
         <f:then>
-            <p>Ihr Ö-Cert läuft am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6
+            <p>Das Ö-Cert für {info.stammdaten.name} läuft am <f:format.date format='d.m.Y'>{info.stammdaten.review_oecert_frist}</f:format.date> ab. Achten Sie bitte auf die zeitgerechte Aktualisierung innerhalb von 6
                 Monaten.</p>
             <p>Laden Sie ein gültiges Ö-Cert in der Akkreditierungs-Datenbank hoch und reichen Sie <b>ein</b> Ansuchen zur
                 Nachakkreditierung ein.</p>
@@ -30,7 +30,7 @@
     <p></p>
 
 
-    <p>Bei Fragen steht Ihnen die Geschäftsstelle der Level Up – Erwachsenenbildung gerne zur Verfügung.</p>
+    <p>Bei Fragen steht Ihnen die Geschäftsstelle Level Up gerne zur Verfügung.</p>
 
     <f:render partial="Notification/Fuss"/>
 

@@ -357,6 +357,9 @@ class DiffService
                     if (isset($items[$k]['gutachterLockedBy'])) {
                         unset($items[$k]['gutachterLockedBy']);
                     }
+                    if (isset($items[$k]['lockedBy'])) {
+                        unset($items[$k]['lockedBy']);
+                    }
                 }
                 $row[$field] = $items;
             }
