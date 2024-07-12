@@ -235,7 +235,14 @@
 						<h3>A.2.2 Qualitätssicherung der Einrichtung</h3>
 						<f:if condition="{stammdaten.qmsTyp}==1">
 							<f:then>
-								<p>Die Organisation verfügt über ein Ö-Cert: <span class="check-ja">ja</span></p>
+								<p>Die Organisation verfügt über ein Ö-Cert: <span class="check-ja">ja</span> <br>
+									<f:if condition="{stammdaten.reviewOecertFrist.date}">
+
+										Das Ö-Cert ist gültig bis: <f:format.date format="d.m.Y">{stammdaten.reviewOecertFrist.date}</f:format.date>
+									</f:if>
+									
+								
+								</p>
 	
 								<f:render partial="Form/UploadList" arguments="{
 									media:'{stammdaten.qmsZertifikatDatei}',

@@ -56,6 +56,7 @@ enum AnsuchenStatus: int
         ];
     }
 
+
     public static function statusSichtbarDurchAkkreditierungsGruppe(): array
     {
         return self::statusSichtbarDurchGs();

@@ -121,14 +121,14 @@
                                         <f:if condition="{item.pp3} && {item.version}==0">
                                             <f:then>
                                                 
-                                                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {ansuchen.version+1})"></f:link.action>
                                                 <td class="td-knopf"><span class="titleview knopfrund achtung-gelb " title="Das Ansuchen aus der PP3 liegt erst in der ersten Version vor. Möglicherweise sind die Daten also unvollständig."></span></td>
                                             </f:then>
 
                                             <f:else>
                                                 
 
-                                                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
+                                                <f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {item.version +1})"></f:link.action>
                                                 <td class="td-knopf"></td>
                                             </f:else>
                                         </f:if>
@@ -158,7 +158,7 @@
                                                                         </ieb:falFromRecord>
                                                                     </f:if>
                                                                 </td>
-                                                                <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action></td>
+                                                                <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {oldVersion.version+1})"></f:link.action></td>
                                                             </tr>
                                                         </table>
                                                     </f:for>

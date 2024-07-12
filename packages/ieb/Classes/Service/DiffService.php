@@ -135,6 +135,9 @@ class DiffService
                     if (isset($items[$k]['tstamp'])) {
                         unset($items[$k]['tstamp']);
                     }
+                    if (isset($items[$k]['crdate'])) {
+                        unset($items[$k]['crdate']);
+                    }
                     if (isset($items[$k]['reviewC2BabiCommentInternalStep'])) {
                         unset($items[$k]['reviewC2BabiCommentInternalStep']);
                     }
