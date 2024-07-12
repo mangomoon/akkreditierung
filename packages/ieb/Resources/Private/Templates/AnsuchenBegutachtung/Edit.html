@@ -1123,7 +1123,7 @@
                             {t.vorname}<span class="fett"> {t.nachname}</span>
                             <code>uid: {t.uid} gutachterLockedBy: {t.gutachterLockedBy}</code>
                             <f:if condition="{difftyp}">
-                                {ieb:ifDiff(diff:diff,field:'copy_trainer/{t.uid}')}
+                                {ieb:ifDiffTrainer(diff:diff,field:'copy_trainer/{t.uid}',bereich:'{ansuchen.typ}')}
                             </f:if>
                             
                         </div>
