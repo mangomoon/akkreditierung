@@ -45,29 +45,34 @@ trait AnsuchenRepositoryTrait
                 // wenn external View
                 $uid = $row->getUid();
 
-                if ($row->getVersionBasedOn() > 0) {
+                if ($row->getVersionBasedOn() > 0  && !in_array($row->getStatus(), AnsuchenStatus::statusForMonitoringExport(), true)) {
 
                     
                     $previous = $this->ansuchenRepository->findByIdentifier($row->getVersionBasedOn());
+                    //$preprevious = $previous->getVersionBasedOn();
                     if ($previous) {
-                        $previous->lastuid = $uid;
-                        $newRows[] = $previous;
-                    }
-                    
-                    
-                    // m...
-                    foreach ($newRows as $row) {
-                        if ($row['version_based_on'] && !in_array($row->getStatus(), AnsuchenStatus::statusSichtbarDurchGs(), true)) {
-                            $previous = $this->ansuchenRepository->findByIdentifier($newRows->getVersionBasedOn());
-                            // $uidn = $previous->getUid();
-                            // var_dump($uidn);
-                            if ($previous) {
-                                $previous->lastuid = $uid;
-                                $newRows[] = $previous;
+                        if ($previous->getVersionBasedOn() > 0  && in_array($previous->getStatus(), AnsuchenStatus::statusForMonitoringExport(), true)) {
+                            $previous->lastuid = $uid;
+                            $newRows[] = $previous;
+                        } else {
+                            $preprevious = $this->ansuchenRepository->findByIdentifier($previous->getVersionBasedOn());
+                            if (in_array($preprevious->getStatus(), AnsuchenStatus::statusForMonitoringExport(), true)) {
+                                $preprevious->lastuid = $uid;
+                                $newRows[] = $preprevious;
+                            } else {
+                                $prepreprevious = $this->ansuchenRepository->findByIdentifier($preprevious->getVersionBasedOn());
+                                if (in_array($prepreprevious->getStatus(), AnsuchenStatus::statusForMonitoringExport(), true)) {
+                                    $prepreprevious->lastuid = $uid;
+                                    $newRows[] = $prepreprevious;
+                                } else {
+                                    $preprepreprevious = $this->ansuchenRepository->findByIdentifier($prepreprevious->getVersionBasedOn());
+                                    
+                                }
                             }
                         }
                     }
-                    // m... ENDE
+                    
+                    
                     
                 } else {
                     //$previous->lastuid = $uid;
