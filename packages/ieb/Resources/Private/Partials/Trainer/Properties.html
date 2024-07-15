@@ -207,7 +207,7 @@
 				<div class="row">
 					<div class="links auflagen col-7">
 						<f:if condition="{trainer.reviewFrist}">
-								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span></p>
+								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist.date}</f:format.date></span></p>
 						</f:if>
 						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
 							extern:trainer.reviewC2BabiCommentTr, 
@@ -254,7 +254,7 @@
 				<div class="row">
 					<div class="links auflagen col-7">
 						<f:if condition="{trainer.reviewFrist}">
-								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist}</f:format.date></span></p>
+								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{trainer.reviewFrist.date}</f:format.date></span></p>
 						</f:if>
 						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
 							extern:trainer.reviewC2PsaCommentTr, 

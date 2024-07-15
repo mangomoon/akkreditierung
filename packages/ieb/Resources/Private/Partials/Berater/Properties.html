@@ -121,7 +121,7 @@
 				<div class="row">
 					<div class="links auflagen col-7">
 						<f:if condition="{berater.reviewFrist}">
-								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{berater.reviewFrist}</f:format.date></span></p>
+								<p><span class="knopfrund auflage-3"> </span>&nbsp; Frist: <span class="frist"> <f:format.date format="d.m.Y">{berater.reviewFrist.date}</f:format.date></span></p>
 						</f:if>
 						<f:render partial="Ansuchen/KommentarePersonal" arguments="{
 							extern:berater.reviewC3CommentTr, 

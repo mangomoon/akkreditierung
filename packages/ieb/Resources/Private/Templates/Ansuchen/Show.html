@@ -18,8 +18,9 @@
             {stammdaten -> f:variable(name: 'stammdatenorig')}
             {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
             {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
-            {ansuchen.copyTrainerData -> f:variable(name: 'trainer')}
-            {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
+
+            {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+            {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
 
             {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
             {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
@@ -28,8 +29,7 @@
     <f:if condition="{currentUser.usergroup}==1">
         {ansuchen.standorte -> f:variable(name: 'standorte')}
     </f:if>
-    {ansuchen.trainer -> f:variable(name: 'trainer')}
-    {ansuchen.berater -> f:variable(name: 'berater')}
+
 
     
 
@@ -696,8 +696,8 @@
                                     </f:else>
                                 </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span>
                                 <f:if condition="{ansuchen.typ}==1">
-                                    <f:then> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist}</f:format.date></span></f:then>
-                                    <f:else> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist}</f:format.date></span></f:else>
+                                    <f:then> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span></f:then>
+                                    <f:else><span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist.date}</f:format.date></span> </f:else>
                                 </f:if></summary>
                                 <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
                                 </details>
