@@ -79,7 +79,7 @@
 <div class="abstand-gross"></div>
 
 
-<f:if condition="!{ansuchen.versionActive}">
+<f:if condition="!{ansuchen.versionActive} && {currentUser.usergroup}==1">
     <h4>ARCHIV: Version {ansuchen.version +1}, eingereicht am <f:format.date format='d.m.Y'>{ansuchen.einreichDatum}</f:format.date>, Akkreditierungsentscheidung (<f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" />) am <f:format.date format='d.m.Y'>{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></h4>
     <div class="abstand-gross"></div>
 </f:if>
@@ -92,7 +92,7 @@
     <f:then>
         <div class="row kriterium gutachten">
             <div class="col-3">
-                <p><label>Akkreditierungsentscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
+                <p><label>Letzte Akkreditierungs- entscheidung: </label> <f:format.date format="d.m.Y">{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></p>
             </div>
             <div class="col-3">
                 <p><label>Entscheidung/Status: </label> <f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" /></p>
