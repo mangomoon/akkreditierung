@@ -258,6 +258,7 @@ class AnsuchenRepository extends BaseRepository
             'erklaerungd3' => '0',
             'erklaerungd5' => '0',
             'status_after_review' => '0',
+            'akkreditierung_pdf' => '0',
         ];
         $newId = $this->customDataHandler->copyRecord('tx_ieb_domain_model_ansuchen', $ansuchen->getUid(), $ansuchen->getPid(), $overrideValues);
 

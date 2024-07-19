@@ -38,7 +38,7 @@
             </tr>
          </f:if>
          
-         <f:if condition="{item.akkreditierungEntscheidungDatum} && ({item.status}==80 || {item.status}==100 || {item.status}==200 || {item.status}==1400 || {item.status}==220)">
+         <f:if condition="{item.akkreditierungEntscheidungDatum} && ({item.status}==80 || {item.status}==100 || {item.status}==200 || {item.status}==140 || {item.status}==220)">
             <tr data-datum="<f:format.date format='U'>{item.akkreditierungEntscheidungDatum}</f:format.date>"  data-version="{item.version}<f:format.date format='U'>{item.akkreditierungEntscheidungDatum}</f:format.date><f:format.printf arguments='{1: item.status}'>%03d</f:format.printf>">
                <td>
                   <f:format.date format='d.m.Y'>{item.akkreditierungEntscheidungDatum}</f:format.date>

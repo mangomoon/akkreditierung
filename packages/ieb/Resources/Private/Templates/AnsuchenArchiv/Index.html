@@ -188,9 +188,9 @@
                                         <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
                                         <f:if condition="{oldVersions}">
                                             <details>
-                                                <summary><span class="">Historie IN ARBEIT</span></summary>
-                                                <table id="historytable">
-                                                    <f:for each="{oldVersions}" as="version"> 
+                                                <summary><span class="">Historie</span> ({oldVersions -> f:count()} Versionen)</summary>
+                                                <table id="historytable-{item.nummer}" class="historytable">
+                                                    <f:for each="{oldVersions}" as="version" iteration="i"> 
                                                         
                                                         <f:if condition="{version.einreich_datum}">
                                                                 <tr data-datum="<f:format.date format='U'>{version.einreich_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.einreich_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>">
@@ -214,14 +214,13 @@
                                                                         </f:else>
                                                                     </f:if>
                                                                 </td>
-                                                                <td>
-
-                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
                                                                 </tr>
                                                             </f:if>
                                                             
-                                                            <f:if condition="{version.akkreditierung_entscheidung_datum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==1400 || {version.status}==220)">
-                                                                <tr data-datum="<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>">
+                                                            <f:if condition="{version.akkreditierung_entscheidung_datum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==140 || {version.status}==220)">
+                                                                <tr data-datum="<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="akzent">
                                                                 <td>
                                                                     <f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date>
                                                                     <code>uid: {version.uid} {version.nummer} | B</code>
@@ -235,16 +234,25 @@
                                                                 <td>
                                                                     Ansuchen ausgeschickt: <f:translate key="ansuchen.status.{version.status}" default="Status {version.status} unbekannt" />
                                                                 </td>
-                                                                <td>
-                                                                    <f:for each="{version.review_total_comment_internal_data}" as="comment">
-                                                                        <f:if condition="{comment.date -> f:format.date(format:'d.m.Y')}=={version.akkreditierung_entscheidung_datum -> f:format.date(format:'d.m.Y')}">
-                                                                        
-                                                                            <span class="name">{comment.user}: </span> {comment.comment -> f:format.nl2br()}<br>
-                                                                        
-                                                                        </f:if>
-                                                                        
-                                                                    </f:for>
+                                                                <td class="td-knopf">
+                                                                    <f:if condition="{i.index}==0"> 
+                                                                        <f:then>
+                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                            <f:if condition="{falItems.0}">
+                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                            </f:if>
+                                                                        </ieb:falFromRecord>
+                                                                        </f:then>
+                                                                        <f:else>
+                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                            <f:if condition="{falItems.0}">
+                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                            </f:if>
+                                                                        </ieb:falFromRecord>
+                                                                        </f:else>
+                                                                    </f:if>
                                                                 </td>
+                                                                <td class="td-knopf"> <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : version.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {version.version+1})"></f:link.action></td>
                                                                 </tr>
                                                             </f:if>
 
@@ -269,18 +277,23 @@
                                                                     {version.version + 1}
                                                                 </td>
                                                                 <td>
-                                                                    Zuteilung
+                                                                    Zuteilung an {version.gutachter1} {version.gutachter1.last_name} {f:if(condition:'{version.gutachter1}&&{version.gutachter2}', then:' und ')} {version.gutachter2} {version.gutachter2.lastname}
                                                                 </td>
-                                                                <td>
-                                                                    {version.gutachter1.firstname} {version.gutachter1.lastname} {f:if(condition:'{version.gutachter1}&&{version.gutachter2}', then:' und ')} {version.gutachter2.firstname} {version.gutachter2.lastname} 
-                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
                                                                 </tr>
                                                             </f:if>
-                                            
+                                                            <f:variable name="iplusuid">{version.uid}</f:variable>
                                                     </f:for>
                                                 </table>
                                                 
-                                                
+                                                <script>
+                                                    $(document).ready(function() {
+                                                       $('#historytable-<f:format.raw>{item.nummer}</f:format.raw> tr').sort(function(a, b) {
+                                                          return $(a).data('datum') > $(b).data('datum') ? 1 : -1;
+                                                       }).appendTo('#historytable-<f:format.raw>{item.nummer}</f:format.raw>');
+                                                    });
+                                                 </script>
                                                 
                                             </details>
                                         </f:if>

@@ -2421,7 +2421,7 @@ table.ansuchenliste .archiv-vorversionen td {
 .archiv summary, #history summary {
     border: solid 1px var(--f2);
     border-radius: 3px;
-    width: 154px;
+    width: 220px;
     padding-left: 6px;
     cursor: pointer;
     color: #fff;
@@ -2509,7 +2509,28 @@ ul.f3-widget-paginator li a:hover, ul.f3-widget-paginator li.current a {
 #historytable {
     font-size: 0.8em;
 }
-#historytable td {
+.historytable {
+    font-size: 0.85em;
+    width: 600px;
+}
+#historytable td, .historytable td {
     border-bottom: solid 1px var(--f4);
     padding: 4px 2px;
+}
+table.ansuchenliste .historytable td {
+    padding: 4px 2px;
+}
+.historytable tr:hover td, .historytable tr.akzent:hover td{
+    background: var(--f1);
+}
+table.ansuchenliste .historytable td.td-knopf {
+    padding: 0px 2px;
+}
+
+.historytable tr.akzent td {
+    background-color: var(--f0b);
+}
+.historytable .knopf-quadratisch {
+    width: 18px;
+    height: 18px;
 }

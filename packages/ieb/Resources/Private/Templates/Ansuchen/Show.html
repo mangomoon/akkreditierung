@@ -79,8 +79,12 @@
 <div class="abstand-gross"></div>
 
 
-<f:if condition="!{ansuchen.versionActive} && {currentUser.usergroup}==1">
+<f:if condition="!{ansuchen.versionActive} && {currentUser.usergroup}==2">
     <h4>ARCHIV: Version {ansuchen.version +1}, eingereicht am <f:format.date format='d.m.Y'>{ansuchen.einreichDatum}</f:format.date>, Akkreditierungsentscheidung (<f:translate key="ansuchen.status.{ansuchen.status}" default="Status {ansuchen.status} unbekannt" />) am <f:format.date format='d.m.Y'>{ansuchen.akkreditierungEntscheidungDatum}</f:format.date></h4>
+    <f:if condition="{ansuchen.gutachter1}">
+        <p>Gutachterzuteilung: {ansuchen.gutachter1.firstname} {ansuchen.gutachter1.lastname} <f:if condition="{ansuchen.gutachter2}">und {ansuchen.gutachter2.firstname} {ansuchen.gutachter2.lastname}</f:if></p>
+    </f:if>
+    
     <div class="abstand-gross"></div>
 </f:if>
 
