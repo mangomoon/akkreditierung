@@ -135,52 +135,62 @@
                                         
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="archiv-vorversionen-td" colspan="4">
-                                    <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
-                                        <f:if condition="{oldVersions}">
-                                            <details>
-                                                <summary><span class="">Vorversionen ({oldVersions -> f:count()})</span></summary>
-                                                
-                                                    <f:for each="{oldVersions}" as="oldVersion" iteration="i">
-                                                        <table class="archiv-vorversionen">
-                                                            <tr>
-                                                                <td>&nbsp;</td>
-                                                                <td>{oldVersion.version +1}</td>
-                                                                <td>[{oldVersion.uid}]</td>
-                                                                <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date><code>status: {oldVersion.status} incoming: {oldVersion.review_incoming_status}</code></td>
-                                                                <td class="td-knopf">
-                                                                    <f:if condition="{i.index}==0"> 
-                                                                        <f:then>
-                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                                            <f:if condition="{falItems.0}">
-                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
-                                                                            </f:if>
-                                                                        </ieb:falFromRecord>
-                                                                        </f:then>
-                                                                        <f:else>
-                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                                            <f:if condition="{falItems.0}">
-                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
-                                                                            </f:if>
-                                                                        </ieb:falFromRecord>
-                                                                        </f:else>
-                                                                    </f:if>
-                                                                        
+                                <!-- ALTE DARSTELLUNG DER VORVERSIONNEN: -->
 
-                                                                </td>
-                                                                <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {oldVersion.version+1})"></f:link.action></td>
-                                                            </tr>
-                                                        </table>
-                                                        <f:variable name="iplusuid">{oldVersion.uid}</f:variable> 
-                                                        
-                                                    </f:for>
-                                                
-                                            </details>
-                                        </f:if>
-                                    </ieb:ansuchenOldVersionLoader>
-                                    </td>
-                                </tr>
+
+<tr>
+    <td class="archiv-vorversionen-td" colspan="4">
+    <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
+        <f:if condition="{oldVersions}">
+            <details>
+                <summary><span class="">Vorversionen ({oldVersions -> f:count()})</span></summary>
+                
+                    <f:for each="{oldVersions}" as="oldVersion" iteration="i">
+                        <table class="archiv-vorversionen" id="vorv-<f:format.raw>{item.nummer}</f:format.raw>">
+                            <tr data-status="{oldversion.version}" class="sort">
+                                <td><b>{oldVersion.version +1}</b> [{oldVersion.uid}]</td>
+                                
+                                <td colspan="3">
+                                
+                                    <table class="debug">
+                                        <tr class="debug-head"><td>status</td><td>incoming status</td><td>tstamp</td><td>crdate</td><td>akkreditierung_datum</td><td>einreich_datum</td><td>zuteilung_datum</td><td>akk-entsch_datum</td></tr>
+                                        <tr><td>{oldVersion.status}</td><td>{oldVersion.review_incoming_status}</td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.tstamp}</f:format.date></td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.crdate}</f:format.date></td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.akkreditierung_datum}</f:format.date></td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.einreich_datum}</f:format.date></td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.zuteilung_datum}</f:format.date></td><td><f:format.date format='d.m.Y H:i:s'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date></td></tr>
+                                    </table>
+                                    
+                                    
+                                </td>
+                                <td class="td-knopf">
+                                    <f:if condition="{i.index}==0"> 
+                                        <f:then>
+                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                            <f:if condition="{falItems.0}">
+                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                            </f:if>
+                                        </ieb:falFromRecord>
+                                        </f:then>
+                                        <f:else>
+                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                            <f:if condition="{falItems.0}">
+                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                            </f:if>
+                                        </ieb:falFromRecord>
+                                        </f:else>
+                                    </f:if>
+                                        
+ 
+                                </td>
+                                <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {oldVersion.version+1})"></f:link.action></td>
+                            </tr>
+                        </table>
+                        <f:variable name="iplusuid">{oldVersion.uid}</f:variable> 
+                        
+                    </f:for>
+                
+            </details>
+        </f:if>
+    </ieb:ansuchenOldVersionLoader>
+    </td>
+ </tr>
 
                                 <!-- #################### HISTORIE ################ -->
                                 <tr class="historie">
@@ -192,25 +202,58 @@
                                                 <table id="historytable-{item.nummer}" class="historytable">
                                                     <f:for each="{oldVersions}" as="version" iteration="i"> 
                                                         
+                                                    <!-- KORR DATE 0000000000000000000000000 -->
+                                                    <f:if condition="<f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date> == <f:format.date format='d.m.Y'>{version.tstamp}</f:format.date>">
+                                                        <f:then>
+                                                            <f:variable name="akkreditierungEntscheidungDatum">{version.akkreditierung_entscheidung_datum}</f:variable>
+                                                            <f:variable name="akkEntschOrig"></f:variable>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:variable name="akkreditierungEntscheidungDatum">{version.tstamp}</f:variable>
+                                                            <f:if condition="!{version.akkreditierung_entscheidung_datum}">
+                                                                <f:then>
+                                                                    <f:variable name="akkEntschOrig">LEER</f:variable>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <f:variable name="akkEntschOrig"><f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date></f:variable>
+                                                                </f:else>
+                                                            </f:if>
+                                                            
+                                                        </f:else>
+                                                        
+                                                    </f:if>
+                                                    <f:if condition="<f:format.date format='U'>{version.einreich_datum}</f:format.date> > <f:format.date format='U'>{version.tstamp}</f:format.date>">
+                                                        <f:then>
+                                                            <f:variable name="EinreichDatum">{version.tstamp}</f:variable>
+                                                            <f:variable name="EinreichDatum2">{EinreichDatum - 20}</f:variable>
+                                                            <f:variable name="EinreichDatumOrig"><f:format.date format='d.m.Y H:i:s'>{version.einreich_datum}</f:format.date></f:variable>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:variable name="EinreichDatum2">{version.einreich_datum}</f:variable>
+                                                        </f:else>
+                                                    </f:if>
+
+
+                                                    
+
                                                         <f:if condition="{version.einreich_datum}">
-                                                                <tr data-datum="<f:format.date format='U'>{version.einreich_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.einreich_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>">
+                                                                <tr data-datum="<f:format.date format='U'>{version.einreich_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{EinreichDatum2}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="version-start">
                                                                 <td>
-                                                                    <f:format.date format='d.m.Y'>{version.einreich_datum}</f:format.date>
+                                                                    <f:format.date format='d.m.Y'>{EinreichDatum2}</f:format.date> 
+                                                                    <f:if condition="{EinreichDatumOrig}">&nbsp; <span class="titleview klein person-statuskugel status-4" title="DATENKORREKTUR: ursprüngliches Einreich-Datum: {EinreichDatumOrig} geändert auf <f:format.date format='d.m.Y H:i:s'>{EinreichDatum2}</f:format.date>"></span></f:if>
+                                                                
                                                                     <code>uid: {version.uid} {version.nummer} | A</code>
                                                                 </td>
-                                                                    <!-- <td>
-                                                                        <f:format.date format='H:i'>{version.einreichDatum}</f:format.date>
-                                                                    </td> -->
                                                                 <td>
                                                                     {version.version + 1} 
                                                                 </td>
                                                                 <td>
                                                                     <f:if condition="{version.version}==0 &&  !{version.pp3}">
                                                                         <f:then>
-                                                                            Ersteinreichung
+                                                                            Ersteinreichung 
                                                                         </f:then>
                                                                         <f:else>
-                                                                            Einreichung
+                                                                            Einreichung  
                                                                         </f:else>
                                                                     </f:if>
                                                                 </td>
@@ -219,37 +262,42 @@
                                                                 </tr>
                                                             </f:if>
                                                             
-                                                            <f:if condition="{version.akkreditierung_entscheidung_datum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==140 || {version.status}==220)">
-                                                                <tr data-datum="<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="akzent">
+                                                            <f:if condition="{akkreditierungEntscheidungDatum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==140 || {version.status}==220)">
+                                                                <tr data-datum="<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{akkreditierungEntscheidungDatum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="akzent">
                                                                 <td>
-                                                                    <f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date>
+                                                                    <f:format.date format='d.m.Y'>{akkreditierungEntscheidungDatum}</f:format.date> <f:if condition="{akkEntschOrig}">
+                                                                        &nbsp; <span class="titleview klein person-statuskugel status-4" title="DATENKORREKTUR: ursprüngliches Datum der Akkreditierungsentscheidung: {akkEntschOrig}"></span>
+                                                                    </f:if>
                                                                     <code>uid: {version.uid} {version.nummer} | B</code>
                                                                 </td>
-                                                                    <!-- <td>
-                                                                        <f:format.date format='H:i'>{version.akkreditierungEntscheidungDatum}</f:format.date>
-                                                                    </td> -->
                                                                 <td> 
                                                                     {version.version + 1}
                                                                 </td>
                                                                 <td>
-                                                                    Ansuchen ausgeschickt: <f:translate key="ansuchen.status.{version.status}" default="Status {version.status} unbekannt" />
+                                                                    Ansuchen ausgeschickt: <f:translate key="ansuchen.status.{version.status}" default="Status {version.status} unbekannt" /> 
+                                                                    
                                                                 </td>
                                                                 <td class="td-knopf">
-                                                                    <f:if condition="{i.index}==0"> 
-                                                                        <f:then>
-                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                                            <f:if condition="{falItems.0}">
-                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
-                                                                            </f:if>
-                                                                        </ieb:falFromRecord>
-                                                                        </f:then>
-                                                                        <f:else>
-                                                                            <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
-                                                                            <f:if condition="{falItems.0}">
-                                                                                <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
-                                                                            </f:if>
-                                                                        </ieb:falFromRecord>
-                                                                        </f:else>
+                                                                    <f:if condition="{version.status}==100 || {version.status}==140">
+
+                                                                    
+                                                                        <f:if condition="({i.index}==0)"> 
+                                                                            <f:then>
+                                                                                <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                                <f:if condition="{falItems.0}">
+                                                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                                </f:if>
+                                                                            </ieb:falFromRecord>
+                                                                            </f:then>
+                                                                            <f:else>
+                                                                                <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                                                                <f:if condition="{falItems.0}">
+                                                                                    <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                                                                </f:if>
+                                                                            </ieb:falFromRecord>
+                                                                            </f:else>
+                                                                        </f:if>
+
                                                                     </f:if>
                                                                 </td>
                                                                 <td class="td-knopf"> <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : version.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {version.version+1})"></f:link.action></td>
@@ -284,14 +332,19 @@
                                                                 </tr>
                                                             </f:if>
                                                             <f:variable name="iplusuid">{version.uid}</f:variable>
+                                                            <f:variable name="akkEntschOrig"></f:variable>
+                                                            <f:variable name="EinreichDatumOrig2"></f:variable>
                                                     </f:for>
                                                 </table>
                                                 
                                                 <script>
                                                     $(document).ready(function() {
                                                        $('#historytable-<f:format.raw>{item.nummer}</f:format.raw> tr').sort(function(a, b) {
-                                                          return $(a).data('datum') > $(b).data('datum') ? 1 : -1;
+                                                          return $(a).data('version') > $(b).data('version') ? 1 : -1;
                                                        }).appendTo('#historytable-<f:format.raw>{item.nummer}</f:format.raw>');
+                                                       $('#vorv-<f:format.raw>{item.nummer}</f:format.raw> tr.sort').sort(function(a, b) {
+                                                          return $(a).data('status') > $(b).data('status') ? 1 : -1;
+                                                       }).appendTo('#vorv-<f:format.raw>{item.nummer}</f:format.raw>');
                                                     });
                                                  </script>
                                                 

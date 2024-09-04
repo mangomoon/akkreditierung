@@ -130,7 +130,11 @@ class ReportingController extends ActionController
             if ($csv && !empty($items)) {
 
                 $out = [];
+                $altezuteilung = null;
                 foreach ($items as $raw) {
+                    if (($altezuteilung != $raw['zuteilung_datum'])) {
+                    $altezuteilung = $raw['zuteilung_datum'];
+
                     if($raw['gutachter1']) {
                         
                         $item = [];
@@ -236,6 +240,7 @@ class ReportingController extends ActionController
 
                         $out[] = $item;
                     }
+                }
                 }
 
                 $firstrow = ['Datum','Nr','V','Name','1 2','verr','Kommentar','Status bei Zuteilung',];

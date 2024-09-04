@@ -23,7 +23,6 @@
         "league/csv": "^9.8",
         "mangomoon/mangomoon": "dev-main",
         "mangomoon/mangomoonspecify": "@dev",
-        "paragonie/argon2-refiner": "^0.3.0",
         "plan2net/sierrha": "^0.4.2",
         "rogervila/array-diff-multidimensional": "^2.1",
         "sinso/app-routes": "^1.4",

@@ -1479,6 +1479,14 @@ span.suchwort {
 .archiv-show .person, .archiv-show .person-ansuchen {
     border-bottom: solid 1px var(--f3);
 }
+
+.person-statuskugel.klein {
+    width: 8px;
+    height: 8px;
+    vertical-align: middle;
+}
+
+
 .person span.frist {
     display: inline-block;
     font-size: 0.9em;
@@ -2517,6 +2525,11 @@ ul.f3-widget-paginator li a:hover, ul.f3-widget-paginator li.current a {
     border-bottom: solid 1px var(--f4);
     padding: 4px 2px;
 }
+#historytable .version-start td, .historytable .version-start td {
+    border-top: solid 6px var(--f1);
+}
+
+
 table.ansuchenliste .historytable td {
     padding: 4px 2px;
 }
@@ -2524,7 +2537,7 @@ table.ansuchenliste .historytable td {
     background: var(--f1);
 }
 table.ansuchenliste .historytable td.td-knopf {
-    padding: 0px 2px;
+    padding: 4px 2px;
 }
 
 .historytable tr.akzent td {
@@ -2533,4 +2546,22 @@ table.ansuchenliste .historytable td.td-knopf {
 .historytable .knopf-quadratisch {
     width: 18px;
     height: 18px;
+}
+
+
+
+
+table.debug {
+    font-size: 0.7em;
+    background: #fff;
+}
+table.debug tr.debug-head {
+    background: var(--f0);
+}
+/* .archiv-vorversionen .debug td:nth-of-type(1) {
+    width: auto;
+} */
+.archiv-vorversionen table.debug td {
+    border: solid 1px var(--f4);
+    width:12.5%;
 }

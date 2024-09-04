@@ -38,9 +38,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <f:for each="{items}" as="item">
+                <f:for each="{items}" as="item" iteration="i">
+                    <f:if condition="{altezuteilung} != {item.zuteilung_datum}">
                     <f:if condition="{item.zuteilung_datum} && {item.gutachter1}">
-                        
                         <tr>
                             <td class="datum"><f:format.date format='d.m.Y'>{item.zuteilung_datum}</f:format.date></td>
                             <td class="gutachter">{f:if(condition:item.gutachter1,then:'{item.gutachter1.first_name}&nbsp;{item.gutachter1.last_name}')}</td>
@@ -57,12 +57,12 @@
                             
                             <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
                                 <f:switch expression="{item.review_incoming_status}">
-                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
-                                    <f:case value="85">Erneute Begutachtung nach Nachbesserungsauftrag</f:case>
-                                    <f:case value="150">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="160">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="210">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="230">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="30">Ersteinreichung</f:case>
+                                    <f:case value="85">Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Nachakreditierung</f:case>
+                                    <f:case value="160">Nachakreditierung</f:case>
+                                    <f:case value="210">Nachakreditierung (Bearbeitungsauftrag)</f:case>
+                                    <f:case value="230">Nachakreditierung (Bearbeitungsauftrag)</f:case>
                                 </f:switch>
                             </td>
                         </tr>
@@ -83,16 +83,19 @@
                             </td>
                             <td class="aktion"><code>Incoming Status: {item.review_incoming_status} | Status: {item.status}</code>
                                 <f:switch expression="{item.review_incoming_status}">
-                                    <f:case value="30">Begutachtung nach Ersteinreichung</f:case>
-                                    <f:case value="85">Erneute Begutachtung nach Nachbesserungsauftrag</f:case>
-                                    <f:case value="150">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="160">Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="210">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
-                                    <f:case value="230">Erneute Begutachtung zur Nachakreditierungsbegutachtung</f:case>
+                                    <f:case value="30">Ersteinreichung</f:case>
+                                    <f:case value="85">Nachbesserungsauftrag</f:case>
+                                    <f:case value="150">Nachakreditierung</f:case>
+                                    <f:case value="160">Nachakreditierung</f:case>
+                                    <f:case value="210">Nachakreditierung (Bearbeitungsauftrag)</f:case>
+                                    <f:case value="230">Nachakreditierung (Bearbeitungsauftrag)</f:case>
                                 </f:switch>
                             </td>
                         </tr>
                     </f:if>
+
+                    <f:variable name="altezuteilung">{item.zuteilung_datum}</f:variable>
+                </f:if>
                 </f:for>
                 </tbody>
             </table>
