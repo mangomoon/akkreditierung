@@ -1,0 +1,51 @@
+
+
+<!-- ALTE DARSTELLUNG DER VORVERSIONNEN: -->
+
+
+<tr>
+   <td class="archiv-vorversionen-td" colspan="4">
+   <ieb:ansuchenOldVersionLoader nummer="{item.nummer}" as="oldVersions">
+       <f:if condition="{oldVersions}">
+           <details>
+               <summary><span class="">Vorversionen ({oldVersions -> f:count()})</span></summary>
+               
+                   <f:for each="{oldVersions}" as="oldVersion" iteration="i">
+                       <table class="archiv-vorversionen">
+                           <tr>
+                               <td>&nbsp;</td>
+                               <td>{oldVersion.version +1}</td>
+                               <td>[{oldVersion.uid}]</td>
+                               <td><f:translate key="ansuchen.status.{oldVersion.status}" default="Status {oldVersion.status} unbekannt" /> am <f:format.date format='d.m.Y'>{oldVersion.akkreditierung_entscheidung_datum}</f:format.date><code>status: {oldVersion.status} incoming: {oldVersion.review_incoming_status}</code></td>
+                               <td class="td-knopf">
+                                   <f:if condition="{i.index}==0"> 
+                                       <f:then>
+                                           <ieb:falFromRecord field="akkreditierung_pdf" id="{item.lastuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                           <f:if condition="{falItems.0}">
+                                               <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                           </f:if>
+                                       </ieb:falFromRecord>
+                                       </f:then>
+                                       <f:else>
+                                           <ieb:falFromRecord field="akkreditierung_pdf" id="{iplusuid}" table="tx_ieb_domain_model_ansuchen" as="falItems">
+                                           <f:if condition="{falItems.0}">
+                                               <a href="{falItems.0.publicUrl}" class="knopf-quadratisch zertifikat" target="_blank" title="Akkreditierungs-Zertifikat als PDF" >&#8288;</a>
+                                           </f:if>
+                                       </ieb:falFromRecord>
+                                       </f:else>
+                                   </f:if>
+                                       
+
+                               </td>
+                               <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : oldVersion.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {oldVersion.version+1})"></f:link.action></td>
+                           </tr>
+                       </table>
+                       <f:variable name="iplusuid">{oldVersion.uid}</f:variable> 
+                       
+                   </f:for>
+               
+           </details>
+       </f:if>
+   </ieb:ansuchenOldVersionLoader>
+   </td>
+</tr>
