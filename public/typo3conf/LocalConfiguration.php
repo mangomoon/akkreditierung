@@ -48,10 +48,6 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'fe_passwordless' => [
-            'allowedContexts' => 'Development/Ddev',
-            'password' => 'ieb',
-        ],
         'news' => [
             'advancedMediaPreview' => '1',
             'archiveDate' => 'date',

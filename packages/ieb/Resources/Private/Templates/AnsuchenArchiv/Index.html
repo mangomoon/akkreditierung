@@ -202,6 +202,14 @@
                                                 <table id="historytable-{item.nummer}" class="historytable">
                                                     <f:for each="{oldVersions}" as="version" iteration="i"> 
                                                         
+
+                                                    <!-- empty var -->
+                                                    <f:variable name="akkreditierungEntscheidungDatum"></f:variable>
+                                                    <f:variable name="akkEntschOrig"></f:variable>
+                                                    <f:variable name="EinreichDatum"></f:variable>
+                                                    <f:variable name="EinreichDatum2"></f:variable>
+                                                    <f:variable name="EinreichDatumOrig"></f:variable>
+
                                                     <!-- KORR DATE 0000000000000000000000000 -->
                                                     <f:if condition="<f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date> == <f:format.date format='d.m.Y'>{version.tstamp}</f:format.date>">
                                                         <f:then>
@@ -234,8 +242,11 @@
                                                     </f:if>
 
 
-                                                    
-
+                                                      <f:if condition="{version.status} == 85">
+                                                        <f:then>
+                                                            <span class="titleview klein person-statuskugel status-4" title="DATENKORREKTUR: Falsche Versionen mit dem Status 'Eingereicht nach Nachbesserungsauftrag' aus dem Dezember 2023 werden ausgeblendet"></span>&nbsp;
+                                                        </f:then>
+                                                        <f:else>
                                                         <f:if condition="{version.einreich_datum}">
                                                                 <tr data-datum="<f:format.date format='U'>{version.einreich_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{EinreichDatum2}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="version-start">
                                                                 <td>
@@ -260,9 +271,9 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 </tr>
-                                                            </f:if>
+                                                        </f:if>
                                                             
-                                                            <f:if condition="{akkreditierungEntscheidungDatum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==140 || {version.status}==220)">
+                                                        <f:if condition="{akkreditierungEntscheidungDatum} && ({version.status}==80 || {version.status}==100 || {version.status}==200 || {version.status}==140 || {version.status}==220)">
                                                                 <tr data-datum="<f:format.date format='U'>{version.akkreditierung_entscheidung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{akkreditierungEntscheidungDatum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>" class="akzent">
                                                                 <td>
                                                                     <f:format.date format='d.m.Y'>{akkreditierungEntscheidungDatum}</f:format.date> <f:if condition="{akkEntschOrig}">
@@ -302,17 +313,14 @@
                                                                 </td>
                                                                 <td class="td-knopf"> <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : version.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {version.version+1})"></f:link.action></td>
                                                                 </tr>
-                                                            </f:if>
-
-                                                            <f:if condition="{version.zuteilung_datum}">
+                                                        </f:if>
+                                                        
+                                                        <f:if condition="{version.zuteilung_datum}">
                                                                 <tr data-datum="<f:format.date format='U'>{version.zuteilung_datum}</f:format.date>"  data-version="{version.version}<f:format.date format='U'>{version.zuteilung_datum}</f:format.date><f:format.printf arguments='{1: version.status}'>%03d</f:format.printf>">
                                                                 <td>
                                                                     <f:format.date format='d.m.Y'>{version.zuteilung_datum}</f:format.date>
                                                                     <code>uid: {version.uid} | C</code>
                                                                 </td>
-                                                                    <!-- <td>
-                                                                        <f:format.date format='H:i'>{version.zuteilungDatum}</f:format.date>
-                                                                    </td> -->
                                                                 <td>
                                                                     <f:if condition="">
                                                                         <f:then>
@@ -325,15 +333,18 @@
                                                                     {version.version + 1}
                                                                 </td>
                                                                 <td>
-                                                                    Zuteilung an {version.gutachter1} {version.gutachter1.last_name} {f:if(condition:'{version.gutachter1}&&{version.gutachter2}', then:' und ')} {version.gutachter2} {version.gutachter2.lastname}
+                                                                    Zuteilung an {version.gutachter1} {version.gutachter1.last_name}{version.gutachter1.lastName} {f:if(condition:'{version.gutachter1}&&{version.gutachter2}', then:' und ')} {version.gutachter2} {version.gutachter2.lastname}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 </tr>
-                                                            </f:if>
+                                                        </f:if>
                                                             <f:variable name="iplusuid">{version.uid}</f:variable>
                                                             <f:variable name="akkEntschOrig"></f:variable>
                                                             <f:variable name="EinreichDatumOrig2"></f:variable>
+                                                        </f:else>
+                                                      </f:if>
+                                                      
                                                     </f:for>
                                                 </table>
                                                 
