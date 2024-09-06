@@ -333,7 +333,7 @@
                                                                     {version.version + 1}
                                                                 </td>
                                                                 <td>
-                                                                    Zuteilung an {version.gutachter1} {version.gutachter1.last_name}{version.gutachter1.lastName} {f:if(condition:'{version.gutachter1}&&{version.gutachter2}', then:' und ')} {version.gutachter2} {version.gutachter2.lastname}
+                                                                    Zuteilung an <ieb:feuserName uid="{version.gutachter1}" /> {f:if(condition:'{version.gutachter1}&&{version.gutachter2}>0', then:' und ')} <ieb:feuserName uid="{version.gutachter2}" />
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
