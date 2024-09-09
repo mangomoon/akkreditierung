@@ -241,10 +241,10 @@
                                                         </f:else>
                                                     </f:if>
 
-
-                                                      <f:if condition="{version.status} == 85">
+                                                    <!-- KORR st -->
+                                                      <f:if condition="{version.status} == 85 || {version.status} == 30 || {version.status} == 230 || {version.status} == 160 || {version.status} == 150 || {version.status} == 155">
                                                         <f:then>
-                                                            <span class="titleview klein person-statuskugel status-4" title="DATENKORREKTUR: Falsche Versionen mit dem Status 'Eingereicht nach Nachbesserungsauftrag' aus dem Dezember 2023 werden ausgeblendet"></span>&nbsp;
+                                                            <span class="titleview klein person-statuskugel status-4" title="DATENKORREKTUR: Falsche Versionen mit ungültigem Status aus dem Dezember 2023 werden ausgeblendet"></span>&nbsp;
                                                         </f:then>
                                                         <f:else>
                                                         <f:if condition="{version.einreich_datum}">
