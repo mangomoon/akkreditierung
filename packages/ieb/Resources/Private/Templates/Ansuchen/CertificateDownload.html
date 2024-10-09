@@ -1,25 +1,16 @@
 <html
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
         xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
-        data-namespace-typo3-fluid="true">
-
-
-        
-        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
-        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
-        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
-        {ansuchen.copyBeraterData -> f:variable(name: 'berater')}
-
-<pdf:document 
+        data-namespace-typo3-fluid="true"><pdf:document 
     title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
     outputPath = ".pdf"
     outputDestination="{outputDestination}"
-    sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf">
-
-    <pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">
-        
-    
- <f:if condition="{ansuchen.status}<200">
+    sourceFile="EXT:ieb/Resources/Private/Pdfs/zertifikat_leer.pdf"><pdf:page importPage="1" margin="{top: 45, right: 16, bottom: 40, left: 16}">
+        {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')} 
+        {ansuchen.copyStandorteData -> f:variable(name: 'standorte')} 
+        {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
+        {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
+<f:if condition="{ansuchen.status}<200">
     <!-- ANSUCHEN mit 100 oder 140 -->
     <f:then>
 

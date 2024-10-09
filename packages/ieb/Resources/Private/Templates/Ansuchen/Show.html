@@ -28,14 +28,22 @@
     </f:if>
     <f:if condition="{currentUser.usergroup}==1">
         {ansuchen.standorte -> f:variable(name: 'standorte')}
+
     </f:if>
+
+
 
 
     
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:variable name="gs">1</f:variable>
+
+        
+        
     </f:if>
+
+
 
     <div id="ansuchen-show" class="archiv-show">
 
@@ -682,28 +690,61 @@
                         <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
                     </f:if>
                     <div id="trainerliste">
+                    
+
                     <f:for each="{trainer}" as="t">
                         
+                    <f:if condition="{currentUser.usergroup}!=1">
 
+                        <f:if condition="!{AnsuchenInBegutachtung}">
+                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Trainer"></ieb:nextAnsuchen></f:variable>
+                        </f:if>
+                        
+                    </f:if>
+                    
+                        
                         <div class="row person person-ansuchen" data-name="{t.nachname}"  id="trainer-{t.uid}">
                             <div class="col-12">
                                 <details>
                                 <summary><f:if condition="{ansuchen.typ}==1">
                                     <f:then>
-                                            <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
-                                            <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                        <f:if condition="{currentUser.usergroup}==1">
+                                            <f:then>
+                                                <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                            </f:else>
+                                        </f:if>
                                     </f:then>
                                     <f:else>
-                                        
-                                            <span class="titleview person-statuskugel-c person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (PSA)"></span>
-                                            <span class="titleview person-statuskugel-d person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (PSA)"></span>
+                                        <f:if condition="{currentUser.usergroup}==1">
+                                            <f:then>
+                                                <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC21PsaStatus}" title="Begutachung Qualifikation (Babi)"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC22PsaStatus}" title="Begutachung Erfahrung (Babi)"></span>
+                                            </f:else>
+                                        </f:if>
                                     </f:else>
-                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span>
+                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname} </span></span>
                                 <f:if condition="{ansuchen.typ}==1">
                                     <f:then> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span></f:then>
                                     <f:else><span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist.date}</f:format.date></span> </f:else>
                                 </f:if></summary>
-                                <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                <f:if condition="{currentUser.usergroup}==1">
+                                    <f:then>
+                                        <f:render partial="Trainer/Properties" arguments="{trainer: t, typ:ansuchen.typ, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                    </f:then>
+                                    <f:else>
+                                        <f:render partial="Trainer/Properties" arguments="{trainer: trainerbegutachtung, typ:ansuchen.typ, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                    </f:else>
+                                </f:if>
+                                
                                 </details>
                             </div>
                             
@@ -763,11 +804,28 @@
                                 </div>
                                 <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
+                                    <f:if condition="{currentUser.usergroup}!=1">
+                                        <f:if condition="!{AnsuchenInBegutachtung}">
+                                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
+                                        </f:if>
+                                    </f:if>
                                     <div class="row person person-ansuchen" data-name="{t.nachname}"  id="berater-{t.uid}">
                                         <div class="col-12">
                                             <details>
-                                            <summary><span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
-                                                <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span></summary>
+                                            <summary>
+                                                <f:if condition="{currentUser.usergroup}==1">
+                                                    <f:then>
+                                                        <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
+                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
+                                                    </f:then>
+                                                    <f:else>
+                                                        <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
+                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
+                                                    </f:else>
+                                                </f:if>
+                                                
+                                            
+                                            </summary>
                                                 <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
                                             </details>
                                         </div>

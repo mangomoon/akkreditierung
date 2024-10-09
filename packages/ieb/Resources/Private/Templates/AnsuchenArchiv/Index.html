@@ -67,6 +67,7 @@
                     <tbody>
                     <f:for each="{pagination.paginator.paginatedItems}" as="item">
                         {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
+                        
 
                         <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
                             <table class="ansuchenliste archiv">
@@ -79,12 +80,14 @@
                                             <f:else>
                                                 <span class="fett">{item.stammdatenName}</span>
                                             </f:else>
+                                            
                                         </f:if>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ansuchenliste_ansuchennr">
                                         {item.nummer}
+                                        
                                     </td>
                                     <td class="ansuchenliste_bezeichnung">
                                         <span class="ansuchenliste_ansuchenname">{item.name}</span> {f:if(condition:'{item.pruefbescheid_check}==1', then:'<span class="knopfrund pruefbescheid titleview" title="mit Prüfbescheid"></span>')}<br>

@@ -16,7 +16,7 @@ class FeuserNameViewHelper extends AbstractViewHelper
     /**
      * Inject the FrontendUserRepository
      *
-     * @param \Vendor\ExtensionName\Domain\Repository\FrontendUserRepository $frontendUserRepository
+     * @param GeorgRinger\Ieb\Domain\Repository\FrontendUserRepository $frontendUserRepository
      */
     public function injectFrontendUserRepository(FrontendUserRepository $frontendUserRepository): void
     {
@@ -40,13 +40,12 @@ class FeuserNameViewHelper extends AbstractViewHelper
     {
         $uid = $this->arguments['uid'];
 
-        // Finde den Benutzer anhand der UID
         $frontendUser = $this->frontendUserRepository->findByUid($uid);
         if ($frontendUser === null) {
             return ' ';
         }
 
-        // Gib den vollständigen Namen oder nur den Benutzernamen zurück
+        // Gib den vollständigen Namen zurück
         return $frontendUser->getFirstName() . ' ' . $frontendUser->getLastName();
     }
 }

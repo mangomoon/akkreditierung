@@ -45,6 +45,19 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
+    public function getNextAnsuchen(int $uid)
+    {
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+        return (array)$queryBuilder->select('copy_trainer','copy_berater')
+            ->from('tx_ieb_domain_model_ansuchen')
+            ->where(
+                $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
+            )->execute()->fetchAssociative();
+        
+    }
+
+
     public function getAllAkkreditiert(): QueryResultInterface
     {
         $query = $this->getQuery();
