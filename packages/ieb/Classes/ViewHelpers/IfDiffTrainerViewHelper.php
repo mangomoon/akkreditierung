@@ -34,7 +34,7 @@ class IfDiffTrainerViewHelper extends AbstractViewHelper
         try {
             $data = ArrayUtility::getValueByPath($diff, $field);
 
-            if (isset($data['crdate'])) {
+            if (isset($data['uid'])) {
                 return sprintf("<span class='vorher-knopf'>neu</span>");
             } else {
                 if ($bereich == 1 && ( isset($data['qualifikationBabi']) || isset($data['qualifikationBabiDatei']) || isset($data['lebenslauf']) || isset($data['lebenslaufDatei']) )) {

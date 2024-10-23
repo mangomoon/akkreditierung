@@ -293,16 +293,7 @@ class AnsuchenBegutachtungController extends BaseController
         $ansuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
 
 
-        // // Zuteilung löschen:
-        // $ansuchen->setZuteilungDatum(null);
-        // $ansuchen->setGutachter1(null);
-        // $ansuchen->setGutachter2(null);
-        // $ansuchen->setReviewVerrechnung1('');
-        // $ansuchen->setReviewVerrechnung2('');
-        // $ansuchen->setReviewVerrechnungCheck1(false);
-        // $ansuchen->setReviewVerrechnungCheck2(false);
-        // $ansuchen->setStatusAgEins(0);
-        // $ansuchen->setStatusAgZwei(0);
+        
         
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
@@ -314,7 +305,21 @@ class AnsuchenBegutachtungController extends BaseController
         $newAnsuchenId = $this->ansuchenRepository->createNewSnapshot($ansuchen, $stammdaten);
         /** @var Ansuchen $newAnsuchen */
         $newAnsuchen = $this->ansuchenRepository->findByIdentifier($newAnsuchenId);
-        //$newAnsuchen->setAkkreditierungEntscheidungDatum(new \DateTime());
+        // $newAnsuchen->setAkkreditierungEntscheidungDatum(null);
+
+        // Zuteilung löschen:
+        $newAnsuchen->setZuteilungDatum(null);
+        $newAnsuchen->setGutachter1(0);
+        $newAnsuchen->setGutachter2(0);
+        $newAnsuchen->setReviewVerrechnung1('');
+        $newAnsuchen->setReviewVerrechnung2('');
+        $newAnsuchen->setReviewVerrechnungCheck1(false);
+        $newAnsuchen->setReviewVerrechnungCheck2(false);
+        $newAnsuchen->setStatusAgEins(0);
+        $newAnsuchen->setStatusAgZwei(0);
+
+
+
         $this->ansuchenRepository->update($newAnsuchen);
         //$this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungFinalizeEvent($ansuchen, $stammdaten));
         

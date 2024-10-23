@@ -15,6 +15,7 @@ class ReportingRepository
 {
 
     private array $dateLogFields = ['einreich_datum', 'zuteilung_datum', 'akkreditierung_entscheidung_datum'];
+    private array $dateZuteilungLogFields = ['zuteilung_datum'];
     private array $enhancementCache = [];
 
     public function getTrWithNoAnsuchen(): array
@@ -137,7 +138,7 @@ class ReportingRepository
         $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
 
         $dateConstraints = [];
-        foreach ($this->dateLogFields as $field) {
+        foreach ($this->dateZuteilungLogFields as $field) {
             $dateConstraints[] = $queryBuilder->expr()->andX(
                 sprintf('year(%s)=%s', $field, $year),
                 sprintf('quarter(%s)=%s', $field, $quarter),

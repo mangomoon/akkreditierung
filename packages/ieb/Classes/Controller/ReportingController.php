@@ -132,7 +132,7 @@ class ReportingController extends ActionController
                 $out = [];
                 $altezuteilung = null;
                 foreach ($items as $raw) {
-                    if (($altezuteilung != $raw['zuteilung_datum'])) {
+                    if (($altezuteilung != $raw['zuteilung_datum']) && ($raw['version_active']==0)) {
                     $altezuteilung = $raw['zuteilung_datum'];
 
                     if($raw['gutachter1']) {
@@ -147,8 +147,9 @@ class ReportingController extends ActionController
                                 $item[$value] = '';
                             }
                         }
+                        $item['uid']=$raw['uid'];
                         $item['nummer']=$raw['nummer'];
-                        $item['version']=$raw['version'];
+                        $item['version']=$raw['version'] + 1;
                         $item['gutachter1']=$raw['gutachter1']['first_name'] .' ' .$raw['gutachter1']['last_name'];
                         $item['zuteilungstyp']='1';
                         $item['review_verrechnung_check1']=$raw['review_verrechnung_check1'] ? 'ja' : 'nein';
@@ -201,8 +202,9 @@ class ReportingController extends ActionController
                                 $item[$value] = '';
                             }
                         }
+                        $item['uid']=$raw['uid'];
                         $item['nummer']=$raw['nummer'];
-                        $item['version']=$raw['version'];
+                        $item['version']=$raw['version']+1;
                         $item['gutachter2']=$raw['gutachter2']['first_name'] .' ' .$raw['gutachter2']['last_name'];
                         $item['zuteilungstyp']='2';
                         $item['review_verrechnung_check2']=$raw['review_verrechnung_check2'] ? 'ja' : 'nein';
@@ -243,7 +245,7 @@ class ReportingController extends ActionController
                 }
                 }
 
-                $firstrow = ['Datum','Nr','V','Name','1 2','verr','Kommentar','Status bei Zuteilung',];
+                $firstrow = ['Datum','UID','Nr','V','Name','1 2','verr','Kommentar','Status bei Zuteilung',];
                 $csvContent = $this->csvService->generateDirect($out, $firstrow);
                 $filename = date("Ymd") . '_GutachterZuteilung.csv';
                 $this->csvService->response($csvContent, $filename);

@@ -952,7 +952,7 @@
                 <div class="row person">
                     <div class="links col-7">
                         {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a> 
-
+                        {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}')}
                         {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}/fullname')} 
 
                         <f:for each="{verantwortlicheMail}" as="pm">
@@ -1116,14 +1116,17 @@
                 
             </div>
             <div id="trainerliste">
-
                 <f:for each="{trainer}" as="t">
+                    
                     <div class="row person" data-name="{t.nachname}"  id="trainer-{t.uid}">
                         <div class="links col-7">
                             {t.vorname}<span class="fett"> {t.nachname}</span>
                             <code>uid: {t.uid} gutachterLockedBy: {t.gutachterLockedBy}</code>
                             <f:if condition="{difftyp}">
                                 {ieb:ifDiffTrainer(diff:diff,field:'copy_trainer/{t.uid}',bereich:'{ansuchen.typ}')}
+                            </f:if>
+                            <f:if condition="{difftyp}">
+                                {ieb:ifDiffTrainer(diff:diff,field:'trainer/{t.uid}',bereich:'{ansuchen.typ}')}
                             </f:if>
                             
                         </div>
