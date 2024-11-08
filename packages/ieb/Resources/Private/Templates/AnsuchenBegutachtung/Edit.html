@@ -951,7 +951,7 @@
             <f:for each="{verantwortliche}" as="p">
                 <div class="row person">
                     <div class="links col-7">
-                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a> 
+                        {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="mailto:{p.email}">{p.email}</a> 
                         {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}')}
                         {ieb:ifDiff(diff:diff,field:'copy_verantwortliche/{p.uid}/fullname')} 
 

@@ -104,7 +104,6 @@ class AnsuchenBegutachtungController extends BaseController
     public function begutachtungsSchlussAction(Ansuchen $ansuchen, int $gutachtervorschlag = 0): ResponseInterface
     {
 
-        
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $this->stammdatenRepository->update($stammdaten);
         $this->stammdatenRepository->forcePersist();
@@ -272,6 +271,7 @@ class AnsuchenBegutachtungController extends BaseController
         foreach($ansuchen->getTrainer() as $trainer) {
             $this->addNewCommentByAll($trainer, 'reviewC2BabiCommentInternal', $gutachter1Name, $gutachter2Name);
             $this->addNewCommentByAll($trainer, 'reviewC2PsaCommentInternal', $gutachter1Name, $gutachter2Name);
+            // $this->setReviewC2BabiCommentTr($this->getReviewC2BabiCommentTr());
             $this->trainerRepository->update($trainer);
         }
         $this->trainerRepository->forcePersist();
@@ -309,8 +309,8 @@ class AnsuchenBegutachtungController extends BaseController
 
         // Zuteilung löschen:
         $newAnsuchen->setZuteilungDatum(null);
-        $newAnsuchen->setGutachter1(0);
-        $newAnsuchen->setGutachter2(0);
+        $newAnsuchen->setGutachter1(null);
+        $newAnsuchen->setGutachter2(null);
         $newAnsuchen->setReviewVerrechnung1('');
         $newAnsuchen->setReviewVerrechnung2('');
         $newAnsuchen->setReviewVerrechnungCheck1(false);

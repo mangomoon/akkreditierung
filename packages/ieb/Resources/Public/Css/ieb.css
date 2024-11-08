@@ -1469,7 +1469,7 @@ span.suchwort {
 .archiv-show .person-statuskugel {
     width: 12px;
     height: 12px;
-    vertical-align: text-top;
+    vertical-align: middle;
 }
 .archiv-show .personenname {
     display: inline-block;

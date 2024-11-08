@@ -77,6 +77,7 @@ class BeraterRepository extends BaseRepository
             ->addSelect('tx_ieb_domain_model_berater.review_frist')
             ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
             ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_based_on as ansuchenVersionBasedOn')
             ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
             ->addSelect('tx_ieb_domain_model_ansuchen.typ as ansuchenTyp')
             ->addSelect('stammdaten.name as stammdatenName')

@@ -6,11 +6,13 @@
 
 
      
-    <f:if condition="{currentUser.usergroup}==1 && {ansuchen.status}<50">
+    <f:if condition="(!{ansuchen.editableByTr})">
         <f:then>
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
+            {ansuchen.verantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
             {ansuchen.trainer -> f:variable(name: 'trainer')}
             {ansuchen.berater -> f:variable(name: 'berater')}
+            {ansuchen.standorte -> f:variable(name: 'standorte')}
             
         </f:then>
         <f:else>
@@ -18,17 +20,11 @@
             {stammdaten -> f:variable(name: 'stammdatenorig')}
             {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
             {ansuchen.copyStandorteData -> f:variable(name: 'standorte')}
-
             {ansuchen.copyTrainerData -> f:variable(name: 'trainer')} 
             {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
-
             {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
             {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
         </f:else>
-    </f:if>
-    <f:if condition="{currentUser.usergroup}==1">
-        {ansuchen.standorte -> f:variable(name: 'standorte')}
-
     </f:if>
 
 
@@ -38,9 +34,6 @@
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:variable name="gs">1</f:variable>
-
-        
-        
     </f:if>
 
 
@@ -690,19 +683,21 @@
                         <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
                     </f:if>
                     <div id="trainerliste">
+                
                     
-
                     <f:for each="{trainer}" as="t">
-                        
-                    <f:if condition="{currentUser.usergroup}!=1">
-
-                        <f:if condition="!{AnsuchenInBegutachtung}">
+                     
+                    <f:if condition="({currentUser.usergroup}!=1) && {ansuchen.editableByTr}">
+                        <f:then>
                             <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Trainer"></ieb:nextAnsuchen></f:variable>
-                        </f:if>
-                        
+                        </f:then>
+                        <f:else>
+                            <f:variable name="trainerbegutachtung">{t}</f:variable>
+                        </f:else>
                     </f:if>
-                    
-                        
+
+
+
                         <div class="row person person-ansuchen" data-name="{t.nachname}"  id="trainer-{t.uid}">
                             <div class="col-12">
                                 <details>
@@ -732,8 +727,9 @@
                                         </f:if>
                                     </f:else>
                                 </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname} </span></span>
-                                <f:if condition="{ansuchen.typ}==1">
-                                    <f:then> <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span></f:then>
+
+                                <f:if condition="{ansuchen.typ}==1"> 
+                                    <f:then><span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span></f:then>
                                     <f:else><span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist.date}</f:format.date></span> </f:else>
                                 </f:if></summary>
                                 <f:if condition="{currentUser.usergroup}==1">
@@ -804,11 +800,15 @@
                                 </div>
                                 <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
-                                    <f:if condition="{currentUser.usergroup}!=1">
-                                        <f:if condition="!{AnsuchenInBegutachtung}">
-                                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
-                                        </f:if>
+                                    <f:if condition="({currentUser.usergroup}!=1) && !{AnsuchenInBegutachtung}">
+                                        <f:then>
+                                                <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
+                                        </f:then>
+                                        <f:else>
+                                            <f:variable name="trainerbegutachtung">{t}</f:variable>
+                                        </f:else>
                                     </f:if>
+                                    <f:variable name="trainerbegutachtung">{t}</f:variable>
                                     <div class="row person person-ansuchen" data-name="{t.nachname}"  id="berater-{t.uid}">
                                         <div class="col-12">
                                             <details>

@@ -42,12 +42,10 @@ class NextAnsuchenViewHelper extends AbstractViewHelper
     {
         $uid   = $this->arguments['uid'];
         $person = $this->arguments['person'];
+
         $typ = $this->arguments['typ'];
-      //  $ansuchen = $this->ansuchenRepository->findByUid($uid);
       
         $output = $this->ansuchenRepository->getNextAnsuchen($uid);
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($output);
-
 
 
       if ($typ == 'Trainer') {
@@ -56,11 +54,17 @@ class NextAnsuchenViewHelper extends AbstractViewHelper
       if ($typ == 'Berater') {
         $json = $output['copy_berater'];
       }
+
       $output = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-      
-      $output = $output[$person];
-      
-      // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($output);
+      // var_dump($output);
+      // print_r(array_Keys($output));
+
+
+      if ($person && array_key_exists($person, $output)) {
+        $output = $output[$person];
+      }
+
+
       return $output;
     }
 }

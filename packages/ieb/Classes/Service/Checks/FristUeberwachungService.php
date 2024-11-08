@@ -54,7 +54,7 @@ class FristUeberwachungService
             'frist' => 'review_oecert_frist',
             't1' => 'review_oecert_frist_mail_sent1t',
             't14' => 'review_oecert_frist_mail_sent14t',
-            't14AlternativeDays' => 180,
+            't14AlternativeDays' => -180,
         ],
     ];
     protected array $idLists = [];

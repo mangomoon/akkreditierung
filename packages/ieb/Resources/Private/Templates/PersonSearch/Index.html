@@ -17,7 +17,7 @@
 
         <div>
             <label for="searchword">
-                Nachname (oder Teil davon): &nbsp;&nbsp;
+                Name (oder Teil davon): &nbsp;&nbsp;
                 <f:form.textfield property="searchword" id="searchword" />
             </label>
             <label for="trPid">
@@ -89,7 +89,10 @@
                                                     </f:then>
                                                     <f:else>
                                                         {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+
+
+                                                        <!-- FALSCH: arguments muss auf Vorversion von Ansuchen zurückgreifen! -->
+                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                     </f:else>
                                                 </f:if>
                                                 
@@ -156,7 +159,7 @@
                                                     </f:then>
                                                     <f:else>
                                                         {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                     </f:else>
                                                 </f:if>
                                             
@@ -223,7 +226,7 @@
                                                     </f:then>
                                                     <f:else>
                                                         {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                     </f:else>
                                                 </f:if>
                                             

@@ -27,7 +27,7 @@
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) nach "Akkreditiert mit Auflage" eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
 
-        <f:if condition="({ansuchen.status}==200) || ({ansuchen.status}==220)">
+        <f:if condition="({ansuchen.status}==210) || ({ansuchen.status}==230)">
             <p>Das Ansuchen {ansuchen.nummer} – <i>{ansuchen.name}</i> wurde im Programmbereich {f:if(condition:'{ansuchen.typ}==1', then:'Basisbildung', else:'PSA')} von {user.name} (<f:if condition="{stammdaten.markenname}"><f:then>{stammdaten.markenname}</f:then><f:else>{stammdaten.name}</f:else></f:if>) nach einem Bearbeitungsauftrag eingereicht. Bei Fragen wenden Sie sich bitte mit Angabe der Ansuchennummer an die Geschäftsstelle.</p>
         </f:if>
         <p>Nach erfolgter Begutachtung werden Sie per E-Mail über den Stand informiert.</p>
