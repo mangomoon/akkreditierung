@@ -44,7 +44,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
         $where = [
             $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.deleted', 0),
             $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.hidden', 0),
-            $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            //$queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
         ];
 
         if ($search->searchword) {

@@ -874,7 +874,12 @@ span.knopfrund.sar-3 {
     background-image: url('../Img/dot-orange.svg');
 }
 
-
+span.knopfrund.archiviert {
+    background-image: url('../Img/close2.svg');
+    width: 12px;
+    height:12px;
+    margin-bottom: 6px;
+}
 
 .tb-liste .d span {
     font-size: 0.8em;

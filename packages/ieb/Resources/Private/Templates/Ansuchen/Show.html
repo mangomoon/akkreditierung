@@ -24,6 +24,9 @@
             {ansuchen.copyBeraterData -> f:variable(name: 'berater')} 
             {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
             {ansuchen.copyVerantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
+            {ansuchen.berater -> f:variable(name: 'beraterAktuell')}
+            {ansuchen.trainer -> f:variable(name: 'trainerAktuell')}
+            {ansuchen.verantwortliche -> f:variable(name: 'verantwortlicheAktuell')}
         </f:else>
     </f:if>
 
@@ -595,6 +598,11 @@
                         <p>Fügen Sie dem Ansuchen die Person(en) hinzu, die das eingereichte Bildungsangebot steuern und wählen Sie eine oder zwei Kontaktperson(en) aus (diese erhalten die Benachrichtigungen im Prozess der Akkreditierung).</p>
                     </div>
                     <f:for each="{verantwortliche}" as="p">
+                        <f:for each="{verantwortlicheAktuell}" as="ta">
+                                        <f:if condition="({p.uid} == {ta.uid}) && {ta.archiviert}">
+                                            <f:variable name="archiviert">{ta.tstamp}</f:variable>
+                                        </f:if>
+                                    </f:for>
                         <div class="row person">
                             <div class="links col-9">
                                 <f:for each="{verantwortlicheMail}" as="pm">
@@ -602,7 +610,7 @@
                                         <span class="pseudoknopf mail"></span>
                                     </f:if>
                                 </f:for>
-                                {p.vorname} <span class="fett">{p.nachname}</span> &nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
+                                {p.vorname} <span class="fett">{p.nachname}</span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{ta.tstamp}</f:format.date>"></span></f:if>&nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
         
                                 <div class="abstand-klein"></div>
                                 <label>Lebenslauf</label>
@@ -696,7 +704,11 @@
                         </f:else>
                     </f:if>
 
-
+                    <f:for each="{trainerAktuell}" as="ta">
+                                        <f:if condition="({t.uid} == {ta.uid}) && {ta.archiviert}">
+                                            <f:variable name="archiviert">{ta.tstamp}</f:variable>
+                                        </f:if>
+                                    </f:for>
 
                         <div class="row person person-ansuchen" data-name="{t.nachname}"  id="trainer-{t.uid}">
                             <div class="col-12">
@@ -726,7 +738,7 @@
                                             </f:else>
                                         </f:if>
                                     </f:else>
-                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname} </span></span>
+                                </f:if><span class="personenname">{t.vorname}<span class="fett"> {t.nachname} </span></span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{ta.tstamp}</f:format.date>"></span></f:if>
 
                                 <f:if condition="{ansuchen.typ}==1"> 
                                     <f:then><span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span></f:then>
@@ -800,15 +812,23 @@
                                 </div>
                                 <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
+                                    
                                     <f:if condition="({currentUser.usergroup}!=1) && !{AnsuchenInBegutachtung}">
                                         <f:then>
-                                                <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
+                                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
                                         </f:then>
                                         <f:else>
                                             <f:variable name="trainerbegutachtung">{t}</f:variable>
                                         </f:else>
                                     </f:if>
                                     <f:variable name="trainerbegutachtung">{t}</f:variable>
+
+                                    <f:for each="{beraterAktuell}" as="ta">
+                                        <f:if condition="({t.uid} == {ta.uid}) && {ta.archiviert}">
+                                            <f:variable name="archiviert">{ta.tstamp}</f:variable>
+                                        </f:if>
+                                    </f:for>
+                                    
                                     <div class="row person person-ansuchen" data-name="{t.nachname}"  id="berater-{t.uid}">
                                         <div class="col-12">
                                             <details>
@@ -816,15 +836,15 @@
                                                 <f:if condition="{currentUser.usergroup}==1">
                                                     <f:then>
                                                         <span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
-                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
+                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{ta.tstamp}</f:format.date>"></span></f:if><span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
                                                     </f:then>
                                                     <f:else>
                                                         <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC3Status}" title="Begutachung Qualifikation (Babi)"></span>
-                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
+                                                        <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC32Status}" title="Begutachung Erfahrung (Babi)"></span><span class="personenname">{t.vorname}<span class="fett"> {t.nachname}</span></span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{archiviert}</f:format.date>"></span></f:if><span class="frist">{ansuchen.berater -> f:variable(name: 'berater')}</span> 
                                                     </f:else>
                                                 </f:if>
                                                 
-                                            
+                                                <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span>
                                             </summary>
                                                 <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
                                             </details>

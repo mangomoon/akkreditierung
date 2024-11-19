@@ -52,7 +52,7 @@ class TrainerRepository extends BaseRepository
         $where = [
             $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
             $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
-            $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            //$queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
         ];
 
         if ($search->respectStatus) {

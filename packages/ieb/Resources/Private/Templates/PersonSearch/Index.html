@@ -36,8 +36,10 @@
                     <tbody>
                     <f:groupedFor as="groupedTrainer" groupBy="trainerName" groupKey="trainerName" each="{trainer}" >
                         <f:variable name="first">{groupedTrainer -> ieb:firstArray()}</f:variable>
+                        <f:for each="{groupedTrainer}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
+                        <f:if condition="{ansuchenVorhanden}">
                          <tr>
-                            <td class="name td-knopf">{trainerName} &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : first.uid}" class="knopf-quadratisch show" title="{trainerName} zeigen"></f:link.action> </td>
+                            <td class="name td-knopf">{trainerName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if>&nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : first.uid}" class="knopf-quadratisch show" title="{trainerName} zeigen"></f:link.action> </td>
                             <td class="organisation">
                                 
                                 <f:if condition="{first.stammdatenMarkenname}">
@@ -88,14 +90,19 @@
                                                         –
                                                     </f:then>
                                                     <f:else>
-                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-
-
-                                                        <!-- FALSCH: arguments muss auf Vorversion von Ansuchen zurückgreifen! -->
-                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                        <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
+                                                            <f:then>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:then>
+                                                            <f:else>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:else>
+                                                        </f:if>
                                                     </f:else>
                                                 </f:if>
-                                                
+
                                             </li>
 
 
@@ -105,6 +112,7 @@
                             </td>
 
                         </tr>
+                    </f:if>
                     </f:groupedFor>
 
                     </tbody>
@@ -121,9 +129,12 @@
                 <table class="personensuche">
                     <tbody>
                         <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
+                            
                             <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
+                            <f:for each="{groupedBerater}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
+                            <f:if condition="{ansuchenVorhanden}">
                              <tr>
-                                <td class="name td-knopf">{beraterName} &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Berater" arguments="{berater : first.uid}" class="knopf-quadratisch show" title="{beraterName} zeigen"></f:link.action></td>
+                                <td class="name td-knopf">{beraterName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if> &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Berater" arguments="{berater : first.uid}" class="knopf-quadratisch show" title="{beraterName} zeigen"></f:link.action></td>
                                 <td class="organisation">
                                     
                                     <f:if condition="{first.stammdatenMarkenname}">
@@ -153,22 +164,30 @@
                                     <ul>
                                     <f:for each="{groupedBerater}" as="groupItem">
                                         <li class= "td-knopf">
-                                            <f:if condition="{groupItem.ansuchenNummer}==''">
+                                            <f:if condition="({groupItem.ansuchenNummer}=='') || ({groupItem.ansuchenNummer}==0)">
                                                     <f:then>
-                                                        –
+                                                        – 
                                                     </f:then>
                                                     <f:else>
-                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                        <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
+                                                            <f:then>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:then>
+                                                            <f:else>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:else>
+                                                        </f:if>
                                                     </f:else>
                                                 </f:if>
-                                            
                                         </li>
                                     </f:for>
                                     </ul>
                                 </td>
     
                             </tr>
+                        </f:if>
                         </f:groupedFor>
     
                         </tbody>
@@ -189,9 +208,10 @@
                     <tbody>
                         <f:groupedFor as="groupedAngebotverantwortlich" groupBy="angebotVerantwortlichName" groupKey="angebotVerantwortlichName" each="{angebotverantwortlich}" >
                             <f:variable name="first">{groupedAngebotverantwortlich -> ieb:firstArray()}</f:variable>
-                            <f:if condition="{first.ansuchenNummer}">
+                            <f:for each="{groupedAngebotverantwortlich}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
+                            <f:if condition="{ansuchenVorhanden}">
                              <tr>
-                                <td class="name td-knopf">{angebotVerantwortlichName} &nbsp;&nbsp;&nbsp;</td>
+                                <td class="name td-knopf">{angebotVerantwortlichName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if>&nbsp;&nbsp;&nbsp;</td>
                                 <td class="organisation">
                                     
                                     <f:if condition="{first.stammdatenMarkenname}">
@@ -225,8 +245,16 @@
                                                         –
                                                     </f:then>
                                                     <f:else>
-                                                        {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
-                                            <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                        <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
+                                                            <f:then>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenUid}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:then>
+                                                            <f:else>
+                                                                {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
+                                                                <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
+                                                            </f:else>
+                                                        </f:if>
                                                     </f:else>
                                                 </f:if>
                                             
@@ -244,7 +272,7 @@
                 </table>
             </f:then>
             <f:else>
-                <div>Keine Berater gefunden</div>
+                <div>Keine Person gefunden</div>
             </f:else>
         </f:if>
 
