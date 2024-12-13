@@ -443,4 +443,6 @@ class AnsuchenRepository extends BaseRepository
         return $query->execute();
     }
 
+
+
 }

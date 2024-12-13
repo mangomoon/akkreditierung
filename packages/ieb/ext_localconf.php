@@ -146,10 +146,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Reporting',
         [
-            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog,gutachtenStatistik,fullCsv',
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog,gutachtenStatistik,fullCsv,fristenliste',
         ],
         [
-            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog,gutachtenStatistik,fullCsv',
+            \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog,gutachtenStatistik,fullCsv,fristenliste',
         ]
     );
 

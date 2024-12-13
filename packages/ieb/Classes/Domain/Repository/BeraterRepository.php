@@ -50,7 +50,72 @@ class BeraterRepository extends BaseRepository
         $where = [
             $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
             $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
-            //$queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            // $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+        ];
+
+        if ($search->respectStatus) {
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c3_status', 0),
+                $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c32_status', 0),
+            );
+        }
+
+        if ($search->searchword) {
+            $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
+            $where[] = $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->like('tx_ieb_domain_model_berater.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+            );
+        }
+        if ($search->trPid > 0) {
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+        }
+
+        $rows = $queryBuilder
+            ->select('tx_ieb_domain_model_berater.*')
+            ->addSelectLiteral('CONCAT(tx_ieb_domain_model_berater.vorname, \' \', tx_ieb_domain_model_berater.nachname) as beraterName')
+            ->addSelect('tx_ieb_domain_model_berater.review_frist')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_based_on as ansuchenVersionBasedOn')
+            ->addSelect('tx_ieb_domain_model_ansuchen.name as ansuchenName')
+            ->addSelect('tx_ieb_domain_model_ansuchen.typ as ansuchenTyp')
+            ->addSelect('stammdaten.name as stammdatenName')
+            ->addSelect('stammdaten.markenname as stammdatenMarkenname')
+            ->from('tx_ieb_domain_model_berater')
+            ->leftJoin(
+                'tx_ieb_domain_model_berater',
+                'tx_ieb_ansuchen_berater_mm',
+                'tx_ieb_ansuchen_berater_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_berater_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_berater_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_berater_mm.uid_local'))
+            )
+            ->rightJoin(
+                'tx_ieb_domain_model_berater',
+                'tx_ieb_domain_model_stammdaten',
+                'stammdaten',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.pid', $queryBuilder->quoteIdentifier('stammdaten.pid'))
+            )
+            ->where(...$where)
+            ->groupBy('tx_ieb_domain_model_berater.uid', 'tx_ieb_domain_model_ansuchen.nummer')
+            ->execute()
+            ->fetchAllAssociative();
+        return $rows;
+    }
+
+    public function findInPersonSearchActive(PersonSearch $search)
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_berater');
+
+        $where = [
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
+            $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
         ];
 
         if ($search->respectStatus) {

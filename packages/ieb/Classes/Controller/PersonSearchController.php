@@ -61,7 +61,8 @@ class PersonSearchController extends ActionController
         }
 
         $csv = [];
-        foreach ($this->trainerRepository->findInPersonSearch($search) as $row) {
+        foreach ($this->trainerRepository->findInPersonSearchActive($search) as $row) {
+
             $pp = substr($row['ansuchenNummer'], 0, 1);
             
             if ($row['ansuchenTyp'] == 1) {
@@ -89,8 +90,10 @@ class PersonSearchController extends ActionController
             ];
                 $csv[] = $line;
             
+            
         }
-        foreach ($this->beraterRepository->findInPersonSearch($search) as $row) {
+        foreach ($this->beraterRepository->findInPersonSearchActive($search) as $row) {
+
             $pp = substr($row['ansuchenNummer'], 0, 1);
             if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";
@@ -116,8 +119,9 @@ class PersonSearchController extends ActionController
             ];
 
             $csv[] = $line;
+        
         }
-        foreach ($this->angebotVerantwortlichRepository->findInPersonSearch($search) as $row) {
+        foreach ($this->angebotVerantwortlichRepository->findInPersonSearchActive($search) as $row) {
             $pp = substr($row['ansuchenNummer'], 0, 1);
             if ($row['ansuchenTyp'] == 1) {
                 $typ = "BaBi";

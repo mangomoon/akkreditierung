@@ -85,11 +85,8 @@
 
 
                                             <li class="td-knopf">
-                                                <f:if condition="{groupItem.ansuchenNummer}==''">
-                                                    <f:then>
-                                                        –
-                                                    </f:then>
-                                                    <f:else>
+                                                <f:if condition="!{groupItem.ansuchenNummer}==''">
+                                                    <a href="https://akkreditierung.levelup-erwachsenenbildung.at/akkreditierung-begutachtung/archiv?tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40extension%5D=Ieb&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40controller%5D=AnsuchenArchiv&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40action%5D=index&tx_ieb_ansuchenarchiv%5B__referrer%5D%5Barguments%5D=YToxOntzOjY6ImZpbHRlciI7YTo3OntzOjE0OiJhbnN1Y2hlbk51bW1lciI7czo4OiI0LTAxNzktMSI7czoxMDoiYnVuZGVzbGFuZCI7czoyOiItMSI7czo2OiJzZWFyY2giO3M6MDoiIjtzOjE2OiJzZWFyY2hTdGFtbWRhdGVuIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MjoiLTEiO3M6OToic3VibWl0dGVkIjtzOjE6IjEiO3M6NToidHJQaWQiO3M6MjoiLTEiO3199347256d296ebe6636c967380261939718004be5&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40request%5D=%7B%22%40extension%22%3A%22Ieb%22%2C%22%40controller%22%3A%22AnsuchenArchiv%22%2C%22%40action%22%3A%22index%22%7Db9de1ce05382357e256f8b14a5697f3bbab8b0df&tx_ieb_ansuchenarchiv%5B__trustedProperties%5D=%7B%22filter%22%3A%7B%22submitted%22%3A1%2C%22trPid%22%3A1%2C%22status%22%3A1%2C%22bundesland%22%3A1%2C%22ansuchenNummer%22%3A1%2C%22search%22%3A1%2C%22searchStammdaten%22%3A1%7D%7D662fe57a3d84b754d0d3a4a050b1d133fd6ad15d&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsubmitted%5D=1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BtrPid%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bstatus%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bbundesland%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BansuchenNummer%5D={groupItem.ansuchenNummer}&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsearch%5D=&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BsearchStammdaten%5D=" class="knopf-quadratisch revive titleshow" title='Öffnet das Archiv für dieses Ansuchen in seperatem Fenster' target='_blank' style='margin-left: 4px;'></a>
                                                         <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
                                                             <f:then>
                                                                 {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
@@ -100,7 +97,6 @@
                                                                 <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                             </f:else>
                                                         </f:if>
-                                                    </f:else>
                                                 </f:if>
 
                                             </li>
@@ -131,6 +127,8 @@
                         <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
                             
                             <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
+
+                            
                             <f:for each="{groupedBerater}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
                             <f:if condition="{ansuchenVorhanden}">
                              <tr>
@@ -164,11 +162,8 @@
                                     <ul>
                                     <f:for each="{groupedBerater}" as="groupItem">
                                         <li class= "td-knopf">
-                                            <f:if condition="({groupItem.ansuchenNummer}=='') || ({groupItem.ansuchenNummer}==0)">
-                                                    <f:then>
-                                                        – 
-                                                    </f:then>
-                                                    <f:else>
+                                            <f:if condition="!({groupItem.ansuchenNummer}=='') && !({groupItem.ansuchenNummer}==0)">
+                                                <a href="https://akkreditierung.levelup-erwachsenenbildung.at/akkreditierung-begutachtung/archiv?tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40extension%5D=Ieb&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40controller%5D=AnsuchenArchiv&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40action%5D=index&tx_ieb_ansuchenarchiv%5B__referrer%5D%5Barguments%5D=YToxOntzOjY6ImZpbHRlciI7YTo3OntzOjE0OiJhbnN1Y2hlbk51bW1lciI7czo4OiI0LTAxNzktMSI7czoxMDoiYnVuZGVzbGFuZCI7czoyOiItMSI7czo2OiJzZWFyY2giO3M6MDoiIjtzOjE2OiJzZWFyY2hTdGFtbWRhdGVuIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MjoiLTEiO3M6OToic3VibWl0dGVkIjtzOjE6IjEiO3M6NToidHJQaWQiO3M6MjoiLTEiO3199347256d296ebe6636c967380261939718004be5&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40request%5D=%7B%22%40extension%22%3A%22Ieb%22%2C%22%40controller%22%3A%22AnsuchenArchiv%22%2C%22%40action%22%3A%22index%22%7Db9de1ce05382357e256f8b14a5697f3bbab8b0df&tx_ieb_ansuchenarchiv%5B__trustedProperties%5D=%7B%22filter%22%3A%7B%22submitted%22%3A1%2C%22trPid%22%3A1%2C%22status%22%3A1%2C%22bundesland%22%3A1%2C%22ansuchenNummer%22%3A1%2C%22search%22%3A1%2C%22searchStammdaten%22%3A1%7D%7D662fe57a3d84b754d0d3a4a050b1d133fd6ad15d&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsubmitted%5D=1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BtrPid%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bstatus%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bbundesland%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BansuchenNummer%5D={groupItem.ansuchenNummer}&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsearch%5D=&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BsearchStammdaten%5D=" class="knopf-quadratisch revive titleshow" title='Öffnet das Archiv für dieses Ansuchen in seperatem Fenster' target='_blank' style='margin-left: 4px;'></a>
                                                         <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
                                                             <f:then>
                                                                 {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
@@ -179,8 +174,9 @@
                                                                 <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                             </f:else>
                                                         </f:if>
-                                                    </f:else>
+                                                        
                                                 </f:if>
+                                                
                                         </li>
                                     </f:for>
                                     </ul>
@@ -240,11 +236,8 @@
                                     <ul>
                                     <f:for each="{groupedAngebotverantwortlich}" as="groupItem">
                                         <li class= "td-knopf">
-                                            <f:if condition="{groupItem.ansuchenNummer}==''">
-                                                    <f:then>
-                                                        –
-                                                    </f:then>
-                                                    <f:else>
+                                            <f:if condition="!{groupItem.ansuchenNummer}==''">
+                                                <a href="https://akkreditierung.levelup-erwachsenenbildung.at/akkreditierung-begutachtung/archiv?tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40extension%5D=Ieb&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40controller%5D=AnsuchenArchiv&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40action%5D=index&tx_ieb_ansuchenarchiv%5B__referrer%5D%5Barguments%5D=YToxOntzOjY6ImZpbHRlciI7YTo3OntzOjE0OiJhbnN1Y2hlbk51bW1lciI7czo4OiI0LTAxNzktMSI7czoxMDoiYnVuZGVzbGFuZCI7czoyOiItMSI7czo2OiJzZWFyY2giO3M6MDoiIjtzOjE2OiJzZWFyY2hTdGFtbWRhdGVuIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MjoiLTEiO3M6OToic3VibWl0dGVkIjtzOjE6IjEiO3M6NToidHJQaWQiO3M6MjoiLTEiO3199347256d296ebe6636c967380261939718004be5&tx_ieb_ansuchenarchiv%5B__referrer%5D%5B%40request%5D=%7B%22%40extension%22%3A%22Ieb%22%2C%22%40controller%22%3A%22AnsuchenArchiv%22%2C%22%40action%22%3A%22index%22%7Db9de1ce05382357e256f8b14a5697f3bbab8b0df&tx_ieb_ansuchenarchiv%5B__trustedProperties%5D=%7B%22filter%22%3A%7B%22submitted%22%3A1%2C%22trPid%22%3A1%2C%22status%22%3A1%2C%22bundesland%22%3A1%2C%22ansuchenNummer%22%3A1%2C%22search%22%3A1%2C%22searchStammdaten%22%3A1%7D%7D662fe57a3d84b754d0d3a4a050b1d133fd6ad15d&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsubmitted%5D=1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BtrPid%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bstatus%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bbundesland%5D=-1&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BansuchenNummer%5D={groupItem.ansuchenNummer}&tx_ieb_ansuchenarchiv%5Bfilter%5D%5Bsearch%5D=&tx_ieb_ansuchenarchiv%5Bfilter%5D%5BsearchStammdaten%5D=" class="knopf-quadratisch revive titleshow" title='Öffnet das Archiv für dieses Ansuchen in seperatem Fenster' target='_blank' style='margin-left: 4px;'></a>
                                                         <f:if condition="!{groupItem.ansuchenVersionBasedOn}">
                                                             <f:then>
                                                                 {groupItem.ansuchenNummer}&nbsp;&nbsp;&nbsp;
@@ -255,7 +248,6 @@
                                                                 <f:link.action action="show" pageUid="21" target="_blank"  controller="Ansuchen" arguments="{ansuchen : groupItem.ansuchenVersionBasedOn}" class="knopf-quadratisch show" title="Ansuchen »{groupItem.ansuchenName}« zeigen"></f:link.action>
                                                             </f:else>
                                                         </f:if>
-                                                    </f:else>
                                                 </f:if>
                                             
                                         </li>

@@ -342,6 +342,147 @@ class ReportingRepository
 
     }
 
+    public function getAllTotalfristen()
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+        return $queryBuilder
+        ->select('tx_ieb_domain_model_ansuchen.*')
+        ->from('tx_ieb_domain_model_ansuchen')
+        ->where(
+            $queryBuilder->expr()->neq('review_total_frist',0),
+            $queryBuilder->expr()->eq('version_active',1),
+        )
+        ->orderBy('review_total_frist', 'ASC')
+        ->execute();
+    }
+    public function getAllPruefbescheidfristen()
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_ansuchen');
+        return $queryBuilder
+        ->select('tx_ieb_domain_model_ansuchen.*')
+        ->from('tx_ieb_domain_model_ansuchen')
+        ->where(
+            $queryBuilder->expr()->neq('review_frist_pruefbescheid',0),
+            $queryBuilder->expr()->eq('version_active',1),
+        )
+        ->orderBy('review_frist_pruefbescheid', 'ASC')
+        ->execute();
+    }
+    public function getAllOecertfristen()
+    {
+        $queryBuilder = $this->getQueryBuilder('tx_ieb_domain_model_stammdaten');
+        return $queryBuilder
+        ->select('tx_ieb_domain_model_stammdaten.*')
+        ->from('tx_ieb_domain_model_stammdaten')
+        ->where(
+            $queryBuilder->expr()->neq('review_oecert_frist',0)
+        )
+        ->orderBy('review_oecert_frist', 'ASC')
+        ->execute();
+    }
+    public function getAllTrainerfristen()
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_trainer');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_trainer.*')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_based_on as ansuchenVersionBasedOn')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_active as ansuchenVersionActive')
+            ->where (
+                $queryBuilder->expr()->neq('review_frist',0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            )
+            ->from('tx_ieb_domain_model_trainer')
+            ->leftJoin(
+                'tx_ieb_domain_model_trainer',
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_ansuchen_trainer_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->groupBy('tx_ieb_domain_model_trainer.uid')
+            ->orderBy('review_frist', 'ASC')
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
+    public function getAllTrainerPSAfristen()
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_trainer');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_trainer.*')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_based_on as ansuchenVersionBasedOn')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_active as ansuchenVersionActive')
+            ->where (
+                $queryBuilder->expr()->neq('review_psa_frist',0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.deleted', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            )
+            ->from('tx_ieb_domain_model_trainer')
+            ->leftJoin(
+                'tx_ieb_domain_model_trainer',
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_ansuchen_trainer_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_trainer.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->groupBy('tx_ieb_domain_model_trainer.uid')
+            ->orderBy('review_psa_frist', 'ASC')
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
+    
+
+    public function getAllBeraterfristen()
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_berater');
+        return $queryBuilder
+            ->select('tx_ieb_domain_model_berater.*')
+            ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
+            ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_based_on as ansuchenVersionBasedOn')
+            ->addSelect('tx_ieb_domain_model_ansuchen.version_active as ansuchenVersionActive')
+            ->where (
+                $queryBuilder->expr()->neq('review_frist',0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.deleted', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.hidden', 0),
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.version_active', 1),
+            )
+            ->from('tx_ieb_domain_model_berater')
+            ->leftJoin(
+                'tx_ieb_domain_model_berater',
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_ansuchen_trainer_mm',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_berater.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_foreign'))
+            )
+            ->leftJoin(
+                'tx_ieb_ansuchen_trainer_mm',
+                'tx_ieb_domain_model_ansuchen',
+                'tx_ieb_domain_model_ansuchen',
+                $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.uid', $queryBuilder->quoteIdentifier('tx_ieb_ansuchen_trainer_mm.uid_local'))
+            )
+            ->groupBy('tx_ieb_domain_model_berater.uid')
+            ->orderBy('review_frist', 'ASC')
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
+
+
 
     private function getQueryBuilder(string $tableName): QueryBuilder
     {

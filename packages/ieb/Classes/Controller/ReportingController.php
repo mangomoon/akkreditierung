@@ -708,6 +708,26 @@ class ReportingController extends ActionController
         $this->csvService->response($csvContent, $csvname);
     }
 
+
+    public function fristenlisteAction(): ResponseInterface
+    {
+        $ansuchen = $this->reportingRepository->getAllTotalfristen();
+        $this->view->assign('ansuchen', $ansuchen);
+        $ansuchenPruef = $this->reportingRepository->getAllPruefbescheidfristen();
+        $this->view->assign('ansuchenpruef', $ansuchenPruef);
+        $stammdaten = $this->reportingRepository->getAllOecertfristen();
+        $this->view->assign('stammdaten', $stammdaten);
+        $trainer = $this->reportingRepository->getAllTrainerfristen();
+        $this->view->assign('trainer', $trainer);
+        $trainerPSA = $this->reportingRepository->getAllTrainerPSAfristen();
+        $this->view->assign('trainerPSA', $trainerPSA);
+        $tberater = $this->reportingRepository->getAllBeraterfristen();
+        $this->view->assign('berater', $tberater);
+        return $this->htmlResponse();
+    }
+
+
+
     private function isPartOfGs(): bool
     {
         return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);

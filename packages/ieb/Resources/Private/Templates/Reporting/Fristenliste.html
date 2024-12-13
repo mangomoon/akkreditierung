@@ -1,0 +1,156 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+
+   <h3>Allgemeine Fristen</h3>
+      <table class="auswertung historytable" style="font-size:1em;">
+         <tr>
+            <th>uid</th>
+            <th>Nr.</th>
+            <th>Frist</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{ansuchen}" as="ansuchen">
+            <tr>
+               <td>{ansuchen.uid}</td>
+               <td>{ansuchen.nummer}</td>
+               <td><f:format.date format='d.m.Y'>{ansuchen.review_total_frist}</f:format.date></td>
+               <td><f:if condition="{ansuchen.review_total_frist_mail_sent1t}"><f:format.date format='d.m.Y'>{ansuchen.review_total_frist_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{ansuchen.review_total_frist_mail_sent14t}"><f:format.date format='d.m.Y'>{ansuchen.review_total_frist_mail_sent14t}</f:format.date></f:if></td>
+               <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : ansuchen.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {ansuchen.version+1})"></f:link.action></td>
+            </tr>
+         </f:for>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <h3>Prüfbescheid Fristen</h3>
+      <table class="auswertung historytable"  style="font-size:1em;">
+         <tr>
+            <th>uid</th>
+            <th>Nr.</th>
+            <th>Frist</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{ansuchenpruef}" as="ansuchen">
+            <tr>
+               <td>{ansuchen.uid}</td>
+               <td>{ansuchen.nummer}</td>
+               <td><f:format.date format='d.m.Y'>{ansuchen.review_frist_pruefbescheid}</f:format.date></td>
+               <td><f:if condition="{ansuchen.review_frist_pruefbescheid_mail_sent1t}"><f:format.date format='d.m.Y'>{ansuchen.review_frist_pruefbescheid_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{ansuchen.review_frist_pruefbescheid_mail_sent14t}"><f:format.date format='d.m.Y'>{ansuchen.review_frist_pruefbescheid_mail_sent14t}</f:format.date></f:if></td>
+               <td class="td-knopf"><f:link.action action="show" pageUid="21" target="_blank" controller="Ansuchen" arguments="{ansuchen : ansuchen.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen (Version {ansuchen.version+1})"></f:link.action></td>
+            </tr>
+         </f:for>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <h3>Ö-Cert Fristen</h3>
+      <table class="auswertung">
+         <tr>
+            <th>uid</th>
+            <th>pid</th>
+            <th>Nr.</th>
+            <th>Frist</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{stammdaten}" as="stamm">
+            <tr>
+               <td>{stamm.uid}</td>
+               <td>{stamm.pid}</td>
+               <td>{stamm.name}</td>
+               <td><f:format.date format='d.m.Y'>{stamm.review_oecert_frist}</f:format.date></td>
+               <td><f:if condition="{stamm.review_oecert_frist_mail_sent1t}"><f:format.date format='d.m.Y'>{stamm.review_oecert_frist_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{stamm.review_oecert_frist_mail_sent14t}"><f:format.date format='d.m.Y'>{stamm.review_oecert_frist_mail_sent14t}</f:format.date></f:if></td>
+               <td>x</td>
+            </tr>
+         </f:for>
+      </table>
+
+      <p>&nbsp;</p>
+      <h3>Trainer BaBi Fristen</h3>
+      <table class="auswertung">
+         <tr>
+            <th>uid</th>
+            <th>Name</th>
+            <th></th>
+            <th>Frist</th>
+            <th>Frist–14d</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{trainer}" as="p">
+            <tr>
+               <td>{p.uid}</td>
+               <td>{p.nachname} {p.vorname}</td>
+               <td><span class="klein">{p.ansuchenUid}</span></td>
+               <td><f:if condition="{p.review_frist}"><f:format.date format='d.m.Y'>{p.review_frist}</f:format.date></f:if></td>
+               <td> <f:format.date format='d.m.Y' base="{p.review_frist}">-14 days</f:format.date></td>
+               <td><f:if condition="{p.review_frist_mail_sent1t}"><f:format.date format='d.m.Y'>{p.review_frist_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{p.review_frist_mail_sent14t}"><f:format.date format='d.m.Y'>{p.review_frist_mail_sent14t}</f:format.date></f:if></td>
+               <td></td>
+            </tr>
+         </f:for>
+      </table>
+
+
+      <p>&nbsp;</p>
+      <h3>Trainer PSA Fristen</h3>
+      <table class="auswertung">
+         <tr>
+            <th>uid</th>
+            <th>Name</th>
+            <th></th>
+            <th>Frist</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{trainerPSA}" as="p">
+            <tr>
+               <td>{p.uid}</td>
+               <td>{p.nachname} {p.vorname}</td>
+               <td><span class="klein">{p.ansuchenUid}</span></td>
+               <td><f:if condition="{p.review_psa_frist}"><f:format.date format='d.m.Y'>{p.review_psa_frist}</f:format.date></f:if></td>
+               <td><f:if condition="{p.review_psa_frist_mail_sent1t}"><f:format.date format='d.m.Y'>{p.review_psa_frist_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{p.review_psa_frist_mail_sent14t}"><f:format.date format='d.m.Y'>{p.review_psa_frist_mail_sent14t}</f:format.date></f:if></td>
+               <td></td>
+            </tr>
+         </f:for>
+      </table>
+
+      <p>&nbsp;</p>
+      <h3>Berater Fristen</h3>
+      <table class="auswertung">
+         <tr>
+            <th>uid</th>
+            <th>Name</th>
+            <th>Frist</th>
+            <th>Sent 1</th>
+            <th>Sent 14</th>
+            <th></th>
+         </tr>
+         <f:for each="{berater}" as="p">
+            <tr>
+               <td>{p.uid}</td>
+               <td>{p.nachname} {p.vorname}</td>
+               <td><f:format.date format='d.m.Y'>{p.review_frist}</f:format.date></td>
+               <td><f:if condition="{p.review_frist_mail_sent1t}"><f:format.date format='d.m.Y'>{p.review_frist_mail_sent1t}</f:format.date></f:if></td>
+               <td><f:if condition="{p.review_frist_mail_sent14t}"><f:format.date format='d.m.Y'>{p.review_frist_mail_sent14t}</f:format.date></f:if></td>
+               <td></td>
+            </tr>
+         </f:for>
+      </table>
+</f:section>

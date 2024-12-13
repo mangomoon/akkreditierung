@@ -42,7 +42,6 @@ class NextAnsuchenViewHelper extends AbstractViewHelper
     {
         $uid   = $this->arguments['uid'];
         $person = $this->arguments['person'];
-
         $typ = $this->arguments['typ'];
       
         $output = $this->ansuchenRepository->getNextAnsuchen($uid);
@@ -56,7 +55,7 @@ class NextAnsuchenViewHelper extends AbstractViewHelper
       }
 
       $output = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-      // var_dump($output);
+      
       // print_r(array_Keys($output));
 
 
