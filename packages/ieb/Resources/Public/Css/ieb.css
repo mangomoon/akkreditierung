@@ -1367,6 +1367,17 @@ table.tx_ieb tr.unok:hover {
     background: #f9f7f0;
 }
 
+.personalextra {
+    color: var(--f4);
+    padding: 10px 0;
+    border-bottom: solid 1px var(--f3);
+}
+.personalextra .knopf-quadratisch {
+    width: 16px;
+    height: 16px;
+}
+
+
 
 /* SUCHE 
  */

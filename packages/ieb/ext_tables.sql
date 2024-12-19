@@ -75,6 +75,8 @@ CREATE TABLE tx_ieb_domain_model_ansuchen (
 	copy_stammdaten mediumtext NOT NULL DEFAULT '',
 	copy_trainer mediumtext NOT NULL DEFAULT '',
 	copy_berater mediumtext NOT NULL DEFAULT '',
+	copy_rev_trainer mediumtext NOT NULL DEFAULT '',
+	copy_rev_berater mediumtext NOT NULL DEFAULT '',
 	copy_verantwortliche text NOT NULL DEFAULT '',
 	copy_verantwortliche_mail text NOT NULL DEFAULT '',
 	copy_standorte text NOT NULL DEFAULT '',

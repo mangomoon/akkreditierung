@@ -10,8 +10,10 @@
         <f:then>
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
             {ansuchen.verantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
-            {ansuchen.trainer -> f:variable(name: 'trainer')}
-            {ansuchen.berater -> f:variable(name: 'berater')}
+            {ansuchen.copyRevTrainerData -> f:variable(name: 'trainer')}
+            {ansuchen.copyTrainerData -> f:variable(name: 'trainerEingang')}
+            {ansuchen.copyRevBeraterData -> f:variable(name: 'berater')}
+            {ansuchen.copyBeraterData -> f:variable(name: 'beraterEingang')}
             {ansuchen.standorte -> f:variable(name: 'standorte')}
             
         </f:then>
@@ -29,7 +31,6 @@
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortlicheAktuell')}
         </f:else>
     </f:if>
-
 
 
 
@@ -611,7 +612,7 @@
                                         <span class="pseudoknopf mail"></span>
                                     </f:if>
                                 </f:for>
-                                {p.vorname} <span class="fett">{p.nachname}</span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{ta.tstamp}</f:format.date>"></span></f:if>&nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="{p.email}">{p.email}</a>
+                                {p.vorname} <span class="fett">{p.nachname}</span> <f:if condition="{archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{ta.tstamp}</f:format.date>"></span></f:if>&nbsp;|&nbsp; {p.telefon} &nbsp;|&nbsp; <a href="mailto:{p.email}">{p.email}</a>
         
                                 <div class="abstand-klein"></div>
                                 <label>Lebenslauf</label>
@@ -692,18 +693,13 @@
                         <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
                     </f:if>
                     <div id="trainerliste">
-                
+                        
+                        
                         
                     <f:for each="{trainer}" as="t">
-                     
-                    <f:if condition="({currentUser.usergroup}!=1) && !{ansuchen.versionActive}">
-                        <f:then>
-                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Trainer"></ieb:nextAnsuchen></f:variable>
-                        </f:then>
-                        <f:else>
-                            <f:variable name="trainerbegutachtung">{t}</f:variable>
-                        </f:else>
-                    </f:if>
+
+                    <f:variable name="trainerbegutachtung">{t}</f:variable>
+
 
                     <f:for each="{trainerAktuell}" as="ta">
                         <f:if condition="({t.uid} == {ta.uid}) && {ta.archiviert}">
@@ -780,8 +776,34 @@
 
                         </div>
                     </f:for>
-                    </div>
 
+                    
+                    </div>
+                    <f:if condition="{currentUser.usergroup}!=1">
+                        <f:for each="{trainerEingang}" as="te">
+                            <f:variable name="del">1</f:variable>
+                            <f:for each="{trainer}" as="t">
+                                <f:if condition="{te.uid}=={t.uid}">
+                                    <f:variable name="del">0</f:variable>
+                                </f:if>
+                            </f:for>
+                            <f:if condition="{del}==1">
+                                <div class="td-knopf personalextra">
+                                    <f:if condition="{ansuchen.typ}==1">
+                                        <f:then>
+                                            <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)" style="opacity:0.4;"></span>
+                                            <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"  style="opacity:0.4;"></span>&nbsp;&nbsp;&nbsp;
+                                        </f:then>
+                                        <f:else>
+                                            <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC21PsaStatus}" title="Begutachung Qualifikation (Babi)" style="opacity:0.4;"></span>
+                                            <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC22PsaStatus}" title="Begutachung Erfahrung (Babi)" style="opacity:0.4;"></span>&nbsp;&nbsp;&nbsp;
+                                        </f:else>
+                                    </f:if>
+                                <b>{te.vorname} {te.nachname}</b> wurde aus der Folgeversion gelöscht. <f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : te.uid}" class="knopf-quadratisch show" title="{te.vorname} {te.nachname} im derzeitigen/letzten Status zeigen"></f:link.action>
+                                </div>
+                            </f:if>
+                        </f:for>
+                    </f:if>
                 </div>
             </div>
             
@@ -832,17 +854,10 @@
                                 </div>
                                 <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
-
-                                    <f:if condition="({currentUser.usergroup}!=1) && !{ansuchen.versionActive}">
-                                        <f:then>
-                                            <f:variable name="trainerbegutachtung"><ieb:nextAnsuchen uid="{ansuchen.uid}" person="{t.uid}" typ="Berater"></ieb:nextAnsuchen></f:variable>
-                                        </f:then>
-                                        <f:else>
-                                            <f:variable name="trainerbegutachtung">{t}</f:variable>
-                                        </f:else>
-                                    </f:if>
                                     
 
+                                    
+                                    <f:variable name="trainerbegutachtung">{t}</f:variable>
 
                                     <f:for each="{beraterAktuell}" as="ta">
                                         <f:if condition="({t.uid} == {ta.uid}) && {ta.archiviert}">
@@ -879,7 +894,26 @@
                                         </div>
                                     </div>
                                 </f:for>
+                                
                                 </div>
+                               
+                                <f:if condition="{currentUser.usergroup}!=1">
+                                    <f:for each="{beraterEingang}" as="te">
+                                            <f:variable name="del">1</f:variable>
+                                            <f:for each="{berater}" as="t">
+                                                <f:if condition="{te.uid}=={t.uid}">
+                                                    <f:variable name="del">0</f:variable>
+                                                </f:if>
+                                            </f:for>
+                                            <f:if condition="{del}==1">
+                                                <div class="td-knopf personalextra">
+                                                <span class="titleview person-statuskugel-a person-statuskugel status-{trainerbegutachtung.reviewC3Status}" title="Begutachung Qualifikation (Babi)" style="opacity:0.4;"></span>
+                                                <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC32Status}" title="Begutachung Erfahrung (Babi)"  style="opacity:0.4;"></span>
+                                                <b>{te.vorname} {te.nachname}</b> wurde aus der Folgeversion gelöscht. <f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : te.uid}" class="knopf-quadratisch show" title="{te.vorname} {te.nachname} im derzeitigen/letzten Status zeigen"></f:link.action>
+                                                </div>
+                                            </f:if>
+                                    </f:for>
+                                </f:if>
                             </div>
 
                         </div>

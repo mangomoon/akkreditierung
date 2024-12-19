@@ -282,6 +282,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->beraterRepository->forcePersist();
 
         $ansuchen->setStatus($ansuchen->getUpcomingStatus());
+        $ansuchen->setCopyRevTrainer($ansuchen->getCopyRevTrainer());
 
         if (($ansuchen->getAkkreditierungDatum() === null) && ($ansuchen->getUpcomingStatus() > 80)) {
             $ansuchen->setAkkreditierungDatum(new \DateTime());

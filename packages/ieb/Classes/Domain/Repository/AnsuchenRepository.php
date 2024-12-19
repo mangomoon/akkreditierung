@@ -307,8 +307,8 @@ class AnsuchenRepository extends BaseRepository
             [
                 'version_active' => 0,
 //                'copy_standorte' => $overrideValues['copy_standorte'],
-//                'copy_trainer' => $overrideValues['copy_trainer'],
-//                'copy_berater' => $overrideValues['copy_berater'],
+               'copy_rev_trainer' => $overrideValues['copy_trainer'],
+               'copy_rev_berater' => $overrideValues['copy_berater'],
 //                'copy_stammdaten' => $overrideValues['copy_stammdaten'],
             ],
             ['uid' => $ansuchen->getUid()]
@@ -328,7 +328,7 @@ class AnsuchenRepository extends BaseRepository
 
     public function getJsonFromRelations(Ansuchen $ansuchen, Stammdaten $stammdaten)
     {
-        $copyStandorte = $copyBerater = $copyTrainer = $copyVerantwortliche = $copyVerantwortlicheMail = [];
+        $copyStandorte = $copyBerater = $copyTrainer = $copyRevBerater = $copyRevTrainer = $copyVerantwortliche = $copyVerantwortlicheMail = [];
         if ($ansuchen->getStandorte()) {
             foreach ($ansuchen->getStandorte() as $standort) {
                 $copyStandorte[$standort->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($standort));
@@ -337,11 +337,13 @@ class AnsuchenRepository extends BaseRepository
         if ($ansuchen->getTrainer()) {
             foreach ($ansuchen->getTrainer() as $trainer) {
                 $copyTrainer[$trainer->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($trainer));
+                $copyRevTrainer[$trainer->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($trainer));
             }
         }
         if ($ansuchen->getBerater()) {
             foreach ($ansuchen->getBerater() as $berater) {
                 $copyBerater[$berater->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($berater));
+                $copyRevBerater[$berater->getUid()] = $this->convertObjectToArray(ObjectAccess::getGettableProperties($berater));
             }
         }
         if ($ansuchen->getVerantwortliche()) {
@@ -360,6 +362,8 @@ class AnsuchenRepository extends BaseRepository
             'copy_standorte' => json_encode($copyStandorte, JSON_PRETTY_PRINT),
             'copy_trainer' => json_encode($copyTrainer, JSON_PRETTY_PRINT),
             'copy_berater' => json_encode($copyBerater, JSON_PRETTY_PRINT),
+            'copy_rev_trainer' => json_encode($copyRevTrainer, JSON_PRETTY_PRINT),
+            'copy_rev_berater' => json_encode($copyRevBerater, JSON_PRETTY_PRINT),
             'copy_stammdaten' => json_encode($copyStammdaten, JSON_PRETTY_PRINT),
             'copy_verantwortliche' => json_encode($copyVerantwortliche, JSON_PRETTY_PRINT),
             'copy_verantwortliche_mail' => json_encode($copyVerantwortlicheMail, JSON_PRETTY_PRINT),

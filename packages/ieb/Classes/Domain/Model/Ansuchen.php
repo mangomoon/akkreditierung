@@ -570,6 +570,21 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $copyBerater = '';
 
     /**
+     * copyRevTrainer
+     *
+     * @var string
+     */
+    protected $copyRevTrainer = '';
+
+    /**
+     * copyRevBerater
+     *
+     * @var string
+     */
+    protected $copyRevBerater = '';
+
+
+    /**
      * copyVerantwortliche
      *
      * @var string
@@ -3070,6 +3085,48 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the copyRevTrainer
+     *
+     * @return string
+     */
+    public function getCopyRevTrainer()
+    {
+        return $this->copyRevTrainer;
+    }
+
+    /**
+     * Sets the copyRevTrainer
+     *
+     * @param string $copyRevTrainer
+     * @return void
+     */
+    public function setCopyRevTrainer(string $copyRevTrainer)
+    {
+        $this->copyRevTrainer = $copyRevTrainer;
+    }
+
+    /**
+     * Returns the copyRevBerater
+     *
+     * @return string
+     */
+    public function getCopyRevBerater()
+    {
+        return $this->copyRevBerater;
+    }
+
+    /**
+     * Sets the copyRevBerater
+     *
+     * @param string $copyRevBerater
+     * @return void
+     */
+    public function setCopyRevBerater(string $copyRevBerater)
+    {
+        $this->copyRevBerater = $copyRevBerater;
+    }
+
+    /**
      * Returns the copyStandorte
      *
      * @return string
@@ -3104,6 +3161,14 @@ class Ansuchen extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getCopyBeraterData()
     {
         return $this->getConvertedJson($this->copyBerater);
+    }
+    public function getCopyRevTrainerData()
+    {
+        return $this->getConvertedJson($this->copyRevTrainer);
+    }
+    public function getCopyRevBeraterData()
+    {
+        return $this->getConvertedJson($this->copyRevBerater);
     }
     public function getCopyVerantwortlicheData()
     {

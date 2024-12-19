@@ -9,3 +9,12 @@ UPDATE `tx_ieb_domain_model_ansuchen` SET `review_frist_pruefbescheid_mail_sent1
 
 
 
+<!-- UPDATE alle Ansuchen copy_trainer -> copy_rev-trainer in der Vorversion -->
+
+UPDATE `tx_ieb_domain_model_ansuchen` AS ziel
+JOIN `tx_ieb_domain_model_ansuchen` AS quelle
+ON ziel.uid = quelle.version_based_on
+SET 
+    ziel.copy_rev_trainer = quelle.copy_trainer,
+    ziel.copy_rev_berater = quelle.copy_berater
+WHERE quelle.version_based_on IS NOT NULL;
