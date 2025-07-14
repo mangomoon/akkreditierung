@@ -89,7 +89,7 @@
             <f:if condition="{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2">
                 <div class="kommentar-check">
                     <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21BabiStatus}" title="Begutachung Qualifikation (Babi)"></span>
-                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span></p> 
+                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22BabiStatus}" title="Begutachung Erfahrung (Babi)"></span> &nbsp;&nbsp;&nbsp;<span class="">Frist: <f:format.date format="d.m.Y">{t.reviewFrist}</f:format.date></span></p> 
                     <p><f:format.nl2br>{t.reviewC2BabiCommentTr} </f:format.nl2br></p>
                 </div>
                 <div class="abstand-mittel"></div>
@@ -99,7 +99,7 @@
             <f:if condition="{t.reviewC21PsaStatus}>2 || {t.reviewC22PsaStatus}>2">
                 <div class="kommentar-check">
                     <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC21PsaStatus}" title="Begutachung Qualifikation (Psa)"></span>
-                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (Psa)"></span></p> 
+                        <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC22PsaStatus}" title="Begutachung Erfahrung (Psa)"></span> &nbsp;&nbsp;&nbsp;<span class="">Frist: <f:format.date format="d.m.Y">{t.reviewPsaFrist}</f:format.date></span></p> 
                     <p><f:format.nl2br>{t.reviewC2PsaCommentTr} </f:format.nl2br></p>
                 </div>
                 <div class="abstand-mittel"></div>
@@ -120,7 +120,7 @@
     <f:if condition="{t.reviewC3Status}>2 || {t.reviewC32Status}>2">
     <div class="kommentar-check">
         <p><strong>{t.vorname} {t.nachname}</strong> &nbsp;<span class="titleview person-statuskugel-a person-statuskugel status-{t.reviewC3Status}" title="Begutachung Qualifikation"></span>
-            <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung"></span></p> 
+            <span class="titleview person-statuskugel-b person-statuskugel status-{t.reviewC32Status}" title="Begutachung Erfahrung"></span> &nbsp;&nbsp;&nbsp;<span class="">Frist: <f:format.date format="d.m.Y">{t.reviewFrist}</f:format.date></span></p> 
         <p><f:format.nl2br>{t.reviewC3CommentTr} </f:format.nl2br></p>
     </div>
     <div class="abstand-mittel"></div>

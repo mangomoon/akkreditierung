@@ -155,7 +155,15 @@
                     </td>
                     <td class="daten">
                         <f:if condition="{relations.stammdaten.website}">
-                            <a href="https://{relations.stammdaten.website}" target="_blank" rel="noopener">{relations.stammdaten.website}</a>
+                            <f:variable name="url"><f:format.crop maxCharacters='3'>{relations.stammdaten.website}</f:format.crop></f:variable>
+                                    <f:if condition="url =='htt'">
+                                        <f:then>
+                                            <a href="{relations.stammdaten.website}" target="_blank" rel="noopener">{relations.stammdaten.website}</a>
+                                        </f:then>
+                                        <f:else>
+                                            <a href="https://{relations.stammdaten.website}" target="_blank" rel="noopener">{relations.stammdaten.website}</a>
+                                        </f:else>
+                                    </f:if>
                         </f:if>
                     </td>
                 </tr>

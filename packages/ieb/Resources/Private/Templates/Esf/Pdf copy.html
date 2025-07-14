@@ -1,0 +1,246 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:ieb="http://typo3.org/ns/GeorgRinger/Ieb/ViewHelpers"
+        xmlns:pdf="http://typo3.org/ns/Bithost/Pdfviewhelpers/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <pdf:document
+            title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
+            outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='Y-m-d' />.pdf"
+            outputDestination="inline"
+            sourceFile="EXT:ieb/Resources/Private/Pdfs/esf.pdf">
+
+            {ansuchen.copyStammdatenData -> f:variable(name: 'stammdaten')}
+        <pdf:page importPage="1" margin="{top: 35, right: 16, bottom: 30, left: 16}">
+            <pdf:html>
+
+            <style>
+                p {font-family: "opensans", sans-serif;font-size: 9pt;line-height:16pt;}
+                td {font-family: "opensans", sans-serif;font-size: 9pt;line-height:14pt;}
+            </style>
+
+            <h2 style="font-family: opensans; font-size: 15pt; line-height:30pt;">Personal- und Standorteliste für:<br><span style="color:#c31a1e; ">{stammdaten.name}: {ansuchen.nummer} ({ansuchen.name}) </span></h2>
+            <p style="font-size:8pt;font-family: opensans;">Stand <f:format.date date="now" format="d.m.Y" /></p>
+
+
+                <f:for each="{versions}" as="version" iteration="i">
+                    {version.copyTrainerData -> f:variable(name: 'trainer')}
+                    {version.copyBeraterData -> f:variable(name: 'berater')}
+                    {ansuchen.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
+                    {version.copyStandorteData -> f:variable(name: 'standorte')}
+                </f:for>
+                   
+            </div>
+                <div style="break-inside: avoid;position: relative;">
+                <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">TRAINING</h2>
+
+
+                <f:for each="{trainer}" as="t">
+                    
+                    
+                    <table style="position: relative; break-inside: avoid;border-top:solid 0.7mm #777;">
+                        <tr>
+                            <td colspan="3" style="line-height:200%;">
+                                {t.fullName}
+                            </td>
+                        </tr>
+                        <f:for each="{versions}" as="version" iteration="i">
+                            {version.copyTrainerData -> f:variable(name: 'vt')}
+                            <tr>
+                                <td style="width:25%;">
+                                    {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                                        <f:then>
+                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                                        </f:then>
+                                        <f:else>
+                                            aktuell
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td style="width:25%;font-size:8pt;">
+                                    <f:if condition="{ansuchen.typ}==2">
+                                        <f:for each="{vt}" as="vtt">
+                                            <f:if condition="{vtt.uid}=={t.uid}">
+                                                ({f:if(condition:'{vtt.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{vtt.qualifikationPsa8}==1', then:'{vtt.qualifikationPsaKommentar}', else:'– ')})*
+                                            </f:if>
+                                        </f:for>
+                                    </f:if>
+                                    
+                                </td>
+                                <td style="width:50%;font-size:8pt;">
+                                    <f:for each="{vt}" as="vtt">
+                                        <f:if condition="{vtt.uid}=={t.uid}">
+                                            <f:if condition="{version.typ}==1">
+                                                <f:then>
+                                                    <f:if condition="{vtt.reviewC21BabiStatus}>2 || {vtt.reviewC22BabiStatus}>2">
+                                                        <f:format.nl2br>{vtt.reviewC2BabiCommentTr}</f:format.nl2br>
+                                                    </f:if>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:if condition="{vtt.reviewC21PsaStatus}>2 || {vtt.reviewC22PsaStatus}>2">
+                                                        <f:format.nl2br>{vtt.reviewC2PsaCommentTr}</f:format.nl2br>
+                                                    </f:if>
+                                                </f:else>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                </td>
+                            </tr>
+                    </f:for>
+                    <tr><td></td></tr>
+                    </table>
+                    
+                </f:for>
+                <f:if condition="{ansuchen.typ}==2">
+                    <p style="font-size:7pt">* Kompetenzangaben: D = Deutsch – Kommunikation und Gesellschaft, E = Englisch – Globalität und Transkulturalität, M = Mathematik, <br>B = Berufsorientierung, K = Kreativität und Gestaltung, G = Gesundheit und Soziales, N = Natur und Technik</p>
+                </f:if>
+                
+            </div>
+                <div style="page-break-inside: avoid;break-before: page;">
+                <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;break-before: page;">BERATUNG</h2>
+
+
+                <f:for each="{berater}" as="t">
+                    
+                    
+                    <table style="page-break-inside: avoid;border-top:solid 0.7mm #777;">
+                        <tr>
+                            <td colspan="2"  style="line-height:200%;">
+                                {t.fullName}
+                            </td>
+                        </tr>
+                        <f:for each="{versions}" as="version" iteration="i">
+                            {version.copyBeraterData -> f:variable(name: 'vt')}
+                            <tr>
+                                <td style="width:30%;">
+                                    {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                                        <f:then>
+                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                                        </f:then>
+                                        <f:else>
+                                            aktuell
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td style="width:70%;font-size:8pt;">
+                                    <f:for each="{vt}" as="vtt">
+                                        <f:if condition="{vtt.uid}=={t.uid}">
+                                            <f:if condition="{vtt.reviewC3Status}>2 || {vtt.reviewC32Status}>2">
+                                                <f:format.nl2br>{vtt.reviewC3CommentTr}</f:format.nl2br>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                </td>
+                            </tr>
+                    </f:for>
+                    <tr><td></td></tr>
+                    </table>
+                </f:for>
+            </div>
+                <div style="page-break-inside: avoid;">
+                <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">PROJEKTLEITUNG</h2>
+
+                <f:for each="{verantwortliche}" as="t">
+                    
+                    
+                    <table style="page-break-inside: avoid;border-top:solid 0.7mm #777;">
+                        <tr>
+                            <td colspan="2" style="line-height:200%;">
+                                {t.fullName}
+                            </td>
+                        </tr>
+                        <f:for each="{versions}" as="version" iteration="i">
+                            {version.copyVerantwortlicheData -> f:variable(name: 'vt')}
+                            <tr>
+                                <td style="width:30%;">
+                                    {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                                        <f:then>
+                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                                        </f:then>
+                                        <f:else>
+                                            aktuell
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td style="width:70%;font-size:8pt;">
+                                </td>
+                            </tr>
+                    </f:for>
+                    <tr><td></td></tr>
+                    </table>
+                </f:for>
+
+            </div>
+            <div style="page-break-inside: avoid;">
+                <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">STANDORTE</h2>
+
+
+                <f:for each="{standorte}" as="t">
+                    
+                    
+                    <table style="page-break-inside: avoid;border-top:solid 0.7mm #777;">
+                        <tr>
+                            <td colspan="2" style="line-height:200%;">
+                                {t.name} <span style="font-size:7pt;">({t.adresse}, {t.plz} {t.ort})</span> 
+                            </td>
+                        </tr>
+                        <f:for each="{versions}" as="version" iteration="i">
+                            {version.copyStandorteData -> f:variable(name: 'vt')}
+                            <tr>
+                                <td style="width:30%;">
+                                    {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                                        <f:then>
+                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                                        </f:then>
+                                        <f:else>
+                                            aktuell
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td style="width:70%;font-size:8pt;">
+                                </td>
+                            </tr>
+                    </f:for>
+                    <tr><td></td></tr>
+                    </table>
+                </f:for>
+                </div>
+                <div style="page-break-inside: avoid;">
+                <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">VERSIONENÜBERSICHT</h2>
+                <p>(Versionen mit Akkreditierungsentscheidungen)</p>
+                <table style="page-break-inside: avoid;">
+                    <f:for each="{versions}" as="version" iteration="i">
+                        <tr>
+                            <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                                    <f:then>
+                                        {versions.{i.cycle}.akkreditierungEntscheidungDatum ->
+                                        f:format.date(format:'d.m.Y')}
+                                    </f:then>
+                                    <f:else>
+                                        aktuell
+                                    </f:else>
+                                </f:if>
+                            </td>
+                            <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">
+                                <span style="font-size: 8pt;">Version {version.version + 1}: <f:switch expression="{version.status}"><f:case value="100">akkreditiert</f:case><f:case value="140">akkreditiert mit Auflagen</f:case></f:switch> &nbsp;&nbsp;<span style="color: #bbb;">[{version.uid}]</span></span>
+                            </td>
+                        </tr>
+                    </f:for>
+                </table>
+                </div>
+
+                <div style="page-break-inside: avoid;">
+                    <h1>TEST</h1>
+                        <f:for each="{versions}" as="version" iteration="i">
+                            {version.copyBeraterData -> f:variable(name: 'berater')}
+                        </f:for>
+                </div>
+
+            </pdf:html>
+        </pdf:page>
+    </pdf:document>
+</f:section>
+
+</html>

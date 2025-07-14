@@ -6,10 +6,10 @@
 
 
      
-    <f:if condition="({currentUser.usergroup}!=1)">
+    <f:if condition="({currentUser.usergroup}==2 && {currentUser.usergroup}==3)">
         <f:then>
             {ansuchen.verantwortliche -> f:variable(name: 'verantwortliche')}
-            {ansuchen.verantwortlicheMailData -> f:variable(name: 'verantwortlicheMail')} 
+            {ansuchen.verantwortlicheMail -> f:variable(name: 'verantwortlicheMail')} 
             {ansuchen.copyRevTrainerData -> f:variable(name: 'trainer')}
             {ansuchen.copyTrainerData -> f:variable(name: 'trainerEingang')}
             {ansuchen.copyRevBeraterData -> f:variable(name: 'berater')}
@@ -693,11 +693,11 @@
                         <p><label>Wir bestätigen, dass für alle angeführten Personen eine Trainings- bzw. Prüfberechtigung der zuständigen Bildungsdirektion eingeholt wird/wurde. {f:if(condition: '{ansuchen.erklaerungd2}', then: '<span class="check-ja">ja</span>', else: '<span class="check-nein">nein</span>')}</label></p>
                     </f:if>
                     <div id="trainerliste">
+                    
                         
-                        
-                        
+                    
                     <f:for each="{trainer}" as="t">
-
+                        
                     <f:variable name="trainerbegutachtung">{t}</f:variable>
 
 
@@ -799,11 +799,14 @@
                                             <span class="titleview person-statuskugel-b person-statuskugel status-{trainerbegutachtung.reviewC22PsaStatus}" title="Begutachung Erfahrung (Babi)" style="opacity:0.4;"></span>&nbsp;&nbsp;&nbsp;
                                         </f:else>
                                     </f:if>
-                                <b>{te.vorname} {te.nachname}</b> wurde aus der Folgeversion gelöscht. <f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : te.uid}" class="knopf-quadratisch show" title="{te.vorname} {te.nachname} im derzeitigen/letzten Status zeigen"></f:link.action>
+                                <b>{te.vorname} {te.nachname}</b> wurde aus der Folgeversion gelöscht. &nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : te.uid}" class="knopf-quadratisch show" title="{te.vorname} {te.nachname} im derzeitigen/letzten Status zeigen"></f:link.action>
                                 </div>
                             </f:if>
                         </f:for>
                     </f:if>
+                    
+
+
                 </div>
             </div>
             

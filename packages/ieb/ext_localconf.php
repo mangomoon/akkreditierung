@@ -168,10 +168,10 @@ defined('TYPO3') || die();
         'Ieb',
         'Esf',
         [
-            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf',
+            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf,pdfgs',
         ],
         [
-            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf',
+            \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf,pdfgs',
         ]
     );
 

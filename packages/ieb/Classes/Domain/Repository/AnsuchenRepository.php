@@ -372,7 +372,7 @@ class AnsuchenRepository extends BaseRepository
 
     public function getAllEsfVersionsOfAnsuchen(Ansuchen $ansuchen)
     {
-        $query = $this->getQuery();
+        $query = $this->getEmptyQuery();
         $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
 
         $constraints = [
@@ -382,6 +382,7 @@ class AnsuchenRepository extends BaseRepository
         $query->matching($query->logicalAnd($constraints));
         return $query->execute();
     }
+
 
     public function removeLockByUser(int $ansuchenId): void
     {

@@ -19,6 +19,7 @@ class FristUeberwachungService
             'frist' => 'review_total_frist',
             't1' => 'review_total_frist_mail_sent1t',
             't14' => 'review_total_frist_mail_sent14t',
+            't1AlternativeDays' => 3,
             't14Skip' => true,
         ],
         'ansuchen_pruefbescheid' => [
@@ -33,6 +34,8 @@ class FristUeberwachungService
             'frist' => 'review_frist',
             't1' => 'review_frist_mail_sent1t',
             't14' => 'review_frist_mail_sent14t',
+            't14Skip' => true,
+            't1AlternativeDays' => 14,
             'join' => 'tx_ieb_ansuchen_berater_mm',
         ],
         'trainer' => [
@@ -40,6 +43,8 @@ class FristUeberwachungService
             'frist' => 'review_frist',
             't1' => 'review_frist_mail_sent1t',
             't14' => 'review_frist_mail_sent14t',
+            't14Skip' => true,
+            't1AlternativeDays' => 14,
             'join' => 'tx_ieb_ansuchen_trainer_mm',
         ],
         'trainer_psa' => [
@@ -47,6 +52,8 @@ class FristUeberwachungService
             'frist' => 'review_psa_frist',
             't1' => 'review_psa_frist_mail_sent1t',
             't14' => 'review_psa_frist_mail_sent14t',
+            't14Skip' => true,
+            't1AlternativeDays' => 14,
             'join' => 'tx_ieb_ansuchen_trainer_mm',
         ],
         'stammdaten' => [
@@ -54,6 +61,7 @@ class FristUeberwachungService
             'frist' => 'review_oecert_frist',
             't1' => 'review_oecert_frist_mail_sent1t',
             't14' => 'review_oecert_frist_mail_sent14t',
+            't14Skip' => true,
             't14AlternativeDays' => -180,
         ],
     ];
@@ -397,7 +405,8 @@ class FristUeberwachungService
     protected function getConstraint(\TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder, array $configuration, bool $addAnsuchenConstraint = true): array
     {
         $now = $GLOBALS['EXEC_TIME'];
-        $days = 1;
+        // $days = 1;
+        $days = $lastDayCount = $configuration['t1AlternativeDays'] ?? 1;
         $emptyFields = [$configuration['t1']];
         $dateConstraints = [
             $queryBuilder->expr()->andX(

@@ -72,7 +72,7 @@
                         <div class="ansuchenlistenitem" data-date="{item.uid}" data-name="{item.name}" data-nummer="{item.nummer}" data-status="{item.status}" data-pid="{item.pid}" >
                             <table class="ansuchenliste archiv">
                                 <tr>
-                                    <td colspan="5" class="ansuchenliste_tr">
+                                    <td colspan="6" class="ansuchenliste_tr">
                                         <f:if condition="{item.stammdatenMarkenname}">
                                             <f:then>
                                                 <span class="fett">{item.stammdatenMarkenname}</span> &nbsp;&nbsp;{item.stammdatenName}
@@ -136,6 +136,8 @@
                                             </f:else>
                                         </f:if>
                                         
+                                    </td>
+                                    <td class="td-knopf"><f:if condition="{item.status}>90"><f:link.action pageUid="262" action="pdf" controller="Esf" arguments="{ansuchen : item.uid}" class="knopf-quadratisch esf" target="_blank" title="Personal- und Standortliste (PDF)"></f:link.action></f:if>
                                     </td>
                                 </tr>
                                 <!-- ALTE DARSTELLUNG DER VORVERSIONNEN: -->

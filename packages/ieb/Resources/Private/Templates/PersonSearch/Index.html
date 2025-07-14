@@ -30,16 +30,18 @@
     </f:form>
     <f:if condition="{search.used}">
         <h3>TRAINER</h3>
+
         <f:if condition="{trainer}">
             <f:then>
                 <table class="personensuche">
                     <tbody>
-                    <f:groupedFor as="groupedTrainer" groupBy="trainerName" groupKey="trainerName" each="{trainer}" >
+                    <f:groupedFor as="groupedTrainer" groupBy="trainerUid" groupKey="trainerName" each="{trainer}" >
                         <f:variable name="first">{groupedTrainer -> ieb:firstArray()}</f:variable>
                         <f:for each="{groupedTrainer}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
+
                         <f:if condition="{ansuchenVorhanden}">
                          <tr>
-                            <td class="name td-knopf">{trainerName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if>&nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : first.uid}" class="knopf-quadratisch show" title="{trainerName} zeigen"></f:link.action> </td>
+                            <td class="name td-knopf">{first.trainerName}<f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if>&nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Trainer" arguments="{trainer : first.uid}" class="knopf-quadratisch show" title="{trainerName} zeigen"></f:link.action> </td>
                             <td class="organisation">
                                 
                                 <f:if condition="{first.stammdatenMarkenname}">
@@ -124,7 +126,7 @@
             <f:then>
                 <table class="personensuche">
                     <tbody>
-                        <f:groupedFor as="groupedBerater" groupBy="beraterName" groupKey="beraterName" each="{berater}" >
+                        <f:groupedFor as="groupedBerater" groupBy="beraterUid" groupKey="beraterName" each="{berater}" >
                             
                             <f:variable name="first">{groupedBerater -> ieb:firstArray()}</f:variable>
 
@@ -132,7 +134,7 @@
                             <f:for each="{groupedBerater}" as="groupItem"><f:variable name="ansuchenVorhanden">{groupItem.ansuchenUid}</f:variable></f:for>
                             <f:if condition="{ansuchenVorhanden}">
                              <tr>
-                                <td class="name td-knopf">{beraterName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if> &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Berater" arguments="{berater : first.uid}" class="knopf-quadratisch show" title="{beraterName} zeigen"></f:link.action></td>
+                                <td class="name td-knopf">{first.beraterName} <f:if condition="{first.archiviert}"><span class="knopfrund titleview archiviert" title="archiviert am <f:format.date format='d.m.Y'>{first.tstamp}</f:format.date>"></span></f:if> &nbsp;&nbsp;&nbsp;<f:link.action action="show" pageUid="213" target="_blank"  controller="Berater" arguments="{berater : first.uid}" class="knopf-quadratisch show" title="{beraterName} zeigen"></f:link.action></td>
                                 <td class="organisation">
                                     
                                     <f:if condition="{first.stammdatenMarkenname}">

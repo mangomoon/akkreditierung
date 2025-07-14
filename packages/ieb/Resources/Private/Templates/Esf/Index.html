@@ -7,14 +7,17 @@
 <f:section name="content">
     <h2>ESF Reporting</h2>
 
+    {ansuchen.nummer}
+    <f:debug>{_all}</f:debug>
+
     <table>
-        <f:for each="{ansuchen}" as="item">
+        <f:for each="{versions}" as="version">
             <tr>
-                <td>{item.uid}</td>
-                <td>{item.nummer}</td>
-                <td>{item.name}</td>
-                <td>{item.version}</td>
-                <td>{item.status}</td>
+                <td>{version.uid}</td>
+                <td>{version.nummer}</td>
+                <td>{version.name}</td>
+                <td>{version.version}</td>
+                <td>{version.status}</td>
                 <td>
                     <f:link.action action="show" arguments="{ansuchen:item}">details</f:link.action>
                     <f:link.action action="pdf" arguments="{ansuchen:item}">pdf</f:link.action>
@@ -22,6 +25,7 @@
             </tr>
         </f:for>
     </table>
+    
 </f:section>
 
 </html>

@@ -6,19 +6,28 @@ namespace GeorgRinger\Ieb\Controller;
 
 use GeorgRinger\Ieb\Domain\Model\Ansuchen;
 use GeorgRinger\Ieb\Domain\Repository\AnsuchenRepository;
+use GeorgRinger\Ieb\Domain\Repository\AnsuchenArchivRepository;
+use GeorgRinger\Ieb\Domain\Repository\CurrentUserTrait;
 use Psr\Http\Message\ResponseInterface;
 
 class EsfController extends BaseController
 {
 
-    protected AnsuchenRepository $ansuchenRepository;
+    use CurrentUserTrait;
 
-    public function indexAction(): ResponseInterface
+    protected AnsuchenRepository $ansuchenRepository;
+    protected AnsuchenArchivRepository $ansuchenArchivRepository;
+
+    public function indexAction(Ansuchen $ansuchen): ResponseInterface
     {
-        $this->view->assignMultiple([
-            'ansuchen' => $this->ansuchenRepository->getAllAkkreditiert(),
-        ]);
-        return $this->htmlResponse();
+        if ($this->isPartOfGs()) {
+            $this->collectSingleViewDataForGs($ansuchen);
+            return $this->htmlResponse();
+        } else {
+            $this->check($ansuchen);
+            $this->collectSingleViewData($ansuchen);
+            return $this->htmlResponse();
+        }
     }
 
     public function showAction(Ansuchen $ansuchen): ResponseInterface
@@ -30,9 +39,22 @@ class EsfController extends BaseController
 
     public function pdfAction(Ansuchen $ansuchen): ResponseInterface
     {
-        $this->check($ansuchen);
-        $this->collectSingleViewData($ansuchen);
-        return $this->htmlResponse();
+        if ($this->isPartOfGs()) {
+            $this->collectSingleViewData($ansuchen);
+            return $this->htmlResponse();
+        } else {
+            $this->check($ansuchen);
+            $this->collectSingleViewData($ansuchen);
+            return $this->htmlResponse();
+        }
+    }
+    
+    public function pdfgsAction(Ansuchen $ansuchen): ResponseInterface
+    {
+        if ($this->isPartOfGs()) {
+            $this->collectSingleViewDataForGs($ansuchen);
+            return $this->htmlResponse();
+        } 
     }
 
     private function collectSingleViewData(Ansuchen $ansuchen): void
@@ -43,8 +65,22 @@ class EsfController extends BaseController
         ]);
     }
 
+
+    private function isPartOfGs(): bool
+    {
+        return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);
+    }
+
     public function injectAnsuchenRepository(AnsuchenRepository $ansuchenRepository): void
     {
         $this->ansuchenRepository = $ansuchenRepository;
     }
+
+    public function injectAnsuchenArchivRepository(AnsuchenArchivRepository $ansuchenArchivRepository): void
+    {
+        $this->ansuchenArchivRepository = $ansuchenArchivRepository;
+    }
+
+
+
 }

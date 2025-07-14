@@ -927,7 +927,7 @@ function qualifikationPsaSprache() {
         if (($(this).parent().find('.checked').hasClass('auflage')) || ($(this).hasClass('auflage'))) {
             salt = 3;
         }
-        console.log('salt = '+salt);
+        // console.log('salt = '+salt);
 
         if($(this).hasClass('checked')) {
             $(this).removeClass('checked');
@@ -952,7 +952,12 @@ function qualifikationPsaSprache() {
             $(this).parent().parent().find('.knopf').removeClass('checked');
             $(this).addClass('checked');
         }
-        
+        console.log('s = '+s);
+        if (s < 3) {
+            $("#field_reviewFrist").val('');
+            $("#field_reviewPsaFrist").val('');
+            $("#berater-frist").val('');
+        }
 
         if (((s == 1) || (s == 2)) && ($('.extern').val()!='')) {
             neu="";
@@ -965,11 +970,6 @@ function qualifikationPsaSprache() {
                 neu = i + "Nicht ok war: »" + t + "«";
             }
            
-            // if($('.nicht-ok').hasClass('checked') && $('.nicht-ok').hasClass('checked')) {
-            //     console.log("immer noch was nicht so wie es sein soll!");
-            // } else {
-            //     console.log("Frist löschen!");
-            // }
 
             $('.komm-intern-textarea').val(neu);
             $('.extern').val('');

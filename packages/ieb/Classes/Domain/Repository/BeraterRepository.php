@@ -74,6 +74,7 @@ class BeraterRepository extends BaseRepository
         $rows = $queryBuilder
             ->select('tx_ieb_domain_model_berater.*')
             ->addSelectLiteral('CONCAT(tx_ieb_domain_model_berater.vorname, \' \', tx_ieb_domain_model_berater.nachname) as beraterName')
+            ->addSelect('tx_ieb_domain_model_berater.uid as beraterUid')
             ->addSelect('tx_ieb_domain_model_berater.review_frist')
             ->addSelect('tx_ieb_domain_model_ansuchen.nummer as ansuchenNummer')
             ->addSelect('tx_ieb_domain_model_ansuchen.uid as ansuchenUid')

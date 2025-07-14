@@ -4,8 +4,8 @@
 
 UPDATE `tx_ieb_domain_model_berater` SET `review_frist_mail_sent14t`='0',`review_frist_mail_sent1t`='0';
 UPDATE `tx_ieb_domain_model_trainer` SET `review_frist_mail_sent14t`='0',`review_frist_mail_sent1t`='0',`review_psa_frist_mail_sent14t`='0',`review_psa_frist_mail_sent1t`='0';
-UPDATE `tx_ieb_domain_model_stammdaten` SET `review_oecert_frist_mail_sent1t`='0',`review_oecert_frist_mail_sent14t`='0';
 UPDATE `tx_ieb_domain_model_ansuchen` SET `review_frist_pruefbescheid_mail_sent1t`='0',`review_frist_pruefbescheid_mail_sent14t`='0',`review_total_frist_mail_sent1t`='0',`review_total_frist_mail_sent14t`='0';
+UPDATE `tx_ieb_domain_model_stammdaten` SET `review_oecert_frist_mail_sent1t`='0',`review_oecert_frist_mail_sent14t`='0';
 
 
 
@@ -18,3 +18,41 @@ SET
     ziel.copy_rev_trainer = quelle.copy_trainer,
     ziel.copy_rev_berater = quelle.copy_berater
 WHERE quelle.version_based_on IS NOT NULL;
+
+
+
+
+<!-- Update alle Trainer: Auflagen löschen, wenn Status ok ... -->
+ UPDATE `tx_ieb_domain_model_trainer`
+SET
+review_c2_babi_comment_tr = ''
+WHERE
+`pp3` = 1
+AND
+`review_c21_babi_status` = 1
+AND
+`review_c22_babi_status` = 1;
+73 Stück
+
+UPDATE `tx_ieb_domain_model_trainer`
+SET
+review_c2_psa_comment_tr = ''
+WHERE
+`pp3` = 1
+AND
+`review_c21_psa_status` = 1
+AND
+`review_c22_psa_status` = 1;
+51 Stück
+
+<!-- Update alle berater: Auflagen löschen, wenn Status ok ... -->
+ UPDATE `tx_ieb_domain_model_berater`
+SET
+review_c3_comment_tr = ''
+WHERE
+`pp3` = 1
+AND
+`review_c3_status` = 1
+AND
+`review_c32_status` = 1;
+57 Stück

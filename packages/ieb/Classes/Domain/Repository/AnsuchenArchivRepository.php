@@ -7,6 +7,9 @@ use GeorgRinger\Ieb\Domain\Model\Dto\AnsuchenArchivFilter;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+
 
 class AnsuchenArchivRepository
 {
@@ -83,6 +86,11 @@ class AnsuchenArchivRepository
         return $query->execute()->fetchAllAssociative();
     }
 
+
+
+
+
+    
 
     private function getQueryBuilder(string $tableName): QueryBuilder
     {
