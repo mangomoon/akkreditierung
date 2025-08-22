@@ -29,59 +29,28 @@
 
                    
             </div>
-                <div style="break-inside: avoid;position: relative;">
+            <div style="break-inside: avoid;position: relative;">
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">TRAINING</h2>
-
-                    <f:for each="{versions}" as="version" iteration="i">
-                        {version.copyTrainerData -> f:variable(name: 'trainer')}
-                        <p style="line-height: 50%;">&nbsp;</p>
-                        <p style="font-size:11pt;">
-                           [{i.cycle}] {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
-                                        <f:then>
-                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
-                                        </f:then>
-                                        <f:else>
-                                            aktuell
-                                        </f:else>
-                                    </f:if>
-                        </p>
-                                    <br>
-                        <table style="position: relative; break-inside: avoid;border-top:solid 0.7mm #777;">
-
-                        <f:for each="{trainer}" as="t">
-                            <tr style="page-break-inside: avoid;break-inside: avoid;">
-                                <td style="width:25%; border-top:solid 0.5mm #aaa;">
-                                    {t.fullName}
-                                </td>
-                                <td style="width:25%;font-size:8pt;; border-top:solid 0.5mm #aaa;">
-                                    <f:if condition="{ansuchen.typ}==2">
+                
+                <f:for each="{trainer}" as="t" iteration="i">
+                    
+                    <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
+                    <p style="font-size:9pt;line-height:3pt;">
+                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                        <f:if condition="{t.bis} === 0">
+                            <f:then>aktuell</f:then>
+                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                        </f:if>
+                        <f:if condition="{ansuchen.typ}==2 || {t.auflage}">
+                            <p>&nbsp;</p><p><span style="line-height:11pt"><f:if condition="{ansuchen.typ}==2">
                                         ({f:if(condition:'{t.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa8}==1', then:'{t.qualifikationPsaKommentar}', else:'– ')})*
                                     </f:if>
-                                </td>
-                                <td style="width:50%;font-size:8pt;; border-top:solid 0.5mm #aaa;page-break-inside: avoid;break-inside: avoid;">
-                                            <f:if condition="{version.typ}==1">
-                                                <f:then>
-                                                    <f:if condition="{t.reviewC21BabiStatus}>2 || {t.reviewC22BabiStatus}>2">
-                                                        <f:format.nl2br>{t.reviewC2BabiCommentTr}</f:format.nl2br>
-                                                    </f:if>
-                                                </f:then>
-                                                <f:else>
-                                                    <f:if condition="{t.reviewC21PsaStatus}>2 || {t.reviewC22PsaStatus}>2">
-                                                        <f:format.nl2br>{t.reviewC2PsaCommentTr}</f:format.nl2br>
-                                                    </f:if>
-                                                </f:else>
-                                            </f:if>
-                                </td>
-                            </tr>
-                        </f:for>
-                        </table>
+                                {t.auflage}</span></p>
+                        </f:if>
+                    </p>
 
-                    </f:for>
-
-
-
-
-                
+                    <f:variable name="altername">{t.fullName}</f:variable>
+                </f:for>   
             </div>
 
 
@@ -89,37 +58,23 @@
                 <div style="page-break-inside: avoid;break-before: page;">
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;break-before: page;">BERATUNG</h2>
 
-                    <f:for each="{versions}" as="version" iteration="i">
-                        {version.copyBeraterData -> f:variable(name: 'berater')}
 
-                        <p style="line-height: 50%;">&nbsp;</p>
-                        <p style="font-size:11pt;">
-                           [{i.cycle}] {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
-                                        <f:then>
-                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
-                                        </f:then>
-                                        <f:else>
-                                            aktuell
-                                        </f:else>
-                                    </f:if>
-                        </p>
-                                    <br>
-                    <table style="page-break-inside: avoid;border-top:solid 0.7mm #777;">
+                <f:for each="{berater}" as="t" iteration="i">
+                    <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
+                    <p style="font-size:9pt;line-height:3pt;">
+                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                        <f:if condition="{t.bis} === 0">
+                            <f:then>aktuell</f:then>
+                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                        </f:if>
+                        <f:if condition="{t.auflage}"><p>&nbsp;</p><p><span style="line-height:11pt"></span>
+                            <br>{t.auflage}</p>
+                        </f:if>
+                    </p>
 
-                    <f:for each="{berater}" as="t">
-                       <tr style="page-break-inside: avoid;break-inside: avoid;">
-                            <td style="width:25%; border-top:solid 0.5mm #aaa;">
-                                    {t.fullName}
-                                </td>
-                                <td style="width:70%;font-size:8pt;page-break-inside: avoid;break-inside: avoid;">
-                                            <f:if condition="{t.reviewC3Status}>2 || {t.reviewC32Status}>2">
-                                                <f:format.nl2br>{t.reviewC3CommentTr}</f:format.nl2br>
-                                            </f:if>
-                                </td>
-                            </tr>
-                    </f:for>
+                    <f:variable name="altername">{t.fullName}</f:variable>
                 </f:for>
-                </table>
+
 
 
 
@@ -127,25 +82,17 @@
                 <div style="page-break-inside: avoid;">
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">PROJEKTLEITUNG</h2>
 
+                <f:for each="{projektleitung}" as="t" iteration="i">
+                    <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
+                    <p style="font-size:9pt;line-height:3pt;">
+                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                        <f:if condition="{t.bis} === 0">
+                            <f:then>aktuell</f:then>
+                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                        </f:if>
+                    </p>
 
-                <f:for each="{versions}" as="version" iteration="i">
-                        {version.copyVerantwortlicheData -> f:variable(name: 'verantwortliche')}
-
-                        <p style="line-height: 50%;">&nbsp;</p>
-                        <p style="font-size:11pt;">
-                           [{i.cycle}] {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
-                                        <f:then>
-                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
-                                        </f:then>
-                                        <f:else>
-                                            aktuell
-                                        </f:else>
-                                    </f:if>
-                        </p>
-                        <p>
-                        <f:for each="{verantwortliche}" as="t">
-                            {t.fullName}<br>
-                        </f:for></p>
+                    <f:variable name="altername">{t.fullName}</f:variable>
                 </f:for>
 
             </div>
@@ -155,24 +102,17 @@
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">STANDORTE</h2>
 
 
-                <f:for each="{versions}" as="version" iteration="i">
-                       {version.copyStandorteData -> f:variable(name: 'standorte')}
+                <f:for each="{standorte}" as="t" iteration="i">
+                    <f:if condition="{altername} != {t.name}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.name} &nbsp;({t.plz} {t.ort}, {t.adresse})</p></f:if>
+                    <p style="font-size:9pt;line-height:3pt;">
+                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                        <f:if condition="{t.bis} === 0">
+                            <f:then>aktuell</f:then>
+                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                        </f:if>
+                    </p>
 
-                        <p style="line-height: 50%;">&nbsp;</p>
-                        <p style="font-size:11pt;">
-                           [{i.cycle}] {version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
-                                        <f:then>
-                                            {versions.{i.cycle}.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
-                                        </f:then>
-                                        <f:else>
-                                            aktuell
-                                        </f:else>
-                                    </f:if>
-                        </p>
-                        <p>
-                        <f:for each="{standorte}" as="t">
-                            {t.name} <span style="font-size:7pt;">({t.adresse}, {t.plz} {t.ort})</span> <br>
-                        </f:for></p>
+                    <f:variable name="altername">{t.name}</f:variable>
                 </f:for>
 
 
@@ -182,26 +122,47 @@
                 <h2 style="font-family: opensans; color:#c31a1e;font-weight:300;font-size:12pt;">VERSIONENÜBERSICHT</h2>
                 <p>(Versionen mit Akkreditierungsentscheidungen)</p>
                 <table style="page-break-inside: avoid;">
-
                     <f:for each="{versions}" as="version" iteration="i">
                         <tr>
-                            <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">{version.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
-                                    <f:then>
-                                        {versions.{i.cycle}.akkreditierungEntscheidungDatum ->
-                                        f:format.date(format:'d.m.Y')}
-                                    </f:then>
-                                    <f:else>
-                                        aktuell
-                                    </f:else>
-                                </f:if>
-                            </td>
-                            <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">
-                                <span style="font-size: 8pt;">Version {version.version + 1}: <f:switch expression="{version.status}"><f:case value="100">akkreditiert</f:case><f:case value="140">akkreditiert mit Auflagen</f:case></f:switch> &nbsp;&nbsp;<span style="color: #bbb;">[{version.uid}]</span></span>
-                            </td>
+                        <f:variable name="akkreditierungEntscheidungDatum"></f:variable>
+                        
+                            <f:if condition="<f:format.date format='d.m.Y'>{version.akkreditierung_entscheidung_datum}</f:format.date> == <f:format.date format='d.m.Y'>{version.tstamp}</f:format.date>">
+                                <f:then>
+                                    <f:variable name="akkreditierungEntscheidungDatum">{version.akkreditierung_entscheidung_datum}</f:variable>
+                                </f:then>
+                                <f:else>
+                                    <f:variable name="akkreditierungEntscheidungDatum">{version.tstamp}</f:variable>
+                                </f:else>
+                            </f:if>
+                        
+                        <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">    {akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} bis <f:if condition="{versions.{i.cycle}.uid}">
+                            
+                                <f:then>
+                                <f:variable name="nextAkkreditierungEntscheidungDatum"></f:variable>
+                                <f:if condition="<f:format.date format='d.m.Y'>{versions.{i.cycle}.akkreditierung_entscheidung_datum}</f:format.date> == <f:format.date format='d.m.Y'>{versions.{i.cycle}.tstamp}</f:format.date>">
+                                <f:then>
+                                    <f:variable name="nextAkkreditierungEntscheidungDatum">{versions.{i.cycle}.akkreditierung_entscheidung_datum}</f:variable>
+                                </f:then>
+                                <f:else>
+                                    <f:variable name="nextAkkreditierungEntscheidungDatum">{versions.{i.cycle}.tstamp}</f:variable>
+                                </f:else>
+                            </f:if>
+                                    {nextAkkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')}
+                                </f:then>
+                                <f:else>
+                                    aktuell
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td style="font-family: opensans;line-height:200%;border-top:solid 0.7mm #777;">
+                            <span style="font-size: 8pt;">Version {version.version + 1}: <f:switch expression="{version.status}"><f:case value="100">akkreditiert</f:case><f:case value="140">akkreditiert mit Auflagen</f:case></f:switch> &nbsp;&nbsp;<span style="color: #bbb;">[{version.uid}]</span></span>
+                        </td>
                         </tr>
                     </f:for>
                 </table>
                 </div>
+
+                <p style="font-size: 7pt">Die Nummerierung der Versionen folgt einer technischen Logik und gibt nicht unbedingt die Abfolge von Akkreditierungen an.</p>
 
                
             </pdf:html>

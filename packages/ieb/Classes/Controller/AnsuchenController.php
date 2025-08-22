@@ -54,12 +54,17 @@ class AnsuchenController extends BaseController
         /** @var Stammdaten $stammdaten */
         $stammdaten = $this->stammdatenRepository->getLatestByPid($ansuchen->getPid());
         $pid = $stammdaten->getPid();
-        $nextuid = $ansuchen->getVersionBasedOn();
+        $uid = $ansuchen->getUid();
+
+        $nextuid = $this ->ansuchenRepository->getNextAnsuchenUid($uid);
+        $nextAnsuchen = $this->ansuchenRepository->findByUid($nextuid);
+        if ($nextAnsuchen) {
+            $this->view->assign('nextAnsuchen', $nextAnsuchen);
+        }
         
         $this->view->assignMultiple([
             'stammdaten' => $stammdaten,
             'usedInAnsuchen' => $this->ansuchenRepository->getAllUsedByGs($pid),
-            'nextAnsuchen' =>  $this->ansuchenRepository->getNextAnsuchen($nextuid),
         ]);
         $this->addRelationDataToView();
         return $this->htmlResponse();

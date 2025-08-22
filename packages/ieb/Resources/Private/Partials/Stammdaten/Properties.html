@@ -148,15 +148,17 @@
 						</td>
 						<td class="daten">
 							<f:if condition="{stammdaten.website}">
-                                    <f:variable name="url"><f:format.crop maxCharacters='3'>{stammdaten.website}</f:format.crop></f:variable>
+                                    <f:variable name="url"><f:format.crop maxCharacters='3' append=''>{stammdaten.website}</f:format.crop></f:variable>
                                     <f:if condition="url =='htt'">
                                         <f:then>
-                                            <a href="{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                            <!-- <f:link.external uri='{stammdaten.website}' target="_blank" rel="noopener" >{stammdaten.website}</f:link.external> -->
                                         </f:then>
                                         <f:else>
-                                            <a href="https://{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a>
+                                            <!-- <f:link.external uri='{stammdaten.website}' target="_blank" rel="noopener" >PLUPP</f:link.external> <a href="https://{stammdaten.website}" target="_blank" rel="noopener">{stammdaten.website}</a> -->
                                         </f:else>
                                     </f:if>
+								{stammdaten.website}
+
                      </f:if>
 						</td>
 					</tr>

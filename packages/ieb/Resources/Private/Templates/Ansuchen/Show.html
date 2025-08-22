@@ -32,9 +32,11 @@
         </f:else>
     </f:if>
 
+    {nextAnsuchen.copyBeraterData -> f:variable(name: 'beraterKomm')}
+    {nextAnsuchen.copyTrainerData -> f:variable(name: 'trainerKomm')}
 
+    <f:debug>{nextAnsuchen.copyTrainerData}</f:debug>
 
-    
 
     <f:if condition="{currentUser.usergroup}=={extensionConfiguration.usergroupGs}">
         <f:variable name="gs">1</f:variable>
@@ -697,8 +699,15 @@
                         
                     
                     <f:for each="{trainer}" as="t">
-                        
                     <f:variable name="trainerbegutachtung">{t}</f:variable>
+                    <f:for each="{trainerKomm}" as="tk">
+                        <f:if condition="{t.uid} == {tk.uid}">
+                            
+                            <f:variable name="trainerbegutachtung">{tk}</f:variable>
+                        </f:if>
+                    </f:for>
+
+                    <f:comment></f:comment>
 
 
                     <f:for each="{trainerAktuell}" as="ta">
@@ -742,7 +751,7 @@
                                     <f:then>
                                         <f:if condition="{currentUser.usergroup}==1">
                                             <f:then>
-                                                <span class="frist"> <f:format.date format="d.m.Y">{t.reviewFrist.date}</f:format.date></span>
+                                                <span class="frist"> <f:format.date format="d.m.Y">{trainerbegutachtung.reviewFrist.date}</f:format.date></span>
                                             </f:then>
                                             <f:else>
                                                 <span class="frist"> <f:format.date format="d.m.Y">{trainerbegutachtung.reviewFrist.date}</f:format.date></span>
@@ -752,7 +761,7 @@
                                     <f:else>
                                         <f:if condition="{currentUser.usergroup}==1">
                                             <f:then>
-                                                <span class="frist"> <f:format.date format="d.m.Y">{t.reviewPsaFrist.date}</f:format.date></span>
+                                                <span class="frist"> <f:format.date format="d.m.Y">{trainerbegutachtung.reviewPsaFrist.date}</f:format.date></span>
                                             </f:then>
                                             <f:else>
                                                 <span class="frist"> <f:format.date format="d.m.Y">{trainerbegutachtung.reviewPsaFrist.date}</f:format.date></span>
@@ -857,10 +866,15 @@
                                 </div>
                                 <div id="beraterliste">
                                 <f:for each="{berater}" as="t">
-                                    
+                                <f:variable name="trainerbegutachtung">{t}</f:variable>
 
+                                <f:for each="{beraterKomm}" as="tk">
+                                    <f:if condition="{t.uid} == {tk.uid}">
+                                        <f:variable name="trainerbegutachtung">{tk}</f:variable>
+                                    </f:if>
+                                </f:for>
                                     
-                                    <f:variable name="trainerbegutachtung">{t}</f:variable>
+                                    <f:comment></f:comment>
 
                                     <f:for each="{beraterAktuell}" as="ta">
                                         <f:if condition="({t.uid} == {ta.uid}) && {ta.archiviert}">

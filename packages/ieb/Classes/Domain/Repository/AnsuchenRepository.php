@@ -44,19 +44,40 @@ class AnsuchenRepository extends BaseRepository
         $query->matching($query->logicalAnd($constraints));
         return $query->execute();
     }
-
+   
     public function getNextAnsuchen(int $uid)
     {
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
-        return (array)$queryBuilder->select('copy_trainer','copy_berater')
+        // $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+        // return (array)$queryBuilder->select('tstamp','akkreditierung_entscheidung_datum','copy_trainer','copy_berater')
+        //     ->from('tx_ieb_domain_model_ansuchen')
+        //     ->where(
+        //         $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
+        //     )->execute()->fetchAssociative();
+        $nextUid = $this->getNextAnsuchenUid($uid);
+        if ($nextUid === null) {
+            return null;
+        }
+        return $this->findByUid($nextUid);
+    }
+
+    public function getNextAnsuchenUid(int $uid): ?int
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
+
+        $value = $queryBuilder
+            ->select('uid')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
                 $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
-            )->execute()->fetchAssociative();
-        
-    }
+            )
+            ->setMaxResults(1)
+            ->executeQuery()
+            ->fetchOne();
 
+        return ($value === false || $value === null) ? null : (int)$value;
+    }
 
     public function getAllAkkreditiert(): QueryResultInterface
     {
