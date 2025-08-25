@@ -6,7 +6,7 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-<f:debug>{_all}</f:debug>
+
     <pdf:document
             title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
             outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='Y-m-d' />.pdf"

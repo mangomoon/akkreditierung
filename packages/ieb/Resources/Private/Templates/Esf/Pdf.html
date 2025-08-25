@@ -8,8 +8,8 @@
 <f:section name="content">
 
     <pdf:document
-            title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'Y-m-d')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
-            outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='Y-m-d' />.pdf"
+            title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
+            outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='d.m.Y' />.pdf"
             outputDestination="inline"
             sourceFile="EXT:ieb/Resources/Private/Pdfs/esf.pdf">
 
@@ -34,21 +34,16 @@
                 
                 <f:for each="{trainer}" as="t" iteration="i">
                     
-                    <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
-                    <p style="font-size:9pt;line-height:3pt;">
-                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                    <f:if condition="{altername} != {t.fullName}"><p>&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName} </p></f:if>
+                    <p style="font-size:9pt;line-height:3pt;break-inside: avoid;position: relative;">
+                    {t.von -> f:format.date(format:'d.m.Y')} bis
                         <f:if condition="{t.bis} === 0">
                             <f:then>aktuell</f:then>
-                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
-                        </f:if>
+                            <f:else>{t.bis -> f:format.date(format:'d.m.Y')}</f:else>
+                        </f:if> 
                         <f:if condition="{ansuchen.typ}==2 || {t.auflage}">
-                            <p>&nbsp;</p><p><span style="line-height:11pt"><f:if condition="{ansuchen.typ}==2">
-                                        ({f:if(condition:'{t.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa8}==1', then:'{t.qualifikationPsaKommentar}', else:'– ')})*
-                                    </f:if>
-                                {t.auflage}</span></p>
-                        </f:if>
-                    </p>
-
+                            <br><br><br><br><span style="line-height:11pt"><f:if condition="{ansuchen.typ}==2">
+                                        ({f:if(condition:'{t.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa8}==1', then:'{t.qualifikationPsaKommentar}', else:'– ')})* <br></f:if>{t.auflage}</span></f:if></p>
                     <f:variable name="altername">{t.fullName}</f:variable>
                 </f:for>   
             </div>
@@ -62,13 +57,13 @@
                 <f:for each="{berater}" as="t" iteration="i">
                     <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
                     <p style="font-size:9pt;line-height:3pt;">
-                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                    {t.von -> f:format.date(format:'d.m.Y')} bis
                         <f:if condition="{t.bis} === 0">
                             <f:then>aktuell</f:then>
-                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                            <f:else>{t.bis -> f:format.date(format:'d.m.Y')}</f:else>
                         </f:if>
-                        <f:if condition="{t.auflage}"><p>&nbsp;</p><p><span style="line-height:11pt"></span>
-                            <br>{t.auflage}</p>
+                        <f:if condition="{t.auflage}"><br><br><br><br><span style="line-height:11pt">
+                            <br>{t.auflage}</span>
                         </f:if>
                     </p>
 
@@ -85,10 +80,10 @@
                 <f:for each="{projektleitung}" as="t" iteration="i">
                     <f:if condition="{altername} != {t.fullName}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
                     <p style="font-size:9pt;line-height:3pt;">
-                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                    {t.von -> f:format.date(format:'d.m.Y')} bis
                         <f:if condition="{t.bis} === 0">
                             <f:then>aktuell</f:then>
-                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                            <f:else>{t.bis -> f:format.date(format:'d.m.Y')}</f:else>
                         </f:if>
                     </p>
 
@@ -105,10 +100,11 @@
                 <f:for each="{standorte}" as="t" iteration="i">
                     <f:if condition="{altername} != {t.name}"><p style="line-height: 50%;">&nbsp;</p><p style="font-size: 10.5pt;">{t.name} &nbsp;({t.plz} {t.ort}, {t.adresse})</p></f:if>
                     <p style="font-size:9pt;line-height:3pt;">
-                    {t.von -> f:format.date(format:'Y-m-d')} bis
+                    {t.von -> f:format.date(format:'d.m.Y')} bis
+
                         <f:if condition="{t.bis} === 0">
                             <f:then>aktuell</f:then>
-                            <f:else>{t.bis -> f:format.date(format:'Y-m-d')}</f:else>
+                            <f:else>{t.bis -> f:format.date(format:'d.m.Y')}</f:else>
                         </f:if>
                     </p>
 

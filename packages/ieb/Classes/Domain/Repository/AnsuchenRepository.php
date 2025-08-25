@@ -47,13 +47,6 @@ class AnsuchenRepository extends BaseRepository
    
     public function getNextAnsuchen(int $uid)
     {
-
-        // $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
-        // return (array)$queryBuilder->select('tstamp','akkreditierung_entscheidung_datum','copy_trainer','copy_berater')
-        //     ->from('tx_ieb_domain_model_ansuchen')
-        //     ->where(
-        //         $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
-        //     )->execute()->fetchAssociative();
         $nextUid = $this->getNextAnsuchenUid($uid);
         if ($nextUid === null) {
             return null;
@@ -399,6 +392,7 @@ class AnsuchenRepository extends BaseRepository
         $constraints = [
             $query->in('status', AnsuchenStatus::statusForAkkreditiertOnly()),
             $query->equals('nummer', $ansuchen->getNummer()),
+            $query->equals('version_active', 0),
         ];
         $query->matching($query->logicalAnd($constraints));
         return $query->execute();
