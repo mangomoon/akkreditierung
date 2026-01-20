@@ -13,6 +13,7 @@ class ExtensionConfiguration
     protected int $usergroupAktiv = 1;
     protected int $usergroupAg = 3;
     protected int $usergroupGs = 2;
+    protected int $usergroupBM = 6;
     protected int $usergroupTr = 1;
     protected int $pageRegistration = 22;
     protected \DateTime $ansuchenEnde;
@@ -96,6 +97,10 @@ class ExtensionConfiguration
     public function getUsergroupGs(): int
     {
         return $this->usergroupGs;
+    }
+    public function getUsergroupBM(): int
+    {
+        return $this->usergroupBM;
     }
 
     public function getUsergroupTr(): int

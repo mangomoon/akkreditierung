@@ -39,7 +39,7 @@ class EsfController extends BaseController
 
     public function pdfAction(Ansuchen $ansuchen): ResponseInterface
     {
-        if ($this->isPartOfGs()) {
+        if ($this->isPartOfGs() || $this->isPartOfBM()) {
             $this->collectSingleViewData($ansuchen);
             return $this->htmlResponse();
         } else {
@@ -153,26 +153,36 @@ class EsfController extends BaseController
                             if ($typ === 1) {
                                 if ($reviewC21BabiStatus > 2 || $reviewC22BabiStatus > 2) {
                                     $trainerInVersion['auflage'] = $trainerKomm['reviewC2BabiCommentTr'];
-                                } 
+                                } else {
+                                    $trainerInVersion['auflage'] = '';
+                                }
                             } else {
                                 if ($reviewC21PsaStatus > 2 || $reviewC22PsaStatus > 2) {
                                     $trainerInVersion['auflage'] = $trainerKomm['reviewC2PsaCommentTr'];
-                                    $trainerInVersion['qualifikationPsa1'] = $trainerKomm['qualifikationPsa1'];
-                                    $trainerInVersion['qualifikationPsa2'] = $trainerKomm['qualifikationPsa2'];
-                                    $trainerInVersion['qualifikationPsa3'] = $trainerKomm['qualifikationPsa3'];
-                                    $trainerInVersion['qualifikationPsa4'] = $trainerKomm['qualifikationPsa4'];
-                                    $trainerInVersion['qualifikationPsa5'] = $trainerKomm['qualifikationPsa5'];
-                                    $trainerInVersion['qualifikationPsa6'] = $trainerKomm['qualifikationPsa6'];
-                                    $trainerInVersion['qualifikationPsa7'] = $trainerKomm['qualifikationPsa7'];
-                                    $trainerInVersion['qualifikationPsa8'] = $trainerKomm['qualifikationPsa8'];
-                                    $trainerInVersion['qualifikationPsaKommentar'] =  $trainerKomm['qualifikationPsaKommentar'];
+                                } else {
+                                    $trainerInVersion['auflage'] = '';
                                 }
+                                $trainerInVersion['qualifikationPsa1'] = $trainerKomm['qualifikationPsa1'];
+                                $trainerInVersion['qualifikationPsa2'] = $trainerKomm['qualifikationPsa2'];
+                                //$trainerInVersion['qualifikationPsa3'] = $trainerKomm['qualifikationPsa3'];
+                                if($trainer['qualifikationPsa3'] === TRUE && $trainerKomm['reviewC22Quali3'] === TRUE) {
+                                    $trainerInVersion['qualifikationPsa3'] = TRUE;
+                                }
+                                $trainerInVersion['qualifikationPsa3'] = $trainerKomm['qualifikationPsa3'];
+                                $trainerInVersion['qualifikationPsa4'] = $trainerKomm['qualifikationPsa4'];
+                                $trainerInVersion['qualifikationPsa5'] = $trainerKomm['qualifikationPsa5'];
+                                $trainerInVersion['qualifikationPsa6'] = $trainerKomm['qualifikationPsa6'];
+                                $trainerInVersion['qualifikationPsa7'] = $trainerKomm['qualifikationPsa7'];
+                                $trainerInVersion['qualifikationPsa8'] = $trainerKomm['qualifikationPsa8'];
+                                $trainerInVersion['qualifikationPsaKommentar'] =  $trainerKomm['qualifikationPsaKommentar'];
                             } 
                             // $trainerInVersion['nextReviewC21BabiStatus'] = $trainerKomm['reviewC21BabiStatus'];
                             // $trainerInVersion['nextReviewC22BabiStatus'] = $trainerKomm['reviewC22BabiStatus'];
                             // $trainerInVersion['nextReviewC21PsaStatus'] = $reviewC21PsaStatus;
                             // $trainerInVersion['nextReviewC22PsaStatus'] = $reviewC22PsaStatus;
                             // $trainerInVersion['t'] = $trainerKomm['reviewC2PsaCommentTr'];
+                            $trainerInVersion['t1'] = $trainer['qualifikationPsa3'];
+                            $trainerInVersion['t2'] = $trainerKomm['reviewC22Quali3'];
                         } 
                     }
                 } else {
@@ -183,16 +193,19 @@ class EsfController extends BaseController
                     } else {
                         if ($reviewC21PsaStatus > 2 || $reviewC22PsaStatus > 2) {
                             $trainerInVersion['auflage'] = $trainer['reviewC2PsaCommentTr'];
-                            $trainerInVersion['qualifikationPsa1'] = $trainer['qualifikationPsa1'];
-                            $trainerInVersion['qualifikationPsa2'] = $trainer['qualifikationPsa2'];
-                            $trainerInVersion['qualifikationPsa3'] = $trainer['qualifikationPsa3'];
-                            $trainerInVersion['qualifikationPsa4'] = $trainer['qualifikationPsa4'];
-                            $trainerInVersion['qualifikationPsa5'] = $trainer['qualifikationPsa5'];
-                            $trainerInVersion['qualifikationPsa6'] = $trainer['qualifikationPsa6'];
-                            $trainerInVersion['qualifikationPsa7'] = $trainer['qualifikationPsa7'];
-                            $trainerInVersion['qualifikationPsa8'] = $trainer['qualifikationPsa8'];
-                            $trainerInVersion['qualifikationPsaKommentar'] =  $trainer['qualifikationPsaKommentar'];
                         }
+                        $trainerInVersion['qualifikationPsa1'] = $trainer['qualifikationPsa1'];
+                        $trainerInVersion['qualifikationPsa2'] = $trainer['qualifikationPsa2'];
+                        //$trainerInVersion['qualifikationPsa3'] = $trainer['qualifikationPsa3'];
+                        if($trainer['reviewC22Quali3'] !== null && $trainer['qualifikationPsa3']) {
+                                    $trainerInVersion['qualifikationPsa3'] = 1;
+                           }
+                        $trainerInVersion['qualifikationPsa4'] = $trainer['qualifikationPsa4'];
+                        $trainerInVersion['qualifikationPsa5'] = $trainer['qualifikationPsa5'];
+                        $trainerInVersion['qualifikationPsa6'] = $trainer['qualifikationPsa6'];
+                        $trainerInVersion['qualifikationPsa7'] = $trainer['qualifikationPsa7'];
+                        $trainerInVersion['qualifikationPsa8'] = $trainer['qualifikationPsa8'];
+                        $trainerInVersion['qualifikationPsaKommentar'] =  $trainer['qualifikationPsaKommentar'];
                     } 
                 }
                 
@@ -288,6 +301,10 @@ class EsfController extends BaseController
     private function isPartOfGs(): bool
     {
         return in_array($this->extensionConfiguration->getUsergroupGs(), self::getCurrentUserGroups(), true);
+    }
+    private function isPartOfBM(): bool
+    {
+        return in_array($this->extensionConfiguration->getUsergroupBM(), self::getCurrentUserGroups(), true);
     }
 
     public function injectAnsuchenRepository(AnsuchenRepository $ansuchenRepository): void

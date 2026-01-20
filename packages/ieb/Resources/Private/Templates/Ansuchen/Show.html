@@ -905,7 +905,15 @@
                                                 </f:if>
                                                 
                                             </summary>
-                                                <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                                <f:if condition="{currentUser.usergroup}==1">
+                                                    <f:then>
+                                                        <f:render partial="Berater/Properties" arguments="{berater: t, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:render partial="Berater/Properties" arguments="{berater: trainerbegutachtung, user:currentUser.usergroup, ag1:ansuchen.gutachter1, ag2:ansuchen.gutachter2}"/>
+                                                    </f:else>
+                                                </f:if>
+                                                
                                             </details>
                                         </div>
                                     </div>

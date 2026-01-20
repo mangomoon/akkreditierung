@@ -6,7 +6,6 @@
 <f:layout name="Default"/>
 
 <f:section name="content">
-
     <pdf:document
             title="{ansuchen.nummer} {ansuchen.akkreditierungEntscheidungDatum -> f:format.date(format:'d.m.Y')} <f:translate key='ansuchen.status.{ansuchen.status}'/>"
             outputPath="Personal-Standorte_{ansuchen.nummer}_<f:format.date date='now' format='d.m.Y' />.pdf"
@@ -34,7 +33,7 @@
                 
                 <f:for each="{trainer}" as="t" iteration="i">
                     
-                    <f:if condition="{altername} != {t.fullName}"><p>&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName} </p></f:if>
+                    <f:if condition="{altername} != {t.fullName}"><p>&nbsp;</p><p style="font-size: 10.5pt;">{t.fullName}</p></f:if>
                     <p style="font-size:9pt;line-height:3pt;break-inside: avoid;position: relative;">
                     {t.von -> f:format.date(format:'d.m.Y')} bis
                         <f:if condition="{t.bis} === 0">
@@ -45,7 +44,14 @@
                             <br><br><br><br><span style="line-height:11pt"><f:if condition="{ansuchen.typ}==2">
                                         ({f:if(condition:'{t.qualifikationPsa1}==1', then:'D | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa2}==1', then:'E | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa3}==1', then:'M | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa4}==1', then:'B | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa5}==1', then:'K | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa6}==1', then:'G | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa7}==1', then:'N | ', else:'– | ')}{f:if(condition:'{t.qualifikationPsa8}==1', then:'{t.qualifikationPsaKommentar}', else:'– ')})* <br></f:if>{t.auflage}</span></f:if></p>
                     <f:variable name="altername">{t.fullName}</f:variable>
+                    <f:if condition="{t.qualifikationPsa1} || {t.qualifikationPsa2} || {t.qualifikationPsa3} || {t.qualifikationPsa4} || {t.qualifikationPsa5} || {t.qualifikationPsa6} || {t.qualifikationPsa7} || {t.qualifikationPsa8}">
+                        <f:variable name="quali">1</f:variable>
+                    </f:if>
                 </f:for>   
+                <f:if condition="{quali}">
+                    <p style="font-size:9pt;line-height:11pt">* D = Deutsch – Kommunikation und Gesellschaft  |  E = Englisch – Globalität und Transkulturalität  |  M = Mathematik  |  B = Berufsorientierung  |  K = Kreativität und Gestaltung  |  G = Gesundheit und Soziales  |  N = Natur  und Technik</p>
+                </f:if>
+                
             </div>
 
 

@@ -127,6 +127,7 @@
                                                         </f:else>
                                                     </f:if>
                                                 </td>
+                                                
                                             </tr>
                                         </table>
                                     </f:if>
@@ -196,6 +197,7 @@
                                                         </f:else>
                                                     </f:if>
                                                 </td>
+                                                
                                             </tr>
                                         </table>
                                                     </f:if>
@@ -211,7 +213,7 @@
                                                     {item.copyStammdatenData -> f:variable(name: 'stammdaten')}
                                                     <table class="ansuchenliste archiv">
                                                         <tr>
-                                                            <td colspan="4" class="ansuchenliste_tr">
+                                                            <td colspan="5" class="ansuchenliste_tr">
                                                                 <f:if condition="{item.stammdatenMarkenname}">
                                                                     <f:then>
                                                                         <span class="fett">{stammdaten.markenname}</span> &nbsp;&nbsp;{stammdaten.name}
@@ -265,6 +267,11 @@
                                                                     <f:else>
                                                                         <f:link.action action="show" pageUid="216" target="_blank" controller="Ansuchen" arguments="{ansuchen : item.uid}" class="knopf-quadratisch show" title="Ansuchen zeigen"></f:link.action>
                                                                     </f:else>
+                                                                </f:if>
+                                                            </td>
+                                                            <td class="td-knopf">
+                                                                <f:if condition="{item.status}>90 && {currentUser.usergroup}=='6'">
+                                                                    <f:link.action pageUid="263" action="pdf" controller="Esf" arguments="{ansuchen : item.uid}" class="knopf-quadratisch esf" target="_blank" title="Personal- und Standortliste (PDF)"></f:link.action>
                                                                 </f:if>
                                                             </td>
                                                         </tr>
