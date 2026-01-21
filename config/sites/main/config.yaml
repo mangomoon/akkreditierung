@@ -1,7 +1,7 @@
 base: 'https://901414.jweiland-hosting.de/'
 baseVariants:
   -
-    base: 'https://ieb.ddev.site/'
+    base: 'https://akkreditierung2026.ddev.site/'
     condition: 'applicationContext == "Development/Ddev"'
 errorHandling:
   -

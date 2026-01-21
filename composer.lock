@@ -4,177 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59de8e1e1176d0c9b0e3f9f3e7234dc9",
+    "content-hash": "c10c5c68cd17bb483c8be3ce0a33d806",
     "packages": [
-        {
-            "name": "b13/bolt",
-            "version": "2.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/b13/bolt.git",
-                "reference": "d3fb8a2283f082dd81f6c873ec2331cf4750b804"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/b13/bolt/zipball/d3fb8a2283f082dd81f6c873ec2331cf4750b804",
-                "reference": "d3fb8a2283f082dd81f6c873ec2331cf4750b804",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
-                "typo3/cms-core": "^10.4 || ^11.0 || ^12.0"
-            },
-            "replace": {
-                "cmsexperts/bolt": "*",
-                "typo3-ter/bolt": "*"
-            },
-            "require-dev": {
-                "typo3/coding-standards": "^0.4.0",
-                "typo3/tailor": "^1.1"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "bolt"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "B13\\Bolt\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Bolt - An easy TYPO3 integration basis",
-            "homepage": "https://github.com/b13/bolt",
-            "keywords": [
-                "Integrators",
-                "Site Extension",
-                "Site Package",
-                "TYPO3 CMS",
-                "TypoScript"
-            ],
-            "support": {
-                "issues": "https://github.com/b13/bolt/issues",
-                "source": "https://github.com/b13/bolt/tree/2.3.1"
-            },
-            "time": "2023-09-21T12:56:00+00:00"
-        },
-        {
-            "name": "b13/container",
-            "version": "1.6.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/b13/container.git",
-                "reference": "625ad7c08074ba8846954cc64061ce5bca1fb52e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/b13/container/zipball/625ad7c08074ba8846954cc64061ce5bca1fb52e",
-                "reference": "625ad7c08074ba8846954cc64061ce5bca1fb52e",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-backend": "^9.5 || ^10.4 || ^11.5"
-            },
-            "replace": {
-                "typo3-ter/container": "self.version"
-            },
-            "require-dev": {
-                "b13/container-example": "dev-feature/content_defender",
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.0",
-                "codeception/module-db": "^1.0",
-                "codeception/module-webdriver": "^1.0",
-                "friendsofphp/php-cs-fixer": "^3.4",
-                "ichhabrecht/content-defender": "^3.2",
-                "phpstan/phpstan": "^0.12.11",
-                "phpunit/phpunit": "^8.4",
-                "typo3/cms-fluid-styled-content": "^10.4",
-                "typo3/cms-info": "^10.4",
-                "typo3/cms-install": "^10.4",
-                "typo3/cms-workspaces": "^10.4",
-                "typo3/coding-standards": "^0.5",
-                "typo3/testing-framework": "^6"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
-                    "web-dir": ".Build/Web",
-                    "extension-key": "container"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "B13\\Container\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Create Custom Container Content Elements for TYPO3",
-            "homepage": "https://b13.com",
-            "support": {
-                "issues": "https://github.com/b13/container/issues",
-                "source": "https://github.com/b13/container/tree/1.6.1"
-            },
-            "time": "2022-05-18T08:20:38+00:00"
-        },
-        {
-            "name": "b13/menus",
-            "version": "v0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/b13/menus.git",
-                "reference": "389a75edf51eb6e728f1e928f8f33816da6980a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/b13/menus/zipball/389a75edf51eb6e728f1e928f8f33816da6980a7",
-                "reference": "389a75edf51eb6e728f1e928f8f33816da6980a7",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ~8.0",
-                "typo3/cms-core": "^9.5 || ^10 || ^11",
-                "typo3/cms-frontend": "^9.5 || ^10 || ^11"
-            },
-            "require-dev": {
-                "typo3/cms-core": "^10 || ^11",
-                "typo3/cms-frontend": "^10 || ^11",
-                "typo3/coding-standards": "^0.1.0",
-                "typo3/tailor": "^1.0",
-                "typo3/testing-framework": "~6.1.0"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "menus",
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
-                    "app-dir": ".Build",
-                    "web-dir": ".Build/Web"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "B13\\Menus\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Easy and fast menus for TYPO3 Frontends",
-            "support": {
-                "issues": "https://github.com/b13/menus/issues",
-                "source": "https://github.com/b13/menus/tree/v0.3.0"
-            },
-            "time": "2021-10-14T11:46:24+00:00"
-        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
@@ -1192,7 +1023,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ieb",
-                "reference": "ed78102387a909e7cdfb421113ac1727cf1b1cf1"
+                "reference": "8fe1b1c900e0c0588e57d6f9390257d018eb70b1"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -1874,66 +1705,6 @@
             "time": "2024-02-06T17:48:27+00:00"
         },
         {
-            "name": "jigal/t3adminer",
-            "version": "12.0.1",
-            "source": {
-                "type": "git",
-                "url": "git@gitlab.com:jigal/t3adminer.git",
-                "reference": "8e76d49a483117ecdb22fa21d4dcf0fef0911b4c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/jigal%2Ft3adminer/repository/archive.zip?sha=8e76d49a483117ecdb22fa21d4dcf0fef0911b4c",
-                "reference": "8e76d49a483117ecdb22fa21d4dcf0fef0911b4c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-phar": "*",
-                "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0",
-                "typo3/cms-core": "^11.5.0 || ^12.4.0"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "t3adminer"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jigal\\T3adminer\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jigal van Hemert",
-                    "email": "jigal.van.hemert@typo3.org",
-                    "homepage": "http://www.typo3coder.nl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Adminer as BE module to work with the database",
-            "homepage": "https://forge.typo3.org/projects/extension-t3adminer",
-            "keywords": [
-                "adminer",
-                "database",
-                "dev",
-                "mariadb",
-                "mysql",
-                "phpmyadmin",
-                "postgresq",
-                "sqlite",
-                "typo3"
-            ],
-            "support": {
-                "issues": "https://forge.typo3.org/projects/extension-t3adminer/issues"
-            },
-            "time": "2023-09-03T20:40:40+00:00"
-        },
-        {
             "name": "league/csv",
             "version": "9.8.0",
             "source": {
@@ -2088,7 +1859,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoon",
-                "reference": "43846426e736b693376cef32882506579c32a282"
+                "reference": "6c85c3b52304ef33687f573416f94eebd9e2fe1c"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -2125,7 +1896,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mangomoonspecify",
-                "reference": "f846705a13b88d5547376903782dc1d5b884106c"
+                "reference": "652a3542d1f7aefbd1dcbc4d602cd0a37f96f1d8"
             },
             "require": {
                 "typo3/cms-core": "^11.5",
@@ -8984,81 +8755,6 @@
             "time": "2024-06-16T14:17:03+00:00"
         },
         {
-            "name": "friendsoftypo3/extension-builder",
-            "version": "v11.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfTYPO3/extension_builder.git",
-                "reference": "0b5ee7dfd5e2a9775a606506cd571a8fe4df9aff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfTYPO3/extension_builder/zipball/0b5ee7dfd5e2a9775a606506cd571a8fe4df9aff",
-                "reference": "0b5ee7dfd5e2a9775a606506cd571a8fe4df9aff",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nikic/php-parser": "^4.10.4",
-                "php": "^7.4 || ^8.0",
-                "typo3/cms-backend": "^11.4",
-                "typo3/cms-core": "^11.4"
-            },
-            "replace": {
-                "typo3-ter/extension-builder": "self.version"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
-                "roave/security-advisories": "dev-latest",
-                "sebastian/diff": "^3.0",
-                "typo3/cms-frontend": "^11.4",
-                "typo3/cms-install": "^11.4",
-                "typo3/coding-standards": "^0.3.0",
-                "typo3/testing-framework": "^6.11"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "extension_builder",
-                    "app-dir": ".Build",
-                    "ignore-as-root": false,
-                    "web-dir": ".Build/Web"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "EBT\\ExtensionBuilder\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Nico de Haen",
-                    "role": "Developer"
-                },
-                {
-                    "name": "extension_builder Development Team",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Tool to kickstart and maintain TYPO3 extensions",
-            "homepage": "https://extensions.typo3.org/extension/extension_builder",
-            "keywords": [
-                "extension",
-                "extension_builder",
-                "typo3"
-            ],
-            "support": {
-                "docs": "https://docs.typo3.org/p/friendsoftypo3/extension-builder/main/en-us/",
-                "issues": "https://github.com/FriendsOfTYPO3/extension_builder/issues",
-                "source": "https://github.com/FriendsOfTYPO3/extension_builder"
-            },
-            "time": "2024-03-26T08:27:44+00:00"
-        },
-        {
             "name": "mikey179/vfsstream",
             "version": "v1.6.11",
             "source": {
@@ -11855,9 +11551,9 @@
     "platform": {
         "ext-pdo": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
