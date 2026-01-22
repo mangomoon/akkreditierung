@@ -10,54 +10,38 @@
     }],
     "require": {
         "ext-pdo": "*",
-        "bithost-gmbh/pdfviewhelpers": "^2.5",
+        "bithost-gmbh/pdfviewhelpers": "^3.1",
         "cweagans/composer-patches": "^1.7",
         "drlenux/array-smart-diff": "^1.0",
-        "georgringer/ieb": "@dev",
-        "georgringer/news": "^10",
-        "helhum/typo3-console": "^8.0",
+        "georgringer/news": "^14",
+        "helhum/typo3-console": "^8.3",
         "league/csv": "^9.8",
-        "mangomoon/mangomoon": "dev-main",
-        "mangomoon/mangomoonspecify": "@dev",
-        "plan2net/sierrha": "^0.4.2",
         "rogervila/array-diff-multidimensional": "^2.1",
-        "sinso/app-routes": "^1.4",
         "symfony/var-dumper": "^5.4",
-        "typo3/cms-adminpanel": "^11",
-        "typo3/cms-backend": "^11",
-        "typo3/cms-belog": "^11",
-        "typo3/cms-composer-installers": "4.0.x@dev",
-        "typo3/cms-context-help": "^11",
-        "typo3/cms-core": "^11",
-        "typo3/cms-extbase": "^11",
-        "typo3/cms-extensionmanager": "^11",
-        "typo3/cms-felogin": "^11",
-        "typo3/cms-filelist": "^11",
-        "typo3/cms-fluid": "^11",
-        "typo3/cms-fluid-styled-content": "^11",
-        "typo3/cms-form": "^11",
-        "typo3/cms-frontend": "^11",
-        "typo3/cms-info": "^11",
-        "typo3/cms-install": "^11",
-        "typo3/cms-lowlevel": "^11",
-        "typo3/cms-recordlist": "^11",
-        "typo3/cms-recycler": "^11",
-        "typo3/cms-redirects": "^11",
-        "typo3/cms-reports": "^11",
-        "typo3/cms-rte-ckeditor": "^11",
-        "typo3/cms-saltedpasswords": "^11",
-        "typo3/cms-scheduler": "^11",
-        "typo3/cms-seo": "^11",
-        "typo3/cms-setup": "^11",
-        "typo3/cms-tstemplate": "^11",
-        "typo3/cms-viewpage": "^11"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3 || ^2",
-        "phpunit/phpunit": "^8 || ^7 || ^9",
-        "saschaegerer/phpstan-typo3": "^0.13 || ^1",
-        "typo3/testing-framework": "^6.4",
-        "vimeo/psalm": "^4.0"
+        "typo3/cms-backend": "^13.4",
+        "typo3/cms-belog": "^13.4",
+        "typo3/cms-core": "^13.4",
+        "typo3/cms-extbase": "^13.4",
+        "typo3/cms-extensionmanager": "^13.4",
+        "typo3/cms-felogin": "^13.4",
+        "typo3/cms-filelist": "^13.4",
+        "typo3/cms-filemetadata": "^13.4",
+        "typo3/cms-fluid": "^13.4",
+        "typo3/cms-fluid-styled-content": "^13.4",
+        "typo3/cms-form": "^13.4",
+        "typo3/cms-frontend": "^13.4",
+        "typo3/cms-info": "^13.4",
+        "typo3/cms-install": "^13.4",
+        "typo3/cms-lowlevel": "^13.4",
+        "typo3/cms-recycler": "^13.4",
+        "typo3/cms-redirects": "^13.4",
+        "typo3/cms-reports": "^13.4",
+        "typo3/cms-rte-ckeditor": "^13.4",
+        "typo3/cms-scheduler": "^13.4",
+        "typo3/cms-seo": "^13.4",
+        "typo3/cms-setup": "^13.4",
+        "typo3/cms-tstemplate": "^13.4",
+        "typo3/cms-viewpage": "^13.4"
     },
     "config": {
         "optimize-autoloader": true,
@@ -65,7 +49,7 @@
         "sort-packages": true,
         "bin-dir": "./bin/",
         "platform": {
-            "php": "8.1"
+            "php": "8.3"
         },
         "allow-plugins": {
             "typo3/cms-composer-installers": true,
@@ -86,14 +70,7 @@
             "post-autoload-dump": [
                 "@folder-structure"
             ]
-        },
-        "patches": {
-            "typo3/cms-core": {
-                "https://github.com/TYPO3/typo3/commit/9d044bad26b3f114a93bd8e0146436c275d265d4": "./patches/core-smtp-settings.patch"
-            }
-        },
-        "enable-patching": true,
-        "composer-exit-on-patch-failure": true
+        }
     },
     "scripts": {
         "folder-structure": [

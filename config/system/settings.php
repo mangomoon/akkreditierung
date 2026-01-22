@@ -2,7 +2,6 @@
 return [
     'BE' => [
         'debug' => true,
-        'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$Q0p2YlA0RmNFNlRwNUxiZw$xzwVIiY0Jr6p8GecCJGrlmPFftyf4WxIrVOcLa1TQCU',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
@@ -39,11 +38,6 @@ return [
             'loginLogo' => 'EXT:ieb/Resources/Public/Backend/levelup-logo.svg',
             'loginLogoAlt' => '',
         ],
-        'extension_builder' => [
-            'backupDir' => 'var/tx_extensionbuilder/backups',
-            'backupExtension' => '1',
-            'enableRoundtrip' => '1',
-        ],
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
@@ -59,6 +53,7 @@ return [
             'hidePageTreeForAdministrationModule' => '0',
             'manualSorting' => '0',
             'mediaPreview' => 'false',
+            'pageTreePluginPreview' => '1',
             'prependAtCopy' => '1',
             'resourceFolderImporter' => '/news_import',
             'rteForTeaser' => '0',
@@ -68,18 +63,13 @@ return [
             'storageUidImporter' => '1',
             'tagPid' => '1',
         ],
+        'redirects' => [
+            'showCheckIntegrityInfoInReports' => '1',
+            'showCheckIntegrityInfoInReportsSeconds' => '86400',
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
-        ],
-        'sierrha' => [
-            'debugMode' => '0',
-            'resourceExtensionRegexp' => 'css|eot|gif|ico|jpe?g|js(?:on)|png|svg|ttf|webp|woff2?|xml',
-        ],
-        't3adminer' => [
-            'IPaccess' => '',
-            'applyDevIpMask' => '0',
-            'exportDirectory' => 'fileadmin',
         ],
     ],
     'FE' => [
@@ -95,12 +85,9 @@ return [
     ],
     'GFX' => [
         'processor' => 'GraphicsMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
-        'processor_path_lzw' => '/usr/bin/',
     ],
     'LOG' => [
         'TYPO3' => [
@@ -152,12 +139,6 @@ return [
                     ],
                 ],
                 'pages' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
-                    'options' => [
-                        'compression' => true,
-                    ],
-                ],
-                'pagesection' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                     'options' => [
                         'compression' => true,
