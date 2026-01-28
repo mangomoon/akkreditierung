@@ -5,7 +5,16 @@
 page = PAGE
 page {
     typeNum = 0
-    
+
+    bodyTagCObject = COA
+    bodyTagCObject {
+        10 = TEXT
+        10.data = TSFE:id
+        10.noTrimWrap = | id="page-|"|
+        20 =< lib.page.class
+        20.stdWrap.noTrimWrap = | class="|"|
+        wrap = <body|>
+    }
 
     10 = FLUIDTEMPLATE
     10 {
@@ -21,6 +30,7 @@ page {
         # Database Entry
         # value: -1 -> None.html
         # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+
         templateName = TEXT
         templateName {
             cObject = TEXT
@@ -36,23 +46,13 @@ page {
             }
             ifEmpty = Default
         }
-        templateRootPaths {
-            0 = 
-            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Templates/
-        }
-        partialRootPaths {
-            0 = 
-            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Partials/
-        }
-        layoutRootPaths {
-            0 = 
-            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Layouts/
-        }
+
         dataProcessing {
             10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
             10 {
                 references.fieldName = media
             }
+
             20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
             20 {
                 levels = 4
@@ -78,58 +78,75 @@ page {
                   includeNotInMenu = 0
                 }
 
-            
-        }
-    }
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                50 {
+                  expandAll = 0
+                  levels = 1
+                  as = submenu
+                }
+
+             60 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                60 {
+                  special = browse
+                  special.items = next
+                  special.items.prevnextToSection = 1
+                  as = nextpage
+                }
+
+
+
+            70 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                70 {
+                  as = pageup
+                  special = rootline
+                  special.range = 1|1
+                  includeNotInMenu = 1
+            }
+
+            80 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                80  {
+                  levels = 1
+                  includeSpacer = 1
+                  as = menuwithsections
+                  dataProcessing {
+                  10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                  10 {
+                    references.fieldName = media
+                  }
+                  20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+                  20 {
+                    table = tt_content
+                    selectFields = tt_content.header
+                    pidInList.field = uid
+                    where = {#sectionIndex} = 1 AND {#header} != ''
+                    orderBy = sorting
+                  }
+                }
+              }
+              
+              # SPRACHMENÜ
+              90 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+                90 {
+                    languages = auto
+                    as = sprachmenu
+                }
+              200 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+                      200 {
+                        table = sys_category
+                        selectFields = sys_category.uid, sys_category.title
+                        pidInList = root, 1
+                        recursive = 99
+                        orderBy = sys_category.title
+                        join = sys_category_record_mm ON sys_category_record_mm.uid_local = sys_category.uid
+                        where.dataWrap = sys_category_record_mm.tablenames = "pages" AND sys_category_record_mm.fieldname = "categories" AND sys_category_record_mm.uid_foreign = {FIELD:uid}
+                        as = pageCategories
+                      }
+              }
+              
+            }
 
     meta {
         viewport = width=device-width,initial-scale=1
-        robots = 
-        apple-mobile-web-app-capable = 
-
-
-        # OpenGraph Tags
-        og:title {
-            attribute = property
-            field = title
-        }
-        og:site_name {
-            attribute = property
-            data = TSFE:tmpl|setup|sitetitle
-        }
-        og:description {
-            attribute = property
-            field = description
-        }
-        og:image {
-            attribute = property
-            stdWrap.cObject = FILES
-            stdWrap.cObject {
-                references {
-                    data = levelfield:-1, media, slide
-                }
-                maxItems = 1
-                renderObj = COA
-                renderObj {
-                    10 = IMG_RESOURCE
-                    10 {
-                        file {
-                            import.data = file:current:uid
-                            treatIdAsReference = 1
-                            width = 1280c
-                            height = 720c
-                        }
-                        stdWrap {
-                            typolink {
-                                parameter.data = TSFE:lastImgResourceInfo|3
-                                returnLast = url
-                                forceAbsoluteUrl = 1
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
 
@@ -142,10 +159,7 @@ page {
     includeCSS {
       mangomoon_basis = EXT:mangomoon/Resources/Public/Css/basis.css  
       mangomoon_spezial = EXT:mangomoon/Resources/Public/Css/spezial.css
-      mangomoon_navi = EXT:mangomoonspecify/Resources/Public/Css/navi.css
-      mangomoon_layout = EXT:mangomoonspecify/Resources/Public/Css/layout.css
-      mangomoon_rte = EXT:mangomoonspecify/Resources/Public/Css/rte.css
-      mangomoon_letzte = EXT:mangomoonspecify/Resources/Public/Css/letzte.css
+      
 
       # conditions für Einbinden unten: dürfen nicht innerhalb geschweifter Klammern stehen ...
     }
@@ -170,7 +184,28 @@ page {
         mango = EXT:mangomoon/Resources/Public/JavaScript/mango.js
         mango_last = EXT:mangomoonspecify/Resources/Public/Js/mango_letzte.js
     }
-}
+
+    headerData.441 = TEXT
+    headerData.441.value (
+
+    <link rel="icon" type="image/png" href="/typo3conf/ext/mangomoonspecify/Resources/Public/fav/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/typo3conf/ext/mangomoonspecify/Resources/Public/fav/favicon.svg" />
+    <link rel="shortcut icon" href="/typo3conf/ext/mangomoonspecify/Resources/Public/fav/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/typo3conf/ext/mangomoonspecify/Resources/Public/fav/apple-touch-icon.png" />
+    <link rel="manifest" href="/typo3conf/ext/mangomoonspecify/Resources/Public/fav/site.webmanifest" />
+
+      <script type="text/javascript">
+        /*<![CDATA[*/
+        <!--
+
+        
+        // -->
+          /*]]>*/
+
+      </script>
+    )
+  }
+
 
 #[page["uid"] == 1]
 #
@@ -187,46 +222,24 @@ page {
 #[end]
 
 
-page.headerData.451 = TEXT
-page.headerData.451.value (
-
-  <!-- 
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="96x96">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any"> 
-  -->
-
-  <script type="text/javascript">
-    /*<![CDATA[*/
-    <!--
-    $(document).ready(function(){
-      $('#hamburger').click(function(){
-        $('#navim').toggle();
-        $('#stoerermobil').toggle(); 
-      });
-    });
-    
-
-  
-
-    // -->
-      /*]]>*/
-
-  </script>
-)
 
 
 
 ############ body tag #############
-page.bodyTag >
-page.bodyTagCObject = TEXT
-page.bodyTagCObject.stdWrap.dataWrap = <body class="pagelayout-{field:layout}" id="page-{field:uid}">
+#page.bodyTag >
+#page.bodyTagCObject = TEXT
+#page.bodyTagCObject.stdWrap.dataWrap = <body class="pagelayout-{field:layout}" id="page-{field:uid}">
 
 
 
 
 ############# FE LOGIN ############
 
+plugin.tx_felogin_login {
+  view {
+    templateRootPaths {
+      0 = EXT:felogin/Resources/Private/Templates/
+      10 = EXT:mangomoon/Resources/Private/felogin/Templates/
+    }
+  }
+}

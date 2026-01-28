@@ -1,0 +1,74 @@
+<?php
+declare(strict_types=1);
+
+namespace Mangomoon\Mangomoon\ViewHelpers;
+
+use Mangomoon\Mangomoon\Domain\Repository\UserRepository;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+class ShowFeuserViewHelper extends AbstractViewHelper
+{
+    /**
+     * @var Mangomoon\Mangomoon\Domain\Repository\UserRepository
+     */
+    protected $frontendUserRepository;
+
+    /**
+     * Inject the FrontendUserRepository
+     *
+     * @param Mangomoon\Mangomoon\Domain\Repository\UserRepository $frontendUserRepository
+     */
+    public function injectFrontendUserRepository(UserRepository $frontendUserRepository): void
+    {
+        $this->frontendUserRepository = $frontendUserRepository;
+    }
+
+    /**
+     * Initialize arguments
+     */
+    public function initializeArguments(): void
+    {
+        $this->registerArgument('uid', 'int', 'UID of the frontend user', true);
+        $this->registerArgument('field', 'string', 'Welches Feld', true);
+    }
+
+    /**
+     * Render the ViewHelper
+     *
+     * @return string
+     */
+    public function render(): string
+    {
+      $uid = $this->arguments['uid'];
+      $field = $this->arguments['field'];
+      
+      $frontendUser = $this->frontendUserRepository->findByUid($uid);
+      if ($frontendUser === null) {
+          return ' ';
+      }
+      
+      // Getter-Methode für das angeforderte Feld generieren
+      $getterMethod = 'get' . ucfirst($field);
+      //return $frontendUser->getCompany();
+      // Prüfen, ob die Getter-Methode existiert
+      if (method_exists($frontendUser, $getterMethod)) {
+          $value = $frontendUser->$getterMethod();
+          
+          // Rückgabewert entsprechend verarbeiten
+          if (is_string($value)) {
+              return htmlspecialchars($value);
+          } elseif (is_numeric($value)) {
+              return (string)$value;
+          } elseif (is_array($value)) {
+              return implode(', ', $value);
+          } elseif ($value instanceof \DateTime) {
+              return $value->format('d.m.Y');
+          } elseif ($value === null) {
+              return '';
+          } else {
+              return (string)$value;
+          }
+       }
+
+   }
+}

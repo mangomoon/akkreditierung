@@ -1,0 +1,25 @@
+
+@import 'EXT:mangomoon/Configuration/TsConfig/Page/TCEFORM.tsconfig'
+@import 'EXT:mangomoon/Configuration/TsConfig/Page/TCEMAIN.tsconfig'
+@import 'EXT:mangomoon/Configuration/BackendLayouts/*.tsconfig'
+
+
+
+RTE {
+    default {
+        preset = mangomooon
+    }
+}
+
+TCEFORM {
+    pages {
+
+    }
+    tt_content {
+
+    }
+}
+
+TCEMAIN {
+
+}

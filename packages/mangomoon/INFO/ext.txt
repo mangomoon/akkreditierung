@@ -1,0 +1,8 @@
+
+SINNVOLLE Extensions
+
+backendtools
+Zeigt Seiten mit bestimmten Extensions, Bilder ohne alt-tags, lösct ungenutzte Bilder aus Upload ... 
+
+mklog
+schickt Error Meldungen per Mail aus

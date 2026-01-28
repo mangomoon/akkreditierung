@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f06a28ee9e7adb17cd91d0fbd2b7bd48",
+    "content-hash": "eb87c3c3e3de5961e13c83fd78745b56",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -990,6 +990,56 @@
             "time": "2025-04-09T20:32:01+00:00"
         },
         {
+            "name": "georgringer/ieb",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ieb",
+                "reference": "dbbbfb25388898a4cc40b0cd04aa8ba5698517d2"
+            },
+            "require": {
+                "typo3/cms-core": "^13.4"
+            },
+            "replace": {
+                "typo3-ter/ieb": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "web-dir": ".Build/public",
+                    "extension-key": "ieb"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\Ieb\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GeorgRinger\\Ieb\\Tests\\": "Tests"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "role": "Developer"
+                }
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "georgringer/news",
             "version": "14.0.1",
             "source": {
@@ -1792,6 +1842,80 @@
                 "source": "https://github.com/lolli42/FineDiff/tree/1.1.2"
             },
             "time": "2025-10-31T12:28:27+00:00"
+        },
+        {
+            "name": "mangomoon/mangomoon",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/mangomoon",
+                "reference": "6ec2966030529dbe9bee55fd036e8e8f4651e215"
+            },
+            "require": {
+                "typo3/cms-core": "^11.5 || ^13.1 || 13.*.*@dev",
+                "typo3/cms-fluid-styled-content": "^11.5 || ^13.1 || 13.*.*@dev",
+                "typo3/cms-rte-ckeditor": "^11.5 || ^13.1 || 13.*.*@dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "mangomoon"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mangomoon\\Mangomoon\\": "Classes"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "t13",
+            "homepage": "https://mangomoon.at",
+            "keywords": [
+                "TYPO3 CMS"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "mangomoon/mangomoonspecify",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/mangomoonspecify",
+                "reference": "76c66d756d4ba6e1fa948372b25bd5682d58da0f"
+            },
+            "require": {
+                "typo3/cms-core": "^11.5 || ^13.1 || 13.*.*@dev",
+                "typo3/cms-fluid-styled-content": "^11.5 || ^13.1 || 13.*.*@dev",
+                "typo3/cms-rte-ckeditor": "^11.5 || ^13.1 || 13.*.*@dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "mangomoonspecify"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mangomoon\\Mangomoonspecify\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "specify",
+            "homepage": "https://mangomoon.at",
+            "keywords": [
+                "TYPO3 CMS"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "masterminds/html5",
@@ -7912,7 +8036,11 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "georgringer/ieb": 20,
+        "mangomoon/mangomoon": 20,
+        "mangomoon/mangomoonspecify": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

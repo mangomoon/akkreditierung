@@ -1,0 +1,2 @@
+@import 'EXT:mangomoon/Configuration/TypoScript/Helper/DynamicContent.typoscript'
+@import 'EXT:mangomoon/Configuration/TypoScript/Setup/*.typoscript'

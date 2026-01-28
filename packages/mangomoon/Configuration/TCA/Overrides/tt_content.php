@@ -1,5 +1,7 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
+
+$GLOBALS['TCA']['tt_content']['columns']['imagecols']['config']['default'] = 1;
 
 $temporaryCopyright = array(
     'copyright' => array (
@@ -7,7 +9,7 @@ $temporaryCopyright = array(
         'label' => 'Copyright',
         'config' => array (
             'type' => 'input',
-            'eval' => 'null',
+            'nullable' => true,
             'placeholder' => '__row|uid_local|metadata|copyright',
             'mode' => 'useOrOverridePlaceholder',
         )
@@ -15,20 +17,10 @@ $temporaryCopyright = array(
 );
  
 
-$GLOBALS['TCA']['tt_content']['columns']['imagecols']['config']['default'] = 1;
-
-
 // add field to tca
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'sys_file_reference',
     $temporaryCopyright
-);
- 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
-    'sys_file_reference',
-    'copyright',
-    '',
-    'before:description'
 );
  
 

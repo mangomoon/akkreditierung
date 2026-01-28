@@ -1,0 +1,4 @@
+name: mangomoon/mangomoonspecify
+label: 'mangomoonspecify'
+dependencies:
+  - mangomoon/mangomoon

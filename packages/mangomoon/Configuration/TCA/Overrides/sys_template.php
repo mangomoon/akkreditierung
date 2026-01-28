@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 call_user_func(function()
 {
@@ -12,6 +12,11 @@ call_user_func(function()
         'mangomoon'
     );
 });
+    // \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    //     'mangomoon',
+    //     'Configuration/TypoScript',
+    //     'mangomoon'
+    // );
 
 
 // Description -> RTE
@@ -37,6 +42,17 @@ $tempColumns = [
 // Page: Abstract -> RTE
 $GLOBALS['TCA']['pages']['columns']['abstract'] = [
             'label' => 'Teaser',
+              'config' => array(
+                  'type' => 'text',
+                  'enableRichtext' => true,
+                  'cols' => 40,
+                  'rows' => 5,
+                  'eval' => 'trim'
+              )
+            ];
+
+$GLOBALS['TCA']['fe_users']['columns']['description'] = [
+            'label' => 'Bio',
               'config' => array(
                   'type' => 'text',
                   'enableRichtext' => true,

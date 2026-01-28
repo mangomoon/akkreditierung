@@ -1,0 +1,9 @@
+#############
+#### RTE ####
+#############o
+RTE {
+    default {
+        preset = mangomoon
+    }
+}
+    

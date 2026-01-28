@@ -1,0 +1,34 @@
+#
+# BACKENDLAYOUT: zweispaltig
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            zweispaltig_75-25 {
+                title = Zweispaltig, breit + schmal
+                config {
+                    backend_layout {
+                        colCount = 2
+                        rowCount = 1
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = links
+                                        colPos = 0
+                                        colspan = 3
+                                    }
+                                    2 {
+                                        name = rechts
+                                        colPos = 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                icon = EXT:mangomoon/Resources/Public/Images/BackendLayouts/Zweispaltig_75-25.png
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" 
+      xmlns:m="http://typo3.org/ns/Mangomoon/Mangomoon/ViewHelpers"
+      data-namespace-typo3-fluid="true">
   
-{namespace m=Mangomoon\Mangomoon\ViewHelpers}  
   
   
   <f:layout name="Default" />
@@ -15,6 +16,10 @@
       </f:if>
         
             <f:for each="{menu}" as="page">
+              <p>############## mangomoon</p>
+              <div class="PageAuthor">{page.data.dachzeile}</div>
+              <div class="PageAuthor">{page.data.author}</div>
+              <div class="PageDate">Letzte Aktualisierung: <f:format.date format="d.m.Y">{page.data.lastUpdated}</f:format.date> | tstamp: <f:format.date format="d.m.Y">{page.data.tstamp}</f:format.date> | crdate: <f:format.date format="d.m.Y">{page.data.crdate}</f:format.date></div>
               <div class="PageTeaser <m:sysCategory data="{page.data}" as="sysCategoryDetailArray"><f:if condition="{sysCategoryDetailArray.0}"><f:for each="{sysCategoryDetailArray}" as="PageCat">pageCat-{PageCat.uid} </f:for></f:if></m:sysCategory>">
               <div class="PageImage">
                 <m:falResource data="{page.data}" table="pages" field="media" as="sysFileArray">

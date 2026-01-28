@@ -1,0 +1,85 @@
+##############
+#### PAGE ####
+##############
+page = PAGE
+page {
+    typeNum = 0
+    shortcutIcon = EXT:mangomooonspecify/Resources/Public/Icons/favicon.ico
+
+    
+
+    meta {
+        viewport = width=device-width, initial-scale=1, minimum-scale=1
+        robots = index,follow
+        apple-mobile-web-app-capable = no
+        compatible = IE=edge
+        google = notranslate
+        X-UA-Compatible = 
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+    }
+
+    includeCSS {
+        mangomooon_layout = EXT:mangomooon/Resources/Public/Css/layout.css
+    }
+
+    includeJSFooter {
+        mangomooon_scripts = EXT:mangomooon/Resources/Public/JavaScript/main.js
+    }
+}
+
+
+################
+#### CONFIG ####
+################
+
+config.additionalHeaders {
+  10.header = x-xss-protection: 1; mode=block
+  20.header = x-frame-options: SAMEORIGIN
+  30.header = x-content-type: nosniff
+}
+config {
+    absRefPrefix = auto
+    linkVars = category
+    uniqueLinkVars = 1
+    pageTitleFirst = 0
+    renderCharset = utf-8
+    metaCharset = utf-8
+    doctype = html5
+    inlineStyle2TempFile = 1
+    admPanel = 0
+    intTarget =
+    extTarget =
+    disablePrefixComment = 1
+    index_enable = 1
+    index_externals = 1
+    index_metatags = 1
+
+    // Disable Image Upscaling
+    noScaleUp = 1
+
+    // Compression and Concatenation of CSS and JS Files
+    compressJs = 0
+    compressCss = 0
+    concatenateJs = 0
+    concatenateCss = 0
+}
+
+
+lib.contentElement {
+    
+    templateRootPaths {
+        50 = EXT:mangomoon/Resources/Private/fluid_styled_content/Templates/
+       200 = EXT:mangomoonspecify/Resources/Private/fluid_styled_content/Templates/
+    }
+    partialRootPaths {
+        50 = EXT:mangomoon/Resources/Private/fluid_styled_content/Partials/
+       200 = EXT:mangomoonspecify/Resources/Private/fluid_styled_content/Partials/
+    }
+    layoutRootPaths {
+        50 = EXT:mangomoon/Resources/Private/fluid_styled_content/Layouts/
+       200 = EXT:mangomoonspecify/Resources/Private/fluid_styled_content/Layouts/
+    }
+
+  }

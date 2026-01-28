@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+  
+  <div class="container-hintergundbild" style="background-image:url('/fileadmin<f:for each="{gallery.rows}" as="row"><f:for each="{row.columns}" as="column">{row.columns.1.media.originalFile.identifier}</f:for></f:for>')">
+    <div class="vordergrund">
+        <f:render partial="Header/All" arguments="{_all}" />
+        <f:format.html>{data.bodytext}</f:format.html>
+    </div>
+  </div>
+              
+  
+
+
+</html>

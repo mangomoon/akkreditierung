@@ -1,0 +1,8 @@
+options.clearCache.pages = 1
+
+#options.pageTree.backgroundColor.147 = #112233
+#options.pageTree.backgroundColor.148 = #112233
+
+options.pageTree.showPageIdWithTitle = 1
+options.showDuplicate = 1
+options.showDuplicate.tt_content = 1

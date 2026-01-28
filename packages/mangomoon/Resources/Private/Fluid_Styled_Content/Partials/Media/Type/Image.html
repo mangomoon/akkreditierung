@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers" data-namespace-typo3-fluid="true">
-<figure class="image">
+<figure class="image" id={file.uid} >
 	<f:if condition="{file.link}">
 		<f:then>
 			<f:link.typolink parameter="{file.link}" title="{file.title}">
@@ -24,6 +24,7 @@
     
     <f:else><div class="copyrightimage">{file.properties.copyright}</div></f:else>
   </f:if>
+
 	<f:if condition="{file.description}">
 		<figcaption class="image-caption">
 			<f:format.raw>{file.description}</f:format.raw>

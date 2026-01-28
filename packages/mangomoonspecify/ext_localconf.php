@@ -1,9 +1,13 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['mangomoon'] = 'EXT:mangomoonspecify/Configuration/RTE/mangomoon.yaml';
 
-$GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths']['100'] = 'EXT:mangomoonspecify/Resources/Private/SystemMail/';
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:mangomoonspecify/Configuration/TsConfig/TCEFORM.tsconfig">');
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['LayoutRootPaths'][800] = 'EXT:mangomoonspecify/Resources/Private/Mail/';
+
+
+$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mangomoonspecify'] = 'EXT:mangomoonspecify/Resources/Public/Css/be.css';
+
+

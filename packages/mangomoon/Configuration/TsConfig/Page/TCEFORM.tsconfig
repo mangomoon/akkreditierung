@@ -3,9 +3,6 @@
 #
 TCEFORM {
     pages {
-      layout {
-            removeItems = 1,2,3
-        }
       backend_layout{
         label = Layout (nur diese Seite)
       } 

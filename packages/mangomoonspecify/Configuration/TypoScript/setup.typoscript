@@ -1,21 +1,31 @@
-
-// für var schreibe in TYPOSCRIPT @import 'Specify/ts/var/*.typoscript'
-
-
-
 config.no_cache = 1
 config.debug = 1
 
-plugin.tx_ieb._CSS_DEFAULT_STYLE >
+page.10.{
+        templateRootPaths {
+            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Templates/
+        }
+        partialRootPaths {
+            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Partials/
+        }
+        layoutRootPaths {
+            1 = EXT:mangomoonspecify/Resources/Private/Pagelayout/Layouts/
+        }
+}
 
-page.includeCSS {
-    name = EXT:ieb/Resources/Public/Css/ieb.css
-    ieb_print = EXT:ieb/Resources/Public/Css/ieb_print.css
-    ieb_print.media = print
-}
-page.includeJS {
-    name = EXT:ieb/Resources/Public/Js/ieb.js
-}
+
+
+#tt_content.defaultpagelist.templateRootPaths.30 = EXT:mangomoonspecify/Resources/Private/Pagelist/Templates/
+#tt_content.defaultpagelist.partialRootPaths.30 = EXT:mangomoonspecify/Resources/Private/Pagelist/Partials/
+
+#plugin.tx_felogin_login {
+#  view {
+#    templateRootPaths.10 = {$plugin.tx_felogin_login.view.templateRootPath}
+#    partialRootPaths.10 = {$plugin.tx_felogin_login.view.partialRootPath}
+#    layoutRootPaths.10 = {$plugin.tx_felogin_login.view.layoutRootPath}
+#  }
+#}
+
 
 #page.10.dataProcessing.40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
 #page.10.dataProcessing.40 {
@@ -27,43 +37,93 @@ page.includeJS {
 #            }
 
 
-#page.includeCSS {
-#    name = {$specifyortpfad}/Css/name.css
-#}
 
 
 
-#page.includeCSS {
-#    name = EXT:ieb/Resources/Public/Css/ieb.css
-#}
-#page.includeJS {
-#    name = EXT:ieb/Resources/Public/Js/ieb.js
-#}
 
-
-plugin.tx_felogin_login {
-  view {
-    templateRootPaths {
-      0 = EXT:felogin/Resources/Private/Templates/
-      20 = EXT:mangomoonspecify/Resources/Private/fe-login/
-    }
-  }
+page.includeCSS {
+  mangomoon_navi = EXT:mangomoonspecify/Resources/Public/Css/navi.css
+  mangomoon_layout = EXT:mangomoonspecify/Resources/Public/Css/layout.css
+  mangomoon_rte = EXT:mangomoonspecify/Resources/Public/Css/rte.css
+  mangomoon_letzte = EXT:mangomoonspecify/Resources/Public/Css/letzte.css
 }
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pdfviewhelpers/Configuration/TypoScript/setup.txt">
-plugin.tx_pdfviewhelpers.settings {
-        config {
-                class = Bithost\Pdfviewhelpers\Model\BasePDF
-                jpgQuality = 100
-                fonts {
-                        subset = 0
-                        addTTFFont {
-                                opensans {
-                                        path = EXT:ieb/Resources/Public/Fonts/OpenSans.ttf
-                                        #path = EXT:pdfviewhelpers/Resources/Public/Examples/FullFeatureShowCase/OpenSans.ttf
-                                }
-                        }
-                }
+
+page.headerData.451 = TEXT
+page.headerData.451.value (
+
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    <!--
+
+
+
+    // -->
+      /*]]>*/
+
+  </script>
+)
+
+
+
+##### SUCHE 
+
+lib.searchbox = RECORDS
+lib.searchbox {
+   tables = tt_content
+   # source = 109
+}
+
+
+
+plugin.tx_kesearch_pi1.cssFile >
+plugin.tx_kesearch_pi2.cssFile > 
+plugin.tx_kesearch_pi3.cssFile > 
+plugin.tx_kesearch_pi1.view.templateRootPaths {
+            0 = EXT:ke_search/Resources/Private/Templates/
+            1 = EXT:mangomoonspecify/Resources/Private/ke_search/Templates/
         }
+plugin.tx_kesearch_pi1.view.partialRootPaths {
+            0 = EXT:ke_search/Resources/Private/Templates/
+            1 = EXT:mangomoonspecify/Resources/Private/ke_search/Partials/
+        }
+
+lib.nnavi = HMENU
+lib.nnavi.maxItems = 1
+lib.nnavi.special = browse
+lib.nnavi.special {
+    items = index|up|next|prev
+    items.prevnextToSection = 1
+    index.target = _blank
+    index.fields.title = INDEX
+    # #################### anpassen:
+    index.uid = 7
 }
-module.tx_pdfviewhelpers < plugin.tx_pdfviewhelpers
+lib.nnavi.1 = TMENU
+lib.nnavi.1.NO {
+  linkWrap = <div class='NextPageTitel'>|</div>
+  before.cObject = COA
+	before.cObject.10 = TEXT
+	before.cObject.10 {
+		field = author
+		wrap = <div class="NextPageAuthor">|</div>
+	}
+  before.cObject.20 = TEXT
+  before.cObject.20 {
+		field = lastUpdate
+    date = d.m.Y
+    wrap = <div class="NextPageDate">|</div>
+	}
+  after.cObject = COA
+  after.cObject.10 = TEXT
+	after.cObject.10 {
+		field = abstract
+	  wrap = <div class="NextPageTeaser">|</div>
+	}
+  after.cObject.20 = TEXT
+	after.cObject.20 {
+		value = "zum text"
+	  wrap = <div class="NextPageLink">|</div>
+    stdWrap.typolink.parameter.field = uid
+	}
+}

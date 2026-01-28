@@ -37,13 +37,51 @@ $(document).ready(function(){
  });
  
   
-  
+// FUSSNOTEN bei Copy&Paste aus Word ############ 
+
+$('a').each(function() {
+  var $this = $(this);
+  var href = $this.attr('href');
+  if (href) {
+    var intRegex = /^\d+$/;
+    var fntest = href.substring(5,9);
+    if ((href.includes('ftn') || href.includes('edn')) && intRegex.test(fntest)) {
+      $(this).addClass('fussnotenzeichen');
+      var fnhref = "#_ftnref"+fntest;
+      var fntext = $('a[href="'+fnhref+'"]').parent().html();
+      if (!fntext) {
+        fnhref = "#_ednref"+fntest;
+        fntext = $('a[href="'+fnhref+'"]').parent().html();
+      }
+
+      $('a[href="'+fnhref+'"]').parent().addClass('fussnotentext');
+      // console.log(fntext);
+      $(this).hover(function(e) {
+          var seitenbreite = $(window).width();
+          var position = $(this).offset();
+
+          $('#infobox').html(fntext);
+          $('#infobox').fadeIn(100);
+          if (e.pageX < seitenbreite/2) {
+            $('#infobox').css({
+              'top': e.pageY + 10,
+              'left': e.pageX + 10
+            });
+            
+          } else {
+            $('#infobox').css({
+              'top': e.pageY + 10,
+              'left': e.pageX - 400
+            });
+          }
+      }, function(){
+        $('#infobox').fadeOut(500);
+      });
+    }
+  }
+  });
+
+
 });
 
-
-
-/*
- * Baron Bone Slider
- * js in jquery.fancybox.min.js 
- * https://www.jqueryscript.net/slider/Flexible-Simple-Image-Slider-Plugin-Bare-Bones-Slider.html
- */
+  

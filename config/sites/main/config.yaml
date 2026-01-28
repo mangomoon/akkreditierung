@@ -3,6 +3,10 @@ baseVariants:
   -
     base: 'https://akkreditierung2026.ddev.site/'
     condition: 'applicationContext == "Development/Ddev"'
+dependencies:
+  - mangomoon/mangomoon
+  - mangomoon/mangomoonspecify
+  - typo3/felogin
 errorHandling:
   -
     errorCode: 404

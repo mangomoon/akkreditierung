@@ -1,10 +1,4 @@
-lib.searchbox_html = TEXT
-lib.searchbox_html.value (
-<form method="get" id="form_kesearch_searchfield" name="form_kesearch_searchfield" action="/search/">
-  <input type="text" id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" placeholder="Suche" />
-  <input type="image" src="/fileadmin/tpl/bilder/g5.jpg" id="ke_search_searchfield_submit" alt="Finden" />
-</form>
-)
+
 lib.pageResources = FILES 
 lib.pageResources { 
     references { 
@@ -31,8 +25,8 @@ lib.mycategories = CONTENT
 lib.mycategories {
 	table = sys_category
 	select {
-		pidInList = 1
-		# where = parent = {$global.parentCategory}
+		pidInList = 1, 6
+        recursive = 5
 	}
 	renderObj = TEXT
 	renderObj{
@@ -43,13 +37,125 @@ lib.mycategories {
 
 
 
+
+
+lib.bgimg = FLUIDTEMPLATE
+lib.bgimg {
+                file = EXT:mangomoon/Resources/Private/fluid_styled_content/Templates/Textmedia.html
+                dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                dataProcessing.10 {
+                        references {
+                                table = tt_content
+                                fieldName = image
+                        }
+                        as = images
+                }
+        }
+
+
 #### Fancybox
 lib.contentElement {
 	settings {
 		media {
-			popup.linkParams.ATagParams.dataWrap = data-fancybox="fancybox-{field:uid}" data-caption="{file:current:description} <p class='fancycopyright'>{file:current:copyright}</p>" title="{file:current:copyright}"
+			popup.linkParams.ATagParams.dataWrap = data-fancybox="fancybox-{field:uid}" data-caption="{file:current:description} <p class='fancycopyright'>{file:current:copyright}</p>" title="{file:current:description}"
 		}
 	}
 }
 
 
+
+#### Suchbox 
+lib.suchbox = TEXT
+lib.suchbox.value (
+    <form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" class="suchbox" action="/suche">
+		<input type="search" id="ke_search_sword" name="tx_kesearch_pi1[sword]" placeholder="SUCHE" />
+		<input type="submit" class="suchknopf" alt="Finden!" />
+	</form>
+)
+
+
+#### Kategorie-Liste
+lib.pagesByCategory = CONTENT
+lib.pagesByCategory {
+    table = pages
+    select {
+        pidInList = 1,2,3,4,5,6,7,8,9
+        join = sys_category_record_mm ON pages.uid = sys_category_record_mm.uid_foreign
+        where.data = GP:category
+        where.wrap = sys_category_record_mm.uid_local = |
+        #orderBy = sys_category.title
+    }
+    renderObj = COA
+    renderObj {
+        10 = TEXT
+        10 {
+            field = autorvorname
+            wrap = <div class="PageAuthor">|
+        }
+        15 = TEXT
+        15 {
+            field = author
+            wrap = &nbsp;|</div>
+        }
+        20 = TEXT
+        20 {
+            field = title
+            wrap = <div class="PageTitle">|</div>
+        }
+        
+        30 = TEXT
+        30 {
+            value = zum text
+            typolink.parameter.field = uid
+            typolink.ATagParams = class="catListLink" 
+            stdWrap = <button class="mehr">|</button>
+        }
+        wrap = <div class="PageListItem"> | </div>
+    }
+}
+
+lib.pageListCategory = CONTENT
+lib.pageListCategory {
+   table = sys_category
+   select {
+      pidInList = 1,2,3,4,5,6,7,8,9
+      where = uid like '###cat###'
+      markers {
+        cat.data = GP:category
+      }
+   }
+   renderObj = COA
+   renderObj {
+      10 = TEXT
+      10 {
+         field = title
+      }
+   }
+}
+
+
+lib.listCategories = CONTENT
+lib.listCategories {
+   table = sys_category
+   select {
+      pidInList = 1,2,3,4,5,6,7,8,9
+      orderBy = title
+   }
+   renderObj = COA
+   renderObj {
+      10 = TEXT
+      10 {
+         field = title
+         typolink.parameter = 14
+          typolink.additionalParams.cObject = TEXT
+          typolink.additionalParams.cObject {
+            value = &category=
+            append = TEXT
+            append {
+               field = uid
+            }
+          }
+         typolink.ATagParams = class="themenCatListLink" 
+      }
+   }
+}

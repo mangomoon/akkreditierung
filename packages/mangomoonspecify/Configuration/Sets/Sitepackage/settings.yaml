@@ -1,0 +1,7 @@
+styles:
+
+page:
+  fluidtemplate:
+    layoutRootPath: 'EXT:mangomoonspecify/Resources/Private/Pagelayout/Layouts/'
+    partialRootPath: 'EXT:mangomoonspecify/Resources/Private/Pagelayout/Partials/'
+    templateRootPath: 'EXT:mangomoonspecify/Resources/Private/Pagelayout/Templates/'

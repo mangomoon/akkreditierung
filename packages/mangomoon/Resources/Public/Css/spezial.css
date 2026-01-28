@@ -30,25 +30,34 @@ td {
   padding:0;
 }
 
+.divider {
+  width: 100%;
+  clear: both;
+  height: 1px;
+  border-top: solid 1px #aaa;
+}
 
-.einspaltigspaltig #mitte {
-  margin-left: 20%;
-  margin-right: 20%;
+
+@media (min-width: 800px) {
+  .einspaltigspaltig #mitte {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 
 /*####################### INHALTSELEMENTE #####*/
 
-.frame-space-before-extra-small { margin-top: 0.1rem; }
-.frame-space-before-small { margin-top: 0.6rem; }
-.frame-space-before-medium { margin-top: 1rem; }
-.frame-space-before-large { margin-top: 1.5rem; }
-.frame-space-before-extra-large { margin-top: 2.5rem; }
+.frame.frame-space-before-extra-small { margin-top: 0.1rem; }
+.frame.frame-space-before-small { margin-top: 0.6rem; }
+.frame.frame-space-before-medium { margin-top: 1rem; }
+.frame.frame-space-before-large { margin-top: 1.5rem; }
+.frame.frame-space-before-extra-large { margin-top: 2.5rem; }
 
-.frame-space-after-extra-small { margin-bottom: 0.1rem; }
-.frame-space-after-small { margin-bottom: 0.6rem; }
-.frame-space-after-medium { margin-bottom: 1rem; }
-.frame-space-after-large { margin-bottom: 1.5rem; }
-.frame-space-after-extra-large { margin-bottom: 2.5rem; }
+.frame.frame-space-after-extra-small { margin-bottom: 0.1rem; }
+.frame.frame-space-after-small { margin-bottom: 0.6rem; }
+.frame.frame-space-after-medium { margin-bottom: 1rem; }
+.frame.frame-space-after-large { margin-bottom: 1.5rem; }
+.frame.frame-space-after-extra-large { margin-bottom: 2.5rem; }
 
 
 
@@ -226,17 +235,12 @@ figure.image {
 /* Hintergrundbild: Layout = 4 (Hintergundbild)*/
 
 .container-hintergundbild {
-  position: relative;
-}
-.container-hintergundbild .hintergrundbild {
-  position: relative;
-  top:0;
-  left:0;
-  width: 100%;
-  height:100%;
+  /*position: relative;*/
+  background-size: cover;
+  background-position: center;
 }
 .container-hintergundbild .vordergrund {
-  position: absolute;
+  /*position: absolute;*/
   top:0;
   left:0;
   padding:40px;
@@ -383,7 +387,7 @@ p.text-center {
   color:#fff;
   padding-left: 8px;
   margin-bottom: 0;
-  margin-top: -5px;
+  margin-top: -3px;
   padding-bottom:0;
   line-height: 2px;
   /*background: rgba(255,255,255,0.2);*/

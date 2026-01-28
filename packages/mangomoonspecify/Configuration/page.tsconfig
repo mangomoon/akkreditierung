@@ -1,0 +1,29 @@
+@import 'EXT:mangomoonspecify/Configuration/TsConfig/Page/RTE.tsconfig'
+@import 'EXT:mangomoonspecify/Configuration/TsConfig/Page/TCEFORM.tsconfig'
+@import 'EXT:mangomoonspecify/Configuration/BackendLayouts/*.tsconfig'
+
+
+
+
+options.clearCache.pages = 1
+
+TCEFORM.pages.layout {
+	altLabels {
+		5 = TEST
+	}
+}
+TCEFORM.tt_content.layout.types.menu_abstract {
+  altLabels {
+    0 = TEST
+    1 = Pageteaser mit max. XY Seiten
+    2 = Pageteaser Liste
+  }
+}
+
+#Konfig Bild Größe bei RTE-Bildern
+#RTE.default.buttons.image.options.magic {
+    # Default: 300
+#    maxWidth = 1020
+    # Default: 1000
+#    maxHeight = 800
+#}

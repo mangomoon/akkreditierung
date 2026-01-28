@@ -1,0 +1,114 @@
+#
+# TCEFORM
+#
+TCEFORM {
+    pages {
+      layout {
+        removeItems = 2,3
+        altLabels {
+          0 = normal
+          1 = Galeriemodus weißer Hintergrund
+        }
+      }
+    }
+    tt_content {
+      layout {
+          altLabels {
+            0 = Standard
+            1 = Layout eins
+            2 = großes, responsive Bild/Video
+            3 = Galeriemodus
+          }
+          addItems {
+            4 = Hintergrundbild
+            5 = Slider
+            6 = Highlight
+          }
+        }
+      layout.types.uploads {
+        removeItems = 4,5
+        altLabels {
+            0 = Standard
+            1 = kleine Box
+            2 = Box mit Rahmen
+            3 = Galeriemodus
+          }
+        }
+
+      header_position {
+        addItems {
+          rot = rot
+          kasten = Kasten
+          rotcenter = rot, zentriert
+          kastencenter = Kasten, zentriert
+          }
+      }
+
+      frame_class {
+        removeItems = ruler-before, ruler-after, indent, indent-left, indent-right
+        addItems {
+          accordion = Akkordion
+          hellerkasten = heller Kasten
+          logokasten = Kasten mit Logo
+
+        }
+      }
+    }
+}
+
+
+TCEFORM.tt_content.layout.types.menu_abstract {
+  removeItems = 5
+  altLabels {
+    0 = Pageteaser
+    1 = Pageteaser mit max. X Seiten
+    2 = Pageteaser Liste
+    3 = Pageteaser mit Kategorienwahl
+    4 = Pageteaser nach Autor:innen
+  }
+}
+TCEFORM.tt_content.layout.types.image {
+  altLabels {
+    0 = Standardgalerie
+    1 = Galerie, Thumbs beschnitten quer
+    2 = Galerie, Thumbs beschnitten hoch
+    3 = Galerie, Thumbs beschnitten quadratisch
+  }
+}
+
+#TCEFORM.sys_file_reference.crop.config.cropVariants {
+#  default {
+#    title = Default desktop
+#    selectedRatio = NaN
+#    allowedAspectRatios {
+#      NaN {
+#        title = Frei
+#        value = 0.0
+#      }
+#      3:2 {
+#        title = News (breit, 2-zlg. Headline)
+#        value = 1.5
+#      }
+#      News {
+#        title = News (breit, 1-zlg. Headline)
+#        value = 1.334
+#      }
+#      Slider {
+#        title = Breites Bild (Slider)
+#        value = 2.7906976744
+#      }
+#      Facebook {
+#        title = Facebook open graph
+#        value= 1.91
+#    }
+#  }
+#}
+#}
+
+# BEI PAGELIST: Erweiterung Layoutvarianten
+#TCEFORM.tt_content.tx_pagelist_template.addItems {
+#  minilist = Mini list
+#}
+
+
+TCAdefaults.tt_content.imagecols = 1

@@ -2,19 +2,22 @@ imports:
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+    # Import the image plugin configuration
+    # - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
 
 editor:
-    externalPlugins:
-        cke-mango-comment:
-            resource: "EXT:mangomoon/Resources/Public/CKEditor/Plugins/cke-mango-comment/CKEmango_comment.js"
     config:
-        specialChars: ['&nbsp;', '&raquo;',  '&laquo;', '&rsaquo;', '&lsaquo;', '&ldquor;', '&ldquo;', '&lsquor;', '&lsquo;', '&rsquo;', '&ndash;', '&copy;', '&commat;', '&reg;', '&dagger;', '&bull;', '&pm;', '&frac14;', '&frac12;',  '&frac34;', '&iquest;', '&iexcl;', '&rarr;', '&Atilde;', '&atilde;', '&Aring;', '&aring;', '&AElig;', '&aelig;', '&Abreve;', '&abreve;', '&Amacr;', '&amacr;', '&Cacute;', '&cacute;', '&Ccaron;', '&ccaron;', '&Ccedil;', '&ccedil;', '&#7692;','&#7693;','&Euml;', '&euml;', '&Ecaron;', '&ecaron;', '&Gbreve;', '&gbreve;', '&#7716;','&#7717;','&Itilde;', '&itilde;', '&Imacr;', '&imacr;', '&Idot;', '&imath;', '&IJlig;', '&ijlig;', '&#7734;','&#7735;','&Lstrok;', '&lstrok;','&#7746;','&#7747;','&#7748;','&#7749;', '&#7750;','&#7751;','&Ntilde;', '&ntilde;', '&Oslash;', '&oslash;', '&Otilde;', '&otilde;', '&Omacr;', '&omacr;', '&OElig;', '&oelig;', '&#7770;','&#7771;','&Rcaron;', '&rcaron;', '&Sacute;', '&sacute;', '&Scaron;', '&scaron;', '&Scedil;', '&scedil;', '&Scirc;', '&scirc;','&#7778;','&#7779;','&#7788;','&#7789;', '&Tcedil;', '&tcedil;', '&Umacr;', '&umacr;', '&Yuml;', '&yuml;', '&Zcaron;', '&zcaron;']
-        contentsCss: "/Specify/Css/rte.css"
-        height: 400
+        removePlugins: null
+        contentsCss: "EXT:mangomoonspecify/Resources/Public/Css/rte.css"
+        #height: 400
+        allowedTypes: 'page,url,file,folder,email'
+
         stylesSet:
           # Absatz-Formate für <p>
-            - { name: "kein Format", element: "p", attributes: { 'class': ' ' } }
             - { name: "Vorspann", element: "p", attributes: { 'class': 'vorspann' } }
+            - { name: "Zitat", element: "p", attributes: { 'class': 'zitat' } }
+            - { name: "Zitat im Fließtext", element: "p", attributes: { 'class': 'zitatimfliesstext' } }
             - { name: "Kleine Schrift", element: "p", attributes: { 'class': 'kleine-schrift' } }
             - { name: "Kasten", element: "p", attributes: { 'class': 'kasten' } }
             - { name: "Highlight", element: "p", attributes: { 'class': 'highlight' } }
@@ -31,10 +34,28 @@ editor:
             - { name: links, groups: [ links ] }
             - { name: clipboard, groups: [ clipboard, cleanup, undo ] }
             - { name: insert, groups: [ insert ] }
-            - { name: tools, groups: [ table, specialchar ] }
+            - { name: tools, groups: [ table, specialchar, footnote ] }
             - { name: document, groups: [ mode ] }
+        
+        toolbar:
+            items:
+                - bold
+                - italic
+                - footnote
+                - '|'
+                # - insertImage
 
         format_tags: "p;h1;h2;h3;h4;h5"
+
+        table:
+            defaultHeadings: { rows: 1 }
+            contentToolbar:
+                - tableColumn
+                - tableRow
+                - mergeTableCells
+                - tableProperties
+                - tableCellProperties
+                - toggleTableCaption
 
         justifyClasses:
             - text-left
@@ -44,6 +65,8 @@ editor:
 
         extraPlugins:
             - justify
+            - autolink
+
 
         removePlugins:
             # - image
@@ -53,25 +76,8 @@ editor:
             - Underline
             - Strike
             
-classesAnchor:
-    page:
-        class: 'link-page'
-        type: 'page'
-    folder:
-        class: 'link-folder'
-        type: 'folder'
-    file:
-        class: 'link-file'
-        type: 'file'
-    external:
-        class: 'link-external'
-        type: 'url'
-    mail:
-        class: 'link-mail'
-        type: 'mail'
-
 buttons:
     link:
         properties:
             class:
-                allowedClasses: 'Knopf-1, Knopf-2, Knopf-3, link-page, link-folder, link-file, link-external, link-mail'
+                allowedClasses: 'Knopf-1, Knopf-2, Knopf-3'

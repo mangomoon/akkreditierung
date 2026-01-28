@@ -1,0 +1,69 @@
+<?php
+
+namespace Mangomoon\Mangomoon\ViewHelpers;
+
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+class LoadFeUsersViewHelper extends AbstractViewHelper
+{
+    /**
+     * @var bool
+     */
+    protected $escapeOutput = false;
+
+    public function initializeArguments()
+    {
+        $this->registerArgument('pageUid', 'int', 'Page UID to load authors for', false);
+        $this->registerArgument('as', 'string', 'Variable name to assign the result to', false, null);
+    }
+
+    public function render()
+    {
+        $pageUid = $this->arguments['pageUid'];
+        if (!$pageUid) {
+            $tsfe = $GLOBALS['TSFE'] ?? null;
+            $pageUid = $tsfe ? $tsfe->id : 0;
+        }
+
+        if (!$pageUid) {
+            $users = [];
+        } else {
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getQueryBuilderForTable('fe_users');
+            $users = $queryBuilder
+                ->select('fe_users.*')
+                ->from('fe_users')
+                ->join(
+                    'fe_users',
+                    'pages_feuser_authors_mm',
+                    'mm',
+                    $queryBuilder->expr()->eq('fe_users.uid', $queryBuilder->quoteIdentifier('mm.uid_foreign'))
+                )
+                ->where(
+                    $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->createNamedParameter($pageUid, 'integer')),
+                    $queryBuilder->expr()->eq('fe_users.deleted', 0),
+                    $queryBuilder->expr()->eq('fe_users.disable', 0)
+                )
+                ->orderBy('mm.sorting', 'ASC')
+                ->executeQuery()
+                ->fetchAllAssociative();
+        }
+
+        if ($this->arguments['as']) {
+            $variableProvider = $this->renderingContext->getVariableProvider();
+            $variableProvider->add($this->arguments['as'], $users);
+            $output = $this->renderChildren();
+            $variableProvider->remove($this->arguments['as']);
+            return $output;
+        }
+        return $users;
+    }
+
+    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'] ?? null;
+    }
+}

@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+  <f:render partial="Header/All" arguments="{_all}" />
+  
+      <!-- SLIDER ################### 0.1 -->
+    <div class="ce-bodytext">
+      <f:format.html>{data.bodytext}</f:format.html>
+    </div>
+    
+    <div class="carousel" data-ride="carousel">
+    <f:for each="{gallery.rows}" as="row">
+            <f:for each="{row.columns}" as="column">
+              <f:if condition="{column.media}">
+                <div class="carousel-item">
+                  <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}" />
+                </div>
+              </f:if>
+            </f:for>
+     </f:for>
+    </div>
+  
+
+</html>
