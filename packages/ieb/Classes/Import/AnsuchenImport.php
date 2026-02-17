@@ -41,7 +41,7 @@ class AnsuchenImport extends AbstractImport
                 ->where(
                     $queryBuilder->expr()->in('import', $trainers)
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAllAssociative();
 
             $this->newConnection->delete('tx_ieb_ansuchen_trainer_mm', ['uid_local' => $old['uid']]);
@@ -60,7 +60,7 @@ class AnsuchenImport extends AbstractImport
                 ->where(
                     $queryBuilder->expr()->in('import', $berater)
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAllAssociative();
 
             $this->newConnection->delete('tx_ieb_ansuchen_berater_mm', ['uid_local' => $old['uid']]);
@@ -80,7 +80,7 @@ class AnsuchenImport extends AbstractImport
                     $queryBuilder->expr()->eq('title', $old['angebotverantwortlich_array']),
                     $queryBuilder->expr()->eq('pid', 4),
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
             $queryBuilder = $this->newConnection->createQueryBuilder();
             $veranwortlichRow = $queryBuilder
@@ -89,7 +89,7 @@ class AnsuchenImport extends AbstractImport
                 ->where(
                     $queryBuilder->expr()->eq('pid', $page['uid'])
                 )
-                ->execute()
+                ->executeQuery()
                 ->fetchAssociative();
 
             $relations = [

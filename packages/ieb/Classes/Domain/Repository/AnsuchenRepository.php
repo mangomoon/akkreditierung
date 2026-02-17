@@ -14,7 +14,7 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+//use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -30,10 +30,11 @@ use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
  */
 class AnsuchenRepository extends BaseRepository
 {
-    public function __construct(ObjectManagerInterface $objectManager, protected CustomDataHandler $customDataHandler)
-    {
-        parent::__construct($objectManager);
-    }
+    // public function __construct(ObjectManagerInterface $objectManager, protected CustomDataHandler $customDataHandler)
+    // {
+    //     parent::__construct($objectManager);
+    //     $this->customDataHandler = $customDataHandler;
+    // }
 
     public function getAll(): QueryResultInterface
     {
@@ -63,7 +64,7 @@ class AnsuchenRepository extends BaseRepository
             ->select('uid')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('version_based_on', $queryBuilder->createNamedParameter($uid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
             ->setMaxResults(1)
             ->executeQuery()

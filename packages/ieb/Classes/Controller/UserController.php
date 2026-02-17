@@ -11,7 +11,7 @@ use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\HashService;
 use GeorgRinger\Ieb\Service\MailService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -50,7 +50,7 @@ class UserController extends BaseController
     {
         $newUser->setUsername($newUser->getUsername());
         $newUser->setUsergroup((string)$this->extensionConfiguration->getUsergroupEingeladenInaktiv());
-        $this->addFlashMessage('User wurde eingeladen und Email zur Einladung verschickt', '', AbstractMessage::INFO);
+        $this->addFlashMessage('User wurde eingeladen und Email zur Einladung verschickt', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::INFO);
         $this->userRepository->add($newUser);
         $this->userRepository->forcePersist();
         $this->sendMailToUserAfterInvitation($newUser);
@@ -80,7 +80,7 @@ class UserController extends BaseController
     protected function validateUserCrud(User $user): void
     {
         if ($this->isObjectAllowedForCurrentUser($user) === false || !self::currentUserIsTrAdmin()) {
-            $this->addFlashMessage('Sie haben keine Berechtigung, diesen Benutzer zu bearbeiten!', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Sie haben keine Berechtigung, diesen Benutzer zu bearbeiten!', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             $this->redirect('list');
         }
     }

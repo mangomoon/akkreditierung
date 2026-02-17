@@ -8,11 +8,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelper as UploadViewHelperCore;
+use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
-class UploadMultipleViewHelper extends UploadViewHelperCore
+class UploadMultipleViewHelper extends AbstractFormFieldViewHelper
 {
 
     protected PropertyMapper $propertyMapper;
@@ -47,14 +47,29 @@ class UploadMultipleViewHelper extends UploadViewHelperCore
                     // Use the file UID instead, but prefix it with "file:" to communicate this to the type converter
                     $resourcePointerValue = 'file:' . $res->getOriginalResource()->getOriginalFile()->getUid();
                 }
-                $idList[] = $hashService->appendHmac((string)$resourcePointerValue);
+                $idList[] = $hashService->appendHmac((string)$resourcePointerValue, 'umvh42793472315');
             }
             $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars(implode('|', $idList)) . '"' . $resourcePointerIdAttribute . ' />';
             $this->templateVariableContainer->add('resource', $resource);
             $output .= $this->renderChildren();
             $this->templateVariableContainer->remove('resource');
         }
-        $output .= parent::render();
+        // Render file input element (replacement for UploadViewHelper::render())
+        $this->tag->setTagName('input');
+        $this->tag->addAttribute('type', 'file');
+        $this->tag->addAttribute('name', $this->getName());
+        if ($this->hasArgument('id')) {
+            $this->tag->addAttribute('id', htmlspecialchars($this->arguments['id']));
+        }
+        // add common arguments if provided
+        if ($this->hasArgument('accept') && $this->arguments['accept']) {
+            $this->tag->addAttribute('accept', $this->arguments['accept']);
+        }
+        if ($this->hasArgument('class') && $this->arguments['class']) {
+            $this->tag->addAttribute('class', $this->arguments['class']);
+        }
+
+        $output .= $this->tag->render();
         return $output;
     }
 

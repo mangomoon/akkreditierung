@@ -19,12 +19,11 @@ use GeorgRinger\Ieb\Utility\AnsuchenUtility;
 use GeorgRinger\News\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Object\Container\Container;
+
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
@@ -32,6 +31,7 @@ use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 
 /**
  * This file is part of the "ieb" Extension for TYPO3 CMS.
@@ -50,7 +50,7 @@ class BaseController extends ActionController
     protected RelationLockService $relationLockService;
     protected ExtensionConfiguration $extensionConfiguration;
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->extensionConfiguration = new ExtensionConfiguration();
         $this->relationLockService = GeneralUtility::makeInstance(RelationLockService::class);
@@ -67,7 +67,7 @@ class BaseController extends ActionController
     protected function check(AbstractEntity $item)
     {
         if (!$this->isObjectAllowedForCurrentUser($item)) {
-            $this->addFlashMessage('Fehler bei PID check', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Fehler bei PID check', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             $this->redirect('index');
         }
     }
@@ -102,11 +102,9 @@ class BaseController extends ActionController
             throw new \RuntimeException(sprintf('Argument "%s" not found in image conversion configuration', $argumentName), 1673611646);
         }
 
-        GeneralUtility::makeInstance(Container::class)
-            ->registerImplementation(
-                \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
-                FileReference::class
-            );
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Extbase\Domain\Model\FileReference::class] = [
+            'className' => FileReference::class,
+        ];
 
         $uploadFolder = AnsuchenUtility::getFilePath(self::getCurrentUserPid());
         // if folder does not exist

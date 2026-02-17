@@ -34,7 +34,7 @@ class ReportingRepository
                 $queryBuilder->expr()->isNull('ansuchen.uid'),
             )
             ->orderBy('tx_ieb_domain_model_stammdaten.name', 'ASC')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
     }
 
@@ -46,30 +46,30 @@ class ReportingRepository
             ->from('tx_ieb_domain_model_ansuchen');
 
         $constraints = [
-            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
         ];
 
         if ($filter->bundesland > 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->status >= 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->statusList) {
             $constraints[] = $queryBuilder->expr()->in('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->statusList, Connection::PARAM_INT_ARRAY));
         }
         if ($filter->aboveStatus) {
-            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->trPid > 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         if (!empty($constraints)) {
             $select->where(...$constraints);
         }
 
-        return $select->execute()->fetchAllAssociative();
+        return $select->executeQuery()->fetchAllAssociative();
     }
 
     public function getByFilterWoTest(ReportingFilter $filter): array
@@ -80,31 +80,31 @@ class ReportingRepository
             ->from('tx_ieb_domain_model_ansuchen');
 
         $constraints = [
-            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
-            $queryBuilder->expr()->neq('pid', $queryBuilder->createNamedParameter(218, \PDO::PARAM_INT)),
+            $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+            $queryBuilder->expr()->neq('pid', $queryBuilder->createNamedParameter(218, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
         ];
 
         if ($filter->bundesland > 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.bundesland', $queryBuilder->createNamedParameter($filter->bundesland, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->status >= 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->status, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->statusList) {
             $constraints[] = $queryBuilder->expr()->in('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->statusList, Connection::PARAM_INT_ARRAY));
         }
         if ($filter->aboveStatus) {
-            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->gt('tx_ieb_domain_model_ansuchen.status', $queryBuilder->createNamedParameter($filter->aboveStatus, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
         if ($filter->trPid > 0) {
-            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \PDO::PARAM_INT));
+            $constraints[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($filter->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         if (!empty($constraints)) {
             $select->where(...$constraints);
         }
 
-        return $select->execute()->fetchAllAssociative();
+        return $select->executeQuery()->fetchAllAssociative();
     }
 
     public function getAllTraegerNames(): array
@@ -119,11 +119,11 @@ class ReportingRepository
                 'pages',
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_stammdaten.pid', $queryBuilder->quoteIdentifier('pages.uid')))
             ->where(
-                $queryBuilder->expr()->eq('pages.deleted', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('pages.hidden', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('pages.deleted', $queryBuilder->createNamedParameter(0, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('pages.hidden', $queryBuilder->createNamedParameter(0, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
             ->orderBy('tx_ieb_domain_model_stammdaten.name', 'ASC')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         $items = [];
@@ -139,7 +139,7 @@ class ReportingRepository
 
         $dateConstraints = [];
         foreach ($this->dateZuteilungLogFields as $field) {
-            $dateConstraints[] = $queryBuilder->expr()->andX(
+            $dateConstraints[] = $queryBuilder->expr()->and(
                 sprintf('year(%s)=%s', $field, $year),
                 sprintf('quarter(%s)=%s', $field, $quarter),
             );
@@ -149,7 +149,7 @@ class ReportingRepository
             ->select('*')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->orX(...$dateConstraints),
+                $queryBuilder->expr()->or(...$dateConstraints),
             )
             ->orderBy('tstamp', 'DESC')
             ->executeQuery()
@@ -200,7 +200,7 @@ class ReportingRepository
                     $queryBuilder->expr()->isNotNull($field)
                 )
                 ->groupBy('year', 'quarter')
-                ->execute()
+                ->executeQuery()
                 ->fetchAllAssociative();
 
             foreach ($rows as $row) {
@@ -226,9 +226,9 @@ class ReportingRepository
             ->select(...GeneralUtility::trimExplode(',', $fields, true))
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($row['version_based_on'], \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($row['version_based_on'], \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
         if ($parentRow) {
             $this->getRecursiveAnsuchen($collection, $parentRow, $fields);
@@ -242,10 +242,10 @@ class ReportingRepository
             ->select('*')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($nummer, \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter($version, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($nummer, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter($version, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
         if (!$row) {
             return [];
@@ -271,7 +271,7 @@ class ReportingRepository
             ->where(
                 $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
     }
 
@@ -286,7 +286,7 @@ class ReportingRepository
             )
             ->orderBy('tstamp', 'DESC')
             ->setMaxResults(1)
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
     }
 
@@ -353,7 +353,7 @@ class ReportingRepository
             $queryBuilder->expr()->eq('version_active',1),
         )
         ->orderBy('review_total_frist', 'ASC')
-        ->execute();
+        ->executeQuery();
     }
     public function getAllPruefbescheidfristen()
     {
@@ -366,7 +366,7 @@ class ReportingRepository
             $queryBuilder->expr()->eq('version_active',1),
         )
         ->orderBy('review_frist_pruefbescheid', 'ASC')
-        ->execute();
+        ->executeQuery();
     }
     public function getAllOecertfristen()
     {
@@ -378,7 +378,7 @@ class ReportingRepository
             $queryBuilder->expr()->neq('review_oecert_frist',0)
         )
         ->orderBy('review_oecert_frist', 'ASC')
-        ->execute();
+        ->execexecuteQueryute();
     }
     public function getAllTrainerfristen()
     {

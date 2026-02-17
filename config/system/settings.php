@@ -2,7 +2,7 @@
 return [
     'BE' => [
         'debug' => true,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$Q0p2YlA0RmNFNlRwNUxiZw$xzwVIiY0Jr6p8GecCJGrlmPFftyf4WxIrVOcLa1TQCU',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$YzU1eDkvWUsyUTFyMHRQQg$k3NKavxnjYz6phz/8XiQx/oi4IISJ5Egb6tcoi08wDk',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -98,6 +98,15 @@ return [
                             'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
                                 'disabled' => false,
                             ],
+                        ],
+                    ],
+                ],
+            ],
+            'Auth' => [
+                'writerConfiguration' => [
+                    \Psr\Log\LogLevel::DEBUG => [
+                        'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
+                            'logFile' => 'var/log/auth_debug.log',
                         ],
                     ],
                 ],

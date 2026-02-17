@@ -32,9 +32,9 @@ class AbstractImport
             ->select('pid', 'uid', 'title')
             ->from('pages')
             ->where(
-                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter(4, \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter(4, \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         foreach ($rows as $row) {
@@ -48,7 +48,7 @@ class AbstractImport
         return $queryBuilder
             ->delete($table)
             ->where(
-                $queryBuilder->expr()->gt('import', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT))
+                $queryBuilder->expr()->gt('import', $queryBuilder->createNamedParameter(0, \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
             ->executeStatement();
     }
@@ -66,7 +66,7 @@ class AbstractImport
         $rows = $queryBuilder
             ->select('*')
             ->from($table)
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         return $rows;
     }
@@ -97,7 +97,7 @@ class AbstractImport
             ->where(
                 $queryBuilder->expr()->eq('import', $queryBuilder->createNamedParameter($filename))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
         if ($row) {
             return $row['uid'];

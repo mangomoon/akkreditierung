@@ -24,7 +24,7 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
     /**
      * @param RegistrationForm $registrationForm
      */
-    public function isValid($registrationForm)
+    public function isValid($registrationForm): void
     {
         if (strlen($registrationForm->password) < 6) {
             $this->addErrorForProperty('password', 'Das Passwort muss mindestens 6 Zeichen lang sein', 1620000003);
@@ -53,7 +53,7 @@ class RegistrationFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\
             ->from('fe_users')
             ->where(
                 $queryBuilder->expr()->eq('username', $queryBuilder->createNamedParameter($username))
-            )->execute()->fetchAllAssociative();
+            )->executeQuery()->fetchAllAssociative();
 
         return count($count) === 0;
     }

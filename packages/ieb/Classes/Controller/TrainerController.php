@@ -149,7 +149,7 @@ class TrainerController extends BaseController
         $this->redirect('index');
     }
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->csvService = new CsvService();
         parent::initializeAction();

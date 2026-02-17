@@ -13,7 +13,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'name,markenname,strasse,ort,seit,website,email,telefon,leitbild,qms_zertifikat,qualitaet_sicherung,qualitaet_personal,review_a1_comment_internal,review_a1_comment_tr,review_a1_comment_internal_step,review_a2_comment_internal,review_a2_comment_internal_step,review_a2_comment_tr,review_a1_gs_comment_internal_step,review_a2_gs_comment_internal_step,review_a1_ag1_comment_internal_step,review_a2_ag1_comment_internal_step,review_a1_ag2_comment_internal_step,review_a2_ag2_comment_internal_step',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_stammdaten.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_stammdaten.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'name, markenname, nachweis, rechtsform, strasse, plz, ort, seit, website, email, telefon, leitbild, leitbild_datei, qms_zertifikat_datei, qms_zertifikat, qms_typ, qualitaet_sicherung, zertifikat_bis, qualitaet_sicherung_datei, qualitaet_personal, qualitaet_personal_datei, tr_pp3, locked_by, ok, weiterbildung_erklaerung, review_a1_status, review_a1_comment_internal, review_a1_comment_tr, review_a1_comment_internal_step, review_a2_status, review_a2_comment_internal, review_a2_comment_internal_step, review_a2_comment_tr, review_oecert_frist, review_oecert_frist_mail_sent14t, review_oecert_frist_mail_sent1t, status_after_review, review_a1_gs_comment_internal_step, review_a2_gs_comment_internal_step, review_a1_ag1_comment_internal_step, review_a2_ag1_comment_internal_step, review_a1_ag2_comment_internal_step, review_a2_ag2_comment_internal_step, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
@@ -90,9 +93,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.nachweis',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.nachweis.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'nachweis',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -137,7 +139,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'rechtsform' => [
@@ -247,9 +248,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.leitbild_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.leitbild_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'leitbild_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -294,16 +294,14 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'qms_zertifikat_datei' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qms_zertifikat_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qms_zertifikat_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'qms_zertifikat_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -348,7 +346,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'qms_zertifikat' => [
@@ -413,9 +410,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qualitaet_sicherung_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'qualitaet_sicherung_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -460,7 +456,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'qualitaet_personal' => [
@@ -486,9 +481,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qualitaet_personal_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_stammdaten.qualitaet_personal_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'qualitaet_personal_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -533,7 +527,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'tr_pp3' => [

@@ -1,6 +1,10 @@
 <?php
 defined('TYPO3') || die();
 
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
+
+
 (static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Ieb',
@@ -12,7 +16,8 @@ defined('TYPO3') || die();
         [
 //            \GeorgRinger\Ieb\Controller\StaticBeraterController::class => 'create, update, delete',
             \GeorgRinger\Ieb\Controller\StandortController::class => 'list,show',
-        ]
+        ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -23,7 +28,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\StammdatenController::class => 'index, list, new, update, create, edit, unlock',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -34,7 +40,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\TrainerController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -45,7 +52,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\BeraterController::class => 'index, list, new, update, create, edit,show,archive,revive,unlock',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -56,7 +64,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\StandortController::class => 'index, list, new, update, create, edit,show,archive,revive',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -67,7 +76,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\AngebotVerantwortlichController::class => 'index, list, show, new, edit, create, update, delete, unlock,archive,revive',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -78,7 +88,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\AnsuchenController::class => 'list, show, new, edit, create, update, delete,einreichen,clone,unlock,archive,revive,certificateDownload,trotzdem',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -89,7 +100,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\AnsuchenArchivController::class => 'index',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -106,7 +118,8 @@ defined('TYPO3') || die();
             \GeorgRinger\Ieb\Controller\TrainerBegutachtungController::class => 'list,show,edit,update,unlock,abbrechen',
             \GeorgRinger\Ieb\Controller\BeraterBegutachtungController::class => 'list,show,edit,update,unlock,abbrechen',
             \GeorgRinger\Ieb\Controller\StammdatenBegutachtungController::class => 'list,show,edit,update',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -117,7 +130,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, archive, revive',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -128,7 +142,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\UserController::class => 'list, show, new, edit, create, update, delete',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -139,7 +154,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\RegistrationController::class => 'index, registrationForm, registrationSuccess, doubleOptIn,acceptInvitation, acceptInvitationSuccess',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -150,7 +166,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\ReportingController::class => 'index,noRequest,filter,dateLog,gutachtenStatistik,fullCsv,fristenliste',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -161,7 +178,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\PersonSearchController::class => 'index,csv',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -172,7 +190,8 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\EsfController::class => 'index,show,pdf,pdfgs',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -183,12 +202,11 @@ defined('TYPO3') || die();
         ],
         [
             \GeorgRinger\Ieb\Controller\ExternalViewController::class => 'index',
-        ]
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\ObjectStorageConverter::class);
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter::class);
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferencesConverter::class);
+    
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(trim('
     config.pageTitleProviders {
@@ -199,10 +217,17 @@ defined('TYPO3') || die();
     }
 '));
 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Extbase\Domain\Model\FileReference::class] = ['className' => \GeorgRinger\Ieb\Domain\Model\FileReference::class];
 
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1684948718] = [
-        'nodeName' => 'json',
-        'priority' => 40,
-        'class' => \GeorgRinger\Ieb\Backend\Element\JsonElement::class,
-    ];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1684948718] = [
+    'nodeName' => 'json',
+    'priority' => 40,
+    'class' => \GeorgRinger\Ieb\Backend\Element\JsonElement::class,
+];
+
+
+
+
 })();
+
+

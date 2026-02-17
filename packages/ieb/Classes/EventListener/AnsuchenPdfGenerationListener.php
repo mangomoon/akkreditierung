@@ -68,10 +68,10 @@ final class AnsuchenPdfGenerationListener
         $queryBuilder
             ->delete('sys_file_reference')
             ->where(
-                $queryBuilder->expr()->eq('table_local', $queryBuilder->createNamedParameter('sys_file', \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('tablenames', $queryBuilder->createNamedParameter('tx_ieb_domain_model_ansuchen', \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('fieldname', $queryBuilder->createNamedParameter('akkreditierung_pdf', \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('uid_foreign', $queryBuilder->createNamedParameter($ansuchen->getUid(), \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('table_local', $queryBuilder->createNamedParameter('sys_file', \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('tablenames', $queryBuilder->createNamedParameter('tx_ieb_domain_model_ansuchen', \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('fieldname', $queryBuilder->createNamedParameter('akkreditierung_pdf', \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('uid_foreign', $queryBuilder->createNamedParameter($ansuchen->getUid(), \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
             ->executeStatement();
 
@@ -127,10 +127,10 @@ final class AnsuchenPdfGenerationListener
         $row = $queryBuilder->select('*')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
-            ->execute()
+            ->executeQuerys()
             ->fetchAssociative();
         if ($row) {
             $dataMapper = GeneralUtility::makeInstance(DataMapper::class);

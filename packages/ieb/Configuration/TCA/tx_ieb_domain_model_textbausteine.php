@@ -13,7 +13,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'kriterium,baustein',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_textbausteine.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_textbausteine.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'kriterium, baustein, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],

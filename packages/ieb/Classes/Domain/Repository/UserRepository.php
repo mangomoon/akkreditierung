@@ -57,8 +57,8 @@ class UserRepository extends BaseRepository
         return (array)$queryBuilder->select('*')
             ->from('fe_users')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($id, \PDO::PARAM_INT))
-            )->execute()->fetchAssociative();
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($id, \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
+            )->executeQuery()->fetchAssociative();
 
     }
 }

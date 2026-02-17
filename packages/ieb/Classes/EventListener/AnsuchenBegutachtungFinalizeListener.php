@@ -71,10 +71,10 @@ final class AnsuchenBegutachtungFinalizeListener
         $row = $queryBuilder->select('*')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('nummer', $queryBuilder->createNamedParameter($ansuchen->getNummer(), \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->eq('version', $queryBuilder->createNamedParameter(0, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
         if ($row) {
             $dataMapper = GeneralUtility::makeInstance(DataMapper::class);

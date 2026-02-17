@@ -1,6 +1,11 @@
 <?php
 defined('TYPO3') || die();
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
+
 $plugins = [
     'Default' => 'IEB',
     'Stamm' => 'IEB :: Stammdaten',
@@ -21,9 +26,11 @@ $plugins = [
 ];
 
 foreach ($plugins as $key => $title) {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'Ieb',
         $key,
-        $title
+        $title,
+        'bla',
+        'ieb'
     );
 }

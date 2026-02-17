@@ -13,7 +13,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'name,adresse,ort,koop_schule',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_standort.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_standort.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'name, adresse, plz, ort, pruef_bescheid, koop_schule, koop_schule_datei, ok, locked_by, archiviert, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
@@ -140,9 +143,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_standort.koop_schule_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'koop_schule_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -187,7 +189,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'ok' => [

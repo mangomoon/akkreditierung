@@ -7,10 +7,10 @@ namespace GeorgRinger\Ieb\ViewHelpers\Form;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
-use TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelper as UploadViewHelperCore;
+use TYPO3\CMS\Core\Crypto\HashService;
+use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
-class UploadViewHelper extends UploadViewHelperCore
+class UploadViewHelper extends AbstractFormFieldViewHelper
 {
 
     protected PropertyMapper $propertyMapper;
@@ -41,7 +41,7 @@ class UploadViewHelper extends UploadViewHelperCore
                 // Use the file UID instead, but prefix it with "file:" to communicate this to the type converter
                 $resourcePointerValue = 'file:' . $resource->getOriginalResource()->getOriginalFile()->getUid();
             }
-            $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($hashService->appendHmac((string)$resourcePointerValue)) . '"' . $resourcePointerIdAttribute . ' />';
+            $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($hashService->appendHmac((string)$resourcePointerValue, 'uvh462873467')) . '"' . $resourcePointerIdAttribute . ' />';
             $this->templateVariableContainer->add('resource', $resource);
             $output .= $this->renderChildren();
             $this->templateVariableContainer->remove('resource');

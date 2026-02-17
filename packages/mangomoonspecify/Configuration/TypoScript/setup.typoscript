@@ -15,28 +15,6 @@ page.10.{
 
 
 
-#tt_content.defaultpagelist.templateRootPaths.30 = EXT:mangomoonspecify/Resources/Private/Pagelist/Templates/
-#tt_content.defaultpagelist.partialRootPaths.30 = EXT:mangomoonspecify/Resources/Private/Pagelist/Partials/
-
-#plugin.tx_felogin_login {
-#  view {
-#    templateRootPaths.10 = {$plugin.tx_felogin_login.view.templateRootPath}
-#    partialRootPaths.10 = {$plugin.tx_felogin_login.view.partialRootPath}
-#    layoutRootPaths.10 = {$plugin.tx_felogin_login.view.layoutRootPath}
-#  }
-#}
-
-
-#page.10.dataProcessing.40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-#page.10.dataProcessing.40 {
-#                special = directory
-#                special.value = 9
-#                levels = 2
-#                includeSpacer = 1
-#                as = mh-navigation
-#            }
-
-
 
 
 
@@ -47,32 +25,43 @@ page.includeCSS {
   mangomoon_rte = EXT:mangomoonspecify/Resources/Public/Css/rte.css
   mangomoon_letzte = EXT:mangomoonspecify/Resources/Public/Css/letzte.css
 }
+plugin.tx_ieb._CSS_DEFAULT_STYLE >
 
-
-page.headerData.451 = TEXT
-page.headerData.451.value (
-
-  <script type="text/javascript">
-    /*<![CDATA[*/
-    <!--
-
-
-
-    // -->
-      /*]]>*/
-
-  </script>
-)
-
-
-
-##### SUCHE 
-
-lib.searchbox = RECORDS
-lib.searchbox {
-   tables = tt_content
-   # source = 109
+page.includeCSS {
+    name = EXT:ieb/Resources/Public/Css/ieb.css
+    ieb_print = EXT:ieb/Resources/Public/Css/ieb_print.css
+    ieb_print.media = print
 }
+page.includeJS {
+    name = EXT:ieb/Resources/Public/Js/ieb.js
+}
+
+plugin.tx_felogin_login {
+  view {
+    templateRootPaths {
+      0 = EXT:felogin/Resources/Private/Templates/
+      20 = EXT:mangomoonspecify/Resources/Private/fe-login/
+    }
+  }
+}
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pdfviewhelpers/Configuration/TypoScript/setup.txt">
+plugin.tx_pdfviewhelpers.settings {
+        config {
+                class = Bithost\Pdfviewhelpers\Model\BasePDF
+                jpgQuality = 100
+                fonts {
+                        subset = 0
+                        addTTFFont {
+                                opensans {
+                                        path = EXT:ieb/Resources/Public/Fonts/OpenSans.ttf
+                                        #path = EXT:pdfviewhelpers/Resources/Public/Examples/FullFeatureShowCase/OpenSans.ttf
+                                }
+                        }
+                }
+        }
+}
+module.tx_pdfviewhelpers < plugin.tx_pdfviewhelpers
 
 
 

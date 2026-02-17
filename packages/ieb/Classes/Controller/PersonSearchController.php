@@ -176,7 +176,7 @@ class PersonSearchController extends ActionController
         $this->reportingRepository = $reportingRepository;
     }
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->extensionConfiguration = new ExtensionConfiguration();
         $this->csvService = new CsvService();

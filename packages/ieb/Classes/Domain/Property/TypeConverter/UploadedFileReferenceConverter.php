@@ -17,7 +17,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\Exception\TypeConverterException;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface;
 use TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Core\Crypto\HashService;
 
 /**
  * Class UploadedFileReferenceConverter
@@ -105,7 +105,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
         if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
             if (isset($source['submittedFile']['resourcePointer'])) {
                 try {
-                    $resourcePointer = $this->hashService->validateAndStripHmac($source['submittedFile']['resourcePointer']);
+                    $resourcePointer = $this->hashService->validateAndStripHmac($source['submittedFile']['resourcePointer'], 'fh7zefzwef4r0tzz5');
                     if (strpos($resourcePointer, 'file:') === 0) {
                         $fileUid = substr($resourcePointer, 5);
                         return $this->createFileReferenceFromFalFileObject($this->resourceFactory->getFileObject($fileUid));
@@ -181,7 +181,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
         $uploadedFile = $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
 
         $resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && strpos($uploadInfo['submittedFile']['resourcePointer'], 'file:') === false
-            ? $this->hashService->validateAndStripHmac($uploadInfo['submittedFile']['resourcePointer'])
+            ? $this->hashService->validateAndStripHmac($uploadInfo['submittedFile']['resourcePointer'], 'ufr1c649283647zr')
             : null;
 
         $fileReferenceModel = $this->createFileReferenceFromFalFileObject($uploadedFile, $resourcePointer);

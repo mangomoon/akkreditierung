@@ -11,7 +11,10 @@ return [
             'disabled' => 'hidden',
         ],
         'searchFields' => 'name,nummer,zuteilung_datum,uebersicht_text,zielgruppen_ansprache,didaktik_kommentar,beratung_text,review_b1_comment_internal,review_b1_comment_internal_step,review_b1_comment_tr,review_b2_comment_internal,review_b2_comment_internal_step,review_b2_comment_tr,review_c1_comment_internal,review_c1_comment_internal_step,review_c1_comment_tr,review_c2_comment_internal,review_c2_comment_internal_step,review_c2_comment_tr,review_c3_comment_internal,review_c3_comment_internal_step,review_c3_comment_tr,review_total_comment_internal,review_total_comment_internal_step,review_total_comment_tr,pruefbescheid,kooperation,kompetenz_text1,copy_stammdaten,copy_trainer,copy_berater,copy_rev_trainer,copy_rev_berater,copy_verantwortliche,copy_verantwortliche_mail,copy_standorte,review_b14_comment_internal,review_b14_comment_internal_step,review_b14_comment_tr,review_b15_comment_internal,review_b15_comment_internal_step,review_b15_comment_tr,review_b22_comment_internal,review_b22_comment_internal_step,review_b22_comment_tr,review_b23_comment_internal,review_b23_comment_internal_step,review_b23_comment_tr,notitzzettel,trotzdem_abschicken,review_verrechnung1,review_verrechnung2,review_b1_gs_comment_internal_step,review_b14_gs_comment_internal_step,review_b1_ag1_comment_internal_step,review_b14_ag1_comment_internal_step,review_b1_ag2_comment_internal_step,review_b14_ag2_comment_internal_step,review_b15_gs_comment_internal_step,review_b2_gs_comment_internal_step,review_b22_gs_comment_internal_step,review_b23_gs_comment_internal_step,review_c1_gs_comment_internal_step,review_c2_gs_comment_internal_step,review_c3_gs_comment_internal_step,review_total_gs_comment_internal_step,review_b15_ag1_comment_internal_step,review_b2_ag1_comment_internal_step,review_b22_ag1_comment_internal_step,review_b23_ag1_comment_internal_step,review_c1_ag1_comment_internal_step,review_c2_ag1_comment_internal_step,review_c3_ag1_comment_internal_step,review_total_ag1_comment_internal_step,review_b15_ag2_comment_internal_step,review_b2_ag2_comment_internal_step,review_b22_ag2_comment_internal_step,review_b23_ag2_comment_internal_step,review_c1_ag2_comment_internal_step,review_c2_ag2_comment_internal_step,review_c3_ag2_comment_internal_step,review_total_ag2_comment_internal_step',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_ansuchen.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'name, version, version_based_on, version_active, nummer, akkreditierung_datum, einreich_datum, zuteilung_datum, akkreditierung_entscheidung_datum, typ, bundesland, uebersicht_text, uebersicht_datei, zielgruppen_ansprache, zielgruppen_ansprache_datei, fernlehre, kinderbetreuung, lernziele, lernstandserhebung, diversity, didaktik_kommentar, beratung_text, beratung_datei, review_b1_comment_internal, review_b1_comment_internal_step, review_b1_comment_tr, review_b1_status, review_b2_comment_internal, review_b2_comment_internal_step, review_b2_comment_tr, review_b2_status, review_c1_comment_internal, review_c1_comment_internal_step, review_c1_comment_tr, review_c1_status, review_c2_comment_internal, review_c2_comment_internal_step, review_c2_comment_tr, review_c2_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, review_c3_status, review_total_comment_internal, review_total_comment_internal_step, review_total_comment_tr, review_total_status, review_incoming_status, review_total_frist, locked_by, status, ok, pruefbescheid_datei, pruefbescheid, kooperation_datei, kooperation, standort_erklaerung, kompetenz1, kompetenz2, kompetenz3, kompetenz4, kompetenz5, kompetenz6, kompetenz7, kompetenz8, kompetenz9, erklaerungd1, erklaerungd2, erklaerungd3, kompetenz_text1, erklaerung_teil_a, erklaerung_teil_b, erklaerungd5, copy_stammdaten, copy_trainer, copy_berater, copy_rev_trainer, copy_rev_berater, copy_verantwortliche, copy_verantwortliche_mail, copy_standorte, review_b14_comment_internal, review_b14_comment_internal_step, review_b14_comment_tr, review_b14_status, review_b15_comment_internal, review_b15_comment_internal_step, review_b15_comment_tr, review_b15_status, review_b22_comment_internal, review_b22_comment_internal_step, review_b22_comment_tr, review_b22_status, review_b23_comment_internal, review_b23_comment_internal_step, review_b23_comment_tr, review_b23_status, upcoming_status, gutachter_locked_by, notitzzettel, archiviert, trotzdem_abschicken, review_total_frist_mail_sent14t, review_total_frist_mail_sent1t, review_frist_pruefbescheid, review_frist_pruefbescheid_mail_sent14t, review_frist_pruefbescheid_mail_sent1t, status_after_review, ende, pruefbescheid_check, status_ag_eins, status_ag_zwei, review_verrechnung_check1, review_verrechnung_check2, review_verrechnung1, review_verrechnung2, einzelunterricht, pp3, review_b1_gs_comment_internal_step, review_b14_gs_comment_internal_step, review_b1_ag1_comment_internal_step, review_b14_ag1_comment_internal_step, review_b1_ag2_comment_internal_step, review_b14_ag2_comment_internal_step, review_b15_gs_comment_internal_step, review_b2_gs_comment_internal_step, review_b22_gs_comment_internal_step, review_b23_gs_comment_internal_step, review_c1_gs_comment_internal_step, review_c2_gs_comment_internal_step, review_c3_gs_comment_internal_step, review_total_gs_comment_internal_step, review_b15_ag1_comment_internal_step, review_b2_ag1_comment_internal_step, review_b22_ag1_comment_internal_step, review_b23_ag1_comment_internal_step, review_c1_ag1_comment_internal_step, review_c2_ag1_comment_internal_step, review_c3_ag1_comment_internal_step, review_total_ag1_comment_internal_step, review_b15_ag2_comment_internal_step, review_b2_ag2_comment_internal_step, review_b22_ag2_comment_internal_step, review_b23_ag2_comment_internal_step, review_c1_ag2_comment_internal_step, review_c2_ag2_comment_internal_step, review_c3_ag2_comment_internal_step, review_total_ag2_comment_internal_step, verantwortliche, verantwortliche_mail, kopie_von, stammdaten, standorte, trainer, berater, gutachter1, gutachter2, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, '],
@@ -191,9 +194,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.uebersicht_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.uebersicht_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'uebersicht_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -238,7 +240,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'zielgruppen_ansprache' => [
@@ -257,9 +258,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.zielgruppen_ansprache_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.zielgruppen_ansprache_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'zielgruppen_ansprache_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -304,8 +304,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
-            
         ],
         'fernlehre' => [
             'exclude' => true,
@@ -343,9 +341,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.lernziele',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.lernziele.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'lernziele',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -390,16 +387,14 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'lernstandserhebung' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.lernstandserhebung',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.lernstandserhebung.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'lernstandserhebung',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -444,16 +439,14 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'diversity' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.diversity',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.diversity.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'diversity',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -498,7 +491,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'didaktik_kommentar' => [
@@ -543,9 +535,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.beratung_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.beratung_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'beratung_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -590,7 +581,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'review_b1_comment_internal' => [
@@ -972,9 +962,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.pruefbescheid_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'pruefbescheid_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -1018,8 +1007,7 @@ return [
                         'table_local' => 'sys_file',
                     ],
                     'maxitems' => 1
-                ]
-            ),
+                ],
             
         ],
         'pruefbescheid' => [
@@ -1045,9 +1033,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kooperation_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_ansuchen.kooperation_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'kooperation_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -1092,7 +1079,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'kooperation' => [

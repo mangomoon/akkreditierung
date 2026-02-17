@@ -25,7 +25,7 @@ class RegistrationInvitationValidator extends \TYPO3\CMS\Extbase\Validation\Vali
     /**
      * @param RegistrationInvitation $registrationForm
      */
-    public function isValid($registrationForm)
+    public function isValid($registrationForm): void
     {
         if ($registrationForm->password !== $registrationForm->passwordRepeat) {
             $this->addErrorForProperty('passwordRepeat', 'Die Passwörter stimmen nicht überein', 1620000001);
@@ -46,7 +46,7 @@ class RegistrationInvitationValidator extends \TYPO3\CMS\Extbase\Validation\Vali
             ->from('fe_users')
             ->where(
                 $queryBuilder->expr()->eq('username', $queryBuilder->createNamedParameter($username))
-            )->execute()->fetchAllAssociative();
+            )->executeQueryw()->fetchAllAssociative();
 
         return count($count) === 0;
     }

@@ -57,7 +57,7 @@ final class ArchiveActionListener
                     $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($ansuchenIds, Connection::PARAM_INT_ARRAY))
                 )
                 ->set('status_after_review', 2)
-                ->execute();
+                ->executeStatement();
         }
 
         return $affectedRows;
@@ -71,11 +71,11 @@ final class ArchiveActionListener
             ->select('uid', 'name', 'status', 'status_after_review')
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(
-                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
                 $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusAkkreditiertBeiTr(), Connection::PARAM_INT_ARRAY))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         return array_column($rows, 'uid');

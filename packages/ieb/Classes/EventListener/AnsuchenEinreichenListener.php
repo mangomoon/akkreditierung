@@ -51,12 +51,12 @@ final class AnsuchenEinreichenListener
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
             $queryBuilder->update('tx_ieb_domain_model_ansuchen')
                 ->where(
-                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($rawRow['pid'], \PDO::PARAM_INT)),
-                    $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($rawRow['pid'], \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                    $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
                     $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusAkkreditiert(), Connection::PARAM_INT_ARRAY)),
                 )
                 ->set('copy_stammdaten', $rawRow['copy_stammdaten'])
-                ->execute();
+                ->executeQuery();
         }
     }
 

@@ -270,7 +270,7 @@ class FristUeberwachungService
                 $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->createNamedParameter($ansuchenId, Connection::PARAM_INT)),
                 $queryBuilder->expr()->eq('tx_ieb_domain_model_angebotverantwortlich.ok', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         $recipients = [$this->extensionConfiguration->getEmailAddressGs() => ''];
@@ -292,7 +292,7 @@ class FristUeberwachungService
                     ->where(
                         $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($idList, Connection::PARAM_INT_ARRAY))
                     )
-                    ->execute();
+                    ->executeStatement();
             }
         }
     }
@@ -309,7 +309,7 @@ class FristUeberwachungService
             ->select(...['uid', 'pid', $configuration['frist'], $configuration['t1'], $configuration['t14']])
             ->from($configuration['table'])
             ->where(...$where)
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         $this->addToRecords($rows, $configuration, $type);
@@ -325,7 +325,7 @@ class FristUeberwachungService
             ->addSelectLiteral('max(uid) as uid')
             ->from($configuration['table'])
             ->groupBy('pid')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         if (empty($maxIdRows)) {
             return;
@@ -339,7 +339,7 @@ class FristUeberwachungService
             ->addSelectLiteral('uid as stammdatenUid')
             ->from($configuration['table'])
             ->where(...$where)
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         $stammdatenRowsWithFristByPid = [];
         foreach ($stammdatenRowsWithFrist as $item) {
@@ -356,7 +356,7 @@ class FristUeberwachungService
                 $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
                 $queryBuilder->expr()->in('pid', $queryBuilder->createNamedParameter(array_column($stammdatenRowsWithFrist, 'pid'), Connection::PARAM_INT_ARRAY)),
             ])
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         foreach ($ansuchenRows as &$row) {
             $row[$configuration['frist']] = $stammdatenRowsWithFristByPid[$row['pid']][$configuration['frist']];
@@ -391,7 +391,7 @@ class FristUeberwachungService
             )
             ->from($configuration['table'])
             ->where(...$where)
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         $this->addToRecords($rows, $configuration, $type);
@@ -409,7 +409,7 @@ class FristUeberwachungService
         $days = $lastDayCount = $configuration['t1AlternativeDays'] ?? 1;
         $emptyFields = [$configuration['t1']];
         $dateConstraints = [
-            $queryBuilder->expr()->andX(
+            $queryBuilder->expr()->and(
                 $queryBuilder->expr()->eq($configuration['t1'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->lte($configuration['frist'], $queryBuilder->createNamedParameter($now + 86400, Connection::PARAM_INT)),
             ),
@@ -417,7 +417,7 @@ class FristUeberwachungService
         $lastDayCount = 1;
         if (!($configuration['t14Skip'] ?? false)) {
             $days = $lastDayCount = $configuration['t14AlternativeDays'] ?? 14;
-            $dateConstraints[] = $queryBuilder->expr()->andX(
+            $dateConstraints[] = $queryBuilder->expr()->and(
                 $queryBuilder->expr()->eq($configuration['t14'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->lte($configuration['frist'], $queryBuilder->createNamedParameter($now + (86400 * $days), Connection::PARAM_INT)),
             );
@@ -430,11 +430,11 @@ class FristUeberwachungService
         foreach ($emptyFields as $emptyField) {
             $dateToLateConstraints[] = $queryBuilder->expr()->eq($emptyField, $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
         }
-        $dateConstraints[] = $queryBuilder->expr()->andX(...$dateToLateConstraints);
+        $dateConstraints[] = $queryBuilder->expr()->and(...$dateToLateConstraints);
 
         $where = [
             $queryBuilder->expr()->gt($configuration['frist'], $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
-            $queryBuilder->expr()->orX(...$dateConstraints),
+            $queryBuilder->expr()->or(...$dateConstraints),
         ];
 
         if ($addAnsuchenConstraint) {

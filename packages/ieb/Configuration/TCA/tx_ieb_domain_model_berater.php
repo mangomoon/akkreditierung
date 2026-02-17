@@ -13,7 +13,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'nachname,vorname,lebenslauf_kommentar,qualifikationsnachweise_kommentar,review_c3_comment_internal,review_c3_comment_internal_step,review_c3_comment_tr,review_c3_gs_comment_internal_step,review_c3_ag1_comment_internal_step,review_c3_ag2_comment_internal_step',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_berater.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'nachname, vorname, lebenslauf, qualifikationsnachweise, lebenslauf_kommentar, qualifikationsnachweise_kommentar, ok, archiviert, review_c3_status, review_c32_status, review_c3_comment_internal, review_c3_comment_internal_step, review_c3_comment_tr, locked_by, status_after_review, review_frist, review_frist_mail_sent14t, review_frist_mail_sent1t, pp3, gutachter_locked_by, review_c3_gs_comment_internal_step, review_c3_ag1_comment_internal_step, review_c3_ag2_comment_internal_step, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
@@ -90,9 +93,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.lebenslauf.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'lebenslauf',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -137,16 +139,14 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'qualifikationsnachweise' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_berater.qualifikationsnachweise.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'qualifikationsnachweise',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -191,7 +191,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'lebenslauf_kommentar' => [

@@ -52,11 +52,11 @@ class RelationLockService
             ->rightJoin('r', $configuration['mm'], 'mm', $queryBuilder->expr()->eq('r.uid', $queryBuilder->quoteIdentifier('mm.uid_foreign')))
             ->rightJoin('mm', 'tx_ieb_domain_model_ansuchen', 'a', $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->quoteIdentifier('a.uid')))
             ->where(
-                $queryBuilder->expr()->eq('r.uid', $queryBuilder->createNamedParameter($object->getUid(), \PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('a.version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('r.uid', $queryBuilder->createNamedParameter($object->getUid(), \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('a.version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
                 $queryBuilder->expr()->in('a.status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusRelationenGesperrt(), Connection::PARAM_INT_ARRAY)),
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         return $rows;
@@ -78,10 +78,10 @@ class RelationLockService
             ->rightJoin('r', $configuration['mm'], 'mm', $queryBuilder->expr()->eq('r.uid', $queryBuilder->quoteIdentifier('mm.uid_foreign')))
             ->rightJoin('mm', 'tx_ieb_domain_model_ansuchen', 'a', $queryBuilder->expr()->eq('mm.uid_local', $queryBuilder->quoteIdentifier('a.uid')))
             ->where(
-                $queryBuilder->expr()->eq('r.uid', $queryBuilder->createNamedParameter($object->getUid(), \PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('a.version_active', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)),
+                $queryBuilder->expr()->eq('r.uid', $queryBuilder->createNamedParameter($object->getUid(), \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('a.version_active', $queryBuilder->createNamedParameter(1, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         return $rows;

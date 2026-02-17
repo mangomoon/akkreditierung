@@ -51,12 +51,12 @@ class AngebotVerantwortlichRepository extends BaseRepository
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
             $where[] = $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'));
             $where[] = $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
         }
         if ($search->trPid > 0) {
-            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         $rows = $queryBuilder
@@ -92,7 +92,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
             )
             ->where(...$where)
             ->groupBy('tx_ieb_domain_model_angebotverantwortlich.uid', 'tx_ieb_domain_model_ansuchen.nummer')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         return $rows;
@@ -111,12 +111,12 @@ class AngebotVerantwortlichRepository extends BaseRepository
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
             $where[] = $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'));
             $where[] = $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
         }
         if ($search->trPid > 0) {
-            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         $rows = $queryBuilder
@@ -152,7 +152,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
             )
             ->where(...$where)
             ->groupBy('tx_ieb_domain_model_angebotverantwortlich.uid', 'tx_ieb_domain_model_ansuchen.nummer')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
 
         return $rows;

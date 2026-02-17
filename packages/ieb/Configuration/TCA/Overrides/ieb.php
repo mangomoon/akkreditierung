@@ -72,9 +72,8 @@ foreach (['stammdaten', 'trainer', 'berater', 'standorte'] as $field) {
 
 $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['akkreditierung_pdf'] = [
     'label' => 'Akkreditierung PDF',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-        'akkreditierung_pdf',
-        [
+    'config' => [   
+            'type' => 'file',
             'foreign_match_fields' => [
                 'fieldname' => 'akkreditierung_pdf',
                 'tablenames' => 'tx_ieb_domain_model_ansuchen',
@@ -82,5 +81,4 @@ $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['akkreditierung_pdf']
             ],
             'maxitems' => 1,
         ]
-    ),
 ];

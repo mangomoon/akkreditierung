@@ -66,12 +66,12 @@ class TrainerRepository extends BaseRepository
 
         if ($search->searchword) {
             $where[] = $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
         }
         if ($search->trPid > 0) {
-            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         $rows = $queryBuilder
@@ -112,7 +112,7 @@ class TrainerRepository extends BaseRepository
             )
             ->where(...$where)
             ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         return $rows;
     }
@@ -140,12 +140,12 @@ class TrainerRepository extends BaseRepository
 
         if ($search->searchword) {
             $where[] = $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
-                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \PDO::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
+                $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
         }
         if ($search->trPid > 0) {
-            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \PDO::PARAM_INT));
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.pid', $queryBuilder->createNamedParameter($search->trPid, \TYPO3\CMS\Core\Database\Connection::PARAM_INT));
         }
 
         $rows = $queryBuilder
@@ -185,7 +185,7 @@ class TrainerRepository extends BaseRepository
             )
             ->where(...$where)
             ->groupBy('tx_ieb_domain_model_trainer.uid', 'tx_ieb_domain_model_ansuchen.nummer')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
         return $rows;
     }

@@ -13,7 +13,7 @@ use GeorgRinger\Ieb\ExtensionConfiguration;
 use GeorgRinger\Ieb\Service\CsvService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -39,7 +39,7 @@ class ReportingController extends ActionController
     public function noRequestAction(bool $csv = false): ResponseInterface
     {
         if (!$this->isPartOfGs()) {
-            $this->addFlashMessage('Sie haben keine Berechtigung für diese Aktion.', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Sie haben keine Berechtigung für diese Aktion.', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->redirect('index');
         }
         $items = $this->reportingRepository->getTrWithNoAnsuchen();
@@ -734,7 +734,7 @@ class ReportingController extends ActionController
     }
 
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->extensionConfiguration = new ExtensionConfiguration();
         $this->csvService = new CsvService();

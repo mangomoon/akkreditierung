@@ -13,7 +13,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'nachname,vorname,email,telefon,lebenslauf',
-        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_angebotverantwortlich.gif'
+        'iconfile' => 'EXT:ieb/Resources/Public/Icons/tx_ieb_domain_model_angebotverantwortlich.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'nachname, vorname, email, telefon, verantwortlich, lebenslauf_datei, lebenslauf, ok, archiviert, review_c1_babi, review_c1_psa, status_after_review, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
@@ -128,9 +131,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei',
             'description' => 'LLL:EXT:ieb/Resources/Private/Language/locallang_db.xlf:tx_ieb_domain_model_angebotverantwortlich.lebenslauf_datei.description',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'lebenslauf_datei',
-                [
+            'config' => [
+                    'type' => 'file',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
                     ],
@@ -175,7 +177,6 @@ return [
                     ],
                     'maxitems' => 1
                 ]
-            ),
             
         ],
         'lebenslauf' => [

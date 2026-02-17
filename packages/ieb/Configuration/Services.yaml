@@ -1,4 +1,16 @@
 services:
+  GeorgRinger\Ieb\Domain\Property\TypeConverter\ObjectStorageConverter:
+    public: false
+    tags:
+      - name: 'extbase.typeConverter'
+  GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferenceConverter:
+    public: false
+    tags:
+      - name: 'extbase.typeConverter'
+  GeorgRinger\Ieb\Domain\Property\TypeConverter\UploadedFileReferencesConverter:
+    public: false
+    tags:
+      - name: 'extbase.typeConverter'
   _defaults:
     autowire: true
     autoconfigure: true

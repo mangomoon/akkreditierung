@@ -33,18 +33,18 @@ class FristUeberwachungCommand extends Command
             );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $emails = GeneralUtility::trimExplode(',', (string)$input->getArgument('email'), true);
         if (empty($emails)) {
             $io->error('No email given');
-            return Command::INVALID;
+            return Command::FAILURE;
         }
         foreach ($emails as $email) {
             if (!GeneralUtility::validEmail($email)) {
                 $io->error('Invalid email given: ' . $email);
-                return Command::INVALID;
+                return Command::FAILURE;
             }
         }
 

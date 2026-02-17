@@ -111,10 +111,10 @@ class RegistrationRepository
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
         $queryBuilder->update('pages')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
             ->set('hidden', 0)
-            ->execute();
+            ->executeStatement();
     }
 
 
@@ -129,16 +129,16 @@ class RegistrationRepository
             ->from('pages')
             ->where(
                 $queryBuilder->expr()->eq('title', $queryBuilder->createNamedParameter($name)),
-                $queryBuilder->expr()->eq('doktype', $queryBuilder->createNamedParameter(PageRepository::DOKTYPE_SYSFOLDER, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($this->extensionConfiguration::getParentUserPid(), \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('doktype', $queryBuilder->createNamedParameter(PageRepository::DOKTYPE_SYSFOLDER, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($this->extensionConfiguration::getParentUserPid(), \TYPO3\CMS\Core\Database\Connection::PARAM_INT))
             )
-            ->execute()->fetchOne();
+            ->executeQuery()->fetchOne();
     }
 
     protected function insertToTable(string $table, array $data): int
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
-        $queryBuilder->insert($table)->values($data)->execute();
+        $queryBuilder->insert($table)->values($data)->executeStatement();
         return (int)$queryBuilder->getConnection()->lastInsertId($table);
     }
 

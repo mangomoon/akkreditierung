@@ -12,7 +12,7 @@ use GeorgRinger\Ieb\Domain\Repository\UserRepository;
 use GeorgRinger\Ieb\Service\HashService;
 use GeorgRinger\Ieb\Service\MailService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -32,7 +32,7 @@ class RegistrationController extends ActionController
     protected RegistrationRepository $registrationRepository;
     protected UserRepository $userRepository;
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->registrationRepository = GeneralUtility::makeInstance(RegistrationRepository::class);
     }
@@ -66,28 +66,28 @@ class RegistrationController extends ActionController
     public function doubleOptInAction(int $userId, string $pageHash): ResponseInterface
     {
         if (!HashService::validate((string)$userId, $pageHash)) {
-            $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Hash ist ungültig', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->htmlResponse();
         }
         $user = $this->userRepository->getRawHiddenUserById($userId);
         if (!$user) {
-            $this->addFlashMessage('User nicht gefunden', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('User nicht gefunden', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->htmlResponse();
         }
         $pageId = $user['pid'];
         $row = $this->registrationRepository->getPageRowById($pageId);
         if (!$row) {
-            $this->addFlashMessage('Bildungsträger nicht gefunden', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Bildungsträger nicht gefunden', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->htmlResponse();
         }
         if ($row['hidden'] === 0) {
-            $this->addFlashMessage('Bildungsträger bereits aktiv', '', AbstractMessage::INFO);
+            $this->addFlashMessage('Bildungsträger bereits aktiv', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::INFO);
             return $this->htmlResponse();
         }
         $this->registrationRepository->activatePage($pageId);
         $this->registrationRepository->enableUser($userId);
 
-        $this->addFlashMessage('Die Registrierung war erfolgreich', '', AbstractMessage::OK);
+        $this->addFlashMessage('Die Registrierung war erfolgreich', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
         $this->view->assign('success', true);
         return $this->htmlResponse();
     }
@@ -95,7 +95,7 @@ class RegistrationController extends ActionController
     public function acceptInvitationAction(int $userId, string $userHash): ResponseInterface
     {
         if (!HashService::validate((string)$userId, $userHash)) {
-            $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Hash ist ungültig', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->htmlResponse();
         }
 
@@ -115,12 +115,12 @@ class RegistrationController extends ActionController
     public function acceptInvitationSuccessAction(Dto\RegistrationInvitation $registrationInvitation): ResponseInterface
     {
         if (!HashService::validate((string)$registrationInvitation->userId, $registrationInvitation->userHash)) {
-            $this->addFlashMessage('Hash ist ungültig', '', AbstractMessage::ERROR);
+            $this->addFlashMessage('Hash ist ungültig', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             return $this->htmlResponse();
         }
 
         $this->registrationRepository->updateUserFromInvitation($registrationInvitation);
-        $this->addFlashMessage('Die Registrierung war erfolgreich', '', AbstractMessage::OK);
+        $this->addFlashMessage('Die Registrierung war erfolgreich', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
         return $this->htmlResponse();
     }
 
@@ -139,7 +139,9 @@ class RegistrationController extends ActionController
                     ]
                 ),
 
-            'page' => $this->configurationManager->getContentObject()->data,
+            'page' => $this->request->getAttribute('currentContentObject')->data,
+            
+            
         ];
         $mailService = GeneralUtility::makeInstance(MailService::class);
         $mailService->sendSingle(
@@ -155,7 +157,7 @@ class RegistrationController extends ActionController
         $this->userRepository = $userRepository;
     }
 
-    protected function addErrorFlashMessage()
+    protected function addErrorFlashMessage(): void
     {
     }
 

@@ -70,9 +70,9 @@ class FalFromRecordViewHelper extends AbstractViewHelper
             ->from($arguments['table'])
             ->where($queryBuilder->expr()->eq(
                 'uid',
-                $queryBuilder->createNamedParameter($arguments['id'], \PDO::PARAM_INT)
+                $queryBuilder->createNamedParameter($arguments['id'], \TYPO3\CMS\Core\Database\Connection::PARAM_INT)
             ))
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
 
         $templateVariableContainer = $renderingContext->getVariableProvider();
