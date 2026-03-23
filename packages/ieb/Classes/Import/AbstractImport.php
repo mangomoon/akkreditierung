@@ -5,7 +5,7 @@ namespace GeorgRinger\Ieb\Import;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Resource\DuplicationBehavior;
+use TYPO3\CMS\Core\Resource\Enum\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -150,7 +150,7 @@ class AbstractImport
         }
 
         $this->newConnection->insert('sys_file_reference', [
-            'table_local' => 'sys_file',
+            
             'uid_local' => $finalFile->getUid(),
             'tablenames' => $tableName,
             'uid_foreign' => $foreignUid,

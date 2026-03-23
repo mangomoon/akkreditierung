@@ -18,14 +18,14 @@ $temporaryCopyright = array(
  
 
 // add field to tca
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
-    'sys_file_reference',
-    $temporaryCopyright
-);
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+//     'sys_file_reference',
+//     $temporaryCopyright
+// );
  
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
-    'sys_file_reference',
-    'imageoverlayPalette',
-    'copyright'
-);
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+//     'sys_file_reference',
+//     'imageoverlayPalette',
+//     'copyright'
+// );

@@ -32,11 +32,11 @@ $tempColumns = [
         )
     ),
 ];
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
-    'sys_file_reference',
-    $tempColumns,
-    1
-);
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+//     'sys_file_reference',
+//     $tempColumns,
+//     1
+// );
 
 
 // Page: Abstract -> RTE

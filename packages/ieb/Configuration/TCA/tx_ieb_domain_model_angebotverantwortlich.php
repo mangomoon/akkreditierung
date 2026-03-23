@@ -173,7 +173,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lebenslauf_datei',
                         'tablenames' => 'tx_ieb_domain_model_angebotverantwortlich',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

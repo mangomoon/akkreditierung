@@ -82,6 +82,7 @@ class UserController extends BaseController
         if ($this->isObjectAllowedForCurrentUser($user) === false || !self::currentUserIsTrAdmin()) {
             $this->addFlashMessage('Sie haben keine Berechtigung, diesen Benutzer zu bearbeiten!', '', \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
             $this->redirect('list');
+            return;
         }
     }
 
@@ -91,7 +92,7 @@ class UserController extends BaseController
         $user->setArchiviert(true);
         $this->userRepository->update($user);
         $this->userRepository->forcePersist();
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     public function reviveAction(User $user): ResponseInterface
@@ -99,7 +100,7 @@ class UserController extends BaseController
         $this->validateUserCrud($user);
         $user->setArchiviert(false);
         $this->userRepository->update($user);
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     protected function sendMailToUserAfterInvitation(User $user): void

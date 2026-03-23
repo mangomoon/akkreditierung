@@ -42,8 +42,9 @@ class AnsuchenRepository extends BaseRepository
         $constraints = [
             $query->equals('version_active', 1),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
         return $query->execute();
+        
     }
    
     public function getNextAnsuchen(int $uid)
@@ -80,7 +81,7 @@ class AnsuchenRepository extends BaseRepository
             $query->in('status', AnsuchenStatus::statusForAkkreditiertOnly()),
             $query->equals('version_active', 1),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
         return $query->execute();
     }
 
@@ -91,7 +92,7 @@ class AnsuchenRepository extends BaseRepository
             $query->in('status', AnsuchenStatus::statusBearbeitbarDurchTr()),
             $query->equals('version_active', 1),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
         return $query->execute();
     }
 
@@ -134,7 +135,7 @@ class AnsuchenRepository extends BaseRepository
         }
 
 
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         return $query->execute()->toArray();
     }
@@ -174,7 +175,7 @@ class AnsuchenRepository extends BaseRepository
             $query->in('status', AnsuchenStatus::statusSichtbarDurchGs()),
             $query->equals('version_active', 1),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         return $query->execute();
     }
@@ -187,7 +188,7 @@ class AnsuchenRepository extends BaseRepository
             $query->equals('version_active', 1),
             $query->equals('pid', $pid),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         return $query->execute();
     }
@@ -204,7 +205,7 @@ class AnsuchenRepository extends BaseRepository
             //     $query->equals('gutachter2', $userId),
             // )
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         return $query->execute();
     }
@@ -395,7 +396,7 @@ class AnsuchenRepository extends BaseRepository
             $query->equals('nummer', $ansuchen->getNummer()),
             $query->equals('version_active', 0),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
         return $query->execute();
     }
 
@@ -459,7 +460,7 @@ class AnsuchenRepository extends BaseRepository
             $query->equals('nummer', $ansuchennummer),
             $query->equals('version', 0),
         ];
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         return $query->execute();
     }

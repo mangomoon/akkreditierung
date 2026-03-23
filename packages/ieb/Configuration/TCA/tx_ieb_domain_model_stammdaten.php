@@ -135,7 +135,6 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'nachweis',
                         'tablenames' => 'tx_ieb_domain_model_stammdaten',
-                        'table_local' => 'sys_file',
                     ],
                     'maxitems' => 1
                 ]
@@ -290,7 +289,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'leitbild_datei',
                         'tablenames' => 'tx_ieb_domain_model_stammdaten',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -342,7 +341,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qms_zertifikat_datei',
                         'tablenames' => 'tx_ieb_domain_model_stammdaten',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -452,7 +451,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qualitaet_sicherung_datei',
                         'tablenames' => 'tx_ieb_domain_model_stammdaten',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -523,7 +522,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qualitaet_personal_datei',
                         'tablenames' => 'tx_ieb_domain_model_stammdaten',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

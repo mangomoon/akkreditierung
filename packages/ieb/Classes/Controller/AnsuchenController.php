@@ -88,8 +88,8 @@ class AnsuchenController extends BaseController
         $this->ansuchenRepository->update($newAnsuchen);
         $this->ansuchenRepository->forcePersist();
         //$this->redirect('list');
-        return $this->redirectToDirectly();
-        //return $this->redirectTo($ansuchen->getUid());
+        $this->redirectToDirectly();
+        return $this->htmlResponse();
     }
 
     /**
@@ -248,21 +248,22 @@ class AnsuchenController extends BaseController
         $this->deleteFiles($fileDelete, $ansuchen);
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
-        return $this->redirectTo($ansuchen->getUid());
+        $this->redirectTo($ansuchen->getUid());
+        return $this->htmlResponse();
     }
 
     public function deleteAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->remove($ansuchen);
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     public function unlockAction(Ansuchen $ansuchen): ResponseInterface
     {
         $this->check($ansuchen);
         $this->ansuchenRepository->removeLockByUser($ansuchen->getUid());
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     protected function addRelationDataToView(): void

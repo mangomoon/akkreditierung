@@ -77,7 +77,7 @@ $GLOBALS['TCA']['tx_ieb_domain_model_ansuchen']['columns']['akkreditierung_pdf']
             'foreign_match_fields' => [
                 'fieldname' => 'akkreditierung_pdf',
                 'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                'table_local' => 'sys_file',
+                
             ],
             'maxitems' => 1,
         ]

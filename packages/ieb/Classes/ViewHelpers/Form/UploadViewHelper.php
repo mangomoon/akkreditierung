@@ -41,7 +41,10 @@ class UploadViewHelper extends AbstractFormFieldViewHelper
                 // Use the file UID instead, but prefix it with "file:" to communicate this to the type converter
                 $resourcePointerValue = 'file:' . $resource->getOriginalResource()->getOriginalFile()->getUid();
             }
-            $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($hashService->appendHmac((string)$resourcePointerValue, 'uvh462873467')) . '"' . $resourcePointerIdAttribute . ' />';
+            $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($hashService->appendHmac((string)$resourcePointerValue)) . '"' . $resourcePointerIdAttribute . ' />';
+
+            // $output .= '<input type="hidden" name="' . $this->getName() . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($hashService->appendHmac((string)$resourcePointerValue, 'uvh462873467')) . '"' . $resourcePointerIdAttribute . ' />';
+
             $this->templateVariableContainer->add('resource', $resource);
             $output .= $this->renderChildren();
             $this->templateVariableContainer->remove('resource');

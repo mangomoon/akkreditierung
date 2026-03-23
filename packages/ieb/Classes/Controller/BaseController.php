@@ -290,5 +290,24 @@ class BaseController extends ActionController
         }
     }
 
+    //mm
+    protected function allowFileUploadProperties(string $argumentName, array $fileUploadProperties): void
+    {
+        $propertyMappingConfiguration = $this->arguments->getArgument($argumentName)
+        ->getPropertyMappingConfiguration();
+        $propertyMappingConfiguration->allowAllProperties();
+        
+        foreach ($fileUploadProperties as $fileUploadProperty) {
+            $propertyMappingConfiguration->forProperty($fileUploadProperty)
+                ->allowAllProperties()
+                ->allowCreationForSubProperty('submittedFile');
+            
+            $propertyMappingConfiguration->forProperty($fileUploadProperty)
+                ->forProperty('submittedFile')
+                ->allowAllProperties()
+                ->skipUnknownProperties();
+        }
+    }
+
 
 }

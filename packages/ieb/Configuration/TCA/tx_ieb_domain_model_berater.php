@@ -135,7 +135,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lebenslauf',
                         'tablenames' => 'tx_ieb_domain_model_berater',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -187,7 +187,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qualifikationsnachweise',
                         'tablenames' => 'tx_ieb_domain_model_berater',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

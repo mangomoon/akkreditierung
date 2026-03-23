@@ -304,7 +304,7 @@ class FristUeberwachungService
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($configuration['table']);
         $where = $this->getConstraint($queryBuilder, $configuration);
         $where[] = $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT));
-
+        $where[] = $queryBuilder->expr()->eq('archiviert', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
         $rows = $queryBuilder
             ->select(...['uid', 'pid', $configuration['frist'], $configuration['t1'], $configuration['t14']])
             ->from($configuration['table'])
@@ -349,11 +349,12 @@ class FristUeberwachungService
         // now fetch all ansuchen which match with those pids
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ieb_domain_model_ansuchen');
         $ansuchenRows = $queryBuilder
-            ->select(...['uid', 'pid', 'version_active', 'status'])
+            ->select(...['uid', 'pid', 'version_active', 'status', 'archiviert'])
             ->from('tx_ieb_domain_model_ansuchen')
             ->where(...[
                 $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForFristMails(), Connection::PARAM_INT_ARRAY)),
                 $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('archiviert', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->in('pid', $queryBuilder->createNamedParameter(array_column($stammdatenRowsWithFrist, 'pid'), Connection::PARAM_INT_ARRAY)),
             ])
             ->executeQuery()
@@ -440,7 +441,7 @@ class FristUeberwachungService
         if ($addAnsuchenConstraint) {
             $where[] = $queryBuilder->expr()->eq('version_active', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT));
             $where[] = $queryBuilder->expr()->in('status', $queryBuilder->createNamedParameter(AnsuchenStatus::statusForFristMails(), Connection::PARAM_INT_ARRAY));
-
+            $where[] = $queryBuilder->expr()->eq('tx_ieb_domain_model_ansuchen.archiviert', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT));
         }
 
         return $where;

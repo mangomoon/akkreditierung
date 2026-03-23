@@ -113,7 +113,7 @@ class AnsuchenBegutachtungController extends BaseController
         $this->ansuchenRepository->update($ansuchen);
         $this->ansuchenRepository->forcePersist();
         $this->eventDispatcher->dispatch(new Event\AnsuchenBegutachtungsSchlussEvent($ansuchen, $stammdaten));
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     public function updateAction(Ansuchen $ansuchen, Dto\Begutachtung\BasisBegutachtung $begutachtung, array $verantwortliche = []): void
@@ -169,6 +169,7 @@ class AnsuchenBegutachtungController extends BaseController
             $this->redirect('list');
         }
         $this->redirect('list');
+        
     }
 
     public function zuteilungAction(Ansuchen $ansuchen)

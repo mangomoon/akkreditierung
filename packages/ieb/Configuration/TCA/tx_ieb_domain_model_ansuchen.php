@@ -236,7 +236,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'uebersicht_datei',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -300,7 +300,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'zielgruppen_ansprache_datei',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -383,7 +383,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lernziele',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -435,7 +435,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lernstandserhebung',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -487,7 +487,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'diversity',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -577,7 +577,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'beratung_datei',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -1004,7 +1004,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'pruefbescheid_datei',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ],
@@ -1075,7 +1075,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'kooperation_datei',
                         'tablenames' => 'tx_ieb_domain_model_ansuchen',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

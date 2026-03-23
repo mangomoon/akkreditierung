@@ -53,7 +53,7 @@ class AnsuchenArchivRepository
         }
         if ($filter->searchStammdaten) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($filter->searchStammdaten) . '%';
-            $constraints[] = $queryBuilder->expr()->orX(
+            $constraints[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('stammdaten.name', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('stammdaten.markenname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR))
             );

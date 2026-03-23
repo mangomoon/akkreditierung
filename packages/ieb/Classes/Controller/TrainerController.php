@@ -70,7 +70,7 @@ class TrainerController extends BaseController
     public function createAction(Trainer $newTrainer)
     {
         $this->trainerRepository->add($newTrainer);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function editAction(Trainer $trainer): ResponseInterface
@@ -106,7 +106,7 @@ class TrainerController extends BaseController
         if (!$this->relationLockService->usedByAnsuchenInReview($trainer)) {
             $this->trainerRepository->remove($trainer);
         }
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     protected function redirectTo(int $recordId): void
@@ -125,7 +125,7 @@ class TrainerController extends BaseController
         $this->check($trainer);
         $trainer->setLockedBy(0);
         $this->trainerRepository->update($trainer);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function archiveAction(Trainer $trainer): ResponseInterface
@@ -136,7 +136,7 @@ class TrainerController extends BaseController
             $this->trainerRepository->update($trainer);
             $this->eventDispatcher->dispatch(new TrainerArchiveEvent($trainer));
         }
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function reviveAction(Trainer $trainer): ResponseInterface
@@ -146,7 +146,7 @@ class TrainerController extends BaseController
             $trainer->setArchiviert(false);
             $this->trainerRepository->update($trainer);
         }
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function initializeAction(): void

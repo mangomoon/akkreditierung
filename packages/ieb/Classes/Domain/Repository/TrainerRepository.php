@@ -38,7 +38,7 @@ class TrainerRepository extends BaseRepository
             $constraints[] = $query->like('vorname', '%' . $search->vorname . '%');
         }
         if ($constraints) {
-            $query->matching($query->logicalAnd($constraints));
+            $query->matching($query->logicalAnd(...$constraints));
         }
         return $query->execute();
     }
@@ -56,7 +56,7 @@ class TrainerRepository extends BaseRepository
         ];
 
         if ($search->respectStatus) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_babi_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_babi_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_psa_status', 0),
@@ -65,7 +65,7 @@ class TrainerRepository extends BaseRepository
         }
 
         if ($search->searchword) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
@@ -130,7 +130,7 @@ class TrainerRepository extends BaseRepository
         ];
 
         if ($search->respectStatus) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_babi_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c22_babi_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_trainer.review_c21_psa_status', 0),
@@ -139,7 +139,7 @@ class TrainerRepository extends BaseRepository
         }
 
         if ($search->searchword) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_trainer.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );

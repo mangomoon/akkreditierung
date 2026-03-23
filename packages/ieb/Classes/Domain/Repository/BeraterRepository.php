@@ -37,7 +37,7 @@ class BeraterRepository extends BaseRepository
             $constraints[] = $query->like('vorname', '%' . $search->vorname . '%');
         }
         if ($constraints) {
-            $query->matching($query->logicalAnd($constraints));
+            $query->matching($query->logicalAnd(...$constraints));
         }
         return $query->execute();
     }
@@ -54,7 +54,7 @@ class BeraterRepository extends BaseRepository
         ];
 
         if ($search->respectStatus) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c3_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c32_status', 0),
             );
@@ -62,7 +62,7 @@ class BeraterRepository extends BaseRepository
 
         if ($search->searchword) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
@@ -120,7 +120,7 @@ class BeraterRepository extends BaseRepository
         ];
 
         if ($search->respectStatus) {
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c3_status', 0),
                 $queryBuilder->expr()->gt('tx_ieb_domain_model_berater.review_c32_status', 0),
             );
@@ -128,7 +128,7 @@ class BeraterRepository extends BaseRepository
 
         if ($search->searchword) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_berater.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );

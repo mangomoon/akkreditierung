@@ -27,6 +27,12 @@ class StammdatenController extends BaseController
     protected StammdatenRepository $stammdatenRepository;
     protected AnsuchenRepository $ansuchenRepository;
 
+
+
+
+
+
+
     public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
@@ -48,6 +54,7 @@ class StammdatenController extends BaseController
     }
 
     public function updateAction(Stammdaten $stammdaten, array $fileDelete = []): ResponseInterface
+    
     {
         $this->check($stammdaten);
         $this->deleteFiles($fileDelete, $stammdaten);
@@ -56,6 +63,7 @@ class StammdatenController extends BaseController
         
 //        $this->redirectToPageId(14);
         return $this->redirectTo($stammdaten->getUid());
+        //return $this->htmlResponse();
     }
 
     public function indexAction(): ResponseInterface
@@ -82,16 +90,17 @@ class StammdatenController extends BaseController
     }
 
 
-    protected function redirectTo(int $recordId): void
+    protected function redirectTo(int $recordId): ResponseInterface
     {
         $arguments = $this->request->getArguments();
 
         if (isset($arguments['saveAndAnsuchen'])) {
-            $this->redirectToPageId(14);
+            return $this->redirectToPageId(14);
         }
         if (isset($arguments['save'])) {
-            $this->redirect('index', null, null, ['stammdaten' => $recordId]);
+            return $this->redirect('index', null, null, ['stammdaten' => $recordId]);
         }
+        return $this->htmlResponse();
     }
 
     public function unlockAction(Stammdaten $stammdaten)
@@ -110,6 +119,15 @@ class StammdatenController extends BaseController
     public function initializeUpdateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('stammdaten');
+
+        $this->allowFileUploadProperties('stammdaten', [
+            'nachweis',
+            'leitbildDatei',
+            'qualitaetPersonalDatei',
+            'qmsZertifikatDatei',
+            'qualitaetSicherungDatei'
+        ]);
+        
     }
 
     public function injectStammdatenRepository(StammdatenRepository $stammdatenRepository): void

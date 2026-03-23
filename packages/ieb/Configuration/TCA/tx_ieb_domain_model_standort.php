@@ -185,7 +185,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'koop_schule_datei',
                         'tablenames' => 'tx_ieb_domain_model_standort',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

@@ -63,7 +63,7 @@ class BeraterController extends BaseController
     public function createAction(Berater $newBerater)
     {
         $this->beraterRepository->add($newBerater);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function editAction(Berater $berater): ResponseInterface
@@ -110,7 +110,7 @@ class BeraterController extends BaseController
         if (!$this->relationLockService->usedByAnsuchenInReview($berater)) {
             $this->beraterRepository->remove($berater);
         }
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function archiveAction(Berater $berater)
@@ -123,7 +123,7 @@ class BeraterController extends BaseController
         }
         
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function unlockAction(Berater $berater)
@@ -131,7 +131,7 @@ class BeraterController extends BaseController
         $this->check($berater);
         $berater->setLockedBy(0);
         $this->beraterRepository->update($berater);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function reviveAction(Berater $berater)
@@ -143,7 +143,7 @@ class BeraterController extends BaseController
         }
         
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
 }

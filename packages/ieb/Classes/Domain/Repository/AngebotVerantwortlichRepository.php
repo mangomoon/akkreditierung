@@ -50,7 +50,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
         if ($search->searchword) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
             $where[] = $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'));
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );
@@ -110,7 +110,7 @@ class AngebotVerantwortlichRepository extends BaseRepository
         if ($search->searchword) {
             $escapedLikeString = '%' . $queryBuilder->escapeLikeWildcards($search->searchword) . '%';
             $where[] = $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter('%' . $search->searchword . '%'));
-            $where[] = $queryBuilder->expr()->orX(
+            $where[] = $queryBuilder->expr()->or(
                 $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.vorname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
                 $queryBuilder->expr()->like('tx_ieb_domain_model_angebotverantwortlich.nachname', $queryBuilder->createNamedParameter($escapedLikeString, \TYPO3\CMS\Core\Database\Connection::PARAM_STR)),
             );

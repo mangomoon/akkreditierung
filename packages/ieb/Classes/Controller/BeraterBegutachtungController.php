@@ -83,7 +83,7 @@ class BeraterBegutachtungController extends BaseController
     public function abbrechenAction(Berater $berater) {
         // $this->commentVersioning($berater);
         $this->beraterRepository->unsetGutachterLockedAndPersist($berater);
-        $this->redirectToPageId(217);
+        return $this->redirectToPageId(217);
     }
 
     private function commentVersioning(Berater $berater): void

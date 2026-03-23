@@ -378,7 +378,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lebenslauf_datei',
                         'tablenames' => 'tx_ieb_domain_model_trainer',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -430,7 +430,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qualifikation_babi_datei',
                         'tablenames' => 'tx_ieb_domain_model_trainer',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -482,7 +482,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'lehr_befugnis_datei',
                         'tablenames' => 'tx_ieb_domain_model_trainer',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]
@@ -534,7 +534,7 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'qualifikation_psa_datei',
                         'tablenames' => 'tx_ieb_domain_model_trainer',
-                        'table_local' => 'sys_file',
+                        
                     ],
                     'maxitems' => 1
                 ]

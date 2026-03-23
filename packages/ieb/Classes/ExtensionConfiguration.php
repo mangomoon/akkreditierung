@@ -17,7 +17,7 @@ class ExtensionConfiguration
     protected int $usergroupTr = 1;
     protected int $pageRegistration = 22;
     protected \DateTime $ansuchenEnde;
-    protected string $emailAddressGs = 'office@levelup-eb.at';
+    protected string $emailAddressGs = 'levelup@bifeb.at';
     /** @var string[]|array[] */
     protected array $emailBabi = [];
     /** @var string[]|array[] */

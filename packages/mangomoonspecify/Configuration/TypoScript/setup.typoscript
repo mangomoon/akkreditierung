@@ -41,6 +41,7 @@ plugin.tx_felogin_login {
     templateRootPaths {
       0 = EXT:felogin/Resources/Private/Templates/
       20 = EXT:mangomoonspecify/Resources/Private/fe-login/
+      100 = EXT:felogin/Resources/Private/Templates/
     }
   }
 }

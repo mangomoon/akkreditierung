@@ -1,83 +1,68 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <f:flashMessages/>
-<f:if condition="{cookieWarning}">
-    <f:render partial="CookieWarning" />
-</f:if>
 
 <f:if condition="{messageKey}">
-    <div class="login-warnung begutachtung-kriterium">
-        <h3>
-            <f:render partial="RenderLabelOrMessage" arguments="{key: '{messageKey}_header'}"/>
-        </h3>
-        <p>
-            <f:render partial="RenderLabelOrMessage" arguments="{key: '{messageKey}_message'}"/>
-        </p>
-    </div>
-</f:if>
-<f:if condition="{onSubmit}">
-    <f:then>
-        <f:form target="_top" fieldNamePrefix="" action="login" onsubmit="{onSubmit}" additionalAttributes="{spellcheck: 'false'}">
-            <f:render section="content" arguments="{_all}"/>
-        </f:form>
-    </f:then>
-    <f:else>
-        <f:form target="_top" fieldNamePrefix="" action="login" additionalAttributes="{spellcheck: 'false'}">
-            <f:render section="content" arguments="{_all}"/>
-        </f:form>
-    </f:else>
+    <h3>
+        <f:render partial="RenderLabelOrMessage" arguments="{key: '{messageKey}_header'}"/>
+    </h3>
+    <p>
+        <f:render partial="RenderLabelOrMessage" arguments="{key: '{messageKey}_message'}"/>
+    </p>
 </f:if>
 
+<f:form target="_top" fieldNamePrefix="" action="login" requestToken="{requestToken}" spellcheck="false">
+    <f:render section="content" arguments="{_all}"/>
+</f:form>
+
 <f:if condition="{settings.showForgotPassword}">
-    <f:link.action action="recovery" id="passwordRecovery" class="knopfersatz knopf-s" controller="PasswordRecovery">
-        Passwort zurücksetzen
+    <f:link.action action="recovery" controller="PasswordRecovery">
+        <f:render partial="RenderLabelOrMessage" arguments="{key: 'forgot_header'}"/>
     </f:link.action>
 </f:if>
 
 <f:section name="content">
-
     <fieldset>
         <legend>
             <!-- <f:translate key="login"/> -->
         </legend>
         <div>
-            <label>
+            <label for="tx-felogin-input-username">
                 name
-                <f:form.textfield name="user" required="true" additionalAttributes="{autocomplete: 'username'}"/>
             </label>
+            <f:form.textfield name="user" required="true" autocomplete="username" id="tx-felogin-input-username"/>
         </div>
         <div>
-            <label>
+            <label for="tx-felogin-input-password">
                 passwort
-                <f:form.password name="pass" additionalAttributes="{required: 'required', autocomplete: 'current-password'}"/>
             </label>
+            <f:form.password name="pass" required="required" autocomplete="current-password" id="tx-felogin-input-password"/>
         </div>
 
         <f:if condition="{permaloginStatus} > -1">
             <div>
-                <label class="permalogin">
-                    Angemeldet bleiben:
-                    <f:if condition="{permaloginStatus} == 1">
-                        <f:then>
-                            <f:form.hidden name="permalogin" value="0" additionalAttributes="{disabled: 'disabled'}"/>
-                            <f:form.checkbox name="permalogin" id="permalogin" value="1" checked="checked"/>
-                        </f:then>
-                        <f:else>
-                            <f:form.hidden name="permalogin" value="0"/>
-                            <f:form.checkbox name="permalogin" id="permalogin" value="1"/>
-                        </f:else>
-                    </f:if>
+                <label for="permalogin">
+                    <f:translate id="permalogin"/>
                 </label>
+                <f:if condition="{permaloginStatus} == 1">
+                    <f:then>
+                        <f:form.hidden name="permalogin" value="0" disabled="disabled"/>
+                        <f:form.checkbox name="permalogin" id="permalogin" value="1" checked="checked"/>
+                    </f:then>
+                    <f:else>
+                        <f:form.hidden name="permalogin" value="0"/>
+                        <f:form.checkbox name="permalogin" id="permalogin" value="1"/>
+                    </f:else>
+                </f:if>
             </div>
         </f:if>
 
-        <div class="abstandoben">
+        <div>
             <f:form.submit class="knopf-s" value="{f:translate(key: 'login')}" name="submit"/>
         </div>
 
         <div class="felogin-hidden">
             <f:form.hidden name="logintype" value="login"/>
-            <f:form.hidden name="pid" value="{storagePid}"/>
             <f:if condition="{redirectURL}!=''">
                 <f:form.hidden name="redirect_url" value="{redirectURL}" />
             </f:if>

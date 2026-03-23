@@ -77,7 +77,7 @@ final class AnsuchenPdfGenerationListener
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_ieb_domain_model_ansuchen');
         $connection->insert('sys_file_reference', [
-            'table_local' => 'sys_file',
+            
             'uid_local' => $potentialFile->getUid(),
             'tablenames' => 'tx_ieb_domain_model_ansuchen',
             'uid_foreign' => $ansuchen->getUid(),

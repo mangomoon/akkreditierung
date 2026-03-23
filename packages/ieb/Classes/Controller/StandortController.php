@@ -76,7 +76,7 @@ class StandortController extends BaseController
     public function createAction(Standort $newStandort)
     {
         $this->standortRepository->add($newStandort);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function editAction(Standort $standort): ResponseInterface
@@ -93,7 +93,7 @@ class StandortController extends BaseController
         $this->check($standort);
         $this->standortRepository->update($standort);
         //$this->addFlashMessage('Wurde erfolgreich gespeichert');
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     public function indexAction(): ResponseInterface
@@ -109,7 +109,7 @@ class StandortController extends BaseController
         $standort->setArchiviert(TRUE);
         $this->standortRepository->update($standort);
         
-        $this->redirect('index');
+        return $this->redirect('index');
     }
     public function reviveAction(Standort $standort): ResponseInterface
     {
@@ -117,6 +117,6 @@ class StandortController extends BaseController
         $standort->setArchiviert(FALSE);
         $this->standortRepository->update($standort);
         
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 }

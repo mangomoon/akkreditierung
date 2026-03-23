@@ -79,11 +79,32 @@ class AngebotVerantwortlichController extends BaseController
     public function initializeCreateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('newAngebotVerantwortlich');
+
+        $this->allowFileUploadProperties('newAngebotVerantwortlich', [
+            'lebenslaufDatei'
+        ]);
+
+        
+        $propertyMappingConfiguration = $this->arguments->getArgument('newAngebotVerantwortlich')
+        ->getPropertyMappingConfiguration();
+
+        foreach (['lebenslaufDatei'] as $fileProperty) {
+        $propertyMappingConfiguration->forProperty($fileProperty)
+            ->setTypeConverterOption(
+                \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::class,
+                \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED,
+                true
+            );
+        }
     }
 
     public function initializeUpdateAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('angebotVerantwortlich');
+
+        $this->allowFileUploadProperties('angebotVerantwortlich', [
+            'lebenslaufDatei'
+        ]);
     }
 
     /**
@@ -94,7 +115,7 @@ class AngebotVerantwortlichController extends BaseController
     public function createAction(AngebotVerantwortlich $newAngebotVerantwortlich)
     {
         $this->angebotVerantwortlichRepository->add($newAngebotVerantwortlich);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     /**
@@ -120,7 +141,7 @@ class AngebotVerantwortlichController extends BaseController
         $this->check($angebotVerantwortlich);
         $this->deleteFiles($fileDelete, $angebotVerantwortlich);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
 
@@ -136,7 +157,7 @@ class AngebotVerantwortlichController extends BaseController
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
         $this->eventDispatcher->dispatch(new AngebotVerantwortlichArchiveEvent($angebotVerantwortlich));
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     /**
@@ -150,7 +171,7 @@ class AngebotVerantwortlichController extends BaseController
         $angebotVerantwortlich->setArchiviert(false);
         $this->angebotVerantwortlichRepository->update($angebotVerantwortlich);
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
 
